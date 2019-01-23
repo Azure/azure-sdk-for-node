@@ -5679,6 +5679,8 @@ export interface DiscoverTenants {
     /**
      * Gets a Tenant Properties.
      *
+     * @param {string} billingAccountId Billing Account Id.
+     *
      * @param {string} billingProfileId Billing Profile Id.
      *
      * @param {object} [options] Optional Parameters.
@@ -5692,10 +5694,12 @@ export interface DiscoverTenants {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiscoverTenant>>;
+    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiscoverTenant>>;
 
     /**
      * Gets a Tenant Properties.
+     *
+     * @param {string} billingAccountId Billing Account Id.
      *
      * @param {string} billingProfileId Billing Profile Id.
      *
@@ -5726,7 +5730,7 @@ export interface DiscoverTenants {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiscoverTenant>;
-    get(billingProfileId: string, callback: ServiceCallback<models.DiscoverTenant>): void;
-    get(billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiscoverTenant>): void;
+    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiscoverTenant>;
+    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.DiscoverTenant>): void;
+    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiscoverTenant>): void;
 }
