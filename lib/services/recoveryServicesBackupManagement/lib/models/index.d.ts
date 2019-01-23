@@ -404,7 +404,7 @@ export interface AzureIaaSVMJobTaskDetails {
   progressPercentage?: number;
   /**
    * Details about execution of the task.
-   * eg: number of bytes transfered etc
+   * eg: number of bytes transferred etc
    */
   taskExecutionDetails?: string;
 }
@@ -1480,7 +1480,7 @@ export interface DPMProtectedItem extends ProtectedItem {
    */
   backupEngineName?: string;
   /**
-   * Protection state of the backupengine. Possible values include: 'Invalid', 'IRPending',
+   * Protection state of the backup engine. Possible values include: 'Invalid', 'IRPending',
    * 'Protected', 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
    */
   protectionState?: string;
@@ -2468,7 +2468,7 @@ export interface BackupEngineBase {
   */
   isDpmUpgradeAvailable?: boolean;
   /**
-   * Extended info of the backupengine
+   * Extended info of the backup engine
   */
   extendedInfo?: BackupEngineExtendedInfo;
   /**
@@ -2781,11 +2781,11 @@ export interface AzureVmWorkloadItem extends WorkloadItem {
   */
   isAutoProtectable?: boolean;
   /**
-   * For instance or AG, indicates number of DB's present
+   * For instance or AG, indicates number of DBs present
   */
   subinquireditemcount?: number;
   /**
-   * For instance or AG, indicates number of DB's to be protected
+   * For instance or AG, indicates number of DBs to be protected
   */
   subWorkloadItemCount?: number;
 }
@@ -2835,11 +2835,11 @@ export interface AzureVmWorkloadProtectableItem extends WorkloadProtectableItem 
   */
   isAutoProtected?: boolean;
   /**
-   * For instance or AG, indicates number of DB's present
+   * For instance or AG, indicates number of DBs present
   */
   subinquireditemcount?: number;
   /**
-   * For instance or AG, indicates number of DB's to be protected
+   * For instance or AG, indicates number of DBs to be protected
   */
   subprotectableitemcount?: number;
   /**
@@ -3080,7 +3080,7 @@ export interface PointInTimeRange {
 */
 export interface AzureWorkloadRecoveryPoint extends RecoveryPoint {
   /**
-   * UTC time at which recoverypoint was created
+   * UTC time at which recovery point was created
   */
   recoveryPointTimeInUTC?: Date;
   /**
@@ -3107,14 +3107,14 @@ AzureWorkloadPointInTimeRecoveryPoint {
 }
 
 /**
- * SAPHana specific recoverypoint, specifically encapsulates full/diff recoverypoints
+ * SAPHana specific recovery point, specifically encapsulates full/diff recovery points
 */
 export interface AzureWorkloadSAPHanaRecoveryPoint extends AzureWorkloadRecoveryPoint {
 }
 
 /**
- * SQL specific recoverypoint, specifically encapsulates full/diff recoverypoint alongwith extended
- * info
+ * SQL specific recovery point, specifically encapsulates full/diff recovery point along with
+ * extended info
 */
 export interface AzureWorkloadSQLRecoveryPoint extends AzureWorkloadRecoveryPoint {
   /**
@@ -3170,11 +3170,11 @@ export interface BackupEngineExtendedInfo {
   */
   diskCount?: number;
   /**
-   * Diskspace used in the backup engine.
+   * Disk space used in the backup engine.
   */
   usedDiskSpace?: number;
   /**
-   * Diskspace currently available in the backup engine.
+   * Disk space currently available in the backup engine.
   */
   availableDiskSpace?: number;
   /**
@@ -3659,7 +3659,7 @@ export interface KEKDetails {
  * 1. Secret(BEK) - Url + Backup Data + vaultId.
  * 2. Key(KEK) - Url + Backup Data + vaultId.
  * 3. EncryptionMechanism
- * BEK and KEK can potentiallty have different vault ids.
+ * BEK and KEK can potentially have different vault ids.
 */
 export interface KeyAndSecretDetails {
   /**
