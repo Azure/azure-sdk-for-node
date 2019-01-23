@@ -449,6 +449,11 @@ export interface Dataset {
    */
   structure?: any;
   /**
+   * Columns that define the physical type schema of the dataset. Type: array (or Expression with
+   * resultType array), itemType: DatasetSchemaDataElement.
+   */
+  schema?: any;
+  /**
    * Linked service reference.
    */
   linkedServiceName: LinkedServiceReference;
@@ -1349,6 +1354,34 @@ export interface SsisObjectMetadataStatusResponse {
 }
 
 /**
+ * The exposure control request.
+ */
+export interface ExposureControlRequest {
+  /**
+   * The feature name.
+   */
+  featureName?: string;
+  /**
+   * The feature type.
+   */
+  featureType?: string;
+}
+
+/**
+ * The exposure control response.
+ */
+export interface ExposureControlResponse {
+  /**
+   * The feature name.
+   */
+  readonly featureName?: string;
+  /**
+   * The feature value.
+   */
+  readonly value?: string;
+}
+
+/**
  * Referenced dependency.
  */
 export interface DependencyReference {
@@ -1618,6 +1651,26 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
    * Recurrence schedule configuration.
    */
   recurrence: ScheduleTriggerRecurrence;
+}
+
+/**
+ * Azure Function linked service.
+ */
+export interface AzureFunctionLinkedService extends LinkedService {
+  /**
+   * The endpoint of the Azure Function App. URL will be in the format
+   * https://<accountName>.azurewebsites.net.
+   */
+  functionAppUrl: any;
+  /**
+   * Function or Host key for Azure Function App.
+   */
+  functionKey?: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
 }
 
 /**
@@ -5241,6 +5294,33 @@ export interface ExecutionActivity extends Activity {
 }
 
 /**
+ * Azure Function activity.
+ */
+export interface AzureFunctionActivity extends ExecutionActivity {
+  /**
+   * Rest API method for target endpoint. Possible values include: 'GET', 'POST', 'PUT', 'DELETE',
+   * 'OPTIONS', 'HEAD', 'TRACE'
+   */
+  method: string;
+  /**
+   * Name of the Function that the Azure Function Activity will call. Type: string (or Expression
+   * with resultType string)
+   */
+  functionName: any;
+  /**
+   * Represents the headers that will be sent to the request. For example, to set the language and
+   * type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type":
+   * "application/json" }. Type: string (or Expression with resultType string).
+   */
+  headers?: any;
+  /**
+   * Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not
+   * allowed for GET method Type: string (or Expression with resultType string).
+   */
+  body?: any;
+}
+
+/**
  * DatabricksSparkPython activity.
  */
 export interface DatabricksSparkPythonActivity extends ExecutionActivity {
@@ -6331,7 +6411,7 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   /**
    * The package execution credential.
    */
-  executionCredential?: { [propertyName: string]: SSISExecutionCredential };
+  executionCredential?: SSISExecutionCredential;
   /**
    * The integration runtime reference.
    */
@@ -7083,39 +7163,6 @@ export interface IfConditionActivity extends ControlActivity {
    * property and if not provided, the activity will exit without any action.
    */
   ifFalseActivities?: Activity[];
-}
-
-/**
- * WebHook activity.
- */
-export interface WebHookActivity extends ControlActivity {
-  /**
-   * WebHook activity target endpoint and path. Type: string (or Expression with resultType
-   * string).
-   */
-  url: any;
-  /**
-   * Specifies the timeout within which the webhook should be called back. If there is no value
-   * specified, it takes the value of TimeSpan.FromMinutes(10) which is 10 minutes as default.
-   * Type: string (or Expression with resultType string), pattern:
-   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-   */
-  timeout?: any;
-  /**
-   * Represents the headers that will be sent to the request. For example, to set the language and
-   * type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type":
-   * "application/json" }. Type: string (or Expression with resultType string).
-   */
-  headers?: any;
-  /**
-   * Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not
-   * allowed for GET method Type: string (or Expression with resultType string).
-   */
-  body?: any;
-  /**
-   * Authentication method used for calling the endpoint.
-   */
-  authentication?: WebActivityAuthentication;
 }
 
 /**
