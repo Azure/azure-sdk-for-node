@@ -105,6 +105,8 @@ export interface CognitiveServicesAccountUpdateParameters {
  * 'Failed'
  * @member {string} [endpoint] Endpoint of the created account.
  * @member {string} [internalId] The internal identifier.
+ * @member {string} [customSubDomainName] Optional subdomain name used for
+ * token-based authentication.
  * @member {object} [sku] The SKU of Cognitive Services account.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation, optional for update.
@@ -126,6 +128,7 @@ export interface CognitiveServicesAccount extends BaseResource {
   readonly provisioningState?: string;
   endpoint?: string;
   internalId?: string;
+  customSubDomainName?: string;
   sku?: Sku;
   tags?: { [propertyName: string]: string };
   readonly type?: string;
