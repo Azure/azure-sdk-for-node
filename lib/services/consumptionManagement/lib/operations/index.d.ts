@@ -5669,11 +5669,11 @@ export interface Charges {
 
 /**
  * @class
- * DiscoverTenants
+ * Tenants
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface DiscoverTenants {
+export interface Tenants {
 
 
     /**
@@ -5690,11 +5690,11 @@ export interface DiscoverTenants {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<DiscoverTenant>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TenantListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiscoverTenant>>;
+    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TenantListResult>>;
 
     /**
      * Gets a Tenant Properties.
@@ -5715,7 +5715,7 @@ export interface DiscoverTenants {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {DiscoverTenant} - The deserialized result object.
+     *                      @resolve {TenantListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5723,14 +5723,14 @@ export interface DiscoverTenants {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {DiscoverTenant} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DiscoverTenant} for more information.
+     *                      {TenantListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TenantListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiscoverTenant>;
-    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.DiscoverTenant>): void;
-    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiscoverTenant>): void;
+    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TenantListResult>;
+    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.TenantListResult>): void;
+    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TenantListResult>): void;
 }

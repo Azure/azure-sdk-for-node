@@ -229,18 +229,34 @@ export interface Marketplace extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the DiscoverTenant class.
+ * Initializes a new instance of the Tenant class.
  * @constructor
- * A Tenant properties Resource
+ * An tenant detail resource.
  *
  * @member {string} [billingProfileName] The Billing Profile name.
  * @member {string} [billingAccountId] The Billing AccountId.
  * @member {string} [tenantId] The TenantId.
+ * @member {string} [billingAccountName] The Billing Account Name.
  */
-export interface DiscoverTenant {
+export interface Tenant extends Resource {
   readonly billingProfileName?: string;
   readonly billingAccountId?: string;
   readonly tenantId?: string;
+  readonly billingAccountName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TenantListResult class.
+ * @constructor
+ * A Tenant properties Resource
+ *
+ * @member {array} [value] The list of tenant details.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface TenantListResult {
+  readonly value?: Tenant[];
+  readonly nextLink?: string;
 }
 
 /**
