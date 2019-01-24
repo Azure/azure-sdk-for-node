@@ -777,6 +777,14 @@ export interface ManagedClusterAgentPoolProfileProperties {
    * 'VirtualMachineScaleSets', 'AvailabilitySet'
    */
   type?: string;
+  /**
+   * Version of Kubernetes specified when creating the managed cluster.
+   */
+  kubernetesVersion?: string;
+  /**
+   * The current deployment or provisioning state, which only appears in the response.
+   */
+  readonly provisioningState?: string;
 }
 
 /**
@@ -876,13 +884,13 @@ export interface AgentPool extends SubResource {
    */
   agentPoolType?: string;
   /**
-   * The current deployment or provisioning state, which only appears in the response.
-   */
-  readonly provisioningState?: string;
-  /**
    * Version of Kubernetes specified when creating the managed cluster.
    */
   kubernetesVersion?: string;
+  /**
+   * The current deployment or provisioning state, which only appears in the response.
+   */
+  readonly provisioningState?: string;
 }
 
 /**
