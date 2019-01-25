@@ -558,8 +558,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -622,8 +622,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -761,8 +761,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -819,8 +819,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -870,6 +870,214 @@ export interface SignalR {
     update(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRResource>;
     update(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SignalRResource>): void;
     update(resourceGroupName: string, resourceName: string, options: { parameters? : models.SignalRUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRResource>): void;
+
+
+    /**
+     * Operation to restart a SignalR service.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restartWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Operation to restart a SignalR service.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restart(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Switch on/off SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters that describes the SignalR
+     * resource features opreation.
+     *
+     * @param {array} options.parameters.features List of features.
+     *
+     * If certain feature is not present, SignalR service will remain it unchanged
+     * or use the global default value.
+     * Note that, default value doesn't mean "false". It varies in terms of
+     * different FeatureFlags.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SignalRFeatureList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    switchFeaturesWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SignalRFeatureList>>;
+
+    /**
+     * Switch on/off SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters that describes the SignalR
+     * resource features opreation.
+     *
+     * @param {array} options.parameters.features List of features.
+     *
+     * If certain feature is not present, SignalR service will remain it unchanged
+     * or use the global default value.
+     * Note that, default value doesn't mean "false". It varies in terms of
+     * different FeatureFlags.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SignalRFeatureList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SignalRFeatureList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SignalRFeatureList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    switchFeatures(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRFeatureList>;
+    switchFeatures(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SignalRFeatureList>): void;
+    switchFeatures(resourceGroupName: string, resourceName: string, options: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRFeatureList>): void;
+
+
+    /**
+     * List SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SignalRFeatureList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listFeaturesWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SignalRFeatureList>>;
+
+    /**
+     * List SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SignalRFeatureList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SignalRFeatureList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SignalRFeatureList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFeatures(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRFeatureList>;
+    listFeatures(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SignalRFeatureList>): void;
+    listFeatures(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRFeatureList>): void;
 
 
     /**
@@ -981,8 +1189,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1045,8 +1253,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1184,8 +1392,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1242,8 +1450,8 @@ export interface SignalR {
      * specified)
      *
      * @param {string} [options.parameters.sku.tier] Optional tier of this
-     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
-     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
+     * particular SKU. `Basic` is deprecated, use `Standard` instead. Possible
+     * values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1293,6 +1501,151 @@ export interface SignalR {
     beginUpdate(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRResource>;
     beginUpdate(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SignalRResource>): void;
     beginUpdate(resourceGroupName: string, resourceName: string, options: { parameters? : models.SignalRUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRResource>): void;
+
+
+    /**
+     * Operation to restart a SignalR service.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Operation to restart a SignalR service.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Switch on/off SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters that describes the SignalR
+     * resource features opreation.
+     *
+     * @param {array} options.parameters.features List of features.
+     *
+     * If certain feature is not present, SignalR service will remain it unchanged
+     * or use the global default value.
+     * Note that, default value doesn't mean "false". It varies in terms of
+     * different FeatureFlags.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SignalRFeatureList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginSwitchFeaturesWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SignalRFeatureList>>;
+
+    /**
+     * Switch on/off SignalR resource features.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} resourceName The name of the SignalR resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters that describes the SignalR
+     * resource features opreation.
+     *
+     * @param {array} options.parameters.features List of features.
+     *
+     * If certain feature is not present, SignalR service will remain it unchanged
+     * or use the global default value.
+     * Note that, default value doesn't mean "false". It varies in terms of
+     * different FeatureFlags.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SignalRFeatureList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SignalRFeatureList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SignalRFeatureList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginSwitchFeatures(resourceGroupName: string, resourceName: string, options?: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRFeatureList>;
+    beginSwitchFeatures(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SignalRFeatureList>): void;
+    beginSwitchFeatures(resourceGroupName: string, resourceName: string, options: { parameters? : models.SignalRFeaturesParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRFeatureList>): void;
 
 
     /**

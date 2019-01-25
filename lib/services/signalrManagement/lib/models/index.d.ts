@@ -193,8 +193,8 @@ export interface NameAvailability {
  * @member {string} name The name of the SKU. This is typically a letter +
  * number code, such as A0 or P3.  Required (if sku is specified)
  * @member {string} [tier] Optional tier of this particular SKU. `Basic` is
- * deprecated, use `Standard` instead for Basic tier. Possible values include:
- * 'Free', 'Basic', 'Standard', 'Premium'
+ * deprecated, use `Standard` instead. Possible values include: 'Free',
+ * 'Basic', 'Standard', 'Premium'
  * @member {string} [size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [family] Optional, string. If the service has different
@@ -254,8 +254,8 @@ export interface TrackedResource extends Resource {
  * @member {string} [sku.name] The name of the SKU. This is typically a letter
  * + number code, such as A0 or P3.  Required (if sku is specified)
  * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
- * deprecated, use `Standard` instead for Basic tier. Possible values include:
- * 'Free', 'Basic', 'Standard', 'Premium'
+ * deprecated, use `Standard` instead. Possible values include: 'Free',
+ * 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] Optional, string. If the service has different
@@ -273,9 +273,9 @@ export interface TrackedResource extends Resource {
  * service.
  * @member {string} [hostName] FQDN of the SignalR service instance. Format:
  * xxx.service.signalr.net
- * @member {number} [publicPort] The publicly accessibly port of the SignalR
+ * @member {number} [publicPort] The publicly accessible port of the SignalR
  * service which is designed for browser/client side usage.
- * @member {number} [serverPort] The publicly accessibly port of the SignalR
+ * @member {number} [serverPort] The publicly accessible port of the SignalR
  * service which is designed for customer server side usage.
  * @member {string} [version] Version of the SignalR resource. Probably you
  * need the same or higher version of client SDKs.
@@ -352,8 +352,8 @@ export interface RegenerateKeyParameters {
  * @member {string} [sku.name] The name of the SKU. This is typically a letter
  * + number code, such as A0 or P3.  Required (if sku is specified)
  * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
- * deprecated, use `Standard` instead for Basic tier. Possible values include:
- * 'Free', 'Basic', 'Standard', 'Premium'
+ * deprecated, use `Standard` instead. Possible values include: 'Free',
+ * 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] Optional, string. If the service has different
@@ -388,6 +388,60 @@ export interface SignalRUpdateParameters {
  */
 export interface SignalRCreateParameters extends SignalRUpdateParameters {
   location: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignalRFeature class.
+ * @constructor
+ * Feature of a SignalR resource, which controls the SignalR runtime behavior.
+ *
+ * @member {string} value Value of the feature flag. See Azure SignalR service
+ * document https://docs.microsoft.com/en-us/azure/azure-signalr/ for allowed
+ * values.
+ * @member {object} [properties] Optional properties related to this feature.
+ */
+export interface SignalRFeature {
+  value: string;
+  properties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignalRFeaturesParameters class.
+ * @constructor
+ * Parameters for SignalR service instance features management opreations.
+ *
+ * @member {array} features List of features.
+ *
+ * If certain feature is not present, SignalR service will remain it unchanged
+ * or use the global default value.
+ * Note that, default value doesn't mean "false". It varies in terms of
+ * different FeatureFlags.
+ */
+export interface SignalRFeaturesParameters {
+  features: SignalRFeature[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignalRFeatureList class.
+ * @constructor
+ * A class that represents a list of SignalRFeatures related to SignalR
+ * resource.
+ *
+ * @member {array} [value] List of features.
+ * Note that, if a feature is not included in the list, which only means user
+ * never set it explicitly rather than 'false'.
+ * In this case, SignalR service will use a globally default value which might
+ * be 'true' or 'false'.
+ * @member {string} [nextLink] The URL the client should use to fetch the next
+ * page (per server side paging).
+ * It's null for now, added for future use.
+ */
+export interface SignalRFeatureList {
+  value?: SignalRFeature[];
+  nextLink?: string;
 }
 
 /**
