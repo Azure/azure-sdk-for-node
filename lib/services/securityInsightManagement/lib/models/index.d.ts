@@ -99,20 +99,20 @@ export interface ScheduledAlertRule extends Resource {
    */
   query: string;
   /**
-   * TimeSpan format represents the frequncy for this alert rule to run.
+   * The frequency (in ISO 8601 duration format) for this alert rule to run.
    */
-  queryFrequency: string;
+  queryFrequency: moment.Duration;
   /**
-   * TimeSpan format represents the period that this alert rule looks at.
+   * The period (in ISO 8601 duration format) that this alert rule looks at.
    */
-  queryPeriod: string;
+  queryPeriod: moment.Duration;
   /**
-   * The operation against the threahold that triggers alert rule. Possible values include: 'gt',
-   * 'lt', 'ne', 'eq'
+   * The operation against the threshold that triggers alert rule. Possible values include:
+   * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
    */
   alertTriggerOperator: string;
   /**
-   * The threahold triggers this alert rule.
+   * The threshold triggers this alert rule.
    */
   alertTriggerThreshold: number;
   /**
@@ -120,10 +120,10 @@ export interface ScheduledAlertRule extends Resource {
    */
   suppressionEnabled: boolean;
   /**
-   * TimeSpan format represents the suppression to wait since last time this alert rule been
+   * The suppression (in ISO 8601 duration format) to wait since last time this alert rule been
    * triggered.
    */
-  suppressionDuration: string;
+  suppressionDuration: moment.Duration;
   /**
    * The last time that this alert has been modified.
    */

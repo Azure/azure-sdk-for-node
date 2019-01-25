@@ -9,6 +9,7 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -290,45 +291,45 @@ export interface ScheduledAlertRules {
      *
      * @param {string} ruleId Alert rule ID
      *
-     * @param {object} alertScheduledtRule The alert rule
+     * @param {object} scheduledAlertRule The alert rule
      *
-     * @param {string} [alertScheduledtRule.etag] Etag of the alert rule.
+     * @param {string} [scheduledAlertRule.etag] Etag of the alert rule.
      *
-     * @param {string} alertScheduledtRule.ruleName The name for alerts created by
+     * @param {string} scheduledAlertRule.ruleName The name for alerts created by
      * this alert rule.
      *
-     * @param {string} alertScheduledtRule.description The description of the alert
+     * @param {string} scheduledAlertRule.description The description of the alert
      * rule.
      *
-     * @param {string} alertScheduledtRule.severity The severity for alerts created
+     * @param {string} scheduledAlertRule.severity The severity for alerts created
      * by this alert rule. Possible values include: 'Low', 'Medium', 'High',
      * 'Informational'
      *
-     * @param {boolean} alertScheduledtRule.enabled Determines whether this alert
+     * @param {boolean} scheduledAlertRule.enabled Determines whether this alert
      * rule is enabled or disabled.
      *
-     * @param {string} alertScheduledtRule.query The query that creates alerts for
+     * @param {string} scheduledAlertRule.query The query that creates alerts for
      * this rule.
      *
-     * @param {string} alertScheduledtRule.queryFrequency TimeSpan format
-     * represents the frequncy for this alert rule to run.
+     * @param {moment.duration} scheduledAlertRule.queryFrequency The frequency (in
+     * ISO 8601 duration format) for this alert rule to run.
      *
-     * @param {string} alertScheduledtRule.queryPeriod TimeSpan format represents
-     * the period that this alert rule looks at.
+     * @param {moment.duration} scheduledAlertRule.queryPeriod The period (in ISO
+     * 8601 duration format) that this alert rule looks at.
      *
-     * @param {string} alertScheduledtRule.alertTriggerOperator The operation
-     * against the threahold that triggers alert rule. Possible values include:
-     * 'gt', 'lt', 'ne', 'eq'
+     * @param {string} scheduledAlertRule.alertTriggerOperator The operation
+     * against the threshold that triggers alert rule. Possible values include:
+     * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
      *
-     * @param {number} alertScheduledtRule.alertTriggerThreshold The threahold
+     * @param {number} scheduledAlertRule.alertTriggerThreshold The threshold
      * triggers this alert rule.
      *
-     * @param {boolean} alertScheduledtRule.suppressionEnabled Determines whether
+     * @param {boolean} scheduledAlertRule.suppressionEnabled Determines whether
      * the suppression for this alert rule is enabled or disabled.
      *
-     * @param {string} alertScheduledtRule.suppressionDuration TimeSpan format
-     * represents the suppression to wait since last time this alert rule been
-     * triggered.
+     * @param {moment.duration} scheduledAlertRule.suppressionDuration The
+     * suppression (in ISO 8601 duration format) to wait since last time this alert
+     * rule been triggered.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -341,7 +342,7 @@ export interface ScheduledAlertRules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertScheduledtRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRule>>;
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRule>>;
 
     /**
      * Creates or updates the alert rule.
@@ -356,45 +357,45 @@ export interface ScheduledAlertRules {
      *
      * @param {string} ruleId Alert rule ID
      *
-     * @param {object} alertScheduledtRule The alert rule
+     * @param {object} scheduledAlertRule The alert rule
      *
-     * @param {string} [alertScheduledtRule.etag] Etag of the alert rule.
+     * @param {string} [scheduledAlertRule.etag] Etag of the alert rule.
      *
-     * @param {string} alertScheduledtRule.ruleName The name for alerts created by
+     * @param {string} scheduledAlertRule.ruleName The name for alerts created by
      * this alert rule.
      *
-     * @param {string} alertScheduledtRule.description The description of the alert
+     * @param {string} scheduledAlertRule.description The description of the alert
      * rule.
      *
-     * @param {string} alertScheduledtRule.severity The severity for alerts created
+     * @param {string} scheduledAlertRule.severity The severity for alerts created
      * by this alert rule. Possible values include: 'Low', 'Medium', 'High',
      * 'Informational'
      *
-     * @param {boolean} alertScheduledtRule.enabled Determines whether this alert
+     * @param {boolean} scheduledAlertRule.enabled Determines whether this alert
      * rule is enabled or disabled.
      *
-     * @param {string} alertScheduledtRule.query The query that creates alerts for
+     * @param {string} scheduledAlertRule.query The query that creates alerts for
      * this rule.
      *
-     * @param {string} alertScheduledtRule.queryFrequency TimeSpan format
-     * represents the frequncy for this alert rule to run.
+     * @param {moment.duration} scheduledAlertRule.queryFrequency The frequency (in
+     * ISO 8601 duration format) for this alert rule to run.
      *
-     * @param {string} alertScheduledtRule.queryPeriod TimeSpan format represents
-     * the period that this alert rule looks at.
+     * @param {moment.duration} scheduledAlertRule.queryPeriod The period (in ISO
+     * 8601 duration format) that this alert rule looks at.
      *
-     * @param {string} alertScheduledtRule.alertTriggerOperator The operation
-     * against the threahold that triggers alert rule. Possible values include:
-     * 'gt', 'lt', 'ne', 'eq'
+     * @param {string} scheduledAlertRule.alertTriggerOperator The operation
+     * against the threshold that triggers alert rule. Possible values include:
+     * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
      *
-     * @param {number} alertScheduledtRule.alertTriggerThreshold The threahold
+     * @param {number} scheduledAlertRule.alertTriggerThreshold The threshold
      * triggers this alert rule.
      *
-     * @param {boolean} alertScheduledtRule.suppressionEnabled Determines whether
+     * @param {boolean} scheduledAlertRule.suppressionEnabled Determines whether
      * the suppression for this alert rule is enabled or disabled.
      *
-     * @param {string} alertScheduledtRule.suppressionDuration TimeSpan format
-     * represents the suppression to wait since last time this alert rule been
-     * triggered.
+     * @param {moment.duration} scheduledAlertRule.suppressionDuration The
+     * suppression (in ISO 8601 duration format) to wait since last time this alert
+     * rule been triggered.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -423,9 +424,9 @@ export interface ScheduledAlertRules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertScheduledtRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRule>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertScheduledtRule: models.ScheduledAlertRule, callback: ServiceCallback<models.ScheduledAlertRule>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertScheduledtRule: models.ScheduledAlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRule>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRule>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, callback: ServiceCallback<models.ScheduledAlertRule>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRule>): void;
 
 
     /**
