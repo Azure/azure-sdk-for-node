@@ -849,6 +849,159 @@ export interface ResourceAttributes {
 
 /**
  * @class
+ * Initializes a new instance of the Amount class.
+ * @constructor
+ * Denotes an instance of product charges.
+ *
+ * @member {string} [currency] The currency for the amount value.
+ * @member {number} [value] Tha actual amount value.
+ */
+export interface Amount {
+  readonly currency?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationPropertiesWithAmount class.
+ * @constructor
+ * The properties of the reservation recommendation.
+ *
+ * @member {string} [lookBackPeriod] The number of days of usage to look back
+ * for recommendation.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {string} [skuName] Sku name of the reserved instance resource.
+ * @member {string} [region] Region of the reserved instance resource.
+ * @member {string} [term] RI recommendations in one or three year terms.
+ * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * instances.
+ * @member {number} [recommendedQuantity] Recommended quality for reserved
+ * instances.
+ * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * instances.
+ * @member {number} [netSavings] Total estimated savings with reserved
+ * instances.
+ * @member {date} [firstUsageDate] The usage date for looking back.
+ */
+export interface ReservationRecommendationPropertiesWithAmount {
+  readonly lookBackPeriod?: string;
+  readonly meterId?: string;
+  readonly skuName?: string;
+  readonly region?: string;
+  readonly term?: string;
+  readonly costWithNoRI?: number;
+  readonly recommendedQuantity?: number;
+  readonly totalCostWithRI?: number;
+  readonly netSavings?: number;
+  readonly firstUsageDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsShared class.
+ * @constructor
+ * Reservation Recommendation for shared scope.
+ *
+ * @member {string} [lookBackPeriod] The number of days of usage to look back
+ * for recommendation.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {string} [skuName] Sku name of the reserved instance resource.
+ * @member {string} [region] Region of the reserved instance resource.
+ * @member {string} [term] RI recommendations in one or three year terms.
+ * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * instances.
+ * @member {number} [recommendedQuantity] Recommended quality for reserved
+ * instances.
+ * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * instances.
+ * @member {number} [netSavings] Total estimated savings with reserved
+ * instances.
+ * @member {date} [firstUsageDate] The usage date for looking back.
+ */
+export interface ReservationRecommendationsShared extends Resource {
+  readonly lookBackPeriod?: string;
+  readonly meterId?: string;
+  readonly skuName?: string;
+  readonly region?: string;
+  readonly term?: string;
+  readonly costWithNoRI?: number;
+  readonly recommendedQuantity?: number;
+  readonly totalCostWithRI?: number;
+  readonly netSavings?: number;
+  readonly firstUsageDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsSharedListResult class.
+ * @constructor
+ * Result of reservation recommendations listing by billing account and billing
+ * profile.
+ *
+ * @member {array} [value] The list of reservation recommendations by billing
+ * account and billing profile.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsSharedListResult {
+  readonly value?: ReservationRecommendationsShared[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsSingle class.
+ * @constructor
+ * Reservation Recommendation for single subscription scope.
+ *
+ * @member {string} [lookBackPeriod] The number of days of usage to look back
+ * for recommendation.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {string} [skuName] Sku name of the reserved instance resource.
+ * @member {string} [region] Region of the reserved instance resource.
+ * @member {string} [term] RI recommendations in one or three year terms.
+ * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * instances.
+ * @member {number} [recommendedQuantity] Recommended quality for reserved
+ * instances.
+ * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * instances.
+ * @member {number} [netSavings] Total estimated savings with reserved
+ * instances.
+ * @member {date} [firstUsageDate] The usage date for looking back.
+ * @member {uuid} [subscriptionId] Subscription Id.
+ */
+export interface ReservationRecommendationsSingle extends Resource {
+  readonly lookBackPeriod?: string;
+  readonly meterId?: string;
+  readonly skuName?: string;
+  readonly region?: string;
+  readonly term?: string;
+  readonly costWithNoRI?: number;
+  readonly recommendedQuantity?: number;
+  readonly totalCostWithRI?: number;
+  readonly netSavings?: number;
+  readonly firstUsageDate?: Date;
+  readonly subscriptionId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsSingleListResult class.
+ * @constructor
+ * Result of reservation recommendations listing by billing account and billing
+ * profile for each subscription.
+ *
+ * @member {array} [value] The list of reservation recommendations by billing
+ * account and billing profile and subscription.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsSingleListResult {
+  readonly value?: ReservationRecommendationsSingle[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the QueryOptions class.
  * @constructor
  * Additional parameters for a set of operations.

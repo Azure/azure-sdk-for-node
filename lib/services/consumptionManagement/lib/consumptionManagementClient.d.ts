@@ -23,6 +23,12 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
+   * @param {date} startDate - The start of the date time range.
+   *
+   * @param {date} endDate - The start of the date time range.
+   *
+   * @param {string} lookBackPeriod - The number of days of usage data to look back into.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,13 +47,19 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, startDate: Date, endDate: Date, lookBackPeriod: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
+
+  startDate: Date;
+
+  endDate: Date;
+
+  lookBackPeriod: string;
 
   acceptLanguage: string;
 
@@ -69,6 +81,10 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   aggregatedCost: operations.AggregatedCost;
   charges: operations.Charges;
+  reservationsUsageDetails: operations.ReservationsUsageDetails;
+  reservationsUsageSummaries: operations.ReservationsUsageSummaries;
+  reservationRecommendationsSharedOperations: operations.ReservationRecommendationsSharedOperations;
+  reservationRecommendationsSingleOperations: operations.ReservationRecommendationsSingleOperations;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
