@@ -502,6 +502,10 @@ export interface VnetInfo extends ProxyOnlyResource {
    * addresses.
    */
   dnsServers?: string;
+  /**
+   * Flag that is used to denote if this is VNET injection
+   */
+  isSwift?: boolean;
 }
 
 /**
@@ -897,6 +901,12 @@ export interface CorsSettings {
    * calls (for example: http://example.com:12345). Use "*" to allow all.
    */
   allowedOrigins?: string[];
+  /**
+   * Gets or sets whether CORS requests with credentials are allowed. See
+   * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+   * for more details.
+   */
+  supportCredentials?: boolean;
 }
 
 /**
@@ -1438,9 +1448,17 @@ export interface SiteConfig {
    */
   xManagedServiceIdentityId?: number;
   /**
-   * IP security restrictions.
+   * IP security restrictions for main.
    */
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  /**
+   * IP security restrictions for scm.
+   */
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  /**
+   * IP security restrictions for scm to use main.
+   */
+  scmIpSecurityRestrictionsUseMain?: boolean;
   /**
    * Http20Enabled: configures a web site to allow clients to connect over http2.0
    */
@@ -3544,6 +3562,10 @@ export interface StackMajorVersion {
    * Minor versions associated with the major version.
   */
   minorVersions?: StackMinorVersion[];
+  /**
+   * <code>true</code> if this supports Application Insights; otherwise, <code>false</code>.
+  */
+  applicationInsights?: boolean;
 }
 
 /**
@@ -5457,6 +5479,12 @@ export interface SiteAuthSettings extends ProxyOnlyResource {
   */
   clientSecret?: string;
   /**
+   * An alternative to the client secret, that is the thumbprint of a certificate used for signing
+   * purposes. This property acts as
+   * a replacement for the Client Secret. It is also optional.
+  */
+  clientSecretCertificateThumbprint?: string;
+  /**
    * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this
    * application.
    * When using Azure Active Directory, this value is the URI of the directory tenant, e.g.
@@ -5782,9 +5810,17 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   */
   xManagedServiceIdentityId?: number;
   /**
-   * IP security restrictions.
+   * IP security restrictions for main.
   */
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  /**
+   * IP security restrictions for scm.
+  */
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  /**
+   * IP security restrictions for scm to use main.
+  */
+  scmIpSecurityRestrictionsUseMain?: boolean;
   /**
    * Http20Enabled: configures a web site to allow clients to connect over http2.0
   */

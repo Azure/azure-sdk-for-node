@@ -9166,6 +9166,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -9207,7 +9212,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -9551,6 +9562,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -9592,7 +9608,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -10035,6 +10057,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -10076,7 +10103,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -10408,6 +10441,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -10449,7 +10487,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -11655,6 +11699,11 @@ export interface WebApps {
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
      *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certificate
+     * used for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
+     *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
      * When using Azure Active Directory, this value is the URI of the directory
@@ -11823,6 +11872,11 @@ export interface WebApps {
      * authenticate end users.
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
+     *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certificate
+     * used for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
      *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
@@ -13994,6 +14048,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14033,7 +14092,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14241,6 +14307,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14280,7 +14351,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14507,6 +14585,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14546,7 +14629,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14754,6 +14844,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14793,7 +14888,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -23504,6 +23606,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -23545,7 +23652,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -23892,6 +24005,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -23933,7 +24051,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -24385,6 +24509,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -24426,7 +24555,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -24761,6 +24896,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -24802,7 +24942,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -26081,6 +26227,11 @@ export interface WebApps {
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
      *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certificate
+     * used for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
+     *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
      * When using Azure Active Directory, this value is the URI of the directory
@@ -26252,6 +26403,11 @@ export interface WebApps {
      * authenticate end users.
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
+     *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certificate
+     * used for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
      *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
@@ -28398,6 +28554,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28437,7 +28598,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -28648,6 +28816,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28687,7 +28860,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -28917,6 +29097,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28956,7 +29141,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -29167,6 +29359,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -29206,7 +29403,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -39820,6 +40024,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
@@ -39864,6 +40071,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -40007,6 +40217,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
@@ -40051,6 +40264,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -42243,6 +42459,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -42284,6 +42503,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -42418,6 +42640,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -42459,6 +42684,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -43119,6 +43347,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -43160,7 +43393,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -43504,6 +43743,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -43545,7 +43789,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -45208,6 +45458,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -45249,7 +45504,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -45596,6 +45857,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -45637,7 +45903,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
