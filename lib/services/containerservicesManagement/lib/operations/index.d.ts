@@ -22,14 +22,138 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Gets a openshift managed cluster.
+     * @summary Gets a list of OpenShift managed clusters in the specified
+     * subscription.
      *
-     * Gets the details of the managed openshift cluster with a specified resource
+     * Gets a list of OpenShift managed clusters in the specified subscription. The
+     * operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
+
+    /**
+     * @summary Gets a list of OpenShift managed clusters in the specified
+     * subscription.
+     *
+     * Gets a list of OpenShift managed clusters in the specified subscription. The
+     * operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedClusterListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
+    list(callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+
+
+    /**
+     * @summary Lists OpenShift managed clusters in the specified subscription and
+     * resource group.
+     *
+     * Lists OpenShift managed clusters in the specified subscription and resource
+     * group. The operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
+
+    /**
+     * @summary Lists OpenShift managed clusters in the specified subscription and
+     * resource group.
+     *
+     * Lists OpenShift managed clusters in the specified subscription and resource
+     * group. The operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedClusterListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+
+
+    /**
+     * @summary Gets a OpenShift managed cluster.
+     *
+     * Gets the details of the managed OpenShift cluster with a specified resource
      * group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -46,14 +170,14 @@ export interface OpenShiftManagedClusters {
     getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Gets a openshift managed cluster.
+     * @summary Gets a OpenShift managed cluster.
      *
-     * Gets the details of the managed openshift cluster with a specified resource
+     * Gets the details of the managed OpenShift cluster with a specified resource
      * group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -90,14 +214,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -147,7 +271,16 @@ export interface OpenShiftManagedClusters {
      * to host docker containers. The default value is 3.
      *
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
-     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_F8s_v2',
+     * 'Standard_F16s_v2', 'Standard_F32s_v2', 'Standard_F64s_v2',
+     * 'Standard_F72s_v2', 'Standard_F8s', 'Standard_F16s', 'Standard_E4s_v3',
+     * 'Standard_E8s_v3', 'Standard_E16s_v3', 'Standard_E20s_v3',
+     * 'Standard_E32s_v3', 'Standard_E64s_v3', 'Standard_GS2', 'Standard_GS3',
+     * 'Standard_GS4', 'Standard_GS5', 'Standard_DS12_v2', 'Standard_DS13_v2',
+     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s'
      *
      * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
@@ -183,14 +316,14 @@ export interface OpenShiftManagedClusters {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -240,7 +373,16 @@ export interface OpenShiftManagedClusters {
      * to host docker containers. The default value is 3.
      *
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
-     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_F8s_v2',
+     * 'Standard_F16s_v2', 'Standard_F32s_v2', 'Standard_F64s_v2',
+     * 'Standard_F72s_v2', 'Standard_F8s', 'Standard_F16s', 'Standard_E4s_v3',
+     * 'Standard_E8s_v3', 'Standard_E16s_v3', 'Standard_E20s_v3',
+     * 'Standard_E32s_v3', 'Standard_E64s_v3', 'Standard_GS2', 'Standard_GS3',
+     * 'Standard_GS4', 'Standard_GS5', 'Standard_DS12_v2', 'Standard_DS13_v2',
+     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s'
      *
      * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
@@ -296,13 +438,13 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -324,13 +466,13 @@ export interface OpenShiftManagedClusters {
     updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -372,14 +514,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -396,14 +538,14 @@ export interface OpenShiftManagedClusters {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -438,14 +580,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -495,7 +637,16 @@ export interface OpenShiftManagedClusters {
      * to host docker containers. The default value is 3.
      *
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
-     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_F8s_v2',
+     * 'Standard_F16s_v2', 'Standard_F32s_v2', 'Standard_F64s_v2',
+     * 'Standard_F72s_v2', 'Standard_F8s', 'Standard_F16s', 'Standard_E4s_v3',
+     * 'Standard_E8s_v3', 'Standard_E16s_v3', 'Standard_E20s_v3',
+     * 'Standard_E32s_v3', 'Standard_E64s_v3', 'Standard_GS2', 'Standard_GS3',
+     * 'Standard_GS4', 'Standard_GS5', 'Standard_DS12_v2', 'Standard_DS13_v2',
+     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s'
      *
      * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
@@ -531,14 +682,14 @@ export interface OpenShiftManagedClusters {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -588,7 +739,16 @@ export interface OpenShiftManagedClusters {
      * to host docker containers. The default value is 3.
      *
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
-     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_F8s_v2',
+     * 'Standard_F16s_v2', 'Standard_F32s_v2', 'Standard_F64s_v2',
+     * 'Standard_F72s_v2', 'Standard_F8s', 'Standard_F16s', 'Standard_E4s_v3',
+     * 'Standard_E8s_v3', 'Standard_E16s_v3', 'Standard_E20s_v3',
+     * 'Standard_E32s_v3', 'Standard_E64s_v3', 'Standard_GS2', 'Standard_GS3',
+     * 'Standard_GS4', 'Standard_GS5', 'Standard_DS12_v2', 'Standard_DS13_v2',
+     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s'
      *
      * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
@@ -644,13 +804,13 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -672,13 +832,13 @@ export interface OpenShiftManagedClusters {
     beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -720,14 +880,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -744,14 +904,14 @@ export interface OpenShiftManagedClusters {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -783,6 +943,138 @@ export interface OpenShiftManagedClusters {
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets a list of OpenShift managed clusters in the specified
+     * subscription.
+     *
+     * Gets a list of OpenShift managed clusters in the specified subscription. The
+     * operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
+
+    /**
+     * @summary Gets a list of OpenShift managed clusters in the specified
+     * subscription.
+     *
+     * Gets a list of OpenShift managed clusters in the specified subscription. The
+     * operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedClusterListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+
+
+    /**
+     * @summary Lists OpenShift managed clusters in the specified subscription and
+     * resource group.
+     *
+     * Lists OpenShift managed clusters in the specified subscription and resource
+     * group. The operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
+
+    /**
+     * @summary Lists OpenShift managed clusters in the specified subscription and
+     * resource group.
+     *
+     * Lists OpenShift managed clusters in the specified subscription and resource
+     * group. The operation returns properties of each OpenShift managed cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedClusterListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
 }
 
 /**
@@ -977,7 +1269,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1161,7 +1453,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1455,7 +1747,7 @@ export interface ContainerServices {
      * subscription.
      *
      * Gets a list of supported orchestrators in the specified subscription. The
-     * operation returns properties of each orchestrator including verison and
+     * operation returns properties of each orchestrator including version and
      * available upgrades.
      *
      * @param {string} location The name of a supported Azure region.
@@ -1481,7 +1773,7 @@ export interface ContainerServices {
      * subscription.
      *
      * Gets a list of supported orchestrators in the specified subscription. The
-     * operation returns properties of each orchestrator including verison and
+     * operation returns properties of each orchestrator including version and
      * available upgrades.
      *
      * @param {string} location The name of a supported Azure region.
@@ -1645,7 +1937,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1829,7 +2121,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -2445,9 +2737,9 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets clusteradmin credential of a managed cluster.
+     * @summary Gets cluster admin credential of a managed cluster.
      *
-     * Gets clusteradmin credential of the managed cluster with a specified
+     * Gets cluster admin credential of the managed cluster with a specified
      * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2468,9 +2760,9 @@ export interface ManagedClusters {
     listClusterAdminCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
 
     /**
-     * @summary Gets clusteradmin credential of a managed cluster.
+     * @summary Gets cluster admin credential of a managed cluster.
      *
-     * Gets clusteradmin credential of the managed cluster with a specified
+     * Gets cluster admin credential of the managed cluster with a specified
      * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2510,10 +2802,10 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets clusteruser credential of a managed cluster.
+     * @summary Gets cluster user credential of a managed cluster.
      *
-     * Gets clusteruser credential of the managed cluster with a specified resource
-     * group and name.
+     * Gets cluster user credential of the managed cluster with a specified
+     * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2533,10 +2825,10 @@ export interface ManagedClusters {
     listClusterUserCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
 
     /**
-     * @summary Gets clusteruser credential of a managed cluster.
+     * @summary Gets cluster user credential of a managed cluster.
      *
-     * Gets clusteruser credential of the managed cluster with a specified resource
-     * group and name.
+     * Gets cluster user credential of the managed cluster with a specified
+     * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2730,6 +3022,9 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -2837,6 +3132,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3010,6 +3308,174 @@ export interface ManagedClusters {
 
 
     /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<void>): void;
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<void>): void;
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * @summary Creates or updates a managed cluster.
      *
      * Creates or updates a managed cluster with the specified configuration for
@@ -3099,6 +3565,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3207,6 +3676,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3377,6 +3849,174 @@ export interface ManagedClusters {
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<void>): void;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<void>): void;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
