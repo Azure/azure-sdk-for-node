@@ -162,6 +162,10 @@ export interface HanaInstance extends Resource {
    * 'restarting', 'unknown'
    */
   readonly powerState?: string;
+  /**
+   * Resource proximity placement group
+   */
+  readonly proximityPlacementGroup?: string;
 }
 
 /**
