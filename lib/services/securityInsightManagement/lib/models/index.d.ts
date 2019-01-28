@@ -88,9 +88,9 @@ export interface AlertRuleKind1 {
 }
 
 /**
- * Represents scheduled alert rule.
+ * Alert rule property bag.
  */
-export interface ScheduledAlertRule extends AlertRule {
+export interface ScheduledAlertRuleProperties {
   /**
    * The name for alerts created by this alert rule.
    */
@@ -142,6 +142,16 @@ export interface ScheduledAlertRule extends AlertRule {
    * The last time that this alert has been modified.
    */
   readonly lastModifiedUtc?: string;
+}
+
+/**
+ * Represents scheduled alert rule.
+ */
+export interface ScheduledAlertRule extends AlertRule {
+  /**
+   * Scheduled alert rule properties
+   */
+  properties?: ScheduledAlertRuleProperties;
 }
 
 /**
