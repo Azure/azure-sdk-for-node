@@ -57,7 +57,7 @@ export default class SecurityInsights extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
-  scheduledAlertRules: operations.ScheduledAlertRules;
+  alertRules: operations.AlertRules;
 }
 
 export { SecurityInsights, models as SecurityInsightsModels };

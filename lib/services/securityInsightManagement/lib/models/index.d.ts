@@ -52,9 +52,9 @@ export interface Operation {
 }
 
 /**
- * An azure resource object
+ * Alert rule.
  */
-export interface Resource extends BaseResource {
+export interface AlertRule {
   /**
    * Azure resource Id
    */
@@ -67,16 +67,30 @@ export interface Resource extends BaseResource {
    * Azure resource name
    */
   readonly name?: string;
-}
-
-/**
- * Alert rule.
- */
-export interface ScheduledAlertRule extends Resource {
+  /**
+   * The kind of the alert rule. Possible values include: 'Scheduled'
+   */
+  kind?: string;
   /**
    * Etag of the alert rule.
    */
   etag?: string;
+}
+
+/**
+ * Describes an Azure resource with kind.
+ */
+export interface AlertRuleKind1 {
+  /**
+   * The kind of the alert rule. Possible values include: 'Scheduled'
+   */
+  kind?: string;
+}
+
+/**
+ * Represents scheduled alert rule.
+ */
+export interface ScheduledAlertRule extends AlertRule {
   /**
    * The name for alerts created by this alert rule.
    */
@@ -110,11 +124,11 @@ export interface ScheduledAlertRule extends Resource {
    * The operation against the threshold that triggers alert rule. Possible values include:
    * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
    */
-  alertTriggerOperator: string;
+  triggerOperator: string;
   /**
    * The threshold triggers this alert rule.
    */
-  alertTriggerThreshold: number;
+  triggerThreshold: number;
   /**
    * Determines whether the suppression for this alert rule is enabled or disabled.
    */
@@ -131,6 +145,24 @@ export interface ScheduledAlertRule extends Resource {
 }
 
 /**
+ * An azure resource object
+ */
+export interface Resource extends BaseResource {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+}
+
+/**
  * Lists the operations available in the SecurityInsights RP.
  */
 export interface OperationsList extends Array<Operation> {
@@ -141,11 +173,11 @@ export interface OperationsList extends Array<Operation> {
 }
 
 /**
- * List all the scheduled alert rules.
+ * List all the alert rules.
  */
-export interface ScheduledAlertRulesList extends Array<ScheduledAlertRule> {
+export interface AlertRulesList extends Array<AlertRule> {
   /**
-   * URL to fetch the next set of scheduled alert rules.
+   * URL to fetch the next set of alert rules.
    */
   readonly nextLink?: string;
 }

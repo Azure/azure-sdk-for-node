@@ -9,7 +9,6 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
-import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -132,15 +131,15 @@ export interface Operations {
 
 /**
  * @class
- * ScheduledAlertRules
+ * AlertRules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityInsights.
  */
-export interface ScheduledAlertRules {
+export interface AlertRules {
 
 
     /**
-     * Gets all scheduled alert rules.
+     * Gets all alert rules.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -157,14 +156,14 @@ export interface ScheduledAlertRules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduledAlertRulesList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AlertRulesList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRulesList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRulesList>>;
 
     /**
-     * Gets all scheduled alert rules.
+     * Gets all alert rules.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -186,7 +185,7 @@ export interface ScheduledAlertRules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduledAlertRulesList} - The deserialized result object.
+     *                      @resolve {AlertRulesList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -194,21 +193,20 @@ export interface ScheduledAlertRules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduledAlertRulesList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduledAlertRulesList} for more
-     *                      information.
+     *                      {AlertRulesList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRulesList} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRulesList>;
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.ScheduledAlertRulesList>): void;
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRulesList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRulesList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.AlertRulesList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRulesList>): void;
 
 
     /**
-     * Gets a scheduled alert rule.
+     * Gets a alert rule.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -227,14 +225,14 @@ export interface ScheduledAlertRules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduledAlertRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AlertRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRule>>;
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRule>>;
 
     /**
-     * Gets a scheduled alert rule.
+     * Gets a alert rule.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -258,7 +256,7 @@ export interface ScheduledAlertRules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduledAlertRule} - The deserialized result object.
+     *                      @resolve {AlertRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -266,16 +264,16 @@ export interface ScheduledAlertRules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduledAlertRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduledAlertRule} for more information.
+     *                      {AlertRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRule>;
-    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, callback: ServiceCallback<models.ScheduledAlertRule>): void;
-    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRule>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRule>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, callback: ServiceCallback<models.AlertRule>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRule>): void;
 
 
     /**
@@ -291,45 +289,12 @@ export interface ScheduledAlertRules {
      *
      * @param {string} ruleId Alert rule ID
      *
-     * @param {object} scheduledAlertRule The alert rule
+     * @param {object} alertRule The alert rule
      *
-     * @param {string} [scheduledAlertRule.etag] Etag of the alert rule.
+     * @param {string} [alertRule.kind] The kind of the alert rule. Possible values
+     * include: 'Scheduled'
      *
-     * @param {string} scheduledAlertRule.ruleName The name for alerts created by
-     * this alert rule.
-     *
-     * @param {string} scheduledAlertRule.description The description of the alert
-     * rule.
-     *
-     * @param {string} scheduledAlertRule.severity The severity for alerts created
-     * by this alert rule. Possible values include: 'Low', 'Medium', 'High',
-     * 'Informational'
-     *
-     * @param {boolean} scheduledAlertRule.enabled Determines whether this alert
-     * rule is enabled or disabled.
-     *
-     * @param {string} scheduledAlertRule.query The query that creates alerts for
-     * this rule.
-     *
-     * @param {moment.duration} scheduledAlertRule.queryFrequency The frequency (in
-     * ISO 8601 duration format) for this alert rule to run.
-     *
-     * @param {moment.duration} scheduledAlertRule.queryPeriod The period (in ISO
-     * 8601 duration format) that this alert rule looks at.
-     *
-     * @param {string} scheduledAlertRule.alertTriggerOperator The operation
-     * against the threshold that triggers alert rule. Possible values include:
-     * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
-     *
-     * @param {number} scheduledAlertRule.alertTriggerThreshold The threshold
-     * triggers this alert rule.
-     *
-     * @param {boolean} scheduledAlertRule.suppressionEnabled Determines whether
-     * the suppression for this alert rule is enabled or disabled.
-     *
-     * @param {moment.duration} scheduledAlertRule.suppressionDuration The
-     * suppression (in ISO 8601 duration format) to wait since last time this alert
-     * rule been triggered.
+     * @param {string} [alertRule.etag] Etag of the alert rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -338,11 +303,11 @@ export interface ScheduledAlertRules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduledAlertRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AlertRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRule>>;
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRule>>;
 
     /**
      * Creates or updates the alert rule.
@@ -357,45 +322,12 @@ export interface ScheduledAlertRules {
      *
      * @param {string} ruleId Alert rule ID
      *
-     * @param {object} scheduledAlertRule The alert rule
+     * @param {object} alertRule The alert rule
      *
-     * @param {string} [scheduledAlertRule.etag] Etag of the alert rule.
+     * @param {string} [alertRule.kind] The kind of the alert rule. Possible values
+     * include: 'Scheduled'
      *
-     * @param {string} scheduledAlertRule.ruleName The name for alerts created by
-     * this alert rule.
-     *
-     * @param {string} scheduledAlertRule.description The description of the alert
-     * rule.
-     *
-     * @param {string} scheduledAlertRule.severity The severity for alerts created
-     * by this alert rule. Possible values include: 'Low', 'Medium', 'High',
-     * 'Informational'
-     *
-     * @param {boolean} scheduledAlertRule.enabled Determines whether this alert
-     * rule is enabled or disabled.
-     *
-     * @param {string} scheduledAlertRule.query The query that creates alerts for
-     * this rule.
-     *
-     * @param {moment.duration} scheduledAlertRule.queryFrequency The frequency (in
-     * ISO 8601 duration format) for this alert rule to run.
-     *
-     * @param {moment.duration} scheduledAlertRule.queryPeriod The period (in ISO
-     * 8601 duration format) that this alert rule looks at.
-     *
-     * @param {string} scheduledAlertRule.alertTriggerOperator The operation
-     * against the threshold that triggers alert rule. Possible values include:
-     * 'GreaterThan', 'LessThan', 'Equal', 'NotEqual'
-     *
-     * @param {number} scheduledAlertRule.alertTriggerThreshold The threshold
-     * triggers this alert rule.
-     *
-     * @param {boolean} scheduledAlertRule.suppressionEnabled Determines whether
-     * the suppression for this alert rule is enabled or disabled.
-     *
-     * @param {moment.duration} scheduledAlertRule.suppressionDuration The
-     * suppression (in ISO 8601 duration format) to wait since last time this alert
-     * rule been triggered.
+     * @param {string} [alertRule.etag] Etag of the alert rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -409,7 +341,7 @@ export interface ScheduledAlertRules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduledAlertRule} - The deserialized result object.
+     *                      @resolve {AlertRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -417,16 +349,16 @@ export interface ScheduledAlertRules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduledAlertRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduledAlertRule} for more information.
+     *                      {AlertRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRule>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, callback: ServiceCallback<models.ScheduledAlertRule>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, scheduledAlertRule: models.ScheduledAlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRule>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRule>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, callback: ServiceCallback<models.AlertRule>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRule>): void;
 
 
     /**
@@ -500,7 +432,7 @@ export interface ScheduledAlertRules {
 
 
     /**
-     * Gets all scheduled alert rules.
+     * Gets all alert rules.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -512,14 +444,14 @@ export interface ScheduledAlertRules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduledAlertRulesList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AlertRulesList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduledAlertRulesList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRulesList>>;
 
     /**
-     * Gets all scheduled alert rules.
+     * Gets all alert rules.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -536,7 +468,7 @@ export interface ScheduledAlertRules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduledAlertRulesList} - The deserialized result object.
+     *                      @resolve {AlertRulesList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -544,15 +476,14 @@ export interface ScheduledAlertRules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduledAlertRulesList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduledAlertRulesList} for more
-     *                      information.
+     *                      {AlertRulesList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRulesList} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduledAlertRulesList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ScheduledAlertRulesList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduledAlertRulesList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRulesList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AlertRulesList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRulesList>): void;
 }
