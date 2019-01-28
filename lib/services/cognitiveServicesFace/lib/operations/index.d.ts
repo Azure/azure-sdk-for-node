@@ -36,7 +36,7 @@ export interface Face {
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
      * expire. Parameter faceListId, largeFaceListId and faceIds should not be
-     * provided at the same time。
+     * provided at the same time.
      *
      * @param {string} [options.largeFaceListId] An existing user-specified unique
      * candidate large face list, created in LargeFaceList - Create. Large face
@@ -82,7 +82,7 @@ export interface Face {
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
      * expire. Parameter faceListId, largeFaceListId and faceIds should not be
-     * provided at the same time。
+     * provided at the same time.
      *
      * @param {string} [options.largeFaceListId] An existing user-specified unique
      * candidate large face list, created in LargeFaceList - Create. Large face
@@ -4263,25 +4263,26 @@ export interface SnapshotOperations {
     /**
      * Submit an operation to take a snapshot of face list, large face list, person
      * group or large person group, with user-specified snapshot type, source
-     * object id, apply scope and an optional user data.
+     * object id, apply scope and an optional user data.<br />
      * The snapshot interfaces are for users to backup and restore their face data
      * from one face subscription to another, inside same region or across regions.
      * The workflow contains two phases, user first calls Snapshot - Take to create
      * a copy of the source object and store it as a snapshot, then calls Snapshot
      * - Apply to paste the snapshot to target subscription. The snapshots are
      * stored in a centralized location (per Azure instance), so that they can be
-     * applied cross accounts and regions.
+     * applied cross accounts and regions.<br />
      * Taking snapshot is an asynchronous operation. An operation id can be
      * obtained from the "Operation-Location" field in response header, to be used
      * in OperationStatus - Get for tracking the progress of creating the snapshot.
      * The snapshot id will be included in the "resourceLocation" field in
-     * OperationStatus - Get response when the operation status is "succeeded".
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
      * Snapshot taking time depends on the number of person and face entries in the
      * source object. It could be in seconds, or up to several hours for 1,000,000
-     * persons with multiple faces.
+     * persons with multiple faces.<br />
      * Snapshots will be automatically expired and cleaned in 48 hours after it is
      * created by Snapshot - Take. User can delete the snapshot using Snapshot -
-     * Delete by themselves any time before expiration.
+     * Delete by themselves any time before expiration.<br />
      * Taking snapshot for a certain object will not block any other operations
      * against the object. All read-only operations (Get/List and
      * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
@@ -4291,7 +4292,10 @@ export interface SnapshotOperations {
      * After snapshot taking is completed, all readable and writable operations can
      * work as normal. Snapshot will also include the training results of the
      * source object, which means target subscription the snapshot applied to does
-     * not need re-train the target object before calling Identify/FindSimilar.
+     * not need re-train the target object before calling Identify/FindSimilar.<br
+     * />
+     * * Free-tier subscription quota: 100 take operations per month.
+     * * S0-tier subscription quota: 100 take operations per day.
      *
      * @param {string} type User specified type for the source object to take
      * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
@@ -4324,25 +4328,26 @@ export interface SnapshotOperations {
     /**
      * Submit an operation to take a snapshot of face list, large face list, person
      * group or large person group, with user-specified snapshot type, source
-     * object id, apply scope and an optional user data.
+     * object id, apply scope and an optional user data.<br />
      * The snapshot interfaces are for users to backup and restore their face data
      * from one face subscription to another, inside same region or across regions.
      * The workflow contains two phases, user first calls Snapshot - Take to create
      * a copy of the source object and store it as a snapshot, then calls Snapshot
      * - Apply to paste the snapshot to target subscription. The snapshots are
      * stored in a centralized location (per Azure instance), so that they can be
-     * applied cross accounts and regions.
+     * applied cross accounts and regions.<br />
      * Taking snapshot is an asynchronous operation. An operation id can be
      * obtained from the "Operation-Location" field in response header, to be used
      * in OperationStatus - Get for tracking the progress of creating the snapshot.
      * The snapshot id will be included in the "resourceLocation" field in
-     * OperationStatus - Get response when the operation status is "succeeded".
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
      * Snapshot taking time depends on the number of person and face entries in the
      * source object. It could be in seconds, or up to several hours for 1,000,000
-     * persons with multiple faces.
+     * persons with multiple faces.<br />
      * Snapshots will be automatically expired and cleaned in 48 hours after it is
      * created by Snapshot - Take. User can delete the snapshot using Snapshot -
-     * Delete by themselves any time before expiration.
+     * Delete by themselves any time before expiration.<br />
      * Taking snapshot for a certain object will not block any other operations
      * against the object. All read-only operations (Get/List and
      * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
@@ -4352,7 +4357,10 @@ export interface SnapshotOperations {
      * After snapshot taking is completed, all readable and writable operations can
      * work as normal. Snapshot will also include the training results of the
      * source object, which means target subscription the snapshot applied to does
-     * not need re-train the target object before calling Identify/FindSimilar.
+     * not need re-train the target object before calling Identify/FindSimilar.<br
+     * />
+     * * Free-tier subscription quota: 100 take operations per month.
+     * * S0-tier subscription quota: 100 take operations per day.
      *
      * @param {string} type User specified type for the source object to take
      * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
@@ -4668,37 +4676,40 @@ export interface SnapshotOperations {
     /**
      * Submit an operation to apply a snapshot to current subscription. For each
      * snapshot, only subscriptions included in the applyScope of Snapshot - Take
-     * can apply it.
+     * can apply it.<br />
      * The snapshot interfaces are for users to backup and restore their face data
      * from one face subscription to another, inside same region or across regions.
      * The workflow contains two phases, user first calls Snapshot - Take to create
      * a copy of the source object and store it as a snapshot, then calls Snapshot
      * - Apply to paste the snapshot to target subscription. The snapshots are
      * stored in a centralized location (per Azure instance), so that they can be
-     * applied cross accounts and regions.
+     * applied cross accounts and regions.<br />
      * Applying snapshot is an asynchronous operation. An operation id can be
      * obtained from the "Operation-Location" field in response header, to be used
      * in OperationStatus - Get for tracking the progress of applying the snapshot.
      * The target object id will be included in the "resourceLocation" field in
-     * OperationStatus - Get response when the operation status is "succeeded".
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
      * Snapshot applying time depends on the number of person and face entries in
      * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
-     * persons with multiple faces.
+     * persons with multiple faces.<br />
      * Snapshots will be automatically expired and cleaned in 48 hours after it is
      * created by Snapshot - Take. So the target subscription is required to apply
-     * the snapshot in 48 hours since its creation.
+     * the snapshot in 48 hours since its creation.<br />
      * Applying a snapshot will not block any other operations against the target
      * object, however it is not recommended because the correctness cannot be
      * guaranteed during snapshot applying. After snapshot applying is completed,
      * all operations towards the target object can work as normal. Snapshot also
      * includes the training results of the source object, which means target
      * subscription the snapshot applied to does not need re-train the target
-     * object before calling Identify/FindSimilar.
+     * object before calling Identify/FindSimilar.<br />
      * One snapshot can be applied multiple times in parallel, while currently only
      * CreateNew apply mode is supported, which means the apply operation will fail
      * if target subscription already contains an object of same type and using the
      * same objectId. Users can specify the "objectId" in request body to avoid
-     * such conflicts.
+     * such conflicts.<br />
+     * * Free-tier subscription quota: 100 apply operations per month.
+     * * S0-tier subscription quota: 100 apply operations per day.
      *
      * @param {uuid} snapshotId Id referencing a particular snapshot.
      *
@@ -4727,37 +4738,40 @@ export interface SnapshotOperations {
     /**
      * Submit an operation to apply a snapshot to current subscription. For each
      * snapshot, only subscriptions included in the applyScope of Snapshot - Take
-     * can apply it.
+     * can apply it.<br />
      * The snapshot interfaces are for users to backup and restore their face data
      * from one face subscription to another, inside same region or across regions.
      * The workflow contains two phases, user first calls Snapshot - Take to create
      * a copy of the source object and store it as a snapshot, then calls Snapshot
      * - Apply to paste the snapshot to target subscription. The snapshots are
      * stored in a centralized location (per Azure instance), so that they can be
-     * applied cross accounts and regions.
+     * applied cross accounts and regions.<br />
      * Applying snapshot is an asynchronous operation. An operation id can be
      * obtained from the "Operation-Location" field in response header, to be used
      * in OperationStatus - Get for tracking the progress of applying the snapshot.
      * The target object id will be included in the "resourceLocation" field in
-     * OperationStatus - Get response when the operation status is "succeeded".
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
      * Snapshot applying time depends on the number of person and face entries in
      * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
-     * persons with multiple faces.
+     * persons with multiple faces.<br />
      * Snapshots will be automatically expired and cleaned in 48 hours after it is
      * created by Snapshot - Take. So the target subscription is required to apply
-     * the snapshot in 48 hours since its creation.
+     * the snapshot in 48 hours since its creation.<br />
      * Applying a snapshot will not block any other operations against the target
      * object, however it is not recommended because the correctness cannot be
      * guaranteed during snapshot applying. After snapshot applying is completed,
      * all operations towards the target object can work as normal. Snapshot also
      * includes the training results of the source object, which means target
      * subscription the snapshot applied to does not need re-train the target
-     * object before calling Identify/FindSimilar.
+     * object before calling Identify/FindSimilar.<br />
      * One snapshot can be applied multiple times in parallel, while currently only
      * CreateNew apply mode is supported, which means the apply operation will fail
      * if target subscription already contains an object of same type and using the
      * same objectId. Users can specify the "objectId" in request body to avoid
-     * such conflicts.
+     * such conflicts.<br />
+     * * Free-tier subscription quota: 100 apply operations per month.
+     * * S0-tier subscription quota: 100 apply operations per day.
      *
      * @param {uuid} snapshotId Id referencing a particular snapshot.
      *
