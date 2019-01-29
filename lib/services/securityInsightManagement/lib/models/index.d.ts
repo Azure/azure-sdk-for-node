@@ -68,13 +68,13 @@ export interface AlertRule {
    */
   readonly name?: string;
   /**
-   * The kind of the alert rule. Possible values include: 'Scheduled'
-   */
-  kind?: string;
-  /**
    * Etag of the alert rule.
    */
   etag?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
 }
 
 /**
@@ -88,9 +88,9 @@ export interface AlertRuleKind1 {
 }
 
 /**
- * Alert rule property bag.
+ * Represents scheduled alert rule.
  */
-export interface ScheduledAlertRuleProperties {
+export interface ScheduledAlertRule extends AlertRule {
   /**
    * The name for alerts created by this alert rule.
    */
@@ -142,16 +142,6 @@ export interface ScheduledAlertRuleProperties {
    * The last time that this alert has been modified.
    */
   readonly lastModifiedUtc?: string;
-}
-
-/**
- * Represents scheduled alert rule.
- */
-export interface ScheduledAlertRule extends AlertRule {
-  /**
-   * Scheduled alert rule properties
-   */
-  properties?: ScheduledAlertRuleProperties;
 }
 
 /**

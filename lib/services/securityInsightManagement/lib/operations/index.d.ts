@@ -291,10 +291,9 @@ export interface AlertRules {
      *
      * @param {object} alertRule The alert rule
      *
-     * @param {string} [alertRule.kind] The kind of the alert rule. Possible values
-     * include: 'Scheduled'
-     *
      * @param {string} [alertRule.etag] Etag of the alert rule.
+     *
+     * @param {string} alertRule.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -324,10 +323,9 @@ export interface AlertRules {
      *
      * @param {object} alertRule The alert rule
      *
-     * @param {string} [alertRule.kind] The kind of the alert rule. Possible values
-     * include: 'Scheduled'
-     *
      * @param {string} [alertRule.etag] Etag of the alert rule.
+     *
+     * @param {string} alertRule.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
