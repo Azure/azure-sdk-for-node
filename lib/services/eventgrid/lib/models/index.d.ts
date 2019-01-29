@@ -906,13 +906,13 @@ export interface ContainerRegistryImageDeletedEventData extends ContainerRegistr
  * @member {date} [timestamp] The time at which the event occurred.
  * @member {string} [action] The action that encompasses the provided event.
  * @member {object} [target] The target of the event.
- * @member {string} [target.mediaType] The MIME type of the referenced object.
- * @member {number} [target.size] The number of bytes of the content.
- * @member {string} [target.digest] The digest of the helm chart.
- * @member {string} [target.repository] The repository name.
- * @member {string} [target.tag] The tag name.
- * @member {string} [target.name] The name of the helm chart.
- * @member {string} [target.version] The version of the helm chart.
+ * @member {string} [target.mediaType] The MIME type of the artifact.
+ * @member {number} [target.size] The size in bytes of the artifact.
+ * @member {string} [target.digest] The digest of the artifact.
+ * @member {string} [target.repository] The repository name of the artifact.
+ * @member {string} [target.tag] The tag of the artifact.
+ * @member {string} [target.name] The name of the artifact.
+ * @member {string} [target.version] The version of the artifact.
  */
 export interface ContainerRegistryArtifactEventData {
   id?: string;
@@ -1031,13 +1031,13 @@ export interface ContainerRegistryEventSource {
  * @constructor
  * The target of the event.
  *
- * @member {string} [mediaType] The MIME type of the referenced object.
- * @member {number} [size] The number of bytes of the content.
- * @member {string} [digest] The digest of the helm chart.
- * @member {string} [repository] The repository name.
- * @member {string} [tag] The tag name.
- * @member {string} [name] The name of the helm chart.
- * @member {string} [version] The version of the helm chart.
+ * @member {string} [mediaType] The MIME type of the artifact.
+ * @member {number} [size] The size in bytes of the artifact.
+ * @member {string} [digest] The digest of the artifact.
+ * @member {string} [repository] The repository name of the artifact.
+ * @member {string} [tag] The tag of the artifact.
+ * @member {string} [name] The name of the artifact.
+ * @member {string} [version] The version of the artifact.
  */
 export interface ContainerRegistryArtifactEventTarget {
   mediaType?: string;
