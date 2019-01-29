@@ -31,7 +31,7 @@ describe('MSI App Service Authentication', function () {
     if (!error) {
       interceptor.reply(200, response);
     } else {
-      interceptor.replyWithError(error);
+      interceptor.reply(400, error);
     }
   }
 

@@ -106,7 +106,7 @@ export interface PolicyAssignment extends BaseResource {
 }
 
 /**
- * Error reponse indicates Azure Resource Manager is not able to process the incoming request. The
+ * Error response indicates Azure Resource Manager is not able to process the incoming request. The
  * reason is provided in the error message.
  */
 export interface ErrorResponse {
