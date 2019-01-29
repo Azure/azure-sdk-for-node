@@ -220,6 +220,10 @@ export interface CaptureDescription {
    * Properties of Destination where capture will be stored. (Storage Account, Blob Names)
    */
   destination?: Destination;
+  /**
+   * A value that indicates whether to Skip Empty Archives
+   */
+  skipEmptyArchives?: boolean;
 }
 
 /**

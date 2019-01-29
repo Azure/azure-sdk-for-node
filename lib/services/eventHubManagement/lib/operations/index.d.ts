@@ -2457,6 +2457,9 @@ export interface EventHubs {
      * Here all the parameters (Namespace,EventHub .. etc) are mandatory
      * irrespective of order
      *
+     * @param {boolean} [parameters.captureDescription.skipEmptyArchives] A value
+     * that indicates whether to Skip Empty Archives
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2532,6 +2535,9 @@ export interface EventHubs {
      * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
      * Here all the parameters (Namespace,EventHub .. etc) are mandatory
      * irrespective of order
+     *
+     * @param {boolean} [parameters.captureDescription.skipEmptyArchives] A value
+     * that indicates whether to Skip Empty Archives
      *
      * @param {object} [options] Optional Parameters.
      *
