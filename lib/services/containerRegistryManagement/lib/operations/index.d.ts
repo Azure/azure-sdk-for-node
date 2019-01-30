@@ -307,17 +307,6 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
-     * @param {object} [registry.identity] The identity of the container registry.
-     *
-     * @param {string} [registry.identity.type] The type of identity used for the
-     * registry.
-     *
-     * @param {string} [registry.identity.principalId] The principal ID of registry
-     * identity.
-     *
-     * @param {string} [registry.identity.tenantId] The tenant ID associated with
-     * the registry.
-     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -326,6 +315,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -361,17 +362,6 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
-     * @param {object} [registry.identity] The identity of the container registry.
-     *
-     * @param {string} [registry.identity.type] The type of identity used for the
-     * registry.
-     *
-     * @param {string} [registry.identity.principalId] The principal ID of registry
-     * identity.
-     *
-     * @param {string} [registry.identity.tenantId] The tenant ID associated with
-     * the registry.
-     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -380,6 +370,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -499,18 +501,6 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
-     * @param {object} [registryUpdateParameters.identity] The identity of the
-     * container registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.type] The type of
-     * identity used for the registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.principalId] The
-     * principal ID of registry identity.
-     *
-     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
-     * associated with the registry.
-     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -521,6 +511,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -556,18 +559,6 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
-     * @param {object} [registryUpdateParameters.identity] The identity of the
-     * container registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.type] The type of
-     * identity used for the registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.principalId] The
-     * principal ID of registry identity.
-     *
-     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
-     * associated with the registry.
-     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -578,6 +569,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1380,17 +1384,6 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
-     * @param {object} [registry.identity] The identity of the container registry.
-     *
-     * @param {string} [registry.identity.type] The type of identity used for the
-     * registry.
-     *
-     * @param {string} [registry.identity.principalId] The principal ID of registry
-     * identity.
-     *
-     * @param {string} [registry.identity.tenantId] The tenant ID associated with
-     * the registry.
-     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -1399,6 +1392,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1434,17 +1439,6 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
-     * @param {object} [registry.identity] The identity of the container registry.
-     *
-     * @param {string} [registry.identity.type] The type of identity used for the
-     * registry.
-     *
-     * @param {string} [registry.identity.principalId] The principal ID of registry
-     * identity.
-     *
-     * @param {string} [registry.identity.tenantId] The tenant ID associated with
-     * the registry.
-     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -1453,6 +1447,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1572,18 +1578,6 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
-     * @param {object} [registryUpdateParameters.identity] The identity of the
-     * container registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.type] The type of
-     * identity used for the registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.principalId] The
-     * principal ID of registry identity.
-     *
-     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
-     * associated with the registry.
-     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -1594,6 +1588,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1629,18 +1636,6 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
-     * @param {object} [registryUpdateParameters.identity] The identity of the
-     * container registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.type] The type of
-     * identity used for the registry.
-     *
-     * @param {string} [registryUpdateParameters.identity.principalId] The
-     * principal ID of registry identity.
-     *
-     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
-     * associated with the registry.
-     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -1651,6 +1646,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4485,6 +4493,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4564,6 +4576,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -4729,6 +4745,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4806,6 +4826,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -4968,6 +4992,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -5047,6 +5075,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -5212,6 +5244,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5289,6 +5325,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *

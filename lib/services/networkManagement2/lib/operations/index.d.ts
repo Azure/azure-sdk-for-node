@@ -216,6 +216,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -249,6 +252,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -267,11 +281,29 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
+     * @param {array} [parameters.customErrorConfigurations] Custom error
+     * configurations of the application gateway resource.
+     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -370,6 +402,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -403,6 +438,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -421,11 +467,29 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
+     * @param {array} [parameters.customErrorConfigurations] Custom error
+     * configurations of the application gateway resource.
+     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -827,6 +891,165 @@ export interface ApplicationGateways {
 
 
     /**
+     * Lists all available server variables.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableServerVariablesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableServerVariablesResult>>;
+
+    /**
+     * Lists all available server variables.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableServerVariablesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableServerVariablesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableServerVariablesResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableServerVariablesResult>;
+    listAvailableServerVariables(callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+
+
+    /**
+     * Lists all available request headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableRequestHeadersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableRequestHeadersResult>>;
+
+    /**
+     * Lists all available request headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableRequestHeadersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableRequestHeadersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableRequestHeadersResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableRequestHeadersResult>;
+    listAvailableRequestHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+
+
+    /**
+     * Lists all available response headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableResponseHeadersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableResponseHeadersResult>>;
+
+    /**
+     * Lists all available response headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableResponseHeadersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableResponseHeadersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableResponseHeadersResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableResponseHeadersResult>;
+    listAvailableResponseHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+
+
+    /**
      * Lists all available web application firewall rule sets.
      *
      * @param {object} [options] Optional Parameters.
@@ -1176,6 +1399,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -1209,6 +1435,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1227,11 +1464,29 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
+     * @param {array} [parameters.customErrorConfigurations] Custom error
+     * configurations of the application gateway resource.
+     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -1330,6 +1585,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -1363,6 +1621,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1381,11 +1650,29 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
+     * @param {array} [parameters.customErrorConfigurations] Custom error
+     * configurations of the application gateway resource.
+     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -2065,6 +2352,78 @@ export interface ApplicationSecurityGroups {
 
 
     /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationSecurityGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+
+
+    /**
      * Gets all application security groups in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2310,6 +2669,78 @@ export interface ApplicationSecurityGroups {
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationSecurityGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
 
 
     /**
@@ -3429,6 +3860,494 @@ export interface AzureFirewallFqdnTags {
     listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallFqdnTagListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallFqdnTagListResult>): void;
     listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallFqdnTagListResult>): void;
+}
+
+/**
+ * @class
+ * DdosCustomPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface DdosCustomPolicies {
+
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Gets information about the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    get(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    get(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
 }
 
 /**
@@ -5892,6 +6811,72 @@ export interface ExpressRouteCircuitConnections {
 
 
     /**
+     * Gets all global reach connections associated with a private peering in an
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach connections associated with a private peering in an
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteCircuitConnectionListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnectionListResult>;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
+
+
+    /**
      * Deletes the specified Express Route Circuit Connection from the specified
      * express route circuit.
      *
@@ -6089,6 +7074,66 @@ export interface ExpressRouteCircuitConnections {
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnection>;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, callback: ServiceCallback<models.ExpressRouteCircuitConnection>): void;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnection>): void;
+
+
+    /**
+     * Gets all global reach connections associated with a private peering in an
+     * express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach connections associated with a private peering in an
+     * express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteCircuitConnectionListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnectionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
 }
 
 /**
@@ -6232,7 +7277,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -6269,6 +7315,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -6313,7 +7368,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -6350,6 +7406,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -6983,7 +8048,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -7020,6 +8086,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -7064,7 +8139,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -7101,6 +8177,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -10685,6 +11770,1163 @@ export interface ExpressRouteConnections {
 
 /**
  * @class
+ * ExpressRoutePortsLocations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRoutePortsLocations {
+
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocationListResult>>;
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocationListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocationListResult>;
+    list(callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+
+
+    /**
+     * Retrieves a single ExpressRoutePort peering location, including the list of
+     * available bandwidths available at said peering location.
+     *
+     * @param {string} locationName Name of the requested ExpressRoutePort peering
+     * location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocation>>;
+
+    /**
+     * Retrieves a single ExpressRoutePort peering location, including the list of
+     * available bandwidths available at said peering location.
+     *
+     * @param {string} locationName Name of the requested ExpressRoutePort peering
+     * location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocation} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocation>;
+    get(locationName: string, callback: ServiceCallback<models.ExpressRoutePortsLocation>): void;
+    get(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocation>): void;
+
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocationListResult>>;
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocationListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+}
+
+/**
+ * @class
+ * ExpressRoutePorts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRoutePorts {
+
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves the requested ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of ExpressRoutePort.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Retrieves the requested ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of ExpressRoutePort.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    get(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    get(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    list(callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+}
+
+/**
+ * @class
+ * ExpressRouteLinks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRouteLinks {
+
+
+    /**
+     * Retrieves the specified ExpressRouteLink resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {string} linkName The name of the ExpressRouteLink resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLink>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, linkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLink>>;
+
+    /**
+     * Retrieves the specified ExpressRouteLink resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {string} linkName The name of the ExpressRouteLink resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLink} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLink} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLink} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLink>;
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, callback: ServiceCallback<models.ExpressRouteLink>): void;
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLink>): void;
+
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLinkListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLinkListResult>>;
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLinkListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLinkListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLinkListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLinkListResult>;
+    list(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+    list(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLinkListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLinkListResult>>;
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLinkListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLinkListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLinkListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLinkListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+}
+
+/**
+ * @class
  * InterfaceEndpoints
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -13730,6 +15972,196 @@ export interface LoadBalancerLoadBalancingRules {
 
 /**
  * @class
+ * LoadBalancerOutboundRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface LoadBalancerOutboundRules {
+
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancerOutboundRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancerOutboundRuleListResult>>;
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancerOutboundRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancerOutboundRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancerOutboundRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, loadBalancerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancerOutboundRuleListResult>;
+    list(resourceGroupName: string, loadBalancerName: string, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+    list(resourceGroupName: string, loadBalancerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+
+
+    /**
+     * Gets the specified load balancer outbound rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {string} outboundRuleName The name of the outbound rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OutboundRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OutboundRule>>;
+
+    /**
+     * Gets the specified load balancer outbound rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {string} outboundRuleName The name of the outbound rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OutboundRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OutboundRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OutboundRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OutboundRule>;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, callback: ServiceCallback<models.OutboundRule>): void;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OutboundRule>): void;
+
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancerOutboundRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancerOutboundRuleListResult>>;
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancerOutboundRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancerOutboundRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancerOutboundRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancerOutboundRuleListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+}
+
+/**
+ * @class
  * LoadBalancerNetworkInterfaces
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -14185,11 +16617,6 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -14298,11 +16725,6 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
-     *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -15146,11 +17568,6 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -15259,11 +17676,6 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
-     *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -16588,6 +19000,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -16971,6 +19397,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -17498,6 +19938,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -17881,6 +20335,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -21253,6 +23721,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -21273,6 +23749,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21315,6 +23796,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -21335,6 +23824,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21799,7 +24293,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21828,7 +24327,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22382,6 +24886,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -22402,6 +24914,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22444,6 +24961,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -22464,6 +24989,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22928,7 +25458,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22957,7 +25492,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24964,6 +27504,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -25051,6 +27602,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -25615,6 +28177,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -25702,6 +28275,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -31657,9 +34241,9 @@ export interface VirtualNetworks {
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} ipAddress The private IP address to be verified.
      *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -31670,7 +34254,7 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkIPAddressAvailabilityWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
+    checkIPAddressAvailabilityWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, ipAddress: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
 
     /**
      * Checks whether a private IP address is available for use.
@@ -31679,9 +34263,9 @@ export interface VirtualNetworks {
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} ipAddress The private IP address to be verified.
      *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -31709,9 +34293,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, ipAddress: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
+    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, ipAddress: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, ipAddress: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
 
 
     /**
@@ -33676,2030 +36260,6 @@ export interface VirtualNetworkPeerings {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkPeeringListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkPeeringListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkPeeringListResult>): void;
-}
-
-/**
- * @class
- * VirtualNetworkTaps
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the NetworkManagementClient.
- */
-export interface VirtualNetworkTaps {
-
-
-    /**
-     * Deletes the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, tapName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets information about the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
-
-    /**
-     * Gets information about the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTap} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
-    get(resourceGroupName: string, tapName: string, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-    get(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-
-
-    /**
-     * Creates or updates a Virtual Network Tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * virtual network tap operation.
-     *
-     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
-     * reference to the private IP Address of the collector nic that will receive
-     * the tap
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
-     * The reference to Virtual Network Taps.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
-     * The reference of ApplicationGatewayBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
-     * The reference of LoadBalancerBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
-     * A list of references of LoadBalancerInboundNatRules.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * Private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
-     * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
-     * to the IP configuration.
-     *
-     * @param {boolean}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
-     * this is a primary customer address on the network interface.
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * Public IP address bound to the IP configuration.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
-     * Application security groups in which the IP configuration is included.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * The provisioning state of the network interface IP configuration. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
-     * The name of the resource that is unique within a resource group. This name
-     * can be used to access the resource.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
-     * Resource ID.
-     *
-     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
-     * The reference to the private IP address on the internal Load Balancer that
-     * will receive the tap
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
-     * reference of the subnet resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
-     * The address prefix for the subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
-     * List of  address prefixes for the subnet.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
-     * The reference of the NetworkSecurityGroup resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
-     * A collection of security rules of the network security group.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * The default security rules of network security group.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
-     * The resource GUID property of the network security group resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
-     * The reference of the RouteTable resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
-     * Collection of routes contained within a route table.
-     *
-     * @param {boolean}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
-     * Gets or sets whether to disable the routes learned by BGP on that route
-     * table. True means disable.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
-     * The provisioning state of the resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
-     * Resource tags.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
-     * An array of service endpoints.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
-     * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
-     * Gets an array of references to the external resources using subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
-     * Gets an array of references to services injecting into this subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
-     * Gets an array of references to the delegations on the subnet.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
-     * The provisioning state of the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
-     * unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
-     * Resource ID.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
-     * The reference of the Public IP resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
-     * The public IP address SKU.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
-     * Name of a public IP address SKU. Possible values include: 'Basic',
-     * 'Standard'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
-     * The FQDN of the DNS record associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
-     * Gets or sets the Domain name label.The concatenation of the domain name
-     * label and the regionalized DNS zone make up the fully qualified domain name
-     * associated with the public IP address. If a domain name label is specified,
-     * an A DNS record is created for the public IP in the Microsoft Azure DNS
-     * system.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
-     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
-     * with the public IP. This is the concatenation of the domainNameLabel and the
-     * regionalized DNS zone.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
-     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
-     * that resolves to this public IP address. If the reverseFqdn is specified,
-     * then a PTR DNS record is created pointing from the IP address in the
-     * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
-     * The list of tags associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
-     * The IP address associated with the public IP address resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
-     * The Public IP Prefix this Public IP Address should be allocated from.
-     *
-     * @param {number}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
-     * The idle timeout of the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
-     * The resource GUID property of the public IP resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
-     * A list of availability zones denoting the IP allocated for the resource
-     * needs to come from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
-     * The reference of the Public IP Prefix resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
-     * read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
-     * availability zones denoting the IP allocated for the resource needs to come
-     * from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
-     *
-     * @param {number} [parameters.destinationPort] The VXLAN destination port that
-     * will receive the tapped traffic.
-     *
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
-
-    /**
-     * Creates or updates a Virtual Network Tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * virtual network tap operation.
-     *
-     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
-     * reference to the private IP Address of the collector nic that will receive
-     * the tap
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
-     * The reference to Virtual Network Taps.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
-     * The reference of ApplicationGatewayBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
-     * The reference of LoadBalancerBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
-     * A list of references of LoadBalancerInboundNatRules.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * Private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
-     * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
-     * to the IP configuration.
-     *
-     * @param {boolean}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
-     * this is a primary customer address on the network interface.
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * Public IP address bound to the IP configuration.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
-     * Application security groups in which the IP configuration is included.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * The provisioning state of the network interface IP configuration. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
-     * The name of the resource that is unique within a resource group. This name
-     * can be used to access the resource.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
-     * Resource ID.
-     *
-     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
-     * The reference to the private IP address on the internal Load Balancer that
-     * will receive the tap
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
-     * reference of the subnet resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
-     * The address prefix for the subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
-     * List of  address prefixes for the subnet.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
-     * The reference of the NetworkSecurityGroup resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
-     * A collection of security rules of the network security group.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * The default security rules of network security group.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
-     * The resource GUID property of the network security group resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
-     * The reference of the RouteTable resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
-     * Collection of routes contained within a route table.
-     *
-     * @param {boolean}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
-     * Gets or sets whether to disable the routes learned by BGP on that route
-     * table. True means disable.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
-     * The provisioning state of the resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
-     * Resource tags.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
-     * An array of service endpoints.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
-     * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
-     * Gets an array of references to the external resources using subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
-     * Gets an array of references to services injecting into this subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
-     * Gets an array of references to the delegations on the subnet.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
-     * The provisioning state of the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
-     * unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
-     * Resource ID.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
-     * The reference of the Public IP resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
-     * The public IP address SKU.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
-     * Name of a public IP address SKU. Possible values include: 'Basic',
-     * 'Standard'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
-     * The FQDN of the DNS record associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
-     * Gets or sets the Domain name label.The concatenation of the domain name
-     * label and the regionalized DNS zone make up the fully qualified domain name
-     * associated with the public IP address. If a domain name label is specified,
-     * an A DNS record is created for the public IP in the Microsoft Azure DNS
-     * system.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
-     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
-     * with the public IP. This is the concatenation of the domainNameLabel and the
-     * regionalized DNS zone.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
-     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
-     * that resolves to this public IP address. If the reverseFqdn is specified,
-     * then a PTR DNS record is created pointing from the IP address in the
-     * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
-     * The list of tags associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
-     * The IP address associated with the public IP address resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
-     * The Public IP Prefix this Public IP Address should be allocated from.
-     *
-     * @param {number}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
-     * The idle timeout of the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
-     * The resource GUID property of the public IP resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
-     * A list of availability zones denoting the IP allocated for the resource
-     * needs to come from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
-     * The reference of the Public IP Prefix resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
-     * read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
-     * availability zones denoting the IP allocated for the resource needs to come
-     * from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
-     *
-     * @param {number} [parameters.destinationPort] The VXLAN destination port that
-     * will receive the tapped traffic.
-     *
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTap} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
-    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-
-
-    /**
-     * Updates an VirtualNetworkTap tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the tap.
-     *
-     * @param {object} tapParameters Parameters supplied to update
-     * VirtualNetworkTap tags.
-     *
-     * @param {object} [tapParameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
-
-    /**
-     * Updates an VirtualNetworkTap tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the tap.
-     *
-     * @param {object} tapParameters Parameters supplied to update
-     * VirtualNetworkTap tags.
-     *
-     * @param {object} [tapParameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTap} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
-    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTapListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
-    listAll(callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTapListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-
-
-    /**
-     * Deletes the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified virtual network tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, tapName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates or updates a Virtual Network Tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * virtual network tap operation.
-     *
-     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
-     * reference to the private IP Address of the collector nic that will receive
-     * the tap
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
-     * The reference to Virtual Network Taps.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
-     * The reference of ApplicationGatewayBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
-     * The reference of LoadBalancerBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
-     * A list of references of LoadBalancerInboundNatRules.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * Private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
-     * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
-     * to the IP configuration.
-     *
-     * @param {boolean}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
-     * this is a primary customer address on the network interface.
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * Public IP address bound to the IP configuration.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
-     * Application security groups in which the IP configuration is included.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * The provisioning state of the network interface IP configuration. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
-     * The name of the resource that is unique within a resource group. This name
-     * can be used to access the resource.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
-     * Resource ID.
-     *
-     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
-     * The reference to the private IP address on the internal Load Balancer that
-     * will receive the tap
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
-     * reference of the subnet resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
-     * The address prefix for the subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
-     * List of  address prefixes for the subnet.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
-     * The reference of the NetworkSecurityGroup resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
-     * A collection of security rules of the network security group.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * The default security rules of network security group.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
-     * The resource GUID property of the network security group resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
-     * The reference of the RouteTable resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
-     * Collection of routes contained within a route table.
-     *
-     * @param {boolean}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
-     * Gets or sets whether to disable the routes learned by BGP on that route
-     * table. True means disable.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
-     * The provisioning state of the resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
-     * Resource tags.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
-     * An array of service endpoints.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
-     * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
-     * Gets an array of references to the external resources using subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
-     * Gets an array of references to services injecting into this subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
-     * Gets an array of references to the delegations on the subnet.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
-     * The provisioning state of the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
-     * unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
-     * Resource ID.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
-     * The reference of the Public IP resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
-     * The public IP address SKU.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
-     * Name of a public IP address SKU. Possible values include: 'Basic',
-     * 'Standard'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
-     * The FQDN of the DNS record associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
-     * Gets or sets the Domain name label.The concatenation of the domain name
-     * label and the regionalized DNS zone make up the fully qualified domain name
-     * associated with the public IP address. If a domain name label is specified,
-     * an A DNS record is created for the public IP in the Microsoft Azure DNS
-     * system.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
-     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
-     * with the public IP. This is the concatenation of the domainNameLabel and the
-     * regionalized DNS zone.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
-     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
-     * that resolves to this public IP address. If the reverseFqdn is specified,
-     * then a PTR DNS record is created pointing from the IP address in the
-     * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
-     * The list of tags associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
-     * The IP address associated with the public IP address resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
-     * The Public IP Prefix this Public IP Address should be allocated from.
-     *
-     * @param {number}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
-     * The idle timeout of the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
-     * The resource GUID property of the public IP resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
-     * A list of availability zones denoting the IP allocated for the resource
-     * needs to come from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
-     * The reference of the Public IP Prefix resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
-     * read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
-     * availability zones denoting the IP allocated for the resource needs to come
-     * from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
-     *
-     * @param {number} [parameters.destinationPort] The VXLAN destination port that
-     * will receive the tapped traffic.
-     *
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
-
-    /**
-     * Creates or updates a Virtual Network Tap.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the virtual network tap.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * virtual network tap operation.
-     *
-     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
-     * reference to the private IP Address of the collector nic that will receive
-     * the tap
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
-     * The reference to Virtual Network Taps.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
-     * The reference of ApplicationGatewayBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
-     * The reference of LoadBalancerBackendAddressPool resource.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
-     * A list of references of LoadBalancerInboundNatRules.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * Private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
-     * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
-     * to the IP configuration.
-     *
-     * @param {boolean}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
-     * this is a primary customer address on the network interface.
-     *
-     * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * Public IP address bound to the IP configuration.
-     *
-     * @param {array}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
-     * Application security groups in which the IP configuration is included.
-     *
-     * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * The provisioning state of the network interface IP configuration. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
-     * The name of the resource that is unique within a resource group. This name
-     * can be used to access the resource.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
-     * Resource ID.
-     *
-     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
-     * The reference to the private IP address on the internal Load Balancer that
-     * will receive the tap
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
-     * reference of the subnet resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
-     * The address prefix for the subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
-     * List of  address prefixes for the subnet.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
-     * The reference of the NetworkSecurityGroup resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
-     * A collection of security rules of the network security group.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * The default security rules of network security group.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
-     * The resource GUID property of the network security group resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * The provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
-     * The reference of the RouteTable resource.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
-     * Collection of routes contained within a route table.
-     *
-     * @param {boolean}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
-     * Gets or sets whether to disable the routes learned by BGP on that route
-     * table. True means disable.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
-     * The provisioning state of the resource. Possible values are: 'Updating',
-     * 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
-     * Gets a unique read-only string that changes whenever the resource is
-     * updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
-     * Resource tags.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
-     * An array of service endpoints.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
-     * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
-     * Gets an array of references to the external resources using subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
-     * Gets an array of references to services injecting into this subnet.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
-     * Gets an array of references to the delegations on the subnet.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
-     * The provisioning state of the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
-     * unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
-     * Resource ID.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
-     * The reference of the Public IP resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
-     * The public IP address SKU.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
-     * Name of a public IP address SKU. Possible values include: 'Basic',
-     * 'Standard'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
-     * The FQDN of the DNS record associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
-     * Gets or sets the Domain name label.The concatenation of the domain name
-     * label and the regionalized DNS zone make up the fully qualified domain name
-     * associated with the public IP address. If a domain name label is specified,
-     * an A DNS record is created for the public IP in the Microsoft Azure DNS
-     * system.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
-     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
-     * with the public IP. This is the concatenation of the domainNameLabel and the
-     * regionalized DNS zone.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
-     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
-     * that resolves to this public IP address. If the reverseFqdn is specified,
-     * then a PTR DNS record is created pointing from the IP address in the
-     * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
-     * The list of tags associated with the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
-     * The IP address associated with the public IP address resource.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
-     * The Public IP Prefix this Public IP Address should be allocated from.
-     *
-     * @param {number}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
-     * The idle timeout of the public IP address.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
-     * The resource GUID property of the public IP resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
-     * The provisioning state of the PublicIP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
-     * A list of availability zones denoting the IP allocated for the resource
-     * needs to come from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
-     * Resource location.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
-     * Resource tags.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
-     * The reference of the Public IP Prefix resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
-     * Resource ID.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
-     * read-only string that changes whenever the resource is updated.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
-     * availability zones denoting the IP allocated for the resource needs to come
-     * from.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
-     *
-     * @param {number} [parameters.destinationPort] The VXLAN destination port that
-     * will receive the tapped traffic.
-     *
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTap} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
-    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-
-
-    /**
-     * Updates an VirtualNetworkTap tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the tap.
-     *
-     * @param {object} tapParameters Parameters supplied to update
-     * VirtualNetworkTap tags.
-     *
-     * @param {object} [tapParameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
-
-    /**
-     * Updates an VirtualNetworkTap tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} tapName The name of the tap.
-     *
-     * @param {object} tapParameters Parameters supplied to update
-     * VirtualNetworkTap tags.
-     *
-     * @param {object} [tapParameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTap} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
-    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
-
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTapListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
-
-    /**
-     * Gets all the VirtualNetworkTaps in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkTapListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
 }
 
 /**
@@ -40928,6 +41488,2086 @@ export interface LocalNetworkGateways {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocalNetworkGatewayListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.LocalNetworkGatewayListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocalNetworkGatewayListResult>): void;
+}
+
+/**
+ * @class
+ * VirtualNetworkTaps
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface VirtualNetworkTaps {
+
+
+    /**
+     * Deletes the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, tapName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
+
+    /**
+     * Gets information about the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTap} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
+    get(resourceGroupName: string, tapName: string, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+    get(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+
+
+    /**
+     * Creates or updates a Virtual Network Tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * virtual network tap operation.
+     *
+     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
+     * reference to the private IP Address of the collector nic that will receive
+     * the tap
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
+     * The name of the resource that is unique within a resource group. This name
+     * can be used to access the resource.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
+     * The reference to the private IP address on the internal Load Balancer that
+     * will receive the tap
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
+     * The private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+     * The Private IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
+     * reference of the subnet resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
+     * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+     * The reference of the NetworkSecurityGroup resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+     * A collection of security rules of the network security group.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+     * The resource GUID property of the network security group resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
+     * The reference of the RouteTable resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+     * Collection of routes contained within a route table.
+     *
+     * @param {boolean}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+     * The provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
+     * Gets a unique read-only string that changes whenever the resource is
+     * updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
+     * An array of service endpoints.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+     * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+     * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+     * The provisioning state of the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
+     * unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
+     * Resource ID.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
+     * The reference of the Public IP resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
+     * The public IP address SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+     * Name of a public IP address SKU. Possible values include: 'Basic',
+     * 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+     * The public IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+     * Possible values include: 'IPv4', 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+     * The FQDN of the DNS record associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
+     * The list of tags associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+     * The IP address associated with the public IP address resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+     * The idle timeout of the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+     * The resource GUID property of the public IP resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+     * The provisioning state of the PublicIP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
+     * A list of availability zones denoting the IP allocated for the resource
+     * needs to come from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
+     * The reference of the Public IP Prefix resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
+     * Gets the provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
+     * the resource that is unique within a resource group. This name can be used
+     * to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
+     * availability zones denoting the IP allocated for the resource needs to come
+     * from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
+     *
+     * @param {number} [parameters.destinationPort] The VXLAN destination port that
+     * will receive the tapped traffic.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
+
+    /**
+     * Creates or updates a Virtual Network Tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * virtual network tap operation.
+     *
+     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
+     * reference to the private IP Address of the collector nic that will receive
+     * the tap
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
+     * The name of the resource that is unique within a resource group. This name
+     * can be used to access the resource.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
+     * The reference to the private IP address on the internal Load Balancer that
+     * will receive the tap
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
+     * The private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+     * The Private IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
+     * reference of the subnet resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
+     * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+     * The reference of the NetworkSecurityGroup resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+     * A collection of security rules of the network security group.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+     * The resource GUID property of the network security group resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
+     * The reference of the RouteTable resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+     * Collection of routes contained within a route table.
+     *
+     * @param {boolean}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+     * The provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
+     * Gets a unique read-only string that changes whenever the resource is
+     * updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
+     * An array of service endpoints.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+     * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+     * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+     * The provisioning state of the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
+     * unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
+     * Resource ID.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
+     * The reference of the Public IP resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
+     * The public IP address SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+     * Name of a public IP address SKU. Possible values include: 'Basic',
+     * 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+     * The public IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+     * Possible values include: 'IPv4', 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+     * The FQDN of the DNS record associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
+     * The list of tags associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+     * The IP address associated with the public IP address resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+     * The idle timeout of the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+     * The resource GUID property of the public IP resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+     * The provisioning state of the PublicIP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
+     * A list of availability zones denoting the IP allocated for the resource
+     * needs to come from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
+     * The reference of the Public IP Prefix resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
+     * Gets the provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
+     * the resource that is unique within a resource group. This name can be used
+     * to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
+     * availability zones denoting the IP allocated for the resource needs to come
+     * from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
+     *
+     * @param {number} [parameters.destinationPort] The VXLAN destination port that
+     * will receive the tapped traffic.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTap} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
+    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+    createOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+
+
+    /**
+     * Updates an VirtualNetworkTap tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the tap.
+     *
+     * @param {object} tapParameters Parameters supplied to update
+     * VirtualNetworkTap tags.
+     *
+     * @param {object} [tapParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
+
+    /**
+     * Updates an VirtualNetworkTap tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the tap.
+     *
+     * @param {object} tapParameters Parameters supplied to update
+     * VirtualNetworkTap tags.
+     *
+     * @param {object} [tapParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTap} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
+    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+    updateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTapListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
+    listAll(callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTapListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+
+
+    /**
+     * Deletes the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified virtual network tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, tapName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, tapName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, tapName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a Virtual Network Tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * virtual network tap operation.
+     *
+     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
+     * reference to the private IP Address of the collector nic that will receive
+     * the tap
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
+     * The name of the resource that is unique within a resource group. This name
+     * can be used to access the resource.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
+     * The reference to the private IP address on the internal Load Balancer that
+     * will receive the tap
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
+     * The private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+     * The Private IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
+     * reference of the subnet resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
+     * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+     * The reference of the NetworkSecurityGroup resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+     * A collection of security rules of the network security group.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+     * The resource GUID property of the network security group resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
+     * The reference of the RouteTable resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+     * Collection of routes contained within a route table.
+     *
+     * @param {boolean}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+     * The provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
+     * Gets a unique read-only string that changes whenever the resource is
+     * updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
+     * An array of service endpoints.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+     * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+     * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+     * The provisioning state of the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
+     * unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
+     * Resource ID.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
+     * The reference of the Public IP resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
+     * The public IP address SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+     * Name of a public IP address SKU. Possible values include: 'Basic',
+     * 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+     * The public IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+     * Possible values include: 'IPv4', 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+     * The FQDN of the DNS record associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
+     * The list of tags associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+     * The IP address associated with the public IP address resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+     * The idle timeout of the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+     * The resource GUID property of the public IP resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+     * The provisioning state of the PublicIP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
+     * A list of availability zones denoting the IP allocated for the resource
+     * needs to come from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
+     * The reference of the Public IP Prefix resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
+     * Gets the provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
+     * the resource that is unique within a resource group. This name can be used
+     * to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
+     * availability zones denoting the IP allocated for the resource needs to come
+     * from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
+     *
+     * @param {number} [parameters.destinationPort] The VXLAN destination port that
+     * will receive the tapped traffic.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
+
+    /**
+     * Creates or updates a Virtual Network Tap.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the virtual network tap.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * virtual network tap operation.
+     *
+     * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
+     * reference to the private IP Address of the collector nic that will receive
+     * the tap
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
+     *
+     * @param {object}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
+     * The name of the resource that is unique within a resource group. This name
+     * can be used to access the resource.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [parameters.destinationLoadBalancerFrontEndIPConfiguration]
+     * The reference to the private IP address on the internal Load Balancer that
+     * will receive the tap
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
+     * The private IP address of the IP configuration.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+     * The Private IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
+     * reference of the subnet resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
+     * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+     * The reference of the NetworkSecurityGroup resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+     * A collection of security rules of the network security group.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+     * The resource GUID property of the network security group resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
+     * The reference of the RouteTable resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+     * Collection of routes contained within a route table.
+     *
+     * @param {boolean}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+     * The provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
+     * Gets a unique read-only string that changes whenever the resource is
+     * updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
+     * An array of service endpoints.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+     * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+     * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+     * The provisioning state of the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A
+     * unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.id]
+     * Resource ID.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
+     * The reference of the Public IP resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
+     * The public IP address SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+     * Name of a public IP address SKU. Possible values include: 'Basic',
+     * 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+     * The public IP allocation method. Possible values are: 'Static' and
+     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+     * Possible values include: 'IPv4', 'IPv6'
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+     * The FQDN of the DNS record associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
+     * The list of tags associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+     * The IP address associated with the public IP address resource.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+     * The idle timeout of the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+     * The resource GUID property of the public IP resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+     * The provisioning state of the PublicIP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
+     * A list of availability zones denoting the IP allocated for the resource
+     * needs to come from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
+     * The reference of the Public IP Prefix resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
+     * Gets the provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.name] The name of
+     * the resource that is unique within a resource group. This name can be used
+     * to access the resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.zones] A list of
+     * availability zones denoting the IP allocated for the resource needs to come
+     * from.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.id] Resource ID.
+     *
+     * @param {number} [parameters.destinationPort] The VXLAN destination port that
+     * will receive the tapped traffic.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTap} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
+    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+    beginCreateOrUpdate(resourceGroupName: string, tapName: string, parameters: models.VirtualNetworkTap, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+
+
+    /**
+     * Updates an VirtualNetworkTap tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the tap.
+     *
+     * @param {object} tapParameters Parameters supplied to update
+     * VirtualNetworkTap tags.
+     *
+     * @param {object} [tapParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTap>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTap>>;
+
+    /**
+     * Updates an VirtualNetworkTap tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} tapName The name of the tap.
+     *
+     * @param {object} tapParameters Parameters supplied to update
+     * VirtualNetworkTap tags.
+     *
+     * @param {object} [tapParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTap} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTap} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTap} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTap>;
+    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+    beginUpdateTags(resourceGroupName: string, tapName: string, tapParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTap>): void;
+
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTapListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkTapListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkTapListResult>>;
+
+    /**
+     * Gets all the VirtualNetworkTaps in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkTapListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkTapListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkTapListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkTapListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkTapListResult>): void;
 }
 
 /**

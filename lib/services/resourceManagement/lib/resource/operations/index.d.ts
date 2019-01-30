@@ -2755,9 +2755,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -2781,9 +2798,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -2989,9 +3023,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -3012,9 +3063,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -5330,7 +5398,8 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
@@ -5363,7 +5432,8 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
@@ -5702,7 +5772,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -5723,7 +5796,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.

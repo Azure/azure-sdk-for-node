@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * VideosOperations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the VideoSearchAPIClient.
+ * instance of the VideoSearchClient.
  */
 export interface VideosOperations {
 

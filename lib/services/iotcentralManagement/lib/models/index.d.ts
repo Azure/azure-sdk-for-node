@@ -99,6 +99,24 @@ export interface AppPatch {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponseBody class.
+ * @constructor
+ * Details of error response.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ * @member {string} [target] The target of the particular error.
+ * @member {array} [details] A list of additional details about the error.
+ */
+export interface ErrorResponseBody {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  details?: ErrorResponseBody[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Error details.
@@ -106,11 +124,13 @@ export interface AppPatch {
  * @member {string} [code] The error code.
  * @member {string} [message] The error message.
  * @member {string} [target] The target of the particular error.
+ * @member {array} [details] A list of additional details about the error.
  */
 export interface ErrorDetails {
   readonly code?: string;
   readonly message?: string;
   readonly target?: string;
+  details?: ErrorResponseBody[];
 }
 
 /**
@@ -159,28 +179,30 @@ export interface Operation {
  *
  * @member {string} name The name of the IoT Central application instance to
  * check.
+ * @member {string} [type] The type of the IoT Central resource to query.
+ * Default value: 'IoTApps' .
  */
 export interface OperationInputs {
   name: string;
+  type?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the AppNameAvailabilityInfo class.
+ * Initializes a new instance of the AppAvailabilityInfo class.
  * @constructor
- * The properties indicating whether a given IoT Central application name is
- * available.
+ * The properties indicating whether a given IoT Central application name or
+ * subdomain is available.
  *
  * @member {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
- * @member {string} [reason] The reason for unavailability. Possible values
- * include: 'Invalid', 'AlreadyExists'
+ * @member {string} [reason] The reason for unavailability.
  * @member {string} [message] The detailed reason message.
  */
-export interface AppNameAvailabilityInfo {
+export interface AppAvailabilityInfo {
   readonly nameAvailable?: boolean;
   readonly reason?: string;
-  message?: string;
+  readonly message?: string;
 }
 
 

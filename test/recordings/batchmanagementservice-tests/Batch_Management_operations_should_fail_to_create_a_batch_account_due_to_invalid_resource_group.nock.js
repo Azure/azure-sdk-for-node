@@ -3,42 +3,26 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/does-not-exist/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-09-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'does-not-exist' could not be found.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'd8e8a695-ce30-406f-b13a-9fbe09917c1d',
-  'x-ms-correlation-request-id': 'd8e8a695-ce30-406f-b13a-9fbe09917c1d',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220220Z:d8e8a695-ce30-406f-b13a-9fbe09917c1d',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 08 Nov 2017 22:02:19 GMT',
-  connection: 'close',
-  'content-length': '106' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/does-not-exist/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-09-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/does-not-exist/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2018-12-01', '*')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'does-not-exist' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'd8e8a695-ce30-406f-b13a-9fbe09917c1d',
-  'x-ms-correlation-request-id': 'd8e8a695-ce30-406f-b13a-9fbe09917c1d',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220220Z:d8e8a695-ce30-406f-b13a-9fbe09917c1d',
+  'x-ms-request-id': '2574495e-5510-4869-8b5b-7048a3af0551',
+  'x-ms-correlation-request-id': '2574495e-5510-4869-8b5b-7048a3af0551',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001635Z:2574495e-5510-4869-8b5b-7048a3af0551',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 08 Nov 2017 22:02:19 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Fri, 11 Jan 2019 00:16:34 GMT',
   connection: 'close',
   'content-length': '106' });
  return result; }]];

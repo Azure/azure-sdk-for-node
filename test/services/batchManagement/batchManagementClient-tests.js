@@ -77,7 +77,7 @@ describe('Batch Management', function () {
       client.operations.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(30);
+        result.length.should.equal(35);
         result[0].name.should.equal('Microsoft.Batch/batchAccounts/providers/Microsoft.Insights/diagnosticSettings/read');
         result[0].origin.should.equal('system');
         result[0].display.provider.should.equal('Microsoft Batch');
@@ -113,9 +113,9 @@ describe('Batch Management', function () {
         should.not.exist(err);
         should.exist(result);
         result.location.should.equal(location);
-        result.poolQuota.should.equal(20);
+        result.poolQuota.should.equal(100);
         result.dedicatedCoreQuota.should.equal(20);
-        result.lowPriorityCoreQuota.should.equal(20);
+        result.lowPriorityCoreQuota.should.equal(100);
         response.statusCode.should.equal(200);
         done();
       });
@@ -127,8 +127,8 @@ describe('Batch Management', function () {
       client.applicationOperations.create(groupName, batchAccount, 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.id.should.equal('my_application_id');
-        response.statusCode.should.equal(201);
+        result.name.should.equal('my_application_id');
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -137,7 +137,7 @@ describe('Batch Management', function () {
       client.applicationOperations.get(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.id.should.equal('my_application_id')
+        result.name.should.equal('my_application_id');
         result.displayName.should.equal('my_application_name');
         done();
       });
@@ -156,9 +156,8 @@ describe('Batch Management', function () {
       client.applicationPackageOperations.create(groupName, batchAccount, 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        response.statusCode.should.equal(201);
-        result.id.should.equal('my_application_id')
-        result.version.should.equal('v1.0');
+        response.statusCode.should.equal(200);
+        result.name.should.equal('v1.0');
         fs.writeFileSync(__dirname + '/../../data/test_package.zip', 'Hey there!');
         var fileContent = fs.createReadStream(__dirname + '/../../data/test_package.zip');
         var httpRequest = new WebResource();
@@ -186,11 +185,20 @@ describe('Batch Management', function () {
         done();
       });
     });
+
+    it('should list application packages successfully', function (done) {
+      client.applicationPackageOperations.list(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        done();
+      });
+    });    
     
     it('should activate application package successfully', function (done) {
       client.applicationPackageOperations.activate(groupName, batchAccount, 'my_application_id', 'v1.0', 'zip', function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(204);
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -218,7 +226,7 @@ describe('Batch Management', function () {
       var params = { allowUpdates: false, displayName: 'my_updated_name', defaultVersion: 'v1.0' };
       client.applicationOperations.update(groupName, batchAccount, 'my_application_id', params, function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(204);
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -235,7 +243,7 @@ describe('Batch Management', function () {
     it('should delete application package successfully', function (done) {
       client.applicationPackageOperations.deleteMethod(groupName, batchAccount, 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(204);
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -252,7 +260,7 @@ describe('Batch Management', function () {
     it('should delete second application package successfully', function (done) {
       client.applicationPackageOperations.deleteMethod(groupName, batchAccount, 'my_application_id', 'v2.0', function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(204);
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -260,7 +268,7 @@ describe('Batch Management', function () {
     it('should delete application successfully', function (done) {
       client.applicationOperations.deleteMethod(groupName, batchAccount, 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
-        response.statusCode.should.equal(204);
+        response.statusCode.should.equal(200);
         done();
       });
     });
@@ -438,7 +446,7 @@ describe('Batch Management', function () {
         },
         startTask: {
           commandLine: "cmd.exe /c \"echo hello world\"",
-          resourceFiles: [{blobSource: "https://blobsource.com", filePath: "filename.txt"}],
+          resourceFiles: [{httpUrl: "https://blobsource.com", filePath: "filename.txt"}],
           environmentSettings: [{name: "ENV_VAR", value: "foo"}],
           userIdentity: {
             autoUser: {

@@ -56,3 +56,9 @@ packages
 # Coverage report
 coverage
 .nyc_output
+
+# Output of 'npm pack'
+*.tgz
+
+# Test Results
+test-results.xml

@@ -3398,7 +3398,7 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Trigger Rollover request.
      *
-     * @param {string} [parameters.certificateData] Certificate Data
+     * @param {string} [parameters.serverCertificate] Certificate Data
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3426,7 +3426,7 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Trigger Rollover request.
      *
-     * @param {string} [parameters.certificateData] Certificate Data
+     * @param {string} [parameters.serverCertificate] Certificate Data
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3645,7 +3645,7 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Trigger Rollover request.
      *
-     * @param {string} [parameters.certificateData] Certificate Data
+     * @param {string} [parameters.serverCertificate] Certificate Data
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3673,7 +3673,7 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Trigger Rollover request.
      *
-     * @param {string} [parameters.certificateData] Certificate Data
+     * @param {string} [parameters.serverCertificate] Certificate Data
      *
      * @param {object} [options] Optional Parameters.
      *

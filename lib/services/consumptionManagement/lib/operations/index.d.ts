@@ -2477,6 +2477,186 @@ export interface Marketplaces {
 
 
     /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by current billing period. Marketplaces are available
+     * via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by current billing period. Marketplaces are available
+     * via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroup(managementGroupId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by specified billing period. Marketplaces are
+     * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForBillingPeriodByManagementGroupWithHttpOperationResponse(managementGroupId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by specified billing period. Marketplaces are
+     * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
      * Lists the marketplaces for a scope by subscriptionId and current billing
      * period. Marketplaces are available via this API only for May 1, 2014 or
      * later.
@@ -2964,6 +3144,130 @@ export interface Marketplaces {
     listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
     listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
     listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by current billing period. Marketplaces are available
+     * via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by current billing period. Marketplaces are available
+     * via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by specified billing period. Marketplaces are
+     * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForBillingPeriodByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplace records for all subscriptions belonging to a
+     * management group scope by specified billing period. Marketplaces are
+     * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForBillingPeriodByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listForBillingPeriodByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 }
 
 /**
