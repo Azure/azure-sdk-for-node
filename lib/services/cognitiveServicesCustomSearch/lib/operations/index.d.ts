@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * CustomInstance
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the CustomSearchAPIClient.
+ * instance of the CustomSearchClient.
  */
 export interface CustomInstance {
 

@@ -14,11 +14,266 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RedisManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available REST API operations of the Microsoft.Cache
+     * provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available REST API operations of the Microsoft.Cache
+     * provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available REST API operations of the Microsoft.Cache
+     * provider.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available REST API operations of the Microsoft.Cache
+     * provider.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * Redis
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the RedisManagementClient.
  */
 export interface Redis {
+
+
+    /**
+     * Checks that the redis cache name is valid and is not already in use.
+     *
+     * @param {object} parameters Parameters supplied to the CheckNameAvailability
+     * Redis operation. The only supported resource type is 'Microsoft.Cache/redis'
+     *
+     * @param {string} parameters.name Resource name.
+     *
+     * @param {string} parameters.type Resource type. The only legal value of this
+     * property for checking redis cache name availability is
+     * 'Microsoft.Cache/redis'.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Checks that the redis cache name is valid and is not already in use.
+     *
+     * @param {object} parameters Parameters supplied to the CheckNameAvailability
+     * Redis operation. The only supported resource type is 'Microsoft.Cache/redis'
+     *
+     * @param {string} parameters.name Resource name.
+     *
+     * @param {string} parameters.type Resource type. The only legal value of this
+     * property for checking redis cache name availability is
+     * 'Microsoft.Cache/redis'.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameters, callback: ServiceCallback<void>): void;
+    checkNameAvailability(parameters: models.CheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets any upgrade notifications for a Redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} name The name of the Redis cache.
+     *
+     * @param {number} history how many minutes in past to look for upgrade
+     * notifications
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NotificationListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listUpgradeNotificationsWithHttpOperationResponse(resourceGroupName: string, name: string, history: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationListResponse>>;
+
+    /**
+     * Gets any upgrade notifications for a Redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} name The name of the Redis cache.
+     *
+     * @param {number} history how many minutes in past to look for upgrade
+     * notifications
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NotificationListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NotificationListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NotificationListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listUpgradeNotifications(resourceGroupName: string, name: string, history: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationListResponse>;
+    listUpgradeNotifications(resourceGroupName: string, name: string, history: number, callback: ServiceCallback<models.NotificationListResponse>): void;
+    listUpgradeNotifications(resourceGroupName: string, name: string, history: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationListResponse>): void;
 
 
     /**
@@ -40,17 +295,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} parameters.sku The SKU of the Redis cache to deploy.
      *
@@ -65,7 +317,18 @@ export interface Redis {
      * deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6),
      * for P (Premium) family (1, 2, 3, 4).
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the Redis cache in. Example format:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     *
+     * @param {string} [parameters.staticIP] Static IP address. Required when
+     * deploying a Redis cache inside an existing Azure Virtual Network.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -101,17 +364,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} parameters.sku The SKU of the Redis cache to deploy.
      *
@@ -126,7 +386,18 @@ export interface Redis {
      * deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6),
      * for P (Premium) family (1, 2, 3, 4).
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the Redis cache in. Example format:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     *
+     * @param {string} [parameters.staticIP] Static IP address. Required when
+     * deploying a Redis cache inside an existing Azure Virtual Network.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -180,17 +451,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} [parameters.sku] The SKU of the Redis cache to deploy.
      *
@@ -238,17 +506,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} [parameters.sku] The SKU of the Redis cache to deploy.
      *
@@ -891,17 +1156,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} parameters.sku The SKU of the Redis cache to deploy.
      *
@@ -916,7 +1178,18 @@ export interface Redis {
      * deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6),
      * for P (Premium) family (1, 2, 3, 4).
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the Redis cache in. Example format:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     *
+     * @param {string} [parameters.staticIP] Static IP address. Required when
+     * deploying a Redis cache inside an existing Azure Virtual Network.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -952,17 +1225,14 @@ export interface Redis {
      * @param {boolean} [parameters.enableNonSslPort] Specifies whether the non-ssl
      * Redis server port (6379) is enabled.
      *
-     * @param {object} [parameters.tenantSettings] tenantSettings
+     * @param {object} [parameters.tenantSettings] A dictionary of tenant settings
      *
      * @param {number} [parameters.shardCount] The number of shards to be created
      * on a Premium Cluster Cache.
      *
-     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
-     * virtual network to deploy the Redis cache in. Example format:
-     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
-     *
-     * @param {string} [parameters.staticIP] Static IP address. Required when
-     * deploying a Redis cache inside an existing Azure Virtual Network.
+     * @param {string} [parameters.minimumTlsVersion] Optional: requires clients to
+     * use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1',
+     * '1.2'). Possible values include: '1.0', '1.1', '1.2'
      *
      * @param {object} parameters.sku The SKU of the Redis cache to deploy.
      *
@@ -977,7 +1247,18 @@ export interface Redis {
      * deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6),
      * for P (Premium) family (1, 2, 3, 4).
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the Redis cache in. Example format:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     *
+     * @param {string} [parameters.staticIP] Static IP address. Required when
+     * deploying a Redis cache inside an existing Azure Virtual Network.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -1331,11 +1612,400 @@ export interface Redis {
 
 /**
  * @class
+ * FirewallRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RedisManagementClient.
+ */
+export interface FirewallRules {
+
+
+    /**
+     * Gets all firewall rules in the specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisFirewallRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByRedisResourceWithHttpOperationResponse(resourceGroupName: string, cacheName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisFirewallRuleListResult>>;
+
+    /**
+     * Gets all firewall rules in the specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisFirewallRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisFirewallRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisFirewallRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByRedisResource(resourceGroupName: string, cacheName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisFirewallRuleListResult>;
+    listByRedisResource(resourceGroupName: string, cacheName: string, callback: ServiceCallback<models.RedisFirewallRuleListResult>): void;
+    listByRedisResource(resourceGroupName: string, cacheName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisFirewallRuleListResult>): void;
+
+
+    /**
+     * Create or update a redis cache firewall rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} parameters Parameters supplied to the create or update redis
+     * firewall rule operation.
+     *
+     * @param {string} parameters.startIP lowest IP address included in the range
+     *
+     * @param {string} parameters.endIP highest IP address included in the range
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisFirewallRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, cacheName: string, ruleName: string, parameters: models.RedisFirewallRuleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisFirewallRule>>;
+
+    /**
+     * Create or update a redis cache firewall rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} parameters Parameters supplied to the create or update redis
+     * firewall rule operation.
+     *
+     * @param {string} parameters.startIP lowest IP address included in the range
+     *
+     * @param {string} parameters.endIP highest IP address included in the range
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisFirewallRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisFirewallRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisFirewallRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, cacheName: string, ruleName: string, parameters: models.RedisFirewallRuleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisFirewallRule>;
+    createOrUpdate(resourceGroupName: string, cacheName: string, ruleName: string, parameters: models.RedisFirewallRuleCreateParameters, callback: ServiceCallback<models.RedisFirewallRule>): void;
+    createOrUpdate(resourceGroupName: string, cacheName: string, ruleName: string, parameters: models.RedisFirewallRuleCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisFirewallRule>): void;
+
+
+    /**
+     * Gets a single firewall rule in a specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisFirewallRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, cacheName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisFirewallRule>>;
+
+    /**
+     * Gets a single firewall rule in a specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisFirewallRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisFirewallRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisFirewallRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, cacheName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisFirewallRule>;
+    get(resourceGroupName: string, cacheName: string, ruleName: string, callback: ServiceCallback<models.RedisFirewallRule>): void;
+    get(resourceGroupName: string, cacheName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisFirewallRule>): void;
+
+
+    /**
+     * Deletes a single firewall rule in a specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, cacheName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a single firewall rule in a specified redis cache.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {string} ruleName The name of the firewall rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, cacheName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, cacheName: string, ruleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, cacheName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all firewall rules in the specified redis cache.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisFirewallRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByRedisResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisFirewallRuleListResult>>;
+
+    /**
+     * Gets all firewall rules in the specified redis cache.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisFirewallRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisFirewallRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisFirewallRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByRedisResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisFirewallRuleListResult>;
+    listByRedisResourceNext(nextPageLink: string, callback: ServiceCallback<models.RedisFirewallRuleListResult>): void;
+    listByRedisResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisFirewallRuleListResult>): void;
+}
+
+/**
+ * @class
  * PatchSchedules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the RedisManagementClient.
  */
 export interface PatchSchedules {
+
+
+    /**
+     * Gets all patch schedules in the specified redis cache (there is only one).
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisPatchScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByRedisResourceWithHttpOperationResponse(resourceGroupName: string, cacheName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisPatchScheduleListResult>>;
+
+    /**
+     * Gets all patch schedules in the specified redis cache (there is only one).
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} cacheName The name of the Redis cache.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisPatchScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisPatchScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisPatchScheduleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByRedisResource(resourceGroupName: string, cacheName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisPatchScheduleListResult>;
+    listByRedisResource(resourceGroupName: string, cacheName: string, callback: ServiceCallback<models.RedisPatchScheduleListResult>): void;
+    listByRedisResource(resourceGroupName: string, cacheName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchScheduleListResult>): void;
 
 
     /**
@@ -1518,15 +2188,73 @@ export interface PatchSchedules {
     get(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisPatchSchedule>;
     get(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisPatchSchedule>): void;
     get(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchSchedule>): void;
+
+
+    /**
+     * Gets all patch schedules in the specified redis cache (there is only one).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisPatchScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByRedisResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisPatchScheduleListResult>>;
+
+    /**
+     * Gets all patch schedules in the specified redis cache (there is only one).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisPatchScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisPatchScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisPatchScheduleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByRedisResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisPatchScheduleListResult>;
+    listByRedisResourceNext(nextPageLink: string, callback: ServiceCallback<models.RedisPatchScheduleListResult>): void;
+    listByRedisResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchScheduleListResult>): void;
 }
 
 /**
  * @class
- * RedisLinkedServerOperations
+ * LinkedServer
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the RedisManagementClient.
  */
-export interface RedisLinkedServerOperations {
+export interface LinkedServer {
 
 
     /**
@@ -1899,4 +2627,64 @@ export interface RedisLinkedServerOperations {
     beginCreate(resourceGroupName: string, name: string, linkedServerName: string, parameters: models.RedisLinkedServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisLinkedServerWithProperties>;
     beginCreate(resourceGroupName: string, name: string, linkedServerName: string, parameters: models.RedisLinkedServerCreateParameters, callback: ServiceCallback<models.RedisLinkedServerWithProperties>): void;
     beginCreate(resourceGroupName: string, name: string, linkedServerName: string, parameters: models.RedisLinkedServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisLinkedServerWithProperties>): void;
+
+
+    /**
+     * Gets the list of linked servers associated with this redis cache (requires
+     * Premium SKU).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RedisLinkedServerWithPropertiesList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RedisLinkedServerWithPropertiesList>>;
+
+    /**
+     * Gets the list of linked servers associated with this redis cache (requires
+     * Premium SKU).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RedisLinkedServerWithPropertiesList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RedisLinkedServerWithPropertiesList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RedisLinkedServerWithPropertiesList} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RedisLinkedServerWithPropertiesList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RedisLinkedServerWithPropertiesList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisLinkedServerWithPropertiesList>): void;
 }
