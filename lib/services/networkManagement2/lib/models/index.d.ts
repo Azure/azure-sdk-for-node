@@ -2563,7 +2563,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
