@@ -2986,7 +2986,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3065,7 +3065,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3221,7 +3221,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3298,7 +3298,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -7719,7 +7719,7 @@ export interface NotificationChannels {
 
 
     /**
-     * List notificationchannels in a given lab.
+     * List notification channels in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7751,7 +7751,7 @@ export interface NotificationChannels {
     listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannelList>>;
 
     /**
-     * List notificationchannels in a given lab.
+     * List notification channels in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7803,7 +7803,7 @@ export interface NotificationChannels {
 
 
     /**
-     * Get notificationchannel.
+     * Get notification channel.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7828,7 +7828,7 @@ export interface NotificationChannels {
     getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannel>>;
 
     /**
-     * Get notificationchannel.
+     * Get notification channel.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7886,7 +7886,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -7930,7 +7930,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -7979,7 +7979,7 @@ export interface NotificationChannels {
 
 
     /**
-     * Delete notificationchannel.
+     * Delete notification channel.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8001,7 +8001,7 @@ export interface NotificationChannels {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete notificationchannel.
+     * Delete notification channel.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8041,7 +8041,7 @@ export interface NotificationChannels {
 
 
     /**
-     * Modify properties of notificationchannels.
+     * Modify properties of notification channels.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8055,7 +8055,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -8083,7 +8083,7 @@ export interface NotificationChannels {
     updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannelFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannel>>;
 
     /**
-     * Modify properties of notificationchannels.
+     * Modify properties of notification channels.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8097,7 +8097,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -8222,7 +8222,7 @@ export interface NotificationChannels {
 
 
     /**
-     * List notificationchannels in a given lab.
+     * List notification channels in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -8241,7 +8241,7 @@ export interface NotificationChannels {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannelList>>;
 
     /**
-     * List notificationchannels in a given lab.
+     * List notification channels in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -9111,7 +9111,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9192,7 +9192,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9354,7 +9354,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9433,7 +9433,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -11064,7 +11064,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -11115,7 +11115,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -11250,7 +11250,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -11298,7 +11298,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -11522,7 +11522,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -11573,7 +11573,7 @@ export interface Disks {
      * @param {string} [disk.diskType] The storage type for the disk (i.e.
      * Standard, Premium). Possible values include: 'Standard', 'Premium'
      *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in GibiBytes.
+     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
      *
      * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
      * this disk is leased.
@@ -14316,7 +14316,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14401,7 +14401,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14575,7 +14575,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14658,7 +14658,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -15891,7 +15891,7 @@ export interface VirtualMachines {
      * options to attach a new disk to the virtual machine.
      *
      * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in GibiBytes.
+     * Size of the disk to be attached in Gibibytes.
      *
      * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
      * name of the disk to be attached.
@@ -15937,7 +15937,7 @@ export interface VirtualMachines {
      * options to attach a new disk to the virtual machine.
      *
      * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in GibiBytes.
+     * Size of the disk to be attached in Gibibytes.
      *
      * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
      * name of the disk to be attached.
@@ -17236,7 +17236,7 @@ export interface VirtualMachines {
      * options to attach a new disk to the virtual machine.
      *
      * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in GibiBytes.
+     * Size of the disk to be attached in Gibibytes.
      *
      * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
      * name of the disk to be attached.
@@ -17282,7 +17282,7 @@ export interface VirtualMachines {
      * options to attach a new disk to the virtual machine.
      *
      * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in GibiBytes.
+     * Size of the disk to be attached in Gibibytes.
      *
      * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
      * name of the disk to be attached.
@@ -18277,7 +18277,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18360,7 +18360,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18528,7 +18528,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18609,7 +18609,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
