@@ -10835,6 +10835,12 @@ export interface ManagedInstances {
      * managed instance whose DNS zone this managed instance will share after
      * creation.
      *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
+     *
      * @param {string} parameters.location Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -10913,6 +10919,12 @@ export interface ManagedInstances {
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
+     *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11066,6 +11078,12 @@ export interface ManagedInstances {
      * managed instance whose DNS zone this managed instance will share after
      * creation.
      *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -11134,6 +11152,12 @@ export interface ManagedInstances {
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
+     *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -11231,6 +11255,12 @@ export interface ManagedInstances {
      * managed instance whose DNS zone this managed instance will share after
      * creation.
      *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
+     *
      * @param {string} parameters.location Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -11309,6 +11339,12 @@ export interface ManagedInstances {
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
+     *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11462,6 +11498,12 @@ export interface ManagedInstances {
      * managed instance whose DNS zone this managed instance will share after
      * creation.
      *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -11530,6 +11572,12 @@ export interface ManagedInstances {
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
+     *
+     * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
+     * public data endpoint is enabled.
+     *
+     * @param {string} [parameters.proxyOverride] Proxy override of the managed
+     * instance.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -27639,205 +27687,6 @@ export interface ServerSecurityAlertPolicies {
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
-}
-
-/**
- * @class
- * RestorableDroppedManagedDatabases
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface RestorableDroppedManagedDatabases {
-
-
-    /**
-     * Gets a list of restorable dropped managed databases.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabaseListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabaseListResult>>;
-
-    /**
-     * Gets a list of restorable dropped managed databases.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RestorableDroppedManagedDatabaseListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RestorableDroppedManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestorableDroppedManagedDatabaseListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabaseListResult>;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
-
-
-    /**
-     * Gets a restorable dropped managed database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} restorableDroppedDatabaseId
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabase>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabase>>;
-
-    /**
-     * Gets a restorable dropped managed database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} restorableDroppedDatabaseId
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RestorableDroppedManagedDatabase} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RestorableDroppedManagedDatabase} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestorableDroppedManagedDatabase} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabase>;
-    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabase>): void;
-    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabase>): void;
-
-
-    /**
-     * Gets a list of restorable dropped managed databases.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabaseListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabaseListResult>>;
-
-    /**
-     * Gets a list of restorable dropped managed databases.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RestorableDroppedManagedDatabaseListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RestorableDroppedManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestorableDroppedManagedDatabaseListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabaseListResult>;
-    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
-    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
 }
 
 /**

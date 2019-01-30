@@ -1362,6 +1362,9 @@ export interface Sku {
  * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
  * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
+ * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
+ * data endpoint is enabled.
+ * @property {string} [proxyOverride] Proxy override of the managed instance.
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1377,6 +1380,8 @@ export interface ManagedInstance extends TrackedResource {
   collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
+  publicDataEndpointEnabled?: boolean;
+  proxyOverride?: string;
 }
 
 /**
@@ -1415,6 +1420,9 @@ export interface ManagedInstance extends TrackedResource {
  * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
  * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
+ * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
+ * data endpoint is enabled.
+ * @property {string} [proxyOverride] Proxy override of the managed instance.
  * @property {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1430,6 +1438,8 @@ export interface ManagedInstanceUpdate {
   collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
+  publicDataEndpointEnabled?: boolean;
+  proxyOverride?: string;
   tags?: { [propertyName: string]: string };
 }
 
