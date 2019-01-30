@@ -3,46 +3,27 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Batch/locations/japaneast/checkNameAvailability?api-version=2017-09-01', '*')
-  .reply(200, "{\"nameAvailable\":true}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '22',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '5e467cef-84bb-4357-9003-081c8dd6af40',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '5b9d1db3-de66-4cf3-a764-8d9543d22783',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220050Z:5b9d1db3-de66-4cf3-a764-8d9543d22783',
-  date: 'Wed, 08 Nov 2017 22:00:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Batch/locations/japaneast/checkNameAvailability?api-version=2017-09-01', '*')
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/providers/Microsoft.Batch/locations/japaneast/checkNameAvailability?api-version=2018-12-01', '*')
   .reply(200, "{\"nameAvailable\":true}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '5e467cef-84bb-4357-9003-081c8dd6af40',
+  'x-ms-correlation-request-id': 'f7fff461-e790-4201-abaa-65d037e3ee8e',
+  'x-ms-request-id': '799f7089-36e2-4c4c-9906-cd184610ecb5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '5b9d1db3-de66-4cf3-a764-8d9543d22783',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220050Z:5b9d1db3-de66-4cf3-a764-8d9543d22783',
-  date: 'Wed, 08 Nov 2017 22:00:49 GMT',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001512Z:f7fff461-e790-4201-abaa-65d037e3ee8e',
+  date: 'Fri, 11 Jan 2019 00:15:12 GMT',
   connection: 'close' });
  return result; }]];
