@@ -5684,6 +5684,10 @@ export interface ReservationsUsageDetails {
      *
      * @param {string} billingProfileId BillingProfile ID
      *
+     * @param {date} startDate The start of the date time range.
+     *
+     * @param {date} endDate The start of the date time range.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5695,7 +5699,7 @@ export interface ReservationsUsageDetails {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationDetailsListResult>>;
+    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationDetailsListResult>>;
 
     /**
      * List the reserved instance usage details based on billingAccountId and
@@ -5704,6 +5708,10 @@ export interface ReservationsUsageDetails {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId BillingProfile ID
+     *
+     * @param {date} startDate The start of the date time range.
+     *
+     * @param {date} endDate The start of the date time range.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5733,9 +5741,9 @@ export interface ReservationsUsageDetails {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationDetailsListResult>;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationDetailsListResult>;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationDetailsListResult>): void;
 
 
     /**
@@ -5815,6 +5823,10 @@ export interface ReservationsUsageSummaries {
      *
      * @param {string} billingProfileId BillingProfile ID
      *
+     * @param {date} startDate The start of the date time range.
+     *
+     * @param {date} endDate The start of the date time range.
+     *
      * @param {string} grain Can be daily or monthly. Possible values include:
      * 'DailyGrain', 'MonthlyGrain'
      *
@@ -5829,7 +5841,7 @@ export interface ReservationsUsageSummaries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, grain: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
+    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, grain: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationSummariesListResult>>;
 
     /**
      * List the reserved instance usage summary for daily or monthly grain based on
@@ -5838,6 +5850,10 @@ export interface ReservationsUsageSummaries {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId BillingProfile ID
+     *
+     * @param {date} startDate The start of the date time range.
+     *
+     * @param {date} endDate The start of the date time range.
      *
      * @param {string} grain Can be daily or monthly. Possible values include:
      * 'DailyGrain', 'MonthlyGrain'
@@ -5870,9 +5886,9 @@ export interface ReservationsUsageSummaries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, grain: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, grain: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, grain: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, grain: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationSummariesListResult>;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, grain: string, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: Date|string, endDate: Date|string, grain: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationSummariesListResult>): void;
 
 
     /**
@@ -5952,6 +5968,9 @@ export interface ReservationRecommendationsSharedOperations {
      *
      * @param {string} billingProfileId BillingProfile ID
      *
+     * @param {string} lookBackPeriod The number of days of usage data to look back
+     * into.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5963,7 +5982,7 @@ export interface ReservationRecommendationsSharedOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSharedListResult>>;
+    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSharedListResult>>;
 
     /**
      * List of recommendations for purchasing reserved instances calculated based
@@ -5972,6 +5991,9 @@ export interface ReservationRecommendationsSharedOperations {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId BillingProfile ID
+     *
+     * @param {string} lookBackPeriod The number of days of usage data to look back
+     * into.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6001,9 +6023,69 @@ export interface ReservationRecommendationsSharedOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSharedListResult>;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSharedListResult>;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
+
+
+    /**
+     * List of recommendations for purchasing reserved instances calculated based
+     * on past usage for the provided billingAccountId and billingProfileId.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationRecommendationsSharedListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingProfileNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSharedListResult>>;
+
+    /**
+     * List of recommendations for purchasing reserved instances calculated based
+     * on past usage for the provided billingAccountId and billingProfileId.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationRecommendationsSharedListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationRecommendationsSharedListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationRecommendationsSharedListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingProfileNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSharedListResult>;
+    listByBillingProfileNext(nextPageLink: string, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
+    listByBillingProfileNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSharedListResult>): void;
 }
 
 /**
@@ -6023,6 +6105,9 @@ export interface ReservationRecommendationsSingleOperations {
      *
      * @param {string} billingProfileId BillingProfile ID
      *
+     * @param {string} lookBackPeriod The number of days of usage data to look back
+     * into.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -6034,7 +6119,7 @@ export interface ReservationRecommendationsSingleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSingleListResult>>;
+    listByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSingleListResult>>;
 
     /**
      * List of recommendations calculated based on past usage for the provided
@@ -6043,6 +6128,9 @@ export interface ReservationRecommendationsSingleOperations {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId BillingProfile ID
+     *
+     * @param {string} lookBackPeriod The number of days of usage data to look back
+     * into.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6072,7 +6160,67 @@ export interface ReservationRecommendationsSingleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSingleListResult>;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
-    listByBillingProfile(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSingleListResult>;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
+    listByBillingProfile(billingAccountId: string, billingProfileId: string, lookBackPeriod: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
+
+
+    /**
+     * List of recommendations calculated based on past usage for the provided
+     * billingAccountId and billingProfileId for each subscription within it.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationRecommendationsSingleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingProfileNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsSingleListResult>>;
+
+    /**
+     * List of recommendations calculated based on past usage for the provided
+     * billingAccountId and billingProfileId for each subscription within it.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationRecommendationsSingleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationRecommendationsSingleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationRecommendationsSingleListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingProfileNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationRecommendationsSingleListResult>;
+    listByBillingProfileNext(nextPageLink: string, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
+    listByBillingProfileNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationRecommendationsSingleListResult>): void;
 }

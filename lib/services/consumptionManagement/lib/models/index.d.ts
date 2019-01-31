@@ -933,22 +933,6 @@ export interface ReservationRecommendationsShared extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationRecommendationsSharedListResult class.
- * @constructor
- * Result of reservation recommendations listing by billing account and billing
- * profile.
- *
- * @member {array} [value] The list of reservation recommendations by billing
- * account and billing profile.
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface ReservationRecommendationsSharedListResult {
-  readonly value?: ReservationRecommendationsShared[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ReservationRecommendationsSingle class.
  * @constructor
  * Reservation Recommendation for single subscription scope.
@@ -982,22 +966,6 @@ export interface ReservationRecommendationsSingle extends Resource {
   readonly netSavings?: number;
   readonly firstUsageDate?: Date;
   readonly subscriptionId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReservationRecommendationsSingleListResult class.
- * @constructor
- * Result of reservation recommendations listing by billing account and billing
- * profile for each subscription.
- *
- * @member {array} [value] The list of reservation recommendations by billing
- * account and billing profile and subscription.
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface ReservationRecommendationsSingleListResult {
-  readonly value?: ReservationRecommendationsSingle[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -1110,5 +1078,31 @@ export interface ForecastsListResult extends Array<Forecast> {
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsSharedListResult class.
+ * @constructor
+ * Result of reservation recommendations listing by billing account and billing
+ * profile.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsSharedListResult extends Array<ReservationRecommendationsShared> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsSingleListResult class.
+ * @constructor
+ * Result of reservation recommendations listing by billing account and billing
+ * profile for each subscription.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsSingleListResult extends Array<ReservationRecommendationsSingle> {
   readonly nextLink?: string;
 }
