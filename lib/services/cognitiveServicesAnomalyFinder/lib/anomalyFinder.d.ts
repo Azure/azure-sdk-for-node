@@ -61,7 +61,7 @@ export default class AnomalyFinder extends ServiceClient {
    *
    * @param {number} [body.customInterval] Custom Interval is used to set
    * non-standard time interval, for example, if the series is 5 minutes, request
-   * can be set as {"Granularity":"minutely", "CustomInterval":5}.
+   * can be set as {"granularity":"minutely", "customInterval":5}.
    *
    * @param {number} [body.period] Optional argument, periodic value of a time
    * series. If the value is null or does not present, the API will determine the
@@ -112,7 +112,7 @@ export default class AnomalyFinder extends ServiceClient {
    *
    * @param {number} [body.customInterval] Custom Interval is used to set
    * non-standard time interval, for example, if the series is 5 minutes, request
-   * can be set as {"Granularity":"minutely", "CustomInterval":5}.
+   * can be set as {"granularity":"minutely", "customInterval":5}.
    *
    * @param {number} [body.period] Optional argument, periodic value of a time
    * series. If the value is null or does not present, the API will determine the
@@ -182,7 +182,7 @@ export default class AnomalyFinder extends ServiceClient {
    *
    * @param {number} [body.customInterval] Custom Interval is used to set
    * non-standard time interval, for example, if the series is 5 minutes, request
-   * can be set as {"Granularity":"minutely", "CustomInterval":5}.
+   * can be set as {"granularity":"minutely", "customInterval":5}.
    *
    * @param {number} [body.period] Optional argument, periodic value of a time
    * series. If the value is null or does not present, the API will determine the
@@ -233,7 +233,7 @@ export default class AnomalyFinder extends ServiceClient {
    *
    * @param {number} [body.customInterval] Custom Interval is used to set
    * non-standard time interval, for example, if the series is 5 minutes, request
-   * can be set as {"Granularity":"minutely", "CustomInterval":5}.
+   * can be set as {"granularity":"minutely", "customInterval":5}.
    *
    * @param {number} [body.period] Optional argument, periodic value of a time
    * series. If the value is null or does not present, the API will determine the
