@@ -145,6 +145,182 @@ export interface ScheduledAlertRule extends AlertRule {
 }
 
 /**
+ * Data connector.
+ */
+export interface DataConnector {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+  /**
+   * Etag of the data connector.
+   */
+  etag?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes an Azure resource with kind.
+ */
+export interface DataConnectorKind1 {
+  /**
+   * The kind of the data connector. Possible values include: 'AzureActiveDirectory',
+   * 'AzureSecurityCenter', 'MicrosoftCloudAappSecurity', 'ThreatInelegance', 'Office365'
+   */
+  kind?: string;
+}
+
+/**
+ * Describes an Azure resource with kind.
+ */
+export interface DataConnectorContextId {
+  /**
+   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   */
+  contextId?: string;
+}
+
+/**
+ * Common field for data type in data connectors.
+ */
+export interface DataConnectorDataTypeCommon {
+  /**
+   * Describe whther this data type connection is enabled or not. Possible values include:
+   * 'Enabled', 'Disabled'
+   */
+  state?: string;
+}
+
+/**
+ * SharePoint data type connection.
+ */
+export interface OfficeDataConnectorDataTypesSharePoint extends DataConnectorDataTypeCommon {
+}
+
+/**
+ * Exchange data type connection.
+ */
+export interface OfficeDataConnectorDataTypesExchange extends DataConnectorDataTypeCommon {
+}
+
+/**
+ * The available data types for office data connector.
+ */
+export interface OfficeDataConnectorDataTypes {
+  /**
+   * SharePoint data type connection.
+   */
+  sharePoint?: OfficeDataConnectorDataTypesSharePoint;
+  /**
+   * Exchange data type connection.
+   */
+  exchange?: OfficeDataConnectorDataTypesExchange;
+}
+
+/**
+ * Represents office data connector.
+ */
+export interface OfficeDataConnector extends DataConnector {
+  /**
+   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   */
+  contextId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: { [propertyName: string]: OfficeDataConnectorDataTypes };
+}
+
+/**
+ * Data type for indicators connection.
+ */
+export interface TIDataConnectorDataTypesIndicators extends DataConnectorDataTypeCommon {
+}
+
+/**
+ * The available data types for TI data connector.
+ */
+export interface TIDataConnectorDataTypes {
+  /**
+   * Data type for indicators connection.
+   */
+  indicators?: TIDataConnectorDataTypesIndicators;
+}
+
+/**
+ * Represents threat inelegance data connector.
+ */
+export interface TIDataConnector extends DataConnector {
+  /**
+   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   */
+  contextId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: { [propertyName: string]: TIDataConnectorDataTypes };
+}
+
+/**
+ * Data connector with alerts data type.
+ */
+export interface DataConnectorWithAlerts extends DataConnector {
+  /**
+   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   */
+  contextId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: { [propertyName: string]: AlertsDataTypeOfDataConnector };
+}
+
+/**
+ * Represents AAD (Azure Active Directory) data connector.
+ */
+export interface AADDataConnector extends DataConnectorWithAlerts {
+}
+
+/**
+ * Represents ASC (Azure Security Center) data connector.
+ */
+export interface ASCDataConnector extends DataConnectorWithAlerts {
+}
+
+/**
+ * Represents MCAS (Microsoft Cloud Aapp Security) data connector.
+ */
+export interface MCASDataConnector extends DataConnectorWithAlerts {
+}
+
+/**
+ * Alerts data type connection.
+ */
+export interface AlertsDataTypeOfDataConnectorAlerts extends DataConnectorDataTypeCommon {
+}
+
+/**
+ * Alerts data type for data connectors.
+ */
+export interface AlertsDataTypeOfDataConnector {
+  /**
+   * Alerts data type connection.
+   */
+  alerts?: AlertsDataTypeOfDataConnectorAlerts;
+}
+
+/**
  * An azure resource object
  */
 export interface Resource extends BaseResource {
@@ -178,6 +354,16 @@ export interface OperationsList extends Array<Operation> {
 export interface AlertRulesList extends Array<AlertRule> {
   /**
    * URL to fetch the next set of alert rules.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List all the data connectors.
+ */
+export interface DataConnectorList extends Array<DataConnector> {
+  /**
+   * URL to fetch the next set of data connectors.
    */
   readonly nextLink?: string;
 }

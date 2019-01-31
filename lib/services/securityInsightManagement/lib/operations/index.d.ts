@@ -485,3 +485,360 @@ export interface AlertRules {
     listNext(nextPageLink: string, callback: ServiceCallback<models.AlertRulesList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRulesList>): void;
 }
+
+/**
+ * @class
+ * DataConnectors
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface DataConnectors {
+
+
+    /**
+     * Gets all data connectors.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataConnectorList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnectorList>>;
+
+    /**
+     * Gets all data connectors.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataConnectorList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataConnectorList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnectorList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnectorList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.DataConnectorList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnectorList>): void;
+
+
+    /**
+     * Gets a data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataConnector>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnector>>;
+
+    /**
+     * Gets a data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataConnector} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataConnector} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnector} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnector>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, callback: ServiceCallback<models.DataConnector>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnector>): void;
+
+
+    /**
+     * Creates or updates the data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} dataConnector The data connector
+     *
+     * @param {string} [dataConnector.etag] Etag of the data connector.
+     *
+     * @param {string} dataConnector.kind Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataConnector>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnector>>;
+
+    /**
+     * Creates or updates the data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} dataConnector The data connector
+     *
+     * @param {string} [dataConnector.etag] Etag of the data connector.
+     *
+     * @param {string} dataConnector.kind Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataConnector} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataConnector} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnector} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnector>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, callback: ServiceCallback<models.DataConnector>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnector>): void;
+
+
+    /**
+     * Delete the data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the data connector.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} dataConnectorId Connecto ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all data connectors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataConnectorList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnectorList>>;
+
+    /**
+     * Gets all data connectors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataConnectorList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataConnectorList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnectorList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnectorList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DataConnectorList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnectorList>): void;
+}
