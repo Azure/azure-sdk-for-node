@@ -1095,6 +1095,72 @@ export interface Services {
 
 
     /**
+     * Gets a list of all Search services in the given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchServiceListResult>>;
+
+    /**
+     * Gets a list of all Search services in the given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchServiceListResult>;
+    listBySubscription(callback: ServiceCallback<models.SearchServiceListResult>): void;
+    listBySubscription(options: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchServiceListResult>): void;
+
+
+    /**
      * Checks whether or not the given Search service name is available for use.
      * Search service names must be globally unique since they are part of the
      * service URI (https://<name>.search.windows.net).
