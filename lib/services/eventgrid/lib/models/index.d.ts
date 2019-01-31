@@ -898,6 +898,53 @@ export interface ContainerRegistryImageDeletedEventData extends ContainerRegistr
 
 /**
  * @class
+ * Initializes a new instance of the ContainerRegistryArtifactEventData class.
+ * @constructor
+ * The content of the event request message.
+ *
+ * @member {string} [id] The event ID.
+ * @member {date} [timestamp] The time at which the event occurred.
+ * @member {string} [action] The action that encompasses the provided event.
+ * @member {object} [target] The target of the event.
+ * @member {string} [target.mediaType] The MIME type of the artifact.
+ * @member {number} [target.size] The size in bytes of the artifact.
+ * @member {string} [target.digest] The digest of the artifact.
+ * @member {string} [target.repository] The repository name of the artifact.
+ * @member {string} [target.tag] The tag of the artifact.
+ * @member {string} [target.name] The name of the artifact.
+ * @member {string} [target.version] The version of the artifact.
+ */
+export interface ContainerRegistryArtifactEventData {
+  id?: string;
+  timestamp?: Date;
+  action?: string;
+  target?: ContainerRegistryArtifactEventTarget;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryChartPushedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ContainerRegistry.ChartPushed event.
+ *
+ */
+export interface ContainerRegistryChartPushedEventData extends ContainerRegistryArtifactEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryChartDeletedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ContainerRegistry.ChartDeleted event.
+ *
+ */
+export interface ContainerRegistryChartDeletedEventData extends ContainerRegistryArtifactEventData {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerRegistryEventTarget class.
  * @constructor
  * The target of the event.
@@ -976,6 +1023,30 @@ export interface ContainerRegistryEventActor {
 export interface ContainerRegistryEventSource {
   addr?: string;
   instanceID?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryArtifactEventTarget class.
+ * @constructor
+ * The target of the event.
+ *
+ * @member {string} [mediaType] The MIME type of the artifact.
+ * @member {number} [size] The size in bytes of the artifact.
+ * @member {string} [digest] The digest of the artifact.
+ * @member {string} [repository] The repository name of the artifact.
+ * @member {string} [tag] The tag of the artifact.
+ * @member {string} [name] The name of the artifact.
+ * @member {string} [version] The version of the artifact.
+ */
+export interface ContainerRegistryArtifactEventTarget {
+  mediaType?: string;
+  size?: number;
+  digest?: string;
+  repository?: string;
+  tag?: string;
+  name?: string;
+  version?: string;
 }
 
 /**
