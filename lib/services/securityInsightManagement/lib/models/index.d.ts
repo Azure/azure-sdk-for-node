@@ -239,7 +239,7 @@ export interface OfficeDataConnector extends DataConnector {
   /**
    * The available data types for the connector.
    */
-  dataTypes?: { [propertyName: string]: OfficeDataConnectorDataTypes };
+  dataTypes?: OfficeDataConnectorDataTypes;
 }
 
 /**
@@ -269,7 +269,7 @@ export interface TIDataConnector extends DataConnector {
   /**
    * The available data types for the connector.
    */
-  dataTypes?: { [propertyName: string]: TIDataConnectorDataTypes };
+  dataTypes?: TIDataConnectorDataTypes;
 }
 
 /**
@@ -283,7 +283,7 @@ export interface DataConnectorWithAlerts extends DataConnector {
   /**
    * The available data types for the connector.
    */
-  dataTypes?: { [propertyName: string]: AlertsDataTypeOfDataConnector };
+  dataTypes?: AlertsDataTypeOfDataConnector;
 }
 
 /**
