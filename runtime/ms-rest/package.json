@@ -53,6 +53,7 @@
   "scripts": {
     "test": "npm install && npm run jshint && npm run unit",
     "unit": "node test/unit.js testlist.txt",
-    "jshint": "jshint lib --reporter=jslint"
+    "jshint": "jshint lib --reporter=jslint",
+    "print-deprecation-message": "node ./.scripts/postinstall.js"
   }
 }
