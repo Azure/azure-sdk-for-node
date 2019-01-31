@@ -881,6 +881,10 @@ export interface ManagedCluster extends Resource {
    */
   enableRBAC?: boolean;
   /**
+   * Whether to enable Pod Security Policy.
+   */
+  enablePodSecurityPolicy?: boolean;
+  /**
    * Profile of network configuration.
    */
   networkProfile?: ContainerServiceNetworkProfile;
