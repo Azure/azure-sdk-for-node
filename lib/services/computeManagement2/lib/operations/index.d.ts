@@ -19401,11 +19401,15 @@ export interface Disks {
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes.
+     * 4k and 256k bytes. For a description of the range of values you can set, see
+     * [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10.
+     * second - MB here uses the ISO notation, of powers of 10. For a description
+     * of the range of values you can set, see [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {string} disk.location Resource location
      *
@@ -19512,11 +19516,15 @@ export interface Disks {
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes.
+     * 4k and 256k bytes. For a description of the range of values you can set, see
+     * [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10.
+     * second - MB here uses the ISO notation, of powers of 10. For a description
+     * of the range of values you can set, see [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {string} disk.location Resource location
      *
@@ -20203,11 +20211,15 @@ export interface Disks {
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes.
+     * 4k and 256k bytes. For a description of the range of values you can set, see
+     * [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10.
+     * second - MB here uses the ISO notation, of powers of 10. For a description
+     * of the range of values you can set, see [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {string} disk.location Resource location
      *
@@ -20314,11 +20326,15 @@ export interface Disks {
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes.
+     * 4k and 256k bytes. For a description of the range of values you can set, see
+     * [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10.
+     * second - MB here uses the ISO notation, of powers of 10. For a description
+     * of the range of values you can set, see [Ultra SSD Managed Disk
+     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
      *
      * @param {string} disk.location Resource location
      *
