@@ -573,7 +573,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -599,7 +599,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -644,7 +644,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} dataConnector The data connector
      *
@@ -676,7 +676,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} dataConnector The data connector
      *
@@ -727,7 +727,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -753,7 +753,7 @@ export interface DataConnectors {
      *
      * @param {string} workspaceName The name of the workspace.
      *
-     * @param {string} dataConnectorId Connecto ID
+     * @param {string} dataConnectorId Connector ID
      *
      * @param {object} [options] Optional Parameters.
      *

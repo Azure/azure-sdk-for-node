@@ -176,7 +176,7 @@ export interface DataConnector {
 export interface DataConnectorKind1 {
   /**
    * The kind of the data connector. Possible values include: 'AzureActiveDirectory',
-   * 'AzureSecurityCenter', 'MicrosoftCloudAappSecurity', 'ThreatInelegance', 'Office365'
+   * 'AzureSecurityCenter', 'MicrosoftCloudAppSecurity', 'ThreatIntelligence', 'Office365'
    */
   kind?: string;
 }
@@ -196,7 +196,7 @@ export interface DataConnectorContextId {
  */
 export interface DataConnectorDataTypeCommon {
   /**
-   * Describe whther this data type connection is enabled or not. Possible values include:
+   * Describe whether this data type connection is enabled or not. Possible values include:
    * 'Enabled', 'Disabled'
    */
   state?: string;
@@ -259,7 +259,7 @@ export interface TIDataConnectorDataTypes {
 }
 
 /**
- * Represents threat inelegance data connector.
+ * Represents threat intelligence data connector.
  */
 export interface TIDataConnector extends DataConnector {
   /**
@@ -299,7 +299,7 @@ export interface ASCDataConnector extends DataConnectorWithAlerts {
 }
 
 /**
- * Represents MCAS (Microsoft Cloud Aapp Security) data connector.
+ * Represents MCAS (Microsoft Cloud App Security) data connector.
  */
 export interface MCASDataConnector extends DataConnectorWithAlerts {
 }
