@@ -4,7 +4,7 @@ summary: *content
 
 ---
 **This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://github.com/Azure/azure-sdk-for-js) which works on Node.js and browsers.**
-## Microsoft Azure SDK for Node.js - AnomalyFinder
+## Microsoft Azure SDK for Node.js - AnomalyFinderClient
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
@@ -20,15 +20,15 @@ npm install azure-cognitiveservices-anomalyfinder
 
 ### How to use
 
-#### Authentication, client creation, and postTimeseriesEntireDetect  as an example.
+#### Authentication, client creation, and entireDetect  as an example.
 
 ```javascript
 const msRest = require("ms-rest");
-const AnomalyFinder = require("azure-cognitiveservices-anomalyfinder");
+const AnomalyFinderClient = require("azure-cognitiveservices-anomalyfinder");
 const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
-const client = new AnomalyFinder(creds, subscriptionId);
+const client = new AnomalyFinderClient(creds, subscriptionId);
 const body = {
   series: [{
     timestamp: new Date().toISOString(),
@@ -41,7 +41,7 @@ const body = {
   sensitivity: 1.01
 };
 
-client.postTimeseriesEntireDetect(body).then((result) => {
+client.entireDetect(body).then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {

@@ -1,7 +1,7 @@
 {
   "name": "azure-cognitiveservices-anomalyfinder",
   "author": "Microsoft Corporation",
-  "description": "AnomalyFinder Library with typescript type definitions for node",
+  "description": "AnomalyFinderClient Library with typescript type definitions for node",
   "version": "1.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
@@ -11,8 +11,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/anomalyFinder.js",
-  "types": "./lib/anomalyFinder.d.ts",
+  "main": "./lib/anomalyFinderClient.js",
+  "types": "./lib/anomalyFinderClient.d.ts",
   "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesAnomalyFinder",
   "repository": {
     "type": "git",

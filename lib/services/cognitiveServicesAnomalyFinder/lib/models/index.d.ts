@@ -58,14 +58,12 @@ export interface Request {
   */
   period?: number;
   /**
-   * Optional argument, advanced model parameter, max anomaly ratio in a time series. Must be
-   * between 0 and 0.5 (exclusive)
+   * Optional argument, advanced model parameter, max anomaly ratio in a time series.
   */
   maxAnomalyRatio?: number;
   /**
    * Optional argument, advanced model parameter, between 0-99, the lower the value is, the larger
-   * the margin value will be which means less anomalies will be accepted. Must be between 0 and 99
-   * (inclusive)
+   * the margin value will be which means less anomalies will be accepted.
   */
   sensitivity?: number;
 }
@@ -133,8 +131,8 @@ export interface LastDetectResponse {
   /**
    * Upper margin of the latest point. UpperMargin is used to calculate upperBoundary, which equals
    * to expectedValue + (100 - sensitivity)*upperMargin. If the value of latest point is between
-   * upperBoudary and lowerBoudary, it should be treated as normal value. By adjusting sensitivity
-   * value, anomaly status of latest point can be changed.
+   * upperBoundary and lowerBoundary, it should be treated as normal value. By adjusting
+   * sensitivity value, anomaly status of latest point can be changed.
   */
   upperMargin?: number;
   /**
@@ -149,7 +147,7 @@ export interface LastDetectResponse {
   isAnomaly?: boolean;
   /**
    * Anomaly status in negative direction of the latest point. True means the latest point is an
-   * anoamly and its real value is smaller than the expected one.
+   * anomaly and its real value is smaller than the expected one.
   */
   isNegativeAnomaly?: boolean;
   /**
