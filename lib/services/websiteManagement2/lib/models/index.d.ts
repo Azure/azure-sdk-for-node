@@ -6669,7 +6669,7 @@ export interface AppServiceEnvironmentResource extends Resource {
 }
 
 /**
- * ARM resource for a app service environment.
+ * ARM resource for a app service enviroment.
 */
 export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   /**
@@ -6838,6 +6838,36 @@ export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   sslCertKeyVaultSecretName?: string;
 }
 
+export interface EndpointDetail {
+  /**
+   * An IP Address that Domain Name currently resolves to.
+  */
+  ipAddress?: string;
+  /**
+   * The port an endpoint is connected to.
+  */
+  port?: number;
+  /**
+   * The time in milliseconds it takes to connect to this IpAddress at this Port.
+  */
+  latency?: number;
+  /**
+   * Whether it is possible to connect to IpAddress.
+  */
+  isAccessable?: boolean;
+}
+
+export interface EndpointDependency {
+  /**
+   * The Domain Name of the dependency.
+  */
+  domainName?: string;
+  /**
+   * The IP Addresses and Ports used when connecting to DomainName.
+  */
+  endpointDetails?: EndpointDetail[];
+}
+
 /**
  * Diagnostics for an App Service Environment.
 */
@@ -6850,6 +6880,24 @@ export interface HostingEnvironmentDiagnostics {
    * Diagnostics output.
   */
   diagnosicsOutput?: string;
+}
+
+/**
+ * Endpoints for a particular type
+*/
+export interface InboundEnvironmentEndpoint {
+  /**
+   * Text describing the endpoints.
+  */
+  description?: string;
+  /**
+   * The endpoint ip addresses in cidr notation.
+  */
+  endpoints?: string[];
+  /**
+   * The ports
+  */
+  ports?: string[];
 }
 
 /**
@@ -6886,6 +6934,20 @@ export interface MetricDefinition extends ProxyOnlyResource {
    * Friendly name shown in the UI.
   */
   readonly displayName?: string;
+}
+
+/**
+ * Endpoints of a common type.
+*/
+export interface OutboundEnvironmentEndpoint {
+  /**
+   * Short description of the endpoints.
+  */
+  category?: string;
+  /**
+   * The endpoint's domain name and the IP Addresses it currently resolves to.
+  */
+  endpoints?: EndpointDependency[];
 }
 
 /**

@@ -52467,6 +52467,70 @@ export interface AppServiceEnvironments {
 
 
     /**
+     * @summary Get the network endpoints of all inbound dependencies of an ase.
+     *
+     * Get the network endpoints of all inbound dependencies of an ase.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getInboundNetworkDependenciesEndpointsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InboundEnvironmentEndpoint[]>>;
+
+    /**
+     * @summary Get the network endpoints of all inbound dependencies of an ase.
+     *
+     * Get the network endpoints of all inbound dependencies of an ase.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getInboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InboundEnvironmentEndpoint[]>;
+    getInboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, callback: ServiceCallback<models.InboundEnvironmentEndpoint[]>): void;
+    getInboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InboundEnvironmentEndpoint[]>): void;
+
+
+    /**
      * @summary Get global metric definitions of an App Service Environment.
      *
      * Get global metric definitions of an App Service Environment.
@@ -53597,6 +53661,70 @@ export interface AppServiceEnvironments {
     listOperations(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Operation[]>;
     listOperations(resourceGroupName: string, name: string, callback: ServiceCallback<models.Operation[]>): void;
     listOperations(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Operation[]>): void;
+
+
+    /**
+     * @summary Get the network endpoints of all outbound dependencies of an ase.
+     *
+     * Get the network endpoints of all outbound dependencies of an ase.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOutboundNetworkDependenciesEndpointsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OutboundEnvironmentEndpoint[]>>;
+
+    /**
+     * @summary Get the network endpoints of all outbound dependencies of an ase.
+     *
+     * Get the network endpoints of all outbound dependencies of an ase.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOutboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OutboundEnvironmentEndpoint[]>;
+    getOutboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, callback: ServiceCallback<models.OutboundEnvironmentEndpoint[]>): void;
+    getOutboundNetworkDependenciesEndpoints(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OutboundEnvironmentEndpoint[]>): void;
 
 
     /**
