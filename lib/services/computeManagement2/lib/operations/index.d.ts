@@ -15531,6 +15531,10 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} parameters Parameters supplied to the Update Virtual Machine
      * Scale Sets VM operation.
      *
+     * @param {boolean} [parameters.protectFromScaleIn] Specifies whether the
+     * virtual machine instance shouldn't be considered for deletion during a
+     * scale-in operation
+     *
      * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
      * for the virtual machine.
      *
@@ -15943,6 +15947,10 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} parameters Parameters supplied to the Update Virtual Machine
      * Scale Sets VM operation.
+     *
+     * @param {boolean} [parameters.protectFromScaleIn] Specifies whether the
+     * virtual machine instance shouldn't be considered for deletion during a
+     * scale-in operation
      *
      * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
      * for the virtual machine.
@@ -17240,6 +17248,10 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} parameters Parameters supplied to the Update Virtual Machine
      * Scale Sets VM operation.
      *
+     * @param {boolean} [parameters.protectFromScaleIn] Specifies whether the
+     * virtual machine instance shouldn't be considered for deletion during a
+     * scale-in operation
+     *
      * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
      * for the virtual machine.
      *
@@ -17652,6 +17664,10 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} parameters Parameters supplied to the Update Virtual Machine
      * Scale Sets VM operation.
+     *
+     * @param {boolean} [parameters.protectFromScaleIn] Specifies whether the
+     * virtual machine instance shouldn't be considered for deletion during a
+     * scale-in operation
      *
      * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
      * for the virtual machine.
