@@ -1213,6 +1213,10 @@ export interface BackupStatusResponse {
    */
   protectionStatus?: string;
   /**
+   * Specifies the arm resource id of the vault
+   */
+  vaultId?: string;
+  /**
    * Specifies the fabric name - Azure or AD. Possible values include: 'Invalid', 'Azure'
    */
   fabricName?: string;
@@ -2098,6 +2102,10 @@ export interface PreValidateEnableBackupRequest {
    * ARM Virtual Machine Id
    */
   resourceId?: string;
+  /**
+   * Specifies the arm resource id of the vault
+   */
+  vaultId?: string;
   /**
    * Configuration of VM if any needs to be validated like OS type etc
    */
