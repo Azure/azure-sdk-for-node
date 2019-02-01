@@ -873,14 +873,21 @@ export interface Amount {
  * @member {string} [skuName] Sku name of the reserved instance resource.
  * @member {string} [region] Region of the reserved instance resource.
  * @member {string} [term] RI recommendations in one or three year terms.
- * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * @member {object} [costWithNoRI] The total amount of cost without reserved
  * instances.
+ * @member {string} [costWithNoRI.currency] The currency for the amount value.
+ * @member {number} [costWithNoRI.value] Tha actual amount value.
  * @member {number} [recommendedQuantity] Recommended quality for reserved
  * instances.
- * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * @member {object} [totalCostWithRI] The total amount of cost with reserved
  * instances.
- * @member {number} [netSavings] Total estimated savings with reserved
+ * @member {string} [totalCostWithRI.currency] The currency for the amount
+ * value.
+ * @member {number} [totalCostWithRI.value] Tha actual amount value.
+ * @member {object} [netSavings] Total estimated savings with reserved
  * instances.
+ * @member {string} [netSavings.currency] The currency for the amount value.
+ * @member {number} [netSavings.value] Tha actual amount value.
  * @member {date} [firstUsageDate] The usage date for looking back.
  */
 export interface ReservationRecommendationPropertiesWithAmount {
@@ -889,10 +896,10 @@ export interface ReservationRecommendationPropertiesWithAmount {
   readonly skuName?: string;
   readonly region?: string;
   readonly term?: string;
-  readonly costWithNoRI?: number;
+  costWithNoRI?: Amount;
   readonly recommendedQuantity?: number;
-  readonly totalCostWithRI?: number;
-  readonly netSavings?: number;
+  totalCostWithRI?: Amount;
+  netSavings?: Amount;
   readonly firstUsageDate?: Date;
 }
 
@@ -908,14 +915,21 @@ export interface ReservationRecommendationPropertiesWithAmount {
  * @member {string} [skuName] Sku name of the reserved instance resource.
  * @member {string} [region] Region of the reserved instance resource.
  * @member {string} [term] RI recommendations in one or three year terms.
- * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * @member {object} [costWithNoRI] The total amount of cost without reserved
  * instances.
+ * @member {string} [costWithNoRI.currency] The currency for the amount value.
+ * @member {number} [costWithNoRI.value] Tha actual amount value.
  * @member {number} [recommendedQuantity] Recommended quality for reserved
  * instances.
- * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * @member {object} [totalCostWithRI] The total amount of cost with reserved
  * instances.
- * @member {number} [netSavings] Total estimated savings with reserved
+ * @member {string} [totalCostWithRI.currency] The currency for the amount
+ * value.
+ * @member {number} [totalCostWithRI.value] Tha actual amount value.
+ * @member {object} [netSavings] Total estimated savings with reserved
  * instances.
+ * @member {string} [netSavings.currency] The currency for the amount value.
+ * @member {number} [netSavings.value] Tha actual amount value.
  * @member {date} [firstUsageDate] The usage date for looking back.
  */
 export interface ReservationRecommendationsShared extends Resource {
@@ -924,10 +938,10 @@ export interface ReservationRecommendationsShared extends Resource {
   readonly skuName?: string;
   readonly region?: string;
   readonly term?: string;
-  readonly costWithNoRI?: number;
+  costWithNoRI?: Amount;
   readonly recommendedQuantity?: number;
-  readonly totalCostWithRI?: number;
-  readonly netSavings?: number;
+  totalCostWithRI?: Amount;
+  netSavings?: Amount;
   readonly firstUsageDate?: Date;
 }
 
@@ -943,14 +957,21 @@ export interface ReservationRecommendationsShared extends Resource {
  * @member {string} [skuName] Sku name of the reserved instance resource.
  * @member {string} [region] Region of the reserved instance resource.
  * @member {string} [term] RI recommendations in one or three year terms.
- * @member {number} [costWithNoRI] The total amount of cost without reserved
+ * @member {object} [costWithNoRI] The total amount of cost without reserved
  * instances.
+ * @member {string} [costWithNoRI.currency] The currency for the amount value.
+ * @member {number} [costWithNoRI.value] Tha actual amount value.
  * @member {number} [recommendedQuantity] Recommended quality for reserved
  * instances.
- * @member {number} [totalCostWithRI] The total amount of cost with reserved
+ * @member {object} [totalCostWithRI] The total amount of cost with reserved
  * instances.
- * @member {number} [netSavings] Total estimated savings with reserved
+ * @member {string} [totalCostWithRI.currency] The currency for the amount
+ * value.
+ * @member {number} [totalCostWithRI.value] Tha actual amount value.
+ * @member {object} [netSavings] Total estimated savings with reserved
  * instances.
+ * @member {string} [netSavings.currency] The currency for the amount value.
+ * @member {number} [netSavings.value] Tha actual amount value.
  * @member {date} [firstUsageDate] The usage date for looking back.
  * @member {uuid} [subscriptionId] Subscription Id.
  */
@@ -960,10 +981,10 @@ export interface ReservationRecommendationsSingle extends Resource {
   readonly skuName?: string;
   readonly region?: string;
   readonly term?: string;
-  readonly costWithNoRI?: number;
+  costWithNoRI?: Amount;
   readonly recommendedQuantity?: number;
-  readonly totalCostWithRI?: number;
-  readonly netSavings?: number;
+  totalCostWithRI?: Amount;
+  netSavings?: Amount;
   readonly firstUsageDate?: Date;
   readonly subscriptionId?: string;
 }
