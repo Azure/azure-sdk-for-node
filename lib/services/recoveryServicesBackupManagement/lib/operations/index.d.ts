@@ -40,6 +40,9 @@ export interface ProtectionIntentOperations {
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
      *
+     * @param {string} [parameters.vaultId] Specifies the arm resource id of the
+     * vault
+     *
      * @param {string} [parameters.properties] Configuration of VM if any needs to
      * be validated like OS type etc
      *
@@ -74,6 +77,9 @@ export interface ProtectionIntentOperations {
      * 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
+     *
+     * @param {string} [parameters.vaultId] Specifies the arm resource id of the
+     * vault
      *
      * @param {string} [parameters.properties] Configuration of VM if any needs to
      * be validated like OS type etc
