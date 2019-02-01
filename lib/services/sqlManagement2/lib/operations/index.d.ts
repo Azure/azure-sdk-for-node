@@ -10838,8 +10838,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {string} parameters.location Resource location.
      *
@@ -10923,8 +10924,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11081,8 +11083,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -11156,8 +11159,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -11258,8 +11262,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11343,8 +11348,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11501,8 +11507,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -11576,8 +11583,9 @@ export interface ManagedInstances {
      * @param {boolean} [parameters.publicDataEndpointEnabled] Whether or not the
      * public data endpoint is enabled.
      *
-     * @param {string} [parameters.proxyOverride] Proxy override of the managed
-     * instance.
+     * @param {string} [parameters.proxyOverride] Connection type used for
+     * connecting to the instance. Possible values include: 'Proxy', 'Redirect',
+     * 'Default'
      *
      * @param {object} [parameters.tags] Resource tags.
      *
