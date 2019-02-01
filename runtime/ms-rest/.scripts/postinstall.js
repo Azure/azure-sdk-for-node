@@ -16,7 +16,7 @@ try {
 
     const firstLine = "This package will soon be deprecated.";
     const secondLine = `Please use ${highlightColor}${typeScriptPackageName}${resetColor}${brightColor} instead.`;
-    const thirdLine = `https://www.npmjs.com/package/${typeScriptPackageName}`;
+    const thirdLine = "Visit https://aka.ms/azure-sdk-for-js-migration for details";
 
     const width = Math.max(firstLine.length, secondLine.length, thirdLine.length) + 4;
 
