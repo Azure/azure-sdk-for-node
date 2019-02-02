@@ -3265,6 +3265,9 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3309,6 +3312,9 @@ export interface AzureFirewalls {
      *
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
@@ -3540,6 +3546,9 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3584,6 +3593,9 @@ export interface AzureFirewalls {
      *
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
