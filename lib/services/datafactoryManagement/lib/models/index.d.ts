@@ -1644,6 +1644,47 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
 }
 
 /**
+ * SAP Business Warehouse Open Hub Destination Linked Service.
+ */
+export interface SapOpenHubLinkedService extends LinkedService {
+  /**
+   * Host name of the SAP BW instance where the open hub destination is located. Type: string (or
+   * Expression with resultType string).
+   */
+  server: any;
+  /**
+   * System number of the BW system where the open hub destination is located. (Usually a two-digit
+   * decimal number represented as a string.) Type: string (or Expression with resultType string).
+   */
+  systemNumber: any;
+  /**
+   * Client ID of the client on the BW system where the open hub destination is located. (Usually a
+   * three-digit decimal number represented as a string) Type: string (or Expression with
+   * resultType string).
+   */
+  clientId: any;
+  /**
+   * Language of the BW system where the open hub destination is located. The default value is EN.
+   * Type: string (or Expression with resultType string).
+   */
+  language?: any;
+  /**
+   * Username to access the SAP BW server where the open hub destination is located. Type: string
+   * (or Expression with resultType string).
+   */
+  userName?: any;
+  /**
+   * Password to access the SAP BW server where the open hub destination is located.
+   */
+  password?: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
  * Azure Function linked service.
  */
 export interface AzureFunctionLinkedService extends LinkedService {
@@ -4422,6 +4463,28 @@ export interface AzureStorageLinkedService extends LinkedService {
 }
 
 /**
+ * Sap Business Warehouse Open Hub Destination Table properties.
+ */
+export interface SapOpenHubTableDataset extends Dataset {
+  /**
+   * The name of the Open Hub Destination with destination type as Database Table. Type: string (or
+   * Expression with resultType string).
+   */
+  openHubDestinationName: any;
+  /**
+   * Whether to exclude the records of the last request. The default value is true. Type: boolean
+   * (or Expression with resultType boolean).
+   */
+  excludeLastRequest?: any;
+  /**
+   * The ID of request for delta loading. Once it is set, only data with requestId larger than the
+   * value of this property will be retrieved. The default value is 0. Type: integer (or Expression
+   * with resultType integer ).
+   */
+  baseRequestId?: any;
+}
+
+/**
  * Responsys dataset.
  */
 export interface ResponsysObjectDataset extends Dataset {
@@ -5547,25 +5610,6 @@ export interface WebActivity extends ExecutionActivity {
 }
 
 /**
- * The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with
- * unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then
- * copied into the targeted sink from the interim S3.
- */
-export interface RedshiftUnloadSettings {
-  /**
-   * The name of the Amazon S3 linked service which will be used for the unload operation when
-   * copying from the Amazon Redshift source.
-   */
-  s3LinkedServiceName: LinkedServiceReference;
-  /**
-   * The bucket of the interim Amazon S3 which will be used to store the unloaded data from Amazon
-   * Redshift source. The bucket must be in the same region as the Amazon Redshift source. Type:
-   * string (or Expression with resultType string).
-   */
-  bucketName: any;
-}
-
-/**
  * A copy activity source.
  */
 export interface CopySource {
@@ -5586,6 +5630,31 @@ export interface CopySource {
    * Describes unknown properties. The value of an unknown property can be of "any" type.
    */
   [additionalPropertyName: string]: any;
+}
+
+/**
+ * A copy activity source for SAP Business Warehouse Open Hub Destination source.
+ */
+export interface SapOpenHubSource extends CopySource {
+}
+
+/**
+ * The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with
+ * unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then
+ * copied into the targeted sink from the interim S3.
+ */
+export interface RedshiftUnloadSettings {
+  /**
+   * The name of the Amazon S3 linked service which will be used for the unload operation when
+   * copying from the Amazon Redshift source.
+   */
+  s3LinkedServiceName: LinkedServiceReference;
+  /**
+   * The bucket of the interim Amazon S3 which will be used to store the unloaded data from Amazon
+   * Redshift source. The bucket must be in the same region as the Amazon Redshift source. Type:
+   * string (or Expression with resultType string).
+   */
+  bucketName: any;
 }
 
 /**
