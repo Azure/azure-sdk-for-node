@@ -3022,9 +3022,6 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
-     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3132,9 +3129,6 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
-     *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3566,9 +3560,6 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
-     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3676,9 +3667,6 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
-     *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
