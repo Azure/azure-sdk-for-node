@@ -26,12 +26,13 @@ const ConsumptionManagementClient = require("azure-arm-consumption");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new ConsumptionManagementClient(creds, subscriptionId);
+    const scope = "testscope";
     const expand = "testexpand";
     const filter = "testfilter";
     const skiptoken = "testskiptoken";
     const top = 1;
     const apply = "testapply";
-    return client.usageDetails.list(expand, filter, skiptoken, top, apply).then((result) => {
+    return client.usageDetails.list(scope, expand, filter, skiptoken, top, apply).then((result) => {
       console.log("The result is:");
       console.log(result);
     });

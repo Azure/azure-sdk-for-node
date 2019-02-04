@@ -851,7 +851,7 @@ export interface ResourceAttributes {
  * @class
  * Initializes a new instance of the QueryOptions class.
  * @constructor
- * Additional parameters for a set of operations.
+ * Additional parameters for list operation.
  *
  * @member {string} [apply] OData apply expression to aggregate usageDetails by
  * tags or (tags and properties/usageStart)
@@ -889,6 +889,19 @@ export interface MarketplacesListResult extends Array<Marketplace> {
 
 /**
  * @class
+ * Initializes a new instance of the BudgetsListResult class.
+ * @constructor
+ * Result of listing budgets. It contains a list of available budgets in the
+ * scope provided.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface BudgetsListResult extends Array<Budget> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReservationSummariesListResult class.
  * @constructor
  * Result of listing reservation summaries.
@@ -920,19 +933,6 @@ export interface ReservationDetailsListResult extends Array<ReservationDetail> {
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ReservationRecommendationsListResult extends Array<ReservationRecommendation> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BudgetsListResult class.
- * @constructor
- * Result of listing budgets. It contains a list of available budgets in the
- * scope provided.
- *
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface BudgetsListResult extends Array<Budget> {
   readonly nextLink?: string;
 }
 
