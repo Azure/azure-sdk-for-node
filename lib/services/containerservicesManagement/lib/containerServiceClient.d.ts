@@ -47,6 +47,8 @@ export default class ContainerServiceClient extends AzureServiceClient {
 
   subscriptionId: string;
 
+  apiVersion: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -54,8 +56,6 @@ export default class ContainerServiceClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  openShiftManagedClusters: operations.OpenShiftManagedClusters;
-  containerServices: operations.ContainerServices;
   operations: operations.Operations;
   managedClusters: operations.ManagedClusters;
 }
