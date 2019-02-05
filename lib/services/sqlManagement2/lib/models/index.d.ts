@@ -3259,6 +3259,28 @@ export interface ManagedServerSecurityAlertPolicy extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the SensitivityLabel class.
+ * @constructor
+ * A sensitivity label.
+ *
+ * @property {string} [labelName] The label name.
+ * @property {string} [labelId] The label ID.
+ * @property {string} [informationType] The information type.
+ * @property {string} [informationTypeId] The information type ID.
+ * @property {boolean} [isDisabled] Is sensitivity recommendation disabled.
+ * Applicable for recommended sensitivity label only. Specifies whether the
+ * sensitivity recommendation on this column is disabled (dismissed) or not.
+ */
+export interface SensitivityLabel extends ProxyResource {
+  labelName?: string;
+  labelId?: string;
+  informationType?: string;
+  informationTypeId?: string;
+  readonly isDisabled?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseOperation class.
  * @constructor
  * A database operation.
@@ -5101,6 +5123,18 @@ export interface RestorableDroppedManagedDatabaseListResult extends Array<Restor
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface RestorePointListResult extends Array<RestorePoint> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabelListResult class.
+ * @constructor
+ * A list of sensitivity labels.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
