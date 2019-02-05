@@ -3267,16 +3267,12 @@ export interface ManagedServerSecurityAlertPolicy extends ProxyResource {
  * @property {string} [labelId] The label ID.
  * @property {string} [informationType] The information type.
  * @property {string} [informationTypeId] The information type ID.
- * @property {boolean} [isDisabled] Is sensitivity recommendation disabled.
- * Applicable for recommended sensitivity label only. Specifies whether the
- * sensitivity recommendation on this column is disabled (dismissed) or not.
  */
 export interface SensitivityLabel extends ProxyResource {
   labelName?: string;
   labelId?: string;
   informationType?: string;
   informationTypeId?: string;
-  readonly isDisabled?: boolean;
 }
 
 /**

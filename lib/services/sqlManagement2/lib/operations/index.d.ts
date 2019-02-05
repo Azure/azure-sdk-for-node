@@ -28874,9 +28874,6 @@ export interface SensitivityLabels {
      *
      * @param {string} [options.skipToken]
      *
-     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
-     * to include disabled recommendations or not.
-     *
      * @param {string} [options.filter] An OData filter expression that filters
      * elements in the collection.
      *
@@ -28889,7 +28886,7 @@ export interface SensitivityLabels {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, includeDisabledRecommendations? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
 
     /**
      * Gets the sensitivity labels of a given database
@@ -28905,9 +28902,6 @@ export interface SensitivityLabels {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.skipToken]
-     *
-     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
-     * to include disabled recommendations or not.
      *
      * @param {string} [options.filter] An OData filter expression that filters
      * elements in the collection.
@@ -28938,9 +28932,9 @@ export interface SensitivityLabels {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, includeDisabledRecommendations? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
     listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { skipToken? : string, includeDisabledRecommendations? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
 
 
     /**
