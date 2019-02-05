@@ -4152,6 +4152,8 @@ export interface AgentPools {
      * Gets a list of agent pools in the specified managed cluster. The operation
      * returns properties of each agent pool.
      *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
      * @param {string} managedClusterName The name of the managed cluster resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -4165,13 +4167,15 @@ export interface AgentPools {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(managedClusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentPoolListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, managedClusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentPoolListResult>>;
 
     /**
      * @summary Gets a list of agent pools in the specified managed cluster.
      *
      * Gets a list of agent pools in the specified managed cluster. The operation
      * returns properties of each agent pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} managedClusterName The name of the managed cluster resource.
      *
@@ -4202,9 +4206,9 @@ export interface AgentPools {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(managedClusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentPoolListResult>;
-    list(managedClusterName: string, callback: ServiceCallback<models.AgentPoolListResult>): void;
-    list(managedClusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentPoolListResult>): void;
+    list(resourceGroupName: string, managedClusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentPoolListResult>;
+    list(resourceGroupName: string, managedClusterName: string, callback: ServiceCallback<models.AgentPoolListResult>): void;
+    list(resourceGroupName: string, managedClusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentPoolListResult>): void;
 
 
     /**
