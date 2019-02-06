@@ -13,21 +13,23 @@ try {
     const packageConfig = require("../../../package.json");
     const packageName = packageConfig["name"];
     const typeScriptPackageName = customPackageMapping[packageName] || "@azure/" + packageName.replace("azure-", "");
+    const invisibleCharactersLength = resetColor.length + brightColor.length + highlightColor.length;
 
-    const firstLine = "This package will soon be deprecated.";
-    const secondLine = `Please use ${highlightColor}${typeScriptPackageName}${resetColor}${brightColor} instead.`;
-    const thirdLine = "Visit https://aka.ms/azure-sdk-for-js-migration for details.";
+    const firstLine = `Active development of this SDK has been moved to ${highlightColor}${typeScriptPackageName}${resetColor}${brightColor} package.`;
+    const secondLine = "This package is in maintenance mode and will be deprecated in July 2018.";
+    const thirdLine = "Visit https://aka.ms/azure-sdk-for-js-migration for more information.";
 
-    const width = Math.max(firstLine.length, secondLine.length, thirdLine.length) + 4;
+    const framePadding = 4;
+    const adjustedFirstLineLength = firstLine.length - invisibleCharactersLength;
+    const width = Math.max(adjustedFirstLineLength, secondLine.length, thirdLine.length) + framePadding;
+    const getPaddingLength = (strLength) => width - strLength - framePadding;
 
-    const getPaddingLength = (str) => width - str.length - 4;
-
-    const firstLinePaddingLength = getPaddingLength(firstLine);
-    const secondLinePaddingLength = getPaddingLength(secondLine) + highlightColor.length + brightColor.length + resetColor.length;
-    const thirdLinePaddingLength = getPaddingLength(thirdLine);
+    const firstLinePaddingLength = getPaddingLength(adjustedFirstLineLength);
+    const secondLinePaddingLength = getPaddingLength(secondLine.length);
+    const thirdLinePaddingLength = getPaddingLength(thirdLine.length);
     const line = "#".repeat(width);
 
-    const formatTextLine = (text, padding) => `# ${" ".repeat(Math.floor(padding / 2))}${text}${" ".repeat(Math.ceil(padding / 2))} #`;
+    const formatTextLine = (text, padding) => `#${" ".repeat(Math.floor(padding / 2))} ${text} ${" ".repeat(Math.ceil(padding / 2))}#`;
 
     console.log(brightColor);
     console.log("\n" + line);
