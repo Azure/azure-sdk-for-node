@@ -266,6 +266,10 @@ export interface ManagedClusterAgentPoolProfile {
    * 'VirtualMachineScaleSets', 'AvailabilitySet'
    */
   type?: string;
+  /**
+   * Availability zones for nodes
+   */
+  availabilityZones?: string[];
 }
 
 /**
