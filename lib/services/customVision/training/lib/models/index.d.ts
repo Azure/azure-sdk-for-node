@@ -434,7 +434,7 @@ export interface Project {
   */
   readonly created?: Date;
   /**
-   * Gets the date this project was last modifed.
+   * Gets the date this project was last modified.
   */
   readonly lastModified?: Date;
   /**

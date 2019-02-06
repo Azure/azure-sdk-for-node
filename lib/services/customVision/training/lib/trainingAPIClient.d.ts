@@ -351,7 +351,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {array} imageIds Image ids. Limited to 64 images.
    *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * @param {array} tagIds Tags to be deleted from the specified images. Limited
    * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
@@ -374,7 +374,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {array} imageIds Image ids. Limited to 64 images.
    *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * @param {array} tagIds Tags to be deleted from the specified images. Limited
    * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
@@ -874,7 +874,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Ids of the images to be deleted. Limted to 256
+   * @param {array} imageIds Ids of the images to be deleted. Limited to 256
    * images per batch.
    *
    * @param {object} [options] Optional Parameters.
@@ -895,7 +895,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Ids of the images to be deleted. Limted to 256
+   * @param {array} imageIds Ids of the images to be deleted. Limited to 256
    * images per batch.
    *
    * @param {object} [options] Optional Parameters.
@@ -1087,8 +1087,8 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch.
+   * @param {object} batch Image and tag ids. Limited to 64 images and 20 tags
+   * per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1115,8 +1115,8 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch.
+   * @param {object} batch Image and tag ids. Limited to 64 images and 20 tags
+   * per batch.
    *
    * @param {array} [batch.images]
    *
