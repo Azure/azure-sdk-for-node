@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/azure-sdk-for-node"
   },
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Client Runtime for Node.js client libraries generated using AutoRest",
   "tags": [
     "node",
@@ -53,7 +53,6 @@
   "scripts": {
     "test": "npm install && npm run jshint && npm run unit",
     "unit": "node test/unit.js testlist.txt",
-    "jshint": "jshint lib --reporter=jslint",
-    "print-deprecation-message": "node ./.scripts/postinstall.js"
+    "jshint": "jshint lib --reporter=jslint"
   }
 }
