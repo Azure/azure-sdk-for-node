@@ -433,7 +433,7 @@ export interface ExpressionEvaluationDetails {
    */
   expression?: string;
   /**
-   * Property path if the expression is a field or an aliase.
+   * Property path if the expression is a field or an alias.
    */
   path?: string;
   /**
