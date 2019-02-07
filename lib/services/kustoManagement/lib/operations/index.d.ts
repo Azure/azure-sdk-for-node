@@ -9,6 +9,7 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -96,7 +97,7 @@ export interface Clusters {
      * @param {object} parameters.sku The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -135,7 +136,7 @@ export interface Clusters {
      * @param {object} parameters.sku The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -197,7 +198,7 @@ export interface Clusters {
      * @param {object} [parameters.sku] The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -235,7 +236,7 @@ export interface Clusters {
      * @param {object} [parameters.sku] The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -752,7 +753,7 @@ export interface Clusters {
      * @param {object} parameters.sku The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -791,7 +792,7 @@ export interface Clusters {
      * @param {object} parameters.sku The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -853,7 +854,7 @@ export interface Clusters {
      * @param {object} [parameters.sku] The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -891,7 +892,7 @@ export interface Clusters {
      * @param {object} [parameters.sku] The SKU of the cluster.
      *
      * @param {string} parameters.sku.name SKU name. Possible values include:
-     * 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8', 'L16'
+     * 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
      *
      * @param {number} [parameters.sku.capacity] SKU capacity.
      *
@@ -1327,21 +1328,18 @@ export interface Databases {
      * @param {object} parameters The database parameters supplied to the
      * CreateOrUpdate operation.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
+     *
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
      * @param {number} [parameters.statistics.size] The database size - the total
      * size of compressed data and index in bytes.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location The geo-location where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1369,21 +1367,18 @@ export interface Databases {
      * @param {object} parameters The database parameters supplied to the
      * CreateOrUpdate operation.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
+     *
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
      * @param {number} [parameters.statistics.size] The database size - the total
      * size of compressed data and index in bytes.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location The geo-location where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1432,11 +1427,11 @@ export interface Databases {
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
@@ -1471,11 +1466,11 @@ export interface Databases {
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
@@ -1813,21 +1808,18 @@ export interface Databases {
      * @param {object} parameters The database parameters supplied to the
      * CreateOrUpdate operation.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
+     *
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
      * @param {number} [parameters.statistics.size] The database size - the total
      * size of compressed data and index in bytes.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location The geo-location where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1855,21 +1847,18 @@ export interface Databases {
      * @param {object} parameters The database parameters supplied to the
      * CreateOrUpdate operation.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
+     *
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
      * @param {number} [parameters.statistics.size] The database size - the total
      * size of compressed data and index in bytes.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location The geo-location where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1918,11 +1907,11 @@ export interface Databases {
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
@@ -1957,11 +1946,11 @@ export interface Databases {
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {number} parameters.softDeletePeriodInDays The number of days data
-     * should be kept before it stops being accessible to queries.
+     * @param {moment.duration} [parameters.softDeletePeriod] The time the data
+     * should be kept before it stops being accessible to queries in TimeSpan.
      *
-     * @param {number} [parameters.hotCachePeriodInDays] The number of days of data
-     * that should be kept in cache for fast queries.
+     * @param {moment.duration} [parameters.hotCachePeriod] The time the data that
+     * should be kept in cache for fast queries in TimeSpan.
      *
      * @param {object} [parameters.statistics] The statistics of the database.
      *
@@ -2066,15 +2055,15 @@ export interface Databases {
 
 /**
  * @class
- * EventHubConnections
+ * DataConnections
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the KustoManagementClient.
  */
-export interface EventHubConnections {
+export interface DataConnections {
 
 
     /**
-     * Returns the list of Event Hub connections of the given Kusto database.
+     * Returns the list of data connections of the given Kusto database.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2090,14 +2079,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnectionListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnectionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnectionListResult>>;
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnectionListResult>>;
 
     /**
-     * Returns the list of Event Hub connections of the given Kusto database.
+     * Returns the list of data connections of the given Kusto database.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2118,7 +2107,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnectionListResult} - The deserialized result object.
+     *                      @resolve {DataConnectionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2126,21 +2115,21 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnectionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnectionListResult} for more
+     *                      {DataConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnectionListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnectionListResult>;
-    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, callback: ServiceCallback<models.EventHubConnectionListResult>): void;
-    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnectionListResult>): void;
+    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnectionListResult>;
+    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, callback: ServiceCallback<models.DataConnectionListResult>): void;
+    listByDatabase(resourceGroupName: string, clusterName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnectionListResult>): void;
 
 
     /**
-     * Checks that the Event Hub data connection parameters are valid.
+     * Checks that the data connection parameters are valid.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2149,27 +2138,18 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
-     * @param {string} [parameters.eventhubConnectionName] The name of the event
-     * hub connection.
+     * @param {string} [parameters.dataConnectionName] The name of the data
+     * connection.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
+     * @param {object} [parameters.properties] The data connection properties to
+     * validate.
      *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
+     * @param {string} [parameters.properties.location] Resource location.
      *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.properties.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2178,14 +2158,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnectionValidationListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnectionValidationListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    eventhubConnectionValidationWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.EventHubConnectionValidation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnectionValidationListResult>>;
+    dataConnectionValidationMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.DataConnectionValidation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnectionValidationListResult>>;
 
     /**
-     * Checks that the Event Hub data connection parameters are valid.
+     * Checks that the data connection parameters are valid.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2194,27 +2174,18 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
-     * @param {string} [parameters.eventhubConnectionName] The name of the event
-     * hub connection.
+     * @param {string} [parameters.dataConnectionName] The name of the data
+     * connection.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
+     * @param {object} [parameters.properties] The data connection properties to
+     * validate.
      *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
+     * @param {string} [parameters.properties.location] Resource location.
      *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.properties.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2228,7 +2199,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnectionValidationListResult} - The deserialized result object.
+     *                      @resolve {DataConnectionValidationListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2236,21 +2207,21 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnectionValidationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnectionValidationListResult} for
-     *                      more information.
+     *                      {DataConnectionValidationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnectionValidationListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    eventhubConnectionValidation(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.EventHubConnectionValidation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnectionValidationListResult>;
-    eventhubConnectionValidation(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.EventHubConnectionValidation, callback: ServiceCallback<models.EventHubConnectionValidationListResult>): void;
-    eventhubConnectionValidation(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.EventHubConnectionValidation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnectionValidationListResult>): void;
+    dataConnectionValidationMethod(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.DataConnectionValidation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnectionValidationListResult>;
+    dataConnectionValidationMethod(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.DataConnectionValidation, callback: ServiceCallback<models.DataConnectionValidationListResult>): void;
+    dataConnectionValidationMethod(resourceGroupName: string, clusterName: string, databaseName: string, parameters: models.DataConnectionValidation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnectionValidationListResult>): void;
 
 
     /**
-     * Returns an Event Hub connection.
+     * Returns a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2259,7 +2230,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2268,14 +2239,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnection>>;
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnection>>;
 
     /**
-     * Returns an Event Hub connection.
+     * Returns a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2284,7 +2255,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2298,7 +2269,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnection} - The deserialized result object.
+     *                      @resolve {DataConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2306,20 +2277,20 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnection} for more information.
+     *                      {DataConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnection>;
-    get(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, callback: ServiceCallback<models.EventHubConnection>): void;
-    get(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnection>): void;
+    get(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnection>;
+    get(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, callback: ServiceCallback<models.DataConnection>): void;
+    get(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnection>): void;
 
 
     /**
-     * Creates or updates a Event Hub connection.
+     * Creates or updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2328,28 +2299,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2358,14 +2315,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnection>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnection>>;
 
     /**
-     * Creates or updates a Event Hub connection.
+     * Creates or updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2374,28 +2331,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2409,7 +2352,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnection} - The deserialized result object.
+     *                      @resolve {DataConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2417,20 +2360,20 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnection} for more information.
+     *                      {DataConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnection>;
-    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, callback: ServiceCallback<models.EventHubConnection>): void;
-    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnection>): void;
+    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnection>;
+    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, callback: ServiceCallback<models.DataConnection>): void;
+    createOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnection>): void;
 
 
     /**
-     * Updates a Event Hub connection.
+     * Updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2439,28 +2382,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the Update operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * Update operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2469,14 +2398,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnection>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnection>>;
 
     /**
-     * Updates a Event Hub connection.
+     * Updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2485,28 +2414,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the Update operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * Update operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2520,7 +2435,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnection} - The deserialized result object.
+     *                      @resolve {DataConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2528,20 +2443,20 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnection} for more information.
+     *                      {DataConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnection>;
-    update(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, callback: ServiceCallback<models.EventHubConnection>): void;
-    update(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnection>): void;
+    update(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnection>;
+    update(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, callback: ServiceCallback<models.DataConnection>): void;
+    update(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnection>): void;
 
 
     /**
-     * Deletes the Event Hub connection with the given name.
+     * Deletes the data connection with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2550,7 +2465,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2563,10 +2478,10 @@ export interface EventHubConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the Event Hub connection with the given name.
+     * Deletes the data connection with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2575,7 +2490,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2603,13 +2518,13 @@ export interface EventHubConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Creates or updates a Event Hub connection.
+     * Creates or updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2618,28 +2533,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2648,14 +2549,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnection>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnection>>;
 
     /**
-     * Creates or updates a Event Hub connection.
+     * Creates or updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2664,28 +2565,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the CreateOrUpdate operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * CreateOrUpdate operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2699,7 +2586,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnection} - The deserialized result object.
+     *                      @resolve {DataConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2707,20 +2594,20 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnection} for more information.
+     *                      {DataConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnection>;
-    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, callback: ServiceCallback<models.EventHubConnection>): void;
-    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnection>): void;
+    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnection>;
+    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, callback: ServiceCallback<models.DataConnection>): void;
+    beginCreateOrUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnection>): void;
 
 
     /**
-     * Updates a Event Hub connection.
+     * Updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2729,28 +2616,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the Update operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * Update operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2759,14 +2632,14 @@ export interface EventHubConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EventHubConnection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DataConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubConnection>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnection>>;
 
     /**
-     * Updates a Event Hub connection.
+     * Updates a data connection.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2775,28 +2648,14 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
-     * @param {object} parameters The Event Hub connection parameters supplied to
-     * the Update operation.
+     * @param {object} parameters The data connection parameters supplied to the
+     * Update operation.
      *
      * @param {string} [parameters.location] Resource location.
      *
-     * @param {string} parameters.eventHubResourceId The resource ID of the event
-     * hub to be used to create a data connection.
-     *
-     * @param {string} parameters.consumerGroup The event hub consumer group.
-     *
-     * @param {string} [parameters.tableName] The table where the data should be
-     * ingested. Optionally the table information can be added to each message.
-     *
-     * @param {string} [parameters.mappingRuleName] The mapping rule to be used to
-     * ingest the data. Optionally the mapping information can be added to each
-     * message.
-     *
-     * @param {string} [parameters.dataFormat] The data format of the message.
-     * Optionally the data format can be added to each message. Possible values
-     * include: 'MULTIJSON', 'JSON', 'CSV'
+     * @param {string} parameters.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2810,7 +2669,7 @@ export interface EventHubConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EventHubConnection} - The deserialized result object.
+     *                      @resolve {DataConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2818,20 +2677,20 @@ export interface EventHubConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EventHubConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EventHubConnection} for more information.
+     *                      {DataConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataConnection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubConnection>;
-    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, callback: ServiceCallback<models.EventHubConnection>): void;
-    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, parameters: models.EventHubConnectionUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConnection>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnection>;
+    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, callback: ServiceCallback<models.DataConnection>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, parameters: models.DataConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnection>): void;
 
 
     /**
-     * Deletes the Event Hub connection with the given name.
+     * Deletes the data connection with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2840,7 +2699,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2853,10 +2712,10 @@ export interface EventHubConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the Event Hub connection with the given name.
+     * Deletes the data connection with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group containing
      * the Kusto cluster.
@@ -2865,7 +2724,7 @@ export interface EventHubConnections {
      *
      * @param {string} databaseName The name of the database in the Kusto cluster.
      *
-     * @param {string} eventHubConnectionName The name of the event hub connection.
+     * @param {string} dataConnectionName The name of the data connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2893,9 +2752,9 @@ export interface EventHubConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, eventHubConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, databaseName: string, dataConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
