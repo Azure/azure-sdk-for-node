@@ -145,6 +145,42 @@ export interface ScheduledAlertRule extends AlertRule {
 }
 
 /**
+ * An azure resource object
+ */
+export interface Resource extends BaseResource {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+}
+
+/**
+ * Action for alert rule.
+ */
+export interface Action extends Resource {
+  /**
+   * Etag of the action.
+   */
+  etag?: string;
+  /**
+   * The uri for the action to trigger.
+   */
+  triggerUri?: string;
+  /**
+   * The unique identifier of the rule.
+   */
+  readonly ruleId?: string;
+}
+
+/**
  * Data connector.
  */
 export interface DataConnector {
@@ -321,24 +357,6 @@ export interface AlertsDataTypeOfDataConnector {
 }
 
 /**
- * An azure resource object
- */
-export interface Resource extends BaseResource {
-  /**
-   * Azure resource Id
-   */
-  readonly id?: string;
-  /**
-   * Azure resource type
-   */
-  readonly type?: string;
-  /**
-   * Azure resource name
-   */
-  readonly name?: string;
-}
-
-/**
  * Lists the operations available in the SecurityInsights RP.
  */
 export interface OperationsList extends Array<Operation> {
@@ -354,6 +372,16 @@ export interface OperationsList extends Array<Operation> {
 export interface AlertRulesList extends Array<AlertRule> {
   /**
    * URL to fetch the next set of alert rules.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List all the actions.
+ */
+export interface ActionsList extends Array<Action> {
+  /**
+   * URL to fetch the next set of actions.
    */
   readonly nextLink?: string;
 }
