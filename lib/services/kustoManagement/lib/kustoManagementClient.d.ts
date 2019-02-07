@@ -58,7 +58,7 @@ export default class KustoManagementClient extends AzureServiceClient {
   // Operation groups
   clusters: operations.Clusters;
   databases: operations.Databases;
-  eventHubConnections: operations.EventHubConnections;
+  dataConnections: operations.DataConnections;
   operations: operations.Operations;
 }
 
