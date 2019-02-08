@@ -20,7 +20,7 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the TransferProductProperties class.
  * @constructor
- * The properties of the product to initiate itansfer.
+ * The properties of the product to initiate a transfer.
  *
  * @member {string} [destinationInvoiceSectionId] Destination invoice section
  * id.
