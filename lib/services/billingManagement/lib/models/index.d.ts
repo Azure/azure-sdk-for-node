@@ -18,6 +18,19 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the TransferProductProperties class.
+ * @constructor
+ * The properties of the product to initiate itansfer.
+ *
+ * @member {string} [destinationInvoiceSectionId] Destination invoice section
+ * id.
+ */
+export interface TransferProductProperties {
+  readonly destinationInvoiceSectionId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
