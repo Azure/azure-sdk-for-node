@@ -2291,7 +2291,7 @@ export interface AlertingAction extends Action {
   /**
    * Azure action group reference.
    */
-  aznsAction: AzNsActionGroup;
+  aznsAction?: AzNsActionGroup;
   /**
    * time (in minutes) for which Alerts should be throttled or suppressed.
    */
