@@ -115,6 +115,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   restorePoints: operations.RestorePoints;
   managedDatabaseSecurityAlertPolicies: operations.ManagedDatabaseSecurityAlertPolicies;
   managedServerSecurityAlertPolicies: operations.ManagedServerSecurityAlertPolicies;
+  sensitivityLabels: operations.SensitivityLabels;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
@@ -131,6 +132,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   recoverableManagedDatabases: operations.RecoverableManagedDatabases;
   managedInstanceVulnerabilityAssessments: operations.ManagedInstanceVulnerabilityAssessments;
   serverVulnerabilityAssessments: operations.ServerVulnerabilityAssessments;
+  managedDatabaseSensitivityLabels: operations.ManagedDatabaseSensitivityLabels;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
