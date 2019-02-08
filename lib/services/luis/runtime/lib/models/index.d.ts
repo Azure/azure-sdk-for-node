@@ -99,7 +99,7 @@ export interface Sentiment {
  */
 export interface LuisResult {
   /**
-   * The input utterance that was analized.
+   * The input utterance that was analyzed.
    */
   query?: string;
   /**
@@ -120,6 +120,7 @@ export interface LuisResult {
   */
   compositeEntities?: CompositeEntityModel[];
   sentimentAnalysis?: Sentiment;
+  connectedServiceResult?: LuisResult;
 }
 
 export interface EntityWithScore extends EntityModel {
