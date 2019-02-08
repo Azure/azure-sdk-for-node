@@ -15,97 +15,78 @@ export {
   CloudError
 };
 
+/**
+ * Represents a tenant ID that is trusted by the cluster.
+ */
 export interface TrustedExternalTenant {
   /**
    * GUID representing an external tenant.
-  */
+   */
   value?: string;
 }
 
+/**
+ * Azure SKU definition.
+ */
 export interface AzureSku {
   /**
-   * SKU name. Possible values include: 'KC8', 'KC16', 'KS8', 'KS16', 'D13_v2', 'D14_v2', 'L8',
-   * 'L16'
-  */
+   * SKU name. Possible values include: 'D13_v2', 'D14_v2', 'L8', 'L16', 'D11_v2', 'D12_v2', 'L4'
+   */
   name: string;
   /**
    * SKU capacity.
-  */
+   */
   capacity?: number;
 }
 
+/**
+ * Azure capacity definition.
+ */
 export interface AzureCapacity {
   /**
    * Scale type. Possible values include: 'automatic', 'manual', 'none'
-  */
+   */
   scaleType: string;
   /**
    * Minimum allowed capacity.
-  */
+   */
   minimum: number;
   /**
    * Maximum allowed capacity.
-  */
+   */
   maximum: number;
   /**
    * The default capacity that would be used.
-  */
+   */
   default: number;
 }
 
+/**
+ * Azure resource SKU definition.
+ */
 export interface AzureResourceSku {
   /**
    * Resource Namespace and Type.
-  */
+   */
   resourceType?: string;
   /**
    * The SKU details.
-  */
+   */
   sku?: AzureSku;
   /**
    * The SKU capacity.
-  */
+   */
   capacity?: AzureCapacity;
 }
 
+/**
+ * A class that contains database statistics information.
+ */
 export interface DatabaseStatistics {
   /**
    * The database size - the total size of compressed data and index in bytes.
-  */
+   */
   size?: number;
-}
-
-/**
- * Class representing an event hub connection validation.
-*/
-export interface EventHubConnectionValidation {
-  /**
-   * The name of the event hub connection.
-  */
-  eventhubConnectionName?: string;
-  /**
-   * The resource ID of the event hub to be used to create a data connection.
-  */
-  eventHubResourceId: string;
-  /**
-   * The event hub consumer group.
-  */
-  consumerGroup: string;
-  /**
-   * The table where the data should be ingested. Optionally the table information can be added to
-   * each message.
-  */
-  tableName?: string;
-  /**
-   * The mapping rule to be used to ingest the data. Optionally the mapping information can be
-   * added to each message.
-  */
-  mappingRuleName?: string;
-  /**
-   * The data format of the message. Optionally the data format can be added to each message.
-   * Possible values include: 'MULTIJSON', 'JSON', 'CSV'
-  */
-  dataFormat?: string;
 }
 
 export interface Resource extends BaseResource {
@@ -144,16 +125,12 @@ export interface TrackedResource extends Resource {
 */
 export interface Cluster extends TrackedResource {
   /**
-   * An ETag of the resource created.
-  */
-  readonly etag?: string;
-  /**
    * The SKU of the cluster.
   */
   sku: AzureSku;
   /**
    * The state of the resource. Possible values include: 'Creating', 'Unavailable', 'Running',
-   * 'Deleting', 'Deleted', 'Stopping', 'Stopped', 'Starting'
+   * 'Deleting', 'Deleted', 'Stopping', 'Stopped', 'Starting', 'Updating'
   */
   readonly state?: string;
   /**
@@ -188,16 +165,12 @@ export interface ClusterUpdate extends Resource {
   */
   location?: string;
   /**
-   * An ETag of the resource updated.
-  */
-  readonly etag?: string;
-  /**
    * The SKU of the cluster.
   */
   sku?: AzureSku;
   /**
    * The state of the resource. Possible values include: 'Creating', 'Unavailable', 'Running',
-   * 'Deleting', 'Deleted', 'Stopping', 'Stopped', 'Starting'
+   * 'Deleting', 'Deleted', 'Stopping', 'Stopped', 'Starting', 'Updating'
   */
   readonly state?: string;
   /**
@@ -220,26 +193,33 @@ export interface ClusterUpdate extends Resource {
 }
 
 /**
+ * The resource model definition for a ARM proxy resource. It will have everything other than
+ * required location and tags
+*/
+export interface ProxyResource extends Resource {
+}
+
+/**
  * Class representing a Kusto database.
 */
-export interface Database extends TrackedResource {
+export interface Database extends ProxyResource {
   /**
-   * An ETag of the resource created.
+   * Resource location.
   */
-  readonly etag?: string;
+  location?: string;
   /**
    * The provisioned state of the resource. Possible values include: 'Running', 'Creating',
    * 'Deleting', 'Succeeded', 'Failed'
   */
   readonly provisioningState?: string;
   /**
-   * The number of days data should be kept before it stops being accessible to queries.
+   * The time the data should be kept before it stops being accessible to queries in TimeSpan.
   */
-  softDeletePeriodInDays: number;
+  softDeletePeriod?: moment.Duration;
   /**
-   * The number of days of data that should be kept in cache for fast queries.
+   * The time the data that should be kept in cache for fast queries in TimeSpan.
   */
-  hotCachePeriodInDays?: number;
+  hotCachePeriod?: moment.Duration;
   /**
    * The statistics of the database.
   */
@@ -255,28 +235,27 @@ export interface DatabaseUpdate extends Resource {
   */
   location?: string;
   /**
-   * An ETag of the resource updated.
-  */
-  readonly etag?: string;
-  /**
    * The provisioned state of the resource. Possible values include: 'Running', 'Creating',
    * 'Deleting', 'Succeeded', 'Failed'
   */
   readonly provisioningState?: string;
   /**
-   * The number of days data should be kept before it stops being accessible to queries.
+   * The time the data should be kept before it stops being accessible to queries in TimeSpan.
   */
-  softDeletePeriodInDays: number;
+  softDeletePeriod?: moment.Duration;
   /**
-   * The number of days of data that should be kept in cache for fast queries.
+   * The time the data that should be kept in cache for fast queries in TimeSpan.
   */
-  hotCachePeriodInDays?: number;
+  hotCachePeriod?: moment.Duration;
   /**
    * The statistics of the database.
   */
   statistics?: DatabaseStatistics;
 }
 
+/**
+ * A class representing database principal entity.
+*/
 export interface DatabasePrincipal {
   /**
    * Database principal role. Possible values include: 'Admin', 'Ingestor', 'Monitor', 'User',
@@ -306,81 +285,25 @@ export interface DatabasePrincipal {
 }
 
 /**
- * The resource model definition for a ARM proxy resource. It will have everything other than
- * required location and tags
+ * Class representing an data connection.
 */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * Class representing an update to event hub connection.
-*/
-export interface EventHubConnectionUpdate extends ProxyResource {
+export interface DataConnection extends ProxyResource {
   /**
    * Resource location.
   */
   location?: string;
   /**
-   * The resource ID of the event hub to be used to create a data connection.
+   * Polymorphic Discriminator
   */
-  eventHubResourceId: string;
-  /**
-   * The event hub consumer group.
-  */
-  consumerGroup: string;
-  /**
-   * The table where the data should be ingested. Optionally the table information can be added to
-   * each message.
-  */
-  tableName?: string;
-  /**
-   * The mapping rule to be used to ingest the data. Optionally the mapping information can be
-   * added to each message.
-  */
-  mappingRuleName?: string;
-  /**
-   * The data format of the message. Optionally the data format can be added to each message.
-   * Possible values include: 'MULTIJSON', 'JSON', 'CSV'
-  */
-  dataFormat?: string;
+  kind: string;
 }
 
 /**
- * Class representing an event hub connection.
+ * The result returned from a data connection validation request.
 */
-export interface EventHubConnection extends ProxyResource {
+export interface DataConnectionValidationResult {
   /**
-   * Resource location.
-  */
-  location?: string;
-  /**
-   * The resource ID of the event hub to be used to create a data connection.
-  */
-  eventHubResourceId: string;
-  /**
-   * The event hub consumer group.
-  */
-  consumerGroup: string;
-  /**
-   * The table where the data should be ingested. Optionally the table information can be added to
-   * each message.
-  */
-  tableName?: string;
-  /**
-   * The mapping rule to be used to ingest the data. Optionally the mapping information can be
-   * added to each message.
-  */
-  mappingRuleName?: string;
-  /**
-   * The data format of the message. Optionally the data format can be added to each message.
-   * Possible values include: 'MULTIJSON', 'JSON', 'CSV'
-  */
-  dataFormat?: string;
-}
-
-export interface EventHubConnectionValidationResult {
-  /**
-   * A message which indicates a problem in event hub connection validation.
+   * A message which indicates a problem in data connection validation.
   */
   errorMessage?: string;
 }
@@ -396,15 +319,96 @@ export interface DatabasePrincipalListRequest {
 }
 
 /**
- * The list Kusto event hub connection validation result.
+ * Class representing an data connection validation.
 */
-export interface EventHubConnectionValidationListResult {
+export interface DataConnectionValidation {
   /**
-   * The list of Kusto event hub connection validation errors.
+   * The name of the data connection.
   */
-  value?: EventHubConnectionValidationResult[];
+  dataConnectionName?: string;
+  /**
+   * The data connection properties to validate.
+  */
+  properties?: DataConnection;
 }
 
+/**
+ * Class representing an event hub data connection.
+*/
+export interface EventHubDataConnection extends DataConnection {
+  /**
+   * The resource ID of the event hub to be used to create a data connection.
+  */
+  eventHubResourceId: string;
+  /**
+   * The event hub consumer group.
+  */
+  consumerGroup: string;
+  /**
+   * The table where the data should be ingested. Optionally the table information can be added to
+   * each message.
+  */
+  tableName?: string;
+  /**
+   * The mapping rule to be used to ingest the data. Optionally the mapping information can be
+   * added to each message.
+  */
+  mappingRuleName?: string;
+  /**
+   * The data format of the message. Optionally the data format can be added to each message.
+   * Possible values include: 'MULTIJSON', 'JSON', 'CSV', 'TSV', 'SCSV', 'SOHSV', 'PSV', 'TXT',
+   * 'RAW', 'SINGLEJSON', 'AVRO'
+  */
+  dataFormat?: string;
+}
+
+/**
+ * Class representing an Event Grid data connection.
+*/
+export interface EventGridDataConnection extends DataConnection {
+  /**
+   * The resource ID of the storage account where the data resides.
+  */
+  storageAccountResourceId: string;
+  /**
+   * The resource ID where the event grid is configured to send events.
+  */
+  eventHubResourceId: string;
+  /**
+   * The event hub consumer group.
+  */
+  consumerGroup: string;
+  /**
+   * The table where the data should be ingested. Optionally the table information can be added to
+   * each message.
+  */
+  tableName: string;
+  /**
+   * The mapping rule to be used to ingest the data. Optionally the mapping information can be
+   * added to each message.
+  */
+  mappingRuleName?: string;
+  /**
+   * The data format of the message. Optionally the data format can be added to each message.
+   * Possible values include: 'MULTIJSON', 'JSON', 'CSV', 'TSV', 'SCSV', 'SOHSV', 'PSV', 'TXT',
+   * 'RAW', 'SINGLEJSON', 'AVRO'
+  */
+  dataFormat: string;
+}
+
+/**
+ * The list Kusto data connection validation result.
+*/
+export interface DataConnectionValidationListResult {
+  /**
+   * The list of Kusto data connection validation errors.
+  */
+  value?: DataConnectionValidationResult[];
+}
+
+/**
+ * The result returned from a cluster check name availability request.
+*/
 export interface ClusterCheckNameRequest {
   /**
    * Cluster name.
@@ -412,6 +416,9 @@ export interface ClusterCheckNameRequest {
   name: string;
 }
 
+/**
+ * The result returned from a database check name availability request.
+*/
 export interface DatabaseCheckNameRequest {
   /**
    * Database name.
@@ -419,6 +426,9 @@ export interface DatabaseCheckNameRequest {
   name: string;
 }
 
+/**
+ * The result returned from a check name availability request.
+*/
 export interface CheckNameResult {
   /**
    * Specifies a Boolean value that indicates if the name is available.
@@ -522,9 +532,9 @@ export interface DatabasePrincipalListResult extends Array<DatabasePrincipal> {
 }
 
 /**
- * The list Kusto event hub connections operation response.
+ * The list Kusto data connections operation response.
 */
-export interface EventHubConnectionListResult extends Array<EventHubConnection> {
+export interface DataConnectionListResult extends Array<DataConnection> {
 }
 
 /**

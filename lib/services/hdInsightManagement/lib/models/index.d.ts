@@ -260,6 +260,15 @@ export interface StorageAccount {
    * The storage account access key.
    */
   key?: string;
+  /**
+   * The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
+   */
+  resourceId?: string;
+  /**
+   * The managed identity (MSI) that is allowed to access the storage account, only to be specified
+   * for Azure Data Lake Storage Gen 2.
+   */
+  msiResourceId?: string;
 }
 
 /**
