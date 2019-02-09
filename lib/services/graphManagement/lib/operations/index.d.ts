@@ -4000,11 +4000,11 @@ export interface OAuth2 {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PermissionsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionsListResult>>;
 
     /**
      * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
@@ -4024,7 +4024,7 @@ export interface OAuth2 {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Permissions} - The deserialized result object.
+     *                      @resolve {PermissionsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4032,16 +4032,16 @@ export interface OAuth2 {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Permissions} for more information.
+     *                      {PermissionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionsListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
-    get(callback: ServiceCallback<models.Permissions>): void;
-    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionsListResult>;
+    get(callback: ServiceCallback<models.PermissionsListResult>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionsListResult>): void;
 
 
     /**
@@ -4139,4 +4139,58 @@ export interface OAuth2 {
     grant(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
     grant(callback: ServiceCallback<models.Permissions>): void;
     grant(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+
+
+    /**
+     * Delete a OAuth2 permission grant for the relevant resource Ids of an app.
+     *
+     * @param {string} objectId The object ID of a permission grant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a OAuth2 permission grant for the relevant resource Ids of an app.
+     *
+     * @param {string} objectId The object ID of a permission grant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(objectId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
