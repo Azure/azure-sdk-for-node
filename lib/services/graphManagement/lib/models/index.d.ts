@@ -898,6 +898,10 @@ export interface Permissions {
   */
   clientId?: string;
   /**
+   * The objectId of the permission grant
+  */
+  objectId?: string;
+  /**
    * Typically set to AllPrincipals
   */
   consentType?: string;

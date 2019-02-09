@@ -4058,6 +4058,8 @@ export interface OAuth2 {
      * @param {string} [options.body.clientId] The objectId of the Service
      * Principal associated with the app
      *
+     * @param {string} [options.body.objectId] The objectId of the permission grant
+     *
      * @param {string} [options.body.consentType] Typically set to AllPrincipals
      *
      * @param {object} [options.body.principalId] Set to null if AllPrincipals is
@@ -4096,6 +4098,8 @@ export interface OAuth2 {
      *
      * @param {string} [options.body.clientId] The objectId of the Service
      * Principal associated with the app
+     *
+     * @param {string} [options.body.objectId] The objectId of the permission grant
      *
      * @param {string} [options.body.consentType] Typically set to AllPrincipals
      *
