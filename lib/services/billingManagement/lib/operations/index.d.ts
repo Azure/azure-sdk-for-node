@@ -713,6 +713,9 @@ export interface Products {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.destinationInvoiceSectionId] Destination invoice
+     * section id.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -722,7 +725,7 @@ export interface Products {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    transferWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    transferWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { destinationInvoiceSectionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to transfer a Product to another InvoiceSection.
@@ -734,6 +737,9 @@ export interface Products {
      * @param {string} productName Product Id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.destinationInvoiceSectionId] Destination invoice
+     * section id.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -759,9 +765,9 @@ export interface Products {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    transfer(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    transfer(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { destinationInvoiceSectionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     transfer(billingAccountId: string, invoiceSectionId: string, productName: string, callback: ServiceCallback<void>): void;
-    transfer(billingAccountId: string, invoiceSectionId: string, productName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    transfer(billingAccountId: string, invoiceSectionId: string, productName: string, options: { destinationInvoiceSectionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**

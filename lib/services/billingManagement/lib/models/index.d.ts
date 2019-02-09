@@ -26,7 +26,7 @@ export { CloudError } from 'ms-rest-azure';
  * id.
  */
 export interface TransferProductProperties {
-  readonly destinationInvoiceSectionId?: string;
+  destinationInvoiceSectionId?: string;
 }
 
 /**
