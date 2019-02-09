@@ -3988,7 +3988,7 @@ export interface OAuth2 {
 
 
     /**
-     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4007,7 +4007,7 @@ export interface OAuth2 {
     getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionsListResult>>;
 
     /**
-     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4193,4 +4193,70 @@ export interface OAuth2 {
     deleteMethod(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(objectId: string, callback: ServiceCallback<void>): void;
     deleteMethod(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * PermissionsGrants
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface PermissionsGrants {
+
+
+    /**
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionsListResult>>;
+
+    /**
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PermissionsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionsListResult>): void;
 }
