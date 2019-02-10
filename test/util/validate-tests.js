@@ -54,6 +54,10 @@ suite('servicesettings-tests', function () {
       check('$root').should.not.throw();
     });
 
+    it('should pass for $web', function () {
+      check('$web').should.not.throw();
+    });
+
     it('should pass for a valid name', function () {
       check('avalidname').should.not.throw();
     });
