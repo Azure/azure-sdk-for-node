@@ -289,6 +289,24 @@ export interface DetectedObject {
 }
 
 /**
+ * A brand detected in an image.
+ */
+export interface DetectedBrand {
+  /**
+   * Label for the brand.
+   */
+  readonly name?: string;
+  /**
+   * Confidence score of having observed the brand in the image, as a value ranging from 0 to 1.
+   */
+  readonly confidence?: number;
+  /**
+   * Approximate location of the detected brand.
+   */
+  readonly rectangle?: BoundingRect;
+}
+
+/**
  * Image metadata.
  */
 export interface ImageMetadata {
@@ -343,6 +361,10 @@ export interface ImageAnalysis {
    * Array of objects describing what was detected in the image.
    */
   objects?: DetectedObject[];
+  /**
+   * Array of brands detected in the image.
+   */
+  brands?: DetectedBrand[];
   /**
    * Id of the REST API request.
    */

@@ -65,7 +65,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -116,7 +118,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -960,7 +964,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -1011,7 +1017,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
