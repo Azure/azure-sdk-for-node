@@ -2233,36 +2233,6 @@ export interface ApplicationGateway extends Resource {
 }
 
 /**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
-}
-
-/**
  * A web application firewall rule.
 */
 export interface ApplicationGatewayFirewallRule {
@@ -2684,10 +2654,6 @@ export interface AzureFirewallNetworkRuleCollection extends SubResource {
 */
 export interface AzureFirewall extends Resource {
   /**
-   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-  */
-  threatIntelMode?: string;
-  /**
    * Collection of application rule collections used by Azure Firewall.
   */
   applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
@@ -2708,6 +2674,10 @@ export interface AzureFirewall extends Resource {
    * 'Deleting', 'Failed'
   */
   provisioningState?: string;
+  /**
+   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+  */
+  threatIntelMode?: string;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -5639,7 +5609,7 @@ export interface ConnectionStateSnapshot {
 */
 export interface ConnectionMonitorQueryResult {
   /**
-   * Status of connection monitor source. Possible values include: 'Uknown', 'Active', 'Inactive'
+   * Status of connection monitor source. Possible values include: 'Unknown', 'Active', 'Inactive'
   */
   sourceStatus?: string;
   /**

@@ -906,11 +906,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableServerVariablesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableServerVariablesResult>>;
+    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available server variables.
@@ -927,7 +927,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableServerVariablesResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -935,18 +935,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableServerVariablesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableServerVariablesResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableServerVariablesResult>;
-    listAvailableServerVariables(callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
-    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableServerVariables(callback: ServiceCallback<string[]>): void;
+    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -959,11 +956,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableRequestHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableRequestHeadersResult>>;
+    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available request headers.
@@ -980,7 +977,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableRequestHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -988,18 +985,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableRequestHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableRequestHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableRequestHeadersResult>;
-    listAvailableRequestHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
-    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableRequestHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -1012,11 +1006,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableResponseHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableResponseHeadersResult>>;
+    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available response headers.
@@ -1033,7 +1027,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableResponseHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1041,18 +1035,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableResponseHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableResponseHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableResponseHeadersResult>;
-    listAvailableResponseHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
-    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableResponseHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -3265,9 +3256,6 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3283,6 +3271,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3313,9 +3304,6 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3331,6 +3319,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3546,9 +3537,6 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3564,6 +3552,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3594,9 +3585,6 @@ export interface AzureFirewalls {
      * @param {object} parameters Parameters supplied to the create or update Azure
      * Firewall operation.
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {array} [parameters.applicationRuleCollections] Collection of
      * application rule collections used by Azure Firewall.
      *
@@ -3612,6 +3600,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
