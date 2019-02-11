@@ -3272,6 +3272,9 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3316,6 +3319,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3547,6 +3553,9 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3591,6 +3600,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *

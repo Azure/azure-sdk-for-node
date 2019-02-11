@@ -2425,7 +2425,7 @@ export interface AzureFirewallIPConfiguration extends SubResource {
 */
 export interface AzureFirewallRCAction {
   /**
-   * The type of action. Possible values include: 'Allow', 'Deny'
+   * The type of action. Possible values include: 'Allow', 'Deny', 'Alert'
   */
   type?: string;
 }
@@ -2674,6 +2674,10 @@ export interface AzureFirewall extends Resource {
    * 'Deleting', 'Failed'
   */
   provisioningState?: string;
+  /**
+   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+  */
+  threatIntelMode?: string;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
