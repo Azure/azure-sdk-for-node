@@ -2233,36 +2233,6 @@ export interface ApplicationGateway extends Resource {
 }
 
 /**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
-}
-
-/**
  * A web application firewall rule.
 */
 export interface ApplicationGatewayFirewallRule {
@@ -2563,7 +2533,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
