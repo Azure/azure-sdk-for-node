@@ -206,7 +206,7 @@ export interface AlertRules {
 
 
     /**
-     * Gets a alert rule.
+     * Gets the alert rule.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -232,7 +232,7 @@ export interface AlertRules {
     getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRule>>;
 
     /**
-     * Gets a alert rule.
+     * Gets the alert rule.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -430,6 +430,242 @@ export interface AlertRules {
 
 
     /**
+     * Gets the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Action>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getActionWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Action>>;
+
+    /**
+     * Gets the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Action} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Action} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Action} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Action>;
+    getAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, callback: ServiceCallback<models.Action>): void;
+    getAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Action>): void;
+
+
+    /**
+     * Creates or updates the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} action The action
+     *
+     * @param {string} [action.etag] Etag of the action.
+     *
+     * @param {string} [action.triggerUri] The uri for the action to trigger.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Action>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createActionWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Action>>;
+
+    /**
+     * Creates or updates the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} action The action
+     *
+     * @param {string} [action.etag] Etag of the action.
+     *
+     * @param {string} [action.triggerUri] The uri for the action to trigger.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Action} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Action} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Action} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Action>;
+    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, callback: ServiceCallback<models.Action>): void;
+    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Action>): void;
+
+
+    /**
+     * Delete the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteActionWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the action of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {string} actionId Action ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, callback: ServiceCallback<void>): void;
+    deleteAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets all alert rules.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -484,6 +720,1101 @@ export interface AlertRules {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRulesList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.AlertRulesList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRulesList>): void;
+}
+
+/**
+ * @class
+ * Actions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface Actions {
+
+
+    /**
+     * Gets all actions of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAlertRuleWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
+
+    /**
+     * Gets all actions of alert rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} ruleId Alert rule ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActionsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAlertRule(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
+    listByAlertRule(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, callback: ServiceCallback<models.ActionsList>): void;
+    listByAlertRule(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
+
+
+    /**
+     * Gets all actions.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
+
+    /**
+     * Gets all actions.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActionsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.ActionsList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
+
+
+    /**
+     * Gets all actions of alert rule.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAlertRuleNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
+
+    /**
+     * Gets all actions of alert rule.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActionsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAlertRuleNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
+    listByAlertRuleNext(nextPageLink: string, callback: ServiceCallback<models.ActionsList>): void;
+    listByAlertRuleNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
+
+
+    /**
+     * Gets all actions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
+
+    /**
+     * Gets all actions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActionsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ActionsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
+}
+
+/**
+ * @class
+ * Cases
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface Cases {
+
+
+    /**
+     * Gets all cases.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CaseList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseList>>;
+
+    /**
+     * Gets all cases.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CaseList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CaseList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CaseList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.CaseList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseList>): void;
+
+
+    /**
+     * Gets a case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CaseModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseModel>>;
+
+    /**
+     * Gets a case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CaseModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CaseModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CaseModel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseModel>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, callback: ServiceCallback<models.CaseModel>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseModel>): void;
+
+
+    /**
+     * Creates or updates the case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} caseParameter The case
+     *
+     * @param {string} [caseParameter.etag] Etag of the alert rule.
+     *
+     * @param {date} [caseParameter.lastUpdatedTimeUtc] The last time the case was
+     * updated
+     *
+     * @param {date} [caseParameter.createdTimeUtc] The time the case was created
+     *
+     * @param {date} [caseParameter.endTimeUtc] The end time of the case
+     *
+     * @param {date} [caseParameter.startTimeUtc] The start time of the case
+     *
+     * @param {array} [caseParameter.tags] List of tags
+     *
+     * @param {string} [caseParameter.description] The description of the case
+     *
+     * @param {string} caseParameter.title The title of the case
+     *
+     * @param {object} [caseParameter.assignedTo] Describes a user that the case is
+     * assigned to
+     *
+     * @param {uuid} [caseParameter.assignedTo.objectId] The object id of the user.
+     *
+     * @param {string} [caseParameter.assignedTo.email] The email of the user.
+     *
+     * @param {string} [caseParameter.assignedTo.name] The name of the user.
+     *
+     * @param {string} caseParameter.severity The severity of the case. Possible
+     * values include: 'Critical', 'High', 'Medium', 'Low', 'Informational'
+     *
+     * @param {string} caseParameter.status The status of the case. Possible values
+     * include: 'Draft', 'Open', 'InProgress', 'Closed'
+     *
+     * @param {string} [caseParameter.closeReason] The reason the case was closed.
+     * Possible values include: 'Resolved', 'Dismissed', 'Other'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CaseModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseModel>>;
+
+    /**
+     * Creates or updates the case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} caseParameter The case
+     *
+     * @param {string} [caseParameter.etag] Etag of the alert rule.
+     *
+     * @param {date} [caseParameter.lastUpdatedTimeUtc] The last time the case was
+     * updated
+     *
+     * @param {date} [caseParameter.createdTimeUtc] The time the case was created
+     *
+     * @param {date} [caseParameter.endTimeUtc] The end time of the case
+     *
+     * @param {date} [caseParameter.startTimeUtc] The start time of the case
+     *
+     * @param {array} [caseParameter.tags] List of tags
+     *
+     * @param {string} [caseParameter.description] The description of the case
+     *
+     * @param {string} caseParameter.title The title of the case
+     *
+     * @param {object} [caseParameter.assignedTo] Describes a user that the case is
+     * assigned to
+     *
+     * @param {uuid} [caseParameter.assignedTo.objectId] The object id of the user.
+     *
+     * @param {string} [caseParameter.assignedTo.email] The email of the user.
+     *
+     * @param {string} [caseParameter.assignedTo.name] The name of the user.
+     *
+     * @param {string} caseParameter.severity The severity of the case. Possible
+     * values include: 'Critical', 'High', 'Medium', 'Low', 'Informational'
+     *
+     * @param {string} caseParameter.status The status of the case. Possible values
+     * include: 'Draft', 'Open', 'InProgress', 'Closed'
+     *
+     * @param {string} [caseParameter.closeReason] The reason the case was closed.
+     * Possible values include: 'Resolved', 'Dismissed', 'Other'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CaseModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CaseModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CaseModel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseModel>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, callback: ServiceCallback<models.CaseModel>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseModel>): void;
+
+
+    /**
+     * Delete the case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the case.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} caseId Case ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all cases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CaseList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseList>>;
+
+    /**
+     * Gets all cases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CaseList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CaseList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CaseList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.CaseList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseList>): void;
+}
+
+/**
+ * @class
+ * Bookmarks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface Bookmarks {
+
+
+    /**
+     * Gets all bookmarks.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BookmarkList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BookmarkList>>;
+
+    /**
+     * Gets all bookmarks.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BookmarkList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BookmarkList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BookmarkList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BookmarkList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.BookmarkList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BookmarkList>): void;
+
+
+    /**
+     * Gets a bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Bookmark>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Bookmark>>;
+
+    /**
+     * Gets a bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Bookmark} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Bookmark} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Bookmark} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Bookmark>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, callback: ServiceCallback<models.Bookmark>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Bookmark>): void;
+
+
+    /**
+     * Creates or updates the bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} bookmark The bookmark
+     *
+     * @param {string} [bookmark.etag] Etag of the bookmark.
+     *
+     * @param {string} bookmark.displayName The display name of the bookmark
+     *
+     * @param {date} [bookmark.lastUpdatedTimeUtc] The last time the bookmark was
+     * updated
+     *
+     * @param {date} [bookmark.createdTimeUtc] The time the bookmark was created
+     *
+     * @param {object} [bookmark.createdBy] Describes a user that created the
+     * bookmark
+     *
+     * @param {uuid} [bookmark.createdBy.objectId] The object id of the user.
+     *
+     * @param {string} [bookmark.createdBy.email] The email of the user.
+     *
+     * @param {string} [bookmark.createdBy.name] The name of the user.
+     *
+     * @param {object} [bookmark.updatedBy] Describes a user that updated the
+     * bookmark
+     *
+     * @param {uuid} [bookmark.updatedBy.objectId] The object id of the user.
+     *
+     * @param {string} [bookmark.updatedBy.email] The email of the user.
+     *
+     * @param {string} [bookmark.updatedBy.name] The name of the user.
+     *
+     * @param {string} [bookmark.notes] The notes of the bookmark
+     *
+     * @param {array} [bookmark.tags] List of tags
+     *
+     * @param {string} [bookmark.query] The query of the bookmark.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Bookmark>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Bookmark>>;
+
+    /**
+     * Creates or updates the bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} bookmark The bookmark
+     *
+     * @param {string} [bookmark.etag] Etag of the bookmark.
+     *
+     * @param {string} bookmark.displayName The display name of the bookmark
+     *
+     * @param {date} [bookmark.lastUpdatedTimeUtc] The last time the bookmark was
+     * updated
+     *
+     * @param {date} [bookmark.createdTimeUtc] The time the bookmark was created
+     *
+     * @param {object} [bookmark.createdBy] Describes a user that created the
+     * bookmark
+     *
+     * @param {uuid} [bookmark.createdBy.objectId] The object id of the user.
+     *
+     * @param {string} [bookmark.createdBy.email] The email of the user.
+     *
+     * @param {string} [bookmark.createdBy.name] The name of the user.
+     *
+     * @param {object} [bookmark.updatedBy] Describes a user that updated the
+     * bookmark
+     *
+     * @param {uuid} [bookmark.updatedBy.objectId] The object id of the user.
+     *
+     * @param {string} [bookmark.updatedBy.email] The email of the user.
+     *
+     * @param {string} [bookmark.updatedBy.name] The name of the user.
+     *
+     * @param {string} [bookmark.notes] The notes of the bookmark
+     *
+     * @param {array} [bookmark.tags] List of tags
+     *
+     * @param {string} [bookmark.query] The query of the bookmark.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Bookmark} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Bookmark} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Bookmark} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Bookmark>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, callback: ServiceCallback<models.Bookmark>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Bookmark>): void;
+
+
+    /**
+     * Delete the bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the bookmark.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} bookmarkId Bookmark ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all bookmarks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BookmarkList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BookmarkList>>;
+
+    /**
+     * Gets all bookmarks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BookmarkList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BookmarkList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BookmarkList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BookmarkList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.BookmarkList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BookmarkList>): void;
 }
 
 /**
@@ -841,4 +2172,641 @@ export interface DataConnectors {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnectorList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.DataConnectorList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnectorList>): void;
+}
+
+/**
+ * @class
+ * Entities
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface Entities {
+
+
+    /**
+     * Gets all entities.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EntityList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityList>>;
+
+    /**
+     * Gets all entities.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EntityList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EntityList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EntityList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.EntityList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityList>): void;
+
+
+    /**
+     * Gets an entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} entityId entity ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Entity>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Entity>>;
+
+    /**
+     * Gets an entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} entityId entity ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Entity} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Entity} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Entity} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Entity>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, entityId: string, callback: ServiceCallback<models.Entity>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Entity>): void;
+
+
+    /**
+     * Gets all entities.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EntityList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityList>>;
+
+    /**
+     * Gets all entities.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EntityList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EntityList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EntityList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EntityList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityList>): void;
+}
+
+/**
+ * @class
+ * OfficeConsents
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface OfficeConsents {
+
+
+    /**
+     * Gets all office365 consents.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OfficeConsentList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OfficeConsentList>>;
+
+    /**
+     * Gets all office365 consents.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OfficeConsentList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OfficeConsentList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OfficeConsentList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OfficeConsentList>;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.OfficeConsentList>): void;
+    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OfficeConsentList>): void;
+
+
+    /**
+     * Gets an office365 consent.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} consentId consent ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OfficeConsent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OfficeConsent>>;
+
+    /**
+     * Gets an office365 consent.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} consentId consent ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OfficeConsent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OfficeConsent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OfficeConsent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OfficeConsent>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, callback: ServiceCallback<models.OfficeConsent>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OfficeConsent>): void;
+
+
+    /**
+     * Delete the office365 consent.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} consentId consent ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the office365 consent.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} consentId consent ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, consentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all office365 consents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OfficeConsentList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OfficeConsentList>>;
+
+    /**
+     * Gets all office365 consents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OfficeConsentList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OfficeConsentList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OfficeConsentList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OfficeConsentList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OfficeConsentList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OfficeConsentList>): void;
+}
+
+/**
+ * @class
+ * ProductSettings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityInsights.
+ */
+export interface ProductSettings {
+
+
+    /**
+     * Gets a stting.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} settingsName The setting name. Supports- Fusion, UEBA
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Settings>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Settings>>;
+
+    /**
+     * Gets a stting.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} settingsName The setting name. Supports- Fusion, UEBA
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Settings} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Settings} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Settings} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Settings>;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, callback: ServiceCallback<models.Settings>): void;
+    get(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Settings>): void;
+
+
+    /**
+     * Creates or updates the setting.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} settingsName The setting name. Supports- Fusion, UEBA
+     *
+     * @param {object} settings The setting
+     *
+     * @param {string} settings.kind Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Settings>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Settings>>;
+
+    /**
+     * Creates or updates the setting.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} operationalInsightsResourceProvider The namespace of
+     * workspaces resource provider- Microsoft.OperationalInsights.
+     *
+     * @param {string} workspaceName The name of the workspace.
+     *
+     * @param {string} settingsName The setting name. Supports- Fusion, UEBA
+     *
+     * @param {object} settings The setting
+     *
+     * @param {string} settings.kind Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Settings} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Settings} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Settings} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Settings>;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, callback: ServiceCallback<models.Settings>): void;
+    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Settings>): void;
 }
