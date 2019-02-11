@@ -1362,6 +1362,10 @@ export interface Sku {
  * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
  * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
+ * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
+ * data endpoint is enabled.
+ * @property {string} [proxyOverride] Connection type used for connecting to
+ * the instance. Possible values include: 'Proxy', 'Redirect', 'Default'
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1377,6 +1381,8 @@ export interface ManagedInstance extends TrackedResource {
   collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
+  publicDataEndpointEnabled?: boolean;
+  proxyOverride?: string;
 }
 
 /**
@@ -1415,6 +1421,10 @@ export interface ManagedInstance extends TrackedResource {
  * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
  * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
+ * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
+ * data endpoint is enabled.
+ * @property {string} [proxyOverride] Connection type used for connecting to
+ * the instance. Possible values include: 'Proxy', 'Redirect', 'Default'
  * @property {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1430,6 +1440,8 @@ export interface ManagedInstanceUpdate {
   collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
+  publicDataEndpointEnabled?: boolean;
+  proxyOverride?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -3245,6 +3257,24 @@ export interface ManagedServerSecurityAlertPolicy extends ProxyResource {
   storageAccountAccessKey?: string;
   retentionDays?: number;
   readonly creationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabel class.
+ * @constructor
+ * A sensitivity label.
+ *
+ * @property {string} [labelName] The label name.
+ * @property {string} [labelId] The label ID.
+ * @property {string} [informationType] The information type.
+ * @property {string} [informationTypeId] The information type ID.
+ */
+export interface SensitivityLabel extends ProxyResource {
+  labelName?: string;
+  labelId?: string;
+  informationType?: string;
+  informationTypeId?: string;
 }
 
 /**
@@ -5091,6 +5121,18 @@ export interface RestorableDroppedManagedDatabaseListResult extends Array<Restor
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface RestorePointListResult extends Array<RestorePoint> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabelListResult class.
+ * @constructor
+ * A list of sensitivity labels.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
