@@ -180,38 +180,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -220,7 +234,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -369,38 +385,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -409,7 +439,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -1360,38 +1392,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -1400,7 +1446,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -1549,38 +1597,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -1589,7 +1651,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
