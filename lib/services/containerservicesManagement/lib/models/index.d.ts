@@ -1032,6 +1032,10 @@ export interface ManagedCluster extends Resource {
    */
   enableRBAC?: boolean;
   /**
+   * Whether to enable Kubernetes Pod security policy.
+   */
+  enablePodSecurityPolicy?: boolean;
+  /**
    * Profile of network configuration.
    */
   networkProfile?: ContainerServiceNetworkProfile;
