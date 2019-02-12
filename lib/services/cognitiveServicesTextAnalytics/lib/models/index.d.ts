@@ -16,7 +16,8 @@ import * as moment from "moment";
  * Initializes a new instance of the MultiLanguageInput class.
  * @constructor
  * @member {string} [language] This is the 2 letter ISO 639-1 representation of
- * a language. For example, use "en" for English; "es" for Spanish etc.,
+ * a language.
+ * For example, use "en" for English; "es" for Spanish etc.,
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {string} [text]
  */
@@ -38,16 +39,91 @@ export interface MultiLanguageBatchInput {
 
 /**
  * @class
- * Initializes a new instance of the KeyPhraseBatchResultItem class.
+ * Initializes a new instance of the MatchRecord class.
  * @constructor
- * @member {array} [keyPhrases] A list of representative words or phrases. The
- * number of key phrases returned is proportional to the number of words in the
- * input document.
- * @member {string} [id] Unique document identifier.
+ * @member {number} [wikipediaScore] (optional) If a well-known item with
+ * Wikipedia link is recognized,
+ * a decimal number denoting the confidence level of the Wikipedia info will be
+ * returned.
+ * @member {number} [entityTypeScore] (optional) If an entity type is
+ * recognized,
+ * a decimal number denoting the confidence level of the entity type will be
+ * returned.
+ * @member {string} [text] Entity text as appears in the request.
+ * @member {number} [offset] Start position (in Unicode characters) for the
+ * entity match text.
+ * @member {number} [length] Length (in Unicode characters) for the entity
+ * match text.
  */
-export interface KeyPhraseBatchResultItem {
-  readonly keyPhrases?: string[];
-  readonly id?: string;
+export interface MatchRecord {
+  wikipediaScore?: number;
+  entityTypeScore?: number;
+  text?: string;
+  offset?: number;
+  length?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityRecord class.
+ * @constructor
+ * @member {string} [name] Entity formal name.
+ * @member {array} [matches] List of instances this entity appears in the text.
+ * @member {string} [wikipediaLanguage] Wikipedia language for which the
+ * WikipediaId and WikipediaUrl refers to.
+ * @member {string} [wikipediaId] Wikipedia unique identifier of the recognized
+ * entity.
+ * @member {string} [wikipediaUrl] URL for the entity's Wikipedia page.
+ * @member {string} [bingId] Bing unique identifier of the recognized entity.
+ * Use in conjunction with the Bing Entity Search API to fetch additional
+ * relevant information.
+ * @member {string} [type] Entity type from Named Entity Recognition model
+ * @member {string} [subType] Entity sub type from Named Entity Recognition
+ * model
+ */
+export interface EntityRecord {
+  name?: string;
+  matches?: MatchRecord[];
+  wikipediaLanguage?: string;
+  wikipediaId?: string;
+  readonly wikipediaUrl?: string;
+  bingId?: string;
+  type?: string;
+  subType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DocumentStatistics class.
+ * @constructor
+ * @member {number} [charactersCount] Number of text elements recognized in the
+ * document.
+ * @member {number} [transactionsCount] Number of transactions for the
+ * document.
+ */
+export interface DocumentStatistics {
+  charactersCount?: number;
+  transactionsCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntitiesBatchResultItem class.
+ * @constructor
+ * @member {string} [id] Unique, non-empty document identifier.
+ * @member {array} [entities] Recognized entities in the document.
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the
+ * document payload.
+ * @member {number} [statistics.charactersCount] Number of text elements
+ * recognized in the document.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the document.
+ */
+export interface EntitiesBatchResultItem {
+  id?: string;
+  readonly entities?: EntityRecord[];
+  statistics?: DocumentStatistics;
 }
 
 /**
@@ -64,14 +140,48 @@ export interface ErrorRecord {
 
 /**
  * @class
- * Initializes a new instance of the KeyPhraseBatchResult class.
+ * Initializes a new instance of the RequestStatistics class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @member {number} [documentsCount] Number of documents submitted in the
+ * request.
+ * @member {number} [validDocumentsCount] Number of valid documents. This
+ * excludes empty, over-size limit or non-supported languages documents.
+ * @member {number} [erroneousDocumentsCount] Number of invalid documents. This
+ * includes empty, over-size limit or non-supported languages documents.
+ * @member {number} [transactionsCount] Number of transactions for the request.
  */
-export interface KeyPhraseBatchResult {
-  readonly documents?: KeyPhraseBatchResultItem[];
+export interface RequestStatistics {
+  documentsCount?: number;
+  validDocumentsCount?: number;
+  erroneousDocumentsCount?: number;
+  transactionsCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntitiesBatchResult class.
+ * @constructor
+ * @member {array} [documents] Response by document
+ * @member {array} [errors] Errors and Warnings by document
+ * @member {object} [statistics] /// <summary>
+ * (Optional) if showStats=true was specified in the request this field will
+ * contain information about the
+ * request payload.
+ * </summary>
+ * @member {number} [statistics.documentsCount] Number of documents submitted
+ * in the request.
+ * @member {number} [statistics.validDocumentsCount] Number of valid documents.
+ * This excludes empty, over-size limit or non-supported languages documents.
+ * @member {number} [statistics.erroneousDocumentsCount] Number of invalid
+ * documents. This includes empty, over-size limit or non-supported languages
+ * documents.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the request.
+ */
+export interface EntitiesBatchResult {
+  readonly documents?: EntitiesBatchResultItem[];
   readonly errors?: ErrorRecord[];
+  readonly statistics?: RequestStatistics;
 }
 
 /**
@@ -109,24 +219,75 @@ export interface ErrorResponse {
 
 /**
  * @class
- * Initializes a new instance of the Input class.
+ * Initializes a new instance of the KeyPhraseBatchResultItem class.
  * @constructor
+ * @member {string} [id] Unique, non-empty document identifier.
+ * @member {array} [keyPhrases] A list of representative words or phrases. The
+ * number of key phrases returned is proportional to the number of words in the
+ * input document.
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the
+ * document payload.
+ * @member {number} [statistics.charactersCount] Number of text elements
+ * recognized in the document.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the document.
+ */
+export interface KeyPhraseBatchResultItem {
+  id?: string;
+  readonly keyPhrases?: string[];
+  statistics?: DocumentStatistics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyPhraseBatchResult class.
+ * @constructor
+ * @member {array} [documents] Response by document
+ * @member {array} [errors] Errors and Warnings by document
+ * @member {object} [statistics] /// <summary>
+ * (Optional) if showStats=true was specified in the request this field will
+ * contain information about the
+ * request payload.
+ * </summary>
+ * @member {number} [statistics.documentsCount] Number of documents submitted
+ * in the request.
+ * @member {number} [statistics.validDocumentsCount] Number of valid documents.
+ * This excludes empty, over-size limit or non-supported languages documents.
+ * @member {number} [statistics.erroneousDocumentsCount] Number of invalid
+ * documents. This includes empty, over-size limit or non-supported languages
+ * documents.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the request.
+ */
+export interface KeyPhraseBatchResult {
+  readonly documents?: KeyPhraseBatchResultItem[];
+  readonly errors?: ErrorRecord[];
+  readonly statistics?: RequestStatistics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LanguageInput class.
+ * @constructor
+ * @member {string} [countryHint]
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {string} [text]
  */
-export interface Input {
+export interface LanguageInput {
+  countryHint?: string;
   id?: string;
   text?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the BatchInput class.
+ * Initializes a new instance of the LanguageBatchInput class.
  * @constructor
  * @member {array} [documents]
  */
-export interface BatchInput {
-  documents?: Input[];
+export interface LanguageBatchInput {
+  documents?: LanguageInput[];
 }
 
 /**
@@ -150,118 +311,96 @@ export interface DetectedLanguage {
  * @class
  * Initializes a new instance of the LanguageBatchResultItem class.
  * @constructor
- * @member {string} [id] Unique document identifier.
+ * @member {string} [id] Unique, non-empty document identifier.
  * @member {array} [detectedLanguages] A list of extracted languages.
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the
+ * document payload.
+ * @member {number} [statistics.charactersCount] Number of text elements
+ * recognized in the document.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the document.
  */
 export interface LanguageBatchResultItem {
-  readonly id?: string;
-  readonly detectedLanguages?: DetectedLanguage[];
+  id?: string;
+  detectedLanguages?: DetectedLanguage[];
+  statistics?: DocumentStatistics;
 }
 
 /**
  * @class
  * Initializes a new instance of the LanguageBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @member {array} [documents] Response by document
+ * @member {array} [errors] Errors and Warnings by document
+ * @member {object} [statistics] /// <summary>
+ * (Optional) if showStats=true was specified in the request this field will
+ * contain information about the
+ * request payload.
+ * </summary>
+ * @member {number} [statistics.documentsCount] Number of documents submitted
+ * in the request.
+ * @member {number} [statistics.validDocumentsCount] Number of valid documents.
+ * This excludes empty, over-size limit or non-supported languages documents.
+ * @member {number} [statistics.erroneousDocumentsCount] Number of invalid
+ * documents. This includes empty, over-size limit or non-supported languages
+ * documents.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the request.
  */
 export interface LanguageBatchResult {
   readonly documents?: LanguageBatchResultItem[];
   readonly errors?: ErrorRecord[];
+  readonly statistics?: RequestStatistics;
 }
 
 /**
  * @class
  * Initializes a new instance of the SentimentBatchResultItem class.
  * @constructor
+ * @member {string} [id] Unique, non-empty document identifier.
  * @member {number} [score] A decimal number between 0 and 1 denoting the
- * sentiment of the document. A score above 0.7 usually refers to a positive
- * document while a score below 0.3 normally has a negative connotation. Mid
- * values refer to neutral text.
- * @member {string} [id] Unique document identifier.
+ * sentiment of the document.
+ * A score above 0.7 usually refers to a positive document while a score below
+ * 0.3 normally has a negative connotation.
+ * Mid values refer to neutral text.
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the
+ * document payload.
+ * @member {number} [statistics.charactersCount] Number of text elements
+ * recognized in the document.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the document.
  */
 export interface SentimentBatchResultItem {
-  readonly score?: number;
-  readonly id?: string;
+  id?: string;
+  score?: number;
+  statistics?: DocumentStatistics;
 }
 
 /**
  * @class
  * Initializes a new instance of the SentimentBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @member {array} [documents] Response by document
+ * @member {array} [errors] Errors and Warnings by document
+ * @member {object} [statistics] /// <summary>
+ * (Optional) if showStats=true was specified in the request this field will
+ * contain information about the
+ * request payload.
+ * </summary>
+ * @member {number} [statistics.documentsCount] Number of documents submitted
+ * in the request.
+ * @member {number} [statistics.validDocumentsCount] Number of valid documents.
+ * This excludes empty, over-size limit or non-supported languages documents.
+ * @member {number} [statistics.erroneousDocumentsCount] Number of invalid
+ * documents. This includes empty, over-size limit or non-supported languages
+ * documents.
+ * @member {number} [statistics.transactionsCount] Number of transactions for
+ * the request.
  */
 export interface SentimentBatchResult {
   readonly documents?: SentimentBatchResultItem[];
   readonly errors?: ErrorRecord[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MatchRecordV2dot1 class.
- * @constructor
- * @member {string} [text] Entity text as appears in the request.
- * @member {number} [offset] Start position (in Unicode characters) for the
- * entity match text.
- * @member {number} [length] Length (in Unicode characters) for the entity
- * match text.
- */
-export interface MatchRecordV2dot1 {
-  text?: string;
-  offset?: number;
-  length?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the EntityRecordV2dot1 class.
- * @constructor
- * @member {string} [name] Entity formal name.
- * @member {array} [matches] List of instances this entity appears in the text.
- * @member {string} [wikipediaLanguage] Wikipedia language for which the
- * WikipediaId and WikipediaUrl refers to.
- * @member {string} [wikipediaId] Wikipedia unique identifier of the recognized
- * entity.
- * @member {string} [wikipediaUrl] URL for the entity's English Wikipedia page.
- * @member {string} [bingId] Bing unique identifier of the recognized entity.
- * Use in conjunction with the Bing Entity Search API to fetch additional
- * relevant information.
- * @member {string} [type] Entity type from Named Entity Recognition model
- * @member {string} [subType] Entity sub type from Named Entity Recognition
- * model
- */
-export interface EntityRecordV2dot1 {
-  name?: string;
-  matches?: MatchRecordV2dot1[];
-  wikipediaLanguage?: string;
-  wikipediaId?: string;
-  readonly wikipediaUrl?: string;
-  bingId?: string;
-  type?: string;
-  subType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EntitiesBatchResultItemV2dot1 class.
- * @constructor
- * @member {string} [id] Unique document identifier.
- * @member {array} [entities] Recognized entities in the document.
- */
-export interface EntitiesBatchResultItemV2dot1 {
-  readonly id?: string;
-  readonly entities?: EntityRecordV2dot1[];
-}
-
-/**
- * @class
- * Initializes a new instance of the EntitiesBatchResultV2dot1 class.
- * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
- */
-export interface EntitiesBatchResultV2dot1 {
-  readonly documents?: EntitiesBatchResultItemV2dot1[];
-  readonly errors?: ErrorRecord[];
+  readonly statistics?: RequestStatistics;
 }
