@@ -16,8 +16,7 @@ import * as moment from "moment";
  * Initializes a new instance of the MultiLanguageInput class.
  * @constructor
  * @member {string} [language] This is the 2 letter ISO 639-1 representation of
- * a language.
- * For example, use "en" for English; "es" for Spanish etc.,
+ * a language. For example, use "en" for English; "es" for Spanish etc.,
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {string} [text]
  */
@@ -42,13 +41,11 @@ export interface MultiLanguageBatchInput {
  * Initializes a new instance of the MatchRecord class.
  * @constructor
  * @member {number} [wikipediaScore] (optional) If a well-known item with
- * Wikipedia link is recognized,
- * a decimal number denoting the confidence level of the Wikipedia info will be
- * returned.
+ * Wikipedia link is recognized, a decimal number denoting the confidence level
+ * of the Wikipedia info will be returned.
  * @member {number} [entityTypeScore] (optional) If an entity type is
- * recognized,
- * a decimal number denoting the confidence level of the entity type will be
- * returned.
+ * recognized, a decimal number denoting the confidence level of the entity
+ * type will be returned.
  * @member {string} [text] Entity text as appears in the request.
  * @member {number} [offset] Start position (in Unicode characters) for the
  * entity match text.
@@ -113,8 +110,7 @@ export interface DocumentStatistics {
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {array} [entities] Recognized entities in the document.
  * @member {object} [statistics] (Optional) if showStats=true was specified in
- * the request this field will contain information about the
- * document payload.
+ * the request this field will contain information about the document payload.
  * @member {number} [statistics.charactersCount] Number of text elements
  * recognized in the document.
  * @member {number} [statistics.transactionsCount] Number of transactions for
@@ -163,11 +159,8 @@ export interface RequestStatistics {
  * @constructor
  * @member {array} [documents] Response by document
  * @member {array} [errors] Errors and Warnings by document
- * @member {object} [statistics] /// <summary>
- * (Optional) if showStats=true was specified in the request this field will
- * contain information about the
- * request payload.
- * </summary>
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the request payload.
  * @member {number} [statistics.documentsCount] Number of documents submitted
  * in the request.
  * @member {number} [statistics.validDocumentsCount] Number of valid documents.
@@ -226,8 +219,7 @@ export interface ErrorResponse {
  * number of key phrases returned is proportional to the number of words in the
  * input document.
  * @member {object} [statistics] (Optional) if showStats=true was specified in
- * the request this field will contain information about the
- * document payload.
+ * the request this field will contain information about the document payload.
  * @member {number} [statistics.charactersCount] Number of text elements
  * recognized in the document.
  * @member {number} [statistics.transactionsCount] Number of transactions for
@@ -245,11 +237,8 @@ export interface KeyPhraseBatchResultItem {
  * @constructor
  * @member {array} [documents] Response by document
  * @member {array} [errors] Errors and Warnings by document
- * @member {object} [statistics] /// <summary>
- * (Optional) if showStats=true was specified in the request this field will
- * contain information about the
- * request payload.
- * </summary>
+ * @member {object} [statistics] =(Optional) if showStats=true was specified in
+ * the request this field will contain information about the request payload.
  * @member {number} [statistics.documentsCount] Number of documents submitted
  * in the request.
  * @member {number} [statistics.validDocumentsCount] Number of valid documents.
@@ -314,8 +303,7 @@ export interface DetectedLanguage {
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {array} [detectedLanguages] A list of extracted languages.
  * @member {object} [statistics] (Optional) if showStats=true was specified in
- * the request this field will contain information about the
- * document payload.
+ * the request this field will contain information about the document payload.
  * @member {number} [statistics.charactersCount] Number of text elements
  * recognized in the document.
  * @member {number} [statistics.transactionsCount] Number of transactions for
@@ -333,11 +321,8 @@ export interface LanguageBatchResultItem {
  * @constructor
  * @member {array} [documents] Response by document
  * @member {array} [errors] Errors and Warnings by document
- * @member {object} [statistics] /// <summary>
- * (Optional) if showStats=true was specified in the request this field will
- * contain information about the
- * request payload.
- * </summary>
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the request payload.
  * @member {number} [statistics.documentsCount] Number of documents submitted
  * in the request.
  * @member {number} [statistics.validDocumentsCount] Number of valid documents.
@@ -360,13 +345,11 @@ export interface LanguageBatchResult {
  * @constructor
  * @member {string} [id] Unique, non-empty document identifier.
  * @member {number} [score] A decimal number between 0 and 1 denoting the
- * sentiment of the document.
- * A score above 0.7 usually refers to a positive document while a score below
- * 0.3 normally has a negative connotation.
- * Mid values refer to neutral text.
+ * sentiment of the document. A score above 0.7 usually refers to a positive
+ * document while a score below 0.3 normally has a negative connotation. Mid
+ * values refer to neutral text.
  * @member {object} [statistics] (Optional) if showStats=true was specified in
- * the request this field will contain information about the
- * document payload.
+ * the request this field will contain information about the document payload.
  * @member {number} [statistics.charactersCount] Number of text elements
  * recognized in the document.
  * @member {number} [statistics.transactionsCount] Number of transactions for
@@ -384,11 +367,8 @@ export interface SentimentBatchResultItem {
  * @constructor
  * @member {array} [documents] Response by document
  * @member {array} [errors] Errors and Warnings by document
- * @member {object} [statistics] /// <summary>
- * (Optional) if showStats=true was specified in the request this field will
- * contain information about the
- * request payload.
- * </summary>
+ * @member {object} [statistics] (Optional) if showStats=true was specified in
+ * the request this field will contain information about the request payload.
  * @member {number} [statistics.documentsCount] Number of documents submitted
  * in the request.
  * @member {number} [statistics.validDocumentsCount] Number of valid documents.
