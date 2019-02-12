@@ -333,13 +333,13 @@ export interface DataConnectorKind1 {
 }
 
 /**
- * Describes an Azure resource with kind.
+ * Properties data connector on tenant level.
  */
-export interface DataConnectorContextId {
+export interface DataConnectorTenantId {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
 }
 
 /**
@@ -384,9 +384,9 @@ export interface OfficeDataConnectorDataTypes {
  */
 export interface OfficeDataConnector extends DataConnector {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
   /**
    * The available data types for the connector.
    */
@@ -414,45 +414,13 @@ export interface TIDataConnectorDataTypes {
  */
 export interface TIDataConnector extends DataConnector {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
   /**
    * The available data types for the connector.
    */
   dataTypes?: TIDataConnectorDataTypes;
-}
-
-/**
- * Data connector with alerts data type.
- */
-export interface DataConnectorWithAlerts extends DataConnector {
-  /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
-   */
-  contextId?: string;
-  /**
-   * The available data types for the connector.
-   */
-  dataTypes?: AlertsDataTypeOfDataConnector;
-}
-
-/**
- * Represents AAD (Azure Active Directory) data connector.
- */
-export interface AADDataConnector extends DataConnectorWithAlerts {
-}
-
-/**
- * Represents ASC (Azure Security Center) data connector.
- */
-export interface ASCDataConnector extends DataConnectorWithAlerts {
-}
-
-/**
- * Represents MCAS (Microsoft Cloud App Security) data connector.
- */
-export interface MCASDataConnector extends DataConnectorWithAlerts {
 }
 
 /**
@@ -469,6 +437,58 @@ export interface AlertsDataTypeOfDataConnector {
    * Alerts data type connection.
    */
   alerts?: AlertsDataTypeOfDataConnectorAlerts;
+}
+
+/**
+ * Represents AAD (Azure Active Directory) data connector.
+ */
+export interface AADDataConnector extends DataConnector {
+  /**
+   * The tenant id to connect to, and get the data from.
+   */
+  tenantId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+}
+
+/**
+ * Represents ASC (Azure Security Center) data connector.
+ */
+export interface ASCDataConnector extends DataConnector {
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+  /**
+   * The subscription id to connect to, and get the data from.
+   */
+  subscriptionId?: string;
+}
+
+/**
+ * Represents MCAS (Microsoft Cloud App Security) data connector.
+ */
+export interface MCASDataConnector extends DataConnector {
+  /**
+   * The tenant id to connect to, and get the data from.
+   */
+  tenantId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+}
+
+/**
+ * Data connector properties.
+ */
+export interface DataConnectorWithAlertsProperties {
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
 }
 
 /**
