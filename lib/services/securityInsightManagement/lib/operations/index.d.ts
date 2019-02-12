@@ -1156,7 +1156,7 @@ export interface Cases {
      *
      * @param {date} [caseParameter.startTimeUtc] The start time of the case
      *
-     * @param {array} [caseParameter.tags] List of tags
+     * @param {array} [caseParameter.labels] List of labels relevant to this case
      *
      * @param {string} [caseParameter.description] The description of the case
      *
@@ -1219,7 +1219,7 @@ export interface Cases {
      *
      * @param {date} [caseParameter.startTimeUtc] The start time of the case
      *
-     * @param {array} [caseParameter.tags] List of tags
+     * @param {array} [caseParameter.labels] List of labels relevant to this case
      *
      * @param {string} [caseParameter.description] The description of the case
      *
@@ -1576,12 +1576,6 @@ export interface Bookmarks {
      * @param {object} [bookmark.createdBy] Describes a user that created the
      * bookmark
      *
-     * @param {uuid} [bookmark.createdBy.objectId] The object id of the user.
-     *
-     * @param {string} [bookmark.createdBy.email] The email of the user.
-     *
-     * @param {string} [bookmark.createdBy.name] The name of the user.
-     *
      * @param {object} [bookmark.updatedBy] Describes a user that updated the
      * bookmark
      *
@@ -1593,9 +1587,9 @@ export interface Bookmarks {
      *
      * @param {string} [bookmark.notes] The notes of the bookmark
      *
-     * @param {array} [bookmark.tags] List of tags
+     * @param {array} [bookmark.labels] List of labels relevant to this bookmark
      *
-     * @param {string} [bookmark.query] The query of the bookmark.
+     * @param {string} bookmark.query The query of the bookmark.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1637,12 +1631,6 @@ export interface Bookmarks {
      * @param {object} [bookmark.createdBy] Describes a user that created the
      * bookmark
      *
-     * @param {uuid} [bookmark.createdBy.objectId] The object id of the user.
-     *
-     * @param {string} [bookmark.createdBy.email] The email of the user.
-     *
-     * @param {string} [bookmark.createdBy.name] The name of the user.
-     *
      * @param {object} [bookmark.updatedBy] Describes a user that updated the
      * bookmark
      *
@@ -1654,9 +1642,9 @@ export interface Bookmarks {
      *
      * @param {string} [bookmark.notes] The notes of the bookmark
      *
-     * @param {array} [bookmark.tags] List of tags
+     * @param {array} [bookmark.labels] List of labels relevant to this bookmark
      *
-     * @param {string} [bookmark.query] The query of the bookmark.
+     * @param {string} bookmark.query The query of the bookmark.
      *
      * @param {object} [options] Optional Parameters.
      *

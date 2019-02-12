@@ -223,9 +223,9 @@ export interface CaseModel extends Resource {
    */
   startTimeUtc?: Date;
   /**
-   * List of tags
+   * List of labels relevant to this case
    */
-  tags?: string[];
+  labels?: string[];
   /**
    * The description of the case
    */
@@ -251,24 +251,6 @@ export interface CaseModel extends Resource {
    * The reason the case was closed. Possible values include: 'Resolved', 'Dismissed', 'Other'
    */
   closeReason?: string;
-}
-
-/**
- * Describes a user that updated the bookmark
- */
-export interface BookmarkPropertiesUpdatedBy {
-  /**
-   * The object id of the user.
-   */
-  objectId?: string;
-  /**
-   * The email of the user.
-   */
-  email?: string;
-  /**
-   * The name of the user.
-   */
-  name?: string;
 }
 
 /**
@@ -298,19 +280,19 @@ export interface Bookmark extends Resource {
   /**
    * Describes a user that updated the bookmark
    */
-  updatedBy?: BookmarkPropertiesUpdatedBy;
+  updatedBy?: UserInfo;
   /**
    * The notes of the bookmark
    */
   notes?: string;
   /**
-   * List of tags
+   * List of labels relevant to this bookmark
    */
-  tags?: string[];
+  labels?: string[];
   /**
    * The query of the bookmark.
    */
-  query?: string;
+  query: string;
 }
 
 /**
@@ -418,7 +400,7 @@ export interface TIDataConnectorDataTypesIndicators extends DataConnectorDataTyp
 }
 
 /**
- * The available data types for TI data connector.
+ * The available data types for TI (Threat Intelligence) data connector.
  */
 export interface TIDataConnectorDataTypes {
   /**
@@ -529,7 +511,7 @@ export interface AccountEntity extends Entity {
    * The name of the account. This field should hold only the name without any domain added to it,
    * i.e. administrator.
    */
-  readonly accountEntityName?: string;
+  readonly accountName?: string;
   /**
    * The NETBIOS domain name as it appears in the alert format – domain\username. Examples: NT
    * AUTHORITY.
@@ -545,15 +527,15 @@ export interface AccountEntity extends Entity {
    */
   readonly sid?: string;
   /**
-   * The AAD tenant id.
+   * The Azure Active Directory tenant id.
    */
   readonly aadTenantId?: string;
   /**
-   * The AAD user id.
+   * The Azure Active Directory user id.
    */
   readonly aadUserId?: string;
   /**
-   * The AAD Passport User ID.
+   * The Azure Active Directory Passport User ID.
    */
   readonly puid?: string;
   /**
@@ -622,7 +604,7 @@ export interface FileEntity extends Entity {
   /**
    * The file name without path (some alerts might not include path).
    */
-  readonly fileEntityName?: string;
+  readonly fileName?: string;
 }
 
 /**
@@ -672,19 +654,20 @@ export interface SettingsKind {
 }
 
 /**
- * Represents settings for UEBA enablement.
+ * Represents settings for User and Entity Behavior Analytics enablement.
  */
 export interface UebaSettings extends Settings {
   /**
-   * Determines whether UEBA is enabled for this workspace.
+   * Determines whether User and Entity Behavior Analytics is enabled for this workspace.
    */
   isEnabled?: boolean;
   /**
-   * Determines whether UEBA is enabled from MCAS. Possible values include: 'Enabled', 'Disabled'
+   * Determines whether User and Entity Behavior Analytics is enabled from MCAS (Microsoft Cloud
+   * App Security). Possible values include: 'Enabled', 'Disabled'
    */
   readonly statusInMcas?: string;
   /**
-   * Determines whether the tenant .
+   * Determines whether the tenant has ATP (Advanced Threat Protection) license.
    */
   readonly atpLicenseStatus?: boolean;
 }
