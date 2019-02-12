@@ -785,6 +785,10 @@ export interface ManagedClusterAgentPoolProfileProperties {
    * The current deployment or provisioning state, which only appears in the response.
    */
   readonly provisioningState?: string;
+  /**
+   * Availability zones for nodes
+   */
+  availabilityZones?: string[];
 }
 
 /**
@@ -891,6 +895,10 @@ export interface AgentPool extends SubResource {
    * The current deployment or provisioning state, which only appears in the response.
    */
   readonly provisioningState?: string;
+  /**
+   * Availability zones for nodes
+   */
+  availabilityZones?: string[];
 }
 
 /**
