@@ -803,73 +803,6 @@ export interface Actions {
 
 
     /**
-     * Gets all actions.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} operationalInsightsResourceProvider The namespace of
-     * workspaces resource provider- Microsoft.OperationalInsights.
-     *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
-
-    /**
-     * Gets all actions.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} operationalInsightsResourceProvider The namespace of
-     * workspaces resource provider- Microsoft.OperationalInsights.
-     *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ActionsList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ActionsList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, callback: ServiceCallback<models.ActionsList>): void;
-    list(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
-
-
-    /**
      * Gets all actions of alert rule.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -924,63 +857,6 @@ export interface Actions {
     listByAlertRuleNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
     listByAlertRuleNext(nextPageLink: string, callback: ServiceCallback<models.ActionsList>): void;
     listByAlertRuleNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
-
-
-    /**
-     * Gets all actions.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ActionsList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionsList>>;
-
-    /**
-     * Gets all actions.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ActionsList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ActionsList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ActionsList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionsList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ActionsList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionsList>): void;
 }
 
 /**

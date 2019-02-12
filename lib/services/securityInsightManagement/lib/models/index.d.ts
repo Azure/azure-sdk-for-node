@@ -92,9 +92,9 @@ export interface AlertRuleKind1 {
  */
 export interface ScheduledAlertRule extends AlertRule {
   /**
-   * The name for alerts created by this alert rule.
+   * The display name for alerts created by this alert rule.
    */
-  ruleName: string;
+  displayName?: string;
   /**
    * The description of the alert rule.
    */
@@ -174,10 +174,6 @@ export interface Action extends Resource {
    * The uri for the action to trigger.
    */
   triggerUri?: string;
-  /**
-   * The unique identifier of the rule.
-   */
-  readonly ruleId?: string;
 }
 
 /**
