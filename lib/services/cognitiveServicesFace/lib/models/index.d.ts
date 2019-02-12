@@ -258,7 +258,7 @@ export interface FaceAttributes {
   */
   age?: number;
   /**
-   * Possible gender of the face. Possible values include: 'male', 'female', 'genderless'
+   * Possible gender of the face. Possible values include: 'male', 'female'
   */
   gender?: string;
   /**
