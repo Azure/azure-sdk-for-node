@@ -39,9 +39,9 @@ export default class TextAnalyticsClient extends ServiceClient {
 
 
   /**
-   * @summary Detect Language
+   * @summary The API returns the detected language and a numeric score between 0
+   * and 1.
    *
-   * The API returns the detected language and a numeric score between 0 and 1.
    * Scores close to 1 indicate 100% certainty that the identified language is
    * true. A total of 120 languages are supported.
    *
@@ -64,12 +64,12 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  56f30ceeeda5650db055a3c7WithHttpOperationResponse(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LanguageBatchResult>>;
+  detectLanguageWithHttpOperationResponse(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LanguageBatchResult>>;
 
   /**
-   * @summary Detect Language
+   * @summary The API returns the detected language and a numeric score between 0
+   * and 1.
    *
-   * The API returns the detected language and a numeric score between 0 and 1.
    * Scores close to 1 indicate 100% certainty that the identified language is
    * true. A total of 120 languages are supported.
    *
@@ -108,27 +108,19 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  56f30ceeeda5650db055a3c7(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.LanguageBatchResult>;
-  56f30ceeeda5650db055a3c7(callback: ServiceCallback<models.LanguageBatchResult>): void;
-  56f30ceeeda5650db055a3c7(options: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LanguageBatchResult>): void;
+  detectLanguage(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.LanguageBatchResult>;
+  detectLanguage(callback: ServiceCallback<models.LanguageBatchResult>): void;
+  detectLanguage(options: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LanguageBatchResult>): void;
 
 
   /**
-   * @summary Entities
+   * @summary The API returns a list of recognized entities in a given document.
    *
-   * The API returns a list of known entities and general named entities
-   * (\"Person\", \"Location\", \"Organization\" etc) in a given document. Known
-   * entities are returned with Wikipedia Id and Wikipedia link, and also Bing Id
-   * which can be used in Bing Entity Search API. General named entities are
-   * returned with entity types. If a general named entity is also a known
-   * entity, then all information regarding it (Wikipedia Id, Bing Id, entity
-   * type etc) will be returned. See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
-   * Entity Types in Text Analytics API</a> for the list of supported Entity
-   * Types. See the <a
+   * To get even more information on each recognized entity we recommend using
+   * the Bing Entity Search API by querying for the recognized entities names.
+   * See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -149,24 +141,16 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  5ac4251d5b4ccd1554da7634WithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
+  entitiesWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
 
   /**
-   * @summary Entities
+   * @summary The API returns a list of recognized entities in a given document.
    *
-   * The API returns a list of known entities and general named entities
-   * (\"Person\", \"Location\", \"Organization\" etc) in a given document. Known
-   * entities are returned with Wikipedia Id and Wikipedia link, and also Bing Id
-   * which can be used in Bing Entity Search API. General named entities are
-   * returned with entity types. If a general named entity is also a known
-   * entity, then all information regarding it (Wikipedia Id, Bing Id, entity
-   * type etc) will be returned. See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
-   * Entity Types in Text Analytics API</a> for the list of supported Entity
-   * Types. See the <a
+   * To get even more information on each recognized entity we recommend using
+   * the Bing Entity Search API by querying for the recognized entities names.
+   * See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -203,18 +187,19 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  5ac4251d5b4ccd1554da7634(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
-  5ac4251d5b4ccd1554da7634(callback: ServiceCallback<models.EntitiesBatchResult>): void;
-  5ac4251d5b4ccd1554da7634(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
+  entities(callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
 
 
   /**
-   * @summary Key Phrases
+   * @summary The API returns a list of strings denoting the key talking points
+   * in the input text.
    *
-   * The API returns a list of strings denoting the key talking points in the
-   * input text. See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-   * languages in Text Analytics API</a> for the list of enabled languages.
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by key phrase extraction.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -236,15 +221,16 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  56f30ceeeda5650db055a3c6WithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyPhraseBatchResult>>;
+  keyPhrasesWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyPhraseBatchResult>>;
 
   /**
-   * @summary Key Phrases
+   * @summary The API returns a list of strings denoting the key talking points
+   * in the input text.
    *
-   * The API returns a list of strings denoting the key talking points in the
-   * input text. See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-   * languages in Text Analytics API</a> for the list of enabled languages.
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by key phrase extraction.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -282,20 +268,20 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  56f30ceeeda5650db055a3c6(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyPhraseBatchResult>;
-  56f30ceeeda5650db055a3c6(callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
-  56f30ceeeda5650db055a3c6(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
+  keyPhrases(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyPhraseBatchResult>;
+  keyPhrases(callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
+  keyPhrases(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
 
 
   /**
-   * @summary Sentiment
+   * @summary The API returns a numeric score between 0 and 1.
    *
-   * The API returns a numeric score between 0 and 1. Scores close to 1 indicate
-   * positive sentiment, while scores close to 0 indicate negative sentiment. A
-   * score of 0.5 indicates the lack of sentiment (e.g. a factoid statement). See
-   * the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-   * languages in Text Analytics API</a> for the list of enabled languages.
+   * Scores close to 1 indicate positive sentiment, while scores close to 0
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by sentiment analysis.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -316,17 +302,17 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  56f30ceeeda5650db055a3c9WithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+  sentimentWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
   /**
-   * @summary Sentiment
+   * @summary The API returns a numeric score between 0 and 1.
    *
-   * The API returns a numeric score between 0 and 1. Scores close to 1 indicate
-   * positive sentiment, while scores close to 0 indicate negative sentiment. A
-   * score of 0.5 indicates the lack of sentiment (e.g. a factoid statement). See
-   * the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
-   * languages in Text Analytics API</a> for the list of enabled languages.
+   * Scores close to 1 indicate positive sentiment, while scores close to 0
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by sentiment analysis.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -362,9 +348,9 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  56f30ceeeda5650db055a3c9(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-  56f30ceeeda5650db055a3c9(callback: ServiceCallback<any>): void;
-  56f30ceeeda5650db055a3c9(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+  sentiment(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+  sentiment(callback: ServiceCallback<any>): void;
+  sentiment(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 export { TextAnalyticsClient, models as TextAnalyticsModels };
