@@ -21,9 +21,9 @@ export default class SecurityCenter extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} ascLocation - The location where ASC stores the data of the subscription. can be retrieved from Get locations
-   *
    * @param {string} subscriptionId - Azure subscription ID
+   *
+   * @param {string} ascLocation - The location where ASC stores the data of the subscription. can be retrieved from Get locations
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -43,15 +43,13 @@ export default class SecurityCenter extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, ascLocation: string, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, ascLocation: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
+  subscriptionId: string;
 
   ascLocation: string;
-
-  subscriptionId: string;
 
   acceptLanguage: string;
 
@@ -60,6 +58,14 @@ export default class SecurityCenter extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  pricings: operations.Pricings;
+  securityContacts: operations.SecurityContacts;
+  workspaceSettings: operations.WorkspaceSettings;
+  autoProvisioningSettings: operations.AutoProvisioningSettings;
+  compliances: operations.Compliances;
+  advancedThreatProtection: operations.AdvancedThreatProtection;
+  settings: operations.Settings;
+  informationProtectionPolicies: operations.InformationProtectionPolicies;
   operations: operations.Operations;
   locations: operations.Locations;
   tasks: operations.Tasks;

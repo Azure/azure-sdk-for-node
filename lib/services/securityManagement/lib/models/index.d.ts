@@ -16,65 +16,283 @@ export {
 };
 
 /**
- * Security operation display
+ * Describes an Azure resource.
  */
+export interface Resource extends BaseResource {
+  /**
+   * Resource Id
+   */
+  readonly id?: string;
+  /**
+   * Resource name
+   */
+  readonly name?: string;
+  /**
+   * Resource type
+   */
+  readonly type?: string;
+}
+
+/**
+ * Pricing tier will be applied for the scope based on the resource ID
+ */
+export interface Pricing extends Resource {
+  /**
+   * Pricing tier type. Possible values include: 'Free', 'Standard'
+   */
+  pricingTier: string;
+}
+
+/**
+ * The ASC location of the subscription is in the "name" field
+ */
+export interface AscLocation extends Resource {
+  properties?: any;
+}
+
+/**
+ * Contact details for security issues
+*/
+export interface SecurityContact extends Resource {
+  /**
+   * The email of this security contact
+  */
+  email: string;
+  /**
+   * The phone number of this security contact
+  */
+  phone?: string;
+  /**
+   * Whether to send security alerts notifications to the security contact. Possible values
+   * include: 'On', 'Off'
+  */
+  alertNotifications: string;
+  /**
+   * Whether to send security alerts notifications to subscription admins. Possible values include:
+   * 'On', 'Off'
+  */
+  alertsToAdmins: string;
+}
+
+/**
+ * Configures where to store the OMS agent data for workspaces under a scope
+*/
+export interface WorkspaceSetting extends Resource {
+  /**
+   * The full Azure ID of the workspace to save the data in
+  */
+  workspaceId: string;
+  /**
+   * All the VMs in this scope will send their security data to the mentioned workspace unless
+   * overridden by a setting with more specific scope
+  */
+  scope: string;
+}
+
+/**
+ * Auto provisioning setting
+*/
+export interface AutoProvisioningSetting extends Resource {
+  /**
+   * Describes what kind of security agent provisioning action to take. Possible values include:
+   * 'On', 'Off'
+  */
+  autoProvision: string;
+}
+
+/**
+ * A segment of a compliance assessment.
+*/
+export interface ComplianceSegment {
+  /**
+   * The segment type, e.g. compliant, non-compliance, insufficient coverage, N/A, etc.
+  */
+  readonly segmentType?: string;
+  /**
+   * The size (%) of the segment.
+  */
+  readonly percentage?: number;
+}
+
+/**
+ * Compliance of a scope
+*/
+export interface Compliance extends Resource {
+  /**
+   * The timestamp when the Compliance calculation was conducted.
+  */
+  readonly assessmentTimestampUtcDate?: Date;
+  /**
+   * The resource count of the given subscription for which the Compliance calculation was
+   * conducted (needed for Management Group Compliance calculation).
+  */
+  readonly resourceCount?: number;
+  /**
+   * An array of segment, which is the actually the compliance assessment.
+  */
+  readonly assessmentResult?: ComplianceSegment[];
+}
+
+/**
+ * The Advanced Threat Protection resource.
+*/
+export interface AdvancedThreatProtectionSetting extends Resource {
+  /**
+   * Indicates whether Advanced Threat Protection is enabled.
+  */
+  isEnabled?: boolean;
+}
+
+/**
+ * The kind of the security setting
+*/
+export interface SettingResource extends Resource {
+  /**
+   * the kind of the settings string (DataExportSetting). Possible values include:
+   * 'DataExportSetting', 'AlertSuppressionSetting'
+  */
+  kind: string;
+}
+
+/**
+ * Represents a security setting in Azure Security Center.
+*/
+export interface Setting extends SettingResource {
+}
+
+/**
+ * Represents a data export setting
+*/
+export interface DataExportSetting extends Setting {
+  /**
+   * Is the data export setting is enabled
+  */
+  enabled: boolean;
+}
+
+/**
+ * The sensitivity label.
+*/
+export interface SensitivityLabel {
+  /**
+   * The name of the sensitivity label.
+  */
+  displayName?: string;
+  /**
+   * The order of the sensitivity label.
+  */
+  order?: number;
+  /**
+   * Indicates whether the label is enabled or not.
+  */
+  enabled?: boolean;
+}
+
+/**
+ * The information type keyword.
+*/
+export interface InformationProtectionKeyword {
+  /**
+   * The keyword pattern.
+  */
+  pattern?: string;
+  /**
+   * Indicates whether the keyword is custom or not.
+  */
+  custom?: boolean;
+  /**
+   * Indicates whether the keyword can be applied on numeric types or not.
+  */
+  canBeNumeric?: boolean;
+  /**
+   * Indicates whether the keyword is excluded or not.
+  */
+  excluded?: boolean;
+}
+
+/**
+ * The information type.
+*/
+export interface InformationType {
+  /**
+   * The name of the information type.
+  */
+  displayName?: string;
+  /**
+   * The order of the information type.
+  */
+  order?: number;
+  /**
+   * The recommended label id to be associated with this information type.
+  */
+  recommendedLabelId?: string;
+  /**
+   * Indicates whether the information type is enabled or not.
+  */
+  enabled?: boolean;
+  /**
+   * Indicates whether the information type is custom or not.
+  */
+  custom?: boolean;
+  /**
+   * The information type keywords.
+  */
+  keywords?: InformationProtectionKeyword[];
+}
+
+/**
+ * Information protection policy.
+*/
+export interface InformationProtectionPolicy extends Resource {
+  /**
+   * Describes the last UTC time the policy was modified.
+  */
+  readonly lastModifiedUtc?: Date;
+  /**
+   * Dictionary of sensitivity labels.
+  */
+  labels?: { [propertyName: string]: SensitivityLabel };
+  /**
+   * The sensitivity information types.
+  */
+  informationTypes?: { [propertyName: string]: InformationType };
+}
+
+/**
+ * Security operation display
+*/
 export interface OperationDisplay {
   /**
    * The resource provider for the operation.
-   */
+  */
   readonly provider?: string;
   /**
    * The display name of the resource the operation applies to.
-   */
+  */
   readonly resource?: string;
   /**
    * The display name of the security operation.
-   */
+  */
   readonly operation?: string;
   /**
    * The description of the operation.
-   */
+  */
   readonly description?: string;
 }
 
 /**
  * Possible operation in the REST API of Microsoft.Security
- */
+*/
 export interface Operation {
   /**
    * Name of the operation
-   */
+  */
   readonly name?: string;
   /**
    * Where the operation is originated
-   */
+  */
   readonly origin?: string;
   display?: OperationDisplay;
-}
-
-/**
- * Describes an Azure resource.
-*/
-export interface Resource extends BaseResource {
-  /**
-   * Resource Id
-  */
-  readonly id?: string;
-  /**
-   * Resource name
-  */
-  readonly name?: string;
-  /**
-   * Resource type
-  */
-  readonly type?: string;
-}
-
-/**
- * The ASC location of the subscription is in the "name" field
-*/
-export interface AscLocation extends Resource {
-  properties?: any;
 }
 
 /**
@@ -698,6 +916,76 @@ export interface AllowedConnectionsResource {
    * List of connectable resources
   */
   readonly connectableResources?: ConnectableResource[];
+}
+
+/**
+ * List of pricing configurations response
+*/
+export interface PricingList extends Array<Pricing> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of security contacts response
+*/
+export interface SecurityContactList extends Array<SecurityContact> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of workspace settings response
+*/
+export interface WorkspaceSettingList extends Array<WorkspaceSetting> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of all the auto provisioning settings response
+*/
+export interface AutoProvisioningSettingList extends Array<AutoProvisioningSetting> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of Compliance objects response
+*/
+export interface ComplianceList extends Array<Compliance> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * Subscription settings list.
+*/
+export interface SettingsList extends Array<Setting> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * Information protection policies response.
+*/
+export interface InformationProtectionPolicyList extends Array<InformationProtectionPolicy> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
 }
 
 /**

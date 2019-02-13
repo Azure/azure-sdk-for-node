@@ -14,6 +14,2333 @@ import * as models from '../models';
 
 /**
  * @class
+ * Pricings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface Pricings {
+
+
+    /**
+     * Security pricing configurations in the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
+
+    /**
+     * Security pricing configurations in the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PricingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PricingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
+    list(callback: ServiceCallback<models.PricingList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
+
+
+    /**
+     * Security pricing configurations in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
+
+    /**
+     * Security pricing configurations in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PricingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PricingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PricingList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
+
+
+    /**
+     * Security pricing configuration in the subscriptionSecurity pricing
+     * configuration in the subscription
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSubscriptionPricingWithHttpOperationResponse(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+
+    /**
+     * Security pricing configuration in the subscriptionSecurity pricing
+     * configuration in the subscription
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pricing} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pricing} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSubscriptionPricing(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    getSubscriptionPricing(pricingName: string, callback: ServiceCallback<models.Pricing>): void;
+    getSubscriptionPricing(pricingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
+
+
+    /**
+     * Security pricing configuration in the subscription
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} pricing Pricing object
+     *
+     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * include: 'Free', 'Standard'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSubscriptionPricingWithHttpOperationResponse(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+
+    /**
+     * Security pricing configuration in the subscription
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} pricing Pricing object
+     *
+     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * include: 'Free', 'Standard'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pricing} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pricing} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, callback: ServiceCallback<models.Pricing>): void;
+    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
+
+
+    /**
+     * Security pricing configuration in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getResourceGroupPricingWithHttpOperationResponse(resourceGroupName: string, pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+
+    /**
+     * Security pricing configuration in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pricing} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pricing} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getResourceGroupPricing(resourceGroupName: string, pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    getResourceGroupPricing(resourceGroupName: string, pricingName: string, callback: ServiceCallback<models.Pricing>): void;
+    getResourceGroupPricing(resourceGroupName: string, pricingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
+
+
+    /**
+     * Security pricing configuration in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} pricing Pricing object
+     *
+     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * include: 'Free', 'Standard'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateResourceGroupPricingWithHttpOperationResponse(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+
+    /**
+     * Security pricing configuration in the resource group
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} pricingName name of the pricing configuration
+     *
+     * @param {object} pricing Pricing object
+     *
+     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * include: 'Free', 'Standard'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Pricing} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Pricing} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, callback: ServiceCallback<models.Pricing>): void;
+    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
+
+
+    /**
+     * Security pricing configurations in the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
+
+    /**
+     * Security pricing configurations in the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PricingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PricingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PricingList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
+
+
+    /**
+     * Security pricing configurations in the resource group
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
+
+    /**
+     * Security pricing configurations in the resource group
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PricingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PricingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PricingList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
+}
+
+/**
+ * @class
+ * SecurityContacts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface SecurityContacts {
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecurityContactList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecurityContactList>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecurityContactList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecurityContactList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecurityContactList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecurityContactList>;
+    list(callback: ServiceCallback<models.SecurityContactList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecurityContactList>): void;
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecurityContact>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(securityContactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecurityContact>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecurityContact} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecurityContact} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecurityContact} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(securityContactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecurityContact>;
+    get(securityContactName: string, callback: ServiceCallback<models.SecurityContact>): void;
+    get(securityContactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecurityContact>): void;
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} securityContact Security contact object
+     *
+     * @param {string} securityContact.email The email of this security contact
+     *
+     * @param {string} [securityContact.phone] The phone number of this security
+     * contact
+     *
+     * @param {string} securityContact.alertNotifications Whether to send security
+     * alerts notifications to the security contact. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {string} securityContact.alertsToAdmins Whether to send security
+     * alerts notifications to subscription admins. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecurityContact>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(securityContactName: string, securityContact: models.SecurityContact, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecurityContact>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} securityContact Security contact object
+     *
+     * @param {string} securityContact.email The email of this security contact
+     *
+     * @param {string} [securityContact.phone] The phone number of this security
+     * contact
+     *
+     * @param {string} securityContact.alertNotifications Whether to send security
+     * alerts notifications to the security contact. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {string} securityContact.alertsToAdmins Whether to send security
+     * alerts notifications to subscription admins. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecurityContact} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecurityContact} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecurityContact} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(securityContactName: string, securityContact: models.SecurityContact, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecurityContact>;
+    create(securityContactName: string, securityContact: models.SecurityContact, callback: ServiceCallback<models.SecurityContact>): void;
+    create(securityContactName: string, securityContact: models.SecurityContact, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecurityContact>): void;
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(securityContactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(securityContactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(securityContactName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(securityContactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} securityContact Security contact object
+     *
+     * @param {string} securityContact.email The email of this security contact
+     *
+     * @param {string} [securityContact.phone] The phone number of this security
+     * contact
+     *
+     * @param {string} securityContact.alertNotifications Whether to send security
+     * alerts notifications to the security contact. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {string} securityContact.alertsToAdmins Whether to send security
+     * alerts notifications to subscription admins. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecurityContact>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(securityContactName: string, securityContact: models.SecurityContact, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecurityContact>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} securityContactName Name of the security contact object
+     *
+     * @param {object} securityContact Security contact object
+     *
+     * @param {string} securityContact.email The email of this security contact
+     *
+     * @param {string} [securityContact.phone] The phone number of this security
+     * contact
+     *
+     * @param {string} securityContact.alertNotifications Whether to send security
+     * alerts notifications to the security contact. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {string} securityContact.alertsToAdmins Whether to send security
+     * alerts notifications to subscription admins. Possible values include: 'On',
+     * 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecurityContact} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecurityContact} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecurityContact} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(securityContactName: string, securityContact: models.SecurityContact, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecurityContact>;
+    update(securityContactName: string, securityContact: models.SecurityContact, callback: ServiceCallback<models.SecurityContact>): void;
+    update(securityContactName: string, securityContact: models.SecurityContact, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecurityContact>): void;
+
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecurityContactList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecurityContactList>>;
+
+    /**
+     * Security contact configurations for the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecurityContactList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecurityContactList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecurityContactList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecurityContactList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SecurityContactList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecurityContactList>): void;
+}
+
+/**
+ * @class
+ * WorkspaceSettings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface WorkspaceSettings {
+
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspaceSettingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspaceSettingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspaceSettingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspaceSettingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceSettingList>;
+    list(callback: ServiceCallback<models.WorkspaceSettingList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceSettingList>): void;
+
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspaceSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspaceSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspaceSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspaceSetting} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceSetting>;
+    get(workspaceSettingName: string, callback: ServiceCallback<models.WorkspaceSetting>): void;
+    get(workspaceSettingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceSetting>): void;
+
+
+    /**
+     * creating settings about where we should store your security data and logs
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} workspaceSetting Security data setting object
+     *
+     * @param {string} workspaceSetting.workspaceId The full Azure ID of the
+     * workspace to save the data in
+     *
+     * @param {string} workspaceSetting.scope All the VMs in this scope will send
+     * their security data to the mentioned workspace unless overridden by a
+     * setting with more specific scope
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspaceSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
+
+    /**
+     * creating settings about where we should store your security data and logs
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} workspaceSetting Security data setting object
+     *
+     * @param {string} workspaceSetting.workspaceId The full Azure ID of the
+     * workspace to save the data in
+     *
+     * @param {string} workspaceSetting.scope All the VMs in this scope will send
+     * their security data to the mentioned workspace unless overridden by a
+     * setting with more specific scope
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspaceSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspaceSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspaceSetting} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceSetting>;
+    create(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, callback: ServiceCallback<models.WorkspaceSetting>): void;
+    create(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceSetting>): void;
+
+
+    /**
+     * Settings about where we should store your security data and logs
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} workspaceSetting Security data setting object
+     *
+     * @param {string} workspaceSetting.workspaceId The full Azure ID of the
+     * workspace to save the data in
+     *
+     * @param {string} workspaceSetting.scope All the VMs in this scope will send
+     * their security data to the mentioned workspace unless overridden by a
+     * setting with more specific scope
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspaceSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
+
+    /**
+     * Settings about where we should store your security data and logs
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} workspaceSetting Security data setting object
+     *
+     * @param {string} workspaceSetting.workspaceId The full Azure ID of the
+     * workspace to save the data in
+     *
+     * @param {string} workspaceSetting.scope All the VMs in this scope will send
+     * their security data to the mentioned workspace unless overridden by a
+     * setting with more specific scope
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspaceSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspaceSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspaceSetting} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceSetting>;
+    update(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, callback: ServiceCallback<models.WorkspaceSetting>): void;
+    update(workspaceSettingName: string, workspaceSetting: models.WorkspaceSetting, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceSetting>): void;
+
+
+    /**
+     * Deletes the custom workspace settings for this subscription. new VMs will
+     * report to the default workspace
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the custom workspace settings for this subscription. new VMs will
+     * report to the default workspace
+     *
+     * @param {string} workspaceSettingName Name of the security setting
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(workspaceSettingName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(workspaceSettingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspaceSettingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
+
+    /**
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspaceSettingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspaceSettingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspaceSettingList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceSettingList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WorkspaceSettingList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceSettingList>): void;
+}
+
+/**
+ * @class
+ * AutoProvisioningSettings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface AutoProvisioningSettings {
+
+
+    /**
+     * Exposes the auto provisioning settings of the subscriptions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoProvisioningSettingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoProvisioningSettingList>>;
+
+    /**
+     * Exposes the auto provisioning settings of the subscriptions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoProvisioningSettingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoProvisioningSettingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoProvisioningSettingList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoProvisioningSettingList>;
+    list(callback: ServiceCallback<models.AutoProvisioningSettingList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoProvisioningSettingList>): void;
+
+
+    /**
+     * Details of a specific setting
+     *
+     * @param {string} settingName Auto provisioning setting key
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoProvisioningSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(settingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoProvisioningSetting>>;
+
+    /**
+     * Details of a specific setting
+     *
+     * @param {string} settingName Auto provisioning setting key
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoProvisioningSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoProvisioningSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoProvisioningSetting} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(settingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoProvisioningSetting>;
+    get(settingName: string, callback: ServiceCallback<models.AutoProvisioningSetting>): void;
+    get(settingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoProvisioningSetting>): void;
+
+
+    /**
+     * Details of a specific setting
+     *
+     * @param {string} settingName Auto provisioning setting key
+     *
+     * @param {object} setting Auto provisioning setting key
+     *
+     * @param {string} setting.autoProvision Describes what kind of security agent
+     * provisioning action to take. Possible values include: 'On', 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoProvisioningSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(settingName: string, setting: models.AutoProvisioningSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoProvisioningSetting>>;
+
+    /**
+     * Details of a specific setting
+     *
+     * @param {string} settingName Auto provisioning setting key
+     *
+     * @param {object} setting Auto provisioning setting key
+     *
+     * @param {string} setting.autoProvision Describes what kind of security agent
+     * provisioning action to take. Possible values include: 'On', 'Off'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoProvisioningSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoProvisioningSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoProvisioningSetting} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(settingName: string, setting: models.AutoProvisioningSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoProvisioningSetting>;
+    create(settingName: string, setting: models.AutoProvisioningSetting, callback: ServiceCallback<models.AutoProvisioningSetting>): void;
+    create(settingName: string, setting: models.AutoProvisioningSetting, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoProvisioningSetting>): void;
+
+
+    /**
+     * Exposes the auto provisioning settings of the subscriptions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoProvisioningSettingList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoProvisioningSettingList>>;
+
+    /**
+     * Exposes the auto provisioning settings of the subscriptions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoProvisioningSettingList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoProvisioningSettingList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoProvisioningSettingList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoProvisioningSettingList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AutoProvisioningSettingList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoProvisioningSettingList>): void;
+}
+
+/**
+ * @class
+ * Compliances
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface Compliances {
+
+
+    /**
+     * The Compliance scores of the specific management group.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComplianceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(scope: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComplianceList>>;
+
+    /**
+     * The Compliance scores of the specific management group.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComplianceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComplianceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComplianceList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(scope: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComplianceList>;
+    list(scope: string, callback: ServiceCallback<models.ComplianceList>): void;
+    list(scope: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComplianceList>): void;
+
+
+    /**
+     * Details of a specific Compliance.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} complianceName name of the Compliance
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Compliance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(scope: string, complianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Compliance>>;
+
+    /**
+     * Details of a specific Compliance.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} complianceName name of the Compliance
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Compliance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Compliance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Compliance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(scope: string, complianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Compliance>;
+    get(scope: string, complianceName: string, callback: ServiceCallback<models.Compliance>): void;
+    get(scope: string, complianceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Compliance>): void;
+
+
+    /**
+     * The Compliance scores of the specific management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComplianceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComplianceList>>;
+
+    /**
+     * The Compliance scores of the specific management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComplianceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComplianceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComplianceList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComplianceList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ComplianceList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComplianceList>): void;
+}
+
+/**
+ * @class
+ * AdvancedThreatProtection
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface AdvancedThreatProtection {
+
+
+    /**
+     * Gets the Advanced Threat Protection settings for the specified resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AdvancedThreatProtectionSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AdvancedThreatProtectionSetting>>;
+
+    /**
+     * Gets the Advanced Threat Protection settings for the specified resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AdvancedThreatProtectionSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AdvancedThreatProtectionSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AdvancedThreatProtectionSetting} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AdvancedThreatProtectionSetting>;
+    get(resourceId: string, callback: ServiceCallback<models.AdvancedThreatProtectionSetting>): void;
+    get(resourceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AdvancedThreatProtectionSetting>): void;
+
+
+    /**
+     * Creates or updates the Advanced Threat Protection settings on a specified
+     * resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} advancedThreatProtectionSetting Advanced Threat Protection
+     * Settings
+     *
+     * @param {boolean} [advancedThreatProtectionSetting.isEnabled] Indicates
+     * whether Advanced Threat Protection is enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AdvancedThreatProtectionSetting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceId: string, advancedThreatProtectionSetting: models.AdvancedThreatProtectionSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AdvancedThreatProtectionSetting>>;
+
+    /**
+     * Creates or updates the Advanced Threat Protection settings on a specified
+     * resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} advancedThreatProtectionSetting Advanced Threat Protection
+     * Settings
+     *
+     * @param {boolean} [advancedThreatProtectionSetting.isEnabled] Indicates
+     * whether Advanced Threat Protection is enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AdvancedThreatProtectionSetting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AdvancedThreatProtectionSetting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AdvancedThreatProtectionSetting} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceId: string, advancedThreatProtectionSetting: models.AdvancedThreatProtectionSetting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AdvancedThreatProtectionSetting>;
+    create(resourceId: string, advancedThreatProtectionSetting: models.AdvancedThreatProtectionSetting, callback: ServiceCallback<models.AdvancedThreatProtectionSetting>): void;
+    create(resourceId: string, advancedThreatProtectionSetting: models.AdvancedThreatProtectionSetting, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AdvancedThreatProtectionSetting>): void;
+}
+
+/**
+ * @class
+ * Settings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface Settings {
+
+
+    /**
+     * Settings about different configurations in security center
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SettingsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SettingsList>>;
+
+    /**
+     * Settings about different configurations in security center
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SettingsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SettingsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SettingsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SettingsList>;
+    list(callback: ServiceCallback<models.SettingsList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SettingsList>): void;
+
+
+    /**
+     * Settings of different configurations in security center
+     *
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Setting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(settingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Setting>>;
+
+    /**
+     * Settings of different configurations in security center
+     *
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Setting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Setting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Setting} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(settingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Setting>;
+    get(settingName: string, callback: ServiceCallback<models.Setting>): void;
+    get(settingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Setting>): void;
+
+
+    /**
+     * updating settings about different configurations in security center
+     *
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
+     *
+     * @param {object} setting Setting object
+     *
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Setting>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(settingName: string, setting: models.Setting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Setting>>;
+
+    /**
+     * updating settings about different configurations in security center
+     *
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
+     *
+     * @param {object} setting Setting object
+     *
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Setting} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Setting} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Setting} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(settingName: string, setting: models.Setting, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Setting>;
+    update(settingName: string, setting: models.Setting, callback: ServiceCallback<models.Setting>): void;
+    update(settingName: string, setting: models.Setting, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Setting>): void;
+
+
+    /**
+     * Settings about different configurations in security center
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SettingsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SettingsList>>;
+
+    /**
+     * Settings about different configurations in security center
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SettingsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SettingsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SettingsList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SettingsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SettingsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SettingsList>): void;
+}
+
+/**
+ * @class
+ * InformationProtectionPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface InformationProtectionPolicies {
+
+
+    /**
+     * Details of the information protection policy.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} informationProtectionPolicyName Name of the information
+     * protection policy. Possible values include: 'effective', 'custom'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InformationProtectionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(scope: string, informationProtectionPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InformationProtectionPolicy>>;
+
+    /**
+     * Details of the information protection policy.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} informationProtectionPolicyName Name of the information
+     * protection policy. Possible values include: 'effective', 'custom'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InformationProtectionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InformationProtectionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InformationProtectionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(scope: string, informationProtectionPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InformationProtectionPolicy>;
+    get(scope: string, informationProtectionPolicyName: string, callback: ServiceCallback<models.InformationProtectionPolicy>): void;
+    get(scope: string, informationProtectionPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InformationProtectionPolicy>): void;
+
+
+    /**
+     * Details of the information protection policy.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} informationProtectionPolicyName Name of the information
+     * protection policy. Possible values include: 'effective', 'custom'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InformationProtectionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(scope: string, informationProtectionPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InformationProtectionPolicy>>;
+
+    /**
+     * Details of the information protection policy.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {string} informationProtectionPolicyName Name of the information
+     * protection policy. Possible values include: 'effective', 'custom'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InformationProtectionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InformationProtectionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InformationProtectionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(scope: string, informationProtectionPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InformationProtectionPolicy>;
+    createOrUpdate(scope: string, informationProtectionPolicyName: string, callback: ServiceCallback<models.InformationProtectionPolicy>): void;
+    createOrUpdate(scope: string, informationProtectionPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InformationProtectionPolicy>): void;
+
+
+    /**
+     * Information protection policies of a specific management group.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InformationProtectionPolicyList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(scope: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InformationProtectionPolicyList>>;
+
+    /**
+     * Information protection policies of a specific management group.
+     *
+     * @param {string} scope Scope of the query, can be subscription
+     * (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+     * (/providers/Microsoft.Management/managementGroups/mgName).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InformationProtectionPolicyList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InformationProtectionPolicyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InformationProtectionPolicyList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(scope: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InformationProtectionPolicyList>;
+    list(scope: string, callback: ServiceCallback<models.InformationProtectionPolicyList>): void;
+    list(scope: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InformationProtectionPolicyList>): void;
+
+
+    /**
+     * Information protection policies of a specific management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InformationProtectionPolicyList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InformationProtectionPolicyList>>;
+
+    /**
+     * Information protection policies of a specific management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InformationProtectionPolicyList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InformationProtectionPolicyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InformationProtectionPolicyList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InformationProtectionPolicyList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.InformationProtectionPolicyList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InformationProtectionPolicyList>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.
