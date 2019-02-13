@@ -3479,6 +3479,97 @@ export interface AmazonS3LinkedService extends LinkedService {
 }
 
 /**
+ * Rest Service linked service.
+ */
+export interface RestServiceLinkedService extends LinkedService {
+  /**
+   * The base URL of the REST service.
+   */
+  url: any;
+  /**
+   * Whether to validate server side SSL certificate when connecting to the endpoint.The default
+   * value is true. Type: boolean (or Expression with resultType boolean).
+   */
+  enableServerCertificateValidation?: any;
+  /**
+   * Type of authentication used to connect to the REST service. Possible values include:
+   * 'Anonymous', 'Basic', 'AadServicePrincipal', 'ManagedServiceIdentity'
+   */
+  authenticationType: string;
+  /**
+   * The user name used in Basic authentication type.
+   */
+  userName?: any;
+  /**
+   * The password used in Basic authentication type.
+   */
+  password?: SecretBase;
+  /**
+   * The application's client ID used in AadServicePrincipal authentication type.
+   */
+  servicePrincipalId?: any;
+  /**
+   * The application's key used in AadServicePrincipal authentication type.
+   */
+  servicePrincipalKey?: SecretBase;
+  /**
+   * The tenant information (domain name or tenant ID) used in AadServicePrincipal authentication
+   * type under which your application resides.
+   */
+  tenant?: any;
+  /**
+   * The resource you are requesting authorization to use.
+   */
+  aadResourceId?: any;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
+ * SAP Business Warehouse Open Hub Destination Linked Service.
+ */
+export interface SapOpenHubLinkedService extends LinkedService {
+  /**
+   * Host name of the SAP BW instance where the open hub destination is located. Type: string (or
+   * Expression with resultType string).
+   */
+  server: any;
+  /**
+   * System number of the BW system where the open hub destination is located. (Usually a two-digit
+   * decimal number represented as a string.) Type: string (or Expression with resultType string).
+   */
+  systemNumber: any;
+  /**
+   * Client ID of the client on the BW system where the open hub destination is located. (Usually a
+   * three-digit decimal number represented as a string) Type: string (or Expression with
+   * resultType string).
+   */
+  clientId: any;
+  /**
+   * Language of the BW system where the open hub destination is located. The default value is EN.
+   * Type: string (or Expression with resultType string).
+   */
+  language?: any;
+  /**
+   * Username to access the SAP BW server where the open hub destination is located. Type: string
+   * (or Expression with resultType string).
+   */
+  userName?: any;
+  /**
+   * Password to access the SAP BW server where the open hub destination is located.
+   */
+  password?: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
  * Linked service for SAP ERP Central Component(SAP ECC).
  */
 export interface SapEccLinkedService extends LinkedService {
@@ -4960,6 +5051,36 @@ export interface WebTableDataset extends Dataset {
 }
 
 /**
+ * A Rest service dataset.
+ */
+export interface RestServiceDataset extends Dataset {
+  /**
+   * The relative URL to the resource that the RESTful API provides. Type: string (or Expression
+   * with resultType string).
+   */
+  relativeUrl?: any;
+  /**
+   * The HTTP method used to call the RESTful API. The default is GET. Type: string (or Expression
+   * with resultType string).
+   */
+  requestMethod?: any;
+  /**
+   * The HTTP request body to the RESTful API if requestMethod is POST. Type: string (or Expression
+   * with resultType string).
+   */
+  requestBody?: any;
+  /**
+   * The additional HTTP headers in the request to the RESTful API. Type: string (or Expression
+   * with resultType string).
+   */
+  additionalHeaders?: any;
+  /**
+   * The pagination rules to compose next page requests.
+   */
+  paginationRules?: any;
+}
+
+/**
  * The on-premises SQL Server dataset.
  */
 export interface SqlServerTableDataset extends Dataset {
@@ -4967,6 +5088,28 @@ export interface SqlServerTableDataset extends Dataset {
    * The table name of the SQL Server dataset. Type: string (or Expression with resultType string).
    */
   tableName: any;
+}
+
+/**
+ * Sap Business Warehouse Open Hub Destination Table properties.
+ */
+export interface SapOpenHubTableDataset extends Dataset {
+  /**
+   * The name of the Open Hub Destination with destination type as Database Table. Type: string (or
+   * Expression with resultType string).
+   */
+  openHubDestinationName: any;
+  /**
+   * Whether to exclude the records of the last request. The default value is true. Type: boolean
+   * (or Expression with resultType boolean).
+   */
+  excludeLastRequest?: any;
+  /**
+   * The ID of request for delta loading. Once it is set, only data with requestId larger than the
+   * value of this property will be retrieved. The default value is 0. Type: integer (or Expression
+   * with resultType integer ).
+   */
+  baseRequestId?: any;
 }
 
 /**
@@ -6093,6 +6236,28 @@ export interface SqlSource extends CopySource {
 }
 
 /**
+ * A copy activity Rest service source.
+ */
+export interface RestSource extends CopySource {
+  /**
+   * The timeout (TimeSpan) to get an HTTP response. It is the timeout to get a response, not the
+   * timeout to read response data. Default value: 00:01:40. Type: string (or Expression with
+   * resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+   */
+  httpRequestTimeout?: any;
+  /**
+   * The time to await before sending next page request.
+   */
+  requestInterval?: any;
+}
+
+/**
+ * A copy activity source for SAP Business Warehouse Open Hub Destination source.
+ */
+export interface SapOpenHubSource extends CopySource {
+}
+
+/**
  * A copy activity source for SAP ECC source.
  */
 export interface SapEccSource extends CopySource {
@@ -6705,6 +6870,11 @@ export interface TabularTranslator extends CopyTranslator {
    * (or Expression with resultType object).
    */
   schemaMapping?: any;
+  /**
+   * The JSON Path of the Nested Array that is going to do cross-apply. Type: object (or Expression
+   * with resultType object).
+   */
+  collectionReference?: any;
 }
 
 /**
