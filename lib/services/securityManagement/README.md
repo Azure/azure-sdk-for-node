@@ -19,7 +19,7 @@ npm install azure-arm-security
 
 ### How to use
 
-#### Authentication, client creation and list pricings as an example.
+#### Authentication, client creation and list operations as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -27,7 +27,7 @@ const SecurityCenter = require("azure-arm-security");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new SecurityCenter(creds, subscriptionId);
-    return client.pricings.list().then((result) => {
+    return client.operations.list().then((result) => {
       console.log("The result is:");
       console.log(result);
     });

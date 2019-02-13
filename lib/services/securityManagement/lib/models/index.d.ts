@@ -16,262 +16,6 @@ export {
 };
 
 /**
- * Describes an Azure resource.
- */
-export interface Resource extends BaseResource {
-  /**
-   * Resource Id
-   */
-  readonly id?: string;
-  /**
-   * Resource name
-   */
-  readonly name?: string;
-  /**
-   * Resource type
-   */
-  readonly type?: string;
-}
-
-/**
- * Describes an Azure resource with kind
- */
-export interface Kind {
-  /**
-   * Kind of the resource
-   */
-  kind?: string;
-}
-
-/**
- * Contact details for security issues
- */
-export interface SecurityContact extends Resource {
-  /**
-   * The email of this security contact
-   */
-  email: string;
-  /**
-   * The phone number of this security contact
-   */
-  phone?: string;
-  /**
-   * Whether to send security alerts notifications to the security contact. Possible values
-   * include: 'On', 'Off'
-   */
-  alertNotifications: string;
-  /**
-   * Whether to send security alerts notifications to subscription admins. Possible values include:
-   * 'On', 'Off'
-   */
-  alertsToAdmins: string;
-}
-
-/**
- * Pricing tier will be applied for the scope based on the resource ID
- */
-export interface Pricing extends Resource {
-  /**
-   * Pricing tier type. Possible values include: 'Free', 'Standard'
-   */
-  pricingTier: string;
-}
-
-/**
- * Configures where to store the OMS agent data for workspaces under a scope
- */
-export interface WorkspaceSetting extends Resource {
-  /**
-   * The full Azure ID of the workspace to save the data in
-   */
-  workspaceId: string;
-  /**
-   * All the VMs in this scope will send their security data to the mentioned workspace unless
-   * overridden by a setting with more specific scope
-   */
-  scope: string;
-}
-
-/**
- * Auto provisioning setting
- */
-export interface AutoProvisioningSetting extends Resource {
-  /**
-   * Describes what kind of security agent provisioning action to take. Possible values include:
-   * 'On', 'Off'
-   */
-  autoProvision: string;
-}
-
-/**
- * A segment of a compliance assessment.
- */
-export interface ComplianceSegment {
-  /**
-   * The segment type, e.g. compliant, non-compliance, insufficient coverage, N/A, etc.
-   */
-  readonly segmentType?: string;
-  /**
-   * The size (%) of the segment.
-   */
-  readonly percentage?: number;
-}
-
-/**
- * Compliance of a scope
- */
-export interface Compliance extends Resource {
-  /**
-   * The timestamp when the Compliance calculation was conducted.
-   */
-  readonly assessmentTimestampUtcDate?: Date;
-  /**
-   * The resource count of the given subscription for which the Compliance calculation was
-   * conducted (needed for Management Group Compliance calculation).
-   */
-  readonly resourceCount?: number;
-  /**
-   * An array of segment, which is the actually the compliance assessment.
-   */
-  readonly assessmentResult?: ComplianceSegment[];
-}
-
-/**
- * The Advanced Threat Protection resource.
- */
-export interface AdvancedThreatProtectionSetting extends Resource {
-  /**
-   * Indicates whether Advanced Threat Protection is enabled.
-   */
-  isEnabled?: boolean;
-}
-
-/**
- * The kind of the security setting
- */
-export interface SettingResource extends Resource {
-  /**
-   * the kind of the settings string (DataExportSetting). Possible values include:
-   * 'DataExportSetting', 'AlertSuppressionSetting'
-   */
-  kind: string;
-}
-
-/**
- * Represents a security setting in Azure Security Center.
- */
-export interface Setting extends SettingResource {
-}
-
-/**
- * Represents a data export setting
- */
-export interface DataExportSetting extends Setting {
-  /**
-   * Is the data export setting is enabled
-   */
-  enabled: boolean;
-}
-
-/**
- * The sensitivity label.
- */
-export interface SensitivityLabel {
-  /**
-   * The name of the sensitivity label.
-   */
-  displayName?: string;
-  /**
-   * The order of the sensitivity label.
-   */
-  order?: number;
-  /**
-   * Indicates whether the label is enabled or not.
-   */
-  enabled?: boolean;
-}
-
-/**
- * The information type keyword.
- */
-export interface InformationProtectionKeyword {
-  /**
-   * The keyword pattern.
-   */
-  pattern?: string;
-  /**
-   * Indicates whether the keyword is custom or not.
-   */
-  custom?: boolean;
-  /**
-   * Indicates whether the keyword can be applied on numeric types or not.
-   */
-  canBeNumeric?: boolean;
-  /**
-   * Indicates whether the keyword is excluded or not.
-   */
-  excluded?: boolean;
-}
-
-/**
- * The information type.
- */
-export interface InformationType {
-  /**
-   * The name of the information type.
-   */
-  displayName?: string;
-  /**
-   * The order of the information type.
-   */
-  order?: number;
-  /**
-   * The recommended label id to be associated with this information type.
-   */
-  recommendedLabelId?: string;
-  /**
-   * Indicates whether the information type is enabled or not.
-   */
-  enabled?: boolean;
-  /**
-   * Indicates whether the information type is custom or not.
-   */
-  custom?: boolean;
-  /**
-   * The information type keywords.
-   */
-  keywords?: InformationProtectionKeyword[];
-}
-
-/**
- * Information protection policy.
- */
-export interface InformationProtectionPolicy extends Resource {
-  /**
-   * Describes the last UTC time the policy was modified.
-   */
-  readonly lastModifiedUtc?: Date;
-  /**
-   * Dictionary of sensitivity labels.
-   */
-  labels?: { [propertyName: string]: SensitivityLabel };
-  /**
-   * The sensitivity information types.
-   */
-  informationTypes?: { [propertyName: string]: InformationType };
-}
-
-/**
- * Describes an Azure resource with location
- */
-export interface Location {
-  /**
-   * Location where the resource is stored
-   */
-  readonly location?: string;
-}
-
-/**
  * Security operation display
  */
 export interface OperationDisplay {
@@ -309,6 +53,31 @@ export interface Operation {
 }
 
 /**
+ * Describes an Azure resource.
+*/
+export interface Resource extends BaseResource {
+  /**
+   * Resource Id
+  */
+  readonly id?: string;
+  /**
+   * Resource name
+  */
+  readonly name?: string;
+  /**
+   * Resource type
+  */
+  readonly type?: string;
+}
+
+/**
+ * The ASC location of the subscription is in the "name" field
+*/
+export interface AscLocation extends Resource {
+  properties?: any;
+}
+
+/**
  * Changing set of properties, depending on the task type that is derived from the name field
 */
 export interface SecurityTaskParameters {
@@ -343,13 +112,6 @@ export interface SecurityTask extends Resource {
    * Additional data on the state of the task
   */
   readonly subState?: string;
-}
-
-/**
- * The ASC location of the subscription is in the "name" field
-*/
-export interface AscLocation extends Resource {
-  properties?: any;
 }
 
 /**
@@ -509,80 +271,14 @@ export interface DiscoveredSecuritySolution {
   sku: string;
 }
 
-export interface TopologySingleResourceParent {
-  /**
-   * Azure resource id which serves as parent resource in topology view
-  */
-  readonly resourceId?: string;
-}
-
-export interface TopologySingleResourceChild {
-  /**
-   * Azure resource id which serves as child resource in topology view
-  */
-  readonly resourceId?: string;
-}
-
-export interface TopologySingleResource {
-  /**
-   * Azure resource id
-  */
-  readonly resourceId?: string;
-  /**
-   * The security severity of the resource
-  */
-  readonly severity?: string;
-  /**
-   * Indicates if the resource has security recommendations
-  */
-  readonly recommendationsExist?: boolean;
-  /**
-   * Indicates the resource connectivity level to the Internet (InternetFacing, Internal ,etc.)
-  */
-  readonly networkZones?: string;
-  /**
-   * Score of the resource based on its security severity
-  */
-  readonly topologyScore?: number;
-  /**
-   * The location of this resource
-  */
-  readonly location?: string;
-  /**
-   * Azure resources connected to this resource which are in higher level in the topology view
-  */
-  readonly parents?: TopologySingleResourceParent[];
-  /**
-   * Azure resources connected to this resource which are in lower level in the topology view
-  */
-  readonly children?: TopologySingleResourceChild[];
-}
-
-export interface TopologyResource {
-  /**
-   * Resource Id
-  */
-  readonly id?: string;
-  /**
-   * Resource name
-  */
-  readonly name?: string;
-  /**
-   * Resource type
-  */
-  readonly type?: string;
+/**
+ * Describes an Azure resource with location
+*/
+export interface Location {
   /**
    * Location where the resource is stored
   */
   readonly location?: string;
-  /**
-   * The UTC time on which the topology was calculated
-  */
-  readonly calculatedDateTime?: Date;
-  /**
-   * Azure resources which are part of this topology resource
-  */
-  readonly topologyResources?: TopologySingleResource[];
 }
 
 export interface JitNetworkAccessPortRule {
@@ -731,6 +427,16 @@ export interface JitNetworkAccessPolicyInitiateRequest {
 }
 
 /**
+ * Describes an Azure resource with kind
+*/
+export interface Kind {
+  /**
+   * Kind of the resource
+  */
+  kind?: string;
+}
+
+/**
  * Represents a security solution external to Azure Security Center which sends information to an
  * OMS workspace and whose data is displayed by Azure Security Center.
 */
@@ -852,6 +558,82 @@ export interface AadConnectivityState1 {
   connectivityState?: string;
 }
 
+export interface TopologySingleResourceParent {
+  /**
+   * Azure resource id which serves as parent resource in topology view
+  */
+  readonly resourceId?: string;
+}
+
+export interface TopologySingleResourceChild {
+  /**
+   * Azure resource id which serves as child resource in topology view
+  */
+  readonly resourceId?: string;
+}
+
+export interface TopologySingleResource {
+  /**
+   * Azure resource id
+  */
+  readonly resourceId?: string;
+  /**
+   * The security severity of the resource
+  */
+  readonly severity?: string;
+  /**
+   * Indicates if the resource has security recommendations
+  */
+  readonly recommendationsExist?: boolean;
+  /**
+   * Indicates the resource connectivity level to the Internet (InternetFacing, Internal ,etc.)
+  */
+  readonly networkZones?: string;
+  /**
+   * Score of the resource based on its security severity
+  */
+  readonly topologyScore?: number;
+  /**
+   * The location of this resource
+  */
+  readonly location?: string;
+  /**
+   * Azure resources connected to this resource which are in higher level in the topology view
+  */
+  readonly parents?: TopologySingleResourceParent[];
+  /**
+   * Azure resources connected to this resource which are in lower level in the topology view
+  */
+  readonly children?: TopologySingleResourceChild[];
+}
+
+export interface TopologyResource {
+  /**
+   * Resource Id
+  */
+  readonly id?: string;
+  /**
+   * Resource name
+  */
+  readonly name?: string;
+  /**
+   * Resource type
+  */
+  readonly type?: string;
+  /**
+   * Location where the resource is stored
+  */
+  readonly location?: string;
+  /**
+   * The UTC time on which the topology was calculated
+  */
+  readonly calculatedDateTime?: Date;
+  /**
+   * Azure resources which are part of this topology resource
+  */
+  readonly topologyResources?: TopologySingleResource[];
+}
+
 /**
  * Describes properties of a connected resource
 */
@@ -916,76 +698,6 @@ export interface AllowedConnectionsResource {
    * List of connectable resources
   */
   readonly connectableResources?: ConnectableResource[];
-}
-
-/**
- * List of pricing configurations response
-*/
-export interface PricingList extends Array<Pricing> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * List of security contacts response
-*/
-export interface SecurityContactList extends Array<SecurityContact> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * List of workspace settings response
-*/
-export interface WorkspaceSettingList extends Array<WorkspaceSetting> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * List of all the auto provisioning settings response
-*/
-export interface AutoProvisioningSettingList extends Array<AutoProvisioningSetting> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * List of Compliance objects response
-*/
-export interface ComplianceList extends Array<Compliance> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * Subscription settings list.
-*/
-export interface SettingsList extends Array<Setting> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
-}
-
-/**
- * Information protection policies response.
-*/
-export interface InformationProtectionPolicyList extends Array<InformationProtectionPolicy> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
 }
 
 /**
