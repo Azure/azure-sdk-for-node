@@ -306,7 +306,7 @@ export interface AlertRules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRule>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRule>>;
 
     /**
      * Creates or updates the alert rule.
@@ -354,9 +354,9 @@ export interface AlertRules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRule>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, callback: ServiceCallback<models.AlertRule>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRule>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRule>;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, callback: ServiceCallback<models.AlertRule>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, alertRule: models.AlertRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRule>): void;
 
 
     /**
@@ -536,7 +536,7 @@ export interface AlertRules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createActionWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Action>>;
+    createOrUpdateActionWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Action>>;
 
     /**
      * Creates or updates the action of alert rule.
@@ -586,9 +586,9 @@ export interface AlertRules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Action>;
-    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, callback: ServiceCallback<models.Action>): void;
-    createAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Action>): void;
+    createOrUpdateAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Action>;
+    createOrUpdateAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, callback: ServiceCallback<models.Action>): void;
+    createOrUpdateAction(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, ruleId: string, actionId: string, action: models.Action, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Action>): void;
 
 
     /**
@@ -1067,7 +1067,7 @@ export interface Cases {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseModel>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CaseModel>>;
 
     /**
      * Creates or updates the case.
@@ -1146,9 +1146,9 @@ export interface Cases {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseModel>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, callback: ServiceCallback<models.CaseModel>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseModel>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CaseModel>;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, callback: ServiceCallback<models.CaseModel>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, caseId: string, caseParameter: models.CaseModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CaseModel>): void;
 
 
     /**
@@ -1478,7 +1478,7 @@ export interface Bookmarks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Bookmark>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Bookmark>>;
 
     /**
      * Creates or updates the bookmark.
@@ -1549,9 +1549,9 @@ export interface Bookmarks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Bookmark>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, callback: ServiceCallback<models.Bookmark>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Bookmark>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Bookmark>;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, callback: ServiceCallback<models.Bookmark>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, bookmarkId: string, bookmark: models.Bookmark, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Bookmark>): void;
 
 
     /**
@@ -1858,7 +1858,7 @@ export interface DataConnectors {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnector>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataConnector>>;
 
     /**
      * Creates or updates the data connector.
@@ -1906,9 +1906,9 @@ export interface DataConnectors {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnector>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, callback: ServiceCallback<models.DataConnector>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnector>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataConnector>;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, callback: ServiceCallback<models.DataConnector>): void;
+    createOrUpdate(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, dataConnectorId: string, dataConnector: models.DataConnector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataConnector>): void;
 
 
     /**
@@ -2597,7 +2597,7 @@ export interface ProductSettings {
 
 
     /**
-     * Creates or updates the setting.
+     * Updates the setting.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -2624,10 +2624,10 @@ export interface ProductSettings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Settings>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Settings>>;
 
     /**
-     * Creates or updates the setting.
+     * Updates the setting.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -2670,7 +2670,7 @@ export interface ProductSettings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Settings>;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, callback: ServiceCallback<models.Settings>): void;
-    create(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Settings>): void;
+    update(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Settings>;
+    update(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, callback: ServiceCallback<models.Settings>): void;
+    update(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, settings: models.Settings, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Settings>): void;
 }
