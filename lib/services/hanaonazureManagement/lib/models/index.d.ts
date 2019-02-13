@@ -166,6 +166,10 @@ export interface HanaInstance extends Resource {
    * Resource proximity placement group
    */
   readonly proximityPlacementGroup?: string;
+  /**
+   * Hardware revision of a HANA instance
+   */
+  readonly hwRevision?: string;
 }
 
 /**
