@@ -44,7 +44,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new Private DNS
      * zone to be created, but to prevent updating an existing zone. Other values
@@ -84,7 +84,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new Private DNS
      * zone to be created, but to prevent updating an existing zone. Other values
@@ -142,7 +142,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -177,7 +177,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -485,7 +485,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new Private DNS
      * zone to be created, but to prevent updating an existing zone. Other values
@@ -525,7 +525,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new Private DNS
      * zone to be created, but to prevent updating an existing zone. Other values
@@ -583,7 +583,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -618,7 +618,7 @@ export interface PrivateZones {
      *
      * @param {string} [options.ifMatch] The ETag of the Private DNS zone. Omit
      * this value to always overwrite the current zone. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -879,7 +879,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new virtual
      * network link to the Private DNS zone to be created, but to prevent updating
@@ -930,7 +930,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new virtual
      * network link to the Private DNS zone to be created, but to prevent updating
@@ -999,7 +999,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1045,7 +1045,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1324,7 +1324,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new virtual
      * network link to the Private DNS zone to be created, but to prevent updating
@@ -1375,7 +1375,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new virtual
      * network link to the Private DNS zone to be created, but to prevent updating
@@ -1444,7 +1444,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1490,7 +1490,7 @@ export interface VirtualNetworkLinks {
      * @param {string} [options.ifMatch] The ETag of the virtual network link to
      * the Private DNS zone. Omit this value to always overwrite the current
      * virtual network link. Specify the last-seen ETag value to prevent
-     * accidentally overwritting any concurrent changes.
+     * accidentally overwriting any concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1747,7 +1747,7 @@ export interface RecordSets {
      *
      * @param {string} [options.ifMatch] The ETag of the record set. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new record set
      * to be created, but to prevent updating an existing record set. Other values
@@ -1842,7 +1842,7 @@ export interface RecordSets {
      *
      * @param {string} [options.ifMatch] The ETag of the record set. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting any concurrent changes.
+     * value to prevent accidentally overwriting any concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new record set
      * to be created, but to prevent updating an existing record set. Other values
@@ -1954,7 +1954,7 @@ export interface RecordSets {
      *
      * @param {string} [options.ifMatch] The ETag of the record set. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2043,7 +2043,7 @@ export interface RecordSets {
      *
      * @param {string} [options.ifMatch] The ETag of the record set. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
