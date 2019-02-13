@@ -50,7 +50,9 @@ export interface Vaults {
      *
      * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
-     * must use the same tenant ID as the key vault's tenant ID.
+     * must use the same tenant ID as the key vault's tenant ID. When `createMode`
+     * is set to `recover`, access policies are not required. Otherwise, access
+     * policies are required.
      *
      * @param {string} [parameters.properties.vaultUri] The URI of the vault for
      * performing operations on keys and secrets.
@@ -144,7 +146,9 @@ export interface Vaults {
      *
      * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
-     * must use the same tenant ID as the key vault's tenant ID.
+     * must use the same tenant ID as the key vault's tenant ID. When `createMode`
+     * is set to `recover`, access policies are not required. Otherwise, access
+     * policies are required.
      *
      * @param {string} [parameters.properties.vaultUri] The URI of the vault for
      * performing operations on keys and secrets.
@@ -1065,7 +1069,9 @@ export interface Vaults {
      *
      * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
-     * must use the same tenant ID as the key vault's tenant ID.
+     * must use the same tenant ID as the key vault's tenant ID. When `createMode`
+     * is set to `recover`, access policies are not required. Otherwise, access
+     * policies are required.
      *
      * @param {string} [parameters.properties.vaultUri] The URI of the vault for
      * performing operations on keys and secrets.
@@ -1159,7 +1165,9 @@ export interface Vaults {
      *
      * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
      * identities that have access to the key vault. All identities in the array
-     * must use the same tenant ID as the key vault's tenant ID.
+     * must use the same tenant ID as the key vault's tenant ID. When `createMode`
+     * is set to `recover`, access policies are not required. Otherwise, access
+     * policies are required.
      *
      * @param {string} [parameters.properties.vaultUri] The URI of the vault for
      * performing operations on keys and secrets.
