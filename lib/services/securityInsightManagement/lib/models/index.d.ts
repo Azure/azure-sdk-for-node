@@ -94,7 +94,7 @@ export interface ScheduledAlertRule extends AlertRule {
   /**
    * The display name for alerts created by this alert rule.
    */
-  displayName?: string;
+  displayName: string;
   /**
    * The description of the alert rule.
    */
