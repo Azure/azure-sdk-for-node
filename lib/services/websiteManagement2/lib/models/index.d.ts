@@ -753,6 +753,20 @@ export interface ManagedServiceIdentity {
 }
 
 /**
+ * A global distribution definition.
+ */
+export interface GeoDistribution {
+  /**
+   * Location.
+   */
+  location?: string;
+  /**
+   * NumberOfWorkers.
+   */
+  numberOfWorkers?: number;
+}
+
+/**
  * The status of the last successful slot swap operation.
  */
 export interface SlotSwapStatus {
@@ -854,11 +868,23 @@ export interface IpSecurityRestriction {
    * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
    * SubnetMask property must not be specified.
    */
-  ipAddress: string;
+  ipAddress?: string;
   /**
    * Subnet mask for the range of IP addresses the restriction is valid for.
    */
   subnetMask?: string;
+  /**
+   * Virtual network resource id
+   */
+  vnetSubnetResourceId?: string;
+  /**
+   * (internal) Vnet traffic tag
+   */
+  vnetTrafficTag?: number;
+  /**
+   * (internal) Subnet traffic tag
+   */
+  subnetTrafficTag?: number;
   /**
    * Allow or Deny access for this IP range.
    */
@@ -1605,6 +1631,10 @@ export interface Site extends Resource {
    */
   clientCertEnabled?: boolean;
   /**
+   * client certificate authentication comma-separated exclusion paths
+   */
+  clientCertExclusionPaths?: string;
+  /**
    * <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
    * If <code>true</code>, the app is only accessible via API management process.
    */
@@ -1661,6 +1691,19 @@ export interface Site extends Resource {
    * http requests
    */
   httpsOnly?: boolean;
+  /**
+   * Site redundancy mode. Possible values include: 'None', 'Manual', 'Failover', 'ActiveActive',
+   * 'GeoRedundant'
+   */
+  redundancyMode?: string;
+  /**
+   * Specifies an operation id if this site has a pending operation.
+   */
+  readonly inProgressOperationId?: string;
+  /**
+   * GeoDistributions for this site
+   */
+  geoDistributions?: GeoDistribution[];
   identity?: ManagedServiceIdentity;
 }
 
@@ -1758,10 +1801,6 @@ export interface AppServicePlan extends Resource {
    * App Service plan subscription.
   */
   readonly subscription?: string;
-  /**
-   * App Service plan administration site.
-  */
-  adminSiteName?: string;
   /**
    * Specification for the App Service Environment to use for the App Service plan.
   */
@@ -3540,6 +3579,10 @@ export interface StackMinorVersion {
    * <code>true</code> if this is the default minor version; otherwise, <code>false</code>.
   */
   isDefault?: boolean;
+  /**
+   * <code>true</code> if this supports Remote Debugging, otherwise <code>false</code>.
+  */
+  isRemoteDebuggingEnabled?: boolean;
 }
 
 /**
@@ -4005,6 +4048,36 @@ export interface SourceControl extends ProxyOnlyResource {
    * OAuth token expiration.
   */
   expirationTime?: Date;
+}
+
+/**
+ * Container settings validation request context
+*/
+export interface ValidateContainerSettingsRequest {
+  /**
+   * Base URL of the container registry
+  */
+  baseUrl?: string;
+  /**
+   * Username for to access the container registry
+  */
+  username?: string;
+  /**
+   * Password for to access the container registry
+  */
+  password?: string;
+  /**
+   * Repository name (image name)
+  */
+  repository?: string;
+  /**
+   * Image tag
+  */
+  tag?: string;
+  /**
+   * Platform (windows or linux)
+  */
+  platform?: string;
 }
 
 /**
@@ -6065,6 +6138,10 @@ export interface SitePatchResource extends ProxyOnlyResource {
   */
   clientCertEnabled?: boolean;
   /**
+   * client certificate authentication comma-separated exclusion paths
+  */
+  clientCertExclusionPaths?: string;
+  /**
    * <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
    * If <code>true</code>, the app is only accessible via API management process.
   */
@@ -6121,6 +6198,19 @@ export interface SitePatchResource extends ProxyOnlyResource {
    * http requests
   */
   httpsOnly?: boolean;
+  /**
+   * Site redundancy mode. Possible values include: 'None', 'Manual', 'Failover', 'ActiveActive',
+   * 'GeoRedundant'
+  */
+  redundancyMode?: string;
+  /**
+   * Specifies an operation id if this site has a pending operation.
+  */
+  readonly inProgressOperationId?: string;
+  /**
+   * GeoDistributions for this site
+  */
+  geoDistributions?: GeoDistribution[];
 }
 
 /**
@@ -6987,10 +7077,6 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
    * App Service plan subscription.
   */
   readonly subscription?: string;
-  /**
-   * App Service plan administration site.
-  */
-  adminSiteName?: string;
   /**
    * Specification for the App Service Environment to use for the App Service plan.
   */
