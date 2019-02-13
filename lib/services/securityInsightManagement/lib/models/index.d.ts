@@ -92,16 +92,16 @@ export interface AlertRuleKind1 {
  */
 export interface ScheduledAlertRule extends AlertRule {
   /**
-   * The name for alerts created by this alert rule.
+   * The display name for alerts created by this alert rule.
    */
-  ruleName: string;
+  displayName: string;
   /**
    * The description of the alert rule.
    */
   description: string;
   /**
-   * The severity for alerts created by this alert rule. Possible values include: 'Low', 'Medium',
-   * 'High', 'Informational'
+   * The severity for alerts created by this alert rule. Possible values include: 'High', 'Medium',
+   * 'Low', 'Informational'
    */
   severity: string;
   /**
@@ -145,6 +145,153 @@ export interface ScheduledAlertRule extends AlertRule {
 }
 
 /**
+ * An azure resource object
+ */
+export interface Resource extends BaseResource {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+}
+
+/**
+ * Action for alert rule.
+ */
+export interface Action extends Resource {
+  /**
+   * Etag of the action.
+   */
+  etag?: string;
+  /**
+   * The uri for the action to trigger.
+   */
+  triggerUri?: string;
+}
+
+/**
+ * User information that made some action
+ */
+export interface UserInfo {
+  /**
+   * The object id of the user.
+   */
+  objectId?: string;
+  /**
+   * The email of the user.
+   */
+  email?: string;
+  /**
+   * The name of the user.
+   */
+  name?: string;
+}
+
+/**
+ * Represents a case in Azure Security Insights.
+ */
+export interface CaseModel extends Resource {
+  /**
+   * Etag of the alert rule.
+   */
+  etag?: string;
+  /**
+   * The last time the case was updated
+   */
+  lastUpdatedTimeUtc?: Date;
+  /**
+   * The time the case was created
+   */
+  createdTimeUtc?: Date;
+  /**
+   * The end time of the case
+   */
+  endTimeUtc?: Date;
+  /**
+   * The start time of the case
+   */
+  startTimeUtc?: Date;
+  /**
+   * List of labels relevant to this case
+   */
+  labels?: string[];
+  /**
+   * The description of the case
+   */
+  description?: string;
+  /**
+   * The title of the case
+   */
+  title: string;
+  /**
+   * Describes a user that the case is assigned to
+   */
+  assignedTo?: UserInfo;
+  /**
+   * The severity of the case. Possible values include: 'Critical', 'High', 'Medium', 'Low',
+   * 'Informational'
+   */
+  severity: string;
+  /**
+   * The status of the case. Possible values include: 'Draft', 'Open', 'InProgress', 'Closed'
+   */
+  status: string;
+  /**
+   * The reason the case was closed. Possible values include: 'Resolved', 'Dismissed', 'Other'
+   */
+  closeReason?: string;
+}
+
+/**
+ * Represents a bookmark in Azure Security Insights.
+ */
+export interface Bookmark extends Resource {
+  /**
+   * Etag of the bookmark.
+   */
+  etag?: string;
+  /**
+   * The display name of the bookmark
+   */
+  displayName: string;
+  /**
+   * The last time the bookmark was updated
+   */
+  lastUpdatedTimeUtc?: Date;
+  /**
+   * The time the bookmark was created
+   */
+  createdTimeUtc?: Date;
+  /**
+   * Describes a user that created the bookmark
+   */
+  createdBy?: UserInfo;
+  /**
+   * Describes a user that updated the bookmark
+   */
+  updatedBy?: UserInfo;
+  /**
+   * The notes of the bookmark
+   */
+  notes?: string;
+  /**
+   * List of labels relevant to this bookmark
+   */
+  labels?: string[];
+  /**
+   * The query of the bookmark.
+   */
+  query: string;
+}
+
+/**
  * Data connector.
  */
 export interface DataConnector {
@@ -182,13 +329,13 @@ export interface DataConnectorKind1 {
 }
 
 /**
- * Describes an Azure resource with kind.
+ * Properties data connector on tenant level.
  */
-export interface DataConnectorContextId {
+export interface DataConnectorTenantId {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
 }
 
 /**
@@ -233,9 +380,9 @@ export interface OfficeDataConnectorDataTypes {
  */
 export interface OfficeDataConnector extends DataConnector {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
   /**
    * The available data types for the connector.
    */
@@ -249,7 +396,7 @@ export interface TIDataConnectorDataTypesIndicators extends DataConnectorDataTyp
 }
 
 /**
- * The available data types for TI data connector.
+ * The available data types for TI (Threat Intelligence) data connector.
  */
 export interface TIDataConnectorDataTypes {
   /**
@@ -263,45 +410,13 @@ export interface TIDataConnectorDataTypes {
  */
 export interface TIDataConnector extends DataConnector {
   /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
+   * The tenant id to connect to, and get the data from.
    */
-  contextId?: string;
+  tenantId?: string;
   /**
    * The available data types for the connector.
    */
   dataTypes?: TIDataConnectorDataTypes;
-}
-
-/**
- * Data connector with alerts data type.
- */
-export interface DataConnectorWithAlerts extends DataConnector {
-  /**
-   * The context id of the origin data source (Like tenantID, SubscriptionID etc.).
-   */
-  contextId?: string;
-  /**
-   * The available data types for the connector.
-   */
-  dataTypes?: AlertsDataTypeOfDataConnector;
-}
-
-/**
- * Represents AAD (Azure Active Directory) data connector.
- */
-export interface AADDataConnector extends DataConnectorWithAlerts {
-}
-
-/**
- * Represents ASC (Azure Security Center) data connector.
- */
-export interface ASCDataConnector extends DataConnectorWithAlerts {
-}
-
-/**
- * Represents MCAS (Microsoft Cloud App Security) data connector.
- */
-export interface MCASDataConnector extends DataConnectorWithAlerts {
 }
 
 /**
@@ -321,9 +436,61 @@ export interface AlertsDataTypeOfDataConnector {
 }
 
 /**
- * An azure resource object
+ * Represents AAD (Azure Active Directory) data connector.
  */
-export interface Resource extends BaseResource {
+export interface AADDataConnector extends DataConnector {
+  /**
+   * The tenant id to connect to, and get the data from.
+   */
+  tenantId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+}
+
+/**
+ * Represents ASC (Azure Security Center) data connector.
+ */
+export interface ASCDataConnector extends DataConnector {
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+  /**
+   * The subscription id to connect to, and get the data from.
+   */
+  subscriptionId?: string;
+}
+
+/**
+ * Represents MCAS (Microsoft Cloud App Security) data connector.
+ */
+export interface MCASDataConnector extends DataConnector {
+  /**
+   * The tenant id to connect to, and get the data from.
+   */
+  tenantId?: string;
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+}
+
+/**
+ * Data connector properties.
+ */
+export interface DataConnectorWithAlertsProperties {
+  /**
+   * The available data types for the connector.
+   */
+  dataTypes?: AlertsDataTypeOfDataConnector;
+}
+
+/**
+ * Specific entity.
+ */
+export interface Entity {
   /**
    * Azure resource Id
    */
@@ -336,6 +503,199 @@ export interface Resource extends BaseResource {
    * Azure resource name
    */
   readonly name?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes an Azure resource with kind.
+ */
+export interface EntityKind1 {
+  /**
+   * The kind of the entity. Possible values include: 'Account', 'Host', 'File'
+   */
+  kind?: string;
+}
+
+/**
+ * Represents an account entity.
+ */
+export interface AccountEntity extends Entity {
+  /**
+   * The name of the account. This field should hold only the name without any domain added to it,
+   * i.e. administrator.
+   */
+  readonly accountName?: string;
+  /**
+   * The NETBIOS domain name as it appears in the alert format – domain\username. Examples: NT
+   * AUTHORITY.
+   */
+  readonly ntDomain?: string;
+  /**
+   * The user principal name suffix for the account, in some cases it is also the domain name.
+   * Examples: contoso.com.
+   */
+  readonly upnSuffix?: string;
+  /**
+   * The account security identifier, e.g. S-1-5-18.
+   */
+  readonly sid?: string;
+  /**
+   * The Azure Active Directory tenant id.
+   */
+  readonly aadTenantId?: string;
+  /**
+   * The Azure Active Directory user id.
+   */
+  readonly aadUserId?: string;
+  /**
+   * The Azure Active Directory Passport User ID.
+   */
+  readonly puid?: string;
+  /**
+   * Determines whether this is a domain account.
+   */
+  readonly isDomainJoined?: boolean;
+  /**
+   * The objectGUID attribute is a single-value attribute that is the unique identifier for the
+   * object, assigned by active directory.
+   */
+  readonly objectGuid?: string;
+}
+
+/**
+ * Represents a host entity.
+ */
+export interface HostEntity extends Entity {
+  /**
+   * The DNS domain that this host belongs to. Should contain the compete DNS suffix for the domain
+   */
+  readonly dnsDomain?: string;
+  /**
+   * The NT domain that this host belongs to.
+   */
+  readonly ntDomain?: string;
+  /**
+   * The hostname without the domain suffix.
+   */
+  readonly hostName?: string;
+  /**
+   * The host name (pre-windows2000).
+   */
+  readonly netBiosName?: string;
+  /**
+   * The azure resource id of the VM.
+   */
+  readonly azureID?: string;
+  /**
+   * The OMS agent id, if the host has OMS agent installed.
+   */
+  readonly omsAgentID?: string;
+  /**
+   * The operartion system type. Possible values include: 'Linux', 'Windows', 'Android', 'IOS'
+   */
+  osFamily?: string;
+  /**
+   * A free text representation of the operating system. This field is meant to hold specific
+   * versions the are more fine grained than OSFamily or future values not supported by OSFamily
+   * enumeration
+   */
+  readonly osVersion?: string;
+  /**
+   * Determines whether this host belongs to a domain.
+   */
+  readonly isDomainJoined?: boolean;
+}
+
+/**
+ * Represents a file entity.
+ */
+export interface FileEntity extends Entity {
+  /**
+   * The full path to the file.
+   */
+  readonly directory?: string;
+  /**
+   * The file name without path (some alerts might not include path).
+   */
+  readonly fileName?: string;
+}
+
+/**
+ * Consent for Office365 tenant that already made.
+ */
+export interface OfficeConsent extends Resource {
+  /**
+   * The tenantId of the Office365 with the concesnt.
+   */
+  tenantId?: string;
+  /**
+   * The tenant name of the Office365 with the concesnt.
+   */
+  readonly tenantName?: string;
+}
+
+/**
+ * The Setting.
+ */
+export interface Settings {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes an Azure resource with kind.
+ */
+export interface SettingsKind {
+  /**
+   * The kind of the setting. Possible values include: 'UebaSettings', 'ToggleSettings'
+   */
+  kind?: string;
+}
+
+/**
+ * Represents settings for User and Entity Behavior Analytics enablement.
+ */
+export interface UebaSettings extends Settings {
+  /**
+   * Determines whether User and Entity Behavior Analytics is enabled for this workspace.
+   */
+  isEnabled?: boolean;
+  /**
+   * Determines whether User and Entity Behavior Analytics is enabled from MCAS (Microsoft Cloud
+   * App Security). Possible values include: 'Enabled', 'Disabled'
+   */
+  readonly statusInMcas?: string;
+  /**
+   * Determines whether the tenant has ATP (Advanced Threat Protection) license.
+   */
+  readonly atpLicenseStatus?: boolean;
+}
+
+/**
+ * Settings with single toggle.
+ */
+export interface ToggleSettings extends Settings {
+  /**
+   * Determines whether the setting is enable or disabled.
+   */
+  isEnabled?: boolean;
 }
 
 /**
@@ -359,11 +719,61 @@ export interface AlertRulesList extends Array<AlertRule> {
 }
 
 /**
+ * List all the actions.
+ */
+export interface ActionsList extends Array<Action> {
+  /**
+   * URL to fetch the next set of actions.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List all the cases.
+ */
+export interface CaseList extends Array<CaseModel> {
+  /**
+   * URL to fetch the next set of cases.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List all the bookmarks.
+ */
+export interface BookmarkList extends Array<Bookmark> {
+  /**
+   * URL to fetch the next set of cases.
+   */
+  readonly nextLink?: string;
+}
+
+/**
  * List all the data connectors.
  */
 export interface DataConnectorList extends Array<DataConnector> {
   /**
    * URL to fetch the next set of data connectors.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of all the entities.
+ */
+export interface EntityList extends Array<Entity> {
+  /**
+   * URL to fetch the next set of entities.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of all the office365 consents.
+ */
+export interface OfficeConsentList extends Array<OfficeConsent> {
+  /**
+   * URL to fetch the next set of office consents.
    */
   readonly nextLink?: string;
 }
