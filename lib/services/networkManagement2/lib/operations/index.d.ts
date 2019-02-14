@@ -249,15 +249,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -438,15 +438,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -1429,15 +1429,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -1618,15 +1618,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -6709,7 +6709,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6764,7 +6764,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6975,7 +6975,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -7030,7 +7030,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -11795,7 +11795,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11813,7 +11813,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11911,7 +11911,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -11932,7 +11932,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -22017,15 +22017,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22037,7 +22037,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22114,15 +22114,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22134,7 +22134,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22356,15 +22356,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22376,7 +22376,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22453,15 +22453,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22473,7 +22473,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
