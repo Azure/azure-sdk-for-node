@@ -24,8 +24,7 @@ export interface APIError {
 
 export interface Point {
   /**
-   * Timestamp of a data point. Please make sure it aligns with the midnight, and use a UTC date
-   * time string, e.g., 2017-08-01T00:00:00Z.
+   * Timestamp of a data point (ISO8601 format).
   */
   timestamp: Date;
   /**

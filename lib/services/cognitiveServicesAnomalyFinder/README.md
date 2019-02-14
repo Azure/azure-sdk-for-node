@@ -38,7 +38,7 @@ const body = {
   customInterval: 1,
   period: 1,
   maxAnomalyRatio: 1.01,
-  sensitivity: 1.01
+  sensitivity: 1
 };
 
 client.entireDetect(body).then((result) => {
