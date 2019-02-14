@@ -529,7 +529,7 @@ export interface AccountEntity extends Entity {
    */
   readonly accountName?: string;
   /**
-   * The NETBIOS domain name as it appears in the alert format – domain\username. Examples: NT
+   * The NetBIOS domain name as it appears in the alert format – domain\username. Examples: NT
    * AUTHORITY.
    */
   readonly ntDomain?: string;
@@ -594,7 +594,7 @@ export interface HostEntity extends Entity {
    */
   readonly omsAgentID?: string;
   /**
-   * The operartion system type. Possible values include: 'Linux', 'Windows', 'Android', 'IOS'
+   * The operating system type. Possible values include: 'Linux', 'Windows', 'Android', 'IOS'
    */
   osFamily?: string;
   /**
@@ -628,11 +628,11 @@ export interface FileEntity extends Entity {
  */
 export interface OfficeConsent extends Resource {
   /**
-   * The tenantId of the Office365 with the concesnt.
+   * The tenantId of the Office365 with the consent.
    */
   tenantId?: string;
   /**
-   * The tenant name of the Office365 with the concesnt.
+   * The tenant name of the Office365 with the consent.
    */
   readonly tenantName?: string;
 }

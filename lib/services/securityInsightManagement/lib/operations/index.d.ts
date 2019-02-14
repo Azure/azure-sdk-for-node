@@ -2526,7 +2526,7 @@ export interface ProductSettings {
 
 
     /**
-     * Gets a stting.
+     * Gets a setting.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -2552,7 +2552,7 @@ export interface ProductSettings {
     getWithHttpOperationResponse(resourceGroupName: string, operationalInsightsResourceProvider: string, workspaceName: string, settingsName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Settings>>;
 
     /**
-     * Gets a stting.
+     * Gets a setting.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
