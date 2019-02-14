@@ -114,17 +114,17 @@ export interface SecurityRule extends SubResource {
    */
   protocol: string;
   /**
-   * The source port or range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+   * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used
    * to match all ports.
    */
   sourcePortRange?: string;
   /**
-   * The destination port or range. Integer or range between 0 and 65535. Asterisks '*' can also be
+   * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be
    * used to match all ports.
    */
   destinationPortRange?: string;
   /**
-   * The CIDR or source IP range. Asterisks '*' can also be used to match all source IPs. Default
+   * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default
    * tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is
    * an ingress rule, specifies where network traffic originates from.
    */
@@ -138,8 +138,8 @@ export interface SecurityRule extends SubResource {
    */
   sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
   /**
-   * The destination address prefix. CIDR or destination IP range. Asterisks '*' can also be used
-   * to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
+   * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to
+   * match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
    * 'Internet' can also be used.
    */
   destinationAddressPrefix?: string;
@@ -1787,6 +1787,31 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
 }
 
 /**
+ * Set of conditions in the Rewrite Rule in Application Gateway.
+*/
+export interface ApplicationGatewayRewriteRuleCondition {
+  /**
+   * The condition parameter of the RewriteRuleCondition.
+  */
+  variable?: string;
+  /**
+   * The pattern, either fixed string or regular expression, that evaluates the truthfulness of the
+   * condition
+  */
+  pattern?: string;
+  /**
+   * Setting this paramter to truth value with force the pattern to do a case in-sensitive
+   * comparison.
+  */
+  ignoreCase?: boolean;
+  /**
+   * Setting this value as truth will force to check the negation of the condition given by the
+   * user.
+  */
+  negate?: boolean;
+}
+
+/**
  * Header configuration of the Actions set in Application Gateway.
 */
 export interface ApplicationGatewayHeaderConfiguration {
@@ -1822,6 +1847,15 @@ export interface ApplicationGatewayRewriteRule {
    * Name of the rewrite rule that is unique within an Application Gateway.
   */
   name?: string;
+  /**
+   * Rule Sequence of the rewrite rule that determines the order of execution of a particular rule
+   * in a RewriteRuleSet.
+  */
+  ruleSequence?: number;
+  /**
+   * Conditions based on which the action set execution will be evaluated.
+  */
+  conditions?: ApplicationGatewayRewriteRuleCondition[];
   /**
    * Set of actions to be done as part of the rewrite Rule.
   */
@@ -2031,7 +2065,7 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 */
 export interface ApplicationGatewayAutoscaleConfiguration {
   /**
-   * Lower bound on number of Application Gateway capacity
+   * Lower bound on number of Application Gateway instances
   */
   minCapacity: number;
   /**
@@ -2195,36 +2229,6 @@ export interface ApplicationGateway extends Resource {
    * The identity of the application gateway, if configured.
   */
   identity?: ManagedServiceIdentity;
-}
-
-/**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
 }
 
 /**
@@ -2420,7 +2424,7 @@ export interface AzureFirewallIPConfiguration extends SubResource {
 */
 export interface AzureFirewallRCAction {
   /**
-   * The type of action. Possible values include: 'Allow', 'Deny'
+   * The type of action. Possible values include: 'Allow', 'Deny', 'Alert'
   */
   type?: string;
 }
@@ -2528,7 +2532,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
@@ -2668,6 +2673,10 @@ export interface AzureFirewall extends Resource {
    * 'Deleting', 'Failed'
   */
   provisioningState?: string;
+  /**
+   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+  */
+  threatIntelMode?: string;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -5599,7 +5608,7 @@ export interface ConnectionStateSnapshot {
 */
 export interface ConnectionMonitorQueryResult {
   /**
-   * Status of connection monitor source. Possible values include: 'Uknown', 'Active', 'Inactive'
+   * Status of connection monitor source. Possible values include: 'Unknown', 'Active', 'Inactive'
   */
   sourceStatus?: string;
   /**
@@ -6315,6 +6324,39 @@ export interface VirtualNetworkUsage {
    * Usage units. Returns 'Count'
   */
   readonly unit?: string;
+}
+
+/**
+ * Network Intent Policy resource.
+*/
+export interface NetworkIntentPolicy extends Resource {
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+export interface NetworkIntentPolicyConfiguration {
+  /**
+   * The name of the Network Intent Policy for storing in target subscription.
+  */
+  networkIntentPolicyName?: string;
+  sourceNetworkIntentPolicy?: NetworkIntentPolicy;
+}
+
+export interface PrepareNetworkPoliciesRequest {
+  /**
+   * The name of the service for which subnet is being prepared for.
+  */
+  serviceName?: string;
+  /**
+   * The name of the resource group where the Network Intent Policy will be stored.
+  */
+  resourceGroupName?: string;
+  /**
+   * A list of NetworkIntentPolicyConfiguration.
+  */
+  networkIntentPolicyConfigurations?: NetworkIntentPolicyConfiguration[];
 }
 
 /**

@@ -272,7 +272,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -461,7 +461,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -906,11 +906,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableServerVariablesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableServerVariablesResult>>;
+    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available server variables.
@@ -927,7 +927,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableServerVariablesResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -935,18 +935,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableServerVariablesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableServerVariablesResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableServerVariablesResult>;
-    listAvailableServerVariables(callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
-    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableServerVariables(callback: ServiceCallback<string[]>): void;
+    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -959,11 +956,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableRequestHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableRequestHeadersResult>>;
+    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available request headers.
@@ -980,7 +977,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableRequestHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -988,18 +985,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableRequestHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableRequestHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableRequestHeadersResult>;
-    listAvailableRequestHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
-    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableRequestHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -1012,11 +1006,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableResponseHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableResponseHeadersResult>>;
+    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available response headers.
@@ -1033,7 +1027,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableResponseHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1041,18 +1035,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableResponseHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableResponseHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableResponseHeadersResult>;
-    listAvailableResponseHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
-    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableResponseHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -1461,7 +1452,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -1650,7 +1641,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -3281,6 +3272,9 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3325,6 +3319,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3556,6 +3553,9 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3600,6 +3600,9 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
+     *
+     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
+     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -6706,7 +6709,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit connection operation.
+     * to the create or update express route circuit circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6761,7 +6764,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit connection operation.
+     * to the create or update express route circuit circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6972,7 +6975,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit connection operation.
+     * to the create or update express route circuit circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -7027,7 +7030,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit connection operation.
+     * to the create or update express route circuit circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -20627,7 +20630,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the PublicIPPrefix.
+     * @param {string} networkProfileName The name of the public IP prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20649,7 +20652,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the PublicIPPrefix.
+     * @param {string} networkProfileName The name of the public IP prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22014,15 +22017,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisks '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22034,7 +22037,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22111,15 +22114,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisks '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22131,7 +22134,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22353,15 +22356,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisks '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22373,7 +22376,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22450,15 +22453,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * destination port or range. Integer or range between 0 and 65535. Asterisk
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisks '*' can also be used to match all source IPs.
+     * source IP range. Asterisk '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22470,7 +22473,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -28741,7 +28744,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -28763,7 +28766,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -35198,6 +35201,96 @@ export interface Subnets {
 
 
     /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    prepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets all subnets in a virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -35549,6 +35642,96 @@ export interface Subnets {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Subnet>;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Subnet>): void;
+
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPrepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
