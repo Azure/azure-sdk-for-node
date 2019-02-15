@@ -18,6 +18,74 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the A2AVmDiskInputDetails class.
+ * @constructor
+ * Azure VM disk input details.
+ *
+ * @member {string} [diskUri] The disk Uri.
+ * @member {string} [recoveryAzureStorageAccountId] The recovery VHD storage
+ * account Id.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account Id.
+ */
+export interface A2AVmDiskInputDetails {
+  diskUri?: string;
+  recoveryAzureStorageAccountId?: string;
+  primaryStagingAzureStorageAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AVmManagedDiskInputDetails class.
+ * @constructor
+ * Azure VM managed disk input details.
+ *
+ * @member {string} [diskId] The disk Id.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account Arm Id.
+ * @member {string} [recoveryResourceGroupId] The target resource group Arm Id.
+ * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
+ * an optional value and will be same as source disk type if not user provided.
+ * @member {string} [recoveryTargetDiskAccountType] The target disk type after
+ * failover. Its an optional value and will be same as source disk type if not
+ * user provided.
+ */
+export interface A2AVmManagedDiskInputDetails {
+  diskId?: string;
+  primaryStagingAzureStorageAccountId?: string;
+  recoveryResourceGroupId?: string;
+  recoveryReplicaDiskAccountType?: string;
+  recoveryTargetDiskAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddDisksProviderSpecificInput class.
+ * @constructor
+ * Add Disks provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface AddDisksProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AAddDisksInput class.
+ * @constructor
+ * A2A add disk(s) input.
+ *
+ * @member {array} [vmDisks] The list of vm disk details.
+ * @member {array} [vmManagedDisks] The list of vm managed disk details.
+ */
+export interface A2AAddDisksInput extends AddDisksProviderSpecificInput {
+  vmDisks?: A2AVmDiskInputDetails[];
+  vmManagedDisks?: A2AVmManagedDiskInputDetails[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplyRecoveryPointProviderSpecificInput class.
  * @constructor
  * Provider specific input for apply recovery point.
@@ -85,48 +153,6 @@ export interface ReplicationProviderSpecificContainerMappingInput {
 export interface A2AContainerMappingInput extends ReplicationProviderSpecificContainerMappingInput {
   agentAutoUpdateStatus?: string;
   automationAccountArmId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AVmDiskInputDetails class.
- * @constructor
- * Azure VM disk input details.
- *
- * @member {string} [diskUri] The disk Uri.
- * @member {string} [recoveryAzureStorageAccountId] The recovery VHD storage
- * account Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account Id.
- */
-export interface A2AVmDiskInputDetails {
-  diskUri?: string;
-  recoveryAzureStorageAccountId?: string;
-  primaryStagingAzureStorageAccountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AVmManagedDiskInputDetails class.
- * @constructor
- * Azure VM managed disk input details.
- *
- * @member {string} [diskId] The disk Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account Arm Id.
- * @member {string} [recoveryResourceGroupId] The target resource group Arm Id.
- * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
- * an optional value and will be same as source disk type if not user provided.
- * @member {string} [recoveryTargetDiskAccountType] The target disk type after
- * failover. Its an optional value and will be same as source disk type if not
- * user provided.
- */
-export interface A2AVmManagedDiskInputDetails {
-  diskId?: string;
-  primaryStagingAzureStorageAccountId?: string;
-  recoveryResourceGroupId?: string;
-  recoveryReplicaDiskAccountType?: string;
-  recoveryTargetDiskAccountType?: string;
 }
 
 /**
@@ -408,6 +434,8 @@ export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
  * for replication in MB at staging account.
  * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
+ * @member {string} [diskState] The disk state.
+ * @member {array} [allowedDiskLevelOperation] The disk level operations list.
  * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
  * encrypted os disk or not.
  * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
@@ -432,6 +460,8 @@ export interface A2AProtectedDiskDetails {
   monitoringJobType?: string;
   dataPendingInStagingStorageAccountInMB?: number;
   dataPendingAtSourceAgentInMB?: number;
+  diskState?: string;
+  allowedDiskLevelOperation?: string[];
   isDiskEncrypted?: boolean;
   secretIdentifier?: string;
   dekKeyVaultArmId?: string;
@@ -472,6 +502,8 @@ export interface A2AProtectedDiskDetails {
  * for replication in MB at staging account.
  * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
+ * @member {string} [diskState] The disk state.
+ * @member {array} [allowedDiskLevelOperation] The disk level operations list.
  * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
  * encrypted os disk or not.
  * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
@@ -498,6 +530,8 @@ export interface A2AProtectedManagedDiskDetails {
   monitoringJobType?: string;
   dataPendingInStagingStorageAccountInMB?: number;
   dataPendingAtSourceAgentInMB?: number;
+  diskState?: string;
+  allowedDiskLevelOperation?: string[];
   isDiskEncrypted?: boolean;
   secretIdentifier?: string;
   dekKeyVaultArmId?: string;
@@ -565,6 +599,32 @@ export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDe
 
 /**
  * @class
+ * Initializes a new instance of the RemoveDisksProviderSpecificInput class.
+ * @constructor
+ * Remove Disk provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface RemoveDisksProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2ARemoveDisksInput class.
+ * @constructor
+ * A2A remove disk(s) input.
+ *
+ * @member {array} [vmDisksUris] The list of vm disk vhd URIs.
+ * @member {array} [vmManagedDisksIds] The list of vm managed disk Ids.
+ */
+export interface A2ARemoveDisksInput extends RemoveDisksProviderSpecificInput {
+  vmDisksUris?: string[];
+  vmManagedDisksIds?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the VMNicDetails class.
  * @constructor
  * Hyper V VM network details.
@@ -603,26 +663,6 @@ export interface VMNicDetails {
 
 /**
  * @class
- * Initializes a new instance of the RoleAssignment class.
- * @constructor
- * Azure role assignment details.
- *
- * @member {string} [id] The ARM Id of the role assignment.
- * @member {string} [name] The name of the role assignment.
- * @member {string} [scope] Role assignment scope.
- * @member {string} [principalId] Principal Id.
- * @member {string} [roleDefinitionId] Role definition id.
- */
-export interface RoleAssignment {
-  id?: string;
-  name?: string;
-  scope?: string;
-  principalId?: string;
-  roleDefinitionId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the InputEndpoint class.
  * @constructor
  * Azure VM input endpoint details.
@@ -646,12 +686,10 @@ export interface InputEndpoint {
  * Azure to Azure VM synced configuration details.
  *
  * @member {object} [tags] The Azure VM tags.
- * @member {array} [roleAssignments] The Azure role assignments.
  * @member {array} [inputEndpoints] The Azure VM input endpoints.
  */
 export interface AzureToAzureVmSyncedConfigDetails {
   tags?: { [propertyName: string]: string };
-  roleAssignments?: RoleAssignment[];
   inputEndpoints?: InputEndpoint[];
 }
 
@@ -698,8 +736,6 @@ export interface ReplicationProviderSpecificSettings {
  * @member {array} [vmNics] The virtual machine nic details.
  * @member {object} [vmSyncedConfigDetails] The synced configuration details.
  * @member {object} [vmSyncedConfigDetails.tags] The Azure VM tags.
- * @member {array} [vmSyncedConfigDetails.roleAssignments] The Azure role
- * assignments.
  * @member {array} [vmSyncedConfigDetails.inputEndpoints] The Azure VM input
  * endpoints.
  * @member {number} [monitoringPercentageCompletion] The percentage of the
@@ -948,6 +984,42 @@ export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicatio
   managedDiskUpdateDetails?: A2AVmManagedDiskUpdateDetails[];
   recoveryBootDiagStorageAccountId?: string;
   diskEncryptionInfo?: DiskEncryptionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddDisksInputProperties class.
+ * @constructor
+ * Add Disks input properties.
+ *
+ * @member {object} [providerSpecificDetails] The ReplicationProviderInput. For
+ * HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
+ * For San provider, it will be SanEnableProtectionInput object. For
+ * HyperVReplicaAzure provider, it can be null.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface AddDisksInputProperties {
+  providerSpecificDetails?: AddDisksProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddDisksInput class.
+ * @constructor
+ * Input for add disk(s) operation.
+ *
+ * @member {object} [properties] Add disks input properties.
+ * @member {object} [properties.providerSpecificDetails] The
+ * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+ * AzureEnableProtectionInput object. For San provider, it will be
+ * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+ * null.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface AddDisksInput {
+  properties?: AddDisksInputProperties;
 }
 
 /**
@@ -2273,6 +2345,10 @@ export interface InnerHealthError {
  * @member {date} [creationTimeUtc] Error creation time (UTC)
  * @member {string} [recoveryProviderErrorMessage] DRA error message.
  * @member {string} [entityId] ID of the entity.
+ * @member {string} [errorId] The health error unique id.
+ * @member {string} [customerResolvability] Value indicating whether the health
+ * error is customer resolvable. Possible values include: 'Allowed',
+ * 'NotAllowed'
  */
 export interface HealthError {
   innerHealthErrors?: InnerHealthError[];
@@ -2288,6 +2364,8 @@ export interface HealthError {
   creationTimeUtc?: Date;
   recoveryProviderErrorMessage?: string;
   entityId?: string;
+  errorId?: string;
+  customerResolvability?: string;
 }
 
 /**
@@ -3497,13 +3575,30 @@ export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPoint
 
 /**
  * @class
+ * Initializes a new instance of the InMageAzureV2DiskInputDetails class.
+ * @constructor
+ * Disk input details.
+ *
+ * @member {string} [diskId] The DiskId.
+ * @member {string} [logStorageAccountId] The LogStorageAccountId.
+ * @member {string} [diskType] The DiskType. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ */
+export interface InMageAzureV2DiskInputDetails {
+  diskId?: string;
+  logStorageAccountId?: string;
+  diskType?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the InMageAzureV2EnableProtectionInput class.
  * @constructor
  * VMware Azure specific enable protection input.
  *
  * @member {string} [masterTargetId] The Master target Id.
  * @member {string} [processServerId] The Process Server Id.
- * @member {string} storageAccountId The storage account name.
+ * @member {string} [storageAccountId] The storage account name.
  * @member {string} [runAsAccountId] The CS account Id.
  * @member {string} [multiVmGroupId] The multi vm group Id.
  * @member {string} [multiVmGroupName] The multi vm group name.
@@ -3523,17 +3618,17 @@ export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPoint
  * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
  * resource group (for resource manager deployment) in which the failover VM is
  * to be created.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
+ * @member {string} [diskType] The DiskType. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
  */
 export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProviderSpecificInput {
   masterTargetId?: string;
   processServerId?: string;
-  storageAccountId: string;
+  storageAccountId?: string;
   runAsAccountId?: string;
   multiVmGroupId?: string;
   multiVmGroupName?: string;
-  disksToInclude?: string[];
+  disksToInclude?: InMageAzureV2DiskInputDetails[];
   targetAzureNetworkId?: string;
   targetAzureSubnetId?: string;
   enableRdpOnTargetOption?: string;
@@ -3541,7 +3636,7 @@ export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProv
   logStorageAccountId?: string;
   targetAzureV1ResourceGroupId?: string;
   targetAzureV2ResourceGroupId?: string;
-  useManagedDisks?: string;
+  diskType?: string;
 }
 
 /**
@@ -3583,6 +3678,22 @@ export interface InMageAzureV2EventDetails extends EventProviderSpecificDetails 
 export interface InMageAzureV2FailoverProviderInput extends ProviderSpecificFailoverInput {
   vaultLocation?: string;
   recoveryPointId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2ManagedDiskDetails class.
+ * @constructor
+ * InMageAzureV2 Managed disk details.
+ *
+ * @member {string} [diskId] The disk id.
+ * @member {string} [seedManagedDiskId] Seed managed disk Id.
+ * @member {string} [replicaDiskType] The replica disk type.
+ */
+export interface InMageAzureV2ManagedDiskDetails {
+  diskId?: string;
+  seedManagedDiskId?: string;
+  replicaDiskType?: string;
 }
 
 /**
@@ -3772,6 +3883,7 @@ export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecov
  * on-prem components.
  * @member {string} [replicaId] The replica id of the protected item.
  * @member {string} [osVersion] The OS Version of the protected item.
+ * @member {array} [protectedManagedDisks] The list of protected managed disks.
  */
 export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpecificSettings {
   infrastructureVmId?: string;
@@ -3823,6 +3935,7 @@ export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpec
   lastUpdateReceivedTime?: Date;
   replicaId?: string;
   osVersion?: string;
+  protectedManagedDisks?: InMageAzureV2ManagedDiskDetails[];
 }
 
 /**
@@ -4977,6 +5090,20 @@ export interface OperationsDiscovery {
 
 /**
  * @class
+ * Initializes a new instance of the OSVersionWrapper class.
+ * @constructor
+ * Wrapper model for OSVersion to include version and service pack info.
+ *
+ * @member {string} [version] The version.
+ * @member {string} [servicePack] Service pack.
+ */
+export interface OSVersionWrapper {
+  version?: string;
+  servicePack?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PlannedFailoverInputProperties class.
  * @constructor
  * Input definition for planned failover input properties.
@@ -5968,6 +6095,42 @@ export interface RecoveryServicesProvider extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the RemoveDisksInputProperties class.
+ * @constructor
+ * Remove Disk input properties.
+ *
+ * @member {object} [providerSpecificDetails] The ReplicationProviderInput. For
+ * HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
+ * For San provider, it will be SanEnableProtectionInput object. For
+ * HyperVReplicaAzure provider, it can be null.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface RemoveDisksInputProperties {
+  providerSpecificDetails?: RemoveDisksProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemoveDisksInput class.
+ * @constructor
+ * Input for remove disk(s) operation.
+ *
+ * @member {object} [properties] Remove disk input properties.
+ * @member {object} [properties.providerSpecificDetails] The
+ * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+ * AzureEnableProtectionInput object. For San provider, it will be
+ * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+ * null.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface RemoveDisksInput {
+  properties?: RemoveDisksInputProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReplicationProviderContainerUnmappingInput class.
  * @constructor
  * Provider specific input for unpairing operations.
@@ -6197,6 +6360,43 @@ export interface ReplicationProtectedItem extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ResolveHealthError class.
+ * @constructor
+ * Resolve health errors input properties.
+ *
+ * @member {string} [healthErrorId] Health error id.
+ */
+export interface ResolveHealthError {
+  healthErrorId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResolveHealthInputProperties class.
+ * @constructor
+ * Resolve health input properties.
+ *
+ * @member {array} [healthErrors] Health errors.
+ */
+export interface ResolveHealthInputProperties {
+  healthErrors?: ResolveHealthError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResolveHealthInput class.
+ * @constructor
+ * Resolve health input.
+ *
+ * @member {object} [properties] Disable resolve health input properties.
+ * @member {array} [properties.healthErrors] Health errors.
+ */
+export interface ResolveHealthInput {
+  properties?: ResolveHealthInputProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceHealthSummary class.
  * @constructor
  * Base class to define the health summary of the resources contained under an
@@ -6269,6 +6469,26 @@ export interface ReverseReplicationInputProperties {
  */
 export interface ReverseReplicationInput {
   properties?: ReverseReplicationInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleAssignment class.
+ * @constructor
+ * Azure role assignment details.
+ *
+ * @member {string} [id] The ARM Id of the role assignment.
+ * @member {string} [name] The name of the role assignment.
+ * @member {string} [scope] Role assignment scope.
+ * @member {string} [principalId] Principal Id.
+ * @member {string} [roleDefinitionId] Role definition id.
+ */
+export interface RoleAssignment {
+  id?: string;
+  name?: string;
+  scope?: string;
+  principalId?: string;
+  roleDefinitionId?: string;
 }
 
 /**
@@ -6391,6 +6611,61 @@ export interface StorageMappingInputProperties {
  */
 export interface StorageClassificationMappingInput {
   properties?: StorageMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SupportedOSDetails class.
+ * @constructor
+ * Supported Operating system details.
+ *
+ * @member {string} [osName] The name.
+ * @member {string} [osType] The type.
+ * @member {array} [osVersions] List of version for OS.
+ */
+export interface SupportedOSDetails {
+  osName?: string;
+  osType?: string;
+  osVersions?: OSVersionWrapper[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SupportedOSProperty class.
+ * @constructor
+ * Property object for supported OS api.
+ *
+ * @member {string} [instanceType] Gets the replication provider type.
+ * @member {array} [supportedOs] List of supported OS.
+ */
+export interface SupportedOSProperty {
+  readonly instanceType?: string;
+  supportedOs?: SupportedOSDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SupportedOSProperties class.
+ * @constructor
+ * Properties model for supported OS API.
+ *
+ * @member {array} [supportedOsList] The supported OS List.
+ */
+export interface SupportedOSProperties {
+  supportedOsList?: SupportedOSProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SupportedOperatingSystems class.
+ * @constructor
+ * Response object for supported operating systems API.
+ *
+ * @member {object} [properties] Properties model for supported OS API.
+ * @member {array} [properties.supportedOsList] The supported OS List.
+ */
+export interface SupportedOperatingSystems extends Resource {
+  properties?: SupportedOSProperties;
 }
 
 /**

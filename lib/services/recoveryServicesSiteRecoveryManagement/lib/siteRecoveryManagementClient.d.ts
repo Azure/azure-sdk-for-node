@@ -86,6 +86,7 @@ export default class SiteRecoveryManagementClient extends AzureServiceClient {
   replicationJobs: operations.ReplicationJobs;
   replicationPolicies: operations.ReplicationPolicies;
   replicationRecoveryPlans: operations.ReplicationRecoveryPlans;
+  supportedOperatingSystemsOperations: operations.SupportedOperatingSystemsOperations;
   replicationVaultHealth: operations.ReplicationVaultHealth;
 }
 

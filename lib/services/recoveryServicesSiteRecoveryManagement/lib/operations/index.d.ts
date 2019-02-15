@@ -6323,6 +6323,102 @@ export interface ReplicationProtectedItems {
 
 
     /**
+     * @summary Add disk(s) for protection.
+     *
+     * Operation to add disks(s) to the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} addDisksInput Add disks input.
+     *
+     * @param {object} [addDisksInput.properties] Add disks input properties.
+     *
+     * @param {object} [addDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * addDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addDisksWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Add disk(s) for protection.
+     *
+     * Operation to add disks(s) to the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} addDisksInput Add disks input.
+     *
+     * @param {object} [addDisksInput.properties] Add disks input properties.
+     *
+     * @param {object} [addDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * addDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    addDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    addDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
      * @summary Change or apply recovery point.
      *
      * The operation to change the recovery point of a failed over replication
@@ -6691,6 +6787,102 @@ export interface ReplicationProtectedItems {
 
 
     /**
+     * @summary Removes disk(s).
+     *
+     * Operation to remove disk(s) from the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} removeDisksInput Remove disks input.
+     *
+     * @param {object} [removeDisksInput.properties] Remove disk input properties.
+     *
+     * @param {object} [removeDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * removeDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeDisksWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Removes disk(s).
+     *
+     * Operation to remove disk(s) from the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} removeDisksInput Remove disks input.
+     *
+     * @param {object} [removeDisksInput.properties] Remove disk input properties.
+     *
+     * @param {object} [removeDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * removeDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    removeDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    removeDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
      * @summary Resynchronize or repair replication.
      *
      * The operation to start resynchronize/repair replication for a replication
@@ -6854,6 +7046,88 @@ export interface ReplicationProtectedItems {
     reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
     reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
     reprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
+     * @summary Resolve health errors.
+     *
+     * Operation to resolve health issues of the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} resolveHealthInput Health issue input object.
+     *
+     * @param {object} [resolveHealthInput.properties] Disable resolve health input
+     * properties.
+     *
+     * @param {array} [resolveHealthInput.properties.healthErrors] Health errors.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resolveHealthErrorsWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Resolve health errors.
+     *
+     * Operation to resolve health issues of the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} resolveHealthInput Health issue input object.
+     *
+     * @param {object} [resolveHealthInput.properties] Disable resolve health input
+     * properties.
+     *
+     * @param {array} [resolveHealthInput.properties.healthErrors] Health errors.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    resolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    resolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -7645,6 +7919,102 @@ export interface ReplicationProtectedItems {
 
 
     /**
+     * @summary Add disk(s) for protection.
+     *
+     * Operation to add disks(s) to the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} addDisksInput Add disks input.
+     *
+     * @param {object} [addDisksInput.properties] Add disks input properties.
+     *
+     * @param {object} [addDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * addDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginAddDisksWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Add disk(s) for protection.
+     *
+     * Operation to add disks(s) to the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} addDisksInput Add disks input.
+     *
+     * @param {object} [addDisksInput.properties] Add disks input properties.
+     *
+     * @param {object} [addDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * addDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginAddDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginAddDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginAddDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, addDisksInput: models.AddDisksInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
      * @summary Change or apply recovery point.
      *
      * The operation to change the recovery point of a failed over replication
@@ -8013,6 +8383,102 @@ export interface ReplicationProtectedItems {
 
 
     /**
+     * @summary Removes disk(s).
+     *
+     * Operation to remove disk(s) from the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} removeDisksInput Remove disks input.
+     *
+     * @param {object} [removeDisksInput.properties] Remove disk input properties.
+     *
+     * @param {object} [removeDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * removeDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRemoveDisksWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Removes disk(s).
+     *
+     * Operation to remove disk(s) from the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} removeDisksInput Remove disks input.
+     *
+     * @param {object} [removeDisksInput.properties] Remove disk input properties.
+     *
+     * @param {object} [removeDisksInput.properties.providerSpecificDetails] The
+     * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+     * AzureEnableProtectionInput object. For San provider, it will be
+     * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+     * null.
+     *
+     * @param {string}
+     * removeDisksInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRemoveDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginRemoveDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginRemoveDisks(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, removeDisksInput: models.RemoveDisksInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
      * @summary Resynchronize or repair replication.
      *
      * The operation to start resynchronize/repair replication for a replication
@@ -8176,6 +8642,88 @@ export interface ReplicationProtectedItems {
     beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
     beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
     beginReprotect(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, rrInput: models.ReverseReplicationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+
+
+    /**
+     * @summary Resolve health errors.
+     *
+     * Operation to resolve health issues of the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} resolveHealthInput Health issue input object.
+     *
+     * @param {object} [resolveHealthInput.properties] Disable resolve health input
+     * properties.
+     *
+     * @param {array} [resolveHealthInput.properties.healthErrors] Health errors.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReplicationProtectedItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResolveHealthErrorsWithHttpOperationResponse(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReplicationProtectedItem>>;
+
+    /**
+     * @summary Resolve health errors.
+     *
+     * Operation to resolve health issues of the replication protected item.
+     *
+     * @param {string} fabricName Unique fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} replicatedProtectedItemName Replication protected item name.
+     *
+     * @param {object} resolveHealthInput Health issue input object.
+     *
+     * @param {object} [resolveHealthInput.properties] Disable resolve health input
+     * properties.
+     *
+     * @param {array} [resolveHealthInput.properties.healthErrors] Health errors.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReplicationProtectedItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReplicationProtectedItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReplicationProtectedItem} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReplicationProtectedItem>;
+    beginResolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
+    beginResolveHealthErrors(fabricName: string, protectionContainerName: string, replicatedProtectedItemName: string, resolveHealthInput: models.ResolveHealthInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReplicationProtectedItem>): void;
 
 
     /**
@@ -15764,6 +16312,67 @@ export interface ReplicationRecoveryPlans {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryPlanCollection>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.RecoveryPlanCollection>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryPlanCollection>): void;
+}
+
+/**
+ * @class
+ * SupportedOperatingSystemsOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SiteRecoveryManagementClient.
+ */
+export interface SupportedOperatingSystemsOperations {
+
+
+    /**
+     * @summary Gets the data of supported OSes by SRS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SupportedOperatingSystems>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SupportedOperatingSystems>>;
+
+    /**
+     * @summary Gets the data of supported OSes by SRS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SupportedOperatingSystems} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SupportedOperatingSystems} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SupportedOperatingSystems} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SupportedOperatingSystems>;
+    get(callback: ServiceCallback<models.SupportedOperatingSystems>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOperatingSystems>): void;
 }
 
 /**
