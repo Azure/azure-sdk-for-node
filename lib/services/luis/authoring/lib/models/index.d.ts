@@ -160,7 +160,7 @@ export interface ApplicationSettingUpdateObject {
 export interface PublishSettingUpdateObject {
   /**
    * Setting sentiment analysis as true returns the Sentiment of the input utterance along with the
-   * resopnse
+   * response
    */
   sentimentAnalysis?: boolean;
   /**
@@ -182,11 +182,11 @@ export interface ExampleLabelObject {
    */
   text?: string;
   /**
-   * The idenfied entities within the utterance.
+   * The identified entities within the utterance.
    */
   entityLabels?: EntityLabelObject[];
   /**
-   * The idenfitied intent representing the utterance.
+   * The identified intent representing the utterance.
    */
   intentName?: string;
 }
@@ -1335,6 +1335,10 @@ export interface EndpointInfo {
   */
   endpointRegion?: string;
   /**
+   * Regions where publishing failed.
+  */
+  failedRegions?: string;
+  /**
    * Timestamp when was last published.
   */
   publishedDateTime?: string;
@@ -1382,7 +1386,7 @@ export interface PublishSettings {
   id: string;
   /**
    * Setting sentiment analysis as true returns the Sentiment of the input utterance along with the
-   * resopnse
+   * response
   */
   isSentimentAnalysisEnabled: boolean;
   /**
@@ -1755,6 +1759,24 @@ export interface AppVersionSettingObject {
    * The application version setting value.
   */
   value?: string;
+}
+
+/**
+ * Defines the azure account information object.
+*/
+export interface AzureAccountInfoObject {
+  /**
+   * The id for the azure subscription.
+  */
+  azureSubscriptionId: string;
+  /**
+   * The azure resource group name.
+  */
+  resourceGroup: string;
+  /**
+   * The azure account name.
+  */
+  accountName: string;
 }
 
 export interface HierarchicalChildModelUpdateObject {
