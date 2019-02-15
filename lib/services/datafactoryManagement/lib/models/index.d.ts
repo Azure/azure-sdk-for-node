@@ -5053,7 +5053,7 @@ export interface WebTableDataset extends Dataset {
 /**
  * A Rest service dataset.
  */
-export interface RestServiceDataset extends Dataset {
+export interface RestResourceDataset extends Dataset {
   /**
    * The relative URL to the resource that the RESTful API provides. Type: string (or Expression
    * with resultType string).
@@ -5075,7 +5075,8 @@ export interface RestServiceDataset extends Dataset {
    */
   additionalHeaders?: any;
   /**
-   * The pagination rules to compose next page requests.
+   * The pagination rules to compose next page requests. Type: string (or Expression with
+   * resultType string).
    */
   paginationRules?: any;
 }
