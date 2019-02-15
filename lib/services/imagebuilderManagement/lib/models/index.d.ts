@@ -42,9 +42,9 @@ export interface ImageTemplateDistributor {
   */
   runOutputName: string;
   /**
-   * Tags for the images
+   * Tags that will be applied to the artifact once it has been created/updated by the distributor.
   */
-  tags?: { [propertyName: string]: string };
+  artifactTags?: { [propertyName: string]: string };
   /**
    * Polymorphic Discriminator
   */
