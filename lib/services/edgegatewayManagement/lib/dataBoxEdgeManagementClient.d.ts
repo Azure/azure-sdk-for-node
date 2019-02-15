@@ -60,6 +60,7 @@ export default class DataBoxEdgeManagementClient extends AzureServiceClient {
   devices: operations.Devices;
   alerts: operations.Alerts;
   bandwidthSchedules: operations.BandwidthSchedules;
+  jobs: operations.Jobs;
   operationsStatus: operations.OperationsStatus;
   orders: operations.Orders;
   roles: operations.Roles;

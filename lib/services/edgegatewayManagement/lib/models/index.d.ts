@@ -26,11 +26,11 @@ export interface Address {
   /**
    * The address line2.
    */
-  addressLine2: string;
+  addressLine2?: string;
   /**
    * The address line3.
    */
-  addressLine3: string;
+  addressLine3?: string;
   /**
    * The postal code.
    */
@@ -76,7 +76,7 @@ export interface ARMBaseModel extends BaseResource {
    */
   readonly id?: string;
   /**
-   * The name of the object.
+   * The object name.
    */
   readonly name?: string;
   /**
@@ -90,19 +90,19 @@ export interface ARMBaseModel extends BaseResource {
  */
 export interface Alert extends ARMBaseModel {
   /**
-   * Title of the alert.
+   * Alert title.
    */
   readonly title?: string;
   /**
-   * Type of the alert.
+   * Alert type.
    */
   readonly alertType?: string;
   /**
-   * UTC time at which the alert appeared.
+   * UTC time when the alert appeared.
    */
   readonly appearedAtDateTime?: Date;
   /**
-   * Recommendation for acting on the alert.
+   * Alert recommendation.
    */
   readonly recommendation?: string;
   /**
@@ -114,7 +114,7 @@ export interface Alert extends ARMBaseModel {
    */
   readonly errorDetails?: AlertErrorDetails;
   /**
-   * Detailed information about the alert.
+   * Alert details.
    */
   readonly detailedInformation?: { [propertyName: string]: string };
 }
@@ -128,8 +128,8 @@ export interface AsymmetricEncryptedSecret {
    */
   value: string;
   /**
-   * Thumbprint certificate that was used to encrypt "Value". If the value in unencrypted, it will
-   * be null.
+   * Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be
+   * null.
    */
   encryptionCertThumbprint?: string;
   /**
@@ -140,11 +140,11 @@ export interface AsymmetricEncryptedSecret {
 }
 
 /**
- * Symmetric Key for authentication.
+ * Symmetric key for authentication.
  */
 export interface SymmetricKey {
   /**
-   * Connection string based on symmetric key.
+   * Connection string based on the symmetric key.
    */
   connectionString?: AsymmetricEncryptedSecret;
 }
@@ -164,12 +164,12 @@ export interface Authentication {
  */
 export interface AzureContainerInfo {
   /**
-   * ID of the Storage account credential to be used for accessing storage.
+   * ID of the storage account credential used to access storage.
    */
   storageAccountCredentialId: string;
   /**
-   * Container name (Based on the data format specified, represents the name of Azure file/ Page
-   * blob / Block blob).
+   * Container name (Based on the data format specified, this represents the name of Azure
+   * Files/Page blob/Block blob).
    */
   containerName: string;
   /**
@@ -202,11 +202,11 @@ export interface BandwidthSchedule extends ARMBaseModel {
 }
 
 /**
- * The mapping between a particular client ip and the type of access client has on the NFS share.
+ * The mapping between a particular client IP and the type of access client has on the NFS share.
  */
 export interface ClientAccessRight {
   /**
-   * Ip of the client.
+   * IP of the client.
    */
   client: string;
   /**
@@ -221,19 +221,19 @@ export interface ClientAccessRight {
  */
 export interface ContactDetails {
   /**
-   * Gets or sets the contact person.
+   * The contact person name.
    */
   contactPerson: string;
   /**
-   * Gets or sets the name of the company.
+   * The name of the company.
    */
   companyName: string;
   /**
-   * Gets or sets the phone number.
+   * The phone number.
    */
   phone: string;
   /**
-   * Gets or sets the email list.
+   * The email list.
    */
   emailList: string[];
 }
@@ -243,7 +243,7 @@ export interface ContactDetails {
  */
 export interface Sku {
   /**
-   * Sku name. Possible values include: 'Gateway', 'Edge'
+   * SKU name. Possible values include: 'Gateway', 'Edge'
    */
   name?: string;
   /**
@@ -257,23 +257,23 @@ export interface Sku {
  */
 export interface DataBoxEdgeDevice extends ARMBaseModel {
   /**
-   * The location of the device. This will be one of the supported and registered Azure Geo Regions
-   * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a device cannot be changed
-   * once it is created, but if an identical geo region is specified on update the request will
-   * succeed.
+   * The location of the device. This is a supported and registered Azure geographical region (for
+   * example, West US, East US, or Southeast Asia). The geographical region of a device cannot be
+   * changed once it is created, but if an identical geographical region is specified on update,
+   * the request will succeed.
    */
   location: string;
   /**
-   * The list of tags that describe the device. These tags can be used in viewing and grouping this
+   * The list of tags that describe the device. These tags can be used to view and group this
    * device (across resource groups).
    */
   tags?: { [propertyName: string]: string };
   /**
-   * The sku type.
+   * The SKU type.
    */
   sku?: Sku;
   /**
-   * The etag of the devices.
+   * The etag for the devices.
    */
   etag?: string;
   /**
@@ -348,7 +348,7 @@ export interface DataBoxEdgeDeviceExtendedInfo extends ARMBaseModel {
    */
   encryptionKey?: string;
   /**
-   * The Resource Id of the Resource.
+   * The Resource ID of the Resource.
    */
   readonly resourceKey?: string;
 }
@@ -400,29 +400,29 @@ export interface FileEventTrigger extends Trigger {
   /**
    * File event source details.
    */
-  sourceInfo?: FileSourceInfo;
+  sourceInfo: FileSourceInfo;
   /**
-   * Role Sink info.
+   * Role sink info.
    */
-  sinkInfo?: RoleSinkInfo;
+  sinkInfo: RoleSinkInfo;
   /**
-   * Custom context tag, typically used to co-relate the trigger against its usage. Eg. If a
-   * PeriodicTimer trigger may be intended for certain specific IOT modules in device, the tag can
-   * be the name/image url of the module.
+   * A custom context tag typically used to correlate the trigger against its usage. For example,
+   * if a periodic timer trigger is intended for certain specific IoT modules in the device, the
+   * tag can be the name or the image URL of the module.
    */
   customContextTag?: string;
 }
 
 /**
- * Metadata of IoT device/IoT edge device to be configured.
+ * Metadata of IoT device/IoT Edge device to be configured.
  */
 export interface IoTDeviceInfo {
   /**
-   * Id of the IoT device/edge device.
+   * ID of the IoT device/edge device.
    */
   deviceId: string;
   /**
-   * Host name for IoT hub which is associated to the device.
+   * Host name for the IoT hub associated to the device.
    */
   ioTHostHub: string;
   /**
@@ -436,7 +436,7 @@ export interface IoTDeviceInfo {
  */
 export interface MountPointMap {
   /**
-   * ID of the share which is mounted to role VM.
+   * ID of the share mounted to the role VM.
    */
   shareId: string;
   /**
@@ -468,7 +468,7 @@ export interface Role extends ARMBaseModel {
  */
 export interface IoTRole extends Role {
   /**
-   * Host OS which IoT role support. Possible values include: 'Windows', 'Linux'
+   * Host OS supported by the IoT role. Possible values include: 'Windows', 'Linux'
    */
   hostPlatform: string;
   /**
@@ -538,13 +538,13 @@ export interface JobErrorItem {
    */
   readonly code?: string;
   /**
-   * The message intended to describe the error in detail.
+   * The message that describes the error in detail.
    */
   readonly message?: string;
 }
 
 /**
- * The job error information containing List of JobErrorItem.
+ * The job error information containing the list of job errors.
  */
 export interface JobErrorDetails {
   /**
@@ -556,7 +556,7 @@ export interface JobErrorDetails {
    */
   readonly code?: string;
   /**
-   * The message intended to describe the error in detail.
+   * The message that describes the error in detail.
    */
   readonly message?: string;
 }
@@ -593,11 +593,11 @@ export interface UpdateDownloadProgress {
 }
 
 /**
- * Details about the progress during installation of updates.
+ * Progress details during installation of updates.
  */
 export interface UpdateInstallProgress {
   /**
-   * Percentage of completion.
+   * Percentage completed.
    */
   readonly percentComplete?: number;
   /**
@@ -632,19 +632,19 @@ export interface Job {
    */
   readonly status?: string;
   /**
-   * The UTC datetime at which the job was started.
+   * The UTC date and time at which the job started.
    */
   readonly startTime?: Date;
   /**
-   * The UTC datetime at which the job completed.
+   * The UTC date and time at which the job completed.
    */
   readonly endTime?: Date;
   /**
-   * The percentage of the job that is already complete.
+   * The percentage of the job that is complete.
    */
   readonly percentComplete?: number;
   /**
-   * The Error details.
+   * The error details.
    */
   readonly error?: JobErrorDetails;
   /**
@@ -672,16 +672,16 @@ export interface Job {
    */
   readonly totalRefreshErrors?: number;
   /**
-   * Local Share/Remote Container relative path to the error manifest file of the refresh.
+   * Local share/remote container relative path to the error manifest file of the refresh.
    */
   readonly errorManifestFile?: string;
   /**
-   * ARM id of the Share on which the Refresh operation was done.
+   * ARM ID of the share that was refreshed.
    */
   readonly shareId?: string;
   /**
-   * If only subfolders need to be refreshed, then the sub folder path inside the share. Empty
-   * otherwise.
+   * If only subfolders need to be refreshed, then the subfolder path inside the share. (The path
+   * is empty if there are no subfolders.)
    */
   folder?: string;
 }
@@ -735,7 +735,7 @@ export interface MetricSpecificationV1 {
    */
   dimensions?: MetricDimensionV1[];
   /**
-   * set true to fill the gaps with zero.
+   * Set true to fill the gaps with zero.
    */
   fillGapWithZero?: boolean;
   /**
@@ -791,7 +791,7 @@ export interface NetworkAdapter {
    */
   readonly nodeId?: string;
   /**
-   * Network Adapter Name.
+   * Network adapter name.
    */
   readonly networkAdapterName?: string;
   /**
@@ -799,11 +799,11 @@ export interface NetworkAdapter {
    */
   readonly label?: string;
   /**
-   * MAC Address.
+   * MAC address.
    */
   readonly macAddress?: string;
   /**
-   * Link Speed.
+   * Link speed.
    */
   readonly linkSpeed?: number;
   /**
@@ -811,12 +811,12 @@ export interface NetworkAdapter {
    */
   readonly status?: string;
   /**
-   * Value indicating whether this adapter is RDMA Capable. Possible values include: 'Incapable',
+   * Value indicating whether this adapter is RDMA capable. Possible values include: 'Incapable',
    * 'Capable'
    */
   rdmaStatus?: string;
   /**
-   * Value indicating whether this adapter has DHCP Enabled. Possible values include: 'Disabled',
+   * Value indicating whether this adapter has DHCP enabled. Possible values include: 'Disabled',
    * 'Enabled'
    */
   dhcpStatus?: string;
@@ -833,13 +833,13 @@ export interface NetworkAdapter {
    */
   readonly ipv6LinkLocalAddress?: string;
   /**
-   * The list DNS Servers of the device.
+   * The list of DNS Servers of the device.
    */
   readonly dnsServers?: string[];
 }
 
 /**
- * The NetworkSettings of a device.
+ * The network settings of a device.
  */
 export interface NetworkSettings extends ARMBaseModel {
   /**
@@ -889,7 +889,7 @@ export interface Operation {
    */
   name?: string;
   /**
-   * Properties to displayed for the operation.
+   * Properties displayed for the operation.
    */
   display?: OperationDisplay;
   /**
@@ -907,9 +907,9 @@ export interface Operation {
  */
 export interface OrderStatus {
   /**
-   * Status of the order pertaining to the allowed StatusTypes. Possible values include:
-   * 'Untracked', 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped',
-   * 'Arriving', 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined', 'ReturnInitiated',
+   * Status of the order as per the allowed status types. Possible values include: 'Untracked',
+   * 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped', 'Arriving',
+   * 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined', 'ReturnInitiated',
    * 'AwaitingReturnShipment', 'ShippedBack', 'CollectedAtMicrosoft'
    */
   status: string;
@@ -952,15 +952,15 @@ export interface Order extends ARMBaseModel {
   /**
    * The contact details.
    */
-  contactInformation?: ContactDetails;
+  contactInformation: ContactDetails;
   /**
    * The shipping address.
    */
-  shippingAddress?: Address;
+  shippingAddress: Address;
   /**
-   * Current status of the Order.
+   * Current status of the order.
    */
-  changeStatusTo?: OrderStatus;
+  currentStatus?: OrderStatus;
   /**
    * List of status changes in the order.
    */
@@ -970,13 +970,13 @@ export interface Order extends ARMBaseModel {
    */
   readonly serialNumber?: string;
   /**
-   * Tracking information related to the packages being delivered to the customer whether original
-   * or replacement devices.
+   * Tracking information for the package delivered to the customer whether it has an original or a
+   * replacement device.
    */
   readonly deliveryTrackingInfo?: TrackingInfo[];
   /**
-   * Tracking information related to the package being returned from the customer whether original
-   * or replacement devices.
+   * Tracking information for the package returned from the customer whether it has an original or
+   * a replacement device.
    */
   readonly returnTrackingInfo?: TrackingInfo[];
 }
@@ -986,17 +986,17 @@ export interface Order extends ARMBaseModel {
  */
 export interface PeriodicTimerSourceInfo {
   /**
-   * Time time [UTC] of the day, from which the trigger will be valid. Schedule will be computed
-   * with reference to the time specified.
+   * The time of the day that results in a valid trigger. Schedule is computed with reference to
+   * the time specified.
    */
   startTime: Date;
   /**
-   * Periodic frequency at which timer event needs to be raised. Supports Daily, Hourly, Minutes
+   * Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes,
    * and seconds.
    */
   schedule: string;
   /**
-   * Topic with which periodic events needs to be published to IOT device.
+   * Topic where periodic events are published to IoT device.
    */
   topic?: string;
 }
@@ -1008,15 +1008,15 @@ export interface PeriodicTimerEventTrigger extends Trigger {
   /**
    * Periodic timer details.
    */
-  sourceInfo?: PeriodicTimerSourceInfo;
+  sourceInfo: PeriodicTimerSourceInfo;
   /**
-   * Role Sink info.
+   * Role Sink information.
    */
-  sinkInfo?: RoleSinkInfo;
+  sinkInfo: RoleSinkInfo;
   /**
-   * Custom context tag, typically used to co-relate the trigger against its usage. Eg. If a
-   * PeriodicTimer trigger may be intended for certain specific IOT modules in device, the tag can
-   * be the name/image url of the module.
+   * A custom context tag typically used to correlate the trigger against its usage. For example,
+   * if a periodic timer trigger is intended for certain specific IoT modules in the device, the
+   * tag can be the name or the image URL of the module.
    */
   customContextTag?: string;
 }
@@ -1026,24 +1026,23 @@ export interface PeriodicTimerEventTrigger extends Trigger {
  */
 export interface RefreshDetails {
   /**
-   * If a RefreshShare job is currently inprogress on this share - this field indicates the ArmId
-   * of that job. Empty otherwise.
+   * If a refresh share job is currently in progress on this share, this field indicates the ARM
+   * resource ID of that job. The field is empty if no job is in progress.
    */
   inProgressRefreshJobId?: string;
   /**
-   * Indicates the job completed time of the last refresh job on this particular share, if any.
-   * This could be a failed job or a successful job.
+   * Indicates the completed time for the last refresh job on this particular share, if any.This
+   * could be a failed job or a successful job.
    */
   lastCompletedRefreshJobTimeInUTC?: Date;
   /**
    * Indicates the relative path of the error xml for the last refresh job on this particular
-   * share, if any.
-   * This could be a failed job or a successful job.
+   * share, if any. This could be a failed job or a successful job.
    */
   errorManifestFile?: string;
   /**
-   * Indicates the id of the last refresh job on this particular share,if any.
-   * This could be a failed job or a successful job.
+   * Indicates the id of the last refresh job on this particular share,if any. This could be a
+   * failed job or a successful job.
    */
   lastJob?: string;
 }
@@ -1054,18 +1053,18 @@ export interface RefreshDetails {
 export interface SecuritySettings extends ARMBaseModel {
   /**
    * Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to
-   * log into the  local web UI of the device. Actual password could have at least 8 characters
-   * that are a combination of  uppercase, lowercase, numeric, and special characters.
+   * sign into the  local web UI of the device. The Actual password should have at least 8
+   * characters that are a combination of  uppercase, lowercase, numeric, and special characters.
    */
   deviceAdminPassword: AsymmetricEncryptedSecret;
 }
 
 /**
- * The mapping between a particular user and the type of access they have on the SMB share.
+ * The mapping between a particular user and the access type on the SMB share.
  */
 export interface UserAccessRight {
   /**
-   * Id of the user (already existing in the device).
+   * User ID (already existing in the device).
    */
   userId: string;
   /**
@@ -1099,11 +1098,11 @@ export interface Share extends ARMBaseModel {
    */
   accessProtocol: string;
   /**
-   * Mapping of Users and corresponding access rights on the share (mandatory for SMB protocol).
+   * Mapping of users and corresponding access rights on the share (required for SMB protocol).
    */
   userAccessRights?: UserAccessRight[];
   /**
-   * List of IP addresses and corresponding access rights on the share(mandatory for NFS protocol).
+   * List of IP addresses and corresponding access rights on the share(required for NFS protocol).
    */
   clientAccessRights?: ClientAccessRight[];
   /**
@@ -1126,7 +1125,7 @@ export interface Share extends ARMBaseModel {
  */
 export interface ShareAccessRight {
   /**
-   * Id of the share.
+   * The share ID.
    */
   shareId: string;
   /**
@@ -1145,7 +1144,7 @@ export interface StorageAccountCredential extends ARMBaseModel {
    */
   alias: string;
   /**
-   * UserName for the storage account.
+   * Username for the storage account.
    */
   userName?: string;
   /**
@@ -1153,8 +1152,8 @@ export interface StorageAccountCredential extends ARMBaseModel {
    */
   accountKey?: AsymmetricEncryptedSecret;
   /**
-   * ConnectionString for the storage account. This needs to be specified if UserName/AccountKey
-   * are not specified.
+   * Connection string for the storage account. Use this string if username and account key are not
+   * specified.
    */
   connectionString?: string;
   /**
@@ -1178,11 +1177,11 @@ export interface StorageAccountCredential extends ARMBaseModel {
  */
 export interface UpdateSummary extends ARMBaseModel {
   /**
-   * The current version of the device, of format: 1.2.17312.13.
+   * The current version of the device in format: 1.2.17312.13.",
    */
   deviceVersionNumber?: string;
   /**
-   * The current version of the device represented in text format.
+   * The current version of the device in text format.
    */
   friendlyDeviceVersionName?: string;
   /**
@@ -1202,8 +1201,7 @@ export interface UpdateSummary extends ARMBaseModel {
    */
   readonly lastCompletedInstallJobDateTime?: Date;
   /**
-   * Count of updates that are available for the current device version as per the last scan on the
-   * device.
+   * The number of updates available for the current device version as per the last device scan.
    */
   readonly totalNumberOfUpdatesAvailable?: number;
   /**
@@ -1215,8 +1213,8 @@ export interface UpdateSummary extends ARMBaseModel {
    */
   readonly totalNumberOfUpdatesPendingInstall?: number;
   /**
-   * Indicates if updates are available and at least one of the update items detected needs a
-   * reboot. Possible values include: 'NeverReboots', 'RequiresReboot', 'RequestReboot'
+   * Indicates if updates are available and at least one of the updates needs a reboot. Possible
+   * values include: 'NeverReboots', 'RequiresReboot', 'RequestReboot'
    */
   readonly rebootBehavior?: string;
   /**
@@ -1224,11 +1222,11 @@ export interface UpdateSummary extends ARMBaseModel {
    */
   readonly ongoingUpdateOperation?: string;
   /**
-   * The Job ID of the download job if a download is in progress.
+   * The job ID of the download job in progress.
    */
   readonly inProgressDownloadJobId?: string;
   /**
-   * The Job ID of the install job if an install is in progress.
+   * The job ID of the install job in progress.
    */
   readonly inProgressInstallJobId?: string;
   /**
@@ -1240,7 +1238,7 @@ export interface UpdateSummary extends ARMBaseModel {
    */
   readonly inProgressInstallJobStartedDateTime?: Date;
   /**
-   * The list of update titles which are available for install.
+   * The list of updates available for install.
    */
   readonly updateTitles?: string[];
   /**
@@ -1250,7 +1248,7 @@ export interface UpdateSummary extends ARMBaseModel {
 }
 
 /**
- * The Upload certificate request.
+ * The upload certificate request.
  */
 export interface UploadCertificateRequest {
   /**
@@ -1268,11 +1266,11 @@ export interface UploadCertificateRequest {
  */
 export interface UploadCertificateResponse {
   /**
-   * Specifies the Authentication type. Possible values include: 'Invalid', 'AzureActiveDirectory'
+   * Specifies authentication type. Possible values include: 'Invalid', 'AzureActiveDirectory'
    */
   authType?: string;
   /**
-   * The resource ID of the edge device.
+   * The resource ID of the Data Box Edge/Gateway device.
    */
   resourceId: string;
   /**
@@ -1288,21 +1286,21 @@ export interface UploadCertificateResponse {
    */
   servicePrincipalClientId: string;
   /**
-   * Azure Active Directory service principal Object ID.
+   * Azure Active Directory service principal object ID.
    */
   servicePrincipalObjectId: string;
   /**
-   * The Azure Management Endpoint Audience.
+   * The azure management endpoint audience.
    */
   azureManagementEndpointAudience: string;
 }
 
 /**
- * Represents a user who has access to one or more shares on the Edge storage device.
+ * Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
  */
 export interface User extends ARMBaseModel {
   /**
-   * The details of the password specified for the user.
+   * The password details.
    */
   encryptedPassword?: AsymmetricEncryptedSecret;
   /**
@@ -1313,7 +1311,7 @@ export interface User extends ARMBaseModel {
 }
 
 /**
- * Class for set of operations used for discovery of available provider operations.
+ * The list of operations used for the discovery of available provider operations.
  */
 export interface OperationsList extends Array<Operation> {
   /**
@@ -1333,7 +1331,7 @@ export interface DataBoxEdgeDeviceList extends Array<DataBoxEdgeDevice> {
 }
 
 /**
- * Collection of Alerts.
+ * Collection of alerts.
  */
 export interface AlertList extends Array<Alert> {
   /**
@@ -1363,7 +1361,7 @@ export interface OrderList extends Array<Order> {
 }
 
 /**
- * Collection of all role on the data box edge device.
+ * Collection of all the roles on the Data Box Edge device.
  */
 export interface RoleList extends Array<Role> {
   /**
@@ -1373,7 +1371,7 @@ export interface RoleList extends Array<Role> {
 }
 
 /**
- * Collection of all shares on the Data Box Edge/Gateway device.
+ * Collection of all the shares on the Data Box Edge/Gateway device.
  */
 export interface ShareList extends Array<Share> {
   /**
@@ -1383,7 +1381,7 @@ export interface ShareList extends Array<Share> {
 }
 
 /**
- * The collection of storage account credential entities.
+ * The collection of storage account credentials.
  */
 export interface StorageAccountCredentialList extends Array<StorageAccountCredential> {
   /**
