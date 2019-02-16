@@ -1751,6 +1751,20 @@ export interface AzureDatabricksLinkedService extends LinkedService {
    */
   newClusterCustomTags?: { [propertyName: string]: any };
   /**
+   * The driver node type for the new cluster. Type: string (or Expression with resultType string).
+   */
+  newClusterDriverNodeType?: any;
+  /**
+   * User-defined initialization scripts for the new cluster. Type: array of strings (or Expression
+   * with resultType array of strings).
+   */
+  newClusterInitScripts?: any;
+  /**
+   * Enable the elastic disk on the new cluster. Type: boolean (or Expression with resultType
+   * boolean).
+   */
+  newClusterEnableElasticDisk?: any;
+  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -6320,6 +6334,11 @@ export interface CustomActivity extends ExecutionActivity {
    * content defined.
    */
   extendedProperties?: { [propertyName: string]: any };
+  /**
+   * The retention time for the files submitted for custom activity. Type: double (or Expression
+   * with resultType double).
+   */
+  retentionTimeInDays?: any;
 }
 
 /**
