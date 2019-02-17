@@ -22,7 +22,7 @@ export interface Operations {
 
 
     /**
-     * @summary Lists all the operations supported.
+     * @summary List all the supported operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38,7 +38,7 @@ export interface Operations {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsList>>;
 
     /**
-     * @summary Lists all the operations supported.
+     * @summary List all the supported operations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -73,7 +73,7 @@ export interface Operations {
 
 
     /**
-     * @summary Lists all the operations supported.
+     * @summary List all the supported operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -92,7 +92,7 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationsList>>;
 
     /**
-     * @summary Lists all the operations supported.
+     * @summary List all the supported operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -139,7 +139,7 @@ export interface Devices {
 
 
     /**
-     * Retrieves all data box edge/gateway devices in a subscription.
+     * Gets all the data box edge/gateway devices in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -159,7 +159,7 @@ export interface Devices {
     listBySubscriptionWithHttpOperationResponse(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceList>>;
 
     /**
-     * Retrieves all data box edge/gateway devices in a subscription.
+     * Gets all the data box edge/gateway devices in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -198,7 +198,7 @@ export interface Devices {
 
 
     /**
-     * Retrieves all data box edge/gateway devices in a resource group.
+     * Gets all the data box edge/gateway devices in a resource group.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -220,7 +220,7 @@ export interface Devices {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceList>>;
 
     /**
-     * Retrieves all data box edge/gateway devices in a resource group.
+     * Gets all the data box edge/gateway devices in a resource group.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -261,7 +261,7 @@ export interface Devices {
 
 
     /**
-     * Returns the properties of the data box edge/gateway device.
+     * Gets the properties of the data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -281,7 +281,7 @@ export interface Devices {
     getWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDevice>>;
 
     /**
-     * Returns the properties of the data box edge/gateway device.
+     * Gets the properties of the data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -327,24 +327,24 @@ export interface Devices {
      * @param {object} dataBoxEdgeDevice The resource object.
      *
      * @param {string} dataBoxEdgeDevice.location The location of the device. This
-     * will be one of the supported and registered Azure Geo Regions (e.g. West US,
-     * East US, Southeast Asia, etc.). The geo region of a device cannot be changed
-     * once it is created, but if an identical geo region is specified on update
-     * the request will succeed.
+     * is a supported and registered Azure geographical region (for example, West
+     * US, East US, or Southeast Asia). The geographical region of a device cannot
+     * be changed once it is created, but if an identical geographical region is
+     * specified on update, the request will succeed.
      *
      * @param {object} [dataBoxEdgeDevice.tags] The list of tags that describe the
-     * device. These tags can be used in viewing and grouping this device (across
+     * device. These tags can be used to view and group this device (across
      * resource groups).
      *
-     * @param {object} [dataBoxEdgeDevice.sku] The sku type.
+     * @param {object} [dataBoxEdgeDevice.sku] The SKU type.
      *
-     * @param {string} [dataBoxEdgeDevice.sku.name] Sku name. Possible values
+     * @param {string} [dataBoxEdgeDevice.sku.name] SKU name. Possible values
      * include: 'Gateway', 'Edge'
      *
      * @param {string} [dataBoxEdgeDevice.sku.tier] The SKU tier. This is based on
      * the SKU name. Possible values include: 'Standard'
      *
-     * @param {string} [dataBoxEdgeDevice.etag] The etag of the devices.
+     * @param {string} [dataBoxEdgeDevice.etag] The etag for the devices.
      *
      * @param {string} [dataBoxEdgeDevice.dataBoxEdgeDeviceStatus] The status of
      * the Data Box Edge/Gateway device. Possible values include: 'ReadyToSetup',
@@ -383,24 +383,24 @@ export interface Devices {
      * @param {object} dataBoxEdgeDevice The resource object.
      *
      * @param {string} dataBoxEdgeDevice.location The location of the device. This
-     * will be one of the supported and registered Azure Geo Regions (e.g. West US,
-     * East US, Southeast Asia, etc.). The geo region of a device cannot be changed
-     * once it is created, but if an identical geo region is specified on update
-     * the request will succeed.
+     * is a supported and registered Azure geographical region (for example, West
+     * US, East US, or Southeast Asia). The geographical region of a device cannot
+     * be changed once it is created, but if an identical geographical region is
+     * specified on update, the request will succeed.
      *
      * @param {object} [dataBoxEdgeDevice.tags] The list of tags that describe the
-     * device. These tags can be used in viewing and grouping this device (across
+     * device. These tags can be used to view and group this device (across
      * resource groups).
      *
-     * @param {object} [dataBoxEdgeDevice.sku] The sku type.
+     * @param {object} [dataBoxEdgeDevice.sku] The SKU type.
      *
-     * @param {string} [dataBoxEdgeDevice.sku.name] Sku name. Possible values
+     * @param {string} [dataBoxEdgeDevice.sku.name] SKU name. Possible values
      * include: 'Gateway', 'Edge'
      *
      * @param {string} [dataBoxEdgeDevice.sku.tier] The SKU tier. This is based on
      * the SKU name. Possible values include: 'Standard'
      *
-     * @param {string} [dataBoxEdgeDevice.etag] The etag of the devices.
+     * @param {string} [dataBoxEdgeDevice.etag] The etag for the devices.
      *
      * @param {string} [dataBoxEdgeDevice.dataBoxEdgeDeviceStatus] The status of
      * the Data Box Edge/Gateway device. Possible values include: 'ReadyToSetup',
@@ -509,7 +509,7 @@ export interface Devices {
 
 
     /**
-     * Updates data box edge/gateway device.
+     * Modifies a Data Box Edge/Gateway resource.
      *
      * @param {string} deviceName The device name.
      *
@@ -532,7 +532,7 @@ export interface Devices {
     updateWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDevice>>;
 
     /**
-     * Updates data box edge/gateway device.
+     * Modifies a Data Box Edge/Gateway resource.
      *
      * @param {string} deviceName The device name.
      *
@@ -574,7 +574,7 @@ export interface Devices {
 
 
     /**
-     * @summary Downloads the updates on the data box edge/gateway device.
+     * @summary Downloads the updates on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -594,7 +594,7 @@ export interface Devices {
     downloadUpdatesWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Downloads the updates on the data box edge/gateway device.
+     * @summary Downloads the updates on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -632,11 +632,12 @@ export interface Devices {
 
 
     /**
-     * Creates or updates the extended info of the data box edge/gateway device.
+     * Creates or updates the additional information of a the data box edge/gateway
+     * device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {object} parameters The device extended information.
+     * @param {object} parameters The additional information.
      *
      * @param {string} parameters.integrityKey The Channel Integrity Key (CIK) of
      * the device.
@@ -663,11 +664,12 @@ export interface Devices {
     createOrUpdateExtendedInfoWithHttpOperationResponse(deviceName: string, parameters: models.DataBoxEdgeDeviceExtendedInfo, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceExtendedInfo>>;
 
     /**
-     * Creates or updates the extended info of the data box edge/gateway device.
+     * Creates or updates the additional information of a the data box edge/gateway
+     * device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {object} parameters The device extended information.
+     * @param {object} parameters The additional information.
      *
      * @param {string} parameters.integrityKey The Channel Integrity Key (CIK) of
      * the device.
@@ -714,8 +716,7 @@ export interface Devices {
 
 
     /**
-     * Returns the extended information of the specified data box edge/gateway
-     * device.
+     * Gets additional information for the specified data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -735,8 +736,7 @@ export interface Devices {
     getExtendedInformationWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceExtendedInfo>>;
 
     /**
-     * Returns the extended information of the specified data box edge/gateway
-     * device.
+     * Gets additional information for the specified data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -834,7 +834,7 @@ export interface Devices {
 
 
     /**
-     * Returns the network settings of the specified data box edge/gateway device.
+     * Gets the network settings of the specified data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -854,7 +854,7 @@ export interface Devices {
     getNetworkSettingsWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkSettings>>;
 
     /**
-     * Returns the network settings of the specified data box edge/gateway device.
+     * Gets the network settings of the specified data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -958,16 +958,16 @@ export interface Devices {
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} deviceAdminPassword Device administrator password as an
-     * encrypted string (encrypted using RSA PKCS #1) is used to log into the
-     * local web UI of the device. Actual password could have at least 8 characters
-     * that are a combination of  uppercase, lowercase, numeric, and special
-     * characters.
+     * encrypted string (encrypted using RSA PKCS #1) is used to sign into the
+     * local web UI of the device. The Actual password should have at least 8
+     * characters that are a combination of  uppercase, lowercase, numeric, and
+     * special characters.
      *
      * @param {string} deviceAdminPassword.value The value of the secret.
      *
      * @param {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} deviceAdminPassword.encryptionAlgorithm The algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
@@ -994,16 +994,16 @@ export interface Devices {
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} deviceAdminPassword Device administrator password as an
-     * encrypted string (encrypted using RSA PKCS #1) is used to log into the
-     * local web UI of the device. Actual password could have at least 8 characters
-     * that are a combination of  uppercase, lowercase, numeric, and special
-     * characters.
+     * encrypted string (encrypted using RSA PKCS #1) is used to sign into the
+     * local web UI of the device. The Actual password should have at least 8
+     * characters that are a combination of  uppercase, lowercase, numeric, and
+     * special characters.
      *
      * @param {string} deviceAdminPassword.value The value of the secret.
      *
      * @param {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} deviceAdminPassword.encryptionAlgorithm The algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
@@ -1041,9 +1041,9 @@ export interface Devices {
 
 
     /**
-     * @summary Returns information about the availability of updates as per the
-     * last scan done on the device. It also returns information about any ongoing
-     * download or install jobs on the device.
+     * @summary Gets information about the availability of updates based on the
+     * last scan of the device. It also gets information about any ongoing download
+     * or install jobs on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1063,9 +1063,9 @@ export interface Devices {
     getUpdateSummaryWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UpdateSummary>>;
 
     /**
-     * @summary Returns information about the availability of updates as per the
-     * last scan done on the device. It also returns information about any ongoing
-     * download or install jobs on the device.
+     * @summary Gets information about the availability of updates based on the
+     * last scan of the device. It also gets information about any ongoing download
+     * or install jobs on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1181,24 +1181,24 @@ export interface Devices {
      * @param {object} dataBoxEdgeDevice The resource object.
      *
      * @param {string} dataBoxEdgeDevice.location The location of the device. This
-     * will be one of the supported and registered Azure Geo Regions (e.g. West US,
-     * East US, Southeast Asia, etc.). The geo region of a device cannot be changed
-     * once it is created, but if an identical geo region is specified on update
-     * the request will succeed.
+     * is a supported and registered Azure geographical region (for example, West
+     * US, East US, or Southeast Asia). The geographical region of a device cannot
+     * be changed once it is created, but if an identical geographical region is
+     * specified on update, the request will succeed.
      *
      * @param {object} [dataBoxEdgeDevice.tags] The list of tags that describe the
-     * device. These tags can be used in viewing and grouping this device (across
+     * device. These tags can be used to view and group this device (across
      * resource groups).
      *
-     * @param {object} [dataBoxEdgeDevice.sku] The sku type.
+     * @param {object} [dataBoxEdgeDevice.sku] The SKU type.
      *
-     * @param {string} [dataBoxEdgeDevice.sku.name] Sku name. Possible values
+     * @param {string} [dataBoxEdgeDevice.sku.name] SKU name. Possible values
      * include: 'Gateway', 'Edge'
      *
      * @param {string} [dataBoxEdgeDevice.sku.tier] The SKU tier. This is based on
      * the SKU name. Possible values include: 'Standard'
      *
-     * @param {string} [dataBoxEdgeDevice.etag] The etag of the devices.
+     * @param {string} [dataBoxEdgeDevice.etag] The etag for the devices.
      *
      * @param {string} [dataBoxEdgeDevice.dataBoxEdgeDeviceStatus] The status of
      * the Data Box Edge/Gateway device. Possible values include: 'ReadyToSetup',
@@ -1237,24 +1237,24 @@ export interface Devices {
      * @param {object} dataBoxEdgeDevice The resource object.
      *
      * @param {string} dataBoxEdgeDevice.location The location of the device. This
-     * will be one of the supported and registered Azure Geo Regions (e.g. West US,
-     * East US, Southeast Asia, etc.). The geo region of a device cannot be changed
-     * once it is created, but if an identical geo region is specified on update
-     * the request will succeed.
+     * is a supported and registered Azure geographical region (for example, West
+     * US, East US, or Southeast Asia). The geographical region of a device cannot
+     * be changed once it is created, but if an identical geographical region is
+     * specified on update, the request will succeed.
      *
      * @param {object} [dataBoxEdgeDevice.tags] The list of tags that describe the
-     * device. These tags can be used in viewing and grouping this device (across
+     * device. These tags can be used to view and group this device (across
      * resource groups).
      *
-     * @param {object} [dataBoxEdgeDevice.sku] The sku type.
+     * @param {object} [dataBoxEdgeDevice.sku] The SKU type.
      *
-     * @param {string} [dataBoxEdgeDevice.sku.name] Sku name. Possible values
+     * @param {string} [dataBoxEdgeDevice.sku.name] SKU name. Possible values
      * include: 'Gateway', 'Edge'
      *
      * @param {string} [dataBoxEdgeDevice.sku.tier] The SKU tier. This is based on
      * the SKU name. Possible values include: 'Standard'
      *
-     * @param {string} [dataBoxEdgeDevice.etag] The etag of the devices.
+     * @param {string} [dataBoxEdgeDevice.etag] The etag for the devices.
      *
      * @param {string} [dataBoxEdgeDevice.dataBoxEdgeDeviceStatus] The status of
      * the Data Box Edge/Gateway device. Possible values include: 'ReadyToSetup',
@@ -1363,7 +1363,7 @@ export interface Devices {
 
 
     /**
-     * @summary Downloads the updates on the data box edge/gateway device.
+     * @summary Downloads the updates on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1383,7 +1383,7 @@ export interface Devices {
     beginDownloadUpdatesWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Downloads the updates on the data box edge/gateway device.
+     * @summary Downloads the updates on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1544,16 +1544,16 @@ export interface Devices {
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} deviceAdminPassword Device administrator password as an
-     * encrypted string (encrypted using RSA PKCS #1) is used to log into the
-     * local web UI of the device. Actual password could have at least 8 characters
-     * that are a combination of  uppercase, lowercase, numeric, and special
-     * characters.
+     * encrypted string (encrypted using RSA PKCS #1) is used to sign into the
+     * local web UI of the device. The Actual password should have at least 8
+     * characters that are a combination of  uppercase, lowercase, numeric, and
+     * special characters.
      *
      * @param {string} deviceAdminPassword.value The value of the secret.
      *
      * @param {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} deviceAdminPassword.encryptionAlgorithm The algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
@@ -1580,16 +1580,16 @@ export interface Devices {
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} deviceAdminPassword Device administrator password as an
-     * encrypted string (encrypted using RSA PKCS #1) is used to log into the
-     * local web UI of the device. Actual password could have at least 8 characters
-     * that are a combination of  uppercase, lowercase, numeric, and special
-     * characters.
+     * encrypted string (encrypted using RSA PKCS #1) is used to sign into the
+     * local web UI of the device. The Actual password should have at least 8
+     * characters that are a combination of  uppercase, lowercase, numeric, and
+     * special characters.
      *
      * @param {string} deviceAdminPassword.value The value of the secret.
      *
      * @param {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} deviceAdminPassword.encryptionAlgorithm The algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
@@ -1627,7 +1627,7 @@ export interface Devices {
 
 
     /**
-     * Retrieves all data box edge/gateway devices in a subscription.
+     * Gets all the data box edge/gateway devices in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1646,7 +1646,7 @@ export interface Devices {
     listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceList>>;
 
     /**
-     * Retrieves all data box edge/gateway devices in a subscription.
+     * Gets all the data box edge/gateway devices in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1684,7 +1684,7 @@ export interface Devices {
 
 
     /**
-     * Retrieves all data box edge/gateway devices in a resource group.
+     * Gets all the data box edge/gateway devices in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1703,7 +1703,7 @@ export interface Devices {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataBoxEdgeDeviceList>>;
 
     /**
-     * Retrieves all data box edge/gateway devices in a resource group.
+     * Gets all the data box edge/gateway devices in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1750,7 +1750,7 @@ export interface Alerts {
 
 
     /**
-     * Retrieves all the alerts for a data box edge/gateway device.
+     * Gets all the alerts for a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1770,7 +1770,7 @@ export interface Alerts {
     listByDataBoxEdgeDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * Retrieves all the alerts for a data box edge/gateway device.
+     * Gets all the alerts for a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1809,11 +1809,11 @@ export interface Alerts {
 
 
     /**
-     * @summary Returns an alert by name.
+     * @summary Gets an alert by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the alert which needs to be retrieved.
+     * @param {string} name The alert name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1831,11 +1831,11 @@ export interface Alerts {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Alert>>;
 
     /**
-     * @summary Returns an alert by name.
+     * @summary Gets an alert by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the alert which needs to be retrieved.
+     * @param {string} name The alert name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1872,7 +1872,7 @@ export interface Alerts {
 
 
     /**
-     * Retrieves all the alerts for a data box edge/gateway device.
+     * Gets all the alerts for a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1891,7 +1891,7 @@ export interface Alerts {
     listByDataBoxEdgeDeviceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * Retrieves all the alerts for a data box edge/gateway device.
+     * Gets all the alerts for a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1938,7 +1938,7 @@ export interface BandwidthSchedules {
 
 
     /**
-     * Returns all the bandwidth Schedules for a data box edge/gateway device.
+     * Gets all the bandwidth schedules for a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1958,7 +1958,7 @@ export interface BandwidthSchedules {
     listByDataBoxEdgeDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BandwidthSchedulesList>>;
 
     /**
-     * Returns all the bandwidth Schedules for a data box edge/gateway device.
+     * Gets all the bandwidth schedules for a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -1998,7 +1998,7 @@ export interface BandwidthSchedules {
 
 
     /**
-     * Returns the properties of the specified bandwidth schedule name.
+     * Gets the properties of the specified bandwidth schedule.
      *
      * @param {string} deviceName The device name.
      *
@@ -2020,7 +2020,7 @@ export interface BandwidthSchedules {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BandwidthSchedule>>;
 
     /**
-     * Returns the properties of the specified bandwidth schedule name.
+     * Gets the properties of the specified bandwidth schedule.
      *
      * @param {string} deviceName The device name.
      *
@@ -2359,7 +2359,7 @@ export interface BandwidthSchedules {
 
 
     /**
-     * Returns all the bandwidth Schedules for a data box edge/gateway device.
+     * Gets all the bandwidth schedules for a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2378,7 +2378,7 @@ export interface BandwidthSchedules {
     listByDataBoxEdgeDeviceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BandwidthSchedulesList>>;
 
     /**
-     * Returns all the bandwidth Schedules for a data box edge/gateway device.
+     * Gets all the bandwidth schedules for a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2418,16 +2418,16 @@ export interface BandwidthSchedules {
 
 /**
  * @class
- * OperationsStatus
+ * Jobs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataBoxEdgeManagementClient.
  */
-export interface OperationsStatus {
+export interface Jobs {
 
 
     /**
-     * @summary Returns the job details of the specified job on a data box
-     * edge/gateway device.
+     * @summary Gets the details of a specified job on a data box edge/gateway
+     * device.
      *
      * @param {string} deviceName The device name.
      *
@@ -2449,8 +2449,82 @@ export interface OperationsStatus {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
-     * @summary Returns the job details of the specified job on a data box
-     * edge/gateway device.
+     * @summary Gets the details of a specified job on a data box edge/gateway
+     * device.
+     *
+     * @param {string} deviceName The device name.
+     *
+     * @param {string} name The job name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(deviceName: string, name: string, resourceGroupName: string, callback: ServiceCallback<models.Job>): void;
+    get(deviceName: string, name: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+}
+
+/**
+ * @class
+ * OperationsStatus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataBoxEdgeManagementClient.
+ */
+export interface OperationsStatus {
+
+
+    /**
+     * @summary Gets the details of a specified job on a data box edge/gateway
+     * device.
+     *
+     * @param {string} deviceName The device name.
+     *
+     * @param {string} name The job name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * @summary Gets the details of a specified job on a data box edge/gateway
+     * device.
      *
      * @param {string} deviceName The device name.
      *
@@ -2500,9 +2574,9 @@ export interface Orders {
 
 
     /**
-     * @summary List all the orders related to the device.
+     * @summary Lists all the orders related to a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2520,9 +2594,9 @@ export interface Orders {
     listByDataBoxEdgeDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OrderList>>;
 
     /**
-     * @summary List all the orders related to the device.
+     * @summary Lists all the orders related to a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2559,9 +2633,9 @@ export interface Orders {
 
 
     /**
-     * @summary Get a specific order by name.
+     * @summary Gets a specific order by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2579,9 +2653,9 @@ export interface Orders {
     getWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Order>>;
 
     /**
-     * @summary Get a specific order by name.
+     * @summary Gets a specific order by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2620,32 +2694,29 @@ export interface Orders {
     /**
      * @summary Creates or updates an order.
      *
-     * @param {string} deviceName Name of the edge device for which order needs to
-     * be added or updated.
+     * @param {string} deviceName The order details of a device.
      *
-     * @param {object} order Order to be added.
+     * @param {object} order The order to be created or updated.
      *
-     * @param {object} [order.contactInformation] The contact details.
+     * @param {object} order.contactInformation The contact details.
      *
-     * @param {string} order.contactInformation.contactPerson Gets or sets the
-     * contact person.
+     * @param {string} order.contactInformation.contactPerson The contact person
+     * name.
      *
-     * @param {string} order.contactInformation.companyName Gets or sets the name
-     * of the company.
+     * @param {string} order.contactInformation.companyName The name of the
+     * company.
      *
-     * @param {string} order.contactInformation.phone Gets or sets the phone
-     * number.
+     * @param {string} order.contactInformation.phone The phone number.
      *
-     * @param {array} order.contactInformation.emailList Gets or sets the email
-     * list.
+     * @param {array} order.contactInformation.emailList The email list.
      *
-     * @param {object} [order.shippingAddress] The shipping address.
+     * @param {object} order.shippingAddress The shipping address.
      *
      * @param {string} order.shippingAddress.addressLine1 The address line1.
      *
-     * @param {string} order.shippingAddress.addressLine2 The address line2.
+     * @param {string} [order.shippingAddress.addressLine2] The address line2.
      *
-     * @param {string} order.shippingAddress.addressLine3 The address line3.
+     * @param {string} [order.shippingAddress.addressLine3] The address line3.
      *
      * @param {string} order.shippingAddress.postalCode The postal code.
      *
@@ -2655,16 +2726,16 @@ export interface Orders {
      *
      * @param {string} order.shippingAddress.country The country name.
      *
-     * @param {object} [order.changeStatusTo] Current status of the Order.
+     * @param {object} [order.currentStatus] Current status of the order.
      *
-     * @param {string} order.changeStatusTo.status Status of the order pertaining
-     * to the allowed StatusTypes. Possible values include: 'Untracked',
+     * @param {string} order.currentStatus.status Status of the order as per the
+     * allowed status types. Possible values include: 'Untracked',
      * 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped',
      * 'Arriving', 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined',
      * 'ReturnInitiated', 'AwaitingReturnShipment', 'ShippedBack',
      * 'CollectedAtMicrosoft'
      *
-     * @param {string} [order.changeStatusTo.comments] Comments related to this
+     * @param {string} [order.currentStatus.comments] Comments related to this
      * status change.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2685,32 +2756,29 @@ export interface Orders {
     /**
      * @summary Creates or updates an order.
      *
-     * @param {string} deviceName Name of the edge device for which order needs to
-     * be added or updated.
+     * @param {string} deviceName The order details of a device.
      *
-     * @param {object} order Order to be added.
+     * @param {object} order The order to be created or updated.
      *
-     * @param {object} [order.contactInformation] The contact details.
+     * @param {object} order.contactInformation The contact details.
      *
-     * @param {string} order.contactInformation.contactPerson Gets or sets the
-     * contact person.
+     * @param {string} order.contactInformation.contactPerson The contact person
+     * name.
      *
-     * @param {string} order.contactInformation.companyName Gets or sets the name
-     * of the company.
+     * @param {string} order.contactInformation.companyName The name of the
+     * company.
      *
-     * @param {string} order.contactInformation.phone Gets or sets the phone
-     * number.
+     * @param {string} order.contactInformation.phone The phone number.
      *
-     * @param {array} order.contactInformation.emailList Gets or sets the email
-     * list.
+     * @param {array} order.contactInformation.emailList The email list.
      *
-     * @param {object} [order.shippingAddress] The shipping address.
+     * @param {object} order.shippingAddress The shipping address.
      *
      * @param {string} order.shippingAddress.addressLine1 The address line1.
      *
-     * @param {string} order.shippingAddress.addressLine2 The address line2.
+     * @param {string} [order.shippingAddress.addressLine2] The address line2.
      *
-     * @param {string} order.shippingAddress.addressLine3 The address line3.
+     * @param {string} [order.shippingAddress.addressLine3] The address line3.
      *
      * @param {string} order.shippingAddress.postalCode The postal code.
      *
@@ -2720,16 +2788,16 @@ export interface Orders {
      *
      * @param {string} order.shippingAddress.country The country name.
      *
-     * @param {object} [order.changeStatusTo] Current status of the Order.
+     * @param {object} [order.currentStatus] Current status of the order.
      *
-     * @param {string} order.changeStatusTo.status Status of the order pertaining
-     * to the allowed StatusTypes. Possible values include: 'Untracked',
+     * @param {string} order.currentStatus.status Status of the order as per the
+     * allowed status types. Possible values include: 'Untracked',
      * 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped',
      * 'Arriving', 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined',
      * 'ReturnInitiated', 'AwaitingReturnShipment', 'ShippedBack',
      * 'CollectedAtMicrosoft'
      *
-     * @param {string} [order.changeStatusTo.comments] Comments related to this
+     * @param {string} [order.currentStatus.comments] Comments related to this
      * status change.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2769,7 +2837,7 @@ export interface Orders {
     /**
      * @summary Deletes the order related to the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2789,7 +2857,7 @@ export interface Orders {
     /**
      * @summary Deletes the order related to the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2827,32 +2895,29 @@ export interface Orders {
     /**
      * @summary Creates or updates an order.
      *
-     * @param {string} deviceName Name of the edge device for which order needs to
-     * be added or updated.
+     * @param {string} deviceName The order details of a device.
      *
-     * @param {object} order Order to be added.
+     * @param {object} order The order to be created or updated.
      *
-     * @param {object} [order.contactInformation] The contact details.
+     * @param {object} order.contactInformation The contact details.
      *
-     * @param {string} order.contactInformation.contactPerson Gets or sets the
-     * contact person.
+     * @param {string} order.contactInformation.contactPerson The contact person
+     * name.
      *
-     * @param {string} order.contactInformation.companyName Gets or sets the name
-     * of the company.
+     * @param {string} order.contactInformation.companyName The name of the
+     * company.
      *
-     * @param {string} order.contactInformation.phone Gets or sets the phone
-     * number.
+     * @param {string} order.contactInformation.phone The phone number.
      *
-     * @param {array} order.contactInformation.emailList Gets or sets the email
-     * list.
+     * @param {array} order.contactInformation.emailList The email list.
      *
-     * @param {object} [order.shippingAddress] The shipping address.
+     * @param {object} order.shippingAddress The shipping address.
      *
      * @param {string} order.shippingAddress.addressLine1 The address line1.
      *
-     * @param {string} order.shippingAddress.addressLine2 The address line2.
+     * @param {string} [order.shippingAddress.addressLine2] The address line2.
      *
-     * @param {string} order.shippingAddress.addressLine3 The address line3.
+     * @param {string} [order.shippingAddress.addressLine3] The address line3.
      *
      * @param {string} order.shippingAddress.postalCode The postal code.
      *
@@ -2862,16 +2927,16 @@ export interface Orders {
      *
      * @param {string} order.shippingAddress.country The country name.
      *
-     * @param {object} [order.changeStatusTo] Current status of the Order.
+     * @param {object} [order.currentStatus] Current status of the order.
      *
-     * @param {string} order.changeStatusTo.status Status of the order pertaining
-     * to the allowed StatusTypes. Possible values include: 'Untracked',
+     * @param {string} order.currentStatus.status Status of the order as per the
+     * allowed status types. Possible values include: 'Untracked',
      * 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped',
      * 'Arriving', 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined',
      * 'ReturnInitiated', 'AwaitingReturnShipment', 'ShippedBack',
      * 'CollectedAtMicrosoft'
      *
-     * @param {string} [order.changeStatusTo.comments] Comments related to this
+     * @param {string} [order.currentStatus.comments] Comments related to this
      * status change.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2892,32 +2957,29 @@ export interface Orders {
     /**
      * @summary Creates or updates an order.
      *
-     * @param {string} deviceName Name of the edge device for which order needs to
-     * be added or updated.
+     * @param {string} deviceName The order details of a device.
      *
-     * @param {object} order Order to be added.
+     * @param {object} order The order to be created or updated.
      *
-     * @param {object} [order.contactInformation] The contact details.
+     * @param {object} order.contactInformation The contact details.
      *
-     * @param {string} order.contactInformation.contactPerson Gets or sets the
-     * contact person.
+     * @param {string} order.contactInformation.contactPerson The contact person
+     * name.
      *
-     * @param {string} order.contactInformation.companyName Gets or sets the name
-     * of the company.
+     * @param {string} order.contactInformation.companyName The name of the
+     * company.
      *
-     * @param {string} order.contactInformation.phone Gets or sets the phone
-     * number.
+     * @param {string} order.contactInformation.phone The phone number.
      *
-     * @param {array} order.contactInformation.emailList Gets or sets the email
-     * list.
+     * @param {array} order.contactInformation.emailList The email list.
      *
-     * @param {object} [order.shippingAddress] The shipping address.
+     * @param {object} order.shippingAddress The shipping address.
      *
      * @param {string} order.shippingAddress.addressLine1 The address line1.
      *
-     * @param {string} order.shippingAddress.addressLine2 The address line2.
+     * @param {string} [order.shippingAddress.addressLine2] The address line2.
      *
-     * @param {string} order.shippingAddress.addressLine3 The address line3.
+     * @param {string} [order.shippingAddress.addressLine3] The address line3.
      *
      * @param {string} order.shippingAddress.postalCode The postal code.
      *
@@ -2927,16 +2989,16 @@ export interface Orders {
      *
      * @param {string} order.shippingAddress.country The country name.
      *
-     * @param {object} [order.changeStatusTo] Current status of the Order.
+     * @param {object} [order.currentStatus] Current status of the order.
      *
-     * @param {string} order.changeStatusTo.status Status of the order pertaining
-     * to the allowed StatusTypes. Possible values include: 'Untracked',
+     * @param {string} order.currentStatus.status Status of the order as per the
+     * allowed status types. Possible values include: 'Untracked',
      * 'AwaitingFulfilment', 'AwaitingPreparation', 'AwaitingShipment', 'Shipped',
      * 'Arriving', 'Delivered', 'ReplacementRequested', 'LostDevice', 'Declined',
      * 'ReturnInitiated', 'AwaitingReturnShipment', 'ShippedBack',
      * 'CollectedAtMicrosoft'
      *
-     * @param {string} [order.changeStatusTo.comments] Comments related to this
+     * @param {string} [order.currentStatus.comments] Comments related to this
      * status change.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2976,7 +3038,7 @@ export interface Orders {
     /**
      * @summary Deletes the order related to the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2996,7 +3058,7 @@ export interface Orders {
     /**
      * @summary Deletes the order related to the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3032,7 +3094,7 @@ export interface Orders {
 
 
     /**
-     * @summary List all the orders related to the device.
+     * @summary Lists all the orders related to a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3051,7 +3113,7 @@ export interface Orders {
     listByDataBoxEdgeDeviceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OrderList>>;
 
     /**
-     * @summary List all the orders related to the device.
+     * @summary Lists all the orders related to a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3100,7 +3162,7 @@ export interface Roles {
     /**
      * Lists all the roles configured in a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3120,7 +3182,7 @@ export interface Roles {
     /**
      * Lists all the roles configured in a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3157,11 +3219,11 @@ export interface Roles {
 
 
     /**
-     * Get a specific role by name.
+     * Gets a specific role by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of role to be fetched.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3179,11 +3241,11 @@ export interface Roles {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Role>>;
 
     /**
-     * Get a specific role by name.
+     * Gets a specific role by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of role to be fetched.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3222,12 +3284,11 @@ export interface Roles {
     /**
      * Create or update a role.
      *
-     * @param {string} deviceName Name of the device in which the role needs to be
-     * added or updated.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role to be updated.
+     * @param {string} name The role name.
      *
-     * @param {object} role Role to be added.
+     * @param {object} role The role properties.
      *
      * @param {string} role.kind Polymorphic Discriminator
      *
@@ -3249,12 +3310,11 @@ export interface Roles {
     /**
      * Create or update a role.
      *
-     * @param {string} deviceName Name of the device in which the role needs to be
-     * added or updated.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role to be updated.
+     * @param {string} name The role name.
      *
-     * @param {object} role Role to be added.
+     * @param {object} role The role properties.
      *
      * @param {string} role.kind Polymorphic Discriminator
      *
@@ -3293,11 +3353,11 @@ export interface Roles {
 
 
     /**
-     * Deletes the role on the gateway device.
+     * Deletes the role on the data box edge device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role which needs to be deleted.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3315,11 +3375,11 @@ export interface Roles {
     deleteMethodWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the role on the gateway device.
+     * Deletes the role on the data box edge device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role which needs to be deleted.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3357,12 +3417,11 @@ export interface Roles {
     /**
      * Create or update a role.
      *
-     * @param {string} deviceName Name of the device in which the role needs to be
-     * added or updated.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role to be updated.
+     * @param {string} name The role name.
      *
-     * @param {object} role Role to be added.
+     * @param {object} role The role properties.
      *
      * @param {string} role.kind Polymorphic Discriminator
      *
@@ -3384,12 +3443,11 @@ export interface Roles {
     /**
      * Create or update a role.
      *
-     * @param {string} deviceName Name of the device in which the role needs to be
-     * added or updated.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role to be updated.
+     * @param {string} name The role name.
      *
-     * @param {object} role Role to be added.
+     * @param {object} role The role properties.
      *
      * @param {string} role.kind Polymorphic Discriminator
      *
@@ -3428,11 +3486,11 @@ export interface Roles {
 
 
     /**
-     * Deletes the role on the gateway device.
+     * Deletes the role on the data box edge device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role which needs to be deleted.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3450,11 +3508,11 @@ export interface Roles {
     beginDeleteMethodWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the role on the gateway device.
+     * Deletes the role on the data box edge device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the role which needs to be deleted.
+     * @param {string} name The role name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3558,7 +3616,7 @@ export interface Shares {
     /**
      * @summary Lists all the shares in a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3578,7 +3636,7 @@ export interface Shares {
     /**
      * @summary Lists all the shares in a data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3615,11 +3673,11 @@ export interface Shares {
 
 
     /**
-     * @summary Returns a particular share by name.
+     * @summary Gets a share by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3637,11 +3695,11 @@ export interface Shares {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Share>>;
 
     /**
-     * @summary Returns a particular share by name.
+     * @summary Gets a share by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3678,13 +3736,13 @@ export interface Shares {
 
 
     /**
-     * @summary Creates a new share or update an existing share on the device.
+     * @summary Creates a new share or updates an existing share on the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be added/updated.
+     * @param {string} name The share name.
      *
-     * @param {object} share The share object containing the share details.
+     * @param {object} share The share properties.
      *
      * @param {string} [share.description] Description for the share.
      *
@@ -3698,11 +3756,11 @@ export interface Shares {
      * share.
      *
      * @param {string} share.azureContainerInfo.storageAccountCredentialId ID of
-     * the Storage account credential to be used for accessing storage.
+     * the storage account credential used to access storage.
      *
      * @param {string} share.azureContainerInfo.containerName Container name (Based
-     * on the data format specified, represents the name of Azure file/ Page blob /
-     * Block blob).
+     * on the data format specified, this represents the name of Azure Files/Page
+     * blob/Block blob).
      *
      * @param {string} share.azureContainerInfo.dataFormat Storage format used for
      * the file represented by the share. Possible values include: 'BlockBlob',
@@ -3711,32 +3769,30 @@ export interface Shares {
      * @param {string} share.accessProtocol Access protocol to be used by the
      * share. Possible values include: 'SMB', 'NFS'
      *
-     * @param {array} [share.userAccessRights] Mapping of Users and corresponding
-     * access rights on the share (mandatory for SMB protocol).
+     * @param {array} [share.userAccessRights] Mapping of users and corresponding
+     * access rights on the share (required for SMB protocol).
      *
      * @param {array} [share.clientAccessRights] List of IP addresses and
-     * corresponding access rights on the share(mandatory for NFS protocol).
+     * corresponding access rights on the share(required for NFS protocol).
      *
      * @param {object} [share.refreshDetails] Details of the refresh job on this
      * share.
      *
-     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a
-     * RefreshShare job is currently inprogress on this share - this field
-     * indicates the ArmId of that job. Empty otherwise.
+     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a refresh
+     * share job is currently in progress on this share, this field indicates the
+     * ARM resource ID of that job. The field is empty if no job is in progress.
      *
      * @param {date} [share.refreshDetails.lastCompletedRefreshJobTimeInUTC]
-     * Indicates the job completed time of the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * Indicates the completed time for the last refresh job on this particular
+     * share, if any.This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.errorManifestFile] Indicates the
      * relative path of the error xml for the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * share, if any. This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.lastJob] Indicates the id of the last
-     * refresh job on this particular share,if any.
-     * This could be a failed job or a successful job.
+     * refresh job on this particular share,if any. This could be a failed job or a
+     * successful job.
      *
      * @param {string} [share.dataPolicy] Data policy of the share. Possible values
      * include: 'Cloud', 'Local'
@@ -3757,13 +3813,13 @@ export interface Shares {
     createOrUpdateWithHttpOperationResponse(deviceName: string, name: string, share: models.Share, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Share>>;
 
     /**
-     * @summary Creates a new share or update an existing share on the device.
+     * @summary Creates a new share or updates an existing share on the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be added/updated.
+     * @param {string} name The share name.
      *
-     * @param {object} share The share object containing the share details.
+     * @param {object} share The share properties.
      *
      * @param {string} [share.description] Description for the share.
      *
@@ -3777,11 +3833,11 @@ export interface Shares {
      * share.
      *
      * @param {string} share.azureContainerInfo.storageAccountCredentialId ID of
-     * the Storage account credential to be used for accessing storage.
+     * the storage account credential used to access storage.
      *
      * @param {string} share.azureContainerInfo.containerName Container name (Based
-     * on the data format specified, represents the name of Azure file/ Page blob /
-     * Block blob).
+     * on the data format specified, this represents the name of Azure Files/Page
+     * blob/Block blob).
      *
      * @param {string} share.azureContainerInfo.dataFormat Storage format used for
      * the file represented by the share. Possible values include: 'BlockBlob',
@@ -3790,32 +3846,30 @@ export interface Shares {
      * @param {string} share.accessProtocol Access protocol to be used by the
      * share. Possible values include: 'SMB', 'NFS'
      *
-     * @param {array} [share.userAccessRights] Mapping of Users and corresponding
-     * access rights on the share (mandatory for SMB protocol).
+     * @param {array} [share.userAccessRights] Mapping of users and corresponding
+     * access rights on the share (required for SMB protocol).
      *
      * @param {array} [share.clientAccessRights] List of IP addresses and
-     * corresponding access rights on the share(mandatory for NFS protocol).
+     * corresponding access rights on the share(required for NFS protocol).
      *
      * @param {object} [share.refreshDetails] Details of the refresh job on this
      * share.
      *
-     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a
-     * RefreshShare job is currently inprogress on this share - this field
-     * indicates the ArmId of that job. Empty otherwise.
+     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a refresh
+     * share job is currently in progress on this share, this field indicates the
+     * ARM resource ID of that job. The field is empty if no job is in progress.
      *
      * @param {date} [share.refreshDetails.lastCompletedRefreshJobTimeInUTC]
-     * Indicates the job completed time of the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * Indicates the completed time for the last refresh job on this particular
+     * share, if any.This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.errorManifestFile] Indicates the
      * relative path of the error xml for the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * share, if any. This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.lastJob] Indicates the id of the last
-     * refresh job on this particular share,if any.
-     * This could be a failed job or a successful job.
+     * refresh job on this particular share,if any. This could be a failed job or a
+     * successful job.
      *
      * @param {string} [share.dataPolicy] Data policy of the share. Possible values
      * include: 'Cloud', 'Local'
@@ -3857,9 +3911,9 @@ export interface Shares {
     /**
      * Deletes the share on the data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be deleted.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3879,9 +3933,9 @@ export interface Shares {
     /**
      * Deletes the share on the data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be deleted.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3917,12 +3971,11 @@ export interface Shares {
 
 
     /**
-     * @summary Triggers a manual refresh of the share metadata with the actual
-     * cloud storage account.
+     * @summary Refreshes the share metadata with the data from the cloud.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3940,12 +3993,11 @@ export interface Shares {
     refreshWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Triggers a manual refresh of the share metadata with the actual
-     * cloud storage account.
+     * @summary Refreshes the share metadata with the data from the cloud.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3981,13 +4033,13 @@ export interface Shares {
 
 
     /**
-     * @summary Creates a new share or update an existing share on the device.
+     * @summary Creates a new share or updates an existing share on the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be added/updated.
+     * @param {string} name The share name.
      *
-     * @param {object} share The share object containing the share details.
+     * @param {object} share The share properties.
      *
      * @param {string} [share.description] Description for the share.
      *
@@ -4001,11 +4053,11 @@ export interface Shares {
      * share.
      *
      * @param {string} share.azureContainerInfo.storageAccountCredentialId ID of
-     * the Storage account credential to be used for accessing storage.
+     * the storage account credential used to access storage.
      *
      * @param {string} share.azureContainerInfo.containerName Container name (Based
-     * on the data format specified, represents the name of Azure file/ Page blob /
-     * Block blob).
+     * on the data format specified, this represents the name of Azure Files/Page
+     * blob/Block blob).
      *
      * @param {string} share.azureContainerInfo.dataFormat Storage format used for
      * the file represented by the share. Possible values include: 'BlockBlob',
@@ -4014,32 +4066,30 @@ export interface Shares {
      * @param {string} share.accessProtocol Access protocol to be used by the
      * share. Possible values include: 'SMB', 'NFS'
      *
-     * @param {array} [share.userAccessRights] Mapping of Users and corresponding
-     * access rights on the share (mandatory for SMB protocol).
+     * @param {array} [share.userAccessRights] Mapping of users and corresponding
+     * access rights on the share (required for SMB protocol).
      *
      * @param {array} [share.clientAccessRights] List of IP addresses and
-     * corresponding access rights on the share(mandatory for NFS protocol).
+     * corresponding access rights on the share(required for NFS protocol).
      *
      * @param {object} [share.refreshDetails] Details of the refresh job on this
      * share.
      *
-     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a
-     * RefreshShare job is currently inprogress on this share - this field
-     * indicates the ArmId of that job. Empty otherwise.
+     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a refresh
+     * share job is currently in progress on this share, this field indicates the
+     * ARM resource ID of that job. The field is empty if no job is in progress.
      *
      * @param {date} [share.refreshDetails.lastCompletedRefreshJobTimeInUTC]
-     * Indicates the job completed time of the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * Indicates the completed time for the last refresh job on this particular
+     * share, if any.This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.errorManifestFile] Indicates the
      * relative path of the error xml for the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * share, if any. This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.lastJob] Indicates the id of the last
-     * refresh job on this particular share,if any.
-     * This could be a failed job or a successful job.
+     * refresh job on this particular share,if any. This could be a failed job or a
+     * successful job.
      *
      * @param {string} [share.dataPolicy] Data policy of the share. Possible values
      * include: 'Cloud', 'Local'
@@ -4060,13 +4110,13 @@ export interface Shares {
     beginCreateOrUpdateWithHttpOperationResponse(deviceName: string, name: string, share: models.Share, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Share>>;
 
     /**
-     * @summary Creates a new share or update an existing share on the device.
+     * @summary Creates a new share or updates an existing share on the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be added/updated.
+     * @param {string} name The share name.
      *
-     * @param {object} share The share object containing the share details.
+     * @param {object} share The share properties.
      *
      * @param {string} [share.description] Description for the share.
      *
@@ -4080,11 +4130,11 @@ export interface Shares {
      * share.
      *
      * @param {string} share.azureContainerInfo.storageAccountCredentialId ID of
-     * the Storage account credential to be used for accessing storage.
+     * the storage account credential used to access storage.
      *
      * @param {string} share.azureContainerInfo.containerName Container name (Based
-     * on the data format specified, represents the name of Azure file/ Page blob /
-     * Block blob).
+     * on the data format specified, this represents the name of Azure Files/Page
+     * blob/Block blob).
      *
      * @param {string} share.azureContainerInfo.dataFormat Storage format used for
      * the file represented by the share. Possible values include: 'BlockBlob',
@@ -4093,32 +4143,30 @@ export interface Shares {
      * @param {string} share.accessProtocol Access protocol to be used by the
      * share. Possible values include: 'SMB', 'NFS'
      *
-     * @param {array} [share.userAccessRights] Mapping of Users and corresponding
-     * access rights on the share (mandatory for SMB protocol).
+     * @param {array} [share.userAccessRights] Mapping of users and corresponding
+     * access rights on the share (required for SMB protocol).
      *
      * @param {array} [share.clientAccessRights] List of IP addresses and
-     * corresponding access rights on the share(mandatory for NFS protocol).
+     * corresponding access rights on the share(required for NFS protocol).
      *
      * @param {object} [share.refreshDetails] Details of the refresh job on this
      * share.
      *
-     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a
-     * RefreshShare job is currently inprogress on this share - this field
-     * indicates the ArmId of that job. Empty otherwise.
+     * @param {string} [share.refreshDetails.inProgressRefreshJobId] If a refresh
+     * share job is currently in progress on this share, this field indicates the
+     * ARM resource ID of that job. The field is empty if no job is in progress.
      *
      * @param {date} [share.refreshDetails.lastCompletedRefreshJobTimeInUTC]
-     * Indicates the job completed time of the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * Indicates the completed time for the last refresh job on this particular
+     * share, if any.This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.errorManifestFile] Indicates the
      * relative path of the error xml for the last refresh job on this particular
-     * share, if any.
-     * This could be a failed job or a successful job.
+     * share, if any. This could be a failed job or a successful job.
      *
      * @param {string} [share.refreshDetails.lastJob] Indicates the id of the last
-     * refresh job on this particular share,if any.
-     * This could be a failed job or a successful job.
+     * refresh job on this particular share,if any. This could be a failed job or a
+     * successful job.
      *
      * @param {string} [share.dataPolicy] Data policy of the share. Possible values
      * include: 'Cloud', 'Local'
@@ -4160,9 +4208,9 @@ export interface Shares {
     /**
      * Deletes the share on the data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be deleted.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4182,9 +4230,9 @@ export interface Shares {
     /**
      * Deletes the share on the data box edge/gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share which needs to be deleted.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4220,12 +4268,11 @@ export interface Shares {
 
 
     /**
-     * @summary Triggers a manual refresh of the share metadata with the actual
-     * cloud storage account.
+     * @summary Refreshes the share metadata with the data from the cloud.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4243,12 +4290,11 @@ export interface Shares {
     beginRefreshWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Triggers a manual refresh of the share metadata with the actual
-     * cloud storage account.
+     * @summary Refreshes the share metadata with the data from the cloud.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the share.
+     * @param {string} name The share name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4353,7 +4399,7 @@ export interface StorageAccountCredentials {
      * @summary Gets all the storage account credentials in a data box edge/gateway
      * device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4374,7 +4420,7 @@ export interface StorageAccountCredentials {
      * @summary Gets all the storage account credentials in a data box edge/gateway
      * device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4414,9 +4460,9 @@ export interface StorageAccountCredentials {
     /**
      * Gets the properties of the specified storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential to be fetched.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4436,9 +4482,9 @@ export interface StorageAccountCredentials {
     /**
      * Gets the properties of the specified storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential to be fetched.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4478,17 +4524,16 @@ export interface StorageAccountCredentials {
     /**
      * Creates or updates the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} name The storage account credential name.
      *
-     * @param {object} storageAccountCredential The storage account credential to
-     * be added or updated.
+     * @param {object} storageAccountCredential The storage account credential.
      *
      * @param {string} storageAccountCredential.alias Alias for the storage
      * account.
      *
-     * @param {string} [storageAccountCredential.userName] UserName for the storage
+     * @param {string} [storageAccountCredential.userName] Username for the storage
      * account.
      *
      * @param {object} [storageAccountCredential.accountKey] Encrypted storage key.
@@ -4498,15 +4543,15 @@ export interface StorageAccountCredentials {
      *
      * @param {string}
      * [storageAccountCredential.accountKey.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} storageAccountCredential.accountKey.encryptionAlgorithm The
      * algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccountCredential.connectionString] ConnectionString
-     * for the storage account. This needs to be specified if UserName/AccountKey
+     * @param {string} [storageAccountCredential.connectionString] Connection
+     * string for the storage account. Use this string if username and account key
      * are not specified.
      *
      * @param {string} storageAccountCredential.sslStatus Signifies whether SSL
@@ -4537,17 +4582,16 @@ export interface StorageAccountCredentials {
     /**
      * Creates or updates the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} name The storage account credential name.
      *
-     * @param {object} storageAccountCredential The storage account credential to
-     * be added or updated.
+     * @param {object} storageAccountCredential The storage account credential.
      *
      * @param {string} storageAccountCredential.alias Alias for the storage
      * account.
      *
-     * @param {string} [storageAccountCredential.userName] UserName for the storage
+     * @param {string} [storageAccountCredential.userName] Username for the storage
      * account.
      *
      * @param {object} [storageAccountCredential.accountKey] Encrypted storage key.
@@ -4557,15 +4601,15 @@ export interface StorageAccountCredentials {
      *
      * @param {string}
      * [storageAccountCredential.accountKey.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} storageAccountCredential.accountKey.encryptionAlgorithm The
      * algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccountCredential.connectionString] ConnectionString
-     * for the storage account. This needs to be specified if UserName/AccountKey
+     * @param {string} [storageAccountCredential.connectionString] Connection
+     * string for the storage account. Use this string if username and account key
      * are not specified.
      *
      * @param {string} storageAccountCredential.sslStatus Signifies whether SSL
@@ -4616,9 +4660,9 @@ export interface StorageAccountCredentials {
     /**
      * Deletes the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4638,9 +4682,9 @@ export interface StorageAccountCredentials {
     /**
      * Deletes the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4678,17 +4722,16 @@ export interface StorageAccountCredentials {
     /**
      * Creates or updates the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} name The storage account credential name.
      *
-     * @param {object} storageAccountCredential The storage account credential to
-     * be added or updated.
+     * @param {object} storageAccountCredential The storage account credential.
      *
      * @param {string} storageAccountCredential.alias Alias for the storage
      * account.
      *
-     * @param {string} [storageAccountCredential.userName] UserName for the storage
+     * @param {string} [storageAccountCredential.userName] Username for the storage
      * account.
      *
      * @param {object} [storageAccountCredential.accountKey] Encrypted storage key.
@@ -4698,15 +4741,15 @@ export interface StorageAccountCredentials {
      *
      * @param {string}
      * [storageAccountCredential.accountKey.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} storageAccountCredential.accountKey.encryptionAlgorithm The
      * algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccountCredential.connectionString] ConnectionString
-     * for the storage account. This needs to be specified if UserName/AccountKey
+     * @param {string} [storageAccountCredential.connectionString] Connection
+     * string for the storage account. Use this string if username and account key
      * are not specified.
      *
      * @param {string} storageAccountCredential.sslStatus Signifies whether SSL
@@ -4737,17 +4780,16 @@ export interface StorageAccountCredentials {
     /**
      * Creates or updates the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} name The storage account credential name.
      *
-     * @param {object} storageAccountCredential The storage account credential to
-     * be added or updated.
+     * @param {object} storageAccountCredential The storage account credential.
      *
      * @param {string} storageAccountCredential.alias Alias for the storage
      * account.
      *
-     * @param {string} [storageAccountCredential.userName] UserName for the storage
+     * @param {string} [storageAccountCredential.userName] Username for the storage
      * account.
      *
      * @param {object} [storageAccountCredential.accountKey] Encrypted storage key.
@@ -4757,15 +4799,15 @@ export interface StorageAccountCredentials {
      *
      * @param {string}
      * [storageAccountCredential.accountKey.encryptionCertThumbprint] Thumbprint
-     * certificate that was used to encrypt "Value". If the value in unencrypted,
-     * it will be null.
+     * certificate used to encrypt \"Value\". If the value is unencrypted, it will
+     * be null.
      *
      * @param {string} storageAccountCredential.accountKey.encryptionAlgorithm The
      * algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccountCredential.connectionString] ConnectionString
-     * for the storage account. This needs to be specified if UserName/AccountKey
+     * @param {string} [storageAccountCredential.connectionString] Connection
+     * string for the storage account. Use this string if username and account key
      * are not specified.
      *
      * @param {string} storageAccountCredential.sslStatus Signifies whether SSL
@@ -4816,9 +4858,9 @@ export interface StorageAccountCredentials {
     /**
      * Deletes the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4838,9 +4880,9 @@ export interface StorageAccountCredentials {
     /**
      * Deletes the storage account credential.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the storage account credential.
+     * @param {string} name The storage account credential name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4945,9 +4987,9 @@ export interface Triggers {
 
 
     /**
-     * List all the triggers configured in the device.
+     * Lists all the triggers configured in the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4965,9 +5007,9 @@ export interface Triggers {
     listByDataBoxEdgeDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerList>>;
 
     /**
-     * List all the triggers configured in the device.
+     * Lists all the triggers configured in the device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5006,9 +5048,9 @@ export interface Triggers {
     /**
      * Get a specific trigger by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of trigger to be fetched.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5028,9 +5070,9 @@ export interface Triggers {
     /**
      * Get a specific trigger by name.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of trigger to be fetched.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5067,14 +5109,13 @@ export interface Triggers {
 
 
     /**
-     * Create or update a trigger.
+     * Creates or updates a trigger.
      *
-     * @param {string} deviceName Name of the edge device in which trigger needs to
-     * be added or updated.
+     * @param {string} deviceName Creates or updates a trigger
      *
-     * @param {string} name Name of trigger to be added or updated.
+     * @param {string} name The trigger name.
      *
-     * @param {object} trigger Trigger to be added.
+     * @param {object} trigger The trigger.
      *
      * @param {string} trigger.kind Polymorphic Discriminator
      *
@@ -5094,14 +5135,13 @@ export interface Triggers {
     createOrUpdateWithHttpOperationResponse(deviceName: string, name: string, trigger: models.Trigger, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Trigger>>;
 
     /**
-     * Create or update a trigger.
+     * Creates or updates a trigger.
      *
-     * @param {string} deviceName Name of the edge device in which trigger needs to
-     * be added or updated.
+     * @param {string} deviceName Creates or updates a trigger
      *
-     * @param {string} name Name of trigger to be added or updated.
+     * @param {string} name The trigger name.
      *
-     * @param {object} trigger Trigger to be added.
+     * @param {object} trigger The trigger.
      *
      * @param {string} trigger.kind Polymorphic Discriminator
      *
@@ -5142,9 +5182,9 @@ export interface Triggers {
     /**
      * Deletes the trigger on the gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the trigger which needs to be deleted.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5164,9 +5204,9 @@ export interface Triggers {
     /**
      * Deletes the trigger on the gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the trigger which needs to be deleted.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5202,14 +5242,13 @@ export interface Triggers {
 
 
     /**
-     * Create or update a trigger.
+     * Creates or updates a trigger.
      *
-     * @param {string} deviceName Name of the edge device in which trigger needs to
-     * be added or updated.
+     * @param {string} deviceName Creates or updates a trigger
      *
-     * @param {string} name Name of trigger to be added or updated.
+     * @param {string} name The trigger name.
      *
-     * @param {object} trigger Trigger to be added.
+     * @param {object} trigger The trigger.
      *
      * @param {string} trigger.kind Polymorphic Discriminator
      *
@@ -5229,14 +5268,13 @@ export interface Triggers {
     beginCreateOrUpdateWithHttpOperationResponse(deviceName: string, name: string, trigger: models.Trigger, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Trigger>>;
 
     /**
-     * Create or update a trigger.
+     * Creates or updates a trigger.
      *
-     * @param {string} deviceName Name of the edge device in which trigger needs to
-     * be added or updated.
+     * @param {string} deviceName Creates or updates a trigger
      *
-     * @param {string} name Name of trigger to be added or updated.
+     * @param {string} name The trigger name.
      *
-     * @param {object} trigger Trigger to be added.
+     * @param {object} trigger The trigger.
      *
      * @param {string} trigger.kind Polymorphic Discriminator
      *
@@ -5277,9 +5315,9 @@ export interface Triggers {
     /**
      * Deletes the trigger on the gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the trigger which needs to be deleted.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5299,9 +5337,9 @@ export interface Triggers {
     /**
      * Deletes the trigger on the gateway device.
      *
-     * @param {string} deviceName Name of the device.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} name Name of the trigger which needs to be deleted.
+     * @param {string} name The trigger name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5337,7 +5375,7 @@ export interface Triggers {
 
 
     /**
-     * List all the triggers configured in the device.
+     * Lists all the triggers configured in the device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5356,7 +5394,7 @@ export interface Triggers {
     listByDataBoxEdgeDeviceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerList>>;
 
     /**
-     * List all the triggers configured in the device.
+     * Lists all the triggers configured in the device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5403,7 +5441,7 @@ export interface Users {
 
 
     /**
-     * Returns all the users registered in a data box edge/gateway device.
+     * Gets all the users registered on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -5423,7 +5461,7 @@ export interface Users {
     listByDataBoxEdgeDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserList>>;
 
     /**
-     * Returns all the users registered in a data box edge/gateway device.
+     * Gets all the users registered on a data box edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
@@ -5462,11 +5500,11 @@ export interface Users {
 
 
     /**
-     * Returns the properties of the specified user.
+     * Gets the properties of the specified user.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be retrieved.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5484,11 +5522,11 @@ export interface Users {
     getWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
 
     /**
-     * Returns the properties of the specified user.
+     * Gets the properties of the specified user.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be retrieved.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5525,24 +5563,23 @@ export interface Users {
 
 
     /**
-     * Create a new user or update an existing user's information on a data box
+     * Creates a new user or updates an existing user's information on a data box
      * edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be added/updated.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.encryptedPassword] The details of the password
-     * specified for the user.
+     * @param {object} [options.encryptedPassword] The password details.
      *
      * @param {string} options.encryptedPassword.value The value of the secret.
      *
      * @param {string} [options.encryptedPassword.encryptionCertThumbprint]
-     * Thumbprint certificate that was used to encrypt "Value". If the value in
+     * Thumbprint certificate used to encrypt \"Value\". If the value is
      * unencrypted, it will be null.
      *
      * @param {string} options.encryptedPassword.encryptionAlgorithm The algorithm
@@ -5564,24 +5601,23 @@ export interface Users {
     createOrUpdateWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { encryptedPassword? : models.AsymmetricEncryptedSecret, shareAccessRights? : models.ShareAccessRight[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
 
     /**
-     * Create a new user or update an existing user's information on a data box
+     * Creates a new user or updates an existing user's information on a data box
      * edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be added/updated.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.encryptedPassword] The details of the password
-     * specified for the user.
+     * @param {object} [options.encryptedPassword] The password details.
      *
      * @param {string} options.encryptedPassword.value The value of the secret.
      *
      * @param {string} [options.encryptedPassword.encryptionCertThumbprint]
-     * Thumbprint certificate that was used to encrypt "Value". If the value in
+     * Thumbprint certificate used to encrypt \"Value\". If the value is
      * unencrypted, it will be null.
      *
      * @param {string} options.encryptedPassword.encryptionAlgorithm The algorithm
@@ -5626,7 +5662,7 @@ export interface Users {
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be deleted.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5648,7 +5684,7 @@ export interface Users {
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be deleted.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5684,24 +5720,23 @@ export interface Users {
 
 
     /**
-     * Create a new user or update an existing user's information on a data box
+     * Creates a new user or updates an existing user's information on a data box
      * edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be added/updated.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.encryptedPassword] The details of the password
-     * specified for the user.
+     * @param {object} [options.encryptedPassword] The password details.
      *
      * @param {string} options.encryptedPassword.value The value of the secret.
      *
      * @param {string} [options.encryptedPassword.encryptionCertThumbprint]
-     * Thumbprint certificate that was used to encrypt "Value". If the value in
+     * Thumbprint certificate used to encrypt \"Value\". If the value is
      * unencrypted, it will be null.
      *
      * @param {string} options.encryptedPassword.encryptionAlgorithm The algorithm
@@ -5723,24 +5758,23 @@ export interface Users {
     beginCreateOrUpdateWithHttpOperationResponse(deviceName: string, name: string, resourceGroupName: string, options?: { encryptedPassword? : models.AsymmetricEncryptedSecret, shareAccessRights? : models.ShareAccessRight[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
 
     /**
-     * Create a new user or update an existing user's information on a data box
+     * Creates a new user or updates an existing user's information on a data box
      * edge/gateway device.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be added/updated.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.encryptedPassword] The details of the password
-     * specified for the user.
+     * @param {object} [options.encryptedPassword] The password details.
      *
      * @param {string} options.encryptedPassword.value The value of the secret.
      *
      * @param {string} [options.encryptedPassword.encryptionCertThumbprint]
-     * Thumbprint certificate that was used to encrypt "Value". If the value in
+     * Thumbprint certificate used to encrypt \"Value\". If the value is
      * unencrypted, it will be null.
      *
      * @param {string} options.encryptedPassword.encryptionAlgorithm The algorithm
@@ -5785,7 +5819,7 @@ export interface Users {
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be deleted.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5807,7 +5841,7 @@ export interface Users {
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} name The name of the user who needs to be deleted.
+     * @param {string} name The user name.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5843,7 +5877,7 @@ export interface Users {
 
 
     /**
-     * Returns all the users registered in a data box edge/gateway device.
+     * Gets all the users registered on a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5862,7 +5896,7 @@ export interface Users {
     listByDataBoxEdgeDeviceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserList>>;
 
     /**
-     * Returns all the users registered in a data box edge/gateway device.
+     * Gets all the users registered on a data box edge/gateway device.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
