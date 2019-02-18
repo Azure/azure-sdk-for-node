@@ -1694,7 +1694,7 @@ export interface AzureDataExplorerLinkedService extends LinkedService {
 }
 
 /**
- * Google Awords service linked service.
+ * Google Adwords service linked service.
  */
 export interface GoogleAdWordsLinkedService extends LinkedService {
   /**
