@@ -1364,7 +1364,8 @@ export interface Sku {
  * instance whose DNS zone this managed instance will share after creation.
  * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
  * data endpoint is enabled.
- * @property {string} [proxyOverride] Proxy override of the managed instance.
+ * @property {string} [proxyOverride] Connection type used for connecting to
+ * the instance. Possible values include: 'Proxy', 'Redirect', 'Default'
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1422,7 +1423,8 @@ export interface ManagedInstance extends TrackedResource {
  * instance whose DNS zone this managed instance will share after creation.
  * @property {boolean} [publicDataEndpointEnabled] Whether or not the public
  * data endpoint is enabled.
- * @property {string} [proxyOverride] Proxy override of the managed instance.
+ * @property {string} [proxyOverride] Connection type used for connecting to
+ * the instance. Possible values include: 'Proxy', 'Redirect', 'Default'
  * @property {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
