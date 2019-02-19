@@ -6033,6 +6033,11 @@ export interface CopySource {
    */
   sourceRetryWait?: any;
   /**
+   * The maximum concurrent connection count connectioned to source data store. Type: integer (or
+   * Expression with resultType integer).
+   */
+  maxConcurrentConnections?: any;
+  /**
    * Polymorphic Discriminator
    */
   type: string;
@@ -7338,6 +7343,11 @@ export interface CopySink {
    * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
    */
   sinkRetryWait?: any;
+  /**
+   * The maximum concurrent connection count connectioned to sink data store. Type: integer (or
+   * Expression with resultType integer).
+   */
+  maxConcurrentConnections?: any;
   /**
    * Polymorphic Discriminator
    */
