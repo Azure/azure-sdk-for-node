@@ -38,7 +38,7 @@ export interface SkuCapacity {
 }
 
 /**
- * Describes The SKU capabilites object.
+ * Describes The SKU capabilities object.
  */
 export interface SkuCapability {
   /**
