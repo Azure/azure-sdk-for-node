@@ -272,7 +272,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway instances
+     * number of Application Gateway capacity
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -461,7 +461,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway instances
+     * number of Application Gateway capacity
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -1452,7 +1452,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway instances
+     * number of Application Gateway capacity
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -1641,7 +1641,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway instances
+     * number of Application Gateway capacity
      *
      * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
      * on number of Application Gateway capacity
@@ -6709,7 +6709,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6764,7 +6764,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6975,7 +6975,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -7030,7 +7030,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -46496,6 +46496,212 @@ export interface HubVirtualNetworkConnections {
 
 
     /**
+     * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+     * the HubVirtualNetworkConnection if one exists.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * create or update HubVirtualNetworkConnection.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork]
+     * Reference to the remote virtual network.
+     *
+     * @param {string}
+     * [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork.id] Resource ID.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowHubToRemoteVnetTransit]
+     * VirtualHub to RemoteVnet transit to enabled or not.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowRemoteVnetToUseHubVnetGateways]
+     * Allow RemoteVnet to use Virtual Hub's gateways.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.provisioningState]
+     * The provisioning state of the resource. Possible values include:
+     * 'Succeeded', 'Updating', 'Deleting', 'Failed'
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HubVirtualNetworkConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+
+    /**
+     * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+     * the HubVirtualNetworkConnection if one exists.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * create or update HubVirtualNetworkConnection.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork]
+     * Reference to the remote virtual network.
+     *
+     * @param {string}
+     * [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork.id] Resource ID.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowHubToRemoteVnetTransit]
+     * VirtualHub to RemoteVnet transit to enabled or not.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowRemoteVnetToUseHubVnetGateways]
+     * Allow RemoteVnet to use Virtual Hub's gateways.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.provisioningState]
+     * The provisioning state of the resource. Possible values include:
+     * 'Succeeded', 'Updating', 'Deleting', 'Failed'
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HubVirtualNetworkConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HubVirtualNetworkConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HubVirtualNetworkConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+
+
+    /**
+     * Updates HubVirtualNetworkConnection tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * update HubVirtualNetworkConnection tags.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HubVirtualNetworkConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+
+    /**
+     * Updates HubVirtualNetworkConnection tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * update HubVirtualNetworkConnection tags.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HubVirtualNetworkConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HubVirtualNetworkConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HubVirtualNetworkConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+
+
+    /**
      * Retrieves the details of all HubVirtualNetworkConnections.
      *
      * @param {string} resourceGroupName The resource group name of the VirtualHub.
@@ -46553,6 +46759,212 @@ export interface HubVirtualNetworkConnections {
     list(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListHubVirtualNetworkConnectionsResult>;
     list(resourceGroupName: string, virtualHubName: string, callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
     list(resourceGroupName: string, virtualHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
+
+
+    /**
+     * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+     * the HubVirtualNetworkConnection if one exists.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * create or update HubVirtualNetworkConnection.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork]
+     * Reference to the remote virtual network.
+     *
+     * @param {string}
+     * [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork.id] Resource ID.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowHubToRemoteVnetTransit]
+     * VirtualHub to RemoteVnet transit to enabled or not.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowRemoteVnetToUseHubVnetGateways]
+     * Allow RemoteVnet to use Virtual Hub's gateways.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.provisioningState]
+     * The provisioning state of the resource. Possible values include:
+     * 'Succeeded', 'Updating', 'Deleting', 'Failed'
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HubVirtualNetworkConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+
+    /**
+     * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
+     * the HubVirtualNetworkConnection if one exists.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * create or update HubVirtualNetworkConnection.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork]
+     * Reference to the remote virtual network.
+     *
+     * @param {string}
+     * [hubVirtualNetworkConnectionParameters.remoteVirtualNetwork.id] Resource ID.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowHubToRemoteVnetTransit]
+     * VirtualHub to RemoteVnet transit to enabled or not.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.allowRemoteVnetToUseHubVnetGateways]
+     * Allow RemoteVnet to use Virtual Hub's gateways.
+     *
+     * @param {boolean}
+     * [hubVirtualNetworkConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.provisioningState]
+     * The provisioning state of the resource. Possible values include:
+     * 'Succeeded', 'Updating', 'Deleting', 'Failed'
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [hubVirtualNetworkConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HubVirtualNetworkConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HubVirtualNetworkConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HubVirtualNetworkConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+
+
+    /**
+     * Updates HubVirtualNetworkConnection tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * update HubVirtualNetworkConnection tags.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HubVirtualNetworkConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+
+    /**
+     * Updates HubVirtualNetworkConnection tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * HubVirtualNetworkConnection.
+     *
+     * @param {string} virtualHubName The name of the parent Virtual Hub.
+     *
+     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
+     *
+     * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
+     * update HubVirtualNetworkConnection tags.
+     *
+     * @param {object} [hubVirtualNetworkConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HubVirtualNetworkConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HubVirtualNetworkConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HubVirtualNetworkConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
