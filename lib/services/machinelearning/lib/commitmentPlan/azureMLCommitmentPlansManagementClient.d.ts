@@ -56,6 +56,7 @@ export default class AzureMLCommitmentPlansManagementClient extends AzureService
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   skus: operations.Skus;
   commitmentAssociations: operations.CommitmentAssociations;
   commitmentPlans: operations.CommitmentPlans;
