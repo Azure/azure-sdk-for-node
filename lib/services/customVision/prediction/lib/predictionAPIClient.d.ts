@@ -17,7 +17,7 @@ export default class PredictionAPIClient extends ServiceClient {
    * Initializes a new instance of the PredictionAPIClient class.
    * @constructor
    *
-   * @param {string} apiKey -
+   * @param {string} apiKey - API key.
    *
    * @param {string} endpoint - Supported Cognitive Services endpoints.
    *

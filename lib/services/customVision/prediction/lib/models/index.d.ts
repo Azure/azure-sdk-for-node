@@ -90,9 +90,9 @@ export interface ImagePrediction {
 
 export interface CustomVisionError {
   /**
-   * Possible values include: 'NoError', 'BadRequest', 'BadRequestExceededBatchSize',
-   * 'BadRequestNotSupported', 'BadRequestInvalidIds', 'BadRequestProjectName',
-   * 'BadRequestProjectNameNotUnique', 'BadRequestProjectDescription',
+   * The error code. Possible values include: 'NoError', 'BadRequest',
+   * 'BadRequestExceededBatchSize', 'BadRequestNotSupported', 'BadRequestInvalidIds',
+   * 'BadRequestProjectName', 'BadRequestProjectNameNotUnique', 'BadRequestProjectDescription',
    * 'BadRequestProjectUnknownDomain', 'BadRequestProjectUnknownClassification',
    * 'BadRequestProjectUnsupportedDomainTypeChange', 'BadRequestIterationName',
    * 'BadRequestIterationNameNotUnique', 'BadRequestIterationDescription',
@@ -111,17 +111,17 @@ export interface CustomVisionError {
    * 'BadRequestMultiClassClassificationTrainingValidationFailed',
    * 'BadRequestMultiLabelClassificationTrainingValidationFailed',
    * 'BadRequestDetectionTrainingValidationFailed', 'BadRequestTrainingAlreadyInProgress',
-   * 'BadRequestExportValidationFailed', 'BadRequestExportAlreadyInProgress',
-   * 'BadRequestPredictionIdsMissing', 'BadRequestPredictionIdsExceededCount',
-   * 'BadRequestPredictionTagsExceededCount', 'BadRequestPredictionResultsExceededCount',
-   * 'BadRequestPredictionInvalidApplicationName', 'BadRequestPredictionInvalidQueryParameters',
-   * 'BadRequestInvalid', 'UnsupportedMediaType', 'Forbidden', 'ForbiddenUser',
-   * 'ForbiddenUserResource', 'ForbiddenUserSignupDisabled',
+   * 'BadRequestDetectionTrainingNotAllowNegativeTag', 'BadRequestExportValidationFailed',
+   * 'BadRequestExportAlreadyInProgress', 'BadRequestPredictionIdsMissing',
+   * 'BadRequestPredictionIdsExceededCount', 'BadRequestPredictionTagsExceededCount',
+   * 'BadRequestPredictionResultsExceededCount', 'BadRequestPredictionInvalidApplicationName',
+   * 'BadRequestPredictionInvalidQueryParameters', 'BadRequestInvalid', 'UnsupportedMediaType',
+   * 'Forbidden', 'ForbiddenUser', 'ForbiddenUserResource', 'ForbiddenUserSignupDisabled',
    * 'ForbiddenUserSignupAllowanceExceeded', 'ForbiddenUserDoesNotExist', 'ForbiddenUserDisabled',
-   * 'ForbiddenUserInsufficientCapability', 'ForbiddenInvalid', 'NotFound', 'NotFoundProject',
-   * 'NotFoundProjectDefaultIteration', 'NotFoundIteration', 'NotFoundIterationPerformance',
-   * 'NotFoundTag', 'NotFoundImage', 'NotFoundDomain', 'NotFoundApimSubscription',
-   * 'NotFoundInvalid', 'Conflict', 'ConflictInvalid', 'ErrorUnknown',
+   * 'ForbiddenUserInsufficientCapability', 'ForbiddenDRModeEnabled', 'ForbiddenInvalid',
+   * 'NotFound', 'NotFoundProject', 'NotFoundProjectDefaultIteration', 'NotFoundIteration',
+   * 'NotFoundIterationPerformance', 'NotFoundTag', 'NotFoundImage', 'NotFoundDomain',
+   * 'NotFoundApimSubscription', 'NotFoundInvalid', 'Conflict', 'ConflictInvalid', 'ErrorUnknown',
    * 'ErrorProjectInvalidWorkspace', 'ErrorProjectInvalidPipelineConfiguration',
    * 'ErrorProjectInvalidDomain', 'ErrorProjectTrainingRequestFailed',
    * 'ErrorProjectExportRequestFailed', 'ErrorFeaturizationServiceUnavailable',
@@ -134,5 +134,8 @@ export interface CustomVisionError {
    * 'ErrorRegionProposal', 'ErrorInvalid'
   */
   code: string;
+  /**
+   * A message explaining the error reported by the service.
+  */
   message: string;
 }
