@@ -114,17 +114,17 @@ export interface SecurityRule extends SubResource {
    */
   protocol: string;
   /**
-   * The source port or range. Integer or range between 0 and 65535. Asterix '*' can also be used
+   * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used
    * to match all ports.
    */
   sourcePortRange?: string;
   /**
-   * The destination port or range. Integer or range between 0 and 65535. Asterix '*' can also be
+   * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be
    * used to match all ports.
    */
   destinationPortRange?: string;
   /**
-   * The CIDR or source IP range. Asterix '*' can also be used to match all source IPs. Default
+   * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default
    * tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is
    * an ingress rule, specifies where network traffic originates from.
    */
@@ -138,7 +138,7 @@ export interface SecurityRule extends SubResource {
    */
   sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
   /**
-   * The destination address prefix. CIDR or destination IP range. Asterix '*' can also be used to
+   * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to
    * match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
    * 'Internet' can also be used.
    */
@@ -172,7 +172,7 @@ export interface SecurityRule extends SubResource {
   priority?: number;
   /**
    * The direction of the rule. The direction specifies if rule will be evaluated on incoming or
-   * outcoming traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values include:
+   * outgoing traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values include:
    * 'Inbound', 'Outbound'
    */
   direction: string;
@@ -680,8 +680,7 @@ export interface IPConfiguration extends SubResource {
  */
 export interface IPConfigurationProfile extends SubResource {
   /**
-   * The reference of the subnet resource to create a contatainer network interface ip
-   * configruation.
+   * The reference of the subnet resource to create a container network interface ip configuration.
    */
   subnet?: Subnet;
   /**
@@ -1788,6 +1787,31 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
 }
 
 /**
+ * Set of conditions in the Rewrite Rule in Application Gateway.
+*/
+export interface ApplicationGatewayRewriteRuleCondition {
+  /**
+   * The condition parameter of the RewriteRuleCondition.
+  */
+  variable?: string;
+  /**
+   * The pattern, either fixed string or regular expression, that evaluates the truthfulness of the
+   * condition
+  */
+  pattern?: string;
+  /**
+   * Setting this paramter to truth value with force the pattern to do a case in-sensitive
+   * comparison.
+  */
+  ignoreCase?: boolean;
+  /**
+   * Setting this value as truth will force to check the negation of the condition given by the
+   * user.
+  */
+  negate?: boolean;
+}
+
+/**
  * Header configuration of the Actions set in Application Gateway.
 */
 export interface ApplicationGatewayHeaderConfiguration {
@@ -1823,6 +1847,15 @@ export interface ApplicationGatewayRewriteRule {
    * Name of the rewrite rule that is unique within an Application Gateway.
   */
   name?: string;
+  /**
+   * Rule Sequence of the rewrite rule that determines the order of execution of a particular rule
+   * in a RewriteRuleSet.
+  */
+  ruleSequence?: number;
+  /**
+   * Conditions based on which the action set execution will be evaluated.
+  */
+  conditions?: ApplicationGatewayRewriteRuleCondition[];
   /**
    * Set of actions to be done as part of the rewrite Rule.
   */
@@ -2010,15 +2043,15 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   */
   requestBodyCheck?: boolean;
   /**
-   * Maxium request body size for WAF.
+   * Maximum request body size for WAF.
   */
   maxRequestBodySize?: number;
   /**
-   * Maxium request body size in Kb for WAF.
+   * Maximum request body size in Kb for WAF.
   */
   maxRequestBodySizeInKb?: number;
   /**
-   * Maxium file upload size in Mb for WAF.
+   * Maximum file upload size in Mb for WAF.
   */
   fileUploadLimitInMb?: number;
   /**
@@ -2032,9 +2065,13 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 */
 export interface ApplicationGatewayAutoscaleConfiguration {
   /**
-   * Lower bound on number of Application Gateway instances
+   * Lower bound on number of Application Gateway capacity
   */
   minCapacity: number;
+  /**
+   * Upper bound on number of Application Gateway capacity
+  */
+  maxCapacity?: number;
 }
 
 export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
@@ -2192,36 +2229,6 @@ export interface ApplicationGateway extends Resource {
    * The identity of the application gateway, if configured.
   */
   identity?: ManagedServiceIdentity;
-}
-
-/**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
 }
 
 /**
@@ -2417,7 +2424,7 @@ export interface AzureFirewallIPConfiguration extends SubResource {
 */
 export interface AzureFirewallRCAction {
   /**
-   * The type of action. Possible values include: 'Allow', 'Deny'
+   * The type of action. Possible values include: 'Allow', 'Deny', 'Alert'
   */
   type?: string;
 }
@@ -2525,7 +2532,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
@@ -2665,6 +2673,10 @@ export interface AzureFirewall extends Resource {
    * 'Deleting', 'Failed'
   */
   provisioningState?: string;
+  /**
+   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+  */
+  threatIntelMode?: string;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -2854,7 +2866,7 @@ export interface ExpressRouteCircuitPeeringConfig {
   */
   advertisedPublicPrefixes?: string[];
   /**
-   * The communities of bgp peering. Spepcified for microsoft peering
+   * The communities of bgp peering. Specified for microsoft peering
   */
   advertisedCommunities?: string[];
   /**
@@ -2969,7 +2981,7 @@ export interface ExpressRouteCircuitConnection extends SubResource {
   */
   readonly circuitConnectionStatus?: string;
   /**
-   * Provisioning state of the circuit connection resource. Possible values are: 'Succeded',
+   * Provisioning state of the circuit connection resource. Possible values are: 'Succeeded',
    * 'Updating', 'Deleting', and 'Failed'.
   */
   readonly provisioningState?: string;
@@ -3793,7 +3805,7 @@ export interface ExpressRoutePort extends Resource {
   */
   encapsulation?: string;
   /**
-   * Ethertype of the physical port.
+   * Ether type of the physical port.
   */
   readonly etherType?: string;
   /**
@@ -4182,12 +4194,12 @@ export interface EffectiveNetworkSecurityRule {
   destinationPortRange?: string;
   /**
    * The source port ranges. Expected values include a single integer between 0 and 65535, a range
-   * using '-' as seperator (e.g. 100-400), or an asterix (*)
+   * using '-' as separator (e.g. 100-400), or an asterisk (*)
   */
   sourcePortRanges?: string[];
   /**
    * The destination port ranges. Expected values include a single integer between 0 and 65535, a
-   * range using '-' as seperator (e.g. 100-400), or an asterix (*)
+   * range using '-' as separator (e.g. 100-400), or an asterisk (*)
   */
   destinationPortRanges?: string[];
   /**
@@ -4200,12 +4212,12 @@ export interface EffectiveNetworkSecurityRule {
   destinationAddressPrefix?: string;
   /**
    * The source address prefixes. Expected values include CIDR IP ranges, Default Tags
-   * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix (*).
+   * (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
   */
   sourceAddressPrefixes?: string[];
   /**
    * The destination address prefixes. Expected values include CIDR IP ranges, Default Tags
-   * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix (*).
+   * (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
   */
   destinationAddressPrefixes?: string[];
   /**
@@ -4317,7 +4329,7 @@ export interface EffectiveRouteListResult {
 }
 
 /**
- * Container network interface configruation child resource.
+ * Container network interface configuration child resource.
 */
 export interface ContainerNetworkInterfaceConfiguration extends SubResource {
   /**
@@ -4385,7 +4397,7 @@ export interface ContainerNetworkInterface extends SubResource {
   */
   containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
   /**
-   * Reference to the conatinaer to which this container network interface is attached.
+   * Reference to the container to which this container network interface is attached.
   */
   container?: Container;
   /**
@@ -5592,11 +5604,11 @@ export interface ConnectionStateSnapshot {
 }
 
 /**
- * List of connection states snaphots.
+ * List of connection states snapshots.
 */
 export interface ConnectionMonitorQueryResult {
   /**
-   * Status of connection monitor source. Possible values include: 'Uknown', 'Active', 'Inactive'
+   * Status of connection monitor source. Possible values include: 'Unknown', 'Active', 'Inactive'
   */
   sourceStatus?: string;
   /**
@@ -5627,7 +5639,7 @@ export interface NetworkConfigurationDiagnosticProfile {
   */
   destination: string;
   /**
-   * Traffice destination port. Accepted values are '*', port (for example, 3389) and port range
+   * Traffic destination port. Accepted values are '*', port (for example, 3389) and port range
    * (for example, 80-100).
   */
   destinationPort: string;
@@ -6312,6 +6324,39 @@ export interface VirtualNetworkUsage {
    * Usage units. Returns 'Count'
   */
   readonly unit?: string;
+}
+
+/**
+ * Network Intent Policy resource.
+*/
+export interface NetworkIntentPolicy extends Resource {
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+export interface NetworkIntentPolicyConfiguration {
+  /**
+   * The name of the Network Intent Policy for storing in target subscription.
+  */
+  networkIntentPolicyName?: string;
+  sourceNetworkIntentPolicy?: NetworkIntentPolicy;
+}
+
+export interface PrepareNetworkPoliciesRequest {
+  /**
+   * The name of the service for which subnet is being prepared for.
+  */
+  serviceName?: string;
+  /**
+   * The name of the resource group where the Network Intent Policy will be stored.
+  */
+  resourceGroupName?: string;
+  /**
+   * A list of NetworkIntentPolicyConfiguration.
+  */
+  networkIntentPolicyConfigurations?: NetworkIntentPolicyConfiguration[];
 }
 
 /**
@@ -7163,8 +7208,8 @@ export interface P2SVpnServerConfiguration extends SubResource {
   */
   radiusServerAddress?: string;
   /**
-   * The radius secret property of the P2SVpnServerConfiguration resource for for point to site
-   * client connection.
+   * The radius secret property of the P2SVpnServerConfiguration resource for point to site client
+   * connection.
   */
   radiusServerSecret?: string;
   /**
@@ -7594,7 +7639,7 @@ export interface P2SVpnGateway extends Resource {
   */
   vpnClientAddressPool?: AddressSpace;
   /**
-   * All P2S vpnclients' connection health status.
+   * All P2S VPN clients' connection health status.
   */
   readonly vpnClientConnectionHealth?: VpnClientConnectionHealth;
   /**
