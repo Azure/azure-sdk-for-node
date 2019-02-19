@@ -936,14 +936,14 @@ export interface Model {
 
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
@@ -961,14 +961,14 @@ export interface Model {
     addEntityWithHttpOperationResponse(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
