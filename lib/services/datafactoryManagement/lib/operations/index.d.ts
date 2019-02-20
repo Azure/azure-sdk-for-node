@@ -3996,6 +3996,14 @@ export interface Pipelines {
      * identifier. If run ID is specified the parameters of the specified run will
      * be used to create a new run.
      *
+     * @param {boolean} [options.isRecovery] Recovery mode flag. If recovery mode
+     * is set to true, the specified referenced pipeline run and the new run will
+     * be grouped under the same groupId.
+     *
+     * @param {string} [options.startActivityName] In recovery mode, the specified
+     * startActivityName will be the first activity in the pipeline to be run. If
+     * not specified, all activities will run
+     *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
      *
@@ -4008,7 +4016,7 @@ export interface Pipelines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
+    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
 
     /**
      * Creates a run of a pipeline.
@@ -4024,6 +4032,14 @@ export interface Pipelines {
      * @param {string} [options.referencePipelineRunId] The pipeline run
      * identifier. If run ID is specified the parameters of the specified run will
      * be used to create a new run.
+     *
+     * @param {boolean} [options.isRecovery] Recovery mode flag. If recovery mode
+     * is set to true, the specified referenced pipeline run and the new run will
+     * be grouped under the same groupId.
+     *
+     * @param {string} [options.startActivityName] In recovery mode, the specified
+     * startActivityName will be the first activity in the pipeline to be run. If
+     * not specified, all activities will run
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -4053,9 +4069,9 @@ export interface Pipelines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
     createRun(resourceGroupName: string, factoryName: string, pipelineName: string, callback: ServiceCallback<models.CreateRunResponse>): void;
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
 
 
     /**

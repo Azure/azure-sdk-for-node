@@ -826,7 +826,7 @@ export interface RunQueryFilter {
    * ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are
    * TriggerName, TriggerRunTimestamp and Status. Possible values include: 'PipelineName',
    * 'Status', 'RunStart', 'RunEnd', 'ActivityName', 'ActivityRunStart', 'ActivityRunEnd',
-   * 'ActivityType', 'TriggerName', 'TriggerRunTimestamp'
+   * 'ActivityType', 'TriggerName', 'TriggerRunTimestamp', 'RunGroupId', 'LatestOnly'
    */
   operand: string;
   /**
@@ -910,6 +910,14 @@ export interface PipelineRun {
    * Identifier of a run.
    */
   readonly runId?: string;
+  /**
+   * Identifier that correlates all the recovery runs of a pipeline run.
+   */
+  readonly runGroupId?: string;
+  /**
+   * Indicates if the recovered pipeline run is the latest.
+   */
+  readonly isLatest?: boolean;
   /**
    * The pipeline name.
    */
@@ -1656,6 +1664,171 @@ export interface AzureFunctionLinkedService extends LinkedService {
    * Function or Host key for Azure Function App.
    */
   functionKey?: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
+ * Azure Data Explorer (Kusto) linked service.
+ */
+export interface AzureDataExplorerLinkedService extends LinkedService {
+  /**
+   * The endpoint of Azure Data Explorer (the engine's endpoint). URL will be in the format
+   * https://<clusterName>.<regionName>.kusto.windows.net. Type: string (or Expression with
+   * resultType string)
+   */
+  endpoint: any;
+  /**
+   * The ID of the service principal used to authenticate against Azure Data Explorer. Type: string
+   * (or Expression with resultType string).
+   */
+  servicePrincipalId: any;
+  /**
+   * The key of the service principal used to authenticate against Kusto.
+   */
+  servicePrincipalKey: SecretBase;
+  /**
+   * Database name for connection. Type: string (or Expression with resultType string).
+   */
+  database: any;
+  /**
+   * The name or ID of the tenant to which the service principal belongs. Type: string (or
+   * Expression with resultType string).
+   */
+  tenant: any;
+}
+
+/**
+ * Google Adwords service linked service.
+ */
+export interface GoogleAdWordsLinkedService extends LinkedService {
+  /**
+   * The Client customer ID of the AdWords account that you want to fetch report data for.
+   */
+  clientCustomerID: any;
+  /**
+   * The developer token associated with the manager account that you use to grant access to the
+   * AdWords API.
+   */
+  developerToken: SecretBase;
+  /**
+   * The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only
+   * be used on self-hosted IR. Possible values include: 'ServiceAuthentication',
+   * 'UserAuthentication'
+   */
+  authenticationType: string;
+  /**
+   * The refresh token obtained from Google for authorizing access to AdWords for
+   * UserAuthentication.
+   */
+  refreshToken?: SecretBase;
+  /**
+   * The client id of the google application used to acquire the refresh token.
+   */
+  clientId?: SecretBase;
+  /**
+   * The client secret of the google application used to acquire the refresh token.
+   */
+  clientSecret?: SecretBase;
+  /**
+   * The service account email ID that is used for ServiceAuthentication and can only be used on
+   * self-hosted IR.
+   */
+  email?: any;
+  /**
+   * The full path to the .p12 key file that is used to authenticate the service account email
+   * address and can only be used on self-hosted IR.
+   */
+  keyFilePath?: any;
+  /**
+   * The full path of the .pem file containing trusted CA certificates for verifying the server
+   * when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The
+   * default value is the cacerts.pem file installed with the IR.
+   */
+  trustedCertPath?: any;
+  /**
+   * Specifies whether to use a CA certificate from the system trust store or from a specified PEM
+   * file. The default value is false.
+   */
+  useSystemTrustStore?: any;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
+ * Oracle Service Cloud linked service.
+ */
+export interface OracleServiceCloudLinkedService extends LinkedService {
+  /**
+   * The URL of the Oracle Service Cloud instance.
+   */
+  host: any;
+  /**
+   * The user name that you use to access Oracle Service Cloud server.
+   */
+  username: any;
+  /**
+   * The password corresponding to the user name that you provided in the username key.
+   */
+  password: SecretBase;
+  /**
+   * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is
+   * true. Type: boolean (or Expression with resultType boolean).
+   */
+  useEncryptedEndpoints?: any;
+  /**
+   * Specifies whether to require the host name in the server's certificate to match the host name
+   * of the server when connecting over SSL. The default value is true. Type: boolean (or
+   * Expression with resultType boolean).
+   */
+  useHostVerification?: any;
+  /**
+   * Specifies whether to verify the identity of the server when connecting over SSL. The default
+   * value is true. Type: boolean (or Expression with resultType boolean).
+   */
+  usePeerVerification?: any;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
+ * Dynamics AX linked service.
+ */
+export interface DynamicsAXLinkedService extends LinkedService {
+  /**
+   * The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint.
+   */
+  url: any;
+  /**
+   * Specify the application's client ID. Type: string (or Expression with resultType string).
+   */
+  servicePrincipalId: any;
+  /**
+   * Specify the application's key. Mark this field as a SecureString to store it securely in Data
+   * Factory, or reference a secret stored in Azure Key Vault. Type: string (or Expression with
+   * resultType string).
+   */
+  servicePrincipalKey: SecretBase;
+  /**
+   * Specify the tenant information (domain name or tenant ID) under which your application
+   * resides. Retrieve it by hovering the mouse in the top-right corner of the Azure portal. Type:
+   * string (or Expression with resultType string).
+   */
+  tenant: any;
+  /**
+   * Specify the resource you are requesting authorization. Type: string (or Expression with
+   * resultType string).
+   */
+  aadResourceId: any;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -3472,6 +3645,12 @@ export interface AmazonS3LinkedService extends LinkedService {
    */
   secretAccessKey?: SecretBase;
   /**
+   * This value specifies the endpoint to access with the S3 Connector. This is an optional
+   * property; change it only if you want to try a different service endpoint or want to switch
+   * between https and http. Type: string (or Expression with resultType string).
+   */
+  serviceUrl?: any;
+  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -3653,6 +3832,71 @@ export interface SalesforceLinkedService extends LinkedService {
 }
 
 /**
+ * Office365 linked service.
+ */
+export interface Office365LinkedService extends LinkedService {
+  /**
+   * Azure tenant ID to which the Office 365 account belongs. Type: string (or Expression with
+   * resultType string).
+   */
+  office365TenantId: any;
+  /**
+   * Specify the tenant information under which your Azure AD web application resides. Type: string
+   * (or Expression with resultType string).
+   */
+  servicePrincipalTenantId: any;
+  /**
+   * Specify the application's client ID. Type: string (or Expression with resultType string).
+   */
+  servicePrincipalId: any;
+  /**
+   * Specify the application's key.
+   */
+  servicePrincipalKey: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
+ * Azure Data Lake Storage Gen2 linked service.
+ */
+export interface AzureBlobFSLinkedService extends LinkedService {
+  /**
+   * Endpoint for the Azure Data Lake Storage Gen2 service. Type: string (or Expression with
+   * resultType string).
+   */
+  url: any;
+  /**
+   * Account key for the Azure Data Lake Storage Gen2 service. Type: string (or Expression with
+   * resultType string).
+   */
+  accountKey?: any;
+  /**
+   * The ID of the application used to authenticate against the Azure Data Lake Storage Gen2
+   * account. Type: string (or Expression with resultType string).
+   */
+  servicePrincipalId?: any;
+  /**
+   * The Key of the application used to authenticate against the Azure Data Lake Storage Gen2
+   * account.
+   */
+  servicePrincipalKey?: SecretBase;
+  /**
+   * The name or ID of the tenant to which the service principal belongs. Type: string (or
+   * Expression with resultType string).
+   */
+  tenant?: any;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
  * Azure Data Lake Store linked service.
  */
 export interface AzureDataLakeStoreLinkedService extends LinkedService {
@@ -3693,6 +3937,38 @@ export interface AzureDataLakeStoreLinkedService extends LinkedService {
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
   encryptedCredential?: any;
+}
+
+/**
+ * Linked service for CosmosDB (MongoDB API) data source.
+ */
+export interface CosmosDbMongoDbApiLinkedService extends LinkedService {
+  /**
+   * The CosmosDB (MongoDB API) connection string. Type: string, SecureString or
+   * AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
+   */
+  connectionString: any;
+  /**
+   * The name of the CosmosDB (MongoDB API) database that you want to access. Type: string (or
+   * Expression with resultType string).
+   */
+  database: any;
+}
+
+/**
+ * Linked service for MongoDB data source.
+ */
+export interface MongoDbV2LinkedService extends LinkedService {
+  /**
+   * The MongoDB connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+   * Type: string, SecureString or AzureKeyVaultSecretReference.
+   */
+  connectionString: any;
+  /**
+   * The name of the MongoDB database that you want to access. Type: string (or Expression with
+   * resultType string).
+   */
+  database: any;
 }
 
 /**
@@ -3853,7 +4129,7 @@ export interface ODataLinkedService extends LinkedService {
   url: any;
   /**
    * Type of authentication used to connect to the OData service. Possible values include: 'Basic',
-   * 'Anonymous'
+   * 'Anonymous', 'Windows', 'AadServicePrincipal', 'ManagedServiceIdentity'
    */
   authenticationType?: string;
   /**
@@ -3864,6 +4140,41 @@ export interface ODataLinkedService extends LinkedService {
    * Password of the OData service.
    */
   password?: SecretBase;
+  /**
+   * Specify the tenant information (domain name or tenant ID) under which your application
+   * resides. Type: string (or Expression with resultType string).
+   */
+  tenant?: any;
+  /**
+   * Specify the application id of your application registered in Azure Active Directory. Type:
+   * string (or Expression with resultType string).
+   */
+  servicePrincipalId?: any;
+  /**
+   * Specify the resource you are requesting authorization to use Directory. Type: string (or
+   * Expression with resultType string).
+   */
+  aadResourceId?: any;
+  /**
+   * Specify the credential type (key or cert) is used for service principal. Possible values
+   * include: 'ServicePrincipalKey', 'ServicePrincipalCert'
+   */
+  aadServicePrincipalCredentialType?: string;
+  /**
+   * Specify the secret of your application registered in Azure Active Directory. Type: string (or
+   * Expression with resultType string).
+   */
+  servicePrincipalKey?: SecretBase;
+  /**
+   * Specify the base64 encoded certificate of your application registered in Azure Active
+   * Directory. Type: string (or Expression with resultType string).
+   */
+  servicePrincipalEmbeddedCert?: SecretBase;
+  /**
+   * Specify the password of your certificate if your certificate has a password and you are using
+   * AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+   */
+  servicePrincipalEmbeddedCertPassword?: SecretBase;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -4510,6 +4821,47 @@ export interface AzureStorageLinkedService extends LinkedService {
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
   encryptedCredential?: string;
+}
+
+/**
+ * Google AdWords service dataset.
+ */
+export interface GoogleAdWordsObjectDataset extends Dataset {
+  /**
+   * The table name. Type: string (or Expression with resultType string).
+   */
+  tableName?: any;
+}
+
+/**
+ * The Azure Data Explorer (Kusto) dataset.
+ */
+export interface AzureDataExplorerTableDataset extends Dataset {
+  /**
+   * The table name of the Azure Data Explorer database. Type: string (or Expression with
+   * resultType string).
+   */
+  table?: any;
+}
+
+/**
+ * Oracle Service Cloud dataset.
+ */
+export interface OracleServiceCloudObjectDataset extends Dataset {
+  /**
+   * The table name. Type: string (or Expression with resultType string).
+   */
+  tableName?: any;
+}
+
+/**
+ * The path of the Dynamics AX OData entity.
+ */
+export interface DynamicsAXResourceDataset extends Dataset {
+  /**
+   * The path of the Dynamics AX OData entity. Type: string (or Expression with resultType string).
+   */
+  path: string;
 }
 
 /**
@@ -5186,6 +5538,28 @@ export interface ODataResourceDataset extends Dataset {
 }
 
 /**
+ * The CosmosDB (MongoDB API) database dataset.
+ */
+export interface CosmosDbMongoDbApiCollectionDataset extends Dataset {
+  /**
+   * The collection name of the CosmosDB (MongoDB API) database. Type: string (or Expression with
+   * resultType string).
+   */
+  collection: any;
+}
+
+/**
+ * The MongoDB database dataset.
+ */
+export interface MongoDbV2CollectionDataset extends Dataset {
+  /**
+   * The collection name of the MongoDB database. Type: string (or Expression with resultType
+   * string).
+   */
+  collection: any;
+}
+
+/**
  * The MongoDB database dataset.
  */
 export interface MongoDbCollectionDataset extends Dataset {
@@ -5208,6 +5582,14 @@ export interface FileShareDataset extends Dataset {
    */
   fileName?: any;
   /**
+   * The start of file's modified datetime. Type: string (or Expression with resultType string).
+   */
+  modifiedDatetimeStart?: any;
+  /**
+   * The end of file's modified datetime. Type: string (or Expression with resultType string).
+   */
+  modifiedDatetimeEnd?: any;
+  /**
    * The format of the files.
    */
   format?: DatasetStorageFormat;
@@ -5218,6 +5600,67 @@ export interface FileShareDataset extends Dataset {
   fileFilter?: any;
   /**
    * The data compression method used for the file system.
+   */
+  compression?: DatasetCompression;
+}
+
+/**
+ * Azure Data Lake Store Cosmos Structured Stream dataset.
+ */
+export interface AzureDataLakeStoreCosmosStructuredStreamDataset extends Dataset {
+  /**
+   * Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType
+   * string).
+   */
+  folderPath: any;
+  /**
+   * The name of the file in the Azure Data Lake Store. Type: string (or Expression with resultType
+   * string).
+   */
+  fileName: any;
+  /**
+   * Flag to indicate if this dataset is been generated from Compilation Activity. Type: boolean
+   * (or Expression with resultType boolean).
+   */
+  generatedFromActivity?: any;
+}
+
+/**
+ * The Office365 account.
+ */
+export interface Office365Dataset extends Dataset {
+  /**
+   * Name of the dataset to extract from Office 365. Type: string (or Expression with resultType
+   * string).
+   */
+  tableName: any;
+  /**
+   * A predicate expression that can be used to filter the specific rows to extract from Office
+   * 365. Type: string (or Expression with resultType string).
+   */
+  predicate?: any;
+}
+
+/**
+ * The Azure Data Lake Storage Gen2 storage.
+ */
+export interface AzureBlobFSDataset extends Dataset {
+  /**
+   * The path of the Azure Data Lake Storage Gen2 storage. Type: string (or Expression with
+   * resultType string).
+   */
+  folderPath?: any;
+  /**
+   * The name of the Azure Data Lake Storage Gen2. Type: string (or Expression with resultType
+   * string).
+   */
+  fileName?: any;
+  /**
+   * The format of the Azure Data Lake Storage Gen2 storage.
+   */
+  format?: DatasetStorageFormat;
+  /**
+   * The data compression method used for the blob storage.
    */
   compression?: DatasetCompression;
 }
@@ -5339,6 +5782,16 @@ export interface AzureBlobDataset extends Dataset {
    */
   fileName?: any;
   /**
+   * The start of Azure Blob's modified datetime. Type: string (or Expression with resultType
+   * string).
+   */
+  modifiedDatetimeStart?: any;
+  /**
+   * The end of Azure Blob's modified datetime. Type: string (or Expression with resultType
+   * string).
+   */
+  modifiedDatetimeEnd?: any;
+  /**
    * The format of the Azure Blob storage.
    */
   format?: DatasetStorageFormat;
@@ -5368,6 +5821,15 @@ export interface AmazonS3Dataset extends Dataset {
    * The version for the S3 object. Type: string (or Expression with resultType string).
    */
   version?: any;
+  /**
+   * The start of S3 object's modified datetime. Type: string (or Expression with resultType
+   * string).
+   */
+  modifiedDatetimeStart?: any;
+  /**
+   * The end of S3 object's modified datetime. Type: string (or Expression with resultType string).
+   */
+  modifiedDatetimeEnd?: any;
   /**
    * The format of files.
    */
@@ -5723,6 +6185,11 @@ export interface CopySource {
    */
   sourceRetryWait?: any;
   /**
+   * The maximum concurrent connection count connectioned to source data store. Type: integer (or
+   * Expression with resultType integer).
+   */
+  maxConcurrentConnections?: any;
+  /**
    * Polymorphic Discriminator
    */
   type: string;
@@ -5746,6 +6213,36 @@ export interface AmazonRedshiftSource extends CopySource {
    * copied into the targeted sink from the interim S3.
    */
   redshiftUnloadSettings?: RedshiftUnloadSettings;
+}
+
+/**
+ * A copy activity Google AdWords service source.
+ */
+export interface GoogleAdWordsSource extends CopySource {
+  /**
+   * A query to retrieve data from source. Type: string (or Expression with resultType string).
+   */
+  query?: any;
+}
+
+/**
+ * A copy activity Oracle Service Cloud source.
+ */
+export interface OracleServiceCloudSource extends CopySource {
+  /**
+   * A query to retrieve data from source. Type: string (or Expression with resultType string).
+   */
+  query?: any;
+}
+
+/**
+ * A copy activity Dynamics AX source.
+ */
+export interface DynamicsAXSource extends CopySource {
+  /**
+   * A query to retrieve data from source. Type: string (or Expression with resultType string).
+   */
+  query?: any;
 }
 
 /**
@@ -6061,6 +6558,26 @@ export interface HttpSource extends CopySource {
 }
 
 /**
+ * A copy activity Azure BlobFS source.
+ */
+export interface AzureBlobFSSource extends CopySource {
+  /**
+   * Treat empty as null. Type: boolean (or Expression with resultType boolean).
+   */
+  treatEmptyAsNull?: any;
+  /**
+   * Number of header lines to skip from each blob. Type: integer (or Expression with resultType
+   * integer).
+   */
+  skipHeaderLineCount?: any;
+  /**
+   * If true, files under the folder path will be read recursively. Default is true. Type: boolean
+   * (or Expression with resultType boolean).
+   */
+  recursive?: any;
+}
+
+/**
  * A copy activity Azure Data Lake source.
  */
 export interface AzureDataLakeStoreSource extends CopySource {
@@ -6069,6 +6586,90 @@ export interface AzureDataLakeStoreSource extends CopySource {
    * (or Expression with resultType boolean).
    */
   recursive?: any;
+}
+
+/**
+ * A copy activity source for an Office365 service.
+ */
+export interface Office365Source extends CopySource {
+}
+
+/**
+ * Cursor methods for Mongodb query
+ */
+export interface MongoDbCursorMethodsProperties {
+  /**
+   * Specifies the fields to return in the documents that match the query filter. To return all
+   * fields in the matching documents, omit this parameter. Type: string (or Expression with
+   * resultType string).
+   */
+  project?: any;
+  /**
+   * Specifies the order in which the query returns matching documents. Type: string (or Expression
+   * with resultType string). Type: string (or Expression with resultType string).
+   */
+  sort?: any;
+  /**
+   * Specifies the how many documents skipped and where MongoDB begins returning results. This
+   * approach may be useful in implementing paginated results. Type: integer (or Expression with
+   * resultType integer).
+   */
+  skip?: any;
+  /**
+   * Specifies the maximum number of documents the server returns. limit() is analogous to the
+   * LIMIT statement in a SQL database. Type: integer (or Expression with resultType integer).
+   */
+  limit?: any;
+  /**
+   * Describes unknown properties. The value of an unknown property can be of "any" type.
+   */
+  [additionalPropertyName: string]: any;
+}
+
+/**
+ * A copy activity source for a CosmosDB (MongoDB API) database.
+ */
+export interface CosmosDbMongoDbApiSource extends CopySource {
+  /**
+   * Specifies selection filter using query operators. To return all documents in a collection,
+   * omit this parameter or pass an empty document ({}). Type: string (or Expression with
+   * resultType string).
+   */
+  filter?: any;
+  /**
+   * Cursor methods for Mongodb query.
+   */
+  cursorMethods?: MongoDbCursorMethodsProperties;
+  /**
+   * Specifies the number of documents to return in each batch of the response from MongoDB
+   * instance. In most cases, modifying the batch size will not affect the user or the application.
+   * This property�s main purpose is to avoid hit the limitation of response size. Type: integer
+   * (or Expression with resultType integer).
+   */
+  batchSize?: any;
+}
+
+/**
+ * A copy activity source for a MongoDB database.
+ */
+export interface MongoDbV2Source extends CopySource {
+  /**
+   * Specifies selection filter using query operators. To return all documents in a collection,
+   * omit this parameter or pass an empty document ({}). Type: string (or Expression with
+   * resultType string).
+   */
+  filter?: any;
+  /**
+   * Cursor methods for Mongodb query
+   */
+  cursorMethods?: MongoDbCursorMethodsProperties;
+  /**
+   * Specifies the number of documents to return in each batch of the response from MongoDB
+   * instance. In most cases, modifying the batch size will not affect the user or the application.
+   * This property�s main purpose is to avoid hit the limitation of response size. Type: integer
+   * (or Expression with resultType integer).
+   */
+  batchSize?: any;
 }
 
 /**
@@ -6119,6 +6720,27 @@ export interface OracleSource extends CopySource {
   /**
    * Query timeout. Type: string (or Expression with resultType string), pattern:
    * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+   */
+  queryTimeout?: any;
+}
+
+/**
+ * A copy activity Azure Data Explorer (Kusto) source.
+ */
+export interface AzureDataExplorerSource extends CopySource {
+  /**
+   * Database query. Should be a Kusto Query Language (KQL) query. Type: string (or Expression with
+   * resultType string).
+   */
+  query: any;
+  /**
+   * The name of the Boolean option that controls whether truncation is applied to result-sets that
+   * go beyond a certain row-count limit.
+   */
+  noTruncation?: any;
+  /**
+   * Query timeout. Type: string (or Expression with resultType string), pattern:
+   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9]))..
    */
   queryTimeout?: any;
 }
@@ -6901,6 +7523,11 @@ export interface CopySink {
    */
   sinkRetryWait?: any;
   /**
+   * The maximum concurrent connection count connectioned to sink data store. Type: integer (or
+   * Expression with resultType integer).
+   */
+  maxConcurrentConnections?: any;
+  /**
    * Polymorphic Discriminator
    */
   type: string;
@@ -6908,6 +7535,18 @@ export interface CopySink {
    * Describes unknown properties. The value of an unknown property can be of "any" type.
    */
   [additionalPropertyName: string]: any;
+}
+
+/**
+ * A copy activity sink for a CosmosDB (MongoDB API) database.
+ */
+export interface CosmosDbMongoDbApiSink extends CopySink {
+  /**
+   * Specifies whether the document with same key to be overwritten (upsert) rather than throw
+   * exception (insert). The default value is "insert". Type: string (or Expression with resultType
+   * string). Type: string (or Expression with resultType string).
+   */
+  writeBehavior?: any;
 }
 
 /**
@@ -6933,6 +7572,24 @@ export interface SalesforceSink extends CopySink {
    * doing insert operation. Type: boolean (or Expression with resultType boolean).
    */
   ignoreNullValues?: any;
+}
+
+/**
+ * A copy activity Azure Data Explorer sink.
+ */
+export interface AzureDataExplorerSink extends CopySink {
+  /**
+   * A name of a pre-created csv mapping that was defined on the target Kusto table. Type: string.
+   */
+  ingestionMappingName?: any;
+  /**
+   * An explicit column mapping description provided in a json format. Type: string.
+   */
+  ingestionMappingAsJson?: any;
+  /**
+   * If set to true, any aggregation will be skipped. Default is false. Type: boolean.
+   */
+  flushImmediately?: any;
 }
 
 /**
@@ -6966,6 +7623,17 @@ export interface AzureSearchIndexSink extends CopySink {
    * include: 'Merge', 'Upload'
    */
   writeBehavior?: string;
+}
+
+/**
+ * A copy activity Azure Data Lake Storage Gen2 sink.
+ */
+export interface AzureBlobFSSink extends CopySink {
+  /**
+   * The type of copy behavior for copy sink. Possible values include: 'PreserveHierarchy',
+   * 'FlattenHierarchy', 'MergeFiles'
+   */
+  copyBehavior?: string;
 }
 
 /**
@@ -7188,6 +7856,10 @@ export interface CopyActivity extends ExecutionActivity {
    * Redirect incompatible row settings when EnableSkipIncompatibleRow is true.
    */
   redirectIncompatibleRowSettings?: RedirectIncompatibleRowSettings;
+  /**
+   * Preserve Rules.
+   */
+  preserveRules?: any[];
   /**
    * List of inputs for the activity.
    */
