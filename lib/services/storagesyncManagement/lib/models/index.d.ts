@@ -380,7 +380,7 @@ export interface ServerEndpointUpdateParameters {
 */
 export interface FilesNotSyncingError {
   /**
-   * Error code
+   * Error code (HResult)
   */
   readonly errorCode?: number;
   /**
@@ -398,7 +398,7 @@ export interface FilesNotSyncingError {
 */
 export interface SyncSessionStatus {
   /**
-   * Last sync status
+   * Last sync result (HResult)
   */
   readonly lastSyncResult?: number;
   /**
