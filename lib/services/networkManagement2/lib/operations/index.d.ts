@@ -43777,8 +43777,6 @@ export interface VirtualWans {
     /**
      * Retrieves the details of a VirtualWAN.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
-     *
      * @param {string} virtualWANName The name of the VirtualWAN being retrieved.
      *
      * @param {object} [options] Optional Parameters.
@@ -43792,13 +43790,11 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
+    getWithHttpOperationResponse(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
 
     /**
      * Retrieves the details of a VirtualWAN.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
-     *
      * @param {string} virtualWANName The name of the VirtualWAN being retrieved.
      *
      * @param {object} [options] Optional Parameters.
@@ -43828,16 +43824,14 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
-    get(resourceGroupName: string, virtualWANName: string, callback: ServiceCallback<models.VirtualWAN>): void;
-    get(resourceGroupName: string, virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
+    get(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
+    get(virtualWANName: string, callback: ServiceCallback<models.VirtualWAN>): void;
+    get(virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
 
 
     /**
      * Creates a VirtualWAN resource if it doesn't exist else updates the existing
      * VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being created or
      * updated.
@@ -43885,13 +43879,11 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
+    createOrUpdateWithHttpOperationResponse(virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
 
     /**
      * Creates a VirtualWAN resource if it doesn't exist else updates the existing
      * VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being created or
      * updated.
@@ -43955,15 +43947,13 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
-    createOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, callback: ServiceCallback<models.VirtualWAN>): void;
-    createOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
+    createOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
+    createOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, callback: ServiceCallback<models.VirtualWAN>): void;
+    createOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
 
 
     /**
      * Updates a VirtualWAN tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being updated.
      *
@@ -43982,12 +43972,10 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
+    updateTagsWithHttpOperationResponse(virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
 
     /**
      * Updates a VirtualWAN tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being updated.
      *
@@ -44022,15 +44010,13 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
-    updateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, callback: ServiceCallback<models.VirtualWAN>): void;
-    updateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
+    updateTags(virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
+    updateTags(virtualWANName: string, wANParameters: models.TagsObject, callback: ServiceCallback<models.VirtualWAN>): void;
+    updateTags(virtualWANName: string, wANParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
 
 
     /**
      * Deletes a VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being deleted.
      *
@@ -44045,12 +44031,10 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being deleted.
      *
@@ -44080,15 +44064,13 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, virtualWANName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(virtualWANName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists all the VirtualWANs in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44101,12 +44083,10 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
 
     /**
      * Lists all the VirtualWANs in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44135,9 +44115,9 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
 
 
     /**
@@ -44195,8 +44175,6 @@ export interface VirtualWans {
      * Creates a VirtualWAN resource if it doesn't exist else updates the existing
      * VirtualWAN.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
-     *
      * @param {string} virtualWANName The name of the VirtualWAN being created or
      * updated.
      *
@@ -44243,14 +44221,12 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
+    beginCreateOrUpdateWithHttpOperationResponse(virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
 
     /**
      * Creates a VirtualWAN resource if it doesn't exist else updates the existing
      * VirtualWAN.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
-     *
      * @param {string} virtualWANName The name of the VirtualWAN being created or
      * updated.
      *
@@ -44313,15 +44289,13 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, callback: ServiceCallback<models.VirtualWAN>): void;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWANName: string, wANParameters: models.VirtualWAN, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
+    beginCreateOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
+    beginCreateOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, callback: ServiceCallback<models.VirtualWAN>): void;
+    beginCreateOrUpdate(virtualWANName: string, wANParameters: models.VirtualWAN, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
 
 
     /**
      * Updates a VirtualWAN tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being updated.
      *
@@ -44340,12 +44314,10 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
+    beginUpdateTagsWithHttpOperationResponse(virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWAN>>;
 
     /**
      * Updates a VirtualWAN tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being updated.
      *
@@ -44380,15 +44352,13 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
-    beginUpdateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, callback: ServiceCallback<models.VirtualWAN>): void;
-    beginUpdateTags(resourceGroupName: string, virtualWANName: string, wANParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
+    beginUpdateTags(virtualWANName: string, wANParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWAN>;
+    beginUpdateTags(virtualWANName: string, wANParameters: models.TagsObject, callback: ServiceCallback<models.VirtualWAN>): void;
+    beginUpdateTags(virtualWANName: string, wANParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWAN>): void;
 
 
     /**
      * Deletes a VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being deleted.
      *
@@ -44403,12 +44373,10 @@ export interface VirtualWans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VirtualWAN.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWANName The name of the VirtualWAN being deleted.
      *
@@ -44438,9 +44406,9 @@ export interface VirtualWans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, virtualWANName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(virtualWANName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -44569,8 +44537,6 @@ export interface VpnSites {
     /**
      * Retrieves the details of a VPN site.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
-     *
      * @param {string} vpnSiteName The name of the VpnSite being retrieved.
      *
      * @param {object} [options] Optional Parameters.
@@ -44584,13 +44550,11 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
+    getWithHttpOperationResponse(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
      * Retrieves the details of a VPN site.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
-     *
      * @param {string} vpnSiteName The name of the VpnSite being retrieved.
      *
      * @param {object} [options] Optional Parameters.
@@ -44620,16 +44584,14 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
-    get(resourceGroupName: string, vpnSiteName: string, callback: ServiceCallback<models.VpnSite>): void;
-    get(resourceGroupName: string, vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
+    get(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
+    get(vpnSiteName: string, callback: ServiceCallback<models.VpnSite>): void;
+    get(vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
 
 
     /**
      * Creates a VpnSite resource if it doesn't exist else updates the existing
      * VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being created or
      * updated.
@@ -44698,13 +44660,11 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
+    createOrUpdateWithHttpOperationResponse(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
      * Creates a VpnSite resource if it doesn't exist else updates the existing
      * VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being created or
      * updated.
@@ -44789,15 +44749,13 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
-    createOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, callback: ServiceCallback<models.VpnSite>): void;
-    createOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
+    createOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
+    createOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, callback: ServiceCallback<models.VpnSite>): void;
+    createOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
 
 
     /**
      * Updates VpnSite tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being updated.
      *
@@ -44817,12 +44775,10 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
+    updateTagsWithHttpOperationResponse(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
      * Updates VpnSite tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being updated.
      *
@@ -44858,15 +44814,13 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
-    updateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, callback: ServiceCallback<models.VpnSite>): void;
-    updateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
+    updateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
+    updateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, callback: ServiceCallback<models.VpnSite>): void;
+    updateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
 
 
     /**
      * Deletes a VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being deleted.
      *
@@ -44881,12 +44835,10 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being deleted.
      *
@@ -44916,15 +44868,13 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, vpnSiteName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(vpnSiteName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists all the vpnSites in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44937,12 +44887,10 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
 
     /**
      * Lists all the vpnSites in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44971,9 +44919,9 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListVpnSitesResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
 
 
     /**
@@ -45031,8 +44979,6 @@ export interface VpnSites {
      * Creates a VpnSite resource if it doesn't exist else updates the existing
      * VpnSite.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
-     *
      * @param {string} vpnSiteName The name of the VpnSite being created or
      * updated.
      *
@@ -45100,14 +45046,12 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
+    beginCreateOrUpdateWithHttpOperationResponse(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
      * Creates a VpnSite resource if it doesn't exist else updates the existing
      * VpnSite.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
-     *
      * @param {string} vpnSiteName The name of the VpnSite being created or
      * updated.
      *
@@ -45191,15 +45135,13 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
-    beginCreateOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, callback: ServiceCallback<models.VpnSite>): void;
-    beginCreateOrUpdate(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.VpnSite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
+    beginCreateOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
+    beginCreateOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, callback: ServiceCallback<models.VpnSite>): void;
+    beginCreateOrUpdate(vpnSiteName: string, vpnSiteParameters: models.VpnSite, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
 
 
     /**
      * Updates VpnSite tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being updated.
      *
@@ -45219,12 +45161,10 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
+    beginUpdateTagsWithHttpOperationResponse(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
      * Updates VpnSite tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being updated.
      *
@@ -45260,15 +45200,13 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
-    beginUpdateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, callback: ServiceCallback<models.VpnSite>): void;
-    beginUpdateTags(resourceGroupName: string, vpnSiteName: string, vpnSiteParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
+    beginUpdateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnSite>;
+    beginUpdateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, callback: ServiceCallback<models.VpnSite>): void;
+    beginUpdateTags(vpnSiteName: string, vpnSiteParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnSite>): void;
 
 
     /**
      * Deletes a VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being deleted.
      *
@@ -45283,12 +45221,10 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VpnSite.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
      * @param {string} vpnSiteName The name of the VpnSite being deleted.
      *
@@ -45318,9 +45254,9 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, vpnSiteName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(vpnSiteName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(vpnSiteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -45450,8 +45386,6 @@ export interface VpnSitesConfiguration {
      * Gives the sas-url to download the configurations for vpn-sites in a resource
      * group.
      *
-     * @param {string} resourceGroupName The resource group name.
-     *
      * @param {string} virtualWANName The name of the VirtualWAN for which
      * configuration of all vpn-sites is needed.
      *
@@ -45475,13 +45409,11 @@ export interface VpnSitesConfiguration {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    downloadWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    downloadWithHttpOperationResponse(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gives the sas-url to download the configurations for vpn-sites in a resource
      * group.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} virtualWANName The name of the VirtualWAN for which
      * configuration of all vpn-sites is needed.
@@ -45521,16 +45453,14 @@ export interface VpnSitesConfiguration {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    download(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    download(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, callback: ServiceCallback<void>): void;
-    download(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    download(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    download(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, callback: ServiceCallback<void>): void;
+    download(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Gives the sas-url to download the configurations for vpn-sites in a resource
      * group.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} virtualWANName The name of the VirtualWAN for which
      * configuration of all vpn-sites is needed.
@@ -45555,13 +45485,11 @@ export interface VpnSitesConfiguration {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDownloadWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDownloadWithHttpOperationResponse(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gives the sas-url to download the configurations for vpn-sites in a resource
      * group.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} virtualWANName The name of the VirtualWAN for which
      * configuration of all vpn-sites is needed.
@@ -45601,9 +45529,9 @@ export interface VpnSitesConfiguration {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDownload(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDownload(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, callback: ServiceCallback<void>): void;
-    beginDownload(resourceGroupName: string, virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDownload(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDownload(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, callback: ServiceCallback<void>): void;
+    beginDownload(virtualWANName: string, request: models.GetVpnSitesConfigurationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -45618,10 +45546,6 @@ export interface VirtualHubs {
     /**
      * Retrieves the details of a VirtualHub.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -45633,15 +45557,11 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
 
     /**
      * Retrieves the details of a VirtualHub.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -45669,18 +45589,14 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
-    get(resourceGroupName: string, virtualHubName: string, callback: ServiceCallback<models.VirtualHub>): void;
-    get(resourceGroupName: string, virtualHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
+    get(callback: ServiceCallback<models.VirtualHub>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
 
 
     /**
      * Creates a VirtualHub resource if it doesn't exist else updates the existing
      * VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to create or update
      * VirtualHub.
@@ -45731,15 +45647,11 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
+    createOrUpdateWithHttpOperationResponse(virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
 
     /**
      * Creates a VirtualHub resource if it doesn't exist else updates the existing
      * VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to create or update
      * VirtualHub.
@@ -45806,17 +45718,13 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, callback: ServiceCallback<models.VirtualHub>): void;
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
+    createOrUpdate(virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
+    createOrUpdate(virtualHubParameters: models.VirtualHub, callback: ServiceCallback<models.VirtualHub>): void;
+    createOrUpdate(virtualHubParameters: models.VirtualHub, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
 
 
     /**
      * Updates VirtualHub tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to update
      * VirtualHub tags.
@@ -45834,14 +45742,10 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
+    updateTagsWithHttpOperationResponse(virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
 
     /**
      * Updates VirtualHub tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to update
      * VirtualHub tags.
@@ -45875,17 +45779,13 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
-    updateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, callback: ServiceCallback<models.VirtualHub>): void;
-    updateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
+    updateTags(virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
+    updateTags(virtualHubParameters: models.TagsObject, callback: ServiceCallback<models.VirtualHub>): void;
+    updateTags(virtualHubParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
 
 
     /**
      * Deletes a VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45898,14 +45798,10 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45933,15 +45829,13 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, virtualHubName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, virtualHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(callback: ServiceCallback<void>): void;
+    deleteMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists all the VirtualHubs in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45954,12 +45848,10 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
 
     /**
      * Lists all the VirtualHubs in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45988,9 +45880,9 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
 
 
     /**
@@ -46048,10 +45940,6 @@ export interface VirtualHubs {
      * Creates a VirtualHub resource if it doesn't exist else updates the existing
      * VirtualHub.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
      * @param {object} virtualHubParameters Parameters supplied to create or update
      * VirtualHub.
      *
@@ -46101,16 +45989,12 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
+    beginCreateOrUpdateWithHttpOperationResponse(virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
 
     /**
      * Creates a VirtualHub resource if it doesn't exist else updates the existing
      * VirtualHub.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
      * @param {object} virtualHubParameters Parameters supplied to create or update
      * VirtualHub.
      *
@@ -46176,17 +46060,13 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, callback: ServiceCallback<models.VirtualHub>): void;
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.VirtualHub, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
+    beginCreateOrUpdate(virtualHubParameters: models.VirtualHub, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
+    beginCreateOrUpdate(virtualHubParameters: models.VirtualHub, callback: ServiceCallback<models.VirtualHub>): void;
+    beginCreateOrUpdate(virtualHubParameters: models.VirtualHub, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
 
 
     /**
      * Updates VirtualHub tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to update
      * VirtualHub tags.
@@ -46204,14 +46084,10 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
+    beginUpdateTagsWithHttpOperationResponse(virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualHub>>;
 
     /**
      * Updates VirtualHub tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} virtualHubParameters Parameters supplied to update
      * VirtualHub tags.
@@ -46245,17 +46121,13 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, callback: ServiceCallback<models.VirtualHub>): void;
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, virtualHubParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
+    beginUpdateTags(virtualHubParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualHub>;
+    beginUpdateTags(virtualHubParameters: models.TagsObject, callback: ServiceCallback<models.VirtualHub>): void;
+    beginUpdateTags(virtualHubParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualHub>): void;
 
 
     /**
      * Deletes a VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46268,14 +46140,10 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VirtualHub.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46303,9 +46171,9 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, virtualHubName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, virtualHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(callback: ServiceCallback<void>): void;
+    beginDeleteMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -46434,12 +46302,6 @@ export interface HubVirtualNetworkConnections {
     /**
      * Retrieves the details of a HubVirtualNetworkConnection.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
-     * @param {string} connectionName The name of the vpn connection.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -46451,17 +46313,11 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
 
     /**
      * Retrieves the details of a HubVirtualNetworkConnection.
      *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
-     *
-     * @param {string} connectionName The name of the vpn connection.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -46490,21 +46346,14 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, virtualHubName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
-    get(resourceGroupName: string, virtualHubName: string, connectionName: string, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
-    get(resourceGroupName: string, virtualHubName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    get(callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
      * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
      * the HubVirtualNetworkConnection if one exists.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * create or update HubVirtualNetworkConnection.
@@ -46548,18 +46397,11 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+    createOrUpdateWithHttpOperationResponse(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
 
     /**
      * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
      * the HubVirtualNetworkConnection if one exists.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * create or update HubVirtualNetworkConnection.
@@ -46620,20 +46462,13 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
-    createOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    createOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    createOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    createOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
      * Updates HubVirtualNetworkConnection tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * update HubVirtualNetworkConnection tags.
@@ -46651,17 +46486,10 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+    updateTagsWithHttpOperationResponse(hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
 
     /**
      * Updates HubVirtualNetworkConnection tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * update HubVirtualNetworkConnection tags.
@@ -46696,17 +46524,13 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
-    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
-    updateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    updateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    updateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    updateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
      * Retrieves the details of all HubVirtualNetworkConnections.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46719,14 +46543,10 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListHubVirtualNetworkConnectionsResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListHubVirtualNetworkConnectionsResult>>;
 
     /**
      * Retrieves the details of all HubVirtualNetworkConnections.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualHub.
-     *
-     * @param {string} virtualHubName The name of the VirtualHub.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46756,21 +46576,14 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, virtualHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListHubVirtualNetworkConnectionsResult>;
-    list(resourceGroupName: string, virtualHubName: string, callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
-    list(resourceGroupName: string, virtualHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListHubVirtualNetworkConnectionsResult>;
+    list(callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListHubVirtualNetworkConnectionsResult>): void;
 
 
     /**
      * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
      * the HubVirtualNetworkConnection if one exists.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * create or update HubVirtualNetworkConnection.
@@ -46814,18 +46627,11 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+    beginCreateOrUpdateWithHttpOperationResponse(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
 
     /**
      * Creates a HubVirtualNetworkConnection resource if it doesn't exist. Updates
      * the HubVirtualNetworkConnection if one exists.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * create or update HubVirtualNetworkConnection.
@@ -46886,20 +46692,13 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
-    beginCreateOrUpdate(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginCreateOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    beginCreateOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginCreateOrUpdate(hubVirtualNetworkConnectionParameters: models.HubVirtualNetworkConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
      * Updates HubVirtualNetworkConnection tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * update HubVirtualNetworkConnection tags.
@@ -46917,17 +46716,10 @@ export interface HubVirtualNetworkConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
+    beginUpdateTagsWithHttpOperationResponse(hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HubVirtualNetworkConnection>>;
 
     /**
      * Updates HubVirtualNetworkConnection tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * HubVirtualNetworkConnection.
-     *
-     * @param {string} virtualHubName The name of the parent Virtual Hub.
-     *
-     * @param {string} connectionName The name of the HubVirtualNetworkConnection.
      *
      * @param {object} hubVirtualNetworkConnectionParameters Parameters supplied to
      * update HubVirtualNetworkConnection tags.
@@ -46962,9 +46754,9 @@ export interface HubVirtualNetworkConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
-    beginUpdateTags(resourceGroupName: string, virtualHubName: string, connectionName: string, hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginUpdateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HubVirtualNetworkConnection>;
+    beginUpdateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
+    beginUpdateTags(hubVirtualNetworkConnectionParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HubVirtualNetworkConnection>): void;
 
 
     /**
@@ -47037,8 +46829,6 @@ export interface VpnGateways {
     /**
      * Retrieves the details of a virtual wan vpn gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} [options] Optional Parameters.
@@ -47052,13 +46842,11 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
+    getWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
 
     /**
      * Retrieves the details of a virtual wan vpn gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} [options] Optional Parameters.
@@ -47088,16 +46876,14 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
-    get(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<models.VpnGateway>): void;
-    get(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
+    get(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
+    get(gatewayName: string, callback: ServiceCallback<models.VpnGateway>): void;
+    get(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
 
 
     /**
      * Creates a virtual wan vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47148,13 +46934,11 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
+    createOrUpdateWithHttpOperationResponse(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
 
     /**
      * Creates a virtual wan vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47221,15 +47005,13 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, callback: ServiceCallback<models.VpnGateway>): void;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
+    createOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
+    createOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, callback: ServiceCallback<models.VpnGateway>): void;
+    createOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
 
 
     /**
      * Updates virtual wan vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47249,12 +47031,10 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
+    updateTagsWithHttpOperationResponse(gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
 
     /**
      * Updates virtual wan vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47290,15 +47070,13 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
-    updateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.VpnGateway>): void;
-    updateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
+    updateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
+    updateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.VpnGateway>): void;
+    updateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
 
 
     /**
      * Deletes a virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47313,12 +47091,10 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47348,15 +47124,13 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists all the VpnGateways in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -47369,12 +47143,10 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
 
     /**
      * Lists all the VpnGateways in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -47403,9 +47175,9 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
 
 
     /**
@@ -47463,8 +47235,6 @@ export interface VpnGateways {
      * Creates a virtual wan vpn gateway if it doesn't exist else updates the
      * existing gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} vpnGatewayParameters Parameters supplied to create or Update
@@ -47514,14 +47284,12 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
+    beginCreateOrUpdateWithHttpOperationResponse(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
 
     /**
      * Creates a virtual wan vpn gateway if it doesn't exist else updates the
      * existing gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} vpnGatewayParameters Parameters supplied to create or Update
@@ -47587,15 +47355,13 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, callback: ServiceCallback<models.VpnGateway>): void;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.VpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
+    beginCreateOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
+    beginCreateOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, callback: ServiceCallback<models.VpnGateway>): void;
+    beginCreateOrUpdate(gatewayName: string, vpnGatewayParameters: models.VpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
 
 
     /**
      * Updates virtual wan vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47615,12 +47381,10 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
+    beginUpdateTagsWithHttpOperationResponse(gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnGateway>>;
 
     /**
      * Updates virtual wan vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47656,15 +47420,13 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.VpnGateway>): void;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, vpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
+    beginUpdateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnGateway>;
+    beginUpdateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.VpnGateway>): void;
+    beginUpdateTags(gatewayName: string, vpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnGateway>): void;
 
 
     /**
      * Deletes a virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47679,12 +47441,10 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -47714,9 +47474,9 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -47845,11 +47605,7 @@ export interface VpnConnections {
     /**
      * Retrieves the details of a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the vpn connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -47862,16 +47618,12 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
+    getWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
 
     /**
      * Retrieves the details of a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the vpn connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -47900,20 +47652,16 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
-    get(resourceGroupName: string, gatewayName: string, connectionName: string, callback: ServiceCallback<models.VpnConnection>): void;
-    get(resourceGroupName: string, gatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
+    get(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
+    get(gatewayName: string, callback: ServiceCallback<models.VpnConnection>): void;
+    get(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
 
 
     /**
      * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
      * updates the existing connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} vpnConnectionParameters Parameters supplied to create or
      * Update a VPN Connection.
@@ -47971,17 +47719,13 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
+    createOrUpdateWithHttpOperationResponse(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
 
     /**
      * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
      * updates the existing connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} vpnConnectionParameters Parameters supplied to create or
      * Update a VPN Connection.
@@ -48055,19 +47799,15 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
+    createOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
+    createOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
+    createOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
 
 
     /**
      * Deletes a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -48080,16 +47820,12 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -48117,15 +47853,13 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieves all vpn connections for a particular virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -48140,12 +47874,10 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByVpnGatewayWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnConnectionsResult>>;
+    listByVpnGatewayWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnConnectionsResult>>;
 
     /**
      * Retrieves all vpn connections for a particular virtual wan vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -48177,20 +47909,16 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByVpnGateway(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
-    listByVpnGateway(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
-    listByVpnGateway(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+    listByVpnGateway(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
+    listByVpnGateway(gatewayName: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+    listByVpnGateway(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
 
 
     /**
      * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
      * updates the existing connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} vpnConnectionParameters Parameters supplied to create or
      * Update a VPN Connection.
@@ -48248,17 +47976,13 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
+    beginCreateOrUpdateWithHttpOperationResponse(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
 
     /**
      * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
      * updates the existing connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} vpnConnectionParameters Parameters supplied to create or
      * Update a VPN Connection.
@@ -48332,19 +48056,15 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
+    beginCreateOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
+    beginCreateOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
+    beginCreateOrUpdate(gatewayName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
 
 
     /**
      * Deletes a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -48357,16 +48077,12 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a vpn connection.
      *
-     * @param {string} resourceGroupName The resource group name of the VpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
-     *
-     * @param {string} connectionName The name of the connection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -48394,9 +48110,9 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -48469,9 +48185,6 @@ export interface P2sVpnServerConfigurations {
     /**
      * Retrieves the details of a P2SVpnServerConfiguration.
      *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
-     *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
      * @param {string} p2SVpnServerConfigurationName The name of the
@@ -48488,14 +48201,11 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    getWithHttpOperationResponse(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Retrieves the details of a P2SVpnServerConfiguration.
      *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
-     *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
      * @param {string} p2SVpnServerConfigurationName The name of the
@@ -48529,16 +48239,14 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    get(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    get(virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    get(virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
      * doesn't exist else updates the existing P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48605,13 +48313,11 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
      * doesn't exist else updates the existing P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48695,16 +48401,13 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    createOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    createOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    createOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
      * Deletes a P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48722,13 +48425,10 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48761,15 +48461,13 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48784,12 +48482,10 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByVirtualWanWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnServerConfigurationsResult>>;
+    listByVirtualWanWithHttpOperationResponse(virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnServerConfigurationsResult>>;
 
     /**
      * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48821,16 +48517,14 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByVirtualWan(resourceGroupName: string, virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnServerConfigurationsResult>;
-    listByVirtualWan(resourceGroupName: string, virtualWanName: string, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
-    listByVirtualWan(resourceGroupName: string, virtualWanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+    listByVirtualWan(virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnServerConfigurationsResult>;
+    listByVirtualWan(virtualWanName: string, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+    listByVirtualWan(virtualWanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
 
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
      * doesn't exist else updates the existing P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48897,13 +48591,11 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    beginCreateOrUpdateWithHttpOperationResponse(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
      * doesn't exist else updates the existing P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the VirtualWan.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -48987,16 +48679,13 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    beginCreateOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    beginCreateOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    beginCreateOrUpdate(virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
      * Deletes a P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -49014,13 +48703,10 @@ export interface P2sVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a P2SVpnServerConfiguration.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnServerConfiguration.
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
@@ -49053,9 +48739,9 @@ export interface P2sVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -49128,9 +48814,6 @@ export interface P2sVpnGateways {
     /**
      * Retrieves the details of a virtual wan p2s vpn gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} [options] Optional Parameters.
@@ -49144,14 +48827,11 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    getWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Retrieves the details of a virtual wan p2s vpn gateway.
      *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
-     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} [options] Optional Parameters.
@@ -49181,17 +48861,14 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    get(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    get(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    get(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    get(gatewayName: string, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    get(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49239,14 +48916,11 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    createOrUpdateWithHttpOperationResponse(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49310,16 +48984,13 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    createOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    createOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    createOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49339,13 +49010,10 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    updateTagsWithHttpOperationResponse(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49381,16 +49049,13 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    updateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    updateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    updateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
      * Deletes a virtual wan p2s vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49405,13 +49070,10 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual wan p2s vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49441,16 +49103,13 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists all the P2SVpnGateways in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -49463,13 +49122,10 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
 
     /**
      * Lists all the P2SVpnGateways in a resource group.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -49499,9 +49155,9 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
+    listByResourceGroup(callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
 
 
     /**
@@ -49560,8 +49216,6 @@ export interface P2sVpnGateways {
      * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
      * resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
      * @param {string} gatewayName The name of the P2SVpnGateway.
      *
      * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
@@ -49582,13 +49236,11 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    generateVpnProfileWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
+    generateVpnProfileWithHttpOperationResponse(gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
 
     /**
      * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
      * resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} gatewayName The name of the P2SVpnGateway.
      *
@@ -49626,17 +49278,14 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
-    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
-    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    generateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
+    generateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    generateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
 
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49684,14 +49333,11 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    beginCreateOrUpdateWithHttpOperationResponse(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
      * existing gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49755,16 +49401,13 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginCreateOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginCreateOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginCreateOrUpdate(gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49784,13 +49427,10 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    beginUpdateTagsWithHttpOperationResponse(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49826,16 +49466,13 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginUpdateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginUpdateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginUpdateTags(gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
      * Deletes a virtual wan p2s vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49850,13 +49487,10 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual wan p2s vpn gateway.
-     *
-     * @param {string} resourceGroupName The resource group name of the
-     * P2SVpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -49886,16 +49520,14 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(gatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
      * resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} gatewayName The name of the P2SVpnGateway.
      *
@@ -49917,13 +49549,11 @@ export interface P2sVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginGenerateVpnProfileWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
+    beginGenerateVpnProfileWithHttpOperationResponse(gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
 
     /**
      * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
      * resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} gatewayName The name of the P2SVpnGateway.
      *
@@ -49961,9 +49591,9 @@ export interface P2sVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
-    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
-    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    beginGenerateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
+    beginGenerateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    beginGenerateVpnProfile(gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
 
 
     /**
