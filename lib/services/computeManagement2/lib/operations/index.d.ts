@@ -19352,12 +19352,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -19385,47 +19389,26 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes. For a description of the range of values you can set, see
-     * [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * 4k and 256k bytes.
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10. For a description
-     * of the range of values you can set, see [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -19467,12 +19450,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -19500,47 +19487,26 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes. For a description of the range of values you can set, see
-     * [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * 4k and 256k bytes.
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10. For a description
-     * of the range of values you can set, see [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -19600,35 +19566,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -19680,35 +19629,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20006,7 +19938,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20038,7 +19970,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20162,12 +20094,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20195,47 +20131,26 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes. For a description of the range of values you can set, see
-     * [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * 4k and 256k bytes.
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10. For a description
-     * of the range of values you can set, see [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -20277,12 +20192,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20310,47 +20229,26 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
-     * 4k and 256k bytes. For a description of the range of values you can set, see
-     * [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * 4k and 256k bytes.
      *
      * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
      * disk; only settable for UltraSSD disks. MBps means millions of bytes per
-     * second - MB here uses the ISO notation, of powers of 10. For a description
-     * of the range of values you can set, see [Ultra SSD Managed Disk
-     * Offerings](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd#ultra-ssd-managed-disk-offerings).
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -20410,35 +20308,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20490,35 +20371,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20645,7 +20509,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20677,7 +20541,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20922,12 +20786,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20956,35 +20824,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21024,12 +20875,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21058,35 +20913,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21146,35 +20984,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21218,35 +21039,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21536,7 +21340,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -21568,7 +21372,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -21690,12 +21494,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21724,35 +21532,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21792,12 +21583,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21826,35 +21621,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21914,35 +21692,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21986,35 +21747,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -22133,7 +21877,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -22165,7 +21909,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
