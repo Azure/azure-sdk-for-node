@@ -1849,6 +1849,28 @@ export interface IotSecuritySolution {
      *
      * @param {string} solutionName The solution manager name
      *
+     * @param {object} iotSecuritySolutionData The security solution data
+     *
+     * @param {object} [iotSecuritySolutionData.tags] Resource tags
+     *
+     * @param {string} [iotSecuritySolutionData.location] The resource location.
+     *
+     * @param {string} [iotSecuritySolutionData.workspaceResourceId] The full Azure
+     * ID of the workspace to save the data in
+     *
+     * @param {string} [iotSecuritySolutionData.workspaceCustomerId] the customer
+     * id associate with the workspace
+     *
+     * @param {string} iotSecuritySolutionData.displayName The display name.
+     *
+     * @param {boolean} [iotSecuritySolutionData.enabled] Is the solution Enabled
+     * for the customer.
+     *
+     * @param {array} [iotSecuritySolutionData.exportProperty] list of additional
+     * data to export by the system
+     *
+     * @param {array} iotSecuritySolutionData.iotHubs Related iot hub resources ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1860,7 +1882,7 @@ export interface IotSecuritySolution {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionModel>>;
+    createWithHttpOperationResponse(resourceGroupName: string, solutionName: string, iotSecuritySolutionData: models.IoTSecuritySolutionModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionModel>>;
 
     /**
      * Create new solution manager
@@ -1869,6 +1891,28 @@ export interface IotSecuritySolution {
      * user's subscription. The name is case insensitive.
      *
      * @param {string} solutionName The solution manager name
+     *
+     * @param {object} iotSecuritySolutionData The security solution data
+     *
+     * @param {object} [iotSecuritySolutionData.tags] Resource tags
+     *
+     * @param {string} [iotSecuritySolutionData.location] The resource location.
+     *
+     * @param {string} [iotSecuritySolutionData.workspaceResourceId] The full Azure
+     * ID of the workspace to save the data in
+     *
+     * @param {string} [iotSecuritySolutionData.workspaceCustomerId] the customer
+     * id associate with the workspace
+     *
+     * @param {string} iotSecuritySolutionData.displayName The display name.
+     *
+     * @param {boolean} [iotSecuritySolutionData.enabled] Is the solution Enabled
+     * for the customer.
+     *
+     * @param {array} [iotSecuritySolutionData.exportProperty] list of additional
+     * data to export by the system
+     *
+     * @param {array} iotSecuritySolutionData.iotHubs Related iot hub resources ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1898,9 +1942,9 @@ export interface IotSecuritySolution {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionModel>;
-    create(resourceGroupName: string, solutionName: string, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
-    create(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+    create(resourceGroupName: string, solutionName: string, iotSecuritySolutionData: models.IoTSecuritySolutionModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionModel>;
+    create(resourceGroupName: string, solutionName: string, iotSecuritySolutionData: models.IoTSecuritySolutionModel, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+    create(resourceGroupName: string, solutionName: string, iotSecuritySolutionData: models.IoTSecuritySolutionModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
 
 
     /**

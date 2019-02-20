@@ -143,7 +143,7 @@ export interface IoTSecuritySolutionModel {
    */
   enabled?: boolean;
   /**
-   * Wether to save the raw events to the given workspace.
+   * list of additional data to export by the system
    */
   exportProperty?: string[];
   /**
