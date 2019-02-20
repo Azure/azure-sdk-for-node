@@ -34,6 +34,16 @@ export interface Resource extends BaseResource {
 }
 
 /**
+ * A container holding only the Tags for a resource, allowing the user to update the tags.
+ */
+export interface TagsResource {
+  /**
+   * Resource tags
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
  * Describes an Azure resource with kind
  */
 export interface Kind {
@@ -90,6 +100,56 @@ export interface WorkspaceSetting extends Resource {
    * overridden by a setting with more specific scope
    */
   scope: string;
+}
+
+/**
+ * Security Solution
+ */
+export interface IoTSecuritySolutionModel {
+  /**
+   * Resource Id
+   */
+  readonly id?: string;
+  /**
+   * Resource name
+   */
+  readonly name?: string;
+  /**
+   * Resource type
+   */
+  readonly type?: string;
+  /**
+   * Resource tags
+   */
+  tags?: { [propertyName: string]: string };
+  /**
+   * The resource location.
+   */
+  location?: string;
+  /**
+   * The full Azure ID of the workspace to save the data in
+   */
+  workspaceResourceId?: string;
+  /**
+   * the customer id associate with the workspace
+   */
+  workspaceCustomerId?: string;
+  /**
+   * The display name.
+   */
+  displayName: string;
+  /**
+   * Is the solution Enabled for the customer.
+   */
+  enabled?: boolean;
+  /**
+   * Wether to save the raw events to the given workspace.
+   */
+  exportProperty?: string[];
+  /**
+   * Related iot hub resources ID
+   */
+  iotHubs: string[];
 }
 
 /**
@@ -952,6 +1012,16 @@ export interface WorkspaceSettingList extends Array<WorkspaceSetting> {
  * List of all the auto provisioning settings response
 */
 export interface AutoProvisioningSettingList extends Array<AutoProvisioningSetting> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of iot solutions
+*/
+export interface IoTSecuritySolutionsList extends Array<IoTSecuritySolutionModel> {
   /**
    * The URI to fetch the next page.
   */

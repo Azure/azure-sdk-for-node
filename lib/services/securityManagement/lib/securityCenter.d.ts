@@ -62,6 +62,9 @@ export default class SecurityCenter extends AzureServiceClient {
   securityContacts: operations.SecurityContacts;
   workspaceSettings: operations.WorkspaceSettings;
   autoProvisioningSettings: operations.AutoProvisioningSettings;
+  ioTSecuritySolutions: operations.IoTSecuritySolutions;
+  ioTSecuritySolutionsResourceGroup: operations.IoTSecuritySolutionsResourceGroup;
+  iotSecuritySolution: operations.IotSecuritySolution;
   compliances: operations.Compliances;
   advancedThreatProtection: operations.AdvancedThreatProtection;
   settings: operations.Settings;

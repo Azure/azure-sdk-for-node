@@ -1516,6 +1516,529 @@ export interface AutoProvisioningSettings {
 
 /**
  * @class
+ * IoTSecuritySolutions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface IoTSecuritySolutions {
+
+
+    /**
+     * List of security solutions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] filter the Security Solution with OData
+     * syntax. supporting filter by iotHubs
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionsList>>;
+
+    /**
+     * List of security solutions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] filter the Security Solution with OData
+     * syntax. supporting filter by iotHubs
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionsList>;
+    list(callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionsList>>;
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+}
+
+/**
+ * @class
+ * IoTSecuritySolutionsResourceGroup
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface IoTSecuritySolutionsResourceGroup {
+
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] filter the Security Solution with OData
+     * syntax. supporting filter by iotHubs
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionsList>>;
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] filter the Security Solution with OData
+     * syntax. supporting filter by iotHubs
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionsList>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+    list(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionsList>>;
+
+    /**
+     * List of security solutions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionsList>): void;
+}
+
+/**
+ * @class
+ * IotSecuritySolution
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface IotSecuritySolution {
+
+
+    /**
+     * Details of a specific iot security solution
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionModel>>;
+
+    /**
+     * Details of a specific iot security solution
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionModel} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionModel>;
+    get(resourceGroupName: string, solutionName: string, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+    get(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+
+
+    /**
+     * Create new solution manager
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionModel>>;
+
+    /**
+     * Create new solution manager
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionModel} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionModel>;
+    create(resourceGroupName: string, solutionName: string, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+    create(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+
+
+    /**
+     * update exists Security Solution tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} securitySolutionTags Updated tag information to set into the
+     * iot hub instance.
+     *
+     * @param {object} [securitySolutionTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IoTSecuritySolutionModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, solutionName: string, securitySolutionTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IoTSecuritySolutionModel>>;
+
+    /**
+     * update exists Security Solution tags. to update other fields use the
+     * CreateOrUpdate method
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} securitySolutionTags Updated tag information to set into the
+     * iot hub instance.
+     *
+     * @param {object} [securitySolutionTags.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IoTSecuritySolutionModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IoTSecuritySolutionModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IoTSecuritySolutionModel} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, solutionName: string, securitySolutionTags: models.TagsResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IoTSecuritySolutionModel>;
+    update(resourceGroupName: string, solutionName: string, securitySolutionTags: models.TagsResource, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+    update(resourceGroupName: string, solutionName: string, securitySolutionTags: models.TagsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IoTSecuritySolutionModel>): void;
+
+
+    /**
+     * Create new solution manager
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Create new solution manager
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} solutionName The solution manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, solutionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
  * Compliances
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.
