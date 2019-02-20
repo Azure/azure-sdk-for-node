@@ -4000,9 +4000,8 @@ export interface Pipelines {
      * is set to true, the specified referenced pipeline run and the new run will
      * be grouped under the same groupId.
      *
-     * @param {string} [options.startActivityName] In recovery mode, the specified
-     * startActivityName will be the first activity in the pipeline to be run. If
-     * not specified, all activities will run
+     * @param {string} [options.startActivityName] In recovery mode, the rerun will
+     * start from this activity. If not specified, all activities will run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -4037,9 +4036,8 @@ export interface Pipelines {
      * is set to true, the specified referenced pipeline run and the new run will
      * be grouped under the same groupId.
      *
-     * @param {string} [options.startActivityName] In recovery mode, the specified
-     * startActivityName will be the first activity in the pipeline to be run. If
-     * not specified, all activities will run
+     * @param {string} [options.startActivityName] In recovery mode, the rerun will
+     * start from this activity. If not specified, all activities will run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.

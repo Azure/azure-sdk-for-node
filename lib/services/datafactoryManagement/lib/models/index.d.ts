@@ -915,7 +915,7 @@ export interface PipelineRun {
    */
   readonly runGroupId?: string;
   /**
-   * Indicates if the recovered pipeline run is the latest.
+   * Indicates if the recovered pipeline run is the latest in its group.
    */
   readonly isLatest?: boolean;
   /**
