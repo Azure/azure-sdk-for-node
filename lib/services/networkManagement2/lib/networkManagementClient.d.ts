@@ -23,6 +23,12 @@ export default class NetworkManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
+   * @param {string} resourceGroupName - The resource group name of the Microsoft Azure resource.
+   *
+   * @param {string} virtualHubName - The name of the Virtual Hub resource.
+   *
+   * @param {string} connectionName - The name of the connection resource.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,11 +47,17 @@ export default class NetworkManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, virtualHubName: string, connectionName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
+
+  resourceGroupName: string;
+
+  virtualHubName: string;
+
+  connectionName: string;
 
   acceptLanguage: string;
 
@@ -191,8 +203,6 @@ export default class NetworkManagementClient extends AzureServiceClient {
   /**
    * Gives the supported security providers for the virtual wan.
    *
-   * @param {string} resourceGroupName The resource group name.
-   *
    * @param {string} virtualWANName The name of the VirtualWAN for which
    * supported security providers are needed.
    *
@@ -207,12 +217,10 @@ export default class NetworkManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  supportedSecurityProvidersWithHttpOperationResponse(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWanSecurityProviders>>;
+  supportedSecurityProvidersWithHttpOperationResponse(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualWanSecurityProviders>>;
 
   /**
    * Gives the supported security providers for the virtual wan.
-   *
-   * @param {string} resourceGroupName The resource group name.
    *
    * @param {string} virtualWANName The name of the VirtualWAN for which
    * supported security providers are needed.
@@ -245,9 +253,9 @@ export default class NetworkManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  supportedSecurityProviders(resourceGroupName: string, virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWanSecurityProviders>;
-  supportedSecurityProviders(resourceGroupName: string, virtualWANName: string, callback: ServiceCallback<models.VirtualWanSecurityProviders>): void;
-  supportedSecurityProviders(resourceGroupName: string, virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWanSecurityProviders>): void;
+  supportedSecurityProviders(virtualWANName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualWanSecurityProviders>;
+  supportedSecurityProviders(virtualWANName: string, callback: ServiceCallback<models.VirtualWanSecurityProviders>): void;
+  supportedSecurityProviders(virtualWANName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualWanSecurityProviders>): void;
 }
 
 export { NetworkManagementClient, models as NetworkManagementModels };
