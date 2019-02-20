@@ -928,20 +928,6 @@ export interface Permissions {
 }
 
 /**
- * Server response for get permissions grants
-*/
-export interface PermissionsListResult {
-  /**
-   * the list of permissions grants
-  */
-  value?: Permissions[];
-  /**
-   * the URL to get the next set of results.
-  */
-  odatanextLink?: string;
-}
-
-/**
  * DirectoryObject list operation result.
 */
 export interface DirectoryObjectListResult extends Array<DirectoryObject> {
@@ -1019,4 +1005,14 @@ export interface UserGetMemberGroupsResult extends Array<string> {
  * Server response for Get tenant domains API call.
 */
 export interface DomainListResult extends Array<Domain> {
+}
+
+/**
+ * Server response for get permissions grants
+*/
+export interface PermissionsListResult extends Array<Permissions> {
+  /**
+   * the URL to get the next set of results.
+  */
+  odatanextLink?: string;
 }
