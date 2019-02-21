@@ -460,7 +460,7 @@ export interface ServiceEndpointPolicyDefinition extends SubResource {
    */
   description?: string;
   /**
-   * service endpoint name.
+   * Service endpoint name.
    */
   service?: string;
   /**
@@ -1694,7 +1694,7 @@ export interface ApplicationGatewayProbe extends SubResource {
   */
   interval?: number;
   /**
-   * the probe timeout in seconds. Probe marked as failed if valid response is not received with
+   * The probe timeout in seconds. Probe marked as failed if valid response is not received with
    * this timeout period. Acceptable values are from 1 second to 86400 seconds.
   */
   timeout?: number;
@@ -7179,7 +7179,7 @@ export interface P2SVpnServerConfiguration extends SubResource {
   */
   p2SVpnServerConfigurationPropertiesName?: string;
   /**
-   * vpnProtocols for the P2SVpnServerConfiguration.
+   * VPN protocols for the P2SVpnServerConfiguration.
   */
   vpnProtocols?: string[];
   /**
@@ -7264,7 +7264,7 @@ export interface VirtualWAN extends Resource {
   */
   office365LocalBreakoutCategory?: string;
   /**
-   * list of all P2SVpnServerConfigurations associated with the virtual wan.
+   * List of all P2SVpnServerConfigurations associated with the virtual wan.
   */
   p2SVpnServerConfigurations?: P2SVpnServerConfiguration[];
   /**
@@ -7394,7 +7394,7 @@ export interface HubVirtualNetworkConnection extends SubResource {
 */
 export interface VirtualHubRoute {
   /**
-   * list of all addressPrefixes.
+   * List of all addressPrefixes.
   */
   addressPrefixes?: string[];
   /**
@@ -7408,7 +7408,7 @@ export interface VirtualHubRoute {
 */
 export interface VirtualHubRouteTable {
   /**
-   * list of all routes.
+   * List of all routes.
   */
   routes?: VirtualHubRoute[];
 }
@@ -7434,7 +7434,7 @@ export interface VirtualHub extends Resource {
   */
   expressRouteGateway?: SubResource;
   /**
-   * list of all vnet connections with this VirtualHub.
+   * List of all vnet connections with this VirtualHub.
   */
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   /**
@@ -7465,7 +7465,7 @@ export interface VpnConnection extends SubResource {
   */
   remoteVpnSite?: SubResource;
   /**
-   * routing weight for vpn connection.
+   * Routing weight for vpn connection.
   */
   routingWeight?: number;
   /**
@@ -7534,7 +7534,7 @@ export interface VpnGateway extends Resource {
   */
   virtualHub?: SubResource;
   /**
-   * list of all vpn connections to the gateway.
+   * List of all vpn connections to the gateway.
   */
   connections?: VpnConnection[];
   /**

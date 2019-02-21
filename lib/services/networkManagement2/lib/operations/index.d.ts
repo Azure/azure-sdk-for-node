@@ -33274,7 +33274,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33320,7 +33320,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33514,7 +33514,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33560,7 +33560,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -43861,7 +43861,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -43915,7 +43915,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -44219,7 +44219,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -44273,7 +44273,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -45699,7 +45699,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -45708,7 +45708,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -45758,7 +45758,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -45767,7 +45767,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46069,7 +46069,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -46078,7 +46078,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46128,7 +46128,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -46137,7 +46137,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46697,7 +46697,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -46754,7 +46754,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47063,7 +47063,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47120,7 +47120,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47511,7 +47511,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47579,7 +47579,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47788,7 +47788,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47856,7 +47856,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -48142,8 +48142,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48215,8 +48215,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48434,8 +48434,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48507,8 +48507,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
