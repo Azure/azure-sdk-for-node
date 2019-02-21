@@ -2,7 +2,7 @@
   "name": "azure-arm-kusto",
   "author": "Microsoft Corporation",
   "description": "KustoManagementClient Library with typescript type definitions for node",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "dependencies": {
     "ms-rest": "^2.5.0",
     "ms-rest-azure": "^2.5.5"
