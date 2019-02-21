@@ -826,7 +826,7 @@ export interface RunQueryFilter {
    * ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are
    * TriggerName, TriggerRunTimestamp and Status. Possible values include: 'PipelineName',
    * 'Status', 'RunStart', 'RunEnd', 'ActivityName', 'ActivityRunStart', 'ActivityRunEnd',
-   * 'ActivityType', 'TriggerName', 'TriggerRunTimestamp'
+   * 'ActivityType', 'TriggerName', 'TriggerRunTimestamp', 'RunGroupId', 'LatestOnly'
    */
   operand: string;
   /**
@@ -910,6 +910,14 @@ export interface PipelineRun {
    * Identifier of a run.
    */
   readonly runId?: string;
+  /**
+   * Identifier that correlates all the recovery runs of a pipeline run.
+   */
+  readonly runGroupId?: string;
+  /**
+   * Indicates if the recovered pipeline run is the latest in its group.
+   */
+  readonly isLatest?: boolean;
   /**
    * The pipeline name.
    */
