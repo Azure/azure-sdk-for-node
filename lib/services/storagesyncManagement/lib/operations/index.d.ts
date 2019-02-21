@@ -924,8 +924,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Storage Account Share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -961,8 +960,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Storage Account Share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -1686,8 +1684,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Storage Account Share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -1723,8 +1720,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Storage Account Share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
