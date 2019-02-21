@@ -356,6 +356,48 @@ export interface PlanUsageHistory {
 }
 
 /**
+ * The API operation info.
+ */
+export interface OperationDisplayInfo {
+  /**
+   * The description of the operation.
+   */
+  readonly description?: string;
+  /**
+   * The action that users can perform, based on their permission level.
+   */
+  readonly operation?: string;
+  /**
+   * The service provider.
+   */
+  readonly provider?: string;
+  /**
+   * The resource on which the operation is performed.
+   */
+  readonly resource?: string;
+}
+
+/**
+ * An API operation.
+ */
+export interface OperationEntity {
+  /**
+   * Operation name: {provider}/{resource}/{operation}.
+   */
+  readonly name?: string;
+  /**
+   * The API operation info.
+   */
+  display?: OperationDisplayInfo;
+}
+
+/**
+ * The list of REST API operations.
+ */
+export interface OperationEntityListResult extends Array<OperationEntity> {
+}
+
+/**
  * The list of commitment plan SKUs.
  */
 export interface SkuListResult extends Array<CatalogSku> {
