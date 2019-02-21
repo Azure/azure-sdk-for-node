@@ -57,6 +57,8 @@ export default class MySQLManagementClient extends AzureServiceClient {
 
   // Operation groups
   servers: operations.Servers;
+  serverOperations: operations.ServerOperations;
+  replicas: operations.Replicas;
   firewallRules: operations.FirewallRules;
   virtualNetworkRules: operations.VirtualNetworkRules;
   databases: operations.Databases;

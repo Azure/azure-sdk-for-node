@@ -57,6 +57,7 @@ export default class PostgreSQLManagementClient extends AzureServiceClient {
 
   // Operation groups
   servers: operations.Servers;
+  serverOperations: operations.ServerOperations;
   firewallRules: operations.FirewallRules;
   virtualNetworkRules: operations.VirtualNetworkRules;
   databases: operations.Databases;
