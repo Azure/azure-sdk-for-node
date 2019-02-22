@@ -38,7 +38,7 @@ export interface SkuCapacity {
 }
 
 /**
- * Describes The SKU capabilites object.
+ * Describes The SKU capabilities object.
  */
 export interface SkuCapability {
   /**
@@ -353,6 +353,48 @@ export interface PlanUsageHistory {
    * The date of usage, in ISO 8601 format.
    */
   usageDate?: Date;
+}
+
+/**
+ * The API operation info.
+ */
+export interface OperationDisplayInfo {
+  /**
+   * The description of the operation.
+   */
+  readonly description?: string;
+  /**
+   * The action that users can perform, based on their permission level.
+   */
+  readonly operation?: string;
+  /**
+   * The service provider.
+   */
+  readonly provider?: string;
+  /**
+   * The resource on which the operation is performed.
+   */
+  readonly resource?: string;
+}
+
+/**
+ * An API operation.
+ */
+export interface OperationEntity {
+  /**
+   * Operation name: {provider}/{resource}/{operation}.
+   */
+  readonly name?: string;
+  /**
+   * The API operation info.
+   */
+  display?: OperationDisplayInfo;
+}
+
+/**
+ * The list of REST API operations.
+ */
+export interface OperationEntityListResult extends Array<OperationEntity> {
 }
 
 /**
