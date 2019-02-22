@@ -516,6 +516,383 @@ export interface AvailabilityStatuses {
 
 /**
  * @class
+ * ChildAvailabilityStatuses
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MicrosoftResourceHealth.
+ */
+export interface ChildAvailabilityStatuses {
+
+
+    /**
+     * Gets current availability status for a single resource
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support one nesting level resource types :
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilityStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByResourceWithHttpOperationResponse(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilityStatus>>;
+
+    /**
+     * Gets current availability status for a single resource
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support one nesting level resource types :
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilityStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilityStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilityStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getByResource(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilityStatus>;
+    getByResource(resourceUri: string, callback: ServiceCallback<models.AvailabilityStatus>): void;
+    getByResource(resourceUri: string, options: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilityStatus>): void;
+
+
+    /**
+     * Lists the historical availability statuses for a single child resource. Use
+     * the nextLink property in the response to get the next page of availability
+     * status
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support one nesting level resource types :
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilityStatusListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilityStatusListResult>>;
+
+    /**
+     * Lists the historical availability statuses for a single child resource. Use
+     * the nextLink property in the response to get the next page of availability
+     * status
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support one nesting level resource types :
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resource-provider-name}/{parentResourceType}/{parentResourceName}/{resourceType}/{resourceName}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilityStatusListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilityStatusListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilityStatusListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilityStatusListResult>;
+    list(resourceUri: string, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+    list(resourceUri: string, options: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+
+
+    /**
+     * Lists the historical availability statuses for a single child resource. Use
+     * the nextLink property in the response to get the next page of availability
+     * status
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilityStatusListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilityStatusListResult>>;
+
+    /**
+     * Lists the historical availability statuses for a single child resource. Use
+     * the nextLink property in the response to get the next page of availability
+     * status
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilityStatusListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilityStatusListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilityStatusListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilityStatusListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+}
+
+/**
+ * @class
+ * ChildResources
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MicrosoftResourceHealth.
+ */
+export interface ChildResources {
+
+
+    /**
+     * Lists the all the children and its current health status for a parent
+     * resource. Use the nextLink property in the response to get the next page of
+     * children current health
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support not nested parent resource type:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilityStatusListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilityStatusListResult>>;
+
+    /**
+     * Lists the all the children and its current health status for a parent
+     * resource. Use the nextLink property in the response to get the next page of
+     * children current health
+     *
+     * @param {string} resourceUri The fully qualified ID of the resource,
+     * including the resource name and resource type. Currently the API only
+     * support not nested parent resource type:
+     * /subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/{resource-provider-name}/{resource-type}/{resource-name}
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
+     *
+     * @param {string} [options.expand] Setting $expand=recommendedactions in url
+     * query expands the recommendedactions in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilityStatusListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilityStatusListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilityStatusListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilityStatusListResult>;
+    list(resourceUri: string, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+    list(resourceUri: string, options: { filter? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+
+
+    /**
+     * Lists the all the children and its current health status for a parent
+     * resource. Use the nextLink property in the response to get the next page of
+     * children current health
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilityStatusListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilityStatusListResult>>;
+
+    /**
+     * Lists the all the children and its current health status for a parent
+     * resource. Use the nextLink property in the response to get the next page of
+     * children current health
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilityStatusListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilityStatusListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilityStatusListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilityStatusListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilityStatusListResult>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the MicrosoftResourceHealth.
