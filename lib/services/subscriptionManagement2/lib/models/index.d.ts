@@ -175,6 +175,16 @@ export interface RenamedSubscriptionId {
 }
 
 /**
+ * New name of the subscription.
+ */
+export interface GetSubscriptionName {
+  /**
+   * New subscription name
+   */
+  subscriptionName?: string;
+}
+
+/**
  * Location information.
  */
 export interface Location {

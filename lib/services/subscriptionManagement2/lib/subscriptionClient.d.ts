@@ -21,6 +21,8 @@ export default class SubscriptionClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
+   * @param {string} subscriptionId - Subscription Id.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -39,9 +41,11 @@ export default class SubscriptionClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  subscriptionId: string;
 
   acceptLanguage: string;
 
@@ -60,8 +64,6 @@ export default class SubscriptionClient extends AzureServiceClient {
   /**
    * Cancels the subscription
    *
-   * @param {string} subscriptionId Subscription Id.
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -73,12 +75,10 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  cancelSubscriptionWithHttpOperationResponse(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CanceledSubscriptionId>>;
+  cancelSubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CanceledSubscriptionId>>;
 
   /**
    * Cancels the subscription
-   *
-   * @param {string} subscriptionId Subscription Id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -108,15 +108,17 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  cancelSubscription(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CanceledSubscriptionId>;
-  cancelSubscription(subscriptionId: string, callback: ServiceCallback<models.CanceledSubscriptionId>): void;
-  cancelSubscription(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CanceledSubscriptionId>): void;
+  cancelSubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CanceledSubscriptionId>;
+  cancelSubscription(callback: ServiceCallback<models.CanceledSubscriptionId>): void;
+  cancelSubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CanceledSubscriptionId>): void;
 
 
   /**
    * Renames the subscription
    *
-   * @param {string} subscriptionId Subscription Id.
+   * @param {object} body Subscription Name
+   *
+   * @param {string} [body.subscriptionName] New subscription name
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -129,12 +131,14 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  renameSubscriptionWithHttpOperationResponse(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RenamedSubscriptionId>>;
+  renameSubscriptionWithHttpOperationResponse(body: models.GetSubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RenamedSubscriptionId>>;
 
   /**
    * Renames the subscription
    *
-   * @param {string} subscriptionId Subscription Id.
+   * @param {object} body Subscription Name
+   *
+   * @param {string} [body.subscriptionName] New subscription name
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -163,9 +167,9 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  renameSubscription(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RenamedSubscriptionId>;
-  renameSubscription(subscriptionId: string, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
-  renameSubscription(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
+  renameSubscription(body: models.GetSubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RenamedSubscriptionId>;
+  renameSubscription(body: models.GetSubscriptionName, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
+  renameSubscription(body: models.GetSubscriptionName, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
 }
 
 export { SubscriptionClient, models as SubscriptionModels };
