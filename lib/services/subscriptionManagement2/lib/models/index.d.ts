@@ -177,7 +177,7 @@ export interface RenamedSubscriptionId {
 /**
  * New name of the subscription.
  */
-export interface GetSubscriptionName {
+export interface SubscriptionName {
   /**
    * New subscription name
    */

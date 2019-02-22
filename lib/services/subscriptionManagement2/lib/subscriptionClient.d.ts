@@ -131,7 +131,7 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  renameSubscriptionWithHttpOperationResponse(body: models.GetSubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RenamedSubscriptionId>>;
+  renameSubscriptionWithHttpOperationResponse(body: models.SubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RenamedSubscriptionId>>;
 
   /**
    * Renames the subscription
@@ -167,9 +167,9 @@ export default class SubscriptionClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  renameSubscription(body: models.GetSubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RenamedSubscriptionId>;
-  renameSubscription(body: models.GetSubscriptionName, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
-  renameSubscription(body: models.GetSubscriptionName, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
+  renameSubscription(body: models.SubscriptionName, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RenamedSubscriptionId>;
+  renameSubscription(body: models.SubscriptionName, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
+  renameSubscription(body: models.SubscriptionName, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RenamedSubscriptionId>): void;
 }
 
 export { SubscriptionClient, models as SubscriptionModels };
