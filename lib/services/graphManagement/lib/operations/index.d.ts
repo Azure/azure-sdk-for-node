@@ -194,37 +194,6 @@ export interface Applications {
      *
      * @param {object} parameters The parameters for creating an application.
      *
-     * @param {array} [parameters.appRoles] The collection of application roles
-     * that an application may declare. These roles can be assigned to users,
-     * groups or service principals.
-     *
-     * @param {boolean} parameters.availableToOtherTenants Whether the application
-     * is available to other tenants.
-     *
-     * @param {string} parameters.displayName The display name of the application.
-     *
-     * @param {string} [parameters.homepage] The home page of the application.
-     *
-     * @param {array} parameters.identifierUris A collection of URIs for the
-     * application.
-     *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * application.
-     *
-     * @param {array} [parameters.keyCredentials] The list of KeyCredential
-     * objects.
-     *
-     * @param {array} [parameters.passwordCredentials] The list of
-     * PasswordCredential objects.
-     *
-     * @param {boolean} [parameters.oauth2AllowImplicitFlow] Whether to allow
-     * implicit grant flow for OAuth2
-     *
-     * @param {array} [parameters.requiredResourceAccess] Specifies resources that
-     * this application requires access to and the set of OAuth permission scopes
-     * and application roles that it needs under each of those resources. This
-     * pre-configuration of required resource access drives the consent experience.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -236,43 +205,12 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(parameters: models.ApplicationCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    createWithHttpOperationResponse(parameters: { [propertyName: string]: any }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Create a new application.
      *
      * @param {object} parameters The parameters for creating an application.
-     *
-     * @param {array} [parameters.appRoles] The collection of application roles
-     * that an application may declare. These roles can be assigned to users,
-     * groups or service principals.
-     *
-     * @param {boolean} parameters.availableToOtherTenants Whether the application
-     * is available to other tenants.
-     *
-     * @param {string} parameters.displayName The display name of the application.
-     *
-     * @param {string} [parameters.homepage] The home page of the application.
-     *
-     * @param {array} parameters.identifierUris A collection of URIs for the
-     * application.
-     *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * application.
-     *
-     * @param {array} [parameters.keyCredentials] The list of KeyCredential
-     * objects.
-     *
-     * @param {array} [parameters.passwordCredentials] The list of
-     * PasswordCredential objects.
-     *
-     * @param {boolean} [parameters.oauth2AllowImplicitFlow] Whether to allow
-     * implicit grant flow for OAuth2
-     *
-     * @param {array} [parameters.requiredResourceAccess] Specifies resources that
-     * this application requires access to and the set of OAuth permission scopes
-     * and application roles that it needs under each of those resources. This
-     * pre-configuration of required resource access drives the consent experience.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -301,9 +239,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(parameters: models.ApplicationCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    create(parameters: models.ApplicationCreateParameters, callback: ServiceCallback<models.Application>): void;
-    create(parameters: models.ApplicationCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(parameters: { [propertyName: string]: any }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    create(parameters: { [propertyName: string]: any }, callback: ServiceCallback<models.Application>): void;
+    create(parameters: { [propertyName: string]: any }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -477,37 +415,129 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {boolean} [parameters.allowGuestsSignIn] A property on the
+     * application to indicate if the application accepts other IDPs or not or
+     * partially accepts.
+     *
+     * @param {boolean} [parameters.allowPassthroughUsers] Indicates that the
+     * application supports pass through users who have no presence in the resource
+     * tenant.
+     *
+     * @param {string} [parameters.appId] The application ID.
+     *
+     * @param {string} [parameters.appLogoUrl] The url for the application logo
+     * image stored in a CDN.
+     *
      * @param {array} [parameters.appRoles] The collection of application roles
      * that an application may declare. These roles can be assigned to users,
      * groups or service principals.
      *
+     * @param {array} [parameters.appPermissions] The application permissions.
+     *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
-     * application is available to other tenants
+     * application is available to other tenants.
      *
      * @param {string} [parameters.displayName] The display name of the
      * application.
+     *
+     * @param {string} [parameters.errorUrl] A URL provided by the author of the
+     * application to report errors when using the application.
      *
      * @param {string} [parameters.homepage] The home page of the application.
      *
      * @param {array} [parameters.identifierUris] A collection of URIs for the
      * application.
      *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * application.
+     * @param {object} [parameters.informationalUrls] urls with more informations
+     * of the application.
      *
-     * @param {array} [parameters.keyCredentials] The list of KeyCredential
+     * @param {string} [parameters.informationalUrls.termsOfService] The terms of
+     * service URI
+     *
+     * @param {string} [parameters.informationalUrls.marketing] The marketing URI
+     *
+     * @param {string} [parameters.informationalUrls.privacy] The privacy policy
+     * URI
+     *
+     * @param {string} [parameters.informationalUrls.support] The support URI
+     *
+     * @param {boolean} [parameters.isDeviceOnlyAuthSupported] Specifies whether
+     * this application supports device authentication without a user. The default
+     * is false.
+     *
+     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
      * objects.
      *
-     * @param {array} [parameters.passwordCredentials] The list of
-     * PasswordCredential objects.
+     * @param {array} [parameters.knownClientApplications] Client applications that
+     * are tied to this resource application. Consent to any of the known client
+     * applications will result in implicit consent to the resource application
+     * through a combined consent dialog (showing the OAuth permission scopes
+     * required by the client and the resource).
+     *
+     * @param {string} [parameters.logoutUrl] the url of the logout page
      *
      * @param {boolean} [parameters.oauth2AllowImplicitFlow] Whether to allow
      * implicit grant flow for OAuth2
+     *
+     * @param {boolean} [parameters.oauth2AllowUrlPathMatching] Specifies whether
+     * during a token Request Azure AD will allow path matching of the redirect URI
+     * against the applications collection of replyURLs. The default is false.
+     *
+     * @param {array} [parameters.oauth2Permissions] The collection of OAuth 2.0
+     * permission scopes that the web API (resource) application exposes to client
+     * applications. These permission scopes may be granted to client applications
+     * during consent.
+     *
+     * @param {boolean} [parameters.oauth2RequirePostResponse] Specifies whether,
+     * as part of OAuth 2.0 token requests, Azure AD will allow POST requests, as
+     * opposed to GET requests. The default is false, which specifies that only GET
+     * requests will be allowed.
+     *
+     * @param {array} [parameters.orgRestrictions] A list of tenants allowed to
+     * access application.
+     *
+     * @param {object} [parameters.optionalClaims]
+     *
+     * @param {array} [parameters.optionalClaims.idToken] Optional claims requested
+     * to be included in the id token.
+     *
+     * @param {array} [parameters.optionalClaims.accessToken] Optional claims
+     * requested to be included in the access token.
+     *
+     * @param {array} [parameters.optionalClaims.samlToken] Optional claims
+     * requested to be included in the saml token.
+     *
+     * @param {array} [parameters.passwordCredentials] A collection of
+     * PasswordCredential objects
+     *
+     * @param {array} [parameters.preAuthorizedApplications] list of
+     * pre-authorizaed applications.
+     *
+     * @param {boolean} [parameters.publicClient] Specifies whether this
+     * application is a public client (such as an installed application running on
+     * a mobile device). Default is false.
+     *
+     * @param {string} [parameters.publisherDomain] Reliable domain which can be
+     * used to identify an application.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * application.
      *
      * @param {array} [parameters.requiredResourceAccess] Specifies resources that
      * this application requires access to and the set of OAuth permission scopes
      * and application roles that it needs under each of those resources. This
      * pre-configuration of required resource access drives the consent experience.
+     *
+     * @param {string} [parameters.samlMetadataUrl] The URL to the SAML metadata
+     * for the application.
+     *
+     * @param {string} [parameters.signInAudience] Audience for signing in to the
+     * application (AzureADMyOrganizatio, AzureADAllorganizations,
+     * AzureADAndMicrosofAccounts).
+     *
+     * @param {string} [parameters.wwwHomepage] The primary Web page.
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -520,7 +550,7 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    patchWithHttpOperationResponse(applicationObjectId: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Update an existing application.
@@ -529,37 +559,129 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {boolean} [parameters.allowGuestsSignIn] A property on the
+     * application to indicate if the application accepts other IDPs or not or
+     * partially accepts.
+     *
+     * @param {boolean} [parameters.allowPassthroughUsers] Indicates that the
+     * application supports pass through users who have no presence in the resource
+     * tenant.
+     *
+     * @param {string} [parameters.appId] The application ID.
+     *
+     * @param {string} [parameters.appLogoUrl] The url for the application logo
+     * image stored in a CDN.
+     *
      * @param {array} [parameters.appRoles] The collection of application roles
      * that an application may declare. These roles can be assigned to users,
      * groups or service principals.
      *
+     * @param {array} [parameters.appPermissions] The application permissions.
+     *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
-     * application is available to other tenants
+     * application is available to other tenants.
      *
      * @param {string} [parameters.displayName] The display name of the
      * application.
+     *
+     * @param {string} [parameters.errorUrl] A URL provided by the author of the
+     * application to report errors when using the application.
      *
      * @param {string} [parameters.homepage] The home page of the application.
      *
      * @param {array} [parameters.identifierUris] A collection of URIs for the
      * application.
      *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * application.
+     * @param {object} [parameters.informationalUrls] urls with more informations
+     * of the application.
      *
-     * @param {array} [parameters.keyCredentials] The list of KeyCredential
+     * @param {string} [parameters.informationalUrls.termsOfService] The terms of
+     * service URI
+     *
+     * @param {string} [parameters.informationalUrls.marketing] The marketing URI
+     *
+     * @param {string} [parameters.informationalUrls.privacy] The privacy policy
+     * URI
+     *
+     * @param {string} [parameters.informationalUrls.support] The support URI
+     *
+     * @param {boolean} [parameters.isDeviceOnlyAuthSupported] Specifies whether
+     * this application supports device authentication without a user. The default
+     * is false.
+     *
+     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
      * objects.
      *
-     * @param {array} [parameters.passwordCredentials] The list of
-     * PasswordCredential objects.
+     * @param {array} [parameters.knownClientApplications] Client applications that
+     * are tied to this resource application. Consent to any of the known client
+     * applications will result in implicit consent to the resource application
+     * through a combined consent dialog (showing the OAuth permission scopes
+     * required by the client and the resource).
+     *
+     * @param {string} [parameters.logoutUrl] the url of the logout page
      *
      * @param {boolean} [parameters.oauth2AllowImplicitFlow] Whether to allow
      * implicit grant flow for OAuth2
+     *
+     * @param {boolean} [parameters.oauth2AllowUrlPathMatching] Specifies whether
+     * during a token Request Azure AD will allow path matching of the redirect URI
+     * against the applications collection of replyURLs. The default is false.
+     *
+     * @param {array} [parameters.oauth2Permissions] The collection of OAuth 2.0
+     * permission scopes that the web API (resource) application exposes to client
+     * applications. These permission scopes may be granted to client applications
+     * during consent.
+     *
+     * @param {boolean} [parameters.oauth2RequirePostResponse] Specifies whether,
+     * as part of OAuth 2.0 token requests, Azure AD will allow POST requests, as
+     * opposed to GET requests. The default is false, which specifies that only GET
+     * requests will be allowed.
+     *
+     * @param {array} [parameters.orgRestrictions] A list of tenants allowed to
+     * access application.
+     *
+     * @param {object} [parameters.optionalClaims]
+     *
+     * @param {array} [parameters.optionalClaims.idToken] Optional claims requested
+     * to be included in the id token.
+     *
+     * @param {array} [parameters.optionalClaims.accessToken] Optional claims
+     * requested to be included in the access token.
+     *
+     * @param {array} [parameters.optionalClaims.samlToken] Optional claims
+     * requested to be included in the saml token.
+     *
+     * @param {array} [parameters.passwordCredentials] A collection of
+     * PasswordCredential objects
+     *
+     * @param {array} [parameters.preAuthorizedApplications] list of
+     * pre-authorizaed applications.
+     *
+     * @param {boolean} [parameters.publicClient] Specifies whether this
+     * application is a public client (such as an installed application running on
+     * a mobile device). Default is false.
+     *
+     * @param {string} [parameters.publisherDomain] Reliable domain which can be
+     * used to identify an application.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * application.
      *
      * @param {array} [parameters.requiredResourceAccess] Specifies resources that
      * this application requires access to and the set of OAuth permission scopes
      * and application roles that it needs under each of those resources. This
      * pre-configuration of required resource access drives the consent experience.
+     *
+     * @param {string} [parameters.samlMetadataUrl] The URL to the SAML metadata
+     * for the application.
+     *
+     * @param {string} [parameters.signInAudience] Audience for signing in to the
+     * application (AzureADMyOrganizatio, AzureADAllorganizations,
+     * AzureADAndMicrosofAccounts).
+     *
+     * @param {string} [parameters.wwwHomepage] The primary Web page.
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -587,9 +709,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    patch(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, callback: ServiceCallback<void>): void;
-    patch(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    patch(applicationObjectId: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    patch(applicationObjectId: string, parameters: models.Application, callback: ServiceCallback<void>): void;
+    patch(applicationObjectId: string, parameters: models.Application, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2320,41 +2442,6 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to create a service principal.
      *
-     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
-     *
-     * @param {string} parameters.appId application Id
-     *
-     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
-     * AppRoleAssignment to a user or group is required before Azure AD will issue
-     * a user or access token to the application.
-     *
-     * @param {string} [parameters.displayName] The display name for the service
-     * principal.
-     *
-     * @param {string} [parameters.errorUrl]
-     *
-     * @param {string} [parameters.homepage] The URL to the homepage of the
-     * associated application.
-     *
-     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
-     * objects.
-     *
-     * @param {array} [parameters.passwordCredentials] A collection of
-     * PasswordCredential objects
-     *
-     * @param {string} [parameters.publisherName] The display name of the tenant in
-     * which the associated application is specified.
-     *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * service principal.
-     *
-     * @param {string} [parameters.samlMetadataUrl]
-     *
-     * @param {array} [parameters.servicePrincipalNames] A collection of service
-     * principal names.
-     *
-     * @param {array} [parameters.tags]
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2366,47 +2453,12 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(parameters: models.ServicePrincipalCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    createWithHttpOperationResponse(parameters: { [propertyName: string]: any }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
      * Creates a service principal in the directory.
      *
      * @param {object} parameters Parameters to create a service principal.
-     *
-     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
-     *
-     * @param {string} parameters.appId application Id
-     *
-     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
-     * AppRoleAssignment to a user or group is required before Azure AD will issue
-     * a user or access token to the application.
-     *
-     * @param {string} [parameters.displayName] The display name for the service
-     * principal.
-     *
-     * @param {string} [parameters.errorUrl]
-     *
-     * @param {string} [parameters.homepage] The URL to the homepage of the
-     * associated application.
-     *
-     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
-     * objects.
-     *
-     * @param {array} [parameters.passwordCredentials] A collection of
-     * PasswordCredential objects
-     *
-     * @param {string} [parameters.publisherName] The display name of the tenant in
-     * which the associated application is specified.
-     *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * service principal.
-     *
-     * @param {string} [parameters.samlMetadataUrl]
-     *
-     * @param {array} [parameters.servicePrincipalNames] A collection of service
-     * principal names.
-     *
-     * @param {array} [parameters.tags]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2435,9 +2487,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(parameters: models.ServicePrincipalCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
-    create(parameters: models.ServicePrincipalCreateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
-    create(parameters: models.ServicePrincipalCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    create(parameters: { [propertyName: string]: any }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    create(parameters: { [propertyName: string]: any }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    create(parameters: { [propertyName: string]: any }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**
@@ -2503,40 +2555,63 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to update a service principal.
      *
-     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     * @param {string} [parameters.accountEnabled] whether or not the service
+     * principal account is enabled
      *
-     * @param {string} [parameters.appId] application Id
+     * @param {array} [parameters.alternativeNames] altenative names
+     *
+     * @param {string} [parameters.appId] The application ID.
      *
      * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
      * AppRoleAssignment to a user or group is required before Azure AD will issue
      * a user or access token to the application.
      *
-     * @param {string} [parameters.displayName] The display name for the service
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
+     *
+     * @param {string} [parameters.displayName] The display name of the service
      * principal.
      *
-     * @param {string} [parameters.errorUrl]
+     * @param {string} [parameters.errorUrl] A URL provided by the author of the
+     * associated application to report errors when using the application.
      *
      * @param {string} [parameters.homepage] The URL to the homepage of the
      * associated application.
      *
-     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
-     * objects.
+     * @param {array} [parameters.keyCredentials] The collection of key credentials
+     * associated with the service principal.
      *
-     * @param {array} [parameters.passwordCredentials] A collection of
-     * PasswordCredential objects
+     * @param {string} [parameters.logoutUrl] A URL provided by the author of the
+     * associated application to logout
      *
-     * @param {string} [parameters.publisherName] The display name of the tenant in
-     * which the associated application is specified.
+     * @param {array} [parameters.passwordCredentials] The collection of password
+     * credentials associated with the service principal.
      *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * service principal.
+     * @param {string} [parameters.preferredTokenSigningKeyThumbprint] The
+     * thubmbprint of preferred certificate to sign the token
      *
-     * @param {string} [parameters.samlMetadataUrl]
+     * @param {string} [parameters.publisherName] The publisher's name of the
+     * associated application
+     *
+     * @param {array} [parameters.replyUrls] The URLs that user tokens are sent to
+     * for sign in with the associated application.  The redirect URIs that the
+     * oAuth 2.0 authorization code and access tokens are sent to for the
+     * associated application.
+     *
+     * @param {string} [parameters.samlMetadataUrl] The URL to the SAML metadata of
+     * the associated application
      *
      * @param {array} [parameters.servicePrincipalNames] A collection of service
      * principal names.
      *
-     * @param {array} [parameters.tags]
+     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * principal
+     *
+     * @param {array} [parameters.tags] Optional list of tags that you can apply to
+     * your service principals. Not nullable.
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2549,7 +2624,7 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(objectId: string, parameters: models.ServicePrincipal, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates a service principal in the directory.
@@ -2558,40 +2633,63 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to update a service principal.
      *
-     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     * @param {string} [parameters.accountEnabled] whether or not the service
+     * principal account is enabled
      *
-     * @param {string} [parameters.appId] application Id
+     * @param {array} [parameters.alternativeNames] altenative names
+     *
+     * @param {string} [parameters.appId] The application ID.
      *
      * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
      * AppRoleAssignment to a user or group is required before Azure AD will issue
      * a user or access token to the application.
      *
-     * @param {string} [parameters.displayName] The display name for the service
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
+     *
+     * @param {string} [parameters.displayName] The display name of the service
      * principal.
      *
-     * @param {string} [parameters.errorUrl]
+     * @param {string} [parameters.errorUrl] A URL provided by the author of the
+     * associated application to report errors when using the application.
      *
      * @param {string} [parameters.homepage] The URL to the homepage of the
      * associated application.
      *
-     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
-     * objects.
+     * @param {array} [parameters.keyCredentials] The collection of key credentials
+     * associated with the service principal.
      *
-     * @param {array} [parameters.passwordCredentials] A collection of
-     * PasswordCredential objects
+     * @param {string} [parameters.logoutUrl] A URL provided by the author of the
+     * associated application to logout
      *
-     * @param {string} [parameters.publisherName] The display name of the tenant in
-     * which the associated application is specified.
+     * @param {array} [parameters.passwordCredentials] The collection of password
+     * credentials associated with the service principal.
      *
-     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
-     * service principal.
+     * @param {string} [parameters.preferredTokenSigningKeyThumbprint] The
+     * thubmbprint of preferred certificate to sign the token
      *
-     * @param {string} [parameters.samlMetadataUrl]
+     * @param {string} [parameters.publisherName] The publisher's name of the
+     * associated application
+     *
+     * @param {array} [parameters.replyUrls] The URLs that user tokens are sent to
+     * for sign in with the associated application.  The redirect URIs that the
+     * oAuth 2.0 authorization code and access tokens are sent to for the
+     * associated application.
+     *
+     * @param {string} [parameters.samlMetadataUrl] The URL to the SAML metadata of
+     * the associated application
      *
      * @param {array} [parameters.servicePrincipalNames] A collection of service
      * principal names.
      *
-     * @param {array} [parameters.tags]
+     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * principal
+     *
+     * @param {array} [parameters.tags] Optional list of tags that you can apply to
+     * your service principals. Not nullable.
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2619,9 +2717,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<void>): void;
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(objectId: string, parameters: models.ServicePrincipal, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(objectId: string, parameters: models.ServicePrincipal, callback: ServiceCallback<void>): void;
+    update(objectId: string, parameters: models.ServicePrincipal, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3988,7 +4086,7 @@ export interface OAuth2 {
 
 
     /**
-     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4000,14 +4098,14 @@ export interface OAuth2 {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PermissionsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionsListResult>>;
 
     /**
-     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4024,7 +4122,7 @@ export interface OAuth2 {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Permissions} - The deserialized result object.
+     *                      @resolve {PermissionsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4032,16 +4130,16 @@ export interface OAuth2 {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Permissions} for more information.
+     *                      {PermissionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionsListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
-    get(callback: ServiceCallback<models.Permissions>): void;
-    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionsListResult>;
+    get(callback: ServiceCallback<models.PermissionsListResult>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionsListResult>): void;
 
 
     /**
@@ -4050,13 +4148,15 @@ export interface OAuth2 {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.body] The relevant app Service Principal Object Id
-     * and the Service Principal Objecit Id you want to grant.
+     * and the Service Principal Object Id you want to grant.
      *
      * @param {string} [options.body.odatatype]
      * Microsoft.DirectoryServices.OAuth2PermissionGrant
      *
      * @param {string} [options.body.clientId] The objectId of the Service
      * Principal associated with the app
+     *
+     * @param {string} [options.body.objectId] The objectId of the permission grant
      *
      * @param {string} [options.body.consentType] Typically set to AllPrincipals
      *
@@ -4089,13 +4189,15 @@ export interface OAuth2 {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.body] The relevant app Service Principal Object Id
-     * and the Service Principal Objecit Id you want to grant.
+     * and the Service Principal Object Id you want to grant.
      *
      * @param {string} [options.body.odatatype]
      * Microsoft.DirectoryServices.OAuth2PermissionGrant
      *
      * @param {string} [options.body.clientId] The objectId of the Service
      * Principal associated with the app
+     *
+     * @param {string} [options.body.objectId] The objectId of the permission grant
      *
      * @param {string} [options.body.consentType] Typically set to AllPrincipals
      *
@@ -4139,4 +4241,115 @@ export interface OAuth2 {
     grant(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
     grant(callback: ServiceCallback<models.Permissions>): void;
     grant(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+
+
+    /**
+     * Delete a OAuth2 permission grant for the relevant resource Ids of an app.
+     *
+     * @param {string} objectId The object ID of a permission grant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a OAuth2 permission grant for the relevant resource Ids of an app.
+     *
+     * @param {string} objectId The object ID of a permission grant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(objectId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionsListResult>>;
+
+    /**
+     * Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionsListResult>;
+    getNext(nextPageLink: string, callback: ServiceCallback<models.PermissionsListResult>): void;
+    getNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionsListResult>): void;
 }
