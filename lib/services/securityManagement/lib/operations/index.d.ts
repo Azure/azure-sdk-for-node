@@ -903,7 +903,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -919,7 +920,8 @@ export interface WorkspaceSettings {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -954,7 +956,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -972,7 +975,8 @@ export interface WorkspaceSettings {
     getWithHttpOperationResponse(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -1211,7 +1215,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1230,7 +1235,8 @@ export interface WorkspaceSettings {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1894,8 +1900,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1913,8 +1919,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1951,12 +1957,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1974,12 +1982,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3312,7 +3322,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3337,7 +3347,7 @@ export interface Alerts {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3818,7 +3828,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3837,7 +3847,7 @@ export interface Alerts {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
