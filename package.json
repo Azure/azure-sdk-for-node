@@ -86,7 +86,7 @@
     "azure-arm-servicefabric": "^2.0.0-preview",
     "azure-arm-servicemap": "^2.0.0",
     "azure-arm-sql": "^3.0.0",
-    "azure-arm-storage": "^5.0.0",
+    "azure-arm-storage": "^7.0.0",
     "azure-arm-storageimportexport": "^1.1.0",
     "azure-arm-storsimple8000series": "^1.0.0-preview",
     "azure-arm-streamanalytics": "^1.0.0-preview",
