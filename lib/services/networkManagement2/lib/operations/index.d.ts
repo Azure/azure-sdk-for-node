@@ -7153,6 +7153,213 @@ export interface ExpressRouteCircuitConnections {
 
 /**
  * @class
+ * PeerExpressRouteCircuitConnections
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface PeerExpressRouteCircuitConnections {
+
+
+    /**
+     * Gets the specified Peer Express Route Circuit Connection from the specified
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the express route circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {string} connectionName The name of the peer express route circuit
+     * connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnection>>;
+
+    /**
+     * Gets the specified Peer Express Route Circuit Connection from the specified
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the express route circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {string} connectionName The name of the peer express route circuit
+     * connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnection>;
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnection>): void;
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnection>): void;
+
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnectionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnectionListResult>;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnectionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnectionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+}
+
+/**
+ * @class
  * ExpressRouteCircuits
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -7346,8 +7553,8 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -7437,8 +7644,8 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -8117,8 +8324,8 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -8208,8 +8415,8 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *

@@ -2997,6 +2997,51 @@ export interface ExpressRouteCircuitConnection extends SubResource {
 }
 
 /**
+ * Peer Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+*/
+export interface PeerExpressRouteCircuitConnection extends SubResource {
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the circuit.
+  */
+  expressRouteCircuitPeering?: SubResource;
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the peered circuit.
+  */
+  peerExpressRouteCircuitPeering?: SubResource;
+  /**
+   * /29 IP address space to carve out Customer addresses for tunnels.
+  */
+  addressPrefix?: string;
+  /**
+   * Express Route Circuit Connection State. Possible values are: 'Connected' and 'Disconnected'.
+   * Possible values include: 'Connected', 'Connecting', 'Disconnected'
+  */
+  readonly circuitConnectionStatus?: string;
+  /**
+   * The name of the express route circuit connection resource.
+  */
+  connectionName?: string;
+  /**
+   * The resource guid of the authorization used for the express route circuit connection.
+  */
+  authResourceGuid?: string;
+  /**
+   * Provisioning state of the peer express route circuit connection resource. Possible values are:
+   * 'Succeded', 'Updating', 'Deleting', and 'Failed'.
+  */
+  readonly provisioningState?: string;
+  /**
+   * Gets name of the resource that is unique within a resource group. This name can be used to
+   * access the resource.
+  */
+  name?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+}
+
+/**
  * Peering in an ExpressRouteCircuit resource.
 */
 export interface ExpressRouteCircuitPeering extends SubResource {
@@ -3078,6 +3123,10 @@ export interface ExpressRouteCircuitPeering extends SubResource {
    * The list of circuit connections associated with Azure Private Peering for this circuit.
   */
   connections?: ExpressRouteCircuitConnection[];
+  /**
+   * The list of peered circuit connections associated with Azure Private Peering for this circuit.
+  */
+  readonly peeredConnections?: PeerExpressRouteCircuitConnection[];
   /**
    * Gets name of the resource that is unique within a resource group. This name can be used to
    * access the resource.
@@ -3242,9 +3291,9 @@ export interface ExpressRouteCircuit extends Resource {
   */
   gatewayManagerEtag?: string;
   /**
-   * Flag to enable Global Reach on the circuit.
+   * Flag denoting Global reach status.
   */
-  allowGlobalReach?: boolean;
+  globalReachEnabled?: boolean;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -7778,6 +7827,18 @@ export interface ExpressRouteCircuitPeeringListResult extends Array<ExpressRoute
 */
 export interface ExpressRouteCircuitConnectionListResult extends
 Array<ExpressRouteCircuitConnection> {
+  /**
+   * The URL to get the next set of results.
+  */
+  nextLink?: string;
+}
+
+/**
+ * Response for ListPeeredConnections API service call retrieves all global reach peer circuit
+ * connections that belongs to a Private Peering for an ExpressRouteCircuit.
+*/
+export interface PeerExpressRouteCircuitConnectionListResult extends
+Array<PeerExpressRouteCircuitConnection> {
   /**
    * The URL to get the next set of results.
   */
