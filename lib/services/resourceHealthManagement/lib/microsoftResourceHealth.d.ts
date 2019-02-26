@@ -57,6 +57,8 @@ export default class MicrosoftResourceHealth extends AzureServiceClient {
 
   // Operation groups
   availabilityStatuses: operations.AvailabilityStatuses;
+  childAvailabilityStatuses: operations.ChildAvailabilityStatuses;
+  childResources: operations.ChildResources;
   operations: operations.Operations;
 }
 
