@@ -1008,156 +1008,11 @@ export interface ApplicationPackageOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
-     * @param {string} versionName The version of the application.
-     *
-     * @param {string} format The format of the application package binary file.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationPackage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    activateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, format: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
-
-    /**
-     * Activates the specified application package.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     *
-     * @param {string} accountName The name of the Batch account.
-     *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
-     *
-     * @param {string} versionName The version of the application.
+     * @param {string} version The version of the application to activate.
      *
      * @param {string} format The format of the application package binary file.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationPackage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationPackage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationPackage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    activate(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, format: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationPackage>;
-    activate(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, format: string, callback: ServiceCallback<models.ApplicationPackage>): void;
-    activate(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, format: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
-
-
-    /**
-     * Creates an application package record.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     *
-     * @param {string} accountName The name of the Batch account.
-     *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
-     *
-     * @param {string} versionName The version of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationPackage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
-
-    /**
-     * Creates an application package record.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     *
-     * @param {string} accountName The name of the Batch account.
-     *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
-     *
-     * @param {string} versionName The version of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationPackage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationPackage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationPackage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationPackage>;
-    create(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, callback: ServiceCallback<models.ApplicationPackage>): void;
-    create(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
-
-
-    /**
-     * Deletes an application package record and its associated binary file.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     *
-     * @param {string} accountName The name of the Batch account.
-     *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
-     *
-     * @param {string} versionName The version of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1170,20 +1025,21 @@ export interface ApplicationPackageOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    activateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an application package record and its associated binary file.
+     * Activates the specified application package.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
-     * @param {string} versionName The version of the application.
+     * @param {string} version The version of the application to activate.
+     *
+     * @param {string} format The format of the application package binary file.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1211,23 +1067,22 @@ export interface ApplicationPackageOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    activate(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    activate(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, callback: ServiceCallback<void>): void;
+    activate(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Gets information about the specified application package.
+     * Creates an application package record.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
-     * @param {string} versionName The version of the application.
+     * @param {string} version The version of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1240,20 +1095,19 @@ export interface ApplicationPackageOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
 
     /**
-     * Gets information about the specified application package.
+     * Creates an application package record.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
-     * @param {string} versionName The version of the application.
+     * @param {string} version The version of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1282,90 +1136,22 @@ export interface ApplicationPackageOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationPackage>;
-    get(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, callback: ServiceCallback<models.ApplicationPackage>): void;
-    get(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationPackage>;
+    create(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.ApplicationPackage>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
 
 
     /**
-     * Lists all of the application packages in the specified application.
+     * Deletes an application package record and its associated binary file.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {number} [options.maxresults] The maximum number of items to return
-     * in the response.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ListApplicationPackagesResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListApplicationPackagesResult>>;
-
-    /**
-     * Lists all of the application packages in the specified application.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     *
-     * @param {string} accountName The name of the Batch account.
-     *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {number} [options.maxresults] The maximum number of items to return
-     * in the response.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ListApplicationPackagesResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ListApplicationPackagesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ListApplicationPackagesResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, accountName: string, applicationName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListApplicationPackagesResult>;
-    list(resourceGroupName: string, accountName: string, applicationName: string, callback: ServiceCallback<models.ListApplicationPackagesResult>): void;
-    list(resourceGroupName: string, accountName: string, applicationName: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListApplicationPackagesResult>): void;
-
-
-    /**
-     * Lists all of the application packages in the specified application.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} version The version of the application to delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1374,17 +1160,23 @@ export interface ApplicationPackageOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ListApplicationPackagesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListApplicationPackagesResult>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Lists all of the application packages in the specified application.
+     * Deletes an application package record and its associated binary file.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} applicationId The ID of the application.
+     *
+     * @param {string} version The version of the application to delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1398,7 +1190,7 @@ export interface ApplicationPackageOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ListApplicationPackagesResult} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1406,17 +1198,84 @@ export interface ApplicationPackageOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ListApplicationPackagesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ListApplicationPackagesResult} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListApplicationPackagesResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ListApplicationPackagesResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListApplicationPackagesResult>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified application package.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} applicationId The ID of the application.
+     *
+     * @param {string} version The version of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationPackage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
+
+    /**
+     * Gets information about the specified application package.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} applicationId The ID of the application.
+     *
+     * @param {string} version The version of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationPackage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationPackage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationPackage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, applicationId: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationPackage>;
+    get(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.ApplicationPackage>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
 }
 
 /**
@@ -1436,23 +1295,18 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.parameters] The parameters for the request.
      *
-     * @param {string} [options.parameters.displayName] The display name for the
-     * application.
-     *
      * @param {boolean} [options.parameters.allowUpdates] A value indicating
      * whether packages within the application may be overwritten using the same
      * version string.
      *
-     * @param {string} [options.parameters.defaultVersion] The package to use if a
-     * client requests the application but does not specify a version. This
-     * property can only be set to the name of an existing package.
+     * @param {string} [options.parameters.displayName] The display name for the
+     * application.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1463,7 +1317,7 @@ export interface ApplicationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, options?: { parameters? : models.Application, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Adds an application to the specified Batch account.
@@ -1473,23 +1327,18 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.parameters] The parameters for the request.
      *
-     * @param {string} [options.parameters.displayName] The display name for the
-     * application.
-     *
      * @param {boolean} [options.parameters.allowUpdates] A value indicating
      * whether packages within the application may be overwritten using the same
      * version string.
      *
-     * @param {string} [options.parameters.defaultVersion] The package to use if a
-     * client requests the application but does not specify a version. This
-     * property can only be set to the name of an existing package.
+     * @param {string} [options.parameters.displayName] The display name for the
+     * application.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1516,9 +1365,9 @@ export interface ApplicationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, accountName: string, applicationName: string, options?: { parameters? : models.Application, customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    create(resourceGroupName: string, accountName: string, applicationName: string, callback: ServiceCallback<models.Application>): void;
-    create(resourceGroupName: string, accountName: string, applicationName: string, options: { parameters? : models.Application, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    create(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -1529,8 +1378,7 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1543,7 +1391,7 @@ export interface ApplicationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an application.
@@ -1553,8 +1401,7 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1582,9 +1429,9 @@ export interface ApplicationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, accountName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1595,8 +1442,7 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1609,7 +1455,7 @@ export interface ApplicationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Gets information about the specified application.
@@ -1619,8 +1465,7 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1649,9 +1494,9 @@ export interface ApplicationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, accountName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    get(resourceGroupName: string, accountName: string, applicationName: string, callback: ServiceCallback<models.Application>): void;
-    get(resourceGroupName: string, accountName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    get(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -1662,21 +1507,19 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} parameters The parameters for the request.
-     *
-     * @param {string} [parameters.displayName] The display name for the
-     * application.
      *
      * @param {boolean} [parameters.allowUpdates] A value indicating whether
      * packages within the application may be overwritten using the same version
      * string.
      *
      * @param {string} [parameters.defaultVersion] The package to use if a client
-     * requests the application but does not specify a version. This property can
-     * only be set to the name of an existing package.
+     * requests the application but does not specify a version.
+     *
+     * @param {string} [parameters.displayName] The display name for the
+     * application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1685,11 +1528,11 @@ export interface ApplicationOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Application>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates settings for the specified application.
@@ -1699,21 +1542,19 @@ export interface ApplicationOperations {
      *
      * @param {string} accountName The name of the Batch account.
      *
-     * @param {string} applicationName The name of the application. This must be
-     * unique within the account.
+     * @param {string} applicationId The ID of the application.
      *
      * @param {object} parameters The parameters for the request.
-     *
-     * @param {string} [parameters.displayName] The display name for the
-     * application.
      *
      * @param {boolean} [parameters.allowUpdates] A value indicating whether
      * packages within the application may be overwritten using the same version
      * string.
      *
      * @param {string} [parameters.defaultVersion] The package to use if a client
-     * requests the application but does not specify a version. This property can
-     * only be set to the name of an existing package.
+     * requests the application but does not specify a version.
+     *
+     * @param {string} [parameters.displayName] The display name for the
+     * application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1727,7 +1568,7 @@ export interface ApplicationOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Application} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1735,16 +1576,15 @@ export interface ApplicationOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Application} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Application} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, accountName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    update(resourceGroupName: string, accountName: string, applicationName: string, parameters: models.Application, callback: ServiceCallback<models.Application>): void;
-    update(resourceGroupName: string, accountName: string, applicationName: string, parameters: models.Application, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3101,10 +2941,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -3150,6 +2999,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -3188,26 +3049,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -3348,8 +3189,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -3378,37 +3221,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
@@ -3508,10 +3320,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -3557,6 +3378,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -3595,26 +3428,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -3755,8 +3568,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -3785,37 +3600,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
@@ -3936,10 +3720,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -3985,6 +3778,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -4023,26 +3828,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -4183,8 +3968,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -4213,37 +4000,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
@@ -4341,10 +4097,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -4390,6 +4155,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -4428,26 +4205,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -4588,8 +4345,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -4618,37 +4377,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
@@ -5048,10 +4776,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -5097,6 +4834,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -5135,26 +4884,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -5295,8 +5024,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -5325,37 +5056,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
@@ -5455,10 +5155,19 @@ export interface PoolOperations {
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
-     * [parameters.deploymentConfiguration.cloudServiceConfiguration.osVersion] The
-     * Azure Guest OS version to be installed on the virtual machines in the pool.
-     * The default value is * which specifies the latest operating system version
-     * for the specified OS family.
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.targetOSVersion]
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion]
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from targetOSVersion if the pool state is
+     * Upgrading. In this case some virtual machines may be on the targetOSVersion
+     * and some may be on the currentOSVersion during the upgrade process. Once all
+     * virtual machines have upgraded, currentOSVersion is updated to be the same
+     * as targetOSVersion.
      *
      * @param {object}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration] The virtual
@@ -5504,6 +5213,18 @@ export interface PoolOperations {
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      * .
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk]
+     * Settings for the operating system disk of the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.osDisk.caching]
+     * The type of caching to be enabled for the data disks. none - The caching
+     * mode for the disk is not enabled. readOnly - The caching mode for the disk
+     * is read only. readWrite - The caching mode for the disk is read and write.
+     * Default value is none. Possible values include: 'None', 'ReadOnly',
+     * 'ReadWrite'
+     *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
      * The SKU of the Batch node agent to be provisioned on compute nodes in the
@@ -5542,26 +5263,6 @@ export interface PoolOperations {
      * Windows_Server - The on-premises license is for Windows Server.
      * Windows_Client - The on-premises license is for Windows Client.
      *
-     *
-     * @param {object}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration]
-     * The container configuration for the pool. If specified, setup is performed
-     * on each node in the pool to allow tasks to run in containers. All regular
-     * tasks and job manager tasks run on this pool must specify the
-     * containerSettings property, and all other tasks may specify it.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerImageNames]
-     * The collection of container image names. This is the full image reference,
-     * as would be specified to "docker pull". An image will be sourced from the
-     * default Docker registry unless the image is fully qualified with an
-     * alternative registry.
-     *
-     * @param {array}
-     * [parameters.deploymentConfiguration.virtualMachineConfiguration.containerConfiguration.containerRegistries]
-     * Additional private registries from which containers can be pulled. If any
-     * images must be downloaded from a private registry which requires
-     * credentials, then those credentials must be provided here.
      *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
@@ -5702,8 +5403,10 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user pool - specifies that the task runs as the common auto
+     * user account which is created on every node in a pool. task - specifies that
+     * the service should create a new user for the task. The default value is
+     * task. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
      * The elevation level of the auto user. nonAdmin - The auto user is a standard
@@ -5732,37 +5435,6 @@ export interface PoolOperations {
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
      * tasks will continue to be scheduled on the node. The default is false.
-     *
-     * @param {object} [parameters.startTask.containerSettings] The settings for
-     * the container under which the start task runs. When this is specified, all
-     * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
-     * Batch directories on the node) are mapped into the container, all task
-     * environment variables are mapped into the container, and the task command
-     * line is executed in the container.
-     *
-     * @param {string} [parameters.startTask.containerSettings.containerRunOptions]
-     * Additional options to the container create command. These additional options
-     * are supplied as arguments to the "docker create" command, in addition to
-     * those controlled by the Batch Service.
-     *
-     * @param {string} parameters.startTask.containerSettings.imageName The image
-     * to use to create the container in which the task will run. This is the full
-     * image reference, as would be specified to "docker pull". If no tag is
-     * provided as part of the image name, the tag ":latest" is used as a default.
-     *
-     * @param {object} [parameters.startTask.containerSettings.registry] The
-     * private registry which contains the container image. This setting can be
-     * omitted if was already provided at pool creation.
-     *
-     * @param {string}
-     * [parameters.startTask.containerSettings.registry.registryServer] The
-     * registry URL. If omitted, the default is "docker.io".
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.userName The
-     * user name to log into the registry server.
-     *
-     * @param {string} parameters.startTask.containerSettings.registry.password The
-     * password to log into the registry server.
      *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the

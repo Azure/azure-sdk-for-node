@@ -203,53 +203,35 @@ export interface ActivateApplicationPackageParameters {
 }
 
 /**
- * A definition of an Azure resource.
+ * Parameters for adding an Application.
  */
-export interface ProxyResource extends BaseResource {
-  /**
-   * The ID of the resource.
-   */
-  readonly id?: string;
-  /**
-   * The name of the resource.
-   */
-  readonly name?: string;
-  /**
-   * The type of the resource.
-   */
-  readonly type?: string;
-  /**
-   * The ETag of the resource, used for concurrency statements.
-   */
-  readonly etag?: string;
-}
-
-/**
- * Contains information about an application in a Batch account.
- */
-export interface Application extends ProxyResource {
-  /**
-   * The display name for the application.
-   */
-  displayName?: string;
+export interface ApplicationCreateParameters {
   /**
    * A value indicating whether packages within the application may be overwritten using the same
    * version string.
    */
   allowUpdates?: boolean;
   /**
-   * The package to use if a client requests the application but does not specify a version. This
-   * property can only be set to the name of an existing package.
+   * The display name for the application.
    */
-  defaultVersion?: string;
+  displayName?: string;
 }
 
 /**
  * An application package which represents a particular version of an application.
  */
-export interface ApplicationPackage extends ProxyResource {
+export interface ApplicationPackage {
   /**
-   * The current state of the application package. Possible values include: 'Pending', 'Active'
+   * The ID of the application.
+   */
+  readonly id?: string;
+  /**
+   * The version of the application package.
+   */
+  readonly version?: string;
+  /**
+   * The current state of the application package. Possible values include: 'Pending', 'Active',
+   * 'Unmapped'
    */
   readonly state?: string;
   /**
@@ -271,6 +253,52 @@ export interface ApplicationPackage extends ProxyResource {
 }
 
 /**
+ * Contains information about an application in a Batch account.
+ */
+export interface Application {
+  /**
+   * A string that uniquely identifies the application within the account.
+   */
+  id?: string;
+  /**
+   * The display name for the application.
+   */
+  displayName?: string;
+  /**
+   * The list of packages under this application.
+   */
+  packages?: ApplicationPackage[];
+  /**
+   * A value indicating whether packages within the application may be overwritten using the same
+   * version string.
+   */
+  allowUpdates?: boolean;
+  /**
+   * The package to use if a client requests the application but does not specify a version.
+   */
+  defaultVersion?: string;
+}
+
+/**
+ * Parameters for an update application request.
+ */
+export interface ApplicationUpdateParameters {
+  /**
+   * A value indicating whether packages within the application may be overwritten using the same
+   * version string.
+   */
+  allowUpdates?: boolean;
+  /**
+   * The package to use if a client requests the application but does not specify a version.
+   */
+  defaultVersion?: string;
+  /**
+   * The display name for the application.
+   */
+  displayName?: string;
+}
+
+/**
  * Quotas associated with a Batch region for a particular subscription.
  */
 export interface BatchLocationQuota {
@@ -279,6 +307,28 @@ export interface BatchLocationQuota {
    * region.
    */
   readonly accountQuota?: number;
+}
+
+/**
+ * A definition of an Azure resource.
+ */
+export interface ProxyResource extends BaseResource {
+  /**
+   * The ID of the resource.
+   */
+  readonly id?: string;
+  /**
+   * The name of the resource.
+   */
+  readonly name?: string;
+  /**
+   * The type of the resource.
+   */
+  readonly type?: string;
+  /**
+   * The ETag of the resource, used for concurrency statements.
+   */
+  readonly etag?: string;
 }
 
 export interface CertificateBaseProperties {
@@ -345,7 +395,17 @@ export interface Certificate extends ProxyResource {
   format?: string;
   /**
    * @summary The provisioned state of the resource
-   * @description Possible values include: 'Succeeded', 'Deleting', 'Failed'
+   * @description Values are:
+   *
+   * Succeeded - The certificate is available for use in pools.
+   * Deleting - The user has requested that the certificate be deleted, but the delete operation
+   * has not yet completed. You may not reference the certificate when creating or updating pools.
+   * Failed - The user requested that the certificate be deleted, but there are pools that still
+   * have references to the certificate, or it is still installed on one or more compute nodes.
+   * (The latter can occur if the certificate has been removed from the pool, but the node has not
+   * yet restarted. Nodes refresh their certificates only when they restart.) You may use the
+   * cancel certificate delete operation to cancel the delete, or the delete certificate operation
+   * to retry the delete. Possible values include: 'Succeeded', 'Deleting', 'Failed'
   */
   readonly provisioningState?: string;
   /**
@@ -423,7 +483,15 @@ export interface CloudServiceConfiguration {
    * @description The default value is * which specifies the latest operating system version for
    * the specified OS family.
   */
-  osVersion?: string;
+  targetOSVersion?: string;
+  /**
+   * @summary The Azure Guest OS Version currently installed on the virtual machines in the pool.
+   * @description This may differ from targetOSVersion if the pool state is Upgrading. In this case
+   * some virtual machines may be on the targetOSVersion and some may be on the currentOSVersion
+   * during the upgrade process. Once all virtual machines have upgraded, currentOSVersion is
+   * updated to be the same as targetOSVersion.
+  */
+  currentOSVersion?: string;
 }
 
 /**
@@ -464,6 +532,19 @@ export interface ImageReference {
    * .
   */
   id?: string;
+}
+
+/**
+ * @summary Settings for the operating system disk of the virtual machine.
+*/
+export interface OSDisk {
+  /**
+   * @summary The type of caching to be enabled for the data disks. none - The caching mode for the
+   * disk is not enabled. readOnly - The caching mode for the disk is read only. readWrite - The
+   * caching mode for the disk is read and write.
+   * @description Default value is none. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+  */
+  caching?: string;
 }
 
 /**
@@ -516,44 +597,6 @@ export interface DataDisk {
 }
 
 /**
- * @summary A private container registry.
-*/
-export interface ContainerRegistry {
-  /**
-   * @summary The registry URL.
-   * @description If omitted, the default is "docker.io".
-  */
-  registryServer?: string;
-  /**
-   * @summary The user name to log into the registry server.
-  */
-  userName: string;
-  /**
-   * @summary The password to log into the registry server.
-  */
-  password: string;
-}
-
-/**
- * @summary The configuration for container-enabled pools.
-*/
-export interface ContainerConfiguration {
-  /**
-   * @summary The collection of container image names.
-   * @description This is the full image reference, as would be specified to "docker pull". An
-   * image will be sourced from the default Docker registry unless the image is fully qualified
-   * with an alternative registry.
-  */
-  containerImageNames?: string[];
-  /**
-   * @summary Additional private registries from which containers can be pulled.
-   * @description If any images must be downloaded from a private registry which requires
-   * credentials, then those credentials must be provided here.
-  */
-  containerRegistries?: ContainerRegistry[];
-}
-
-/**
  * @summary The configuration for compute nodes in a pool based on the Azure Virtual Machines
  * infrastructure.
 */
@@ -563,6 +606,10 @@ export interface VirtualMachineConfiguration {
    * Machine Image to use.
   */
   imageReference: ImageReference;
+  /**
+   * @summary Settings for the operating system disk of the Virtual Machine.
+  */
+  osDisk?: OSDisk;
   /**
    * @summary The SKU of the Batch node agent to be provisioned on compute nodes in the pool.
    * @description The Batch node agent is a program that runs on each node in the pool, and
@@ -596,13 +643,6 @@ export interface VirtualMachineConfiguration {
 
   */
   licenseType?: string;
-  /**
-   * @summary The container configuration for the pool.
-   * @description If specified, setup is performed on each node in the pool to allow tasks to run
-   * in containers. All regular tasks and job manager tasks run on this pool must specify the
-   * containerSettings property, and all other tasks may specify it.
-  */
-  containerConfiguration?: ContainerConfiguration;
 }
 
 /**
@@ -901,19 +941,6 @@ export interface LinuxUserConfiguration {
 }
 
 /**
- * @summary Properties used to create a user account on a Windows node.
-*/
-export interface WindowsUserConfiguration {
-  /**
-   * @summary Login mode for user
-   * @description Specifies login mode for the user. The default value for
-   * VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools
-   * is batch mode. Possible values include: 'Batch', 'Interactive'
-  */
-  loginMode?: string;
-}
-
-/**
  * @summary Properties used to create a user on an Azure Batch node.
 */
 export interface UserAccount {
@@ -938,12 +965,6 @@ export interface UserAccount {
    * user is created with the default options.
   */
   linuxUserConfiguration?: LinuxUserConfiguration;
-  /**
-   * @summary The Windows-specific user configuration for the user account.
-   * @description This property can only be specified if the user is on a Windows pool. If not
-   * specified and on a Windows pool, the user is created with the default options.
-  */
-  windowsUserConfiguration?: WindowsUserConfiguration;
 }
 
 /**
@@ -963,55 +984,22 @@ export interface MetadataItem {
 }
 
 /**
- * @summary A single file or multiple files to be downloaded to a compute node.
+ * @summary A file to be downloaded from Azure blob storage to a compute node.
 */
 export interface ResourceFile {
   /**
-   * @summary The storage container name in the auto storage account.
-   * @description The autoStorageContainerName, storageContainerUrl and httpUrl properties are
-   * mutually exclusive and one of them must be specified.
+   * @summary The URL of the file within Azure Blob Storage.
+   * @description This URL must be readable using anonymous access; that is, the Batch service does
+   * not present any credentials when downloading the blob. There are two ways to get such a URL
+   * for a blob in Azure storage: include a Shared Access Signature (SAS) granting read permissions
+   * on the blob, or set the ACL for the blob or its container to allow public access.
   */
-  autoStorageContainerName?: string;
-  /**
-   * @summary The URL of the blob container within Azure Blob Storage.
-   * @description The autoStorageContainerName, storageContainerUrl and httpUrl properties are
-   * mutually exclusive and one of them must be specified. This URL must be readable and listable
-   * using anonymous access; that is, the Batch service does not present any credentials when
-   * downloading the blob. There are two ways to get such a URL for a blob in Azure storage:
-   * include a Shared Access Signature (SAS) granting read and list permissions on the blob, or set
-   * the ACL for the blob or its container to allow public access.
-  */
-  storageContainerUrl?: string;
-  /**
-   * @summary The URL of the file to download.
-   * @description The autoStorageContainerName, storageContainerUrl and httpUrl properties are
-   * mutually exclusive and one of them must be specified. If the URL is Azure Blob Storage, it
-   * must be readable using anonymous access; that is, the Batch service does not present any
-   * credentials when downloading the blob. There are two ways to get such a URL for a blob in
-   * Azure storage: include a Shared Access Signature (SAS) granting read permissions on the blob,
-   * or set the ACL for the blob or its container to allow public access.
-  */
-  httpUrl?: string;
-  /**
-   * @summary The blob prefix to use when downloading blobs from an Azure Storage container. Only
-   * the blobs whose names begin with the specified prefix will be downloaded.
-   * @description The property is valid only when autoStorageContainerName or storageContainerUrl
-   * is used. This prefix can be a partial filename or a subdirectory. If a prefix is not
-   * specified, all the files in the container will be downloaded.
-  */
-  blobPrefix?: string;
+  blobSource: string;
   /**
    * @summary The location on the compute node to which to download the file, relative to the
    * task's working directory.
-   * @description If the httpUrl property is specified, the filePath is required and describes the
-   * path which the file will be downloaded to, including the filename. Otherwise, if the
-   * autoStorageContainerName or storageContainerUrl property is specified, filePath is optional
-   * and is the directory to download the files to. In the case where filePath is used as a
-   * directory, any directory structure already associated with the input data will be retained in
-   * full and appended to the specified filePath directory. The specified relative path cannot
-   * break out of the task's working directory (for example by using '..').
   */
-  filePath?: string;
+  filePath: string;
   /**
    * @summary The file permission mode attribute in octal format.
    * @description This property applies only to files being downloaded to Linux compute nodes. It
@@ -1042,7 +1030,9 @@ export interface EnvironmentSetting {
 export interface AutoUserSpecification {
   /**
    * @summary The scope for the auto user
-   * @description The default value is task. Possible values include: 'Task', 'Pool'
+   * @description pool - specifies that the task runs as the common auto user account which is
+   * created on every node in a pool. task - specifies that the service should create a new user
+   * for the task. The default value is task. Possible values include: 'Task', 'Pool'
   */
   scope?: string;
   /**
@@ -1071,29 +1061,6 @@ export interface UserIdentity {
    * but not both.
   */
   autoUser?: AutoUserSpecification;
-}
-
-/**
- * @summary The container settings for a task.
-*/
-export interface TaskContainerSettings {
-  /**
-   * @summary Additional options to the container create command.
-   * @description These additional options are supplied as arguments to the "docker create"
-   * command, in addition to those controlled by the Batch Service.
-  */
-  containerRunOptions?: string;
-  /**
-   * @summary The image to use to create the container in which the task will run.
-   * @description This is the full image reference, as would be specified to "docker pull". If no
-   * tag is provided as part of the image name, the tag ":latest" is used as a default.
-  */
-  imageName: string;
-  /**
-   * @summary The private registry which contains the container image.
-   * @description This setting can be omitted if was already provided at pool creation.
-  */
-  registry?: ContainerRegistry;
 }
 
 /**
@@ -1147,14 +1114,6 @@ export interface StartTask {
    * scheduled on the node. The default is false.
   */
   waitForSuccess?: boolean;
-  /**
-   * @summary The settings for the container under which the start task runs.
-   * @description When this is specified, all directories recursively below the
-   * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the
-   * container, all task environment variables are mapped into the container, and the task command
-   * line is executed in the container.
-  */
-  containerSettings?: TaskContainerSettings;
 }
 
 /**
@@ -1193,6 +1152,13 @@ export interface CertificateReference {
   /**
    * @summary Which user accounts on the compute node should have access to the private data of the
    * certificate.
+   * @description Values are:
+   *
+   * starttask - The user account under which the start task is run.
+   * task - The accounts under which job tasks are run.
+   * remoteuser - The accounts under which users remotely access the node.
+   *
+   * You can specify more than one visibility in this collection. The default is all accounts.
   */
   visibility?: string[];
 }
@@ -1300,7 +1266,11 @@ export interface Pool extends ProxyResource {
   readonly creationTime?: Date;
   /**
    * @summary The current state of the pool.
-   * @description Possible values include: 'Succeeded', 'Deleting'
+   * @description Values are:
+   *
+   * Succeeded - The pool is available to run tasks subject to the availability of compute nodes.
+   * Deleting - The user has requested that the pool be deleted, but the delete operation has not
+   * yet completed. Possible values include: 'Succeeded', 'Deleting'
   */
   readonly provisioningState?: string;
   /**
@@ -1309,7 +1279,16 @@ export interface Pool extends ProxyResource {
   readonly provisioningStateTransitionTime?: Date;
   /**
    * @summary Whether the pool is resizing.
-   * @description Possible values include: 'Steady', 'Resizing', 'Stopping'
+   * @description Values are:
+   *
+   * Steady - The pool is not resizing. There are no changes to the number of nodes in the pool in
+   * progress. A pool enters this state when it is created and when no operations are being
+   * performed on the pool to change the number of dedicated nodes.
+   * Resizing - The pool is resizing; that is, compute nodes are being added to or removed from the
+   * pool.
+   * Stopping - The pool was resizing, but the user has requested that the resize be stopped, but
+   * the stop request has not yet been completed. Possible values include: 'Steady', 'Resizing',
+   * 'Stopping'
   */
   readonly allocationState?: string;
   /**
@@ -1507,16 +1486,6 @@ export interface CheckNameAvailabilityResult {
 export interface BatchAccountListResult extends Array<BatchAccount> {
   /**
    * The continuation token.
-  */
-  nextLink?: string;
-}
-
-/**
- * The result of performing list application packages.
-*/
-export interface ListApplicationPackagesResult extends Array<ApplicationPackage> {
-  /**
-   * The URL to get the next set of results.
   */
   nextLink?: string;
 }
