@@ -234,7 +234,7 @@ export interface EventSubscriptionFilter {
   subjectEndsWith?: string;
   /**
    * A list of applicable event types that need to be part of the event subscription. If it is
-   * desired to subscribe to all event types, set the IncludedEventTypes to null.
+   * desired to subscribe to all default event types, set the IncludedEventTypes to null.
    */
   includedEventTypes?: string[];
   /**

@@ -1587,8 +1587,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.filter.includedEventTypes] A list of
      * applicable event types that need to be part of the event subscription. If it
-     * is desired to subscribe to all event types, set the IncludedEventTypes to
-     * null.
+     * is desired to subscribe to all default event types, set the
+     * IncludedEventTypes to null.
      *
      * @param {boolean} [eventSubscriptionInfo.filter.isSubjectCaseSensitive]
      * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the
@@ -1683,8 +1683,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.filter.includedEventTypes] A list of
      * applicable event types that need to be part of the event subscription. If it
-     * is desired to subscribe to all event types, set the IncludedEventTypes to
-     * null.
+     * is desired to subscribe to all default event types, set the
+     * IncludedEventTypes to null.
      *
      * @param {boolean} [eventSubscriptionInfo.filter.isSubjectCaseSensitive]
      * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the
@@ -1876,8 +1876,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.filter.includedEventTypes]
      * A list of applicable event types that need to be part of the event
-     * subscription. If it is desired to subscribe to all event types, set the
-     * IncludedEventTypes to null.
+     * subscription. If it is desired to subscribe to all default event types, set
+     * the IncludedEventTypes to null.
      *
      * @param {boolean}
      * [eventSubscriptionUpdateParameters.filter.isSubjectCaseSensitive] Specifies
@@ -1974,8 +1974,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.filter.includedEventTypes]
      * A list of applicable event types that need to be part of the event
-     * subscription. If it is desired to subscribe to all event types, set the
-     * IncludedEventTypes to null.
+     * subscription. If it is desired to subscribe to all default event types, set
+     * the IncludedEventTypes to null.
      *
      * @param {boolean}
      * [eventSubscriptionUpdateParameters.filter.isSubjectCaseSensitive] Specifies
@@ -2993,8 +2993,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.filter.includedEventTypes] A list of
      * applicable event types that need to be part of the event subscription. If it
-     * is desired to subscribe to all event types, set the IncludedEventTypes to
-     * null.
+     * is desired to subscribe to all default event types, set the
+     * IncludedEventTypes to null.
      *
      * @param {boolean} [eventSubscriptionInfo.filter.isSubjectCaseSensitive]
      * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the
@@ -3089,8 +3089,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.filter.includedEventTypes] A list of
      * applicable event types that need to be part of the event subscription. If it
-     * is desired to subscribe to all event types, set the IncludedEventTypes to
-     * null.
+     * is desired to subscribe to all default event types, set the
+     * IncludedEventTypes to null.
      *
      * @param {boolean} [eventSubscriptionInfo.filter.isSubjectCaseSensitive]
      * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the
@@ -3282,8 +3282,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.filter.includedEventTypes]
      * A list of applicable event types that need to be part of the event
-     * subscription. If it is desired to subscribe to all event types, set the
-     * IncludedEventTypes to null.
+     * subscription. If it is desired to subscribe to all default event types, set
+     * the IncludedEventTypes to null.
      *
      * @param {boolean}
      * [eventSubscriptionUpdateParameters.filter.isSubjectCaseSensitive] Specifies
@@ -3380,8 +3380,8 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.filter.includedEventTypes]
      * A list of applicable event types that need to be part of the event
-     * subscription. If it is desired to subscribe to all event types, set the
-     * IncludedEventTypes to null.
+     * subscription. If it is desired to subscribe to all default event types, set
+     * the IncludedEventTypes to null.
      *
      * @param {boolean}
      * [eventSubscriptionUpdateParameters.filter.isSubjectCaseSensitive] Specifies
