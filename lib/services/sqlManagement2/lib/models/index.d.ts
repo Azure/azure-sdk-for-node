@@ -1573,6 +1573,17 @@ export interface ManagedInstance extends TrackedResource {
    * 'Redirect', 'Default'
    */
   proxyOverride?: string;
+  /**
+   * Id of the timezone. Allowed values are timezones supported by Windows.
+   * Winodws keeps details on supported timezones, including the id, in registry under
+   * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
+   * You can get those registry values via SQL Server by querying SELECT name AS timezone_id FROM
+   * sys.time_zone_info.
+   * List of Ids can also be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in
+   * PowerShell.
+   * An example of valid timezone id is "Pacific Standard Time" or "W. Europe Standard Time".
+   */
+  timezoneId?: string;
 }
 
 /**
@@ -1638,6 +1649,17 @@ export interface ManagedInstanceUpdate {
    * 'Redirect', 'Default'
    */
   proxyOverride?: string;
+  /**
+   * Id of the timezone. Allowed values are timezones supported by Windows.
+   * Winodws keeps details on supported timezones, including the id, in registry under
+   * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
+   * You can get those registry values via SQL Server by querying SELECT name AS timezone_id FROM
+   * sys.time_zone_info.
+   * List of Ids can also be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in
+   * PowerShell.
+   * An example of valid timezone id is "Pacific Standard Time" or "W. Europe Standard Time".
+   */
+  timezoneId?: string;
   /**
    * Resource tags.
    */
@@ -2129,6 +2151,48 @@ export interface SubscriptionUsage extends ProxyResource {
    * Unit of the metric.
    */
   readonly unit?: string;
+}
+
+/**
+ * An Azure SQL virtual cluster.
+ */
+export interface VirtualCluster extends TrackedResource {
+  /**
+   * Subnet resource ID for the virtual cluster.
+   */
+  readonly subnetId?: string;
+  /**
+   * If the service has different generations of hardware, for the same SKU, then that can be
+   * captured here.
+   */
+  family?: string;
+  /**
+   * List of resources in this virtual cluster.
+   */
+  readonly childResources?: string[];
+}
+
+/**
+ * An update request for an Azure SQL Database virtual cluster.
+ */
+export interface VirtualClusterUpdate {
+  /**
+   * Subnet resource ID for the virtual cluster.
+   */
+  readonly subnetId?: string;
+  /**
+   * If the service has different generations of hardware, for the same SKU, then that can be
+   * captured here.
+   */
+  family?: string;
+  /**
+   * List of resources in this virtual cluster.
+   */
+  readonly childResources?: string[];
+  /**
+   * Resource tags.
+   */
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -5112,6 +5176,16 @@ export interface SyncMemberListResult extends Array<SyncMember> {
  * A list of subscription usage metrics in a location.
 */
 export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
+  /**
+   * Link to retrieve next page of results.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * A list of virtual clusters.
+*/
+export interface VirtualClusterListResult extends Array<VirtualCluster> {
   /**
    * Link to retrieve next page of results.
   */
