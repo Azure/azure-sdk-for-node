@@ -201,11 +201,14 @@ export interface EventSubscriptionDestination {
 }
 
 /**
- * The Advanced Filter base class.
+ * This is the base type that represents an advanced filter. To configure an advanced filter, do
+ * not directly instantiate an object of this class. Instead, instantiate an object of a derived
+ * class such as BoolEqualsAdvancedFilter, NumberInAdvancedFilter, StringEqualsAdvancedFilter etc.
+ * depending on the type of the key based on which you want to filter.
  */
 export interface AdvancedFilter {
   /**
-   * The Key value
+   * The field/property in the event based on which you want to filter.
    */
   key?: string;
   /**
@@ -273,11 +276,11 @@ export interface DeadLetterDestination {
 }
 
 /**
- * NumberIn Advanced Filter
+ * NumberIn Advanced Filter.
  */
 export interface NumberInAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: number[];
 }
@@ -297,51 +300,51 @@ export interface StorageBlobDeadLetterDestination extends DeadLetterDestination 
 }
 
 /**
- * NumberNotIn Advanced Filter
+ * NumberNotIn Advanced Filter.
  */
 export interface NumberNotInAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: number[];
 }
 
 /**
- * NumberLessThan Advanced Filter
+ * NumberLessThan Advanced Filter.
  */
 export interface NumberLessThanAdvancedFilter extends AdvancedFilter {
   /**
-   * The filter value
+   * The filter value.
    */
   value?: number;
 }
 
 /**
- * NumberGreaterThan Advanced Filter
+ * NumberGreaterThan Advanced Filter.
  */
 export interface NumberGreaterThanAdvancedFilter extends AdvancedFilter {
   /**
-   * The filter value
+   * The filter value.
    */
   value?: number;
 }
 
 /**
- * NumberLessThanOrEquals Advanced Filter
+ * NumberLessThanOrEquals Advanced Filter.
  */
 export interface NumberLessThanOrEqualsAdvancedFilter extends AdvancedFilter {
   /**
-   * The filter value
+   * The filter value.
    */
   value?: number;
 }
 
 /**
- * NumberGreaterThanOrEquals Advanced Filter
+ * NumberGreaterThanOrEquals Advanced Filter.
  */
 export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter {
   /**
-   * The filter value
+   * The filter value.
    */
   value?: number;
 }
@@ -351,57 +354,57 @@ export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter 
  */
 export interface BoolEqualsAdvancedFilter extends AdvancedFilter {
   /**
-   * The boolean filter value
+   * The boolean filter value.
    */
   value?: boolean;
 }
 
 /**
- * StringIn Advanced Filter
+ * StringIn Advanced Filter.
  */
 export interface StringInAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: string[];
 }
 
 /**
- * StringNotIn Advanced Filter
+ * StringNotIn Advanced Filter.
  */
 export interface StringNotInAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: string[];
 }
 
 /**
- * StringBeginsWith Advanced Filter
+ * StringBeginsWith Advanced Filter.
  */
 export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: string[];
 }
 
 /**
- * StringEndsWith Advanced Filter
+ * StringEndsWith Advanced Filter.
  */
 export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: string[];
 }
 
 /**
- * StringContains Advanced Filter
+ * StringContains Advanced Filter.
  */
 export interface StringContainsAdvancedFilter extends AdvancedFilter {
   /**
-   * The set of filter values
+   * The set of filter values.
    */
   values?: string[];
 }

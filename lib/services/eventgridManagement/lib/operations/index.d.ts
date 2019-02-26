@@ -2141,7 +2141,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2153,7 +2153,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGlobalBySubscriptionWithHttpOperationResponse(options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listGlobalBySubscriptionWithHttpOperationResponse(options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary Get an aggregated list of all global event subscriptions under an
@@ -2168,7 +2168,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2197,9 +2197,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGlobalBySubscription(options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listGlobalBySubscription(options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listGlobalBySubscription(callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listGlobalBySubscription(options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listGlobalBySubscription(options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2216,7 +2216,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2228,7 +2228,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGlobalBySubscriptionForTopicTypeWithHttpOperationResponse(topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listGlobalBySubscriptionForTopicTypeWithHttpOperationResponse(topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all global event subscriptions for a topic type
@@ -2244,7 +2244,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2273,9 +2273,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGlobalBySubscriptionForTopicType(topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listGlobalBySubscriptionForTopicType(topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listGlobalBySubscriptionForTopicType(topicTypeName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listGlobalBySubscriptionForTopicType(topicTypeName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listGlobalBySubscriptionForTopicType(topicTypeName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2294,7 +2294,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2306,7 +2306,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGlobalByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listGlobalByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all global event subscriptions under an Azure subscription and
@@ -2324,7 +2324,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2353,9 +2353,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGlobalByResourceGroup(resourceGroupName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listGlobalByResourceGroup(resourceGroupName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listGlobalByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listGlobalByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listGlobalByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2376,7 +2376,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2388,7 +2388,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGlobalByResourceGroupForTopicTypeWithHttpOperationResponse(resourceGroupName: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listGlobalByResourceGroupForTopicTypeWithHttpOperationResponse(resourceGroupName: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all global event subscriptions under a resource group for a
@@ -2408,7 +2408,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2437,9 +2437,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGlobalByResourceGroupForTopicType(resourceGroupName: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listGlobalByResourceGroupForTopicType(resourceGroupName: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listGlobalByResourceGroupForTopicType(resourceGroupName: string, topicTypeName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listGlobalByResourceGroupForTopicType(resourceGroupName: string, topicTypeName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listGlobalByResourceGroupForTopicType(resourceGroupName: string, topicTypeName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2456,7 +2456,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2468,7 +2468,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRegionalBySubscriptionWithHttpOperationResponse(location: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listRegionalBySubscriptionWithHttpOperationResponse(location: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all regional event subscriptions under an Azure subscription
@@ -2484,7 +2484,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2513,9 +2513,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRegionalBySubscription(location: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listRegionalBySubscription(location: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listRegionalBySubscription(location: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listRegionalBySubscription(location: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listRegionalBySubscription(location: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2536,7 +2536,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2548,7 +2548,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRegionalByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listRegionalByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all regional event subscriptions under an Azure subscription
@@ -2568,7 +2568,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2597,9 +2597,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRegionalByResourceGroup(resourceGroupName: string, location: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listRegionalByResourceGroup(resourceGroupName: string, location: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listRegionalByResourceGroup(resourceGroupName: string, location: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listRegionalByResourceGroup(resourceGroupName: string, location: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listRegionalByResourceGroup(resourceGroupName: string, location: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2619,7 +2619,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2631,7 +2631,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRegionalBySubscriptionForTopicTypeWithHttpOperationResponse(location: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listRegionalBySubscriptionForTopicTypeWithHttpOperationResponse(location: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all regional event subscriptions under an Azure subscription
@@ -2650,7 +2650,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2679,9 +2679,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRegionalBySubscriptionForTopicType(location: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listRegionalBySubscriptionForTopicType(location: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listRegionalBySubscriptionForTopicType(location: string, topicTypeName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listRegionalBySubscriptionForTopicType(location: string, topicTypeName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listRegionalBySubscriptionForTopicType(location: string, topicTypeName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2704,7 +2704,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2716,7 +2716,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRegionalByResourceGroupForTopicTypeWithHttpOperationResponse(resourceGroupName: string, location: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listRegionalByResourceGroupForTopicTypeWithHttpOperationResponse(resourceGroupName: string, location: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all regional event subscriptions under an Azure subscription
@@ -2738,7 +2738,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2767,9 +2767,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRegionalByResourceGroupForTopicType(resourceGroupName: string, location: string, topicTypeName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listRegionalByResourceGroupForTopicType(resourceGroupName: string, location: string, topicTypeName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listRegionalByResourceGroupForTopicType(resourceGroupName: string, location: string, topicTypeName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listRegionalByResourceGroupForTopicType(resourceGroupName: string, location: string, topicTypeName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listRegionalByResourceGroupForTopicType(resourceGroupName: string, location: string, topicTypeName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2792,7 +2792,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2804,7 +2804,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceWithHttpOperationResponse(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listByResourceWithHttpOperationResponse(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all event subscriptions for a specific topic
@@ -2826,7 +2826,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2855,9 +2855,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResource(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listByResource(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listByResource(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listByResource(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listByResource(resourceGroupName: string, providerNamespace: string, resourceTypeName: string, resourceName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
@@ -2879,7 +2879,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2891,7 +2891,7 @@ export interface EventSubscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByDomainTopicWithHttpOperationResponse(resourceGroupName: string, domainName: string, topicName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
+    listByDomainTopicWithHttpOperationResponse(resourceGroupName: string, domainName: string, topicName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventSubscriptionsListResult>>;
 
     /**
      * @summary List all event subscriptions for a specific domain topic
@@ -2912,7 +2912,7 @@ export interface EventSubscriptions {
      *
      * @param {number} [options.top] The number of results to return.
      *
-     * @param {string} [options.lABEL] The label used to filter the results for
+     * @param {string} [options.label] The label used to filter the results for
      * event subscriptions list.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2941,9 +2941,9 @@ export interface EventSubscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByDomainTopic(resourceGroupName: string, domainName: string, topicName: string, options?: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
+    listByDomainTopic(resourceGroupName: string, domainName: string, topicName: string, options?: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventSubscriptionsListResult>;
     listByDomainTopic(resourceGroupName: string, domainName: string, topicName: string, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
-    listByDomainTopic(resourceGroupName: string, domainName: string, topicName: string, options: { filter? : string, top? : number, lABEL? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
+    listByDomainTopic(resourceGroupName: string, domainName: string, topicName: string, options: { filter? : string, top? : number, label? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventSubscriptionsListResult>): void;
 
 
     /**
