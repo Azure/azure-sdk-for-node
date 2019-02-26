@@ -316,8 +316,6 @@ export interface Applications {
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
-     * @param {string} parameters.objectType Polymorphic Discriminator
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -329,7 +327,7 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    createWithHttpOperationResponse(parameters: models.ApplicationCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Create a new application.
@@ -458,8 +456,6 @@ export interface Applications {
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
-     * @param {string} parameters.objectType Polymorphic Discriminator
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -487,9 +483,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    create(parameters: models.Application, callback: ServiceCallback<models.Application>): void;
-    create(parameters: models.Application, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(parameters: models.ApplicationCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    create(parameters: models.ApplicationCreateParameters, callback: ServiceCallback<models.Application>): void;
+    create(parameters: models.ApplicationCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -2746,8 +2742,6 @@ export interface ServicePrincipals {
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
      * your service principals. Not nullable.
      *
-     * @param {string} parameters.objectType Polymorphic Discriminator
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2759,7 +2753,7 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(parameters: models.ServicePrincipal, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    createWithHttpOperationResponse(parameters: models.ServicePrincipalCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
      * Creates a service principal in the directory.
@@ -2822,8 +2816,6 @@ export interface ServicePrincipals {
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
      * your service principals. Not nullable.
      *
-     * @param {string} parameters.objectType Polymorphic Discriminator
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2851,9 +2843,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(parameters: models.ServicePrincipal, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
-    create(parameters: models.ServicePrincipal, callback: ServiceCallback<models.ServicePrincipal>): void;
-    create(parameters: models.ServicePrincipal, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    create(parameters: models.ServicePrincipalCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    create(parameters: models.ServicePrincipalCreateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
+    create(parameters: models.ServicePrincipalCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**

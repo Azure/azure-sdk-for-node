@@ -314,39 +314,6 @@ export interface RequiredResourceAccess {
   [additionalPropertyName: string]: any;
 }
 
-export interface AppRole {
-  /**
-   * Unique role identifier inside the appRoles collection.
-  */
-  id?: string;
-  /**
-   * Specifies whether this app role definition can be assigned to users and groups by setting to
-   * 'User', or to other applications (that are accessing this application in daemon service
-   * scenarios) by setting to 'Application', or to both.
-  */
-  allowedMemberTypes?: string[];
-  /**
-   * Permission help text that appears in the admin app assignment and consent experiences.
-  */
-  description?: string;
-  /**
-   * Display name for the permission that appears in the admin consent and app assignment
-   * experiences.
-  */
-  displayName?: string;
-  /**
-   * When creating or updating a role definition, this must be set to true (which is the default).
-   * To delete a role, this must first be set to false. At that point, in a subsequent call, this
-   * role may be removed.
-  */
-  isEnabled?: boolean;
-  /**
-   * Specifies the value of the roles claim that the application should expect in the
-   * authentication and access tokens.
-  */
-  value?: string;
-}
-
 /**
  * Active Directory application information.
 */
@@ -488,6 +455,45 @@ export interface Application extends DirectoryObject {
    * The primary Web page.
   */
   wwwHomepage?: string;
+}
+
+/**
+ * Request parameters for creating a new application.
+*/
+export interface ApplicationCreateParameters extends Application {
+}
+
+export interface AppRole {
+  /**
+   * Unique role identifier inside the appRoles collection.
+  */
+  id?: string;
+  /**
+   * Specifies whether this app role definition can be assigned to users and groups by setting to
+   * 'User', or to other applications (that are accessing this application in daemon service
+   * scenarios) by setting to 'Application', or to both.
+  */
+  allowedMemberTypes?: string[];
+  /**
+   * Permission help text that appears in the admin app assignment and consent experiences.
+  */
+  description?: string;
+  /**
+   * Display name for the permission that appears in the admin consent and app assignment
+   * experiences.
+  */
+  displayName?: string;
+  /**
+   * When creating or updating a role definition, this must be set to true (which is the default).
+   * To delete a role, this must first be set to false. At that point, in a subsequent call, this
+   * role may be removed.
+  */
+  isEnabled?: boolean;
+  /**
+   * Specifies the value of the roles claim that the application should expect in the
+   * authentication and access tokens.
+  */
+  value?: string;
 }
 
 /**
@@ -730,6 +736,12 @@ export interface ServicePrincipal extends DirectoryObject {
    * Optional list of tags that you can apply to your service principals. Not nullable.
   */
   tags?: string[];
+}
+
+/**
+ * Request parameters for creating a new service principal.
+*/
+export interface ServicePrincipalCreateParameters extends ServicePrincipal {
 }
 
 /**
