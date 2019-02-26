@@ -56,6 +56,8 @@ export default class EventGridManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  domains: operations.Domains;
+  domainTopics: operations.DomainTopics;
   eventSubscriptions: operations.EventSubscriptions;
   operations: operations.Operations;
   topics: operations.Topics;
