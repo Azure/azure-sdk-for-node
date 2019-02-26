@@ -16,6 +16,181 @@ export {
 };
 
 /**
+ * By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input
+ * schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only
+ * supported type of InputSchemaMapping is 'JsonInputSchemaMapping'.
+ */
+export interface InputSchemaMapping {
+  /**
+   * Polymorphic Discriminator
+   */
+  inputSchemaMappingType: string;
+}
+
+/**
+ * Definition of a Resource
+ */
+export interface Resource extends BaseResource {
+  /**
+   * Fully qualified identifier of the resource
+   */
+  readonly id?: string;
+  /**
+   * Name of the resource
+   */
+  readonly name?: string;
+  /**
+   * Type of the resource
+   */
+  readonly type?: string;
+}
+
+/**
+ * This is used to express the source of an input schema mapping for a single target field in the
+ * Event Grid Event schema. This is currently used in the mappings for the 'id', 'topic' and
+ * 'eventtime' properties. This represents a field in the input event schema.
+ */
+export interface JsonField {
+  /**
+   * Name of a field in the input event schema that's to be used as the source of a mapping.
+   */
+  sourceField?: string;
+}
+
+/**
+ * This is used to express the source of an input schema mapping for a single target field
+ * in the Event Grid Event schema. This is currently used in the mappings for the 'subject',
+ * 'eventtype' and 'dataversion' properties. This represents a field in the input event schema
+ * along with a default value to be used, and at least one of these two properties should be
+ * provided.
+ */
+export interface JsonFieldWithDefault {
+  /**
+   * Name of a field in the input event schema that's to be used as the source of a mapping.
+   */
+  sourceField?: string;
+  /**
+   * The default value to be used for mapping when a SourceField is not provided or if there's no
+   * property with the specified name in the published JSON event payload.
+   */
+  defaultValue?: string;
+}
+
+/**
+ * This enables publishing to Event Grid using a custom input schema. This can be used to map
+ * properties from a custom input JSON schema to the Event Grid event schema.
+ */
+export interface JsonInputSchemaMapping extends InputSchemaMapping {
+  /**
+   * The mapping information for the Id property of the Event Grid Event.
+   */
+  id?: JsonField;
+  /**
+   * The mapping information for the Topic property of the Event Grid Event.
+   */
+  topic?: JsonField;
+  /**
+   * The mapping information for the EventTime property of the Event Grid Event.
+   */
+  eventTime?: JsonField;
+  /**
+   * The mapping information for the EventType property of the Event Grid Event.
+   */
+  eventType?: JsonFieldWithDefault;
+  /**
+   * The mapping information for the Subject property of the Event Grid Event.
+   */
+  subject?: JsonFieldWithDefault;
+  /**
+   * The mapping information for the DataVersion property of the Event Grid Event.
+   */
+  dataVersion?: JsonFieldWithDefault;
+}
+
+/**
+ * Definition of a Tracked Resource
+ */
+export interface TrackedResource extends Resource {
+  /**
+   * Location of the resource
+   */
+  location: string;
+  /**
+   * Tags of the resource
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * EventGrid Domain
+ */
+export interface Domain extends TrackedResource {
+  /**
+   * Provisioning state of the domain. Possible values include: 'Creating', 'Updating', 'Deleting',
+   * 'Succeeded', 'Canceled', 'Failed'
+   */
+  readonly provisioningState?: string;
+  /**
+   * Endpoint for the domain.
+   */
+  readonly endpoint?: string;
+  /**
+   * This determines the format that Event Grid should expect for incoming events published to the
+   * domain. Possible values include: 'EventGridSchema', 'CustomEventSchema', 'CloudEventV01Schema'
+   */
+  inputSchema?: string;
+  /**
+   * Information about the InputSchemaMapping which specified the info about mapping event payload.
+   */
+  inputSchemaMapping?: InputSchemaMapping;
+}
+
+/**
+ * Properties of the Domain update
+ */
+export interface DomainUpdateParameters {
+  /**
+   * Tags of the domains resource
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * Shared access keys of the Domain
+ */
+export interface DomainSharedAccessKeys {
+  /**
+   * Shared access key1 for the domain.
+   */
+  key1?: string;
+  /**
+   * Shared access key2 for the domain.
+   */
+  key2?: string;
+}
+
+/**
+ * Domain regenerate share access key request
+ */
+export interface DomainRegenerateKeyRequest {
+  /**
+   * Key name to regenerate key1 or key2
+   */
+  keyName: string;
+}
+
+/**
+ * Domain Topic
+ */
+export interface DomainTopic extends Resource {
+  /**
+   * Provisioning state of the domain topic. Possible values include: 'Creating', 'Updating',
+   * 'Deleting', 'Succeeded', 'Canceled', 'Failed'
+   */
+  provisioningState?: string;
+}
+
+/**
  * Information about the destination for an event subscription
  */
 export interface EventSubscriptionDestination {
@@ -23,6 +198,23 @@ export interface EventSubscriptionDestination {
    * Polymorphic Discriminator
    */
   endpointType: string;
+}
+
+/**
+ * This is the base type that represents an advanced filter. To configure an advanced filter, do
+ * not directly instantiate an object of this class. Instead, instantiate an object of a derived
+ * class such as BoolEqualsAdvancedFilter, NumberInAdvancedFilter, StringEqualsAdvancedFilter etc.
+ * depending on the type of the key based on which you want to filter.
+ */
+export interface AdvancedFilter {
+  /**
+   * The field/property in the event based on which you want to filter.
+   */
+  key?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  operatorType: string;
 }
 
 /**
@@ -41,9 +233,8 @@ export interface EventSubscriptionFilter {
    */
   subjectEndsWith?: string;
   /**
-   * A list of applicable event types that need to be part of the event subscription.
-   * If it is desired to subscribe to all event types, the string "all" needs to be specified as an
-   * element in this list.
+   * A list of applicable event types that need to be part of the event subscription. If it is
+   * desired to subscribe to all default event types, set the IncludedEventTypes to null.
    */
   includedEventTypes?: string[];
   /**
@@ -51,6 +242,10 @@ export interface EventSubscriptionFilter {
    * should be compared in a case sensitive manner.
    */
   isSubjectCaseSensitive?: boolean;
+  /**
+   * An array of advanced filters that are used for filtering event subscriptions.
+   */
+  advancedFilters?: AdvancedFilter[];
 }
 
 /**
@@ -81,21 +276,13 @@ export interface DeadLetterDestination {
 }
 
 /**
- * Definition of a Resource
+ * NumberIn Advanced Filter.
  */
-export interface Resource extends BaseResource {
+export interface NumberInAdvancedFilter extends AdvancedFilter {
   /**
-   * Fully qualified identifier of the resource
+   * The set of filter values.
    */
-  readonly id?: string;
-  /**
-   * Name of the resource
-   */
-  readonly name?: string;
-  /**
-   * Type of the resource
-   */
-  readonly type?: string;
+  values?: number[];
 }
 
 /**
@@ -103,15 +290,123 @@ export interface Resource extends BaseResource {
  */
 export interface StorageBlobDeadLetterDestination extends DeadLetterDestination {
   /**
-   * The Azure Resource ID of the storage account that is the destination of the deadletter events.
-   * For example:
-   * /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/microsoft.Storage/storageAccounts/{StorageAccountName}
+   * The Azure Resource ID of the storage account that is the destination of the deadletter events
    */
   resourceId?: string;
   /**
    * The name of the Storage blob container that is the destination of the deadletter events
    */
   blobContainerName?: string;
+}
+
+/**
+ * NumberNotIn Advanced Filter.
+ */
+export interface NumberNotInAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: number[];
+}
+
+/**
+ * NumberLessThan Advanced Filter.
+ */
+export interface NumberLessThanAdvancedFilter extends AdvancedFilter {
+  /**
+   * The filter value.
+   */
+  value?: number;
+}
+
+/**
+ * NumberGreaterThan Advanced Filter.
+ */
+export interface NumberGreaterThanAdvancedFilter extends AdvancedFilter {
+  /**
+   * The filter value.
+   */
+  value?: number;
+}
+
+/**
+ * NumberLessThanOrEquals Advanced Filter.
+ */
+export interface NumberLessThanOrEqualsAdvancedFilter extends AdvancedFilter {
+  /**
+   * The filter value.
+   */
+  value?: number;
+}
+
+/**
+ * NumberGreaterThanOrEquals Advanced Filter.
+ */
+export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter {
+  /**
+   * The filter value.
+   */
+  value?: number;
+}
+
+/**
+ * BoolEquals Advanced Filter.
+ */
+export interface BoolEqualsAdvancedFilter extends AdvancedFilter {
+  /**
+   * The boolean filter value.
+   */
+  value?: boolean;
+}
+
+/**
+ * StringIn Advanced Filter.
+ */
+export interface StringInAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: string[];
+}
+
+/**
+ * StringNotIn Advanced Filter.
+ */
+export interface StringNotInAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: string[];
+}
+
+/**
+ * StringBeginsWith Advanced Filter.
+ */
+export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: string[];
+}
+
+/**
+ * StringEndsWith Advanced Filter.
+ */
+export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: string[];
+}
+
+/**
+ * StringContains Advanced Filter.
+ */
+export interface StringContainsAdvancedFilter extends AdvancedFilter {
+  /**
+   * The set of filter values.
+   */
+  values?: string[];
 }
 
 /**
@@ -167,6 +462,17 @@ export interface HybridConnectionEventSubscriptionDestination extends EventSubsc
 }
 
 /**
+ * Information about the service bus destination for an event subscription
+ */
+export interface ServiceBusQueueEventSubscriptionDestination extends EventSubscriptionDestination {
+  /**
+   * The Azure Resource Id that represents the endpoint of the Service Bus destination of an event
+   * subscription.
+   */
+  resourceId?: string;
+}
+
+/**
  * Event Subscription
  */
 export interface EventSubscription extends Resource {
@@ -192,6 +498,15 @@ export interface EventSubscription extends Resource {
    * List of user defined labels.
    */
   labels?: string[];
+  /**
+   * Expiration time of the event subscription.
+   */
+  expirationTimeUtc?: Date;
+  /**
+   * The event delivery schema for the event subscription. Possible values include:
+   * 'EventGridSchema', 'CloudEventV01Schema', 'CustomInputSchema'
+   */
+  eventDeliverySchema?: string;
   /**
    * The retry policy for events. This can be used to configure maximum number of delivery attempts
    * and time to live for events.
@@ -220,6 +535,15 @@ export interface EventSubscriptionUpdateParameters {
    * List of user defined labels.
    */
   labels?: string[];
+  /**
+   * Information about the expiration time for the event subscription.
+   */
+  expirationTimeUtc?: Date;
+  /**
+   * The event delivery schema for the event subscription. Possible values include:
+   * 'EventGridSchema', 'CloudEventV01Schema', 'CustomInputSchema'
+   */
+  eventDeliverySchema?: string;
   /**
    * The retry policy for events. This can be used to configure maximum number of delivery attempts
    * and time to live for events.
@@ -286,20 +610,6 @@ export interface Operation {
 }
 
 /**
- * Definition of a Tracked Resource
- */
-export interface TrackedResource extends Resource {
-  /**
-   * Location of the resource
-   */
-  location: string;
-  /**
-   * Tags of the resource
-   */
-  tags?: { [propertyName: string]: string };
-}
-
-/**
  * EventGrid Topic
  */
 export interface Topic extends TrackedResource {
@@ -312,6 +622,17 @@ export interface Topic extends TrackedResource {
    * Endpoint for the topic.
    */
   readonly endpoint?: string;
+  /**
+   * This determines the format that Event Grid should expect for incoming events published to the
+   * topic. Possible values include: 'EventGridSchema', 'CustomEventSchema', 'CloudEventV01Schema'
+   */
+  inputSchema?: string;
+  /**
+   * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to
+   * map various properties of a source schema to various required properties of the EventGridEvent
+   * schema.
+   */
+  inputSchemaMapping?: InputSchemaMapping;
 }
 
 /**
@@ -364,6 +685,10 @@ export interface EventType extends Resource {
    * Url of the schema for this event type.
    */
   schemaUrl?: string;
+  /**
+   * IsInDefaultSet flag of the event type.
+   */
+  isInDefaultSet?: boolean;
 }
 
 /**
@@ -398,9 +723,33 @@ export interface TopicTypeInfo extends Resource {
 }
 
 /**
+ * Result of the List Domains operation
+ */
+export interface DomainsListResult extends Array<Domain> {
+  /**
+   * A link for the next page of domains
+   */
+  nextLink?: string;
+}
+
+/**
+ * Result of the List Domain Topics operation
+ */
+export interface DomainTopicsListResult extends Array<DomainTopic> {
+  /**
+   * A link for the next page of domain topics
+   */
+  nextLink?: string;
+}
+
+/**
  * Result of the List EventSubscriptions operation
  */
 export interface EventSubscriptionsListResult extends Array<EventSubscription> {
+  /**
+   * A link for the next page of event subscriptions
+   */
+  nextLink?: string;
 }
 
 /**
@@ -413,6 +762,10 @@ export interface OperationsListResult extends Array<Operation> {
  * Result of the List Topics operation
  */
 export interface TopicsListResult extends Array<Topic> {
+  /**
+   * A link for the next page of topics
+   */
+  nextLink?: string;
 }
 
 /**
