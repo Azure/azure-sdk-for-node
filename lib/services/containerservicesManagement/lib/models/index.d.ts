@@ -1043,6 +1043,10 @@ export interface ManagedCluster extends Resource {
    * Profile of Azure Active Directory configuration.
    */
   aadProfile?: ManagedClusterAADProfile;
+  /**
+   * Authorized IP Ranges to kubernetes API server.
+   */
+  apiServerAuthorizedIPRanges?: string[];
 }
 
 /**
