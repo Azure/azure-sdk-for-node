@@ -1116,9 +1116,9 @@ export interface UserIdentityProperties {
 }
 
 /**
- * Identity for the resource.
+ * Managed identity for the resource.
 */
-export interface MsiProperties {
+export interface IdentityProperties {
   /**
    * The principal ID of resource identity.
   */
@@ -1364,7 +1364,7 @@ export interface Task extends Resource {
   /**
    * Identity for the resource.
   */
-  identity?: MsiProperties;
+  identity?: IdentityProperties;
   /**
    * The provisioning state of the task. Possible values include: 'Creating', 'Updating',
    * 'Deleting', 'Succeeded', 'Failed', 'Canceled'
@@ -1553,7 +1553,7 @@ export interface TaskUpdateParameters {
   /**
    * Identity for the resource.
   */
-  identity?: MsiProperties;
+  identity?: IdentityProperties;
   /**
    * The current status of task. Possible values include: 'Disabled', 'Enabled'
   */
