@@ -79,15 +79,15 @@ export interface EntireDetectResponse {
   expectedValues: number[];
   /**
    * UpperMargins contain upper margin of each input point. UpperMargin is used to calculate
-   * upperBoundary, which equals to expectedValue + (100 - sensitivity)*upperMargin. Anomalies in
-   * response can be filtered by upperBoundary and lowerBoundary. By adjusting sensitivity value,
+   * upperBoundary, which equals to expectedValue + (100 - marginScale)*upperMargin. Anomalies in
+   * response can be filtered by upperBoundary and lowerBoundary. By adjusting marginScale value,
    * less significant anomalies can be filtered in client side. The index of the array is
    * consistent with the input series.
   */
   upperMargins: number[];
   /**
    * LowerMargins contain lower margin of each input point. LowerMargin is used to calculate
-   * lowerBoundary, which equals to expectedValue - (100 - sensitivity)*lowerMargin. Points between
+   * lowerBoundary, which equals to expectedValue - (100 - marginScale)*lowerMargin. Points between
    * the boundary can be marked as normal ones in client side. The index of the array is consistent
    * with the input series.
   */
@@ -129,14 +129,14 @@ export interface LastDetectResponse {
   expectedValue: number;
   /**
    * Upper margin of the latest point. UpperMargin is used to calculate upperBoundary, which equals
-   * to expectedValue + (100 - sensitivity)*upperMargin. If the value of latest point is between
+   * to expectedValue + (100 - marginScale)*upperMargin. If the value of latest point is between
    * upperBoundary and lowerBoundary, it should be treated as normal value. By adjusting
-   * sensitivity value, anomaly status of latest point can be changed.
+   * marginScale value, anomaly status of latest point can be changed.
   */
   upperMargin: number;
   /**
    * Lower margin of the latest point. LowerMargin is used to calculate lowerBoundary, which equals
-   * to expectedValue - (100 - sensitivity)*lowerMargin.
+   * to expectedValue - (100 - marginScale)*lowerMargin.
   */
   lowerMargin: number;
   /**
