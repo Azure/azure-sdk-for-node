@@ -5619,27 +5619,6 @@ export interface FileShareDataset extends Dataset {
 }
 
 /**
- * Azure Data Lake Store Cosmos Structured Stream dataset.
- */
-export interface AzureDataLakeStoreCosmosStructuredStreamDataset extends Dataset {
-  /**
-   * Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType
-   * string).
-   */
-  folderPath: any;
-  /**
-   * The name of the file in the Azure Data Lake Store. Type: string (or Expression with resultType
-   * string).
-   */
-  fileName: any;
-  /**
-   * Flag to indicate if this dataset is been generated from Compilation Activity. Type: boolean
-   * (or Expression with resultType boolean).
-   */
-  generatedFromActivity?: any;
-}
-
-/**
  * The Office365 account.
  */
 export interface Office365Dataset extends Dataset {
