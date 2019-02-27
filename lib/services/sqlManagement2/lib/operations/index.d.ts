@@ -28976,6 +28976,9 @@ export interface SensitivityLabels {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
+     * to include disabled recommendations or not.
+     *
      * @param {string} [options.skipToken]
      *
      * @param {string} [options.filter] An OData filter expression that filters
@@ -28990,7 +28993,7 @@ export interface SensitivityLabels {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
 
     /**
      * Gets the sensitivity labels of a given database
@@ -29004,6 +29007,9 @@ export interface SensitivityLabels {
      * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
+     * to include disabled recommendations or not.
      *
      * @param {string} [options.skipToken]
      *
@@ -29036,9 +29042,167 @@ export interface SensitivityLabels {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
     listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Enables sensitivity recommendations on a given column (recommendations are
+     * enabled by default on all columns)
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enableRecommendationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enables sensitivity recommendations on a given column (recommendations are
+     * enabled by default on all columns)
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    enableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Disables sensitivity recommendations on a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    disableRecommendationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Disables sensitivity recommendations on a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    disableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    disableRecommendation(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -35262,6 +35426,164 @@ export interface ManagedDatabaseSensitivityLabels {
 
 
     /**
+     * Disables sensitivity recommendations on a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    disableRecommendationWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Disables sensitivity recommendations on a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    disableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    disableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Enables sensitivity recommendations on a given column (recommendations are
+     * enabled by default on all columns)
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enableRecommendationWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enables sensitivity recommendations on a given column (recommendations are
+     * enabled by default on all columns)
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    enableRecommendation(resourceGroupName: string, managedInstanceName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets the sensitivity labels of a given database
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -35348,6 +35670,9 @@ export interface ManagedDatabaseSensitivityLabels {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
+     * to include disabled recommendations or not.
+     *
      * @param {string} [options.skipToken]
      *
      * @param {string} [options.filter] An OData filter expression that filters
@@ -35362,7 +35687,7 @@ export interface ManagedDatabaseSensitivityLabels {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
 
     /**
      * Gets the sensitivity labels of a given database
@@ -35376,6 +35701,9 @@ export interface ManagedDatabaseSensitivityLabels {
      * @param {string} databaseName The name of the database.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.includeDisabledRecommendations] Specifies whether
+     * to include disabled recommendations or not.
      *
      * @param {string} [options.skipToken]
      *
@@ -35408,9 +35736,9 @@ export interface ManagedDatabaseSensitivityLabels {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRecommendedByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listRecommendedByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
     listRecommendedByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listRecommendedByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listRecommendedByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { includeDisabledRecommendations? : boolean, skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
 
 
     /**

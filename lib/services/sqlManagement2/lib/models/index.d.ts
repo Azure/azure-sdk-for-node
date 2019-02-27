@@ -3573,6 +3573,12 @@ export interface SensitivityLabel extends ProxyResource {
    * The information type ID.
    */
   informationTypeId?: string;
+  /**
+   * Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only.
+   * Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or
+   * not.
+   */
+  readonly isDisabled?: boolean;
 }
 
 /**
