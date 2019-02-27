@@ -3027,7 +3027,7 @@ export interface PeerExpressRouteCircuitConnection extends SubResource {
   authResourceGuid?: string;
   /**
    * Provisioning state of the peer express route circuit connection resource. Possible values are:
-   * 'Succeded', 'Updating', 'Deleting', and 'Failed'.
+   * 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
   */
   readonly provisioningState?: string;
   /**
