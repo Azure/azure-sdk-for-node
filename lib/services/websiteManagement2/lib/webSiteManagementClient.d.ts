@@ -47,8 +47,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -1048,7 +1046,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * plan is for Spot instances; otherwise, <code>false</code>.
    *
    * @param {number} [validateRequest.capacity] Target capacity of the App
-   * Service plan (number of VM's).
+   * Service plan (number of VMs).
    *
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.
@@ -1099,7 +1097,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * plan is for Spot instances; otherwise, <code>false</code>.
    *
    * @param {number} [validateRequest.capacity] Target capacity of the App
-   * Service plan (number of VM's).
+   * Service plan (number of VMs).
    *
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.
@@ -1137,6 +1135,104 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   validate(resourceGroupName: string, validateRequest: models.ValidateRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateResponse>;
   validate(resourceGroupName: string, validateRequest: models.ValidateRequest, callback: ServiceCallback<models.ValidateResponse>): void;
   validate(resourceGroupName: string, validateRequest: models.ValidateRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateResponse>): void;
+
+
+  /**
+   * @summary Validate if the container settings are correct.
+   *
+   * Validate if the container settings are correct.
+   *
+   * @param {object} validateContainerSettingsRequest
+   *
+   * @param {string} [validateContainerSettingsRequest.baseUrl] Base URL of the
+   * container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.username] Username for to
+   * access the container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.password] Password for to
+   * access the container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.repository] Repository
+   * name (image name)
+   *
+   * @param {string} [validateContainerSettingsRequest.tag] Image tag
+   *
+   * @param {string} [validateContainerSettingsRequest.platform] Platform
+   * (windows or linux)
+   *
+   * @param {string} resourceGroupName Name of the resource group to which the
+   * resource belongs.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  validateContainerSettingsWithHttpOperationResponse(validateContainerSettingsRequest: models.ValidateContainerSettingsRequest, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+  /**
+   * @summary Validate if the container settings are correct.
+   *
+   * Validate if the container settings are correct.
+   *
+   * @param {object} validateContainerSettingsRequest
+   *
+   * @param {string} [validateContainerSettingsRequest.baseUrl] Base URL of the
+   * container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.username] Username for to
+   * access the container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.password] Password for to
+   * access the container registry
+   *
+   * @param {string} [validateContainerSettingsRequest.repository] Repository
+   * name (image name)
+   *
+   * @param {string} [validateContainerSettingsRequest.tag] Image tag
+   *
+   * @param {string} [validateContainerSettingsRequest.platform] Platform
+   * (windows or linux)
+   *
+   * @param {string} resourceGroupName Name of the resource group to which the
+   * resource belongs.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  validateContainerSettings(validateContainerSettingsRequest: models.ValidateContainerSettingsRequest, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+  validateContainerSettings(validateContainerSettingsRequest: models.ValidateContainerSettingsRequest, resourceGroupName: string, callback: ServiceCallback<any>): void;
+  validateContainerSettings(validateContainerSettingsRequest: models.ValidateContainerSettingsRequest, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
   /**
