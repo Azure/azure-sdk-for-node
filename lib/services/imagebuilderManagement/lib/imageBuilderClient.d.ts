@@ -21,7 +21,7 @@ export default class ImageBuilderClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *

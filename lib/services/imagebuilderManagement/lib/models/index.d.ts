@@ -54,8 +54,9 @@ export interface ImageTemplateDistributor {
 export interface ProvisioningError {
   /**
    * Error code of the provisioning failure. Possible values include: 'BadSourceType',
-   * 'BadPIRSource', 'BadISOSource', 'BadCustomizerType', 'NoCustomizerShellScript', 'ServerError',
-   * 'Other'
+   * 'BadPIRSource', 'BadISOSource', 'BadManagedImageSource', 'BadCustomizerType',
+   * 'UnsupportedCustomizerType', 'NoCustomizerScript', 'BadDistributeType',
+   * 'BadSharedImageDistribute', 'ServerError', 'Other'
   */
   provisioningErrorCode?: string;
   /**
@@ -74,13 +75,13 @@ export interface ImageTemplateLastRunStatus {
   */
   endTime?: Date;
   /**
-   * State of the last run. Possible values include: 'ready', 'running', 'succeeded',
-   * 'partiallySucceeded', 'failed'
+   * State of the last run. Possible values include: 'Running', 'Succeeded', 'PartiallySucceeded',
+   * 'Failed'
   */
   runState?: string;
   /**
-   * Sub state of the last run. Possible values include: 'queued', 'building', 'customizing',
-   * 'distributing'
+   * Sub-state of the last run. Possible values include: 'Queued', 'Building', 'Customizing',
+   * 'Distributing'
   */
   runSubState?: string;
   /**
@@ -150,8 +151,8 @@ export interface ImageTemplate extends Resource {
 */
 export interface ImageTemplateIsoSource extends ImageTemplateSource {
   /**
-   * URL to get the ISO image. This URL has to be accessible to the resource provider at the time
-   * of the imageTemplate creation.
+   * URI to get the ISO image. This URI has to be accessible to the resource provider at the time
+   * of the image template creation.
   */
   sourceURI: string;
   /**
@@ -188,7 +189,17 @@ export interface ImageTemplatePlatformImageSource extends ImageTemplateSource {
 }
 
 /**
- * Runs a shell script during the customization phase
+ * Describes an image source that is a managed image in customer subscription.
+*/
+export interface ImageTemplateManagedImageSource extends ImageTemplateSource {
+  /**
+   * ARM resource id of the managed image in customer subscription
+  */
+  imageId: string;
+}
+
+/**
+ * Runs a shell script during the customization phase (Linux)
 */
 export interface ImageTemplateShellCustomizer extends ImageTemplateCustomizer {
   /**
@@ -196,6 +207,38 @@ export interface ImageTemplateShellCustomizer extends ImageTemplateCustomizer {
    * Storage, etc
   */
   script?: string;
+}
+
+/**
+ * Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer
+ * windows-restart provisioner
+*/
+export interface ImageTemplateRestartCustomizer extends ImageTemplateCustomizer {
+  /**
+   * Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"']
+  */
+  restartCommand?: string;
+  /**
+   * Command to check if restart succeeded [Default: '']
+  */
+  restartCheckCommand?: string;
+  /**
+   * Restart timeout specified as a string of magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2
+   * hours) [Default: '5m']
+  */
+  restartTimeout?: string;
+}
+
+/**
+ * Runs the specified PowerSehll on the VM (Windows). Corresponds to Packer powershell provisioner
+*/
+export interface ImageTemplatePowerShellCustomizer extends ImageTemplateCustomizer {
+  /**
+   * The PowerShell script to be run for customizing. It can be a github link, SAS URI for Azure
+   * Storage, etc
+  */
+  script?: string;
+  validExitCodes?: number[];
 }
 
 /**
@@ -221,6 +264,12 @@ export interface ImageTemplateSharedImageDistributor extends ImageTemplateDistri
   */
   galleryImageId: string;
   replicationRegions: string[];
+}
+
+/**
+ * Distribute via VHD in a storage account.
+*/
+export interface ImageTemplateVhdDistributor extends ImageTemplateDistributor {
 }
 
 /**
@@ -259,6 +308,10 @@ export interface RunOutput extends SubResource {
    * The resource id of the artifact.
   */
   artifactId?: string;
+  /**
+   * The URL location of the artifact.
+  */
+  artifactLocation?: string;
   /**
    * Provisioning state of the resource. Possible values include: 'Creating', 'Succeeded',
    * 'Failed', 'Deleting'
@@ -337,11 +390,11 @@ export interface InnerError {
   /**
    * The exception type.
   */
-  exceptiontype?: string;
+  exceptionType?: string;
   /**
    * The internal error message or exception dump.
   */
-  errordetail?: string;
+  errorDetail?: string;
 }
 
 /**
@@ -355,7 +408,7 @@ export interface ApiError {
   /**
    * The Api inner error
   */
-  innererror?: InnerError;
+  innerError?: InnerError;
   /**
    * The error code.
   */

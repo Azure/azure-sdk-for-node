@@ -134,9 +134,10 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Create or Update a Virtual Machine Image Template
+     * Create or update a virtual machine image template
      *
-     * @param {object} parameters Parameters supplied to the Create Image Template
+     * @param {object} parameters Parameters supplied to the CreateImageTemplate
+     * operation
      *
      * @param {object} parameters.source Specifies the properties used to describe
      * the source image.
@@ -171,9 +172,10 @@ export interface VirtualMachineImageTemplate {
     createOrUpdateWithHttpOperationResponse(parameters: models.ImageTemplate, resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTemplate>>;
 
     /**
-     * Create or Update a Virtual Machine Image Template
+     * Create or update a virtual machine image template
      *
-     * @param {object} parameters Parameters supplied to the Create Image Template
+     * @param {object} parameters Parameters supplied to the CreateImageTemplate
+     * operation
      *
      * @param {object} parameters.source Specifies the properties used to describe
      * the source image.
@@ -296,7 +298,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Get Information about Virtual Machine Image Template
+     * Get information about a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -316,7 +318,7 @@ export interface VirtualMachineImageTemplate {
     getWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTemplate>>;
 
     /**
-     * Get Information about Virtual Machine Image Template
+     * Get information about a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -355,7 +357,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Delete Virtual Machine Image Template
+     * Delete a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -375,7 +377,7 @@ export interface VirtualMachineImageTemplate {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete Virtual Machine Image Template
+     * Delete a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -413,7 +415,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Create artifacts from a existing Image Template
+     * Create artifacts from a existing image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -433,7 +435,7 @@ export interface VirtualMachineImageTemplate {
     runWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create artifacts from a existing Image Template
+     * Create artifacts from a existing image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -530,7 +532,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Get the specified run output for the specified Template resource
+     * Get the specified run output for the specified image template resource
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -552,7 +554,7 @@ export interface VirtualMachineImageTemplate {
     getRunOutputWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, runOutputName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunOutput>>;
 
     /**
-     * Get the specified run output for the specified Template resource
+     * Get the specified run output for the specified image template resource
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -593,9 +595,10 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Create or Update a Virtual Machine Image Template
+     * Create or update a virtual machine image template
      *
-     * @param {object} parameters Parameters supplied to the Create Image Template
+     * @param {object} parameters Parameters supplied to the CreateImageTemplate
+     * operation
      *
      * @param {object} parameters.source Specifies the properties used to describe
      * the source image.
@@ -630,9 +633,10 @@ export interface VirtualMachineImageTemplate {
     beginCreateOrUpdateWithHttpOperationResponse(parameters: models.ImageTemplate, resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTemplate>>;
 
     /**
-     * Create or Update a Virtual Machine Image Template
+     * Create or update a virtual machine image template
      *
-     * @param {object} parameters Parameters supplied to the Create Image Template
+     * @param {object} parameters Parameters supplied to the CreateImageTemplate
+     * operation
      *
      * @param {object} parameters.source Specifies the properties used to describe
      * the source image.
@@ -686,7 +690,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Delete Virtual Machine Image Template
+     * Delete a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -706,7 +710,7 @@ export interface VirtualMachineImageTemplate {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete Virtual Machine Image Template
+     * Delete a virtual machine image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -744,7 +748,7 @@ export interface VirtualMachineImageTemplate {
 
 
     /**
-     * Create artifacts from a existing Image Template
+     * Create artifacts from a existing image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -764,7 +768,7 @@ export interface VirtualMachineImageTemplate {
     beginRunWithHttpOperationResponse(resourceGroupName: string, imageTemplateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create artifacts from a existing Image Template
+     * Create artifacts from a existing image template
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
