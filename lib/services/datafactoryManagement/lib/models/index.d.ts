@@ -8395,8 +8395,7 @@ export interface IntegrationRuntimeSsisCatalogInfo {
   catalogAdminPassword?: SecureString;
   /**
    * The pricing tier for the catalog database. The valid values could be found in
-   * https://azure.microsoft.com/en-us/pricing/details/sql-database/. Possible values include:
-   * 'Basic', 'Standard', 'Premium', 'PremiumRS'
+   * https://azure.microsoft.com/en-us/pricing/details/sql-database/
   */
   catalogPricingTier?: string;
   /**
