@@ -17,9 +17,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * Initializes a new instance of the TrainingAPIClient class.
    * @constructor
    *
-   * @param {string} apiKey -
+   * @param {string} apiKey - API key.
    *
-   * @param {string} endpoint - Supported Cognitive Services endpoints
+   * @param {string} endpoint - Supported Cognitive Services endpoints.
    *
    * @param {object} [options] - The parameter options
    *
@@ -351,7 +351,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {array} imageIds Image ids. Limited to 64 images.
    *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * @param {array} tagIds Tags to be deleted from the specified images. Limited
    * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
@@ -374,7 +374,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {array} imageIds Image ids. Limited to 64 images.
    *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * @param {array} tagIds Tags to be deleted from the specified images. Limited
    * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
@@ -874,7 +874,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Ids of the images to be deleted. Limted to 256
+   * @param {array} imageIds Ids of the images to be deleted. Limited to 256
    * images per batch.
    *
    * @param {object} [options] Optional Parameters.
@@ -895,7 +895,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Ids of the images to be deleted. Limted to 256
+   * @param {array} imageIds Ids of the images to be deleted. Limited to 256
    * images per batch.
    *
    * @param {object} [options] Optional Parameters.
@@ -1087,8 +1087,8 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch.
+   * @param {object} batch Image and tag ids. Limited to 64 images and 20 tags
+   * per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1115,8 +1115,8 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch.
+   * @param {object} batch Image and tag ids. Limited to 64 images and 20 tags
+   * per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1289,7 +1289,7 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
    * url of the image to be evaluated.
    *
-   * @param {string} [imageUrl.url]
+   * @param {string} [imageUrl.url] Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1316,7 +1316,7 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
    * url of the image to be evaluated.
    *
-   * @param {string} [imageUrl.url]
+   * @param {string} [imageUrl.url] Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2083,6 +2083,87 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
+   * @summary Queues project for training.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.trainingType] The type of training to use to train
+   * the project (default: Regular). Possible values include: 'Regular',
+   * 'Advanced'
+   *
+   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
+   * as budget for training (if applicable).
+   *
+   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
+   * and configuration does not change (default: false).
+   *
+   * @param {string} [options.notificationEmailAddress] The email address to send
+   * notification to when training finishes (default: null).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  trainProjectWithHttpOperationResponse(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
+
+  /**
+   * @summary Queues project for training.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.trainingType] The type of training to use to train
+   * the project (default: Regular). Possible values include: 'Regular',
+   * 'Advanced'
+   *
+   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
+   * as budget for training (if applicable).
+   *
+   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
+   * and configuration does not change (default: false).
+   *
+   * @param {string} [options.notificationEmailAddress] The email address to send
+   * notification to when training finishes (default: null).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Iteration} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link Iteration} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  trainProject(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
+  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
+  trainProject(projectId: string, options: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
+
+
+  /**
    * @summary Get iterations for the project.
    *
    * @param {uuid} projectId The project id.
@@ -2265,9 +2346,6 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {string} [updatedIteration.name] Gets or sets the name of the
    * iteration.
    *
-   * @param {boolean} [updatedIteration.isDefault] Gets or sets a value
-   * indicating whether the iteration is the default iteration for the project.
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2292,9 +2370,6 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {string} [updatedIteration.name] Gets or sets the name of the
    * iteration.
-   *
-   * @param {boolean} [updatedIteration.isDefault] Gets or sets a value
-   * indicating whether the iteration is the default iteration for the project.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2329,9 +2404,13 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Queues project for training.
+   * @summary Publish a specific iteration.
    *
    * @param {uuid} projectId The project id.
+   *
+   * @param {uuid} iterationId The iteration id.
+   *
+   * @param {string} name The updated iteration name.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2340,16 +2419,20 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  trainProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
+  publishIterationWithHttpOperationResponse(projectId: string, iterationId: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
 
   /**
-   * @summary Queues project for training.
+   * @summary Publish a specific iteration.
    *
    * @param {uuid} projectId The project id.
+   *
+   * @param {uuid} iterationId The iteration id.
+   *
+   * @param {string} name The updated iteration name.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2363,7 +2446,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {Iteration} - The deserialized result object.
+   *                      @resolve {Boolean} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -2371,16 +2454,73 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link Iteration} for more information.
+   *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  trainProject(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
-  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
-  trainProject(projectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
+  publishIteration(projectId: string, iterationId: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
+  publishIteration(projectId: string, iterationId: string, name: string, callback: ServiceCallback<boolean>): void;
+  publishIteration(projectId: string, iterationId: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+
+
+  /**
+   * @summary Unpublish a specific iteration.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {uuid} iterationId The iteration id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  unpublishIterationWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
+
+  /**
+   * @summary Unpublish a specific iteration.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {uuid} iterationId The iteration id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Boolean} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  unpublishIteration(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
+  unpublishIteration(projectId: string, iterationId: string, callback: ServiceCallback<boolean>): void;
+  unpublishIteration(projectId: string, iterationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
 
 
   /**
@@ -2454,7 +2594,7 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform. Possible
-   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12'
+   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12', 'ARM'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2480,7 +2620,7 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform. Possible
-   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12'
+   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12', 'ARM'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
