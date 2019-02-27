@@ -3377,8 +3377,8 @@ export interface ServerDnsAliasAcquisition {
  */
 export interface ServerSecurityAlertPolicy extends ProxyResource {
   /**
-   * Specifies the state of the policy, whether it is enabled or disabled. Possible values include:
-   * 'New', 'Enabled', 'Disabled'
+   * Specifies the state of the policy, whether it is enabled or disabled or a policy has not been
+   * applied yet on the specific database. Possible values include: 'New', 'Enabled', 'Disabled'
    */
   state: string;
   /**
@@ -3476,8 +3476,8 @@ export interface CreateDatabaseRestorePointDefinition {
  */
 export interface ManagedDatabaseSecurityAlertPolicy extends ProxyResource {
   /**
-   * Specifies the state of the policy, whether it is enabled or disabled. Possible values include:
-   * 'New', 'Enabled', 'Disabled'
+   * Specifies the state of the policy, whether it is enabled or disabled or a policy has not been
+   * applied yet on the specific database. Possible values include: 'New', 'Enabled', 'Disabled'
    */
   state: string;
   /**
@@ -3517,8 +3517,8 @@ export interface ManagedDatabaseSecurityAlertPolicy extends ProxyResource {
  */
 export interface ManagedServerSecurityAlertPolicy extends ProxyResource {
   /**
-   * Specifies the state of the policy, whether it is enabled or disabled. Possible values include:
-   * 'New', 'Enabled', 'Disabled'
+   * Specifies the state of the policy, whether it is enabled or disabled or a policy has not been
+   * applied yet on the specific database. Possible values include: 'New', 'Enabled', 'Disabled'
    */
   state: string;
   /**
@@ -5273,6 +5273,17 @@ export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
 }
 
 /**
+ * A list of the server's security alert policies.
+*/
+export interface LogicalServerSecurityAlertPolicyListResult extends
+Array<ServerSecurityAlertPolicy> {
+  /**
+   * Link to retrieve next page of results.
+  */
+  readonly nextLink?: string;
+}
+
+/**
  * A list of restorable dropped managed databases.
 */
 export interface RestorableDroppedManagedDatabaseListResult extends
@@ -5287,6 +5298,28 @@ Array<RestorableDroppedManagedDatabase> {
  * A list of long term retention backups.
 */
 export interface RestorePointListResult extends Array<RestorePoint> {
+  /**
+   * Link to retrieve next page of results.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * A list of the managed database's security alert policies.
+*/
+export interface ManagedDatabaseSecurityAlertPolicyListResult extends
+Array<ManagedDatabaseSecurityAlertPolicy> {
+  /**
+   * Link to retrieve next page of results.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * A list of the managed Server's security alert policies.
+*/
+export interface ManagedServerSecurityAlertPolicyListResult extends
+Array<ManagedServerSecurityAlertPolicy> {
   /**
    * Link to retrieve next page of results.
   */
