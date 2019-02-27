@@ -20,7 +20,7 @@ npm install azure-arm-eventgrid
 
 ### How to use
 
-#### Authentication, client creation, and get eventSubscriptions as an example.
+#### Authentication, client creation, and get domains as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -28,10 +28,10 @@ const EventGridManagementClient = require("azure-arm-eventgrid");
 msRestAzure.interactiveLogin().then((creds) => {
   const subscriptionId = "<Subscription_Id>";
   const client = new EventGridManagementClient(creds, subscriptionId);
-  const scope = "testscope";
-  const eventSubscriptionName = "testeventSubscriptionName";
+  const resourceGroupName = "testresourceGroupName";
+  const domainName = "testdomainName";
 
-  return client.eventSubscriptions.get(scope, eventSubscriptionName).then((result) => {
+  return client.domains.get(resourceGroupName, domainName).then((result) => {
     console.log("The result is:");
     console.log(result);
   });

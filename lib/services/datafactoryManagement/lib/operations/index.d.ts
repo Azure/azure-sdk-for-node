@@ -206,7 +206,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Rrepository name.
+     * Repository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -249,7 +249,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Rrepository name.
+     * Repository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -365,7 +365,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     * @param {string} factory.repoConfiguration.repositoryName Repository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -413,7 +413,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     * @param {string} factory.repoConfiguration.repositoryName Repository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -749,6 +749,103 @@ export interface Factories {
 
 
     /**
+     * Get Data Plane access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} policy Data Plane user access policy definition.
+     *
+     * @param {string} [policy.permissions] The string with permissions for Data
+     * Plane access. Currently only 'r' is supported which grants read only access.
+     *
+     * @param {string} [policy.accessResourcePath] The resource path to get access
+     * relative to factory. Currently only empty string is supported which
+     * corresponds to the factory resource.
+     *
+     * @param {string} [policy.profileName] The name of the profile. Currently only
+     * the default is supported. The default value is DefaultProfile.
+     *
+     * @param {string} [policy.startTime] Start time for the token. If not
+     * specified the current time will be used.
+     *
+     * @param {string} [policy.expireTime] Expiration time for the token. Maximum
+     * duration for the token is eight hours and by default the token will expire
+     * in eight hours.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessPolicyResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getDataPlaneAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessPolicyResponse>>;
+
+    /**
+     * Get Data Plane access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} policy Data Plane user access policy definition.
+     *
+     * @param {string} [policy.permissions] The string with permissions for Data
+     * Plane access. Currently only 'r' is supported which grants read only access.
+     *
+     * @param {string} [policy.accessResourcePath] The resource path to get access
+     * relative to factory. Currently only empty string is supported which
+     * corresponds to the factory resource.
+     *
+     * @param {string} [policy.profileName] The name of the profile. Currently only
+     * the default is supported. The default value is DefaultProfile.
+     *
+     * @param {string} [policy.startTime] Start time for the token. If not
+     * specified the current time will be used.
+     *
+     * @param {string} [policy.expireTime] Expiration time for the token. Maximum
+     * duration for the token is eight hours and by default the token will expire
+     * in eight hours.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessPolicyResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessPolicyResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessPolicyResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessPolicyResponse>;
+    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, callback: ServiceCallback<models.AccessPolicyResponse>): void;
+    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessPolicyResponse>): void;
+
+
+    /**
      * Lists factories under the specified subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -860,6 +957,83 @@ export interface Factories {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+}
+
+/**
+ * @class
+ * ExposureControl
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface ExposureControl {
+
+
+    /**
+     * Get exposure control feature for specific location.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} exposureControlRequest The exposure control request.
+     *
+     * @param {string} [exposureControlRequest.featureName] The feature name.
+     *
+     * @param {string} [exposureControlRequest.featureType] The feature type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExposureControlResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getFeatureValueWithHttpOperationResponse(locationId: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExposureControlResponse>>;
+
+    /**
+     * Get exposure control feature for specific location.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} exposureControlRequest The exposure control request.
+     *
+     * @param {string} [exposureControlRequest.featureName] The feature name.
+     *
+     * @param {string} [exposureControlRequest.featureType] The feature type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExposureControlResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExposureControlResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExposureControlResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExposureControlResponse>;
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, callback: ServiceCallback<models.ExposureControlResponse>): void;
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExposureControlResponse>): void;
 }
 
 /**
@@ -1780,7 +1954,7 @@ export interface IntegrationRuntimes {
 
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availably.
+     * Upgrade self-hosted integration runtime to latest version if availability.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1802,7 +1976,7 @@ export interface IntegrationRuntimes {
     upgradeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availably.
+     * Upgrade self-hosted integration runtime to latest version if availability.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2195,6 +2369,219 @@ export interface IntegrationRuntimes {
     listByFactoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
     listByFactoryNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
     listByFactoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+}
+
+/**
+ * @class
+ * IntegrationRuntimeObjectMetadata
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface IntegrationRuntimeObjectMetadata {
+
+
+    /**
+     * Refresh a SSIS integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SsisObjectMetadataStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    refreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataStatusResponse>>;
+
+    /**
+     * Refresh a SSIS integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SsisObjectMetadataStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SsisObjectMetadataStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataStatusResponse>;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
+
+
+    /**
+     * Get a SSIS integration runtime object metadata by specified path. The return
+     * is pageable metadata list.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.getMetadataRequest] The parameters for getting a
+     * SSIS object metadata.
+     *
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SsisObjectMetadataListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataListResponse>>;
+
+    /**
+     * Get a SSIS integration runtime object metadata by specified path. The return
+     * is pageable metadata list.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.getMetadataRequest] The parameters for getting a
+     * SSIS object metadata.
+     *
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SsisObjectMetadataListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SsisObjectMetadataListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataListResponse>;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataListResponse>): void;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataListResponse>): void;
+
+
+    /**
+     * Refresh a SSIS integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SsisObjectMetadataStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRefreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataStatusResponse>>;
+
+    /**
+     * Refresh a SSIS integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SsisObjectMetadataStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SsisObjectMetadataStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataStatusResponse>;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
 }
 
 /**
@@ -2956,6 +3343,10 @@ export interface Datasets {
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
      *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
+     *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
      *
@@ -3013,6 +3404,10 @@ export interface Datasets {
      * @param {object} [dataset.properties.structure] Columns that define the
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
+     *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
      *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
@@ -3598,8 +3993,15 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the the specified run
-     * will be used to create a new run.
+     * identifier. If run ID is specified the parameters of the specified run will
+     * be used to create a new run.
+     *
+     * @param {boolean} [options.isRecovery] Recovery mode flag. If recovery mode
+     * is set to true, the specified referenced pipeline run and the new run will
+     * be grouped under the same groupId.
+     *
+     * @param {string} [options.startActivityName] In recovery mode, the rerun will
+     * start from this activity. If not specified, all activities will run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -3613,7 +4015,7 @@ export interface Pipelines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
+    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
 
     /**
      * Creates a run of a pipeline.
@@ -3627,8 +4029,15 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the the specified run
-     * will be used to create a new run.
+     * identifier. If run ID is specified the parameters of the specified run will
+     * be used to create a new run.
+     *
+     * @param {boolean} [options.isRecovery] Recovery mode flag. If recovery mode
+     * is set to true, the specified referenced pipeline run and the new run will
+     * be grouped under the same groupId.
+     *
+     * @param {string} [options.startActivityName] In recovery mode, the rerun will
+     * start from this activity. If not specified, all activities will run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -3658,9 +4067,9 @@ export interface Pipelines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
     createRun(resourceGroupName: string, factoryName: string, pipelineName: string, callback: ServiceCallback<models.CreateRunResponse>): void;
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { referencePipelineRunId? : string, isRecovery? : boolean, startActivityName? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
 
 
     /**
