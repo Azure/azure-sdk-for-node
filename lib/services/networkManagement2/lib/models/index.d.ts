@@ -3291,6 +3291,10 @@ export interface ExpressRouteCircuit extends Resource {
   */
   gatewayManagerEtag?: string;
   /**
+   * Flag to enable Global Reach on the circuit.
+  */
+  allowGlobalReach?: boolean;
+  /**
    * Flag denoting Global reach status.
   */
   globalReachEnabled?: boolean;
