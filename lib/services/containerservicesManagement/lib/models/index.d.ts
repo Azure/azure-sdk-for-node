@@ -925,7 +925,8 @@ export interface ContainerServiceNetworkProfile {
    */
   networkPlugin?: string;
   /**
-   * Network policy used for building Kubernetes network. Possible values include: 'calico'
+   * Network policy used for building Kubernetes network. Possible values include: 'calico',
+   * 'azure'
    */
   networkPolicy?: string;
   /**
@@ -1043,6 +1044,10 @@ export interface ManagedCluster extends Resource {
    * Profile of Azure Active Directory configuration.
    */
   aadProfile?: ManagedClusterAADProfile;
+  /**
+   * Authorized IP Ranges to kubernetes API server.
+   */
+  apiServerAuthorizedIPRanges?: string[];
 }
 
 /**

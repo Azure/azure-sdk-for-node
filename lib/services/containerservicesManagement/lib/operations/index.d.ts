@@ -2992,7 +2992,8 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico'
+     * used for building Kubernetes network. Possible values include: 'calico',
+     * 'azure'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -3024,6 +3025,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3103,7 +3107,8 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico'
+     * used for building Kubernetes network. Possible values include: 'calico',
+     * 'azure'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -3135,6 +3140,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3536,7 +3544,8 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico'
+     * used for building Kubernetes network. Possible values include: 'calico',
+     * 'azure'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -3568,6 +3577,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3647,7 +3659,8 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico'
+     * used for building Kubernetes network. Possible values include: 'calico',
+     * 'azure'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -3679,6 +3692,9 @@ export interface ManagedClusters {
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
+     *
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
+     * to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
