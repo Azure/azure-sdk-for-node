@@ -345,6 +345,13 @@ export interface IotHubResource {
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties.events]
      *
+     * @param {object} [iotHubDescription.properties.deviceStreams] The device
+     * streams properties of iothub.
+     *
+     * @param {array}
+     * [iotHubDescription.properties.deviceStreams.streamingEndpoints] List of
+     * Device Streams Endpoints.
+     *
      * @param {string} [iotHubDescription.properties.features] The capabilities and
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
@@ -519,6 +526,13 @@ export interface IotHubResource {
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties.events]
+     *
+     * @param {object} [iotHubDescription.properties.deviceStreams] The device
+     * streams properties of iothub.
+     *
+     * @param {array}
+     * [iotHubDescription.properties.deviceStreams.streamingEndpoints] List of
+     * Device Streams Endpoints.
      *
      * @param {string} [iotHubDescription.properties.features] The capabilities and
      * features enabled for the IoT hub. Possible values include: 'None',
@@ -1619,6 +1633,16 @@ export interface IotHubResource {
      *
      * @param {object} [input.message.systemProperties] System properties
      *
+     * @param {object} [input.twin] Routing Twin Reference
+     *
+     * @param {object} [input.twin.tags] Twin Tags
+     *
+     * @param {object} [input.twin.properties]
+     *
+     * @param {object} [input.twin.properties.desired] Twin desired properties
+     *
+     * @param {object} [input.twin.properties.reported] Twin desired properties
+     *
      * @param {string} iotHubName IotHub to be tested
      *
      * @param {string} resourceGroupName resource group which Iot Hub belongs to
@@ -1654,6 +1678,16 @@ export interface IotHubResource {
      * @param {object} [input.message.appProperties] App properties
      *
      * @param {object} [input.message.systemProperties] System properties
+     *
+     * @param {object} [input.twin] Routing Twin Reference
+     *
+     * @param {object} [input.twin.tags] Twin Tags
+     *
+     * @param {object} [input.twin.properties]
+     *
+     * @param {object} [input.twin.properties.desired] Twin desired properties
+     *
+     * @param {object} [input.twin.properties.reported] Twin desired properties
      *
      * @param {string} iotHubName IotHub to be tested
      *
@@ -1729,6 +1763,16 @@ export interface IotHubResource {
      * @param {boolean} input.route.isEnabled Used to specify whether a route is
      * enabled.
      *
+     * @param {object} [input.twin] Routing Twin Reference
+     *
+     * @param {object} [input.twin.tags] Twin Tags
+     *
+     * @param {object} [input.twin.properties]
+     *
+     * @param {object} [input.twin.properties.desired] Twin desired properties
+     *
+     * @param {object} [input.twin.properties.reported] Twin desired properties
+     *
      * @param {string} iotHubName IotHub to be tested
      *
      * @param {string} resourceGroupName resource group which Iot Hub belongs to
@@ -1783,6 +1827,16 @@ export interface IotHubResource {
      *
      * @param {boolean} input.route.isEnabled Used to specify whether a route is
      * enabled.
+     *
+     * @param {object} [input.twin] Routing Twin Reference
+     *
+     * @param {object} [input.twin.tags] Twin Tags
+     *
+     * @param {object} [input.twin.properties]
+     *
+     * @param {object} [input.twin.properties.desired] Twin desired properties
+     *
+     * @param {object} [input.twin.properties.reported] Twin desired properties
      *
      * @param {string} iotHubName IotHub to be tested
      *
@@ -2291,6 +2345,13 @@ export interface IotHubResource {
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties.events]
      *
+     * @param {object} [iotHubDescription.properties.deviceStreams] The device
+     * streams properties of iothub.
+     *
+     * @param {array}
+     * [iotHubDescription.properties.deviceStreams.streamingEndpoints] List of
+     * Device Streams Endpoints.
+     *
      * @param {string} [iotHubDescription.properties.features] The capabilities and
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
@@ -2465,6 +2526,13 @@ export interface IotHubResource {
      *
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties.events]
+     *
+     * @param {object} [iotHubDescription.properties.deviceStreams] The device
+     * streams properties of iothub.
+     *
+     * @param {array}
+     * [iotHubDescription.properties.deviceStreams.streamingEndpoints] List of
+     * Device Streams Endpoints.
      *
      * @param {string} [iotHubDescription.properties.features] The capabilities and
      * features enabled for the IoT hub. Possible values include: 'None',
