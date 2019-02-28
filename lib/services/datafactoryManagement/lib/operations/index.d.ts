@@ -665,6 +665,65 @@ export interface Factories {
 
 
     /**
+     * Upgrade preview version factory to G.A. version.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Factory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    upgradeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+
+    /**
+     * Upgrade preview version factory to G.A. version.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Factory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Factory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Factory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    upgrade(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    upgrade(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.Factory>): void;
+    upgrade(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+
+
+    /**
      * Get GitHub Access Token.
      *
      * @param {string} resourceGroupName The resource group name.
