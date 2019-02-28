@@ -1276,7 +1276,7 @@ export interface ComponentCurrentBillingFeatures {
      * specified to update billing features for an Application Insights component.
      *
      * @param {object} [billingFeaturesProperties.dataVolumeCap] An Application
-     * Insights component daily data volumne cap
+     * Insights component daily data volume cap
      *
      * @param {number} [billingFeaturesProperties.dataVolumeCap.cap] Daily data
      * volume cap in GB.
@@ -1321,7 +1321,7 @@ export interface ComponentCurrentBillingFeatures {
      * specified to update billing features for an Application Insights component.
      *
      * @param {object} [billingFeaturesProperties.dataVolumeCap] An Application
-     * Insights component daily data volumne cap
+     * Insights component daily data volume cap
      *
      * @param {number} [billingFeaturesProperties.dataVolumeCap.cap] Daily data
      * volume cap in GB.
@@ -1457,7 +1457,7 @@ export interface ComponentFeatureCapabilities {
 
 
     /**
-     * Returns feature capabilites of the application insights component.
+     * Returns feature capabilities of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1478,7 +1478,7 @@ export interface ComponentFeatureCapabilities {
     getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFeatureCapabilities>>;
 
     /**
-     * Returns feature capabilites of the application insights component.
+     * Returns feature capabilities of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1775,7 +1775,7 @@ export interface ProactiveDetectionConfigurations {
      * The rule description
      *
      * @param {string} [proactiveDetectionProperties.ruleDefinitions.helpUrl] URL
-     * which displays aditional info about the proactive detection rule
+     * which displays additional info about the proactive detection rule
      *
      * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isHidden] A
      * flag indicating whether the rule is hidden (from the UI)
@@ -1849,7 +1849,7 @@ export interface ProactiveDetectionConfigurations {
      * The rule description
      *
      * @param {string} [proactiveDetectionProperties.ruleDefinitions.helpUrl] URL
-     * which displays aditional info about the proactive detection rule
+     * which displays additional info about the proactive detection rule
      *
      * @param {boolean} [proactiveDetectionProperties.ruleDefinitions.isHidden] A
      * flag indicating whether the rule is hidden (from the UI)
@@ -2694,7 +2694,7 @@ export interface WorkItemConfigurations {
      * connector id
      *
      * @param {string} [workItemConfigurationProperties.connectorDataConfiguration]
-     * Serialized JSON object for detaile d properties
+     * Serialized JSON object for detailed properties
      *
      * @param {boolean} [workItemConfigurationProperties.validateOnly] Boolean
      * indicating validate only
@@ -2731,7 +2731,7 @@ export interface WorkItemConfigurations {
      * connector id
      *
      * @param {string} [workItemConfigurationProperties.connectorDataConfiguration]
-     * Serialized JSON object for detaile d properties
+     * Serialized JSON object for detailed properties
      *
      * @param {boolean} [workItemConfigurationProperties.validateOnly] Boolean
      * indicating validate only
@@ -2833,7 +2833,7 @@ export interface WorkItemConfigurations {
 
 
     /**
-     * Delete an workitem configuration of an Application Insights component.
+     * Delete a work item configuration of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2858,7 +2858,7 @@ export interface WorkItemConfigurations {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workItemConfigId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * Delete an workitem configuration of an Application Insights component.
+     * Delete a work item configuration of an Application Insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3883,7 +3883,7 @@ export interface WebTests {
 
 
     /**
-     * Get all Application Insights web test alerts definitioned within a
+     * Get all Application Insights web test alerts definitions within a
      * subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -3900,7 +3900,7 @@ export interface WebTests {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
 
     /**
-     * Get all Application Insights web test alerts definitioned within a
+     * Get all Application Insights web test alerts definitions within a
      * subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -4056,7 +4056,7 @@ export interface WebTests {
 
 
     /**
-     * Get all Application Insights web test alerts definitioned within a
+     * Get all Application Insights web test alerts definitions within a
      * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -4076,7 +4076,7 @@ export interface WebTests {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
 
     /**
-     * Get all Application Insights web test alerts definitioned within a
+     * Get all Application Insights web test alerts definitions within a
      * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
