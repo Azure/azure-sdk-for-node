@@ -193,52 +193,6 @@ export interface SecurityRule extends SubResource {
 }
 
 /**
- * Identifies the service being brought into the virtual network.
- */
-export interface EndpointService {
-  /**
-   * A unique identifier of the service being referenced by the interface endpoint.
-   */
-  id?: string;
-}
-
-/**
- * Interface endpoint resource.
- */
-export interface InterfaceEndpoint extends Resource {
-  /**
-   * A first-party service's FQDN that is mapped to the private IP allocated via this interface
-   * endpoint.
-   */
-  fqdn?: string;
-  /**
-   * A reference to the service being brought into the virtual network.
-   */
-  endpointService?: EndpointService;
-  /**
-   * The ID of the subnet from which the private IP will be allocated.
-   */
-  subnet?: Subnet;
-  /**
-   * Gets an array of references to the network interfaces created for this interface endpoint.
-   */
-  readonly networkInterfaces?: NetworkInterface[];
-  /**
-   * A read-only property that identifies who created this interface endpoint.
-   */
-  readonly owner?: string;
-  /**
-   * The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting',
-   * and 'Failed'.
-   */
-  readonly provisioningState?: string;
-  /**
-   * Gets a unique read-only string that changes whenever the resource is updated.
-   */
-  etag?: string;
-}
-
-/**
  * DNS settings of a network interface.
  */
 export interface NetworkInterfaceDnsSettings {
@@ -284,10 +238,6 @@ export interface NetworkInterface extends Resource {
    * The reference of the NetworkSecurityGroup resource.
    */
   networkSecurityGroup?: NetworkSecurityGroup;
-  /**
-   * A reference to the interface endpoint to which the network interface is linked.
-   */
-  readonly interfaceEndpoint?: InterfaceEndpoint;
   /**
    * A list of IPConfigurations of the network interface.
    */
@@ -810,10 +760,6 @@ export interface Subnet extends SubResource {
    * An array of service endpoint policies.
    */
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
-  /**
-   * An array of references to interface endpoints
-   */
-  readonly interfaceEndpoints?: InterfaceEndpoint[];
   /**
    * Gets an array of references to the network interface IP configurations using subnet.
    */
@@ -7857,16 +7803,6 @@ export interface ExpressRouteLinkListResult extends Array<ExpressRouteLink> {
    * The URL to get the next set of results.
   */
   nextLink?: string;
-}
-
-/**
- * Response for the ListInterfaceEndpoints API service call.
-*/
-export interface InterfaceEndpointListResult extends Array<InterfaceEndpoint> {
-  /**
-   * The URL to get the next set of results.
-  */
-  readonly nextLink?: string;
 }
 
 /**
