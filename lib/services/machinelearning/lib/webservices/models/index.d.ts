@@ -442,7 +442,7 @@ export interface WebServiceProperties {
    */
   payloadsInBlobStorage?: boolean;
   /**
-   * The URI of the payload blob. This paramater contains a value only if the payloadsInBlobStorage
+   * The URI of the payload blob. This parameter contains a value only if the payloadsInBlobStorage
    * parameter is set to true. Otherwise is set to null.
    */
   payloadsLocation?: BlobLocation;
