@@ -925,7 +925,8 @@ export interface ContainerServiceNetworkProfile {
    */
   networkPlugin?: string;
   /**
-   * Network policy used for building Kubernetes network. Possible values include: 'calico'
+   * Network policy used for building Kubernetes network. Possible values include: 'calico',
+   * 'azure'
    */
   networkPolicy?: string;
   /**
