@@ -38,9 +38,24 @@ export interface Resource extends BaseResource {
  */
 export interface Pricing extends Resource {
   /**
-   * Pricing tier type. Possible values include: 'Free', 'Standard'
+   * The pricing tier value. Possible values include: 'Free', 'Standard'
    */
   pricingTier: string;
+  /**
+   * The duration left for the subscriptions free trial period - in ISO 8601 format (e.g.
+   * P3Y6M4DT12H30M5S).
+   */
+  readonly freeTrialRemainingTime?: moment.Duration;
+}
+
+/**
+ * List of pricing configurations response
+ */
+export interface PricingList {
+  /**
+   * List of pricing configurations
+   */
+  value: Pricing[];
 }
 
 /**
@@ -401,7 +416,7 @@ export interface Alert extends Resource {
   */
   readonly actionTaken?: string;
   /**
-   * Estimated severity of this alert. Possible values include: 'Silent', 'Information', 'Low',
+   * Estimated severity of this alert. Possible values include: 'Informational', 'Low', 'Medium',
    * 'High'
   */
   readonly reportedSeverity?: string;
@@ -916,16 +931,6 @@ export interface AllowedConnectionsResource {
    * List of connectable resources
   */
   readonly connectableResources?: ConnectableResource[];
-}
-
-/**
- * List of pricing configurations response
-*/
-export interface PricingList extends Array<Pricing> {
-  /**
-   * The URI to fetch the next page.
-  */
-  readonly nextLink?: string;
 }
 
 /**
