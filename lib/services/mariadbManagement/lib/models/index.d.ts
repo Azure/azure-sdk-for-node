@@ -129,6 +129,16 @@ export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate
 }
 
 /**
+ * The properties to create a new replica.
+ */
+export interface ServerPropertiesForReplica extends ServerPropertiesForCreate {
+  /**
+   * The master server id to create replica from.
+   */
+  sourceServerId: string;
+}
+
+/**
  * Billing information related properties of a server.
  */
 export interface Sku {
@@ -194,6 +204,18 @@ export interface Server extends TrackedResource {
    * Storage profile of a server.
    */
   storageProfile?: StorageProfile;
+  /**
+   * The replication role of the server.
+   */
+  replicationRole?: string;
+  /**
+   * The master server id of a replica server.
+   */
+  masterServerId?: string;
+  /**
+   * The maximum number of replicas that a master server can have.
+   */
+  replicaCapacity?: number;
 }
 
 /**
@@ -243,6 +265,10 @@ export interface ServerUpdateParameters {
    * 'Disabled'
    */
   sslEnforcement?: string;
+  /**
+   * The replication role of the server.
+   */
+  replicationRole?: string;
   /**
    * Application-specific metadata in the form of key-value pairs.
    */
