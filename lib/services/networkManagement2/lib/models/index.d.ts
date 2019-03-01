@@ -460,7 +460,7 @@ export interface ServiceEndpointPolicyDefinition extends SubResource {
    */
   description?: string;
   /**
-   * service endpoint name.
+   * Service endpoint name.
    */
   service?: string;
   /**
@@ -1694,7 +1694,7 @@ export interface ApplicationGatewayProbe extends SubResource {
   */
   interval?: number;
   /**
-   * the probe timeout in seconds. Probe marked as failed if valid response is not received with
+   * The probe timeout in seconds. Probe marked as failed if valid response is not received with
    * this timeout period. Acceptable values are from 1 second to 86400 seconds.
   */
   timeout?: number;
@@ -2997,6 +2997,51 @@ export interface ExpressRouteCircuitConnection extends SubResource {
 }
 
 /**
+ * Peer Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+*/
+export interface PeerExpressRouteCircuitConnection extends SubResource {
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the circuit.
+  */
+  expressRouteCircuitPeering?: SubResource;
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the peered circuit.
+  */
+  peerExpressRouteCircuitPeering?: SubResource;
+  /**
+   * /29 IP address space to carve out Customer addresses for tunnels.
+  */
+  addressPrefix?: string;
+  /**
+   * Express Route Circuit Connection State. Possible values are: 'Connected' and 'Disconnected'.
+   * Possible values include: 'Connected', 'Connecting', 'Disconnected'
+  */
+  readonly circuitConnectionStatus?: string;
+  /**
+   * The name of the express route circuit connection resource.
+  */
+  connectionName?: string;
+  /**
+   * The resource guid of the authorization used for the express route circuit connection.
+  */
+  authResourceGuid?: string;
+  /**
+   * Provisioning state of the peer express route circuit connection resource. Possible values are:
+   * 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
+  */
+  readonly provisioningState?: string;
+  /**
+   * Gets name of the resource that is unique within a resource group. This name can be used to
+   * access the resource.
+  */
+  name?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+}
+
+/**
  * Peering in an ExpressRouteCircuit resource.
 */
 export interface ExpressRouteCircuitPeering extends SubResource {
@@ -3078,6 +3123,10 @@ export interface ExpressRouteCircuitPeering extends SubResource {
    * The list of circuit connections associated with Azure Private Peering for this circuit.
   */
   connections?: ExpressRouteCircuitConnection[];
+  /**
+   * The list of peered circuit connections associated with Azure Private Peering for this circuit.
+  */
+  readonly peeredConnections?: PeerExpressRouteCircuitConnection[];
   /**
    * Gets name of the resource that is unique within a resource group. This name can be used to
    * access the resource.
@@ -3245,6 +3294,10 @@ export interface ExpressRouteCircuit extends Resource {
    * Flag to enable Global Reach on the circuit.
   */
   allowGlobalReach?: boolean;
+  /**
+   * Flag denoting Global reach status.
+  */
+  globalReachEnabled?: boolean;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -7179,7 +7232,7 @@ export interface P2SVpnServerConfiguration extends SubResource {
   */
   p2SVpnServerConfigurationPropertiesName?: string;
   /**
-   * vpnProtocols for the P2SVpnServerConfiguration.
+   * VPN protocols for the P2SVpnServerConfiguration.
   */
   vpnProtocols?: string[];
   /**
@@ -7264,7 +7317,7 @@ export interface VirtualWAN extends Resource {
   */
   office365LocalBreakoutCategory?: string;
   /**
-   * list of all P2SVpnServerConfigurations associated with the virtual wan.
+   * List of all P2SVpnServerConfigurations associated with the virtual wan.
   */
   p2SVpnServerConfigurations?: P2SVpnServerConfiguration[];
   /**
@@ -7394,7 +7447,7 @@ export interface HubVirtualNetworkConnection extends SubResource {
 */
 export interface VirtualHubRoute {
   /**
-   * list of all addressPrefixes.
+   * List of all addressPrefixes.
   */
   addressPrefixes?: string[];
   /**
@@ -7408,7 +7461,7 @@ export interface VirtualHubRoute {
 */
 export interface VirtualHubRouteTable {
   /**
-   * list of all routes.
+   * List of all routes.
   */
   routes?: VirtualHubRoute[];
 }
@@ -7434,7 +7487,7 @@ export interface VirtualHub extends Resource {
   */
   expressRouteGateway?: SubResource;
   /**
-   * list of all vnet connections with this VirtualHub.
+   * List of all vnet connections with this VirtualHub.
   */
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   /**
@@ -7465,7 +7518,7 @@ export interface VpnConnection extends SubResource {
   */
   remoteVpnSite?: SubResource;
   /**
-   * routing weight for vpn connection.
+   * Routing weight for vpn connection.
   */
   routingWeight?: number;
   /**
@@ -7534,7 +7587,7 @@ export interface VpnGateway extends Resource {
   */
   virtualHub?: SubResource;
   /**
-   * list of all vpn connections to the gateway.
+   * List of all vpn connections to the gateway.
   */
   connections?: VpnConnection[];
   /**
@@ -7778,6 +7831,18 @@ export interface ExpressRouteCircuitPeeringListResult extends Array<ExpressRoute
 */
 export interface ExpressRouteCircuitConnectionListResult extends
 Array<ExpressRouteCircuitConnection> {
+  /**
+   * The URL to get the next set of results.
+  */
+  nextLink?: string;
+}
+
+/**
+ * Response for ListPeeredConnections API service call retrieves all global reach peer circuit
+ * connections that belongs to a Private Peering for an ExpressRouteCircuit.
+*/
+export interface PeerExpressRouteCircuitConnectionListResult extends
+Array<PeerExpressRouteCircuitConnection> {
   /**
    * The URL to get the next set of results.
   */
