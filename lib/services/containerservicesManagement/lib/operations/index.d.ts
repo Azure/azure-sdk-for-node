@@ -2981,8 +2981,8 @@ export interface ManagedClusters {
      * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
      * Role-Based Access Control.
      *
-     * @param {boolean} [parameters.enablePodSecurityPolicy] Whether to enable
-     * Kubernetes Pod security policy.
+     * @param {boolean} [parameters.enablePodSecurityPolicy] (PREVIEW) Whether to
+     * enable Kubernetes Pod security policy.
      *
      * @param {object} [parameters.networkProfile] Profile of network
      * configuration.
@@ -3026,8 +3026,8 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] (PREVIEW) Authorized
+     * IP Ranges to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3096,8 +3096,8 @@ export interface ManagedClusters {
      * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
      * Role-Based Access Control.
      *
-     * @param {boolean} [parameters.enablePodSecurityPolicy] Whether to enable
-     * Kubernetes Pod security policy.
+     * @param {boolean} [parameters.enablePodSecurityPolicy] (PREVIEW) Whether to
+     * enable Kubernetes Pod security policy.
      *
      * @param {object} [parameters.networkProfile] Profile of network
      * configuration.
@@ -3141,8 +3141,8 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] (PREVIEW) Authorized
+     * IP Ranges to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3533,8 +3533,8 @@ export interface ManagedClusters {
      * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
      * Role-Based Access Control.
      *
-     * @param {boolean} [parameters.enablePodSecurityPolicy] Whether to enable
-     * Kubernetes Pod security policy.
+     * @param {boolean} [parameters.enablePodSecurityPolicy] (PREVIEW) Whether to
+     * enable Kubernetes Pod security policy.
      *
      * @param {object} [parameters.networkProfile] Profile of network
      * configuration.
@@ -3578,8 +3578,8 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] (PREVIEW) Authorized
+     * IP Ranges to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
@@ -3648,8 +3648,8 @@ export interface ManagedClusters {
      * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
      * Role-Based Access Control.
      *
-     * @param {boolean} [parameters.enablePodSecurityPolicy] Whether to enable
-     * Kubernetes Pod security policy.
+     * @param {boolean} [parameters.enablePodSecurityPolicy] (PREVIEW) Whether to
+     * enable Kubernetes Pod security policy.
      *
      * @param {object} [parameters.networkProfile] Profile of network
      * configuration.
@@ -3693,8 +3693,8 @@ export interface ManagedClusters {
      * for authentication. If not specified, will use the tenant of the deployment
      * subscription.
      *
-     * @param {array} [parameters.apiServerAuthorizedIPRanges] Authorized IP Ranges
-     * to kubernetes API server.
+     * @param {array} [parameters.apiServerAuthorizedIPRanges] (PREVIEW) Authorized
+     * IP Ranges to kubernetes API server.
      *
      * @param {string} parameters.location Resource location
      *
