@@ -6957,7 +6957,7 @@ export interface EndpointDetail {
 */
 export interface EndpointDependency {
   /**
-   * The Domain Name of the dependency.
+   * The domain name of the dependency.
   */
   domainName?: string;
   /**
