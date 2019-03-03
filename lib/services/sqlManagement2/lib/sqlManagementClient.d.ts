@@ -87,6 +87,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   syncGroups: operations.SyncGroups;
   syncMembers: operations.SyncMembers;
   subscriptionUsages: operations.SubscriptionUsages;
+  virtualClusters: operations.VirtualClusters;
   virtualNetworkRules: operations.VirtualNetworkRules;
   extendedDatabaseBlobAuditingPolicies: operations.ExtendedDatabaseBlobAuditingPolicies;
   extendedServerBlobAuditingPolicies: operations.ExtendedServerBlobAuditingPolicies;
