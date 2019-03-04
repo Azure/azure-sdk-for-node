@@ -107,3 +107,6 @@ client.createCertificate(vaultUri, 'mycertificate', options).then( (certificateO
 
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/keyVaultManagement)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FkeyVault%2FREADME.png)

@@ -58,3 +58,5 @@ sbManagementClient.namespaces.create(namespaceName, "West US", function (err, re
 
 - [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Service Bus](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/serviceBus)
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FserviceBusManagement%2FREADME.png)

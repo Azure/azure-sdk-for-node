@@ -10,3 +10,6 @@
 5. [Release Process](./ReleaseProcess.md)
 6. [Debugging the SDK](./Debugging.md)
 7. [Generating Self Signed Certificates for Testing Purpose](./DummyCerts.md)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2FDocumentation%2FREADME.png)
