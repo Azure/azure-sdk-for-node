@@ -730,80 +730,94 @@ export interface DeletedSite extends ProxyOnlyResource {
   readonly geoRegionName?: string;
 }
 
+export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
+  /**
+   * Principal Id of user assigned identity
+  */
+  readonly principalId?: string;
+  /**
+   * Client Id of user assigned identity
+  */
+  readonly clientId?: string;
+}
+
 /**
  * Managed service identity.
- */
+*/
 export interface ManagedServiceIdentity {
   /**
    * Type of managed service identity. Possible values include: 'SystemAssigned', 'UserAssigned'
-   */
+  */
   type?: string;
   /**
    * Tenant of managed service identity.
-   */
+  */
   readonly tenantId?: string;
   /**
    * Principal Id of managed service identity.
-   */
+  */
   readonly principalId?: string;
   /**
-   * Array of UserAssigned managed service identities.
-   */
-  identityIds?: string[];
+   * The list of user assigned identities associated with the resource. The user identity
+   * dictionary key references will be ARM resource ids in the form:
+   * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
+  */
+  userAssignedIdentities?: { [propertyName: string]:
+  ManagedServiceIdentityUserAssignedIdentitiesValue };
 }
 
 /**
  * A global distribution definition.
- */
+*/
 export interface GeoDistribution {
   /**
    * Location.
-   */
+  */
   location?: string;
   /**
    * NumberOfWorkers.
-   */
+  */
   numberOfWorkers?: number;
 }
 
 /**
  * The status of the last successful slot swap operation.
- */
+*/
 export interface SlotSwapStatus {
   /**
    * The time the last successful slot swap completed.
-   */
+  */
   readonly timestampUtc?: Date;
   /**
    * The source slot of the last swap operation.
-   */
+  */
   readonly sourceSlotName?: string;
   /**
    * The destination slot of the last swap operation.
-   */
+  */
   readonly destinationSlotName?: string;
 }
 
 /**
  * Information needed for cloning operation.
- */
+*/
 export interface CloningInfo {
   /**
    * Correlation ID of cloning operation. This ID ties multiple cloning operations
    * together to use the same snapshot.
-   */
+  */
   correlationId?: string;
   /**
    * <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
-   */
+  */
   overwrite?: boolean;
   /**
    * <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
-   */
+  */
   cloneCustomHostNames?: boolean;
   /**
    * <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
-   */
+  */
   cloneSourceControl?: boolean;
   /**
    * ARM resource ID of the source app. App resource ID is of the form
@@ -811,289 +825,289 @@ export interface CloningInfo {
    * for production slots and
    * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
    * for other slots.
-   */
+  */
   sourceWebAppId: string;
   /**
    * App Service Environment.
-   */
+  */
   hostingEnvironment?: string;
   /**
    * Application setting overrides for cloned app. If specified, these settings override the
    * settings cloned
    * from source app. Otherwise, application settings from source app are retained.
-   */
+  */
   appSettingsOverrides?: { [propertyName: string]: string };
   /**
    * <code>true</code> to configure load balancing for source and destination app.
-   */
+  */
   configureLoadBalancing?: boolean;
   /**
    * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource
    * ID is of the form
    * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
-   */
+  */
   trafficManagerProfileId?: string;
   /**
    * Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does
    * not already exist.
-   */
+  */
   trafficManagerProfileName?: string;
 }
 
 /**
  * Specification for an App Service Environment to use for this resource.
- */
+*/
 export interface HostingEnvironmentProfile {
   /**
    * Resource ID of the App Service Environment.
-   */
+  */
   id?: string;
   /**
    * Name of the App Service Environment.
-   */
+  */
   readonly name?: string;
   /**
    * Resource type of the App Service Environment.
-   */
+  */
   readonly type?: string;
 }
 
 /**
  * IP security restriction on an app.
- */
+*/
 export interface IpSecurityRestriction {
   /**
    * IP address the security restriction is valid for.
    * It can be in form of pure ipv4 address (required SubnetMask property) or
    * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
    * SubnetMask property must not be specified.
-   */
+  */
   ipAddress?: string;
   /**
    * Subnet mask for the range of IP addresses the restriction is valid for.
-   */
+  */
   subnetMask?: string;
   /**
    * Virtual network resource id
-   */
+  */
   vnetSubnetResourceId?: string;
   /**
    * (internal) Vnet traffic tag
-   */
+  */
   vnetTrafficTag?: number;
   /**
    * (internal) Subnet traffic tag
-   */
+  */
   subnetTrafficTag?: number;
   /**
    * Allow or Deny access for this IP range.
-   */
+  */
   action?: string;
   /**
    * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
    * Possible values include: 'Default', 'XffProxy'
-   */
+  */
   tag?: string;
   /**
    * Priority of IP restriction rule.
-   */
+  */
   priority?: number;
   /**
    * IP restriction rule name.
-   */
+  */
   name?: string;
   /**
    * IP restriction rule description.
-   */
+  */
   description?: string;
 }
 
 /**
  * Information about the formal API definition for the app.
- */
+*/
 export interface ApiDefinitionInfo {
   /**
    * The URL of the API definition.
-   */
+  */
   url?: string;
 }
 
 /**
  * Cross-Origin Resource Sharing (CORS) settings for the app.
- */
+*/
 export interface CorsSettings {
   /**
    * Gets or sets the list of origins that should be allowed to make cross-origin
    * calls (for example: http://example.com:12345). Use "*" to allow all.
-   */
+  */
   allowedOrigins?: string[];
   /**
    * Gets or sets whether CORS requests with credentials are allowed. See
    * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
    * for more details.
-   */
+  */
   supportCredentials?: boolean;
 }
 
 /**
  * Custom action to be executed
  * when an auto heal rule is triggered.
- */
+*/
 export interface AutoHealCustomAction {
   /**
    * Executable to be run.
-   */
+  */
   exe?: string;
   /**
    * Parameters for the executable.
-   */
+  */
   parameters?: string;
 }
 
 /**
  * Actions which to take by the auto-heal module when a rule is triggered.
- */
+*/
 export interface AutoHealActions {
   /**
    * Predefined action to be taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
-   */
+  */
   actionType?: string;
   /**
    * Custom action to be taken.
-   */
+  */
   customAction?: AutoHealCustomAction;
   /**
    * Minimum time the process must execute
    * before taking the action
-   */
+  */
   minProcessExecutionTime?: string;
 }
 
 /**
  * Trigger based on request execution time.
- */
+*/
 export interface SlowRequestsBasedTrigger {
   /**
    * Time taken.
-   */
+  */
   timeTaken?: string;
   /**
    * Request Count.
-   */
+  */
   count?: number;
   /**
    * Time interval.
-   */
+  */
   timeInterval?: string;
 }
 
 /**
  * Trigger based on status code.
- */
+*/
 export interface StatusCodesBasedTrigger {
   /**
    * HTTP status code.
-   */
+  */
   status?: number;
   /**
    * Request Sub Status.
-   */
+  */
   subStatus?: number;
   /**
    * Win32 error code.
-   */
+  */
   win32Status?: number;
   /**
    * Request Count.
-   */
+  */
   count?: number;
   /**
    * Time interval.
-   */
+  */
   timeInterval?: string;
 }
 
 /**
  * Trigger based on total requests.
- */
+*/
 export interface RequestsBasedTrigger {
   /**
    * Request Count.
-   */
+  */
   count?: number;
   /**
    * Time interval.
-   */
+  */
   timeInterval?: string;
 }
 
 /**
  * Triggers for auto-heal.
- */
+*/
 export interface AutoHealTriggers {
   /**
    * A rule based on total requests.
-   */
+  */
   requests?: RequestsBasedTrigger;
   /**
    * A rule based on private bytes.
-   */
+  */
   privateBytesInKB?: number;
   /**
    * A rule based on status codes.
-   */
+  */
   statusCodes?: StatusCodesBasedTrigger[];
   /**
    * A rule based on request execution time.
-   */
+  */
   slowRequests?: SlowRequestsBasedTrigger;
 }
 
 /**
  * Rules that can be defined for auto-heal.
- */
+*/
 export interface AutoHealRules {
   /**
    * Conditions that describe when to execute the auto-heal actions.
-   */
+  */
   triggers?: AutoHealTriggers;
   /**
    * Actions to be executed when a rule is triggered.
-   */
+  */
   actions?: AutoHealActions;
 }
 
 /**
  * Metric limits set on an app.
- */
+*/
 export interface SiteLimits {
   /**
    * Maximum allowed CPU usage percentage.
-   */
+  */
   maxPercentageCpu?: number;
   /**
    * Maximum allowed memory usage in MB.
-   */
+  */
   maxMemoryInMb?: number;
   /**
    * Maximum allowed disk size usage in MB.
-   */
+  */
   maxDiskSizeInMb?: number;
 }
 
 /**
  * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to
  * gradually change routing % based on performance.
- */
+*/
 export interface RampUpRule {
   /**
    * Hostname of a slot to which the traffic will be redirected if decided to. E.g.
    * myapp-stage.azurewebsites.net.
-   */
+  */
   actionHostName?: string;
   /**
    * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-   */
+  */
   reroutePercentage?: number;
   /**
    * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code>
@@ -1102,76 +1116,76 @@ export interface RampUpRule {
    * checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.
    * Custom decision algorithm can be provided in TiPCallback site extension which URL can be
    * specified in <code>ChangeDecisionCallbackUrl</code>.
-   */
+  */
   changeStep?: number;
   /**
    * Specifies interval in minutes to reevaluate ReroutePercentage.
-   */
+  */
   changeIntervalInMinutes?: number;
   /**
    * Specifies lower boundary above which ReroutePercentage will stay.
-   */
+  */
   minReroutePercentage?: number;
   /**
    * Specifies upper boundary below which ReroutePercentage will stay.
-   */
+  */
   maxReroutePercentage?: number;
   /**
    * Custom decision algorithm can be provided in TiPCallback site extension which URL can be
    * specified. See TiPCallback site extension for the scaffold and contracts.
    * https://www.siteextensions.net/packages/TiPCallback/
-   */
+  */
   changeDecisionCallbackUrl?: string;
   /**
    * Name of the routing rule. The recommended name would be to point to the slot which will
    * receive the traffic in the experiment.
-   */
+  */
   name?: string;
 }
 
 /**
  * Routing rules in production experiments.
- */
+*/
 export interface Experiments {
   /**
    * List of ramp-up rules.
-   */
+  */
   rampUpRules?: RampUpRule[];
 }
 
 /**
  * Directory for virtual application.
- */
+*/
 export interface VirtualDirectory {
   /**
    * Path to virtual application.
-   */
+  */
   virtualPath?: string;
   /**
    * Physical path.
-   */
+  */
   physicalPath?: string;
 }
 
 /**
  * Virtual application in an app.
- */
+*/
 export interface VirtualApplication {
   /**
    * Virtual path.
-   */
+  */
   virtualPath?: string;
   /**
    * Physical path.
-   */
+  */
   physicalPath?: string;
   /**
    * <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-   */
+  */
   preloadEnabled?: boolean;
   /**
    * Virtual directories for virtual application.
-   */
+  */
   virtualDirectories?: VirtualDirectory[];
 }
 
@@ -1180,529 +1194,529 @@ export interface VirtualApplication {
  * extension.
  * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php
  * extension.
- */
+*/
 export interface HandlerMapping {
   /**
    * Requests with this extension will be handled using the specified FastCGI application.
-   */
+  */
   extension?: string;
   /**
    * The absolute path to the FastCGI application.
-   */
+  */
   scriptProcessor?: string;
   /**
    * Command-line arguments to be passed to the script processor.
-   */
+  */
   argumentsProperty?: string;
 }
 
 /**
  * MachineKey of an app.
- */
+*/
 export interface SiteMachineKey {
   /**
    * MachineKey validation.
-   */
+  */
   validation?: string;
   /**
    * Validation key.
-   */
+  */
   validationKey?: string;
   /**
    * Algorithm used for decryption.
-   */
+  */
   decryption?: string;
   /**
    * Decryption key.
-   */
+  */
   decryptionKey?: string;
 }
 
 /**
  * Database connection string information.
- */
+*/
 export interface ConnStringInfo {
   /**
    * Name of connection string.
-   */
+  */
   name?: string;
   /**
    * Connection string value.
-   */
+  */
   connectionString?: string;
   /**
    * Type of database. Possible values include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom',
    * 'NotificationHub', 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
-   */
+  */
   type?: string;
 }
 
 /**
  * Azure Files or Blob Storage access information value for dictionary storage.
- */
+*/
 export interface AzureStorageInfoValue {
   /**
    * Type of storage. Possible values include: 'AzureFiles', 'AzureBlob'
-   */
+  */
   type?: string;
   /**
    * Name of the storage account.
-   */
+  */
   accountName?: string;
   /**
    * Name of the file share (container name, for Blob storage).
-   */
+  */
   shareName?: string;
   /**
    * Access key for the storage account.
-   */
+  */
   accessKey?: string;
   /**
    * Path to mount the storage within the site's runtime environment.
-   */
+  */
   mountPath?: string;
   /**
    * State of the storage account. Possible values include: 'Ok', 'InvalidCredentials',
    * 'InvalidShare'
-   */
+  */
   readonly state?: string;
 }
 
 /**
  * Name value pair.
- */
+*/
 export interface NameValuePair {
   /**
    * Pair name.
-   */
+  */
   name?: string;
   /**
    * Pair value.
-   */
+  */
   value?: string;
 }
 
 /**
  * Configuration of an App Service app.
- */
+*/
 export interface SiteConfig {
   /**
    * Number of workers.
-   */
+  */
   numberOfWorkers?: number;
   /**
    * Default documents.
-   */
+  */
   defaultDocuments?: string[];
   /**
    * .NET Framework version.
-   */
+  */
   netFrameworkVersion?: string;
   /**
    * Version of PHP.
-   */
+  */
   phpVersion?: string;
   /**
    * Version of Python.
-   */
+  */
   pythonVersion?: string;
   /**
    * Version of Node.js.
-   */
+  */
   nodeVersion?: string;
   /**
    * Linux App Framework and version
-   */
+  */
   linuxFxVersion?: string;
   /**
    * Xenon App Framework and version
-   */
+  */
   windowsFxVersion?: string;
   /**
    * <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
-   */
+  */
   requestTracingEnabled?: boolean;
   /**
    * Request tracing expiration time.
-   */
+  */
   requestTracingExpirationTime?: Date;
   /**
    * <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
-   */
+  */
   remoteDebuggingEnabled?: boolean;
   /**
    * Remote debugging version.
-   */
+  */
   remoteDebuggingVersion?: string;
   /**
    * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-   */
+  */
   httpLoggingEnabled?: boolean;
   /**
    * HTTP logs directory size limit.
-   */
+  */
   logsDirectorySizeLimit?: number;
   /**
    * <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
-   */
+  */
   detailedErrorLoggingEnabled?: boolean;
   /**
    * Publishing user name.
-   */
+  */
   publishingUsername?: string;
   /**
    * Application settings.
-   */
+  */
   appSettings?: NameValuePair[];
   /**
    * User-provided Azure storage accounts.
-   */
+  */
   azureStorageAccounts?: { [propertyName: string]: AzureStorageInfoValue };
   /**
    * Connection strings.
-   */
+  */
   connectionStrings?: ConnStringInfo[];
   /**
    * Site MachineKey.
-   */
+  */
   readonly machineKey?: SiteMachineKey;
   /**
    * Handler mappings.
-   */
+  */
   handlerMappings?: HandlerMapping[];
   /**
    * Document root.
-   */
+  */
   documentRoot?: string;
   /**
    * SCM type. Possible values include: 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub',
    * 'CodePlexGit', 'CodePlexHg', 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg',
    * 'OneDrive', 'VSO'
-   */
+  */
   scmType?: string;
   /**
    * <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-   */
+  */
   use32BitWorkerProcess?: boolean;
   /**
    * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
-   */
+  */
   webSocketsEnabled?: boolean;
   /**
    * <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
-   */
+  */
   alwaysOn?: boolean;
   /**
    * Java version.
-   */
+  */
   javaVersion?: string;
   /**
    * Java container.
-   */
+  */
   javaContainer?: string;
   /**
    * Java container version.
-   */
+  */
   javaContainerVersion?: string;
   /**
    * App command line to launch.
-   */
+  */
   appCommandLine?: string;
   /**
    * Managed pipeline mode. Possible values include: 'Integrated', 'Classic'
-   */
+  */
   managedPipelineMode?: string;
   /**
    * Virtual applications.
-   */
+  */
   virtualApplications?: VirtualApplication[];
   /**
    * Site load balancing. Possible values include: 'WeightedRoundRobin', 'LeastRequests',
    * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
-   */
+  */
   loadBalancing?: string;
   /**
    * This is work around for polymorphic types.
-   */
+  */
   experiments?: Experiments;
   /**
    * Site limits.
-   */
+  */
   limits?: SiteLimits;
   /**
    * <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
-   */
+  */
   autoHealEnabled?: boolean;
   /**
    * Auto Heal rules.
-   */
+  */
   autoHealRules?: AutoHealRules;
   /**
    * Tracing options.
-   */
+  */
   tracingOptions?: string;
   /**
    * Virtual Network name.
-   */
+  */
   vnetName?: string;
   /**
    * Cross-Origin Resource Sharing (CORS) settings.
-   */
+  */
   cors?: CorsSettings;
   /**
    * Push endpoint settings.
-   */
+  */
   push?: PushSettings;
   /**
    * Information about the formal API definition for the app.
-   */
+  */
   apiDefinition?: ApiDefinitionInfo;
   /**
    * Auto-swap slot name.
-   */
+  */
   autoSwapSlotName?: string;
   /**
    * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
-   */
+  */
   localMySqlEnabled?: boolean;
   /**
    * Managed Service Identity Id
-   */
+  */
   managedServiceIdentityId?: number;
   /**
    * Explicit Managed Service Identity Id
-   */
+  */
   xManagedServiceIdentityId?: number;
   /**
    * IP security restrictions for main.
-   */
+  */
   ipSecurityRestrictions?: IpSecurityRestriction[];
   /**
    * IP security restrictions for scm.
-   */
+  */
   scmIpSecurityRestrictions?: IpSecurityRestriction[];
   /**
    * IP security restrictions for scm to use main.
-   */
+  */
   scmIpSecurityRestrictionsUseMain?: boolean;
   /**
    * Http20Enabled: configures a web site to allow clients to connect over http2.0
-   */
+  */
   http20Enabled?: boolean;
   /**
    * MinTlsVersion: configures the minimum version of TLS required for SSL requests. Possible
    * values include: '1.0', '1.1', '1.2'
-   */
+  */
   minTlsVersion?: string;
   /**
    * State of FTP / FTPS service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
-   */
+  */
   ftpsState?: string;
   /**
    * Number of reserved instances.
    * This setting only applies to the Consumption Plan
-   */
+  */
   reservedInstanceCount?: number;
 }
 
 /**
  * SSL-enabled hostname.
- */
+*/
 export interface HostNameSslState {
   /**
    * Hostname.
-   */
+  */
   name?: string;
   /**
    * SSL type. Possible values include: 'Disabled', 'SniEnabled', 'IpBasedEnabled'
-   */
+  */
   sslState?: string;
   /**
    * Virtual IP address assigned to the hostname if IP based SSL is enabled.
-   */
+  */
   virtualIP?: string;
   /**
    * SSL certificate thumbprint.
-   */
+  */
   thumbprint?: string;
   /**
    * Set to <code>true</code> to update existing hostname.
-   */
+  */
   toUpdate?: boolean;
   /**
    * Indicates whether the hostname is a standard or repository hostname. Possible values include:
    * 'Standard', 'Repository'
-   */
+  */
   hostType?: string;
 }
 
 /**
  * A web app, a mobile app backend, or an API app.
- */
+*/
 export interface Site extends Resource {
   /**
    * Current state of the app.
-   */
+  */
   readonly state?: string;
   /**
    * Hostnames associated with the app.
-   */
+  */
   readonly hostNames?: string[];
   /**
    * Name of the repository site.
-   */
+  */
   readonly repositorySiteName?: string;
   /**
    * State indicating whether the app has exceeded its quota usage. Read-only. Possible values
    * include: 'Normal', 'Exceeded'
-   */
+  */
   readonly usageState?: string;
   /**
    * <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to
    * false disables the app (takes the app offline).
-   */
+  */
   enabled?: boolean;
   /**
    * Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled.
    * Otherwise,
    * the app is not served on those hostnames.
-   */
+  */
   readonly enabledHostNames?: string[];
   /**
    * Management information availability state for the app. Possible values include: 'Normal',
    * 'Limited', 'DisasterRecoveryMode'
-   */
+  */
   readonly availabilityState?: string;
   /**
    * Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-   */
+  */
   hostNameSslStates?: HostNameSslState[];
   /**
    * Resource ID of the associated App Service plan, formatted as:
    * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
-   */
+  */
   serverFarmId?: string;
   /**
    * <code>true</code> if reserved; otherwise, <code>false</code>.
-   */
+  */
   reserved?: boolean;
   /**
    * Obsolete: Hyper-V sandbox.
-   */
+  */
   isXenon?: boolean;
   /**
    * Hyper-V sandbox.
-   */
+  */
   hyperV?: boolean;
   /**
    * Last time the app was modified, in UTC. Read-only.
-   */
+  */
   readonly lastModifiedTimeUtc?: Date;
   /**
    * Configuration of the app.
-   */
+  */
   siteConfig?: SiteConfig;
   /**
    * Azure Traffic Manager hostnames associated with the app. Read-only.
-   */
+  */
   readonly trafficManagerHostNames?: string[];
   /**
    * <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise,
    * <code>false</code>. The default is <code>false</code>.
-   */
+  */
   scmSiteAlsoStopped?: boolean;
   /**
    * Specifies which deployment slot this app will swap into. Read-only.
-   */
+  */
   readonly targetSwapSlot?: string;
   /**
    * App Service Environment to use for the app.
-   */
+  */
   hostingEnvironmentProfile?: HostingEnvironmentProfile;
   /**
    * <code>true</code> to enable client affinity; <code>false</code> to stop sending session
    * affinity cookies, which route client requests in the same session to the same instance.
    * Default is <code>true</code>.
-   */
+  */
   clientAffinityEnabled?: boolean;
   /**
    * <code>true</code> to enable client certificate authentication (TLS mutual authentication);
    * otherwise, <code>false</code>. Default is <code>false</code>.
-   */
+  */
   clientCertEnabled?: boolean;
   /**
    * client certificate authentication comma-separated exclusion paths
-   */
+  */
   clientCertExclusionPaths?: string;
   /**
    * <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
    * If <code>true</code>, the app is only accessible via API management process.
-   */
+  */
   hostNamesDisabled?: boolean;
   /**
    * List of IP addresses that the app uses for outbound connections (e.g. database access).
    * Includes VIPs from tenants that site can be hosted with current settings. Read-only.
-   */
+  */
   readonly outboundIpAddresses?: string;
   /**
    * List of IP addresses that the app uses for outbound connections (e.g. database access).
    * Includes VIPs from all tenants. Read-only.
-   */
+  */
   readonly possibleOutboundIpAddresses?: string;
   /**
    * Size of the function container.
-   */
+  */
   containerSize?: number;
   /**
    * Maximum allowed daily memory-time quota (applicable on dynamic apps only).
-   */
+  */
   dailyMemoryTimeQuota?: number;
   /**
    * App suspended till in case memory-time quota is exceeded.
-   */
+  */
   readonly suspendedTill?: Date;
   /**
    * Maximum number of workers.
    * This only applies to Functions container.
-   */
+  */
   readonly maxNumberOfWorkers?: number;
   /**
    * If specified during app creation, the app is cloned from a source app.
-   */
+  */
   cloningInfo?: CloningInfo;
   /**
    * Name of the resource group the app belongs to. Read-only.
-   */
+  */
   readonly resourceGroup?: string;
   /**
    * <code>true</code> if the app is a default container; otherwise, <code>false</code>.
-   */
+  */
   readonly isDefaultContainer?: boolean;
   /**
    * Default hostname of the app. Read-only.
-   */
+  */
   readonly defaultHostName?: string;
   /**
    * Status of the last deployment slot swap operation.
-   */
+  */
   readonly slotSwapStatus?: SlotSwapStatus;
   /**
    * HttpsOnly: configures a web site to accept only https requests. Issues redirect for
    * http requests
-   */
+  */
   httpsOnly?: boolean;
   /**
    * Site redundancy mode. Possible values include: 'None', 'Manual', 'Failover', 'ActiveActive',
    * 'GeoRedundant'
-   */
+  */
   redundancyMode?: string;
   /**
    * Specifies an operation id if this site has a pending operation.
-   */
+  */
   readonly inProgressOperationId?: string;
   /**
    * GeoDistributions for this site
-   */
+  */
   geoDistributions?: GeoDistribution[];
   identity?: ManagedServiceIdentity;
 }

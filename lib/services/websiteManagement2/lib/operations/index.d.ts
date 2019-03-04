@@ -9912,8 +9912,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -10317,8 +10319,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -24388,8 +24392,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -24796,8 +24802,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -44165,8 +44173,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -44570,8 +44580,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -46294,8 +46306,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -46702,8 +46716,10 @@ export interface WebApps {
      * @param {string} [siteEnvelope.identity.type] Type of managed service
      * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
      *
-     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
-     * managed service identities.
+     * @param {object} [siteEnvelope.identity.userAssignedIdentities] The list of
+     * user assigned identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
