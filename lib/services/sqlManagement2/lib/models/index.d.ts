@@ -2154,6 +2154,48 @@ export interface SubscriptionUsage extends ProxyResource {
 }
 
 /**
+ * An Azure SQL virtual cluster.
+ */
+export interface VirtualCluster extends TrackedResource {
+  /**
+   * Subnet resource ID for the virtual cluster.
+   */
+  readonly subnetId?: string;
+  /**
+   * If the service has different generations of hardware, for the same SKU, then that can be
+   * captured here.
+   */
+  family?: string;
+  /**
+   * List of resources in this virtual cluster.
+   */
+  readonly childResources?: string[];
+}
+
+/**
+ * An update request for an Azure SQL Database virtual cluster.
+ */
+export interface VirtualClusterUpdate {
+  /**
+   * Subnet resource ID for the virtual cluster.
+   */
+  readonly subnetId?: string;
+  /**
+   * If the service has different generations of hardware, for the same SKU, then that can be
+   * captured here.
+   */
+  family?: string;
+  /**
+   * List of resources in this virtual cluster.
+   */
+  readonly childResources?: string[];
+  /**
+   * Resource tags.
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
  * A virtual network rule.
  */
 export interface VirtualNetworkRule extends ProxyResource {
@@ -5134,6 +5176,16 @@ export interface SyncMemberListResult extends Array<SyncMember> {
  * A list of subscription usage metrics in a location.
 */
 export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
+  /**
+   * Link to retrieve next page of results.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * A list of virtual clusters.
+*/
+export interface VirtualClusterListResult extends Array<VirtualCluster> {
   /**
    * Link to retrieve next page of results.
   */
