@@ -289,6 +289,24 @@ export interface DetectedObject {
 }
 
 /**
+ * A brand detected in an image.
+ */
+export interface DetectedBrand {
+  /**
+   * Label for the brand.
+   */
+  readonly name?: string;
+  /**
+   * Confidence score of having observed the brand in the image, as a value ranging from 0 to 1.
+   */
+  readonly confidence?: number;
+  /**
+   * Approximate location of the detected brand.
+   */
+  readonly rectangle?: BoundingRect;
+}
+
+/**
  * Image metadata.
  */
 export interface ImageMetadata {
@@ -343,6 +361,10 @@ export interface ImageAnalysis {
    * Array of objects describing what was detected in the image.
    */
   objects?: DetectedObject[];
+  /**
+   * Array of brands detected in the image.
+   */
+  brands?: DetectedBrand[];
   /**
    * Id of the REST API request.
    */
@@ -591,8 +613,12 @@ export interface CelebrityResults {
 }
 
 export interface Word {
-  boundingBox?: number[];
-  text?: string;
+  boundingBox: number[];
+  text: string;
+  /**
+   * Possible values include: 'High', 'Low'
+  */
+  confidence?: string;
 }
 
 export interface Line {
@@ -601,8 +627,16 @@ export interface Line {
   words?: Word[];
 }
 
-export interface RecognitionResult {
-  lines?: Line[];
+export interface TextRecognitionResult {
+  lines: Line[];
+  page?: number;
+  width?: number;
+  height?: number;
+  clockwiseOrientation?: number;
+  /**
+   * Possible values include: 'pixel', 'inch'
+  */
+  unit?: string;
 }
 
 export interface TextOperationResult {
@@ -611,5 +645,14 @@ export interface TextOperationResult {
    * 'Succeeded'
   */
   status?: string;
-  recognitionResult?: RecognitionResult;
+  recognitionResult?: TextRecognitionResult;
+}
+
+export interface ReadOperationResult {
+  /**
+   * Status of the text operation. Possible values include: 'Not Started', 'Running', 'Failed',
+   * 'Succeeded'
+  */
+  status?: string;
+  recognitionResults?: TextRecognitionResult[];
 }
