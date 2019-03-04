@@ -530,6 +530,10 @@ export interface ProjectSettings {
    * 'Multilabel'
   */
   classificationType?: string;
+  /**
+   * A list of ExportPlatform that the trained model should be able to support.
+  */
+  targetExportPlatforms?: string[];
 }
 
 /**
@@ -557,7 +561,7 @@ export interface Project {
   */
   readonly created?: Date;
   /**
-   * Gets the date this project was last modifed.
+   * Gets the date this project was last modified.
   */
   readonly lastModified?: Date;
   /**
@@ -607,6 +611,10 @@ export interface Iteration {
   */
   readonly exportable?: boolean;
   /**
+   * A set of platforms this iteration can export to.
+  */
+  readonly exportableTo?: string[];
+  /**
    * Get or sets a guid of the domain the iteration has been trained on.
   */
   readonly domainId?: string;
@@ -631,7 +639,8 @@ export interface Iteration {
 
 export interface ExportModel {
   /**
-   * Platform of the export. Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
+   * Platform of the export. Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX',
+   * 'VAIDK'
   */
   readonly platform?: string;
   /**
@@ -685,14 +694,15 @@ export interface CustomVisionError {
    * 'BadRequestExceededBatchSize', 'BadRequestNotSupported', 'BadRequestInvalidIds',
    * 'BadRequestProjectName', 'BadRequestProjectNameNotUnique', 'BadRequestProjectDescription',
    * 'BadRequestProjectUnknownDomain', 'BadRequestProjectUnknownClassification',
-   * 'BadRequestProjectUnsupportedDomainTypeChange', 'BadRequestIterationName',
-   * 'BadRequestIterationNameNotUnique', 'BadRequestIterationDescription',
-   * 'BadRequestIterationIsNotTrained', 'BadRequestWorkspaceCannotBeModified',
-   * 'BadRequestWorkspaceNotDeletable', 'BadRequestTagName', 'BadRequestTagNameNotUnique',
-   * 'BadRequestTagDescription', 'BadRequestTagType', 'BadRequestMultipleNegativeTag',
-   * 'BadRequestImageTags', 'BadRequestImageRegions', 'BadRequestNegativeAndRegularTagOnSameImage',
-   * 'BadRequestIterationIsPublished', 'BadRequestInvalidPublishName', 'BadRequestSubscriptionApi',
-   * 'BadRequestPublishFailed', 'BadRequestUnpublishFailed', 'BadRequestExceedProjectLimit',
+   * 'BadRequestProjectUnsupportedDomainTypeChange', 'BadRequestProjectUnsupportedExportPlatform',
+   * 'BadRequestIterationName', 'BadRequestIterationNameNotUnique',
+   * 'BadRequestIterationDescription', 'BadRequestIterationIsNotTrained',
+   * 'BadRequestWorkspaceCannotBeModified', 'BadRequestWorkspaceNotDeletable', 'BadRequestTagName',
+   * 'BadRequestTagNameNotUnique', 'BadRequestTagDescription', 'BadRequestTagType',
+   * 'BadRequestMultipleNegativeTag', 'BadRequestImageTags', 'BadRequestImageRegions',
+   * 'BadRequestNegativeAndRegularTagOnSameImage', 'BadRequestIterationIsPublished',
+   * 'BadRequestInvalidPublishName', 'BadRequestSubscriptionApi', 'BadRequestPublishFailed',
+   * 'BadRequestUnpublishFailed', 'BadRequestExceedProjectLimit',
    * 'BadRequestExceedIterationPerProjectLimit', 'BadRequestExceedTagPerProjectLimit',
    * 'BadRequestExceedTagPerImageLimit', 'BadRequestExceededQuota',
    * 'BadRequestCannotMigrateProjectWithName', 'BadRequestNotLimitedTrial', 'BadRequestImageBatch',

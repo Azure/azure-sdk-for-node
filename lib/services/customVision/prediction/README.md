@@ -30,13 +30,13 @@ const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new PredictionAPIClient(creds, subscriptionId);
 const projectId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
-const name = "testname";
+const publishedModelName = "testpublishedModelName";
 const imageUrl = {
   url: "testurl"
 };
 const application = "testapplication";
 
-client.classifyImageUrl(projectId, name, imageUrl, application).then((result) => {
+client.classifyImageUrl(projectId, publishedModelName, imageUrl, application).then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {

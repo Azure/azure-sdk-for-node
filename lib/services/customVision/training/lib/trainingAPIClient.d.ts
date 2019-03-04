@@ -1830,6 +1830,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {string} [options.classificationType] The type of classifier to
    * create for this project. Possible values include: 'Multiclass', 'Multilabel'
    *
+   * @param {array} [options.targetExportPlatforms] List of platforms the trained
+   * model is intending exporting to.
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -1839,7 +1842,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  createProjectWithHttpOperationResponse(name: string, options?: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+  createProjectWithHttpOperationResponse(name: string, options?: { description? : string, domainId? : string, classificationType? : string, targetExportPlatforms? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
 
   /**
    * @summary Create a project.
@@ -1855,6 +1858,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {string} [options.classificationType] The type of classifier to
    * create for this project. Possible values include: 'Multiclass', 'Multilabel'
+   *
+   * @param {array} [options.targetExportPlatforms] List of platforms the trained
+   * model is intending exporting to.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1881,9 +1887,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createProject(name: string, options?: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+  createProject(name: string, options?: { description? : string, domainId? : string, classificationType? : string, targetExportPlatforms? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
   createProject(name: string, callback: ServiceCallback<models.Project>): void;
-  createProject(name: string, options: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+  createProject(name: string, options: { description? : string, domainId? : string, classificationType? : string, targetExportPlatforms? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
 
 
   /**
@@ -2016,6 +2022,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * the classification type of the project. Possible values include:
    * 'Multiclass', 'Multilabel'
    *
+   * @param {array} [updatedProject.settings.targetExportPlatforms] A list of
+   * ExportPlatform that the trained model should be able to support.
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2050,6 +2059,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * the classification type of the project. Possible values include:
    * 'Multiclass', 'Multilabel'
    *
+   * @param {array} [updatedProject.settings.targetExportPlatforms] A list of
+   * ExportPlatform that the trained model should be able to support.
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2080,87 +2092,6 @@ export default class TrainingAPIClient extends ServiceClient {
   updateProject(projectId: string, updatedProject: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
   updateProject(projectId: string, updatedProject: models.Project, callback: ServiceCallback<models.Project>): void;
   updateProject(projectId: string, updatedProject: models.Project, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
-
-
-  /**
-   * @summary Queues project for training.
-   *
-   * @param {uuid} projectId The project id.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.trainingType] The type of training to use to train
-   * the project (default: Regular). Possible values include: 'Regular',
-   * 'Advanced'
-   *
-   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
-   * as budget for training (if applicable).
-   *
-   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
-   * and configuration does not change (default: false).
-   *
-   * @param {string} [options.notificationEmailAddress] The email address to send
-   * notification to when training finishes (default: null).
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  trainProjectWithHttpOperationResponse(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
-
-  /**
-   * @summary Queues project for training.
-   *
-   * @param {uuid} projectId The project id.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.trainingType] The type of training to use to train
-   * the project (default: Regular). Possible values include: 'Regular',
-   * 'Advanced'
-   *
-   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
-   * as budget for training (if applicable).
-   *
-   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
-   * and configuration does not change (default: false).
-   *
-   * @param {string} [options.notificationEmailAddress] The email address to send
-   * notification to when training finishes (default: null).
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Iteration} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link Iteration} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  trainProject(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
-  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
-  trainProject(projectId: string, options: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
 
 
   /**
@@ -2404,6 +2335,87 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
+   * @summary Queues project for training.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.trainingType] The type of training to use to train
+   * the project (default: Regular). Possible values include: 'Regular',
+   * 'Advanced'
+   *
+   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
+   * as budget for training (if applicable).
+   *
+   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
+   * and configuration does not change (default: false).
+   *
+   * @param {string} [options.notificationEmailAddress] The email address to send
+   * notification to when training finishes (default: null).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  trainProjectWithHttpOperationResponse(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
+
+  /**
+   * @summary Queues project for training.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.trainingType] The type of training to use to train
+   * the project (default: Regular). Possible values include: 'Regular',
+   * 'Advanced'
+   *
+   * @param {number} [options.reservedBudgetInHours] The number of hours reserved
+   * as budget for training (if applicable).
+   *
+   * @param {boolean} [options.forceTrain] Whether to force train even if dataset
+   * and configuration does not change (default: false).
+   *
+   * @param {string} [options.notificationEmailAddress] The email address to send
+   * notification to when training finishes (default: null).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Iteration} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link Iteration} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  trainProject(projectId: string, options?: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
+  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
+  trainProject(projectId: string, options: { trainingType? : string, reservedBudgetInHours? : number, forceTrain? : boolean, notificationEmailAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
+
+
+  /**
    * @summary Publish a specific iteration.
    *
    * @param {uuid} projectId The project id.
@@ -2411,6 +2423,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {uuid} iterationId The iteration id.
    *
    * @param {string} name The updated iteration name.
+   *
+   * @param {string} predictionId The id of the prediction resource to publish
+   * to.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2423,7 +2438,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  publishIterationWithHttpOperationResponse(projectId: string, iterationId: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
+  publishIterationWithHttpOperationResponse(projectId: string, iterationId: string, name: string, predictionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
 
   /**
    * @summary Publish a specific iteration.
@@ -2433,6 +2448,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {uuid} iterationId The iteration id.
    *
    * @param {string} name The updated iteration name.
+   *
+   * @param {string} predictionId The id of the prediction resource to publish
+   * to.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2460,9 +2478,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  publishIteration(projectId: string, iterationId: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
-  publishIteration(projectId: string, iterationId: string, name: string, callback: ServiceCallback<boolean>): void;
-  publishIteration(projectId: string, iterationId: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+  publishIteration(projectId: string, iterationId: string, name: string, predictionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
+  publishIteration(projectId: string, iterationId: string, name: string, predictionId: string, callback: ServiceCallback<boolean>): void;
+  publishIteration(projectId: string, iterationId: string, name: string, predictionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
 
 
   /**
