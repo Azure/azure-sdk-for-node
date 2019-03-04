@@ -314,10 +314,43 @@ export interface RequiredResourceAccess {
   [additionalPropertyName: string]: any;
 }
 
+export interface AppRole {
+  /**
+   * Unique role identifier inside the appRoles collection.
+  */
+  id?: string;
+  /**
+   * Specifies whether this app role definition can be assigned to users and groups by setting to
+   * 'User', or to other applications (that are accessing this application in daemon service
+   * scenarios) by setting to 'Application', or to both.
+  */
+  allowedMemberTypes?: string[];
+  /**
+   * Permission help text that appears in the admin app assignment and consent experiences.
+  */
+  description?: string;
+  /**
+   * Display name for the permission that appears in the admin consent and app assignment
+   * experiences.
+  */
+  displayName?: string;
+  /**
+   * When creating or updating a role definition, this must be set to true (which is the default).
+   * To delete a role, this must first be set to false. At that point, in a subsequent call, this
+   * role may be removed.
+  */
+  isEnabled?: boolean;
+  /**
+   * Specifies the value of the roles claim that the application should expect in the
+   * authentication and access tokens.
+  */
+  value?: string;
+}
+
 /**
- * Active Directory application information.
+ * Common properties used by GET, POST and PATCH
 */
-export interface Application extends DirectoryObject {
+export interface ApplicationBase extends DirectoryObject {
   /**
    * A property on the application to indicate if the application accepts other IDPs or not or
    * partially accepts.
@@ -328,10 +361,6 @@ export interface Application extends DirectoryObject {
    * resource tenant.
   */
   allowPassthroughUsers?: boolean;
-  /**
-   * The application ID.
-  */
-  appId?: string;
   /**
    * The url for the application logo image stored in a CDN.
   */
@@ -460,40 +489,23 @@ export interface Application extends DirectoryObject {
 /**
  * Request parameters for creating a new application.
 */
-export interface ApplicationCreateParameters extends Application {
+export interface ApplicationCreateParameters extends ApplicationBase {
 }
 
-export interface AppRole {
+/**
+ * Request parameters for updating a new application.
+*/
+export interface ApplicationUpdateParameters extends ApplicationBase {
+}
+
+/**
+ * Active Directory application information.
+*/
+export interface Application extends ApplicationBase {
   /**
-   * Unique role identifier inside the appRoles collection.
+   * The application ID.
   */
-  id?: string;
-  /**
-   * Specifies whether this app role definition can be assigned to users and groups by setting to
-   * 'User', or to other applications (that are accessing this application in daemon service
-   * scenarios) by setting to 'Application', or to both.
-  */
-  allowedMemberTypes?: string[];
-  /**
-   * Permission help text that appears in the admin app assignment and consent experiences.
-  */
-  description?: string;
-  /**
-   * Display name for the permission that appears in the admin consent and app assignment
-   * experiences.
-  */
-  displayName?: string;
-  /**
-   * When creating or updating a role definition, this must be set to true (which is the default).
-   * To delete a role, this must first be set to false. At that point, in a subsequent call, this
-   * role may be removed.
-  */
-  isEnabled?: boolean;
-  /**
-   * Specifies the value of the roles claim that the application should expect in the
-   * authentication and access tokens.
-  */
-  value?: string;
+  appId?: string;
 }
 
 /**

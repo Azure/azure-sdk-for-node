@@ -202,8 +202,6 @@ export interface Applications {
      * application supports pass through users who have no presence in the resource
      * tenant.
      *
-     * @param {string} [parameters.appId] The application ID.
-     *
      * @param {string} [parameters.appLogoUrl] The url for the application logo
      * image stored in a CDN.
      *
@@ -341,8 +339,6 @@ export interface Applications {
      * @param {boolean} [parameters.allowPassthroughUsers] Indicates that the
      * application supports pass through users who have no presence in the resource
      * tenant.
-     *
-     * @param {string} [parameters.appId] The application ID.
      *
      * @param {string} [parameters.appLogoUrl] The url for the application logo
      * image stored in a CDN.
@@ -659,6 +655,8 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {string} [parameters.appId] The application ID.
+     *
      * @param {boolean} [parameters.allowGuestsSignIn] A property on the
      * application to indicate if the application accepts other IDPs or not or
      * partially accepts.
@@ -666,8 +664,6 @@ export interface Applications {
      * @param {boolean} [parameters.allowPassthroughUsers] Indicates that the
      * application supports pass through users who have no presence in the resource
      * tenant.
-     *
-     * @param {string} [parameters.appId] The application ID.
      *
      * @param {string} [parameters.appLogoUrl] The url for the application logo
      * image stored in a CDN.
@@ -780,8 +776,6 @@ export interface Applications {
      * AzureADAndMicrosofAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
-     *
-     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -803,6 +797,8 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {string} [parameters.appId] The application ID.
+     *
      * @param {boolean} [parameters.allowGuestsSignIn] A property on the
      * application to indicate if the application accepts other IDPs or not or
      * partially accepts.
@@ -810,8 +806,6 @@ export interface Applications {
      * @param {boolean} [parameters.allowPassthroughUsers] Indicates that the
      * application supports pass through users who have no presence in the resource
      * tenant.
-     *
-     * @param {string} [parameters.appId] The application ID.
      *
      * @param {string} [parameters.appLogoUrl] The url for the application logo
      * image stored in a CDN.
@@ -924,8 +918,6 @@ export interface Applications {
      * AzureADAndMicrosofAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
-     *
-     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
