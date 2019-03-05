@@ -6943,6 +6943,44 @@ export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
 }
 
 /**
+ * Current TCP connectivity information from the App Service Environment to a single endpoint.
+*/
+export interface EndpointDetail {
+  /**
+   * An IP Address that Domain Name currently resolves to.
+  */
+  ipAddress?: string;
+  /**
+   * The port an endpoint is connected to.
+  */
+  port?: number;
+  /**
+   * The time in milliseconds it takes for a TCP connection to be created from the App Service
+   * Environment to this IpAddress at this Port.
+  */
+  latency?: number;
+  /**
+   * Whether it is possible to create a TCP connection from the App Service Environment to this
+   * IpAddress at this Port.
+  */
+  isAccessable?: boolean;
+}
+
+/**
+ * A domain name that a service is reached at, including details of the current connection status.
+*/
+export interface EndpointDependency {
+  /**
+   * The domain name of the dependency.
+  */
+  domainName?: string;
+  /**
+   * The IP Addresses and Ports used when connecting to DomainName.
+  */
+  endpointDetails?: EndpointDetail[];
+}
+
+/**
  * Diagnostics for an App Service Environment.
 */
 export interface HostingEnvironmentDiagnostics {
@@ -6954,6 +6992,25 @@ export interface HostingEnvironmentDiagnostics {
    * Diagnostics output.
   */
   diagnosicsOutput?: string;
+}
+
+/**
+ * The IP Addresses and Ports that require inbound network access to and within the subnet of the
+ * App Service Environment.
+*/
+export interface InboundEnvironmentEndpoint {
+  /**
+   * Short text describing the purpose of the network traffic.
+  */
+  description?: string;
+  /**
+   * The IP addresses that network traffic will originate from in cidr notation.
+  */
+  endpoints?: string[];
+  /**
+   * The ports that network traffic will arrive to the App Service Environment at.
+  */
+  ports?: string[];
 }
 
 /**
@@ -6990,6 +7047,22 @@ export interface MetricDefinition extends ProxyOnlyResource {
    * Friendly name shown in the UI.
   */
   readonly displayName?: string;
+}
+
+/**
+ * Endpoints accessed for a common purpose that the App Service Environment requires outbound
+ * network access to.
+*/
+export interface OutboundEnvironmentEndpoint {
+  /**
+   * The type of service accessed by the App Service Environment, e.g., Azure Storage, Azure SQL
+   * Database, and Azure Active Directory.
+  */
+  category?: string;
+  /**
+   * The endpoints that the App Service Environment reaches the service at.
+  */
+  endpoints?: EndpointDependency[];
 }
 
 /**
@@ -7651,6 +7724,16 @@ export interface StampCapacityCollection extends Array<StampCapacity> {
 }
 
 /**
+ * Collection of Inbound Environment Endpoints
+*/
+export interface InboundEnvironmentEndpointCollection extends Array<InboundEnvironmentEndpoint> {
+  /**
+   * Link to next page of resources.
+  */
+  readonly nextLink?: string;
+}
+
+/**
  * Collection of worker pools.
 */
 export interface WorkerPoolCollection extends Array<WorkerPoolResource> {
@@ -7674,6 +7757,16 @@ export interface SkuInfoCollection extends Array<SkuInfo> {
  * Collection of usages.
 */
 export interface UsageCollection extends Array<Usage> {
+  /**
+   * Link to next page of resources.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * Collection of Outbound Environment Endpoints
+*/
+export interface OutboundEnvironmentEndpointCollection extends Array<OutboundEnvironmentEndpoint> {
   /**
    * Link to next page of resources.
   */
