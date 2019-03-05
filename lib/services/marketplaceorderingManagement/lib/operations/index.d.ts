@@ -334,7 +334,7 @@ export interface MarketplaceAgreements {
 
 
     /**
-     * Get marketplace agreements.
+     * Get marketplace agreement.
      *
      * @param {string} publisherId Publisher identifier string of image being
      * deployed.
@@ -357,7 +357,7 @@ export interface MarketplaceAgreements {
     getAgreementWithHttpOperationResponse(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms>>;
 
     /**
-     * Get marketplace agreements.
+     * Get marketplace agreement.
      *
      * @param {string} publisherId Publisher identifier string of image being
      * deployed.
@@ -399,7 +399,7 @@ export interface MarketplaceAgreements {
 
 
     /**
-     * List marketplace agreements.
+     * List marketplace agreements in the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -415,7 +415,7 @@ export interface MarketplaceAgreements {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms[]>>;
 
     /**
-     * List marketplace agreements.
+     * List marketplace agreements in the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
