@@ -612,47 +612,99 @@ export interface CelebrityResults {
   metadata?: ImageMetadata;
 }
 
+/**
+ * Json object representing a recognized word.
+*/
 export interface Word {
+  /**
+   * Bounding box of a recognized word.
+  */
   boundingBox: number[];
+  /**
+   * The text content of the word.
+  */
   text: string;
   /**
-   * Possible values include: 'High', 'Low'
+   * Qualitative confidence measure. Possible values include: 'High', 'Low'
   */
   confidence?: string;
 }
 
+/**
+ * Json object representing a recognized text line.
+*/
 export interface Line {
+  /**
+   * Bounding box of a recognized line.
+  */
   boundingBox?: number[];
+  /**
+   * The text content of the line.
+  */
   text?: string;
+  /**
+   * List of words in the text line.
+  */
   words?: Word[];
 }
 
+/**
+ * Json object representing a recognized text region
+*/
 export interface TextRecognitionResult {
-  lines: Line[];
+  /**
+   * The 1-based page number of the recognition result.
+  */
   page?: number;
-  width?: number;
-  height?: number;
+  /**
+   * The orientation of the image in degrees in the clockwise direction. Range between [0, 360).
+  */
   clockwiseOrientation?: number;
   /**
-   * Possible values include: 'pixel', 'inch'
+   * The width of the image in pixels or the PDF in inches.
+  */
+  width?: number;
+  /**
+   * The height of the image in pixels or the PDF in inches.
+  */
+  height?: number;
+  /**
+   * The unit used in the Width, Height and BoundingBox. For images, the unit is "pixel". For PDF,
+   * the unit is "inch". Possible values include: 'pixel', 'inch'
   */
   unit?: string;
+  /**
+   * A list of recognized text lines.
+  */
+  lines: Line[];
 }
 
+/**
+ * Result of recognition text operation.
+*/
 export interface TextOperationResult {
   /**
    * Status of the text operation. Possible values include: 'Not Started', 'Running', 'Failed',
    * 'Succeeded'
   */
   status?: string;
+  /**
+   * Text recognition result of the text operation.
+  */
   recognitionResult?: TextRecognitionResult;
 }
 
+/**
+ * OCR result of the read operation.
+*/
 export interface ReadOperationResult {
   /**
-   * Status of the text operation. Possible values include: 'Not Started', 'Running', 'Failed',
+   * Status of the read operation. Possible values include: 'Not Started', 'Running', 'Failed',
    * 'Succeeded'
   */
   status?: string;
+  /**
+   * A array of text recognition result of the read operation.
+  */
   recognitionResults?: TextRecognitionResult[];
 }
