@@ -348,9 +348,9 @@ export interface AppRole {
 }
 
 /**
- * Common properties used by GET, POST and PATCH
+ * Active Directive Application common properties shared among GET, POST and PATCH
 */
-export interface ApplicationBase extends DirectoryObject {
+export interface ApplicationBase {
   /**
    * A property on the application to indicate if the application accepts other IDPs or not or
    * partially accepts.
@@ -501,11 +501,144 @@ export interface ApplicationUpdateParameters extends ApplicationBase {
 /**
  * Active Directory application information.
 */
-export interface Application extends ApplicationBase {
+export interface Application extends DirectoryObject {
   /**
    * The application ID.
   */
   appId?: string;
+  /**
+   * A property on the application to indicate if the application accepts other IDPs or not or
+   * partially accepts.
+  */
+  allowGuestsSignIn?: boolean;
+  /**
+   * Indicates that the application supports pass through users who have no presence in the
+   * resource tenant.
+  */
+  allowPassthroughUsers?: boolean;
+  /**
+   * The url for the application logo image stored in a CDN.
+  */
+  appLogoUrl?: string;
+  /**
+   * The collection of application roles that an application may declare. These roles can be
+   * assigned to users, groups or service principals.
+  */
+  appRoles?: AppRole[];
+  /**
+   * The application permissions.
+  */
+  appPermissions?: string[];
+  /**
+   * Whether the application is available to other tenants.
+  */
+  availableToOtherTenants?: boolean;
+  /**
+   * The display name of the application.
+  */
+  displayName?: string;
+  /**
+   * A URL provided by the author of the application to report errors when using the application.
+  */
+  errorUrl?: string;
+  /**
+   * The home page of the application.
+  */
+  homepage?: string;
+  /**
+   * A collection of URIs for the application.
+  */
+  identifierUris?: string[];
+  /**
+   * urls with more informations of the application.
+  */
+  informationalUrls?: InformationalUrl;
+  /**
+   * Specifies whether this application supports device authentication without a user. The default
+   * is false.
+  */
+  isDeviceOnlyAuthSupported?: boolean;
+  /**
+   * A collection of KeyCredential objects.
+  */
+  keyCredentials?: KeyCredential[];
+  /**
+   * Client applications that are tied to this resource application. Consent to any of the known
+   * client applications will result in implicit consent to the resource application through a
+   * combined consent dialog (showing the OAuth permission scopes required by the client and the
+   * resource).
+  */
+  knownClientApplications?: string[];
+  /**
+   * the url of the logout page
+  */
+  logoutUrl?: string;
+  /**
+   * Whether to allow implicit grant flow for OAuth2
+  */
+  oauth2AllowImplicitFlow?: boolean;
+  /**
+   * Specifies whether during a token Request Azure AD will allow path matching of the redirect URI
+   * against the applications collection of replyURLs. The default is false.
+  */
+  oauth2AllowUrlPathMatching?: boolean;
+  /**
+   * The collection of OAuth 2.0 permission scopes that the web API (resource) application exposes
+   * to client applications. These permission scopes may be granted to client applications during
+   * consent.
+  */
+  oauth2Permissions?: OAuth2Permission[];
+  /**
+   * Specifies whether, as part of OAuth 2.0 token requests, Azure AD will allow POST requests, as
+   * opposed to GET requests. The default is false, which specifies that only GET requests will be
+   * allowed.
+  */
+  oauth2RequirePostResponse?: boolean;
+  /**
+   * A list of tenants allowed to access application.
+  */
+  orgRestrictions?: string[];
+  optionalClaims?: OptionalClaims;
+  /**
+   * A collection of PasswordCredential objects
+  */
+  passwordCredentials?: PasswordCredential[];
+  /**
+   * list of pre-authorizaed applications.
+  */
+  preAuthorizedApplications?: PreAuthorizedApplication[];
+  /**
+   * Specifies whether this application is a public client (such as an installed application
+   * running on a mobile device). Default is false.
+  */
+  publicClient?: boolean;
+  /**
+   * Reliable domain which can be used to identify an application.
+  */
+  publisherDomain?: string;
+  /**
+   * A collection of reply URLs for the application.
+  */
+  replyUrls?: string[];
+  /**
+   * Specifies resources that this application requires access to and the set of OAuth permission
+   * scopes and application roles that it needs under each of those resources. This
+   * pre-configuration of required resource access drives the consent experience.
+  */
+  requiredResourceAccess?: RequiredResourceAccess[];
+  /**
+   * The URL to the SAML metadata for the application.
+  */
+  samlMetadataUrl?: string;
+  /**
+   * Audience for signing in to the application (AzureADMyOrganizatio, AzureADAllorganizations,
+   * AzureADAndMicrosofAccounts).
+  */
+  signInAudience?: string;
+  /**
+   * The primary Web page.
+  */
+  wwwHomepage?: string;
 }
 
 /**
@@ -659,6 +792,48 @@ export interface CheckGroupMembershipResult {
 }
 
 /**
+ * Active Directory service principal common perperties shared among GET, POST and PATCH
+*/
+export interface ServicePrincipalBase {
+  /**
+   * The collection of key credentials associated with the service principal.
+  */
+  keyCredentials?: KeyCredential[];
+  /**
+   * The collection of password credentials associated with the service principal.
+  */
+  passwordCredentials?: PasswordCredential[];
+  /**
+   * the type of the servie principal
+  */
+  servicePrincipalType?: string;
+  /**
+   * whether or not the service principal account is enabled
+  */
+  accountEnabled?: string;
+  /**
+   * Optional list of tags that you can apply to your service principals. Not nullable.
+  */
+  tags?: string[];
+}
+
+/**
+ * Request parameters for creating a new service principal.
+*/
+export interface ServicePrincipalCreateParameters extends ServicePrincipalBase {
+  /**
+   * The application ID.
+  */
+  appId: string;
+}
+
+/**
+ * Request parameters for update an existing service principal.
+*/
+export interface ServicePrincipalUpdateParameters extends ServicePrincipalBase {
+}
+
+/**
  * Active Directory service principal information.
 */
 export interface ServicePrincipal extends DirectoryObject {
@@ -748,12 +923,6 @@ export interface ServicePrincipal extends DirectoryObject {
    * Optional list of tags that you can apply to your service principals. Not nullable.
   */
   tags?: string[];
-}
-
-/**
- * Request parameters for creating a new service principal.
-*/
-export interface ServicePrincipalCreateParameters extends ServicePrincipal {
 }
 
 /**
