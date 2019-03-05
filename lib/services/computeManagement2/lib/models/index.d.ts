@@ -3579,6 +3579,9 @@ export interface KeyVaultAndKeyReference {
   keyUrl: string;
 }
 
+/**
+ * Encryption settings for one disk volume.
+*/
 export interface EncryptionSettingsElement {
   /**
    * Key Vault Secret Url and vault id of the disk encryption key
