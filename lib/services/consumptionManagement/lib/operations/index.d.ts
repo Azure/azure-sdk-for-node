@@ -437,7 +437,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -470,7 +470,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -522,7 +522,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
@@ -557,7 +557,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
@@ -613,7 +613,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
@@ -695,7 +695,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
@@ -794,7 +794,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
@@ -829,7 +829,7 @@ export interface Budgets {
      * '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}'
      * for billingProfile scope,
      * 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}'
-     * for invoiceSection scope..
+     * for invoiceSection scope.
      *
      * @param {string} budgetName Budget Name.
      *
