@@ -620,6 +620,10 @@ export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDe
    * 'MultiVmSyncRecoveryPoint', 'PerVmRecoveryPoint'
    */
   recoveryPointSyncType?: string;
+  /**
+   * List of disk ids representing a recovery point.
+   */
+  disks?: string[];
 }
 
 /**
