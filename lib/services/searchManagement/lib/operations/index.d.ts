@@ -582,6 +582,9 @@ export interface Services {
      *
      * @param {object} [service.identity] The identity of the resource.
      *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.searchManagementRequestOptions] Additional
@@ -660,6 +663,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -751,6 +757,9 @@ export interface Services {
      *
      * @param {object} [service.identity] The identity of the resource.
      *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.searchManagementRequestOptions] Additional
@@ -821,6 +830,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1299,6 +1311,9 @@ export interface Services {
      *
      * @param {object} [service.identity] The identity of the resource.
      *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.searchManagementRequestOptions] Additional
@@ -1377,6 +1392,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *

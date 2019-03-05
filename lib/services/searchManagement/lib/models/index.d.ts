@@ -198,6 +198,10 @@ export interface Identity {
    * The tenant ID of resource.
    */
   readonly tenantId?: string;
+  /**
+   * The identity type. Possible values include: 'None', 'SystemAssigned'
+   */
+  type: string;
 }
 
 /**
