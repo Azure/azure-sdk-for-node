@@ -201,6 +201,251 @@ export interface MarketplaceAgreements {
     create(publisherId: string, offerId: string, planId: string, parameters: models.AgreementTerms, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgreementTerms>;
     create(publisherId: string, offerId: string, planId: string, parameters: models.AgreementTerms, callback: ServiceCallback<models.AgreementTerms>): void;
     create(publisherId: string, offerId: string, planId: string, parameters: models.AgreementTerms, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgreementTerms>): void;
+
+
+    /**
+     * Sign marketplace terms.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgreementTerms>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    signWithHttpOperationResponse(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms>>;
+
+    /**
+     * Sign marketplace terms.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgreementTerms} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgreementTerms} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgreementTerms} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    sign(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgreementTerms>;
+    sign(publisherId: string, offerId: string, planId: string, callback: ServiceCallback<models.AgreementTerms>): void;
+    sign(publisherId: string, offerId: string, planId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgreementTerms>): void;
+
+
+    /**
+     * Cancel marketplace terms.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgreementTerms>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms>>;
+
+    /**
+     * Cancel marketplace terms.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgreementTerms} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgreementTerms} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgreementTerms} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgreementTerms>;
+    cancel(publisherId: string, offerId: string, planId: string, callback: ServiceCallback<models.AgreementTerms>): void;
+    cancel(publisherId: string, offerId: string, planId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgreementTerms>): void;
+
+
+    /**
+     * Get marketplace agreement.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgreementTerms>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAgreementWithHttpOperationResponse(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms>>;
+
+    /**
+     * Get marketplace agreement.
+     *
+     * @param {string} publisherId Publisher identifier string of image being
+     * deployed.
+     *
+     * @param {string} offerId Offer identifier string of image being deployed.
+     *
+     * @param {string} planId Plan identifier string of image being deployed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgreementTerms} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgreementTerms} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgreementTerms} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAgreement(publisherId: string, offerId: string, planId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgreementTerms>;
+    getAgreement(publisherId: string, offerId: string, planId: string, callback: ServiceCallback<models.AgreementTerms>): void;
+    getAgreement(publisherId: string, offerId: string, planId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgreementTerms>): void;
+
+
+    /**
+     * List marketplace agreements in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgreementTerms[]>>;
+
+    /**
+     * List marketplace agreements in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgreementTerms[]>;
+    list(callback: ServiceCallback<models.AgreementTerms[]>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgreementTerms[]>): void;
 }
 
 /**
