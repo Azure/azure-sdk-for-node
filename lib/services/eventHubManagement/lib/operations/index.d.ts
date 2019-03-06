@@ -332,13 +332,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -381,13 +381,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -572,13 +572,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -621,13 +621,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -1164,13 +1164,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -1213,13 +1213,13 @@ export interface Namespaces {
      * SKU. Possible values include: 'Basic', 'Standard'
      *
      * @param {number} [parameters.sku.capacity] The Event Hubs throughput units,
-     * vaule should be 0 to 20 throughput units.
+     * value should be 0 to 20 throughput units.
      *
      * @param {boolean} [parameters.isAutoInflateEnabled] Value that indicates
      * whether AutoInflate is enabled for eventhub namespace.
      *
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
-     * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
+     * throughput units when AutoInflate is enabled, value should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
      * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
@@ -1656,7 +1656,7 @@ export interface DisasterRecoveryConfigs {
      * Recovery configuration)
      *
      * @param {string} [parameters.partnerNamespace] ARM Id of the
-     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairning
+     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      *
      * @param {string} [parameters.alternateName] Alternate name specified when
      * alias and namespace names are same.
@@ -1688,7 +1688,7 @@ export interface DisasterRecoveryConfigs {
      * Recovery configuration)
      *
      * @param {string} [parameters.partnerNamespace] ARM Id of the
-     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairning
+     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      *
      * @param {string} [parameters.alternateName] Alternate name specified when
      * alias and namespace names are same.
@@ -1923,7 +1923,7 @@ export interface DisasterRecoveryConfigs {
 
 
     /**
-     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * Invokes GEO DR failover and reconfigure the alias to point to the secondary
      * namespace
      *
      * @param {string} resourceGroupName Name of the resource group within the
@@ -1947,7 +1947,7 @@ export interface DisasterRecoveryConfigs {
     failOverWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * Invokes GEO DR failover and reconfigure the alias to point to the secondary
      * namespace
      *
      * @param {string} resourceGroupName Name of the resource group within the
@@ -2457,6 +2457,9 @@ export interface EventHubs {
      * Here all the parameters (Namespace,EventHub .. etc) are mandatory
      * irrespective of order
      *
+     * @param {boolean} [parameters.captureDescription.skipEmptyArchives] A value
+     * that indicates whether to Skip Empty Archives
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2532,6 +2535,9 @@ export interface EventHubs {
      * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
      * Here all the parameters (Namespace,EventHub .. etc) are mandatory
      * irrespective of order
+     *
+     * @param {boolean} [parameters.captureDescription.skipEmptyArchives] A value
+     * that indicates whether to Skip Empty Archives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3270,7 +3276,7 @@ export interface ConsumerGroups {
      * @param {object} parameters Parameters supplied to create or update a
      * consumer group resource.
      *
-     * @param {string} [parameters.userMetadata] Usermetadata is a placeholder to
+     * @param {string} [parameters.userMetadata] User Metadata is a placeholder to
      * store user-defined string data with maximum length 1024. e.g. it can be used
      * to store descriptive data, such as list of teams and their contact
      * information also user-defined configuration settings can be stored.
@@ -3304,7 +3310,7 @@ export interface ConsumerGroups {
      * @param {object} parameters Parameters supplied to create or update a
      * consumer group resource.
      *
-     * @param {string} [parameters.userMetadata] Usermetadata is a placeholder to
+     * @param {string} [parameters.userMetadata] User Metadata is a placeholder to
      * store user-defined string data with maximum length 1024. e.g. it can be used
      * to store descriptive data, such as list of teams and their contact
      * information also user-defined configuration settings can be stored.
