@@ -60,3 +60,6 @@ client.job.list(options).then((result) => {
   console.dir(err, {depth: null, colors: true});
 });
 ```
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2Fbatch%2FREADME.png)

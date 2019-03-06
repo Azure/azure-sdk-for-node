@@ -65,3 +65,6 @@ msRestAzure.interactiveLogin().then((credentials) => {
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Key Vault](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/keyVault)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FkeyVaultManagement%2FREADME.png)

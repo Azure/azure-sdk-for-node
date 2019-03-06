@@ -145,3 +145,6 @@ Please take a look at the tests over [here](https://github.com/Azure/azure-sdk-f
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js - All-up](https://github.com/Azure/azure-sdk-for-node)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FresourceManagement%2FREADME.png)

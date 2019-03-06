@@ -116,3 +116,6 @@ client.storageAccounts.deleteMethod(groupName, accountName, function (err, resul
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FstorageManagement2%2FREADME.png)

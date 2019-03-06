@@ -126,3 +126,6 @@ catalogClient.catalog.listDatabasesWithHttpOperationResponse(accountName).then((
 
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Data Lake Store Management](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FdataLake.Analytics%2FREADME.png)

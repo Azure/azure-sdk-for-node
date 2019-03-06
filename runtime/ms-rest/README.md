@@ -56,3 +56,5 @@ For more examples on serialization/deserialization with complex types please tak
 ## Related Projects
 
 - [AutoRest](https://github.com/Azure/AutoRest)
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Fruntime%2Fms-rest%2FREADME.png)

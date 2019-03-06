@@ -132,3 +132,6 @@ storageManagementClient.storageAccounts.regenerateKeys({
 - [Microsoft Azure SDK for Node.js - Storage Blob](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob)
 - [Microsoft Azure SDK for Node.js - Storage Table](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table)
 - [Microsoft Azure SDK for Node.js - Storage Queue](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FstorageManagement%2FREADME.png)
