@@ -3197,8 +3197,8 @@ export interface ExpressRouteCircuitSku {
   */
   name?: string;
   /**
-   * The tier of the SKU. Possible values are 'Standard', 'Premium' or 'Basic'. Possible values
-   * include: 'Standard', 'Premium', 'Basic'
+   * The tier of the SKU. Possible values are 'Standard', 'Premium' or 'Local'. Possible values
+   * include: 'Standard', 'Premium', 'Basic', 'Local'
   */
   tier?: string;
   /**
