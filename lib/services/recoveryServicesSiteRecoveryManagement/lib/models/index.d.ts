@@ -238,6 +238,18 @@ export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecif
    * The recovery disk encryption information.
    */
   diskEncryptionInfo?: DiskEncryptionInfo;
+  /**
+   * The recovery availability zone.
+   */
+  recoveryAvailabilityZone?: string;
+  /**
+   * The recovery Azure virtual network ARM id.
+   */
+  recoveryAzureNetworkId?: string;
+  /**
+   * The recovery subnet name.
+   */
+  recoverySubnetName?: string;
 }
 
 /**
@@ -888,6 +900,10 @@ export interface A2AReplicationDetails extends ReplicationProviderSpecificSettin
    * The time (in UTC) when the last RPO value was calculated by Protection Service.
    */
   lastRpoCalculatedTime?: Date;
+  /**
+   * The recovery availability zone.
+   */
+  recoveryAvailabilityZone?: string;
 }
 
 /**
