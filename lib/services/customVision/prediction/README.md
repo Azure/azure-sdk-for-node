@@ -20,7 +20,7 @@ npm install azure-cognitiveservices-customvision-prediction
 
 ### How to use
 
-#### Authentication, client creation, and predictImageUrl  as an example.
+#### Authentication, client creation, and classifyImageUrl  as an example.
 
 ```javascript
 const msRest = require("ms-rest");
@@ -30,13 +30,13 @@ const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new PredictionAPIClient(creds, subscriptionId);
 const projectId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
+const publishedModelName = "testpublishedModelName";
 const imageUrl = {
   url: "testurl"
 };
-const iterationId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
 const application = "testapplication";
 
-client.predictImageUrl(projectId, imageUrl, iterationId, application).then((result) => {
+client.classifyImageUrl(projectId, publishedModelName, imageUrl, application).then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {
