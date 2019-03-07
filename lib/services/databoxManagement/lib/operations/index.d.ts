@@ -341,8 +341,8 @@ export interface Jobs {
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
-     * expected size of the data, which needs to be transfered in this job, in tera
-     * bytes.
+     * expected size of the data, which needs to be transferred in this job, in
+     * terabytes.
      *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
@@ -453,8 +453,8 @@ export interface Jobs {
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
-     * expected size of the data, which needs to be transfered in this job, in tera
-     * bytes.
+     * expected size of the data, which needs to be transferred in this job, in
+     * terabytes.
      *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
@@ -1087,8 +1087,8 @@ export interface Jobs {
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
-     * expected size of the data, which needs to be transfered in this job, in tera
-     * bytes.
+     * expected size of the data, which needs to be transferred in this job, in
+     * terabytes.
      *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
@@ -1199,8 +1199,8 @@ export interface Jobs {
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
-     * expected size of the data, which needs to be transfered in this job, in tera
-     * bytes.
+     * expected size of the data, which needs to be transferred in this job, in
+     * terabytes.
      *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
