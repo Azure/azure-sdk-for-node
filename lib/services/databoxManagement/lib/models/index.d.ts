@@ -353,439 +353,436 @@ export interface CopyProgress {
    * Id of the account where the data needs to be uploaded.
    */
   readonly accountId?: string;
-  /**
-   * Amount of data uploaded by the job as of now.
-   */
-  readonly bytesSentToCloud?: number;
+  readonly bytesSentToCloud?: string;
   /**
    * Total amount of data to be processed by the job.
-   */
+  */
   readonly totalBytesToProcess?: number;
   /**
    * Number of files processed by the job as of now.
-   */
+  */
   readonly filesProcessed?: number;
   /**
    * Total number of files to be processed by the job.
-   */
+  */
   readonly totalFilesToProcess?: number;
 }
 
 /**
  * Copy log details for a storage account of a DataBox job
- */
+*/
 export interface DataBoxAccountCopyLogDetails extends CopyLogDetails {
   /**
    * Destination account name.
-   */
+  */
   readonly accountName?: string;
   /**
    * Link for copy logs.
-   */
+  */
   readonly copyLogLink?: string;
 }
 
 /**
  * Copy Log Details for a disk
- */
+*/
 export interface DataBoxDiskCopyLogDetails extends CopyLogDetails {
   /**
    * Disk Serial Number.
-   */
+  */
   readonly diskSerialNumber?: string;
   /**
    * Link for copy error logs.
-   */
+  */
   readonly errorLogLink?: string;
   /**
    * Link for copy verbose logs.
-   */
+  */
   readonly verboseLogLink?: string;
 }
 
 /**
  * DataBox Disk Copy Progress
- */
+*/
 export interface DataBoxDiskCopyProgress {
   /**
    * The serial number of the disk
-   */
+  */
   readonly serialNumber?: string;
   /**
    * Bytes copied during the copy of disk.
-   */
+  */
   readonly bytesCopied?: number;
   /**
    * Indicates the percentage completed for the copy of the disk.
-   */
+  */
   readonly percentComplete?: number;
   /**
    * The Status of the copy. Possible values include: 'NotStarted', 'InProgress', 'Completed',
    * 'CompletedWithErrors', 'Failed', 'NotReturned'
-   */
+  */
   readonly status?: string;
 }
 
 /**
  * Job details.
- */
+*/
 export interface JobDetails {
   /**
    * The expected size of the data, which needs to be transferred in this job, in terabytes.
-   */
+  */
   expectedDataSizeInTeraBytes?: number;
   /**
    * List of stages that run in the job.
-   */
+  */
   readonly jobStages?: JobStages[];
   /**
    * Contact details for notification and shipping.
-   */
+  */
   contactDetails: ContactDetails;
   /**
    * Shipping address of the customer.
-   */
+  */
   shippingAddress: ShippingAddress;
   /**
    * Delivery package shipping details.
-   */
+  */
   readonly deliveryPackage?: PackageShippingDetails;
   /**
    * Return package shipping details.
-   */
+  */
   readonly returnPackage?: PackageShippingDetails;
   /**
    * Destination account details.
-   */
+  */
   destinationAccountDetails: DestinationAccountDetails[];
   /**
    * Error details for failure. This is optional.
-   */
+  */
   readonly errorDetails?: JobErrorDetails[];
   /**
    * Preferences for the order.
-   */
+  */
   preferences?: Preferences;
   /**
    * List of copy log details.
-   */
+  */
   readonly copyLogDetails?: CopyLogDetails[];
   /**
    * Shared access key to download the return shipment label
-   */
+  */
   readonly reverseShipmentLabelSasKey?: string;
   /**
    * Shared access key to download the chain of custody logs
-   */
+  */
   readonly chainOfCustodySasKey?: string;
   /**
    * Polymorphic Discriminator
-   */
+  */
   jobDetailsType: string;
 }
 
 /**
  * DataBox Disk Job Details.
- */
+*/
 export interface DataBoxDiskJobDetails extends JobDetails {
   /**
    * User preference on what size disks are needed for the job. The map is from the disk size in TB
    * to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against
    * an int.
-   */
+  */
   preferredDisks?: { [propertyName: string]: number };
   /**
    * Copy progress per disk.
-   */
+  */
   readonly copyProgress?: DataBoxDiskCopyProgress[];
   /**
    * Contains the map of disk serial number to the disk size being used for the job. Is returned
    * only after the disks are shipped to the customer.
-   */
+  */
   readonly disksAndSizeDetails?: { [propertyName: string]: number };
   /**
    * User entered passkey for DataBox Disk job.
-   */
+  */
   passkey?: string;
 }
 
 /**
  * Contains all the secrets of a Disk.
- */
+*/
 export interface DiskSecret {
   /**
    * Serial number of the assigned disk.
-   */
+  */
   readonly diskSerialNumber?: string;
   /**
    * Bit Locker key of the disk which can be used to unlock the disk to copy data.
-   */
+  */
   readonly bitLockerKey?: string;
 }
 
 /**
  * The base class for the secrets
- */
+*/
 export interface JobSecrets {
   /**
    * Polymorphic Discriminator
-   */
+  */
   jobSecretsType: string;
 }
 
 /**
  * The secrets related to disk job.
- */
+*/
 export interface DataBoxDiskJobSecrets extends JobSecrets {
   /**
    * Contains the list of secrets object for that device.
-   */
+  */
   readonly diskSecrets?: DiskSecret[];
   /**
    * PassKey for the disk Job.
-   */
+  */
   readonly passKey?: string;
   /**
    * Whether passkey was provided by user.
-   */
+  */
   readonly isPasskeyUserDefined?: boolean;
 }
 
 /**
  * Copy log details for a storage account for DataBoxHeavy
- */
+*/
 export interface DataBoxHeavyAccountCopyLogDetails extends CopyLogDetails {
   /**
    * Destination account name.
-   */
+  */
   readonly accountName?: string;
   /**
    * Link for copy logs.
-   */
+  */
   readonly copyLogLink?: string[];
 }
 
 /**
  * DataBoxHeavy Device Job Details
- */
+*/
 export interface DataBoxHeavyJobDetails extends JobDetails {
   /**
    * Copy progress per account.
-   */
+  */
   readonly copyProgress?: CopyProgress[];
 }
 
 /**
  * The secrets related to a DataBoxHeavy.
- */
+*/
 export interface DataBoxHeavySecret {
   /**
    * Serial number of the assigned device.
-   */
+  */
   readonly deviceSerialNumber?: string;
   /**
    * Password for out of the box experience on device.
-   */
+  */
   readonly devicePassword?: string;
   /**
    * Network configuration of the appliance.
-   */
+  */
   readonly networkConfigurations?: ApplianceNetworkConfiguration[];
   /**
    * The base 64 encoded public key to authenticate with the device
-   */
+  */
   readonly encodedValidationCertPubKey?: string;
   /**
    * Per account level access credentials.
-   */
+  */
   readonly accountCredentialDetails?: AccountCredentialDetails[];
 }
 
 /**
  * The secrets related to a DataBoxHeavy job.
- */
+*/
 export interface DataBoxHeavyJobSecrets extends JobSecrets {
   /**
    * Contains the list of secret objects for a DataBoxHeavy job.
-   */
+  */
   readonly cabinetPodSecrets?: DataBoxHeavySecret[];
 }
 
 /**
  * DataBox Job Details
- */
+*/
 export interface DataBoxJobDetails extends JobDetails {
   /**
    * Copy progress per storage account.
-   */
+  */
   readonly copyProgress?: CopyProgress[];
 }
 
 /**
  * The secrets related to a DataBox.
- */
+*/
 export interface DataBoxSecret {
   /**
    * Serial number of the assigned device.
-   */
+  */
   readonly deviceSerialNumber?: string;
   /**
    * Password for out of the box experience on device.
-   */
+  */
   readonly devicePassword?: string;
   /**
    * Network configuration of the appliance.
-   */
+  */
   readonly networkConfigurations?: ApplianceNetworkConfiguration[];
   /**
    * The base 64 encoded public key to authenticate with the device
-   */
+  */
   readonly encodedValidationCertPubKey?: string;
   /**
    * Per account level access credentials.
-   */
+  */
   readonly accountCredentialDetails?: AccountCredentialDetails[];
 }
 
 /**
  * The secrets related to a DataBox job.
- */
+*/
 export interface DataboxJobSecrets extends JobSecrets {
   /**
    * Contains the list of secret objects for a job.
-   */
+  */
   podSecrets?: DataBoxSecret[];
 }
 
 /**
  * Details of the destination of the data
- */
+*/
 export interface DestinationAccountDetails {
   /**
    * Arm Id of the destination where the data has to be moved.
-   */
+  */
   accountId?: string;
   /**
    * Polymorphic Discriminator
-   */
+  */
   dataDestinationType: string;
 }
 
 /**
  * Details for the destination compute disks.
- */
+*/
 export interface DestinationManagedDiskDetails extends DestinationAccountDetails {
   /**
    * Destination Resource Group Id where the Compute disks should be created.
-   */
+  */
   resourceGroupId: string;
   /**
    * Arm Id of the storage account that can be used to copy the vhd for staging.
-   */
+  */
   stagingStorageAccountId: string;
 }
 
 /**
  * Details for the destination storage account.
- */
+*/
 export interface DestinationStorageAccountDetails extends DestinationAccountDetails {
   /**
    * Destination Storage Account Arm Id.
-   */
+  */
   storageAccountId: string;
 }
 
 /**
  * Top level error for the job.
- */
+*/
 export interface ErrorModel {
   /**
    * Error code that can be used to programmatically identify the error.
-   */
+  */
   readonly code?: string;
   /**
    * Describes the error in detail and provides debugging information.
-   */
+  */
   readonly message?: string;
 }
 
 /**
  * Job Error Details for providing the information and recommended action.
- */
+*/
 export interface JobErrorDetails {
   /**
    * Message for the error.
-   */
+  */
   readonly errorMessage?: string;
   /**
    * Code for the error.
-   */
+  */
   readonly errorCode?: number;
   /**
    * Recommended action for the error.
-   */
+  */
   readonly recommendedAction?: string;
   /**
    * Contains the non localized exception message
-   */
+  */
   readonly exceptionMessage?: string;
 }
 
 /**
  * Job stages.
- */
+*/
 export interface JobStages {
   /**
    * Name of the job stage. Possible values include: 'DeviceOrdered', 'DevicePrepared',
    * 'Dispatched', 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
    * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
    * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
-   */
+  */
   readonly stageName?: string;
   /**
    * Display name of the job stage.
-   */
+  */
   readonly displayName?: string;
   /**
    * Status of the job stage. Possible values include: 'None', 'InProgress', 'Succeeded', 'Failed',
    * 'Cancelled', 'Cancelling', 'SucceededWithErrors'
-   */
+  */
   readonly stageStatus?: string;
   /**
    * Time for the job stage in UTC ISO 8601 format.
-   */
+  */
   readonly stageTime?: Date;
   /**
    * Job Stage Details
-   */
+  */
   readonly jobStageDetails?: any;
   /**
    * Error details for the stage.
-   */
+  */
   readonly errorDetails?: JobErrorDetails[];
 }
 
 /**
  * Shipping details.
- */
+*/
 export interface PackageShippingDetails {
   /**
    * Name of the carrier.
-   */
+  */
   readonly carrierName?: string;
   /**
    * Tracking Id of shipment.
-   */
+  */
   readonly trackingId?: string;
   /**
    * Url where shipment can be tracked.
-   */
+  */
   readonly trackingUrl?: string;
 }
 
 /**
  * Preferences related to the order
- */
+*/
 export interface Preferences {
   preferredDataCenterRegion?: string[];
 }
