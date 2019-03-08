@@ -4565,6 +4565,75 @@ export interface DdosProtectionPlans {
 
 
     /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosProtectionPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosProtectionPlan>>;
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosProtectionPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosProtectionPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosProtectionPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+
+
+    /**
      * Gets all DDoS protection plans in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -4801,6 +4870,75 @@ export interface DdosProtectionPlans {
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, callback: ServiceCallback<models.DdosProtectionPlan>): void;
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosProtectionPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosProtectionPlan>>;
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosProtectionPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosProtectionPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosProtectionPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
 
 
     /**
