@@ -28,8 +28,6 @@
   "main": "./lib/azure.js",
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "azure-common": "^0.9.20",
-    "azure-storage": "^2.9.0-preview",
     "mime": "^1.6.0",
     "moment": "^2.22.2",
     "ms-rest": "^2.3.8",
@@ -40,6 +38,8 @@
   },
   "devDependencies": {
     "@types/request": "^2.0.3",
+    "azure-common": "^0.9.20",
+    "azure-storage": "^2.9.0-preview",
     "adal-node": "^0.1.22",
     "async": "^2.5.0",
     "colors": "1.1.2",
