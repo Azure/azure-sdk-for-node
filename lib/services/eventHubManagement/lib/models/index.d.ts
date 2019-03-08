@@ -429,6 +429,62 @@ export interface MessagingPlan extends TrackedResource {
 }
 
 /**
+ * Properties supplied for Subnet
+*/
+export interface Subnet {
+  /**
+   * Resource ID of Virtual Network Subnet
+  */
+  id?: string;
+}
+
+/**
+ * The response from the List namespace operation.
+*/
+export interface NWRuleSetIpRules {
+  /**
+   * IP Mask
+  */
+  ipMask?: string;
+  /**
+   * The IP Filter Action. Possible values include: 'Allow'
+  */
+  action?: string;
+}
+
+/**
+ * The response from the List namespace operation.
+*/
+export interface NWRuleSetVirtualNetworkRules {
+  /**
+   * Subnet properties
+  */
+  subnet?: Subnet;
+  /**
+   * Value that indicates whether to ignore missing Vnet Service Endpoint
+  */
+  ignoreMissingVnetServiceEndpoint?: boolean;
+}
+
+/**
+ * Description of topic resource.
+*/
+export interface NetworkRuleSet extends Resource {
+  /**
+   * Default Action for Network Rule Set. Possible values include: 'Allow', 'Deny'
+  */
+  defaultAction?: string;
+  /**
+   * List VirtualNetwork Rules
+  */
+  virtualNetworkRules?: NWRuleSetVirtualNetworkRules[];
+  /**
+   * List of IpRules
+  */
+  ipRules?: NWRuleSetIpRules[];
+}
+
+/**
  * Result of the request to list Event Hub operations. It contains a list of operations and a URL
  * link to get the next set of results.
 */
