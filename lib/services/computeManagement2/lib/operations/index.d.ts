@@ -2584,11 +2584,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -2637,10 +2637,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -2772,7 +2772,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3009,11 +3009,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3062,10 +3062,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -3197,7 +3197,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3453,11 +3453,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3506,10 +3506,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -3641,7 +3641,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3876,11 +3876,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3929,10 +3929,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -4064,7 +4064,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -4907,8 +4907,8 @@ export interface VirtualMachines {
 
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4916,7 +4916,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4931,8 +4931,8 @@ export interface VirtualMachines {
     reimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4940,7 +4940,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5380,11 +5380,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -5433,10 +5433,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -5568,7 +5568,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -5805,11 +5805,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -5858,10 +5858,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -5993,7 +5993,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -6249,11 +6249,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -6302,10 +6302,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -6437,7 +6437,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -6672,11 +6672,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -6725,10 +6725,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -6860,7 +6860,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -7344,8 +7344,8 @@ export interface VirtualMachines {
 
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7353,7 +7353,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -7368,8 +7368,8 @@ export interface VirtualMachines {
     beginReimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7377,7 +7377,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9236,12 +9236,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -9313,7 +9313,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -9373,7 +9373,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -9695,12 +9695,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -9772,7 +9772,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -9832,7 +9832,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -11496,7 +11496,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11525,7 +11526,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11989,12 +11991,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -12066,7 +12068,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -12126,7 +12128,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -12448,12 +12450,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -12525,7 +12527,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -12585,7 +12587,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -13893,7 +13895,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -13922,7 +13925,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -14326,6 +14330,9 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14378,6 +14385,9 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
+     *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14650,6 +14660,9 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14702,6 +14715,9 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
+     *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15312,7 +15328,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -15338,7 +15354,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -15672,11 +15688,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -15727,10 +15743,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -15862,7 +15878,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -16085,11 +16101,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -16140,10 +16156,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -16275,7 +16291,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -17021,7 +17037,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17047,7 +17063,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17381,11 +17397,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -17436,10 +17452,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -17571,7 +17587,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -17794,11 +17810,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -17849,10 +17865,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -17984,7 +18000,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -18604,7 +18620,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18647,7 +18663,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18706,7 +18722,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18745,7 +18761,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18808,7 +18824,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18851,7 +18867,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18910,7 +18926,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18949,7 +18965,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -19320,12 +19336,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -19353,35 +19373,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -19431,12 +19434,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -19464,35 +19471,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -19560,35 +19550,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -19640,35 +19613,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -19966,7 +19922,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -19998,7 +19954,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20122,12 +20078,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20155,35 +20115,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20233,12 +20176,16 @@ export interface Disks {
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [disk.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} disk.creationData.createOption This enumerates the possible
      * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
-     * 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20266,35 +20213,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used for Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20362,35 +20292,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20442,35 +20355,18 @@ export interface Disks {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
-     * snapshot
+     * @param {object} [disk.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
-     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * @param {boolean} disk.encryptionSettingsCollection.enabled Set this flag to
+     * true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
      * encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
-     * Url and vault id of the disk encryption key
-     *
-     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
-     * and vault id of the key encryption key
-     *
-     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
-     * Resource Id
-     *
-     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
-     * to a key or secret in KeyVault
+     * @param {array} [disk.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
      * disk; only settable for UltraSSD disks. One operation can transfer between
@@ -20597,7 +20493,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20629,7 +20525,7 @@ export interface Disks {
      * the get disk access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -20874,12 +20770,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -20908,35 +20808,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -20976,12 +20859,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21010,35 +20897,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21098,35 +20968,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21170,35 +21023,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21488,7 +21324,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -21520,7 +21356,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -21642,12 +21478,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21676,35 +21516,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21744,12 +21567,16 @@ export interface Snapshots {
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
      *
+     * @param {string} [snapshot.hyperVGeneration] The hypervisor generation of the
+     * Virtual Machine. Applicable to OS disks only. Possible values include: 'V1',
+     * 'V2'
+     *
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
      * @param {string} snapshot.creationData.createOption This enumerates the
      * possible sources of a disk's creation. Possible values include: 'Empty',
-     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore', 'Upload'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -21778,35 +21605,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {string} snapshot.location Resource location
      *
@@ -21866,35 +21676,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -21938,35 +21731,18 @@ export interface Snapshots {
      * indicates a resize. Resizes are only allowed if the disk is not attached to
      * a running VM, and can only increase the disk's size.
      *
-     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
-     * or snapshot
+     * @param {object} [snapshot.encryptionSettingsCollection] Encryption settings
+     * collection used be Azure Disk Encryption, can contain multiple encryption
+     * settings per disk or snapshot.
      *
-     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
-     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
-     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * @param {boolean} snapshot.encryptionSettingsCollection.enabled Set this flag
+     * to true and provide DiskEncryptionKey and optional KeyEncryptionKey to
+     * enable encryption. Set this flag to false and remove DiskEncryptionKey and
      * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
      * request object, the existing settings remain unchanged.
      *
-     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
-     * Secret Url and vault id of the disk encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
-     * pointing to a key or secret in KeyVault
-     *
-     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
-     * Url and vault id of the key encryption key
-     *
-     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
-     * Resource id of the KeyVault containing the key or secret
-     *
-     * @param {string}
-     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
-     *
-     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
-     * pointing to a key or secret in KeyVault
+     * @param {array} [snapshot.encryptionSettingsCollection.encryptionSettings] A
+     * collection of encryption settings, one for each disk volume.
      *
      * @param {object} [snapshot.tags] Resource tags
      *
@@ -22085,7 +21861,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -22117,7 +21893,7 @@ export interface Snapshots {
      * the get snapshot access operation.
      *
      * @param {string} grantAccessData.access Possible values include: 'None',
-     * 'Read'
+     * 'Read', 'Write'
      *
      * @param {number} grantAccessData.durationInSeconds Time duration in seconds
      * until the SAS access expires.
@@ -22354,7 +22130,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22388,7 +22164,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22666,7 +22442,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22700,7 +22476,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22940,7 +22716,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -22960,7 +22736,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23031,7 +22807,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23051,7 +22827,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23335,7 +23111,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23355,7 +23131,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23426,7 +23202,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23446,7 +23222,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23675,7 +23451,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -23683,11 +23459,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23737,7 +23513,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -23745,11 +23521,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -24037,7 +23813,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -24045,11 +23821,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -24099,7 +23875,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -24107,11 +23883,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
