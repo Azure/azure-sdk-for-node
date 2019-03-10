@@ -1180,33 +1180,37 @@ export interface Domain {
   [additionalPropertyName: string]: any;
 }
 
-export interface Permissions {
+export interface OAuth2PermissionGrant {
   /**
    * Microsoft.DirectoryServices.OAuth2PermissionGrant
   */
   odatatype?: string;
   /**
-   * The objectId of the Service Principal associated with the app
+   * The id of the resource's service principal granted consent to impersonate the user when
+   * accessing the resource (represented by the resourceId property).
   */
   clientId?: string;
   /**
-   * The objectId of the permission grant
+   * The id of the permission grant
   */
   objectId?: string;
   /**
-   * Typically set to AllPrincipals
+   * Indicates if consent was provided by the administrator (on behalf of the organization) or by
+   * an individual. Possible values include: 'AllPrincipals', 'Principal'
   */
   consentType?: string;
   /**
-   * Set to null if AllPrincipals is set
+   * When consent type is Principal, this property specifies the id of the user that granted
+   * consent and applies only for that user.
   */
-  principalId?: any;
+  principalId?: string;
   /**
-   * Service Principal Id of the resource you want to grant
+   * Object Id of the resource you want to grant
   */
   resourceId?: string;
   /**
-   * Typically set to user_impersonation
+   * Specifies the value of the scope claim that the resource application should expect in the
+   * OAuth 2.0 access token. For example, User.Read
   */
   scope?: string;
   /**
@@ -1300,9 +1304,9 @@ export interface DomainListResult extends Array<Domain> {
 }
 
 /**
- * Server response for get permissions grants
+ * Server response for get oauth2 permissions grants
 */
-export interface PermissionsListResult extends Array<Permissions> {
+export interface OAuth2PermissionGrantListResult extends Array<OAuth2PermissionGrant> {
   /**
    * the URL to get the next set of results.
   */
