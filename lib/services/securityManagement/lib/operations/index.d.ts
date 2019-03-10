@@ -9,6 +9,7 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -73,65 +74,7 @@ export interface Pricings {
 
 
     /**
-     * Security pricing configurations in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
-
-    /**
-     * Security pricing configurations in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PricingList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PricingList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PricingList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
-
-
-    /**
-     * Security pricing configuration in the subscriptionSecurity pricing
-     * configuration in the subscription
+     * Security pricing configuration in the subscription
      *
      * @param {string} pricingName name of the pricing configuration
      *
@@ -146,11 +89,10 @@ export interface Pricings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSubscriptionPricingWithHttpOperationResponse(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+    getWithHttpOperationResponse(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
 
     /**
-     * Security pricing configuration in the subscriptionSecurity pricing
-     * configuration in the subscription
+     * Security pricing configuration in the subscription
      *
      * @param {string} pricingName name of the pricing configuration
      *
@@ -181,9 +123,9 @@ export interface Pricings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSubscriptionPricing(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
-    getSubscriptionPricing(pricingName: string, callback: ServiceCallback<models.Pricing>): void;
-    getSubscriptionPricing(pricingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
+    get(pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    get(pricingName: string, callback: ServiceCallback<models.Pricing>): void;
+    get(pricingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
 
 
     /**
@@ -193,7 +135,7 @@ export interface Pricings {
      *
      * @param {object} pricing Pricing object
      *
-     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * @param {string} pricing.pricingTier The pricing tier value. Possible values
      * include: 'Free', 'Standard'
      *
      * @param {object} [options] Optional Parameters.
@@ -207,7 +149,7 @@ export interface Pricings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSubscriptionPricingWithHttpOperationResponse(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
+    updateWithHttpOperationResponse(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
 
     /**
      * Security pricing configuration in the subscription
@@ -216,7 +158,7 @@ export interface Pricings {
      *
      * @param {object} pricing Pricing object
      *
-     * @param {string} pricing.pricingTier Pricing tier type. Possible values
+     * @param {string} pricing.pricingTier The pricing tier value. Possible values
      * include: 'Free', 'Standard'
      *
      * @param {object} [options] Optional Parameters.
@@ -246,255 +188,9 @@ export interface Pricings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
-    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, callback: ServiceCallback<models.Pricing>): void;
-    updateSubscriptionPricing(pricingName: string, pricing: models.Pricing, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
-
-
-    /**
-     * Security pricing configuration in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} pricingName name of the pricing configuration
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getResourceGroupPricingWithHttpOperationResponse(resourceGroupName: string, pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
-
-    /**
-     * Security pricing configuration in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} pricingName name of the pricing configuration
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Pricing} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Pricing} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getResourceGroupPricing(resourceGroupName: string, pricingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
-    getResourceGroupPricing(resourceGroupName: string, pricingName: string, callback: ServiceCallback<models.Pricing>): void;
-    getResourceGroupPricing(resourceGroupName: string, pricingName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
-
-
-    /**
-     * Security pricing configuration in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} pricingName name of the pricing configuration
-     *
-     * @param {object} pricing Pricing object
-     *
-     * @param {string} pricing.pricingTier Pricing tier type. Possible values
-     * include: 'Free', 'Standard'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Pricing>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateResourceGroupPricingWithHttpOperationResponse(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Pricing>>;
-
-    /**
-     * Security pricing configuration in the resource group
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} pricingName name of the pricing configuration
-     *
-     * @param {object} pricing Pricing object
-     *
-     * @param {string} pricing.pricingTier Pricing tier type. Possible values
-     * include: 'Free', 'Standard'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Pricing} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Pricing} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Pricing} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
-    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, callback: ServiceCallback<models.Pricing>): void;
-    createOrUpdateResourceGroupPricing(resourceGroupName: string, pricingName: string, pricing: models.Pricing, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
-
-
-    /**
-     * Security pricing configurations in the subscription
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
-
-    /**
-     * Security pricing configurations in the subscription
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PricingList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PricingList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.PricingList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
-
-
-    /**
-     * Security pricing configurations in the resource group
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PricingList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PricingList>>;
-
-    /**
-     * Security pricing configurations in the resource group
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PricingList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PricingList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PricingList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PricingList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PricingList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PricingList>): void;
+    update(pricingName: string, pricing: models.Pricing, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Pricing>;
+    update(pricingName: string, pricing: models.Pricing, callback: ServiceCallback<models.Pricing>): void;
+    update(pricingName: string, pricing: models.Pricing, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Pricing>): void;
 }
 
 /**
@@ -903,7 +599,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -919,7 +616,8 @@ export interface WorkspaceSettings {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -954,7 +652,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -972,7 +671,8 @@ export interface WorkspaceSettings {
     getWithHttpOperationResponse(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -1211,7 +911,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1230,7 +931,8 @@ export interface WorkspaceSettings {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1894,8 +1596,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1913,8 +1615,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1951,12 +1653,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1974,12 +1678,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3312,7 +3018,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3337,7 +3043,7 @@ export interface Alerts {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3818,7 +3524,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3837,7 +3543,7 @@ export interface Alerts {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
