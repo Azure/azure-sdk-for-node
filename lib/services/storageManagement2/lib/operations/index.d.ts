@@ -2057,8 +2057,6 @@ export interface ManagementPolicies {
      * See more details in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      *
-     * @param {string} policy.version The policy version expressed as x.x.
-     *
      * @param {array} policy.rules The Storage Account ManagementPolicies Rules.
      * See more details in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
@@ -2089,8 +2087,6 @@ export interface ManagementPolicies {
      * @param {object} policy The Storage Account ManagementPolicy, in JSON format.
      * See more details in:
      * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
-     *
-     * @param {string} policy.version The policy version expressed as x.x.
      *
      * @param {array} policy.rules The Storage Account ManagementPolicies Rules.
      * See more details in:

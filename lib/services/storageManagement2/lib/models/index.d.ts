@@ -1045,14 +1045,10 @@ export interface ManagementPolicyRule {
 }
 
 /**
- * The Storage Account ManagementPolicies Rules, in JSON format. See more details in:
+ * The Storage Account ManagementPolicies Rules. See more details in:
  * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 */
 export interface ManagementPolicySchema {
-  /**
-   * The policy version expressed as x.x.
-  */
-  version: string;
   /**
    * The Storage Account ManagementPolicies Rules. See more details in:
    * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
