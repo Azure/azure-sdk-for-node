@@ -4322,71 +4322,6 @@ export interface OAuth2PermissionGrantOperations {
 
 
     /**
-     * Gets the next page of OAuth2 permission grants
-     *
-     * @param {string} nextLink Next link for the list operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OAuth2PermissionGrantListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2PermissionGrantListResult>>;
-
-    /**
-     * Gets the next page of OAuth2 permission grants
-     *
-     * @param {string} nextLink Next link for the list operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OAuth2PermissionGrantListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OAuth2PermissionGrantListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OAuth2PermissionGrantListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2PermissionGrantListResult>;
-    listNext(nextLink: string, callback: ServiceCallback<models.OAuth2PermissionGrantListResult>): void;
-    listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2PermissionGrantListResult>): void;
-}
-
-/**
- * @class
- * OAuth2
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the GraphRbacManagementClient.
- */
-export interface OAuth2 {
-
-
-    /**
      * Grants OAuth2 permissions for the relevant resource Ids of an app.
      *
      * @param {object} [options] Optional Parameters.
@@ -4431,7 +4366,7 @@ export interface OAuth2 {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    grantWithHttpOperationResponse(options?: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2PermissionGrant>>;
+    createWithHttpOperationResponse(options?: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2PermissionGrant>>;
 
     /**
      * Grants OAuth2 permissions for the relevant resource Ids of an app.
@@ -4494,9 +4429,9 @@ export interface OAuth2 {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    grant(options?: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2PermissionGrant>;
-    grant(callback: ServiceCallback<models.OAuth2PermissionGrant>): void;
-    grant(options: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2PermissionGrant>): void;
+    create(options?: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2PermissionGrant>;
+    create(callback: ServiceCallback<models.OAuth2PermissionGrant>): void;
+    create(options: { body? : models.OAuth2PermissionGrant, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2PermissionGrant>): void;
 
 
     /**
@@ -4551,4 +4486,60 @@ export interface OAuth2 {
     deleteMethod(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(objectId: string, callback: ServiceCallback<void>): void;
     deleteMethod(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the next page of OAuth2 permission grants
+     *
+     * @param {string} nextLink Next link for the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OAuth2PermissionGrantListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2PermissionGrantListResult>>;
+
+    /**
+     * Gets the next page of OAuth2 permission grants
+     *
+     * @param {string} nextLink Next link for the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OAuth2PermissionGrantListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OAuth2PermissionGrantListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OAuth2PermissionGrantListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2PermissionGrantListResult>;
+    listNext(nextLink: string, callback: ServiceCallback<models.OAuth2PermissionGrantListResult>): void;
+    listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2PermissionGrantListResult>): void;
 }
