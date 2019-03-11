@@ -2,9 +2,9 @@
   "name": "azure-cognitiveservices-computervision",
   "author": "Microsoft Corporation",
   "description": "ComputerVisionClient Library with typescript type definitions for node",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "dependencies": {
-    "ms-rest": "^2.3.3"
+    "ms-rest": "^2.5.0"
   },
   "keywords": [
     "node",
@@ -20,5 +20,8 @@
   },
   "bugs": {
     "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  },
+ "scripts": {
+    "postinstall": "node .scripts/postinstall.js"
   }
 }
