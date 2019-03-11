@@ -44,6 +44,7 @@
     "azure-asm-mgmt": "^0.10.2",
     "azure-asm-sb": "^0.10.2",
     "azure-asm-sql": "^0.10.3",
+    "azure-asm-website": "^0.10.7",
     "azure-common": "^0.9.20",
     "azure-sb": "^0.10.6",
     "azure-storage": "^2.9.0-preview",
