@@ -60,6 +60,7 @@ export default class CognitiveServicesManagementClient extends AzureServiceClien
   resourceSkus: operations.ResourceSkus;
   operations: operations.Operations;
   checkSkuAvailability: operations.CheckSkuAvailability;
+  account: operations.Account;
 }
 
 export { CognitiveServicesManagementClient, models as CognitiveServicesManagementModels };

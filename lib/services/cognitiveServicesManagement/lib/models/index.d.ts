@@ -119,6 +119,10 @@ export interface CognitiveServicesAccount extends BaseResource {
    */
   internalId?: string;
   /**
+   * Optional subdomain name used for token-based authentication.
+   */
+  customSubDomainName?: string;
+  /**
    * The SKU of Cognitive Services account.
    */
   sku?: Sku;
@@ -330,6 +334,20 @@ export interface CheckSkuAvailabilityParameter {
 }
 
 /**
+ * Check Domain availability parameter.
+ */
+export interface CheckDomainAvailabilityParameter {
+  /**
+   * The subdomain name to use.
+   */
+  subdomainName: string;
+  /**
+   * The Type of the resource.
+   */
+  type: string;
+}
+
+/**
  * Check SKU availability result.
  */
 export interface CheckSkuAvailabilityResult {
@@ -367,6 +385,28 @@ export interface CheckSkuAvailabilityResultList {
    * Check SKU availability result list.
    */
   value?: CheckSkuAvailabilityResult[];
+}
+
+/**
+ * Check Domain availability result.
+ */
+export interface CheckDomainAvailabilityResult {
+  /**
+   * Indicates the given SKU is available or not.
+   */
+  isSubdomainAvailable?: boolean;
+  /**
+   * Reason why the SKU is not available.
+   */
+  reason?: string;
+  /**
+   * The subdomain name to use.
+   */
+  subdomainName?: string;
+  /**
+   * The Type of the resource.
+   */
+  type?: string;
 }
 
 export interface ResourceSkuRestrictionInfo {
