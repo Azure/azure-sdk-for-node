@@ -10844,7 +10844,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -10942,7 +10942,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11113,7 +11113,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11201,7 +11201,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11316,7 +11316,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11414,7 +11414,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11585,7 +11585,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
@@ -11673,7 +11673,7 @@ export interface ManagedInstances {
      *
      * @param {string} [parameters.timezoneId] Id of the timezone. Allowed values
      * are timezones supported by Windows.
-     * Winodws keeps details on supported timezones, including the id, in registry
+     * Windows keeps details on supported timezones, including the id, in registry
      * under
      * KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones.
      * You can get those registry values via SQL Server by querying SELECT name AS
