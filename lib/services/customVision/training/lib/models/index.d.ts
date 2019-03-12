@@ -642,15 +642,15 @@ export interface ExportModel {
    * Platform of the export. Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX',
    * 'VAIDK'
   */
-  readonly platform: string;
+  readonly platform?: string;
   /**
    * Status of the export. Possible values include: 'Exporting', 'Failed', 'Done'
   */
-  readonly status: string;
+  readonly status?: string;
   /**
    * URI used to download the model.
   */
-  readonly downloadUri: string;
+  readonly downloadUri?: string;
   /**
    * Flavor of the export. Possible values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12', 'ARM'
   */
@@ -659,7 +659,7 @@ export interface ExportModel {
    * Indicates an updated version of the export package is available and should be re-exported for
    * the latest changes.
   */
-  readonly newerVersionAvailable: boolean;
+  readonly newerVersionAvailable?: boolean;
 }
 
 /**
