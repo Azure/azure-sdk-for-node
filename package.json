@@ -52,6 +52,7 @@
     "azure-asm-trafficmanager": "^0.10.4",
     "azure-asm-website": "^0.10.7",
     "azure-common": "^0.9.20",
+    "azure-gallery": "^2.0.0-pre.20",
     "azure-sb": "^0.10.6",
     "azure-storage": "^2.9.0-preview",
     "colors": "1.1.2",
