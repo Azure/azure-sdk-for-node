@@ -1152,3 +1152,76 @@ export interface CheckSkuAvailability {
     list(location: string, skus: string[], kind: string, type: string, callback: ServiceCallback<models.CheckSkuAvailabilityResultList>): void;
     list(location: string, skus: string[], kind: string, type: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckSkuAvailabilityResultList>): void;
 }
+
+/**
+ * @class
+ * Account
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CognitiveServicesManagementClient.
+ */
+export interface Account {
+
+
+    /**
+     * Check available SKUs.
+     *
+     * @param {string} location Resource location.
+     *
+     * @param {string} subdomainName The subdomain name to use.
+     *
+     * @param {string} type The Type of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckDomainAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkDomainAvailabilityPostWithHttpOperationResponse(location: string, subdomainName: string, type: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckDomainAvailabilityResult>>;
+
+    /**
+     * Check available SKUs.
+     *
+     * @param {string} location Resource location.
+     *
+     * @param {string} subdomainName The subdomain name to use.
+     *
+     * @param {string} type The Type of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckDomainAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckDomainAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckDomainAvailabilityResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkDomainAvailabilityPost(location: string, subdomainName: string, type: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckDomainAvailabilityResult>;
+    checkDomainAvailabilityPost(location: string, subdomainName: string, type: string, callback: ServiceCallback<models.CheckDomainAvailabilityResult>): void;
+    checkDomainAvailabilityPost(location: string, subdomainName: string, type: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckDomainAvailabilityResult>): void;
+}
