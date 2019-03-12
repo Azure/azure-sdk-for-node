@@ -1155,11 +1155,11 @@ export interface CheckSkuAvailability {
 
 /**
  * @class
- * Account
+ * Locations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the CognitiveServicesManagementClient.
  */
-export interface Account {
+export interface Locations {
 
 
     /**
