@@ -669,7 +669,7 @@ export interface Tag {
   /**
    * Gets the Tag ID.
   */
-  readonly id: string;
+  readonly id?: string;
   /**
    * Gets or sets the name of the tag.
   */
@@ -685,7 +685,7 @@ export interface Tag {
   /**
    * Gets the number of images with this tag.
   */
-  readonly imageCount: number;
+  readonly imageCount?: number;
 }
 
 export interface CustomVisionError {

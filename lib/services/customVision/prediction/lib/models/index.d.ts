@@ -47,11 +47,11 @@ export interface Prediction {
   /**
    * Probability of the tag.
    */
-  readonly probability: number;
+  readonly probability?: number;
   /**
    * Id of the predicted tag.
    */
-  readonly tagId: string;
+  readonly tagId?: string;
   /**
    * Name of the predicted tag.
    */
@@ -69,23 +69,23 @@ export interface ImagePrediction {
   /**
    * Prediction Id.
    */
-  readonly id: string;
+  readonly id?: string;
   /**
    * Project Id.
    */
-  readonly project: string;
+  readonly project?: string;
   /**
    * Iteration Id.
    */
-  readonly iteration: string;
+  readonly iteration?: string;
   /**
    * Date this prediction was created.
    */
-  readonly created: Date;
+  readonly created?: Date;
   /**
    * List of predictions.
    */
-  readonly predictions: Prediction[];
+  readonly predictions?: Prediction[];
 }
 
 export interface CustomVisionError {
