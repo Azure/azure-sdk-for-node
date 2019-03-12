@@ -1145,6 +1145,146 @@ export interface Namespaces {
 
 
     /**
+     * Create or update NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.defaultAction] Default Action for Network Rule
+     * Set. Possible values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.virtualNetworkRules] List VirtualNetwork Rules
+     *
+     * @param {array} [parameters.ipRules] List of IpRules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkRuleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateNetworkRuleSetWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkRuleSet>>;
+
+    /**
+     * Create or update NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.defaultAction] Default Action for Network Rule
+     * Set. Possible values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.virtualNetworkRules] List VirtualNetwork Rules
+     *
+     * @param {array} [parameters.ipRules] List of IpRules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkRuleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkRuleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkRuleSet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkRuleSet>;
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, callback: ServiceCallback<models.NetworkRuleSet>): void;
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkRuleSet>): void;
+
+
+    /**
+     * Gets NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkRuleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkRuleSetWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkRuleSet>>;
+
+    /**
+     * Gets NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkRuleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkRuleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkRuleSet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkRuleSet>;
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.NetworkRuleSet>): void;
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkRuleSet>): void;
+
+
+    /**
      * Creates or updates a namespace. Once created, this namespace's resource
      * manifest is immutable. This operation is idempotent.
      *
