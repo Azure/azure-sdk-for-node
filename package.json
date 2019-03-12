@@ -40,6 +40,7 @@
     "@types/request": "^2.0.3",
     "adal-node": "^0.1.22",
     "async": "^2.5.0",
+    "azure-asm-compute": "^0.18.0",
     "azure-asm-hdinsight": "^0.10.3",
     "azure-asm-mgmt": "^0.10.2",
     "azure-asm-network": "^0.13.1",
