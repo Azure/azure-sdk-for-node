@@ -2,9 +2,9 @@
   "name": "azure-cognitiveservices-textanalytics",
   "author": "Microsoft Corporation",
   "description": "TextAnalyticsClient Library with typescript type definitions for node",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "dependencies": {
-    "ms-rest": "^2.3.3"
+    "ms-rest": "^2.5.0"
   },
   "keywords": [
     "node",
@@ -20,5 +20,8 @@
   },
   "bugs": {
     "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  },
+ "scripts": {
+    "postinstall": "node .scripts/postinstall.js"
   }
 }
