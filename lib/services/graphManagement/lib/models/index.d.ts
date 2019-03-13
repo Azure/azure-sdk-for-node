@@ -98,7 +98,7 @@ export interface OptionalClaim {
    */
   source?: string;
   /**
-   * Is this a requied claim.
+   * Is this a required claim.
    */
   essential?: boolean;
   additionalProperties?: any;
@@ -445,7 +445,7 @@ export interface ApplicationBase {
   */
   passwordCredentials?: PasswordCredential[];
   /**
-   * list of pre-authorizaed applications.
+   * list of pre-authorized applications.
   */
   preAuthorizedApplications?: PreAuthorizedApplication[];
   /**
@@ -472,8 +472,8 @@ export interface ApplicationBase {
   */
   samlMetadataUrl?: string;
   /**
-   * Audience for signing in to the application (AzureADMyOrganizatio, AzureADAllorganizations,
-   * AzureADAndMicrosofAccounts).
+   * Audience for signing in to the application (AzureADMyOrganization, AzureADAllOrganizations,
+   * AzureADAndMicrosoftAccounts).
   */
   signInAudience?: string;
   /**
@@ -620,7 +620,7 @@ export interface Application extends DirectoryObject {
   */
   passwordCredentials?: PasswordCredential[];
   /**
-   * list of pre-authorizaed applications.
+   * list of pre-authorized applications.
   */
   preAuthorizedApplications?: PreAuthorizedApplication[];
   /**
@@ -647,8 +647,8 @@ export interface Application extends DirectoryObject {
   */
   samlMetadataUrl?: string;
   /**
-   * Audience for signing in to the application (AzureADMyOrganizatio, AzureADAllorganizations,
-   * AzureADAndMicrosofAccounts).
+   * Audience for signing in to the application (AzureADMyOrganization, AzureADAllOrganizations,
+   * AzureADAndMicrosoftAccounts).
   */
   signInAudience?: string;
   /**
@@ -808,7 +808,7 @@ export interface CheckGroupMembershipResult {
 }
 
 /**
- * Active Directory service principal common perperties shared among GET, POST and PATCH
+ * Active Directory service principal common properties shared among GET, POST and PATCH
 */
 export interface ServicePrincipalBase {
   /**
@@ -829,7 +829,7 @@ export interface ServicePrincipalBase {
   */
   passwordCredentials?: PasswordCredential[];
   /**
-   * the type of the servie principal
+   * the type of the service principal
   */
   servicePrincipalType?: string;
   /**
@@ -863,7 +863,7 @@ export interface ServicePrincipal extends DirectoryObject {
   */
   accountEnabled?: string;
   /**
-   * altenative names
+   * alterative names
   */
   alternativeNames?: string[];
   /**
@@ -915,7 +915,7 @@ export interface ServicePrincipal extends DirectoryObject {
   */
   passwordCredentials?: PasswordCredential[];
   /**
-   * The thubmbprint of preferred certificate to sign the token
+   * The thumbprint of preferred certificate to sign the token
   */
   preferredTokenSigningKeyThumbprint?: string;
   /**
@@ -937,7 +937,7 @@ export interface ServicePrincipal extends DirectoryObject {
   */
   servicePrincipalNames?: string[];
   /**
-   * the type of the servie principal
+   * the type of the service principal
   */
   servicePrincipalType?: string;
   /**

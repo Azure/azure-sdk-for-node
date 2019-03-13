@@ -289,8 +289,8 @@ export interface Applications {
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
      *
-     * @param {array} [parameters.preAuthorizedApplications] list of
-     * pre-authorizaed applications.
+     * @param {array} [parameters.preAuthorizedApplications] list of pre-authorized
+     * applications.
      *
      * @param {boolean} [parameters.publicClient] Specifies whether this
      * application is a public client (such as an installed application running on
@@ -311,8 +311,8 @@ export interface Applications {
      * for the application.
      *
      * @param {string} [parameters.signInAudience] Audience for signing in to the
-     * application (AzureADMyOrganizatio, AzureADAllorganizations,
-     * AzureADAndMicrosofAccounts).
+     * application (AzureADMyOrganization, AzureADAllOrganizations,
+     * AzureADAndMicrosoftAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
@@ -429,8 +429,8 @@ export interface Applications {
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
      *
-     * @param {array} [parameters.preAuthorizedApplications] list of
-     * pre-authorizaed applications.
+     * @param {array} [parameters.preAuthorizedApplications] list of pre-authorized
+     * applications.
      *
      * @param {boolean} [parameters.publicClient] Specifies whether this
      * application is a public client (such as an installed application running on
@@ -451,8 +451,8 @@ export interface Applications {
      * for the application.
      *
      * @param {string} [parameters.signInAudience] Audience for signing in to the
-     * application (AzureADMyOrganizatio, AzureADAllorganizations,
-     * AzureADAndMicrosofAccounts).
+     * application (AzureADMyOrganization, AzureADAllOrganizations,
+     * AzureADAndMicrosoftAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
@@ -755,8 +755,8 @@ export interface Applications {
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
      *
-     * @param {array} [parameters.preAuthorizedApplications] list of
-     * pre-authorizaed applications.
+     * @param {array} [parameters.preAuthorizedApplications] list of pre-authorized
+     * applications.
      *
      * @param {boolean} [parameters.publicClient] Specifies whether this
      * application is a public client (such as an installed application running on
@@ -777,8 +777,8 @@ export interface Applications {
      * for the application.
      *
      * @param {string} [parameters.signInAudience] Audience for signing in to the
-     * application (AzureADMyOrganizatio, AzureADAllorganizations,
-     * AzureADAndMicrosofAccounts).
+     * application (AzureADMyOrganization, AzureADAllOrganizations,
+     * AzureADAndMicrosoftAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
@@ -898,8 +898,8 @@ export interface Applications {
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
      *
-     * @param {array} [parameters.preAuthorizedApplications] list of
-     * pre-authorizaed applications.
+     * @param {array} [parameters.preAuthorizedApplications] list of pre-authorized
+     * applications.
      *
      * @param {boolean} [parameters.publicClient] Specifies whether this
      * application is a public client (such as an installed application running on
@@ -920,8 +920,8 @@ export interface Applications {
      * for the application.
      *
      * @param {string} [parameters.signInAudience] Audience for signing in to the
-     * application (AzureADMyOrganizatio, AzureADAllorganizations,
-     * AzureADAndMicrosofAccounts).
+     * application (AzureADMyOrganization, AzureADAllOrganizations,
+     * AzureADAndMicrosoftAccounts).
      *
      * @param {string} [parameters.wwwHomepage] The primary Web page.
      *
@@ -2699,7 +2699,7 @@ export interface ServicePrincipals {
      * @param {array} [parameters.passwordCredentials] The collection of password
      * credentials associated with the service principal.
      *
-     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * @param {string} [parameters.servicePrincipalType] the type of the service
      * principal
      *
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
@@ -2738,7 +2738,7 @@ export interface ServicePrincipals {
      * @param {array} [parameters.passwordCredentials] The collection of password
      * credentials associated with the service principal.
      *
-     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * @param {string} [parameters.servicePrincipalType] the type of the service
      * principal
      *
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
@@ -2852,7 +2852,7 @@ export interface ServicePrincipals {
      * @param {array} [parameters.passwordCredentials] The collection of password
      * credentials associated with the service principal.
      *
-     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * @param {string} [parameters.servicePrincipalType] the type of the service
      * principal
      *
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
@@ -2891,7 +2891,7 @@ export interface ServicePrincipals {
      * @param {array} [parameters.passwordCredentials] The collection of password
      * credentials associated with the service principal.
      *
-     * @param {string} [parameters.servicePrincipalType] the type of the servie
+     * @param {string} [parameters.servicePrincipalType] the type of the service
      * principal
      *
      * @param {array} [parameters.tags] Optional list of tags that you can apply to
