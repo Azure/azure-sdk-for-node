@@ -64,7 +64,7 @@ export default class GraphRbacManagementClient extends AzureServiceClient {
   users: operations.Users;
   objects: operations.Objects;
   domains: operations.Domains;
-  oAuth2: operations.OAuth2;
+  oAuth2PermissionGrantOperations: operations.OAuth2PermissionGrantOperations;
 }
 
 export { GraphRbacManagementClient, models as GraphRbacManagementModels };
