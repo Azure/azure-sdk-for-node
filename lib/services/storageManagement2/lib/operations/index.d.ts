@@ -221,8 +221,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -355,8 +355,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -657,8 +657,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -788,8 +788,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1568,8 +1568,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1702,8 +1702,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS',
-     * 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.

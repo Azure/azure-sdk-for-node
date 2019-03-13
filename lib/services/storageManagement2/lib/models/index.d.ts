@@ -180,8 +180,7 @@ export interface Sku {
   /**
    * Gets or sets the SKU name. Required for account creation; optional for update. Note that in
    * older versions, SKU name was called accountType. Possible values include: 'Standard_LRS',
-   * 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS', 'Standard_ZRS',
-   * 'Premium_LRS', 'Premium_ZRS'
+   * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
    */
   name: string;
   /**
