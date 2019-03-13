@@ -87,6 +87,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   syncGroups: operations.SyncGroups;
   syncMembers: operations.SyncMembers;
   subscriptionUsages: operations.SubscriptionUsages;
+  virtualClusters: operations.VirtualClusters;
   virtualNetworkRules: operations.VirtualNetworkRules;
   extendedDatabaseBlobAuditingPolicies: operations.ExtendedDatabaseBlobAuditingPolicies;
   extendedServerBlobAuditingPolicies: operations.ExtendedServerBlobAuditingPolicies;
@@ -107,10 +108,15 @@ export default class SqlManagementClient extends AzureServiceClient {
   backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
   managedBackupShortTermRetentionPolicies: operations.ManagedBackupShortTermRetentionPolicies;
   managedDatabases: operations.ManagedDatabases;
+  managedRestorableDroppedDatabaseBackupShortTermRetentionPolicies: operations.ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
   serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
+  restorableDroppedManagedDatabases: operations.RestorableDroppedManagedDatabases;
   restorePoints: operations.RestorePoints;
+  managedDatabaseSecurityAlertPolicies: operations.ManagedDatabaseSecurityAlertPolicies;
+  managedServerSecurityAlertPolicies: operations.ManagedServerSecurityAlertPolicies;
+  sensitivityLabels: operations.SensitivityLabels;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
@@ -124,6 +130,10 @@ export default class SqlManagementClient extends AzureServiceClient {
   managedInstanceTdeCertificates: operations.ManagedInstanceTdeCertificates;
   managedInstanceKeys: operations.ManagedInstanceKeys;
   managedInstanceEncryptionProtectors: operations.ManagedInstanceEncryptionProtectors;
+  recoverableManagedDatabases: operations.RecoverableManagedDatabases;
+  managedInstanceVulnerabilityAssessments: operations.ManagedInstanceVulnerabilityAssessments;
+  serverVulnerabilityAssessments: operations.ServerVulnerabilityAssessments;
+  managedDatabaseSensitivityLabels: operations.ManagedDatabaseSensitivityLabels;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
