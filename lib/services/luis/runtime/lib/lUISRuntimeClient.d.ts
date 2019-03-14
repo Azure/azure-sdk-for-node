@@ -20,8 +20,6 @@ export default class LUISRuntimeClient extends ServiceClient {
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
-   * @param {string} endpoint - Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).
-   *
    * @param {object} [options] - The parameter options
    *
    * @param {Array} [options.filters] - Filters to be added to the request pipeline
@@ -32,11 +30,9 @@ export default class LUISRuntimeClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
-
-  endpoint: string;
 
   // Operation groups
   prediction: operations.Prediction;

@@ -25,7 +25,15 @@ export interface Prediction {
      * Gets predictions for a given utterance, in the form of intents and entities.
      * The current maximum query size is 500 characters.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The LUIS application ID (Guid).
      *
      * @param {string} query The utterance to predict.
      *
@@ -55,13 +63,21 @@ export interface Prediction {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resolveWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisResult>>;
+    resolveWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisResult>>;
 
     /**
      * Gets predictions for a given utterance, in the form of intents and entities.
      * The current maximum query size is 500 characters.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The LUIS application ID (Guid).
      *
      * @param {string} query The utterance to predict.
      *
@@ -107,7 +123,7 @@ export interface Prediction {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resolve(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisResult>;
-    resolve(appId: string, query: string, callback: ServiceCallback<models.LuisResult>): void;
-    resolve(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisResult>): void;
+    resolve(azureRegion: string, azureCloud: string, appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisResult>;
+    resolve(azureRegion: string, azureCloud: string, appId: string, query: string, callback: ServiceCallback<models.LuisResult>): void;
+    resolve(azureRegion: string, azureCloud: string, appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisResult>): void;
 }

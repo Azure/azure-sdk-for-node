@@ -151,7 +151,7 @@ export interface ApplicationSettingUpdateObject {
    * Setting your application as public allows other people to use your application's endpoint
    * using their own keys.
    */
-  publicProperty?: boolean;
+  isPublic?: boolean;
 }
 
 /**
