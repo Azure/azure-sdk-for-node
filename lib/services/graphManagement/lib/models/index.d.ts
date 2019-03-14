@@ -863,7 +863,7 @@ export interface ServicePrincipal extends DirectoryObject {
   */
   accountEnabled?: string;
   /**
-   * alterative names
+   * alternative names
   */
   alternativeNames?: string[];
   /**
