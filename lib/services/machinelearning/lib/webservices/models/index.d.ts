@@ -42,6 +42,32 @@ export interface Resource extends BaseResource {
 }
 
 /**
+ * Azure resource.
+ */
+export interface PatchedResource extends BaseResource {
+  /**
+   * Specifies the resource ID.
+   */
+  readonly id?: string;
+  /**
+   * Specifies the name of the resource.
+   */
+  readonly name?: string;
+  /**
+   * Specifies the location of the resource.
+   */
+  readonly location?: string;
+  /**
+   * Specifies the type of the resource.
+   */
+  readonly type?: string;
+  /**
+   * Contains resource tags defined as key/value pairs.
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
  * Access keys for the web service calls.
  */
 export interface WebServiceKeys {
@@ -442,7 +468,7 @@ export interface WebServiceProperties {
    */
   payloadsInBlobStorage?: boolean;
   /**
-   * The URI of the payload blob. This paramater contains a value only if the payloadsInBlobStorage
+   * The URI of the payload blob. This parameter contains a value only if the payloadsInBlobStorage
    * parameter is set to true. Otherwise is set to null.
    */
   payloadsLocation?: BlobLocation;
@@ -453,13 +479,23 @@ export interface WebServiceProperties {
 }
 
 /**
- * Instance of an Azure ML web service resource.
+ * Instance of an Patched Azure ML web service resource.
  */
 export interface WebService extends Resource {
   /**
    * Contains the property payload that describes the web service.
    */
   properties: WebServiceProperties;
+}
+
+/**
+ * Instance of an Patched Azure ML web service resource.
+ */
+export interface PatchedWebService extends PatchedResource {
+  /**
+   * Contains the property payload that describes the web service.
+   */
+  properties?: WebServiceProperties;
 }
 
 /**
