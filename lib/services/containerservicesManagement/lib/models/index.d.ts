@@ -406,20 +406,6 @@ export interface AgentPool extends SubResource {
 }
 
 /**
- * The response from the List Agent Pools operation.
- */
-export interface AgentPoolListResult {
-  /**
-   * The list of agent pools.
-   */
-  value?: AgentPool[];
-  /**
-   * The URL to get the next set of agent pool results.
-   */
-  readonly nextLink?: string;
-}
-
-/**
  * Profile for Windows VMs in the container service cluster.
  */
 export interface ContainerServiceWindowsProfile {
@@ -737,6 +723,16 @@ export interface OperationListResult extends Array<OperationValue> {
 export interface ManagedClusterListResult extends Array<ManagedCluster> {
   /**
    * The URL to get the next set of managed cluster results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * The response from the List Agent Pools operation.
+ */
+export interface AgentPoolListResult extends Array<AgentPool> {
+  /**
+   * The URL to get the next set of agent pool results.
    */
   readonly nextLink?: string;
 }

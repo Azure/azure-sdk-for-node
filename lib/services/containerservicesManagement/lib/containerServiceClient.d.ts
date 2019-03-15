@@ -58,6 +58,7 @@ export default class ContainerServiceClient extends AzureServiceClient {
   // Operation groups
   operations: operations.Operations;
   managedClusters: operations.ManagedClusters;
+  agentPools: operations.AgentPools;
 }
 
 export { ContainerServiceClient, models as ContainerServiceModels };
