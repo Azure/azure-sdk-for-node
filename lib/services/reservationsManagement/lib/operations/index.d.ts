@@ -22,6 +22,122 @@ export interface ReservationOrder {
 
 
     /**
+     * @summary Calculate price for a `ReservationOrder`.
+     *
+     * Calculate price for placing a `ReservationOrder`
+     *
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CalculatePriceResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    calculateWithHttpOperationResponse(parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CalculatePriceResponse>>;
+
+    /**
+     * @summary Calculate price for a `ReservationOrder`.
+     *
+     * Calculate price for placing a `ReservationOrder`
+     *
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CalculatePriceResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CalculatePriceResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CalculatePriceResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    calculate(parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CalculatePriceResponse>;
+    calculate(parameters: models.PurchaseRequest, callback: ServiceCallback<models.CalculatePriceResponse>): void;
+    calculate(parameters: models.PurchaseRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CalculatePriceResponse>): void;
+
+
+    /**
      * @summary Get all `ReservationOrder`s.
      *
      * List of all the `ReservationOrder`s that the user has access to in the
@@ -79,12 +195,131 @@ export interface ReservationOrder {
 
 
     /**
+     * @summary Purchase `ReservationOrder`
+     *
+     * Purchase `ReservationOrder` and create resource under the specificed URI
+     *
+     *
+     * @param {string} reservationOrderId Order Id of the reservation
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationOrderResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    purchaseWithHttpOperationResponse(reservationOrderId: string, parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationOrderResponse>>;
+
+    /**
+     * @summary Purchase `ReservationOrder`
+     *
+     * Purchase `ReservationOrder` and create resource under the specificed URI
+     *
+     *
+     * @param {string} reservationOrderId Order Id of the reservation
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationOrderResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationOrderResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationOrderResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    purchase(reservationOrderId: string, parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationOrderResponse>;
+    purchase(reservationOrderId: string, parameters: models.PurchaseRequest, callback: ServiceCallback<models.ReservationOrderResponse>): void;
+    purchase(reservationOrderId: string, parameters: models.PurchaseRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationOrderResponse>): void;
+
+
+    /**
      * @summary Get a specific `ReservationOrder`.
      *
      * Get the details of the `ReservationOrder`.
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -105,7 +340,6 @@ export interface ReservationOrder {
      * Get the details of the `ReservationOrder`.
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -138,6 +372,126 @@ export interface ReservationOrder {
     get(reservationOrderId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationOrderResponse>;
     get(reservationOrderId: string, callback: ServiceCallback<models.ReservationOrderResponse>): void;
     get(reservationOrderId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationOrderResponse>): void;
+
+
+    /**
+     * @summary Purchase `ReservationOrder`
+     *
+     * Purchase `ReservationOrder` and create resource under the specificed URI
+     *
+     *
+     * @param {string} reservationOrderId Order Id of the reservation
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReservationOrderResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPurchaseWithHttpOperationResponse(reservationOrderId: string, parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationOrderResponse>>;
+
+    /**
+     * @summary Purchase `ReservationOrder`
+     *
+     * Purchase `ReservationOrder` and create resource under the specificed URI
+     *
+     *
+     * @param {string} reservationOrderId Order Id of the reservation
+     *
+     * @param {object} parameters Information needed for calculate or purchase
+     * reservation
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} [parameters.sku.name]
+     *
+     * @param {string} [parameters.location] The Azure Region where the reserved
+     * resource lives.
+     *
+     * @param {string} [parameters.reservedResourceType] Possible values include:
+     * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
+     *
+     * @param {string} [parameters.billingScopeId]
+     *
+     * @param {string} [parameters.term] Possible values include: 'P1Y', 'P3Y'
+     *
+     * @param {number} [parameters.quantity]
+     *
+     * @param {string} [parameters.displayName] Friendly name of the Reservation
+     *
+     * @param {string} [parameters.appliedScopeType] Possible values include:
+     * 'Single', 'Shared'
+     *
+     * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'true', 'false', 'NotSupported'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReservationOrderResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReservationOrderResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReservationOrderResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPurchase(reservationOrderId: string, parameters: models.PurchaseRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReservationOrderResponse>;
+    beginPurchase(reservationOrderId: string, parameters: models.PurchaseRequest, callback: ServiceCallback<models.ReservationOrderResponse>): void;
+    beginPurchase(reservationOrderId: string, parameters: models.PurchaseRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReservationOrderResponse>): void;
 
 
     /**
@@ -221,7 +575,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} body Information needed to Split a reservation item
      *
      * @param {array} [body.quantities] List of the quantities in the new
@@ -252,7 +605,6 @@ export interface Reservation {
      *
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} body Information needed to Split a reservation item
      *
@@ -302,7 +654,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} body Information needed for commercial request for a
      * reservation
      *
@@ -329,7 +680,6 @@ export interface Reservation {
      * `Reservation`s being merged must have same properties.
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} body Information needed for commercial request for a
      * reservation
@@ -375,7 +725,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -395,7 +744,6 @@ export interface Reservation {
      * List `Reservation`s within a single `ReservationOrder`.
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -438,7 +786,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -460,7 +807,6 @@ export interface Reservation {
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -501,7 +847,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {object} parameters Information needed to patch a reservation item
@@ -512,7 +857,7 @@ export interface Reservation {
      * @param {array} [parameters.appliedScopes]
      *
      * @param {string} [parameters.instanceFlexibility] Possible values include:
-     * 'On', 'Off', 'NotSupported'
+     * 'true', 'false', 'NotSupported'
      *
      * @param {string} [parameters.name] Name of the Reservation
      *
@@ -536,7 +881,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {object} parameters Information needed to patch a reservation item
@@ -547,7 +891,7 @@ export interface Reservation {
      * @param {array} [parameters.appliedScopes]
      *
      * @param {string} [parameters.instanceFlexibility] Possible values include:
-     * 'On', 'Off', 'NotSupported'
+     * 'true', 'false', 'NotSupported'
      *
      * @param {string} [parameters.name] Name of the Reservation
      *
@@ -593,7 +937,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -616,7 +959,6 @@ export interface Reservation {
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -659,7 +1001,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} body Information needed to Split a reservation item
      *
      * @param {array} [body.quantities] List of the quantities in the new
@@ -690,7 +1031,6 @@ export interface Reservation {
      *
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} body Information needed to Split a reservation item
      *
@@ -740,7 +1080,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {object} body Information needed for commercial request for a
      * reservation
      *
@@ -767,7 +1106,6 @@ export interface Reservation {
      * `Reservation`s being merged must have same properties.
      *
      * @param {string} reservationOrderId Order Id of the reservation
-     *
      *
      * @param {object} body Information needed for commercial request for a
      * reservation
@@ -813,7 +1151,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {object} parameters Information needed to patch a reservation item
@@ -824,7 +1161,7 @@ export interface Reservation {
      * @param {array} [parameters.appliedScopes]
      *
      * @param {string} [parameters.instanceFlexibility] Possible values include:
-     * 'On', 'Off', 'NotSupported'
+     * 'true', 'false', 'NotSupported'
      *
      * @param {string} [parameters.name] Name of the Reservation
      *
@@ -848,7 +1185,6 @@ export interface Reservation {
      *
      * @param {string} reservationOrderId Order Id of the reservation
      *
-     *
      * @param {string} reservationId Id of the Reservation Item
      *
      * @param {object} parameters Information needed to patch a reservation item
@@ -859,7 +1195,7 @@ export interface Reservation {
      * @param {array} [parameters.appliedScopes]
      *
      * @param {string} [parameters.instanceFlexibility] Possible values include:
-     * 'On', 'Off', 'NotSupported'
+     * 'true', 'false', 'NotSupported'
      *
      * @param {string} [parameters.name] Name of the Reservation
      *
