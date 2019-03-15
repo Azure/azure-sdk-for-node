@@ -479,7 +479,7 @@ export interface WebServiceProperties {
 }
 
 /**
- * Instance of an Patched Azure ML web service resource.
+ * Instance of an Azure ML web service resource.
  */
 export interface WebService extends Resource {
   /**
