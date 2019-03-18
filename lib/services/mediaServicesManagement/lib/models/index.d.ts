@@ -1053,10 +1053,10 @@ export interface AudioAnalyzerPreset extends Preset {
    * The language for the audio payload in the input using the BCP-47 format of 'language
    * tag-region' (e.g: 'en-US').  The list of supported languages are English ('en-US' and
    * 'en-GB'), Spanish ('es-ES' and 'es-MX'), French ('fr-FR'), Italian ('it-IT'), Japanese
-   * ('ja-JP'), Portuguese ('pt-BR'), Chinese ('zh-CN'), German ('de-DE'), Arabic ('ar-EG'),
-   * Russian ('ru-RU'), Hindi ('hi-IN'), and Korean ('ko-KR'). If you know the language of your
-   * content, it is recommended that you specify it. If the language isn't specified or set to
-   * null, automatic language detection will choose the first language detected and process with
+   * ('ja-JP'), Portuguese ('pt-BR'), Chinese ('zh-CN'), German ('de-DE'), Arabic ('ar-EG' and
+   * 'ar-SY'), Russian ('ru-RU'), Hindi ('hi-IN'), and Korean ('ko-KR'). If you know the language
+   * of your content, it is recommended that you specify it. If the language isn't specified or set
+   * to null, automatic language detection will choose the first language detected and process with
    * the selected language for the duration of the file. This language detection feature currently
    * supports English, Chinese, French, German, Italian, Japanese, Spanish, Russian, and
    * Portuguese. It does not currently support dynamically switching between languages after the
@@ -1355,14 +1355,14 @@ export interface VideoLayer extends Layer {
 */
 export interface H264Layer extends VideoLayer {
   /**
-   * Which profile of the H.264 standard should be used when encoding this layer. Default is Auto.
-   * Possible values include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
+   * We currently support Baseline, Main, High, High422, High444. Default is Auto. Possible values
+   * include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
   */
   profile?: string;
   /**
-   * Which level of the H.264 standard should be used when encoding this layer. The value can be
-   * Auto, or a number that matches the H.264 profile. If not specified, the default is Auto, which
-   * lets the encoder choose the Level that is appropriate for this layer.
+   * We currently support Level up to 6.2. The value can be Auto, or a number that matches the
+   * H.264 profile. If not specified, the default is Auto, which lets the encoder choose the Level
+   * that is appropriate for this layer.
   */
   level?: string;
   /**
@@ -1479,8 +1479,8 @@ export interface BuiltInStandardEncoderPreset extends Preset {
   /**
    * The built-in preset to be used for encoding videos. Possible values include:
    * 'H264SingleBitrateSD', 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-   * 'AACGoodQualityAudio', 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
-   * 'H264MultipleBitrateSD'
+   * 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental', 'H264MultipleBitrate1080p',
+   * 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
   */
   presetName: string;
 }
