@@ -4,7 +4,7 @@
  * license information.
  */
 
-import Octokit, { PullRequestsGetAllParams } from '@octokit/rest';
+import Octokit, { PullRequestsListParams } from '@octokit/rest';
 import { exec as execWithCallback } from "child_process";
 
 const _repositoryOwner = "Azure";
@@ -49,13 +49,13 @@ async function exec(command: string): Promise<any> {
 
 async function cleanBranches() {
     const octokit = getAuthenticatedClient();
-    const params: PullRequestsGetAllParams = {
+    const params: PullRequestsListParams = {
         owner: _repositoryOwner,
         repo: "azure-sdk-for-node",
         state: "open"
     }
 
-    let pullRequestsResponse = await octokit.pullRequests.getAll(params);
+    let pullRequestsResponse = await octokit.pullRequests.list(params);
 
     do {
         const autoPullRequests = pullRequestsResponse.data.filter(pr => pr.title.startsWith("[AutoPR")).map(pr => pr.head.ref);
