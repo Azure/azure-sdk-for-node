@@ -1937,7 +1937,7 @@ export interface PersonGroupOperations {
 
 
     /**
-     * List person groups’s pesonGroupId, name, userData and recognitionModel.<br
+     * List person groups’s personGroupId, name, userData and recognitionModel.<br
      * />
      * * Person groups are stored in alphabetical order of personGroupId.
      * * "start" parameter (string, optional) is a user-provided personGroupId
@@ -1972,7 +1972,7 @@ export interface PersonGroupOperations {
     listWithHttpOperationResponse(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonGroup[]>>;
 
     /**
-     * List person groups’s pesonGroupId, name, userData and recognitionModel.<br
+     * List person groups’s personGroupId, name, userData and recognitionModel.<br
      * />
      * * Person groups are stored in alphabetical order of personGroupId.
      * * "start" parameter (string, optional) is a user-provided personGroupId
@@ -3794,7 +3794,7 @@ export interface LargePersonGroupOperations {
 
 
     /**
-     * List all existing large person groups’s largePesonGroupId, name, userData
+     * List all existing large person groups’s largePersonGroupId, name, userData
      * and recognitionModel.<br />
      * * Large person groups are stored in alphabetical order of
      * largePersonGroupId.
@@ -3830,7 +3830,7 @@ export interface LargePersonGroupOperations {
     listWithHttpOperationResponse(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup[]>>;
 
     /**
-     * List all existing large person groups’s largePesonGroupId, name, userData
+     * List all existing large person groups’s largePersonGroupId, name, userData
      * and recognitionModel.<br />
      * * Large person groups are stored in alphabetical order of
      * largePersonGroupId.
