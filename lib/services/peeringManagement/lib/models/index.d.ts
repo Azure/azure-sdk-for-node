@@ -314,7 +314,7 @@ export interface PeerAsnProperties {
 /**
  * The essential information related to the pee's ASN.
  */
-export interface PeerAsn {
+export interface PeerAsn extends BaseResource {
   /**
    * The Autonomous System Number (ASN) of the peer.
    */
