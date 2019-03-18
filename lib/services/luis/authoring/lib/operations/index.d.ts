@@ -137,7 +137,7 @@ export interface Features {
      * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
      * phrase list feature serves as a list of synonyms for training. A
      * non-exchangeable phrase list serves as separate features for training. So,
-     * if your non-interchangable phrase list contains 5 phrases, they will be
+     * if your non-interchangeable phrase list contains 5 phrases, they will be
      * mapped to 5 separate features. You can think of the non-interchangeable
      * phrase list as an additional bag of words to add to LUIS existing vocabulary
      * features. It is used as a lexicon lookup feature where its value is 1 if the
@@ -183,7 +183,7 @@ export interface Features {
      * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
      * phrase list feature serves as a list of synonyms for training. A
      * non-exchangeable phrase list serves as separate features for training. So,
-     * if your non-interchangable phrase list contains 5 phrases, they will be
+     * if your non-interchangeable phrase list contains 5 phrases, they will be
      * mapped to 5 separate features. You can think of the non-interchangeable
      * phrase list as an additional bag of words to add to LUIS existing vocabulary
      * features. It is used as a lexicon lookup feature where its value is 1 if the
