@@ -23,6 +23,8 @@ export default class GraphRbacManagementClient extends AzureServiceClient {
    *
    * @param {string} tenantID - The tenant ID.
    *
+   * @param {string} applicationID - The application ID.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,13 +43,15 @@ export default class GraphRbacManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, tenantID: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, tenantID: string, applicationID: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   tenantID: string;
+
+  applicationID: string;
 
   acceptLanguage: string;
 
@@ -61,10 +65,11 @@ export default class GraphRbacManagementClient extends AzureServiceClient {
   deletedApplications: operations.DeletedApplications;
   groups: operations.Groups;
   servicePrincipals: operations.ServicePrincipals;
+  servicePrincipalsByAppId: operations.ServicePrincipalsByAppId;
   users: operations.Users;
   objects: operations.Objects;
   domains: operations.Domains;
-  oAuth2: operations.OAuth2;
+  oAuth2PermissionGrantOperations: operations.OAuth2PermissionGrantOperations;
 }
 
 export { GraphRbacManagementClient, models as GraphRbacManagementModels };
