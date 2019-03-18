@@ -23,107 +23,16 @@ export interface Features {
 
 
     /**
-     * Creates a new phraselist feature.
+     * [DEPRECATED NOTICE: This operation will soon be removed] Gets all the
+     * pattern features.
      *
-     * @param {uuid} appId The application ID.
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
      *
-     * @param {string} versionId The version ID.
-     *
-     * @param {object} phraselistCreateObject A Phraselist object containing Name,
-     * comma-separated Phrases and the isExchangeable boolean. Default value for
-     * isExchangeable is true.
-     *
-     * @param {string} [phraselistCreateObject.phrases] List of comma-separated
-     * phrases that represent the Phraselist.
-     *
-     * @param {string} [phraselistCreateObject.name] The Phraselist name.
-     *
-     * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
-     * training algorithm. It is used as a lexicon lookup feature where its value
-     * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
-     * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
-     * all the phrases in the list serve as separate features to the underlying
-     * training algorithm. So, if you your phrase list feature contains 5 phrases,
-     * they will be mapped to 5 separate features. You can think of the
-     * non-exchangeable phrase list feature as an additional bag of words that you
-     * are willing to add to LUIS existing vocabulary features. Think of a
-     * non-exchangeable as set of different words. Default value is true.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    addPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
-
-    /**
-     * Creates a new phraselist feature.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {object} phraselistCreateObject A Phraselist object containing Name,
-     * comma-separated Phrases and the isExchangeable boolean. Default value for
-     * isExchangeable is true.
-     *
-     * @param {string} [phraselistCreateObject.phrases] List of comma-separated
-     * phrases that represent the Phraselist.
-     *
-     * @param {string} [phraselistCreateObject.name] The Phraselist name.
-     *
-     * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
-     * training algorithm. It is used as a lexicon lookup feature where its value
-     * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
-     * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
-     * all the phrases in the list serve as separate features to the underlying
-     * training algorithm. So, if you your phrase list feature contains 5 phrases,
-     * they will be mapped to 5 separate features. You can think of the
-     * non-exchangeable phrase list feature as an additional bag of words that you
-     * are willing to add to LUIS existing vocabulary features. Think of a
-     * non-exchangeable as set of different words. Default value is true.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Number} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Number} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, callback: ServiceCallback<number>): void;
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
-
-
-    /**
-     * Gets all the phraselist features.
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -146,10 +55,19 @@ export interface Features {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPhraseListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo[]>>;
+    listApplicationVersionPatternFeaturesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternFeatureInfo[]>>;
 
     /**
-     * Gets all the phraselist features.
+     * [DEPRECATED NOTICE: This operation will soon be removed] Gets all the
+     * pattern features.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -187,13 +105,218 @@ export interface Features {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPhraseLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo[]>;
-    listPhraseLists(appId: string, versionId: string, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
-    listPhraseLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
+    listApplicationVersionPatternFeatures(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternFeatureInfo[]>;
+    listApplicationVersionPatternFeatures(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.PatternFeatureInfo[]>): void;
+    listApplicationVersionPatternFeatures(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternFeatureInfo[]>): void;
 
 
     /**
-     * Gets all the extraction features for the specified application version.
+     * Creates a new phraselist feature in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} phraselistCreateObject A Phraselist object containing Name,
+     * comma-separated Phrases and the isExchangeable boolean. Default value for
+     * isExchangeable is true.
+     *
+     * @param {string} [phraselistCreateObject.phrases] List of comma-separated
+     * phrases that represent the Phraselist.
+     *
+     * @param {string} [phraselistCreateObject.name] The Phraselist name.
+     *
+     * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
+     * phrase list feature serves as a list of synonyms for training. A
+     * non-exchangeable phrase list serves as separate features for training. So,
+     * if your non-interchangable phrase list contains 5 phrases, they will be
+     * mapped to 5 separate features. You can think of the non-interchangeable
+     * phrase list as an additional bag of words to add to LUIS existing vocabulary
+     * features. It is used as a lexicon lookup feature where its value is 1 if the
+     * lexicon contains a given word or 0 if it doesn’t.  Default value is true.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addPhraseListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+
+    /**
+     * Creates a new phraselist feature in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} phraselistCreateObject A Phraselist object containing Name,
+     * comma-separated Phrases and the isExchangeable boolean. Default value for
+     * isExchangeable is true.
+     *
+     * @param {string} [phraselistCreateObject.phrases] List of comma-separated
+     * phrases that represent the Phraselist.
+     *
+     * @param {string} [phraselistCreateObject.name] The Phraselist name.
+     *
+     * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
+     * phrase list feature serves as a list of synonyms for training. A
+     * non-exchangeable phrase list serves as separate features for training. So,
+     * if your non-interchangable phrase list contains 5 phrases, they will be
+     * mapped to 5 separate features. You can think of the non-interchangeable
+     * phrase list as an additional bag of words to add to LUIS existing vocabulary
+     * features. It is used as a lexicon lookup feature where its value is 1 if the
+     * lexicon contains a given word or 0 if it doesn’t.  Default value is true.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Number} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Number} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+    addPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, callback: ServiceCallback<number>): void;
+    addPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+
+
+    /**
+     * Gets all the phraselist features in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of entries to skip. Default value
+     * is 0.
+     *
+     * @param {number} [options.take] The number of entries to return. Maximum page
+     * size is 500. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPhraseListsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo[]>>;
+
+    /**
+     * Gets all the phraselist features in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of entries to skip. Default value
+     * is 0.
+     *
+     * @param {number} [options.take] The number of entries to return. Maximum page
+     * size is 500. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPhraseLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo[]>;
+    listPhraseLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
+    listPhraseLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
+
+
+    /**
+     * Gets all the extraction phraselist and pattern features in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -216,10 +339,19 @@ export interface Features {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FeaturesResponseObject>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FeaturesResponseObject>>;
 
     /**
-     * Gets all the extraction features for the specified application version.
+     * Gets all the extraction phraselist and pattern features in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -259,13 +391,21 @@ export interface Features {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FeaturesResponseObject>;
-    list(appId: string, versionId: string, callback: ServiceCallback<models.FeaturesResponseObject>): void;
-    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeaturesResponseObject>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FeaturesResponseObject>;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.FeaturesResponseObject>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeaturesResponseObject>): void;
 
 
     /**
-     * Gets phraselist feature info.
+     * Gets phraselist feature info in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -284,10 +424,18 @@ export interface Features {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo>>;
+    getPhraseListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo>>;
 
     /**
-     * Gets phraselist feature info.
+     * Gets phraselist feature info in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -322,13 +470,22 @@ export interface Features {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo>;
-    getPhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
-    getPhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
+    getPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo>;
+    getPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
+    getPhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
 
 
     /**
-     * Updates the phrases, the state and the name of the phraselist feature.
+     * Updates the phrases, the state and the name of the phraselist feature in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -372,10 +529,19 @@ export interface Features {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePhraseListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the phrases, the state and the name of the phraselist feature.
+     * Updates the phrases, the state and the name of the phraselist feature in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -435,13 +601,21 @@ export interface Features {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, options: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updatePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a phraselist feature.
+     * Deletes a phraselist feature from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -460,10 +634,18 @@ export interface Features {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePhraseListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a phraselist feature.
+     * Deletes a phraselist feature from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -498,9 +680,9 @@ export interface Features {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePhraseList(azureRegion: string, azureCloud: string, appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -513,22 +695,30 @@ export interface Examples {
 
 
     /**
-     * Adds a labeled example to the application.
+     * Adds a labeled example utterance in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} exampleLabelObject An example label with the expected intent
-     * and entities.
+     * @param {object} exampleLabelObject A labeled example utterance with the
+     * expected intent and entities.
      *
-     * @param {string} [exampleLabelObject.text] The sample's utterance.
+     * @param {string} [exampleLabelObject.text] The example utterance.
      *
      * @param {array} [exampleLabelObject.entityLabels] The identified entities
-     * within the utterance.
+     * within the example utterance.
      *
      * @param {string} [exampleLabelObject.intentName] The identified intent
-     * representing the utterance.
+     * representing the example utterance.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -541,25 +731,33 @@ export interface Examples {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelExampleResponse>>;
+    addWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelExampleResponse>>;
 
     /**
-     * Adds a labeled example to the application.
+     * Adds a labeled example utterance in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} exampleLabelObject An example label with the expected intent
-     * and entities.
+     * @param {object} exampleLabelObject A labeled example utterance with the
+     * expected intent and entities.
      *
-     * @param {string} [exampleLabelObject.text] The sample's utterance.
+     * @param {string} [exampleLabelObject.text] The example utterance.
      *
      * @param {array} [exampleLabelObject.entityLabels] The identified entities
-     * within the utterance.
+     * within the example utterance.
      *
      * @param {string} [exampleLabelObject.intentName] The identified intent
-     * representing the utterance.
+     * representing the example utterance.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -588,19 +786,27 @@ export interface Examples {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelExampleResponse>;
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, callback: ServiceCallback<models.LabelExampleResponse>): void;
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelExampleResponse>): void;
+    add(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelExampleResponse>;
+    add(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, callback: ServiceCallback<models.LabelExampleResponse>): void;
+    add(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelExampleResponse>): void;
 
 
     /**
-     * Adds a batch of labeled examples to the application.
+     * Adds a batch of labeled example utterances to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {array} exampleLabelObjectArray Array of examples.
+     * @param {array} exampleLabelObjectArray Array of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -613,16 +819,24 @@ export interface Examples {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    batchWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchLabelExample[]>>;
+    batchWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchLabelExample[]>>;
 
     /**
-     * Adds a batch of labeled examples to the application.
+     * Adds a batch of labeled example utterances to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {array} exampleLabelObjectArray Array of examples.
+     * @param {array} exampleLabelObjectArray Array of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -650,13 +864,21 @@ export interface Examples {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchLabelExample[]>;
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], callback: ServiceCallback<models.BatchLabelExample[]>): void;
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLabelExample[]>): void;
+    batch(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchLabelExample[]>;
+    batch(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], callback: ServiceCallback<models.BatchLabelExample[]>): void;
+    batch(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLabelExample[]>): void;
 
 
     /**
-     * Returns examples to be reviewed.
+     * Returns example utterances to be reviewed from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -679,10 +901,18 @@ export interface Examples {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabeledUtterance[]>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabeledUtterance[]>>;
 
     /**
-     * Returns examples to be reviewed.
+     * Returns example utterances to be reviewed from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -720,13 +950,22 @@ export interface Examples {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabeledUtterance[]>;
-    list(appId: string, versionId: string, callback: ServiceCallback<models.LabeledUtterance[]>): void;
-    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabeledUtterance[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabeledUtterance[]>;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.LabeledUtterance[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabeledUtterance[]>): void;
 
 
     /**
-     * Deletes the labeled example with the specified ID.
+     * Deletes the labeled example utterances with the specified ID from a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -745,10 +984,19 @@ export interface Examples {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes the labeled example with the specified ID.
+     * Deletes the labeled example utterances with the specified ID from a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -783,9 +1031,9 @@ export interface Examples {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, versionId: string, exampleId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, versionId: string, exampleId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleId: number, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, exampleId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -798,14 +1046,22 @@ export interface Model {
 
 
     /**
-     * Adds an intent classifier to the application.
+     * Adds an intent to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} intentCreateObject A model object containing the name of the
-     * new intent classifier.
+     * new intent.
      *
      * @param {string} [intentCreateObject.name] Name of the new entity extractor.
      *
@@ -820,17 +1076,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addIntentWithHttpOperationResponse(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addIntentWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds an intent classifier to the application.
+     * Adds an intent to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} intentCreateObject A model object containing the name of the
-     * new intent classifier.
+     * new intent.
      *
      * @param {string} [intentCreateObject.name] Name of the new entity extractor.
      *
@@ -860,13 +1124,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
+    addIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets information about the intent models.
+     * Gets information about the intent models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -889,10 +1161,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
+    listIntentsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
 
     /**
-     * Gets information about the intent models.
+     * Gets information about the intent models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -930,20 +1210,28 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listIntents(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
-    listIntents(appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
-    listIntents(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
+    listIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
 
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
@@ -958,17 +1246,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addEntityWithHttpOperationResponse(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
@@ -998,13 +1294,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
+    addEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets information about the entity models.
+     * Gets information about all the simple entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1027,10 +1332,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
+    listEntitiesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
 
     /**
-     * Gets information about the entity models.
+     * Gets information about all the simple entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1068,13 +1382,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
-    listEntities(appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
-    listEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
+    listEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
 
 
     /**
-     * Adds a hierarchical entity extractor to the application version.
+     * Adds a hierarchical entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1098,10 +1420,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addHierarchicalEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a hierarchical entity extractor to the application version.
+     * Adds a hierarchical entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1140,13 +1470,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, callback: ServiceCallback<string>): void;
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, callback: ServiceCallback<string>): void;
+    addHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets information about the hierarchical entity models.
+     * Gets information about all the hierarchical entity models in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1169,10 +1508,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listHierarchicalEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor[]>>;
+    listHierarchicalEntitiesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor[]>>;
 
     /**
-     * Gets information about the hierarchical entity models.
+     * Gets information about all the hierarchical entity models in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1210,13 +1558,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listHierarchicalEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor[]>;
-    listHierarchicalEntities(appId: string, versionId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
-    listHierarchicalEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
+    listHierarchicalEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor[]>;
+    listHierarchicalEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
+    listHierarchicalEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
 
 
     /**
-     * Adds a composite entity extractor to the application.
+     * Adds a composite entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1240,10 +1596,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCompositeEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a composite entity extractor to the application.
+     * Adds a composite entity extractor to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1282,13 +1646,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, callback: ServiceCallback<string>): void;
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, callback: ServiceCallback<string>): void;
+    addCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets information about the composite entity models.
+     * Gets information about all the composite entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1311,10 +1684,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCompositeEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor[]>>;
+    listCompositeEntitiesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor[]>>;
 
     /**
-     * Gets information about the composite entity models.
+     * Gets information about all the composite entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1352,13 +1734,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCompositeEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor[]>;
-    listCompositeEntities(appId: string, versionId: string, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
-    listCompositeEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
+    listCompositeEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor[]>;
+    listCompositeEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
+    listCompositeEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
 
 
     /**
-     * Gets information about the closedlist models.
+     * Gets information about all the list entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1381,10 +1772,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listClosedListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor[]>>;
+    listClosedListsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor[]>>;
 
     /**
-     * Gets information about the closedlist models.
+     * Gets information about all the list entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1422,26 +1822,33 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listClosedLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor[]>;
-    listClosedLists(appId: string, versionId: string, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
-    listClosedLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
+    listClosedLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor[]>;
+    listClosedLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
+    listClosedLists(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
 
 
     /**
-     * Adds a closed list model to the application.
+     * Adds a list entity model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} closedListModelCreateObject A model containing the name and
-     * words for the new closed list entity extractor.
+     * words for the new list entity extractor.
      *
      * @param {array} [closedListModelCreateObject.subLists] Sublists for the
      * feature.
      *
-     * @param {string} [closedListModelCreateObject.name] Name of the closed list
-     * feature.
+     * @param {string} [closedListModelCreateObject.name] Name of the list entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1454,23 +1861,30 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addClosedListWithHttpOperationResponse(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addClosedListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a closed list model to the application.
+     * Adds a list entity model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} closedListModelCreateObject A model containing the name and
-     * words for the new closed list entity extractor.
+     * words for the new list entity extractor.
      *
      * @param {array} [closedListModelCreateObject.subLists] Sublists for the
      * feature.
      *
-     * @param {string} [closedListModelCreateObject.name] Name of the closed list
-     * feature.
+     * @param {string} [closedListModelCreateObject.name] Name of the list entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1498,13 +1912,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, callback: ServiceCallback<string>): void;
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, callback: ServiceCallback<string>): void;
+    addClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Adds a list of prebuilt entity extractors to the application.
+     * Adds a list of prebuilt entities to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1524,10 +1946,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
+    addPrebuiltWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
 
     /**
-     * Adds a list of prebuilt entity extractors to the application.
+     * Adds a list of prebuilt entities to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1562,13 +1992,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    addPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
+    addPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltExtractorNames: string[], callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    addPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltExtractorNames: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
 
 
     /**
-     * Gets information about the prebuilt entity models.
+     * Gets information about all the prebuilt entities in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1591,10 +2030,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPrebuiltsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
+    listPrebuiltsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
 
     /**
-     * Gets information about the prebuilt entity models.
+     * Gets information about all the prebuilt entities in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1632,13 +2080,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPrebuilts(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
-    listPrebuilts(appId: string, versionId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
-    listPrebuilts(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    listPrebuilts(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
+    listPrebuilts(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    listPrebuilts(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
 
 
     /**
-     * Gets all the available prebuilt entity extractors for the application.
+     * Gets all the available prebuilt entities in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1655,10 +2111,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailablePrebuiltEntityModel[]>>;
+    listPrebuiltEntitiesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailablePrebuiltEntityModel[]>>;
 
     /**
-     * Gets all the available prebuilt entity extractors for the application.
+     * Gets all the available prebuilt entities in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1690,13 +2154,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailablePrebuiltEntityModel[]>;
-    listPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
-    listPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
+    listPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailablePrebuiltEntityModel[]>;
+    listPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
+    listPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
 
 
     /**
-     * Gets information about the application version models.
+     * Gets information about all the intent and entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1719,10 +2192,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelInfoResponse[]>>;
+    listModelsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelInfoResponse[]>>;
 
     /**
-     * Gets information about the application version models.
+     * Gets information about all the intent and entity models in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1760,13 +2242,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listModels(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelInfoResponse[]>;
-    listModels(appId: string, versionId: string, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
-    listModels(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
+    listModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelInfoResponse[]>;
+    listModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
+    listModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
 
 
     /**
-     * Gets the utterances for the given model in the given app version.
+     * Gets the example utterances for the given intent or entity model in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1791,10 +2282,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    examplesMethodWithHttpOperationResponse(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelTextObject[]>>;
+    examplesMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelTextObject[]>>;
 
     /**
-     * Gets the utterances for the given model in the given app version.
+     * Gets the example utterances for the given intent or entity model in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1834,13 +2334,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    examplesMethod(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelTextObject[]>;
-    examplesMethod(appId: string, versionId: string, modelId: string, callback: ServiceCallback<models.LabelTextObject[]>): void;
-    examplesMethod(appId: string, versionId: string, modelId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelTextObject[]>): void;
+    examplesMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelTextObject[]>;
+    examplesMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelId: string, callback: ServiceCallback<models.LabelTextObject[]>): void;
+    examplesMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, modelId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelTextObject[]>): void;
 
 
     /**
-     * Gets information about the intent model.
+     * Gets information about the intent model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1859,10 +2367,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier>>;
+    getIntentWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier>>;
 
     /**
-     * Gets information about the intent model.
+     * Gets information about the intent model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1897,13 +2413,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntent(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier>;
-    getIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentClassifier>): void;
-    getIntent(appId: string, versionId: string, intentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier>): void;
+    getIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier>;
+    getIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentClassifier>): void;
+    getIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier>): void;
 
 
     /**
-     * Updates the name of an intent classifier.
+     * Updates the name of an intent in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1912,7 +2436,7 @@ export interface Model {
      * @param {uuid} intentId The intent classifier ID.
      *
      * @param {object} modelUpdateObject A model object containing the new intent
-     * classifier name.
+     * name.
      *
      * @param {string} [modelUpdateObject.name] The entity's new name.
      *
@@ -1927,10 +2451,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateIntentWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name of an intent classifier.
+     * Updates the name of an intent in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1939,7 +2471,7 @@ export interface Model {
      * @param {uuid} intentId The intent classifier ID.
      *
      * @param {object} modelUpdateObject A model object containing the new intent
-     * classifier name.
+     * name.
      *
      * @param {string} [modelUpdateObject.name] The entity's new name.
      *
@@ -1970,13 +2502,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes an intent classifier from the application.
+     * Deletes an intent from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -1986,9 +2526,9 @@ export interface Model {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.deleteUtterances] Also delete the intent's
-     * utterances (true). Or move the utterances to the None intent (false - the
-     * default value).
+     * @param {boolean} [options.deleteUtterances] If true, deletes the intent's
+     * example utterances. If false, moves the example utterances to the None
+     * intent. The default value is false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1999,10 +2539,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteIntentWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes an intent classifier from the application.
+     * Deletes an intent from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2012,9 +2560,9 @@ export interface Model {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.deleteUtterances] Also delete the intent's
-     * utterances (true). Or move the utterances to the None intent (false - the
-     * default value).
+     * @param {boolean} [options.deleteUtterances] If true, deletes the intent's
+     * example utterances. If false, moves the example utterances to the None
+     * intent. The default value is false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2041,13 +2589,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteIntent(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteIntent(appId: string, versionId: string, intentId: string, options: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information about the entity model.
+     * Gets information about an entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2066,10 +2622,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor>>;
+    getEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor>>;
 
     /**
-     * Gets information about the entity model.
+     * Gets information about an entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2104,13 +2668,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor>;
-    getEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityExtractor>): void;
-    getEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor>): void;
+    getEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor>;
+    getEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityExtractor>): void;
+    getEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor>): void;
 
 
     /**
-     * Updates the name of an entity extractor.
+     * Updates the name of an entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2134,10 +2706,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name of an entity extractor.
+     * Updates the name of an entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2177,13 +2757,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes an entity extractor from the application.
+     * Deletes an entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2202,10 +2790,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes an entity extractor from the application.
+     * Deletes an entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2240,13 +2836,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information about the hierarchical entity model.
+     * Gets information about a hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2265,10 +2870,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor>>;
+    getHierarchicalEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor>>;
 
     /**
-     * Gets information about the hierarchical entity model.
+     * Gets information about a hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2304,13 +2918,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor>;
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
+    getHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor>;
+    getHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
+    getHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
 
 
     /**
-     * Updates the name and children of a hierarchical entity model.
+     * Updates the name and children of a hierarchical entity model in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2336,10 +2959,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateHierarchicalEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name and children of a hierarchical entity model.
+     * Updates the name and children of a hierarchical entity model in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2381,13 +3013,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a hierarchical entity extractor from the application version.
+     * Deletes a hierarchical entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2406,10 +3046,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteHierarchicalEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a hierarchical entity extractor from the application version.
+     * Deletes a hierarchical entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2444,13 +3092,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information about the composite entity model.
+     * Gets information about a composite entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2469,10 +3125,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor>>;
+    getCompositeEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor>>;
 
     /**
-     * Gets information about the composite entity model.
+     * Gets information about a composite entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2508,13 +3172,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor>;
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
+    getCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor>;
+    getCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
+    getCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
 
 
     /**
-     * Updates the composite entity extractor.
+     * Updates a composite entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2540,10 +3212,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateCompositeEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the composite entity extractor.
+     * Updates a composite entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2585,13 +3265,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a composite entity extractor from the application.
+     * Deletes a composite entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2610,10 +3298,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a composite entity extractor from the application.
+     * Deletes a composite entity from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2648,19 +3344,27 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information of a closed list model.
+     * Gets information about a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2673,16 +3377,24 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor>>;
+    getClosedListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor>>;
 
     /**
-     * Gets information of a closed list model.
+     * Gets information about a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2712,28 +3424,36 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor>;
-    getClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
-    getClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
+    getClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor>;
+    getClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
+    getClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
 
 
     /**
-     * Updates the closed list model.
+     * Updates the list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
-     * @param {object} closedListModelUpdateObject The new entity name and words
-     * list.
+     * @param {object} closedListModelUpdateObject The new list entity name and
+     * words list.
      *
      * @param {array} [closedListModelUpdateObject.subLists] The new sublists for
      * the feature.
      *
-     * @param {string} [closedListModelUpdateObject.name] The new name of the
-     * closed list feature.
+     * @param {string} [closedListModelUpdateObject.name] The new name of the list
+     * entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2746,25 +3466,33 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateClosedListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the closed list model.
+     * Updates the list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
-     * @param {object} closedListModelUpdateObject The new entity name and words
-     * list.
+     * @param {object} closedListModelUpdateObject The new list entity name and
+     * words list.
      *
      * @param {array} [closedListModelUpdateObject.subLists] The new sublists for
      * the feature.
      *
-     * @param {string} [closedListModelUpdateObject.name] The new name of the
-     * closed list feature.
+     * @param {string} [closedListModelUpdateObject.name] The new name of the list
+     * entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2793,19 +3521,28 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Adds a batch of sublists to an existing closedlist.
+     * Adds a batch of sublists to an existing list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} closedListModelPatchObject A words list batch.
      *
@@ -2822,16 +3559,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    patchClosedListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Adds a batch of sublists to an existing closedlist.
+     * Adds a batch of sublists to an existing list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} closedListModelPatchObject A words list batch.
      *
@@ -2864,19 +3610,27 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, callback: ServiceCallback<models.OperationStatus>): void;
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    patchClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    patchClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, callback: ServiceCallback<models.OperationStatus>): void;
+    patchClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a closed list model from the application.
+     * Deletes a list entity model from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2889,16 +3643,24 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteClosedListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a closed list model from the application.
+     * Deletes a list entity model from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2927,13 +3689,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteClosedList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information about the prebuilt entity model.
+     * Gets information about a prebuilt entity model in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2952,10 +3723,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor>>;
+    getPrebuiltWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor>>;
 
     /**
-     * Gets information about the prebuilt entity model.
+     * Gets information about a prebuilt entity model in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -2991,13 +3771,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor>;
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
+    getPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor>;
+    getPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
+    getPrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
 
 
     /**
-     * Deletes a prebuilt entity extractor from the application.
+     * Deletes a prebuilt entity extractor from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3016,10 +3804,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePrebuiltWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a prebuilt entity extractor from the application.
+     * Deletes a prebuilt entity extractor from a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3054,19 +3850,28 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuilt(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a sublist of a specific closed list model.
+     * Deletes a sublist of a specific list entity model from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3081,16 +3886,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteSubListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a sublist of a specific closed list model.
+     * Deletes a sublist of a specific list entity model from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3121,19 +3935,27 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Updates one of the closed list's sublists.
+     * Updates one of the list entity's sublists in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3156,16 +3978,24 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateSubListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates one of the closed list's sublists.
+     * Updates one of the list entity's sublists in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3204,13 +4034,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Suggests examples that would improve the accuracy of the intent model.
+     * Suggests example utterances that would improve the accuracy of the intent
+     * model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3232,10 +4071,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentSuggestionsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentsSuggestionExample[]>>;
+    listIntentSuggestionsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentsSuggestionExample[]>>;
 
     /**
-     * Suggests examples that would improve the accuracy of the intent model.
+     * Suggests example utterances that would improve the accuracy of the intent
+     * model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3272,13 +4120,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentsSuggestionExample[]>;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
+    listIntentSuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentsSuggestionExample[]>;
+    listIntentSuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
+    listIntentSuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
 
 
     /**
-     * Get suggestion examples that would improve the accuracy of the entity model.
+     * Get suggested example utterances that would improve the accuracy of the
+     * entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3300,10 +4157,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntitySuggestionsWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesSuggestionExample[]>>;
+    listEntitySuggestionsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesSuggestionExample[]>>;
 
     /**
-     * Get suggestion examples that would improve the accuracy of the entity model.
+     * Get suggested example utterances that would improve the accuracy of the
+     * entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3340,19 +4206,27 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesSuggestionExample[]>;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
+    listEntitySuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesSuggestionExample[]>;
+    listEntitySuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
+    listEntitySuggestions(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
 
 
     /**
-     * Adds a list to an existing closed list.
+     * Adds a sublist to an existing list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {object} wordListCreateObject Words list.
      *
@@ -3372,16 +4246,24 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+    addSubListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
     /**
-     * Adds a list to an existing closed list.
+     * Adds a sublist to an existing list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {object} wordListCreateObject Words list.
      *
@@ -3416,14 +4298,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, callback: ServiceCallback<number>): void;
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+    addSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+    addSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, callback: ServiceCallback<number>): void;
+    addSubList(azureRegion: string, azureCloud: string, appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
 
 
     /**
-     * Adds a customizable prebuilt domain along with all of its models to this
-     * application.
+     * Adds a customizable prebuilt domain along with all of its intent and entity
+     * models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3445,11 +4335,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    addCustomPrebuiltDomainWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
-     * Adds a customizable prebuilt domain along with all of its models to this
-     * application.
+     * Adds a customizable prebuilt domain along with all of its intent and entity
+     * models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3486,21 +4384,29 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, callback: ServiceCallback<string[]>): void;
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, callback: ServiceCallback<string[]>): void;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
-     * Adds a custom prebuilt intent model to the application.
+     * Adds a customizable prebuilt intent model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt intent and the name of the domain to which
-     * this model belongs.
+     * the name of the customizable prebuilt intent and the name of the domain to
+     * which this model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3519,18 +4425,26 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltIntentWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltIntentWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a custom prebuilt intent model to the application.
+     * Adds a customizable prebuilt intent model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt intent and the name of the domain to which
-     * this model belongs.
+     * the name of the customizable prebuilt intent and the name of the domain to
+     * which this model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3564,13 +4478,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addCustomPrebuiltIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltIntent(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets custom prebuilt intents information of this application.
+     * Gets information about customizable prebuilt intents added to a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3587,10 +4510,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
+    listCustomPrebuiltIntentsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
 
     /**
-     * Gets custom prebuilt intents information of this application.
+     * Gets information about customizable prebuilt intents added to a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3622,21 +4554,29 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltIntents(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
-    listCustomPrebuiltIntents(appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
-    listCustomPrebuiltIntents(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listCustomPrebuiltIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
+    listCustomPrebuiltIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listCustomPrebuiltIntents(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
 
 
     /**
-     * Adds a custom prebuilt entity model to the application.
+     * Adds a prebuilt entity model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt entity and the name of the domain to which
-     * this model belongs.
+     * the name of the prebuilt entity and the name of the domain to which this
+     * model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3655,18 +4595,26 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltEntityWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltEntityWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a custom prebuilt entity model to the application.
+     * Adds a prebuilt entity model to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt entity and the name of the domain to which
-     * this model belongs.
+     * the name of the prebuilt entity and the name of the domain to which this
+     * model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3700,13 +4648,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addCustomPrebuiltEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltEntity(azureRegion: string, azureCloud: string, appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets all custom prebuilt entities information of this application.
+     * Gets all prebuilt entities used in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3723,10 +4679,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
+    listCustomPrebuiltEntitiesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
 
     /**
-     * Gets all custom prebuilt entities information of this application.
+     * Gets all prebuilt entities used in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3758,13 +4722,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
-    listCustomPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
-    listCustomPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listCustomPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
+    listCustomPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listCustomPrebuiltEntities(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
 
 
     /**
-     * Gets all custom prebuilt models information of this application.
+     * Gets all prebuilt intent and entity model information used in a version of
+     * this application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3781,10 +4754,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomPrebuiltModel[]>>;
+    listCustomPrebuiltModelsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomPrebuiltModel[]>>;
 
     /**
-     * Gets all custom prebuilt models information of this application.
+     * Gets all prebuilt intent and entity model information used in a version of
+     * this application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3816,13 +4798,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltModels(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomPrebuiltModel[]>;
-    listCustomPrebuiltModels(appId: string, versionId: string, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
-    listCustomPrebuiltModels(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
+    listCustomPrebuiltModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomPrebuiltModel[]>;
+    listCustomPrebuiltModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
+    listCustomPrebuiltModels(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
 
 
     /**
-     * Deletes a prebuilt domain's models from the application.
+     * Deletes a prebuilt domain's models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3841,10 +4831,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCustomPrebuiltDomainWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a prebuilt domain's models from the application.
+     * Deletes a prebuilt domain's models in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3879,13 +4877,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, domainName: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCustomPrebuiltDomain(azureRegion: string, azureCloud: string, appId: string, versionId: string, domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Gets information about the hierarchical entity child model.
+     * Gets information about the child's model contained in an hierarchical entity
+     * child model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3906,10 +4913,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalChildEntity>>;
+    getHierarchicalEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalChildEntity>>;
 
     /**
-     * Gets information about the hierarchical entity child model.
+     * Gets information about the child's model contained in an hierarchical entity
+     * child model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3947,13 +4963,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalChildEntity>;
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
+    getHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalChildEntity>;
+    getHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
+    getHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
 
 
     /**
-     * Renames a single child in an existing hierarchical entity model.
+     * Renames a single child in an existing hierarchical entity model in a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -3979,10 +5004,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateHierarchicalEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Renames a single child in an existing hierarchical entity model.
+     * Renames a single child in an existing hierarchical entity model in a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4024,13 +5058,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Deletes a hierarchical entity extractor child from the application.
+     * Deletes a hierarchical entity extractor child in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4051,10 +5094,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteHierarchicalEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a hierarchical entity extractor child from the application.
+     * Deletes a hierarchical entity extractor child in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4091,13 +5143,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Creates a single child in an existing hierarchical entity model.
+     * Creates a single child in an existing hierarchical entity model in a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4121,10 +5182,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addHierarchicalEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a single child in an existing hierarchical entity model.
+     * Creates a single child in an existing hierarchical entity model in a version
+     * of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4163,13 +5233,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, callback: ServiceCallback<string>): void;
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, callback: ServiceCallback<string>): void;
+    addHierarchicalEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Creates a single child in an existing composite entity model.
+     * Creates a single child in an existing composite entity model in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4193,10 +5272,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCompositeEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a single child in an existing composite entity model.
+     * Creates a single child in an existing composite entity model in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4235,13 +5323,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, callback: ServiceCallback<string>): void;
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, callback: ServiceCallback<string>): void;
+    addCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Deletes a composite entity extractor child from the application.
+     * Deletes a composite entity extractor child from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4262,10 +5359,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityChildWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a composite entity extractor child from the application.
+     * Deletes a composite entity extractor child from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4302,13 +5408,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, cChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityChild(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, cChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Gets information about the regex entity models.
+     * @summary Gets information about the regular expression entity models in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4331,10 +5446,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor[]>>;
+    listRegexEntityInfosWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor[]>>;
 
     /**
-     * @summary Gets information about the regex entity models.
+     * @summary Gets information about the regular expression entity models in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4372,23 +5496,32 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor[]>;
-    getRegexEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
-    getRegexEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
+    listRegexEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor[]>;
+    listRegexEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
+    listRegexEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
 
 
     /**
-     * @summary Adds a regex entity model to the application version.
+     * @summary Adds a regular expression entity model to a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} regexEntityExtractorCreateObj A model object containing the
-     * name and regex pattern for the new regex entity extractor.
+     * name and regex pattern for the new regular expression entity extractor.
      *
-     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regex
-     * entity pattern.
+     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityExtractorCreateObj.name] The model name.
      *
@@ -4403,20 +5536,29 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createRegexEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Adds a regex entity model to the application version.
+     * @summary Adds a regular expression entity model to a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} regexEntityExtractorCreateObj A model object containing the
-     * name and regex pattern for the new regex entity extractor.
+     * name and regex pattern for the new regular expression entity extractor.
      *
-     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regex
-     * entity pattern.
+     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityExtractorCreateObj.name] The model name.
      *
@@ -4446,13 +5588,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, callback: ServiceCallback<string>): void;
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, callback: ServiceCallback<string>): void;
+    createRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get information about the Pattern.Any entity models.
+     * @summary Get information about the Pattern.Any entity models in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4475,10 +5626,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor[]>>;
+    listPatternAnyEntityInfosWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor[]>>;
 
     /**
-     * @summary Get information about the Pattern.Any entity models.
+     * @summary Get information about the Pattern.Any entity models in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4516,13 +5676,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor[]>;
-    getPatternAnyEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
-    getPatternAnyEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
+    listPatternAnyEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor[]>;
+    listPatternAnyEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
+    listPatternAnyEntityInfos(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
 
 
     /**
-     * @summary Adds a pattern.any entity extractor to the application.
+     * @summary Adds a pattern.any entity extractor to a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4547,10 +5716,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createPatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPatternAnyEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Adds a pattern.any entity extractor to the application.
+     * @summary Adds a pattern.any entity extractor to a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4590,13 +5768,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, callback: ServiceCallback<string>): void;
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createPatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for an entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4615,10 +5801,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for an entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4652,13 +5846,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create an entity role in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4682,10 +5884,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create an entity role in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4724,13 +5934,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get a prebuilt entity's roles in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4749,10 +5967,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listPrebuiltEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get a prebuilt entity's roles in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4786,13 +6012,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4816,10 +6051,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4858,13 +6102,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4883,10 +6135,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listClosedListEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4920,13 +6180,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listClosedListEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listClosedListEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listClosedListEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4950,10 +6218,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createClosedListEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a list entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -4992,13 +6268,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5017,10 +6302,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listRegexEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5054,13 +6348,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listRegexEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listRegexEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listRegexEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5084,10 +6387,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createRegexEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5126,13 +6438,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5151,10 +6472,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityRolesWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listCompositeEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5188,13 +6518,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCompositeEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listCompositeEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCompositeEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a composite entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5218,10 +6557,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createCompositeEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a composite entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5260,13 +6608,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a Pattern.any entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5285,10 +6642,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listPatternAnyEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a Pattern.any entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5322,13 +6688,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPatternAnyEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listPatternAnyEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPatternAnyEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5352,10 +6727,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPatternAnyEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5394,13 +6778,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a hierarchical entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5419,10 +6812,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityRolesWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listHierarchicalEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a hierarchical entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5456,13 +6858,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listHierarchicalEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listHierarchicalEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listHierarchicalEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5486,10 +6897,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createHierarchicalEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5528,13 +6948,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a prebuilt entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5553,10 +6981,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCustomPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listCustomPrebuiltEntityRolesWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a prebuilt entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5590,13 +7026,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCustomPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listCustomPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCustomPrebuiltEntityRoles(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5620,10 +7065,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createCustomPrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5662,13 +7116,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    createCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
+    createCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5687,10 +7150,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getExplicitListWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem[]>>;
+    getExplicitListWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem[]>>;
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5724,13 +7196,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getExplicitList(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem[]>;
-    getExplicitList(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.ExplicitListItem[]>): void;
-    getExplicitList(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem[]>): void;
+    getExplicitList(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem[]>;
+    getExplicitList(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.ExplicitListItem[]>): void;
+    getExplicitList(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem[]>): void;
 
 
     /**
-     * @summary Add a new item to the explicit list for the Pattern.Any entity.
+     * @summary Add a new exception to the explicit list for the Pattern.Any entity
+     * in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5753,10 +7234,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+    addExplicitListItemWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
     /**
-     * @summary Add a new item to the explicit list for the Pattern.Any entity.
+     * @summary Add a new exception to the explicit list for the Pattern.Any entity
+     * in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -5794,19 +7284,28 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, callback: ServiceCallback<number>): void;
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+    addExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+    addExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, callback: ServiceCallback<number>): void;
+    addExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
 
 
     /**
-     * @summary Gets information of a regex entity model.
+     * @summary Gets information about a regular expression entity in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity model ID.
+     * @param {uuid} regexEntityId The regular expression entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5819,16 +7318,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityEntityInfoWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor>>;
+    getRegexEntityEntityInfoWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor>>;
 
     /**
-     * @summary Gets information of a regex entity model.
+     * @summary Gets information about a regular expression entity in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity model ID.
+     * @param {uuid} regexEntityId The regular expression entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5857,25 +7365,34 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor>;
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.RegexEntityExtractor>): void;
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor>): void;
+    getRegexEntityEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor>;
+    getRegexEntityEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.RegexEntityExtractor>): void;
+    getRegexEntityEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor>): void;
 
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} regexEntityUpdateObject An object containing the new entity
      * name and regex pattern.
      *
-     * @param {string} [regexEntityUpdateObject.regexPattern] The regex entity
-     * pattern.
+     * @param {string} [regexEntityUpdateObject.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityUpdateObject.name] The model name.
      *
@@ -5890,22 +7407,31 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateRegexEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regular expression entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} regexEntityUpdateObject An object containing the new entity
      * name and regex pattern.
      *
-     * @param {string} [regexEntityUpdateObject.regexPattern] The regex entity
-     * pattern.
+     * @param {string} [regexEntityUpdateObject.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityUpdateObject.name] The model name.
      *
@@ -5936,19 +7462,28 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Deletes a regex entity model from the application.
+     * @summary Deletes a regular expression entity from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5961,16 +7496,25 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteRegexEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes a regex entity model from the application.
+     * @summary Deletes a regular expression entity from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5999,13 +7543,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteRegexEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Gets information about the application version's Pattern.Any model.
+     * @summary Gets information about the Pattern.Any model in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6024,10 +7577,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityInfoWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor>>;
+    getPatternAnyEntityInfoWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor>>;
 
     /**
-     * @summary Gets information about the application version's Pattern.Any model.
+     * @summary Gets information about the Pattern.Any model in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6063,13 +7625,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor>;
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
+    getPatternAnyEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor>;
+    getPatternAnyEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
+    getPatternAnyEntityInfo(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
 
 
     /**
-     * @summary Updates the name and explicit list of a Pattern.Any entity model.
+     * @summary Updates the name and explicit (exception) list of a Pattern.Any
+     * entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6096,10 +7667,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePatternAnyEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates the name and explicit list of a Pattern.Any entity model.
+     * @summary Updates the name and explicit (exception) list of a Pattern.Any
+     * entity model in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6142,13 +7722,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updatePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Deletes a Pattern.Any entity extractor from the application.
+     * @summary Deletes a Pattern.Any entity extractor from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6167,10 +7756,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternAnyEntityModelWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes a Pattern.Any entity extractor from the application.
+     * @summary Deletes a Pattern.Any entity extractor from a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6205,13 +7803,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityModel(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6232,10 +7838,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given entity in a version of the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6272,13 +7886,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6303,10 +7925,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6347,13 +7977,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete an entity role in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6374,10 +8012,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete an entity role in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6414,13 +8060,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6441,10 +8096,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getPrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6481,13 +8145,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6512,10 +8185,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6556,13 +8238,21 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updatePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role in a prebuilt entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6583,10 +8273,18 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role in a prebuilt entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6623,13 +8321,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6650,10 +8357,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getClosedListEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6690,13 +8406,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6721,10 +8446,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateClosedListEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6765,13 +8499,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6792,10 +8535,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteClosedListEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given list entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6832,13 +8584,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteClosedListEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given regular expression entity in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6859,10 +8620,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getRegexEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given regular expression entity in a version of
+     * the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6899,13 +8669,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given regular expression entity in a version of
+     * the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6930,10 +8709,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateRegexEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given regular expression entity in a version of
+     * the application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -6974,13 +8762,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given regular expression in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7001,10 +8798,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteRegexEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given regular expression in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7041,13 +8847,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteRegexEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7068,10 +8883,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getCompositeEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7108,13 +8932,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7139,10 +8972,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateCompositeEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given composite entity in a version of the
+     * application
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7183,13 +9025,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given composite entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7210,10 +9061,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given composite entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7250,13 +9110,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7277,10 +9146,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getPatternAnyEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7317,13 +9195,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getPatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7348,10 +9235,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePatternAnyEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7392,13 +9288,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updatePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7419,10 +9324,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternAnyEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given Pattern.any entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7459,13 +9373,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7486,10 +9409,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getHierarchicalEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7526,13 +9458,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7557,10 +9498,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateHierarchicalEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given hierarchical entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7601,13 +9551,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given hierarchical role in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7628,10 +9587,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteHierarchicalEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given hierarchical role in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7668,13 +9636,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7695,10 +9672,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getCustomEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7735,13 +9721,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
+    getCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
+    getCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7766,10 +9761,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateCustomPrebuiltEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7810,13 +9814,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCustomPrebuiltEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7837,10 +9850,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCustomEntityRoleWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given prebuilt entity in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7877,13 +9899,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCustomEntityRole(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7904,10 +9935,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem>>;
+    getExplicitListItemWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem>>;
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7944,13 +9984,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem>;
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.ExplicitListItem>): void;
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem>): void;
+    getExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem>;
+    getExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.ExplicitListItem>): void;
+    getExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem>): void;
 
 
     /**
-     * @summary Updates an explicit list item for a Pattern.Any entity.
+     * @summary Updates an explicit (exception) list item for a Pattern.Any entity
+     * in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -7975,10 +10024,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateExplicitListItemWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates an explicit list item for a Pattern.Any entity.
+     * @summary Updates an explicit (exception) list item for a Pattern.Any entity
+     * in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8019,13 +10077,22 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Delete the explicit list item from the Pattern.any explicit list.
+     * @summary Delete an item from the explicit (exception) list for a Pattern.any
+     * entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8046,10 +10113,19 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteExplicitListItemWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete the explicit list item from the Pattern.any explicit list.
+     * @summary Delete an item from the explicit (exception) list for a Pattern.any
+     * entity in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8086,9 +10162,9 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteExplicitListItem(azureRegion: string, azureCloud: string, appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -8103,11 +10179,19 @@ export interface Apps {
     /**
      * Creates a new LUIS app.
      *
-     * @param {object} applicationCreateObject A model containing Name, Description
-     * (optional), Culture, Usage Scenario (optional), Domain (optional) and
-     * initial version ID (optional) of the application. Default value for the
-     * version ID is 0.1. Note: the culture cannot be changed after the app is
-     * created.
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {object} applicationCreateObject An application containing Name,
+     * Description (optional), Culture, Usage Scenario (optional), Domain
+     * (optional) and initial version ID (optional) of the application. Default
+     * value for the version ID is "0.1". Note: the culture cannot be changed after
+     * the app is created.
      *
      * @param {string} applicationCreateObject.culture The culture for the new
      * application. It is the language that your app understands and speaks. E.g.:
@@ -8139,16 +10223,24 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addWithHttpOperationResponse(azureRegion: string, azureCloud: string, applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Creates a new LUIS app.
      *
-     * @param {object} applicationCreateObject A model containing Name, Description
-     * (optional), Culture, Usage Scenario (optional), Domain (optional) and
-     * initial version ID (optional) of the application. Default value for the
-     * version ID is 0.1. Note: the culture cannot be changed after the app is
-     * created.
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
+     * @param {object} applicationCreateObject An application containing Name,
+     * Description (optional), Culture, Usage Scenario (optional), Domain
+     * (optional) and initial version ID (optional) of the application. Default
+     * value for the version ID is "0.1". Note: the culture cannot be changed after
+     * the app is created.
      *
      * @param {string} applicationCreateObject.culture The culture for the new
      * application. It is the language that your app understands and speaks. E.g.:
@@ -8195,13 +10287,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    add(applicationCreateObject: models.ApplicationCreateObject, callback: ServiceCallback<string>): void;
-    add(applicationCreateObject: models.ApplicationCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    add(azureRegion: string, azureCloud: string, applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    add(azureRegion: string, azureCloud: string, applicationCreateObject: models.ApplicationCreateObject, callback: ServiceCallback<string>): void;
+    add(azureRegion: string, azureCloud: string, applicationCreateObject: models.ApplicationCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Lists all of the user applications.
+     * Lists all of the user's applications.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8220,10 +10320,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse[]>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse[]>>;
 
     /**
-     * Lists all of the user applications.
+     * Lists all of the user's applications.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8257,14 +10365,22 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse[]>;
-    list(callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
-    list(options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
+    list(azureRegion: string, azureCloud: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse[]>;
+    list(azureRegion: string, azureCloud: string, callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
+    list(azureRegion: string, azureCloud: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
 
 
     /**
-     * Imports an application to LUIS, the application's structure should be
-     * included in the request body.
+     * Imports an application to LUIS, the application's structure is included in
+     * the request body.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8282,7 +10398,7 @@ export interface Apps {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -8298,12 +10414,13 @@ export interface Apps {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.appName] The application name to create. If not
-     * specified, the application name will be read from the imported object.
+     * specified, the application name will be read from the imported object. If
+     * the application name already exists, an error is returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8314,11 +10431,19 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    importMethodWithHttpOperationResponse(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    importMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Imports an application to LUIS, the application's structure should be
-     * included in the request body.
+     * Imports an application to LUIS, the application's structure is included in
+     * the request body.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8336,7 +10461,7 @@ export interface Apps {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -8352,12 +10477,13 @@ export interface Apps {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.appName] The application name to create. If not
-     * specified, the application name will be read from the imported object.
+     * specified, the application name will be read from the imported object. If
+     * the application name already exists, an error is returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8383,13 +10509,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    importMethod(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    importMethod(luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
-    importMethod(luisApp: models.LuisApp, options: { appName? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    importMethod(azureRegion: string, azureCloud: string, luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    importMethod(azureRegion: string, azureCloud: string, luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
+    importMethod(azureRegion: string, azureCloud: string, luisApp: models.LuisApp, options: { appName? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
      * Gets the endpoint URLs for the prebuilt Cortana applications.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8402,10 +10536,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCortanaEndpointsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonalAssistantsResponse>>;
+    listCortanaEndpointsWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonalAssistantsResponse>>;
 
     /**
      * Gets the endpoint URLs for the prebuilt Cortana applications.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8435,14 +10577,22 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCortanaEndpoints(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonalAssistantsResponse>;
-    listCortanaEndpoints(callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
-    listCortanaEndpoints(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
+    listCortanaEndpoints(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonalAssistantsResponse>;
+    listCortanaEndpoints(azureRegion: string, azureCloud: string, callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
+    listCortanaEndpoints(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
 
 
     /**
      * Gets the available application domains.
      *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8454,11 +10604,19 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    listDomainsWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Gets the available application domains.
      *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8485,13 +10643,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listDomains(callback: ServiceCallback<string[]>): void;
-    listDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    listDomains(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listDomains(azureRegion: string, azureCloud: string, callback: ServiceCallback<string[]>): void;
+    listDomains(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
      * Gets the application available usage scenarios.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8504,10 +10670,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listUsageScenariosWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    listUsageScenariosWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Gets the application available usage scenarios.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8535,13 +10709,23 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listUsageScenarios(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listUsageScenarios(callback: ServiceCallback<string[]>): void;
-    listUsageScenarios(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    listUsageScenarios(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listUsageScenarios(azureRegion: string, azureCloud: string, callback: ServiceCallback<string[]>): void;
+    listUsageScenarios(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
-     * Gets the supported application cultures.
+     * Gets a list of supported cultures. Cultures are equivalent to the written
+     * language and locale. For example,"en-us" represents the U.S. variation of
+     * English.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8554,10 +10738,20 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSupportedCulturesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableCulture[]>>;
+    listSupportedCulturesWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableCulture[]>>;
 
     /**
-     * Gets the supported application cultures.
+     * Gets a list of supported cultures. Cultures are equivalent to the written
+     * language and locale. For example,"en-us" represents the U.S. variation of
+     * English.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8585,13 +10779,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSupportedCultures(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableCulture[]>;
-    listSupportedCultures(callback: ServiceCallback<models.AvailableCulture[]>): void;
-    listSupportedCultures(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableCulture[]>): void;
+    listSupportedCultures(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableCulture[]>;
+    listSupportedCultures(azureRegion: string, azureCloud: string, callback: ServiceCallback<models.AvailableCulture[]>): void;
+    listSupportedCultures(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableCulture[]>): void;
 
 
     /**
-     * Gets the query logs of the past month for the application.
+     * Gets the logs of the past month's endpoint queries for the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8606,10 +10808,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    downloadQueryLogsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    downloadQueryLogsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
-     * Gets the query logs of the past month for the application.
+     * Gets the logs of the past month's endpoint queries for the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8639,13 +10849,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    downloadQueryLogs(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    downloadQueryLogs(appId: string, callback: ServiceCallback<stream.Readable>): void;
-    downloadQueryLogs(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    downloadQueryLogs(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    downloadQueryLogs(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<stream.Readable>): void;
+    downloadQueryLogs(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
      * Gets the application info.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8660,10 +10878,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse>>;
+    getWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse>>;
 
     /**
      * Gets the application info.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8695,13 +10921,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse>;
-    get(appId: string, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
-    get(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
+    get(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse>;
+    get(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
+    get(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
 
 
     /**
      * Updates the name or description of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8724,10 +10958,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Updates the name or description of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8766,13 +11008,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(azureRegion: string, azureCloud: string, appId: string, applicationUpdateObject: models.ApplicationUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Deletes an application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8790,10 +11040,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Deletes an application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8827,13 +11085,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, options: { force? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, options: { force? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Publishes a specific version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8857,10 +11123,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
+    publishWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
 
     /**
      * Publishes a specific version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8901,13 +11175,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(azureRegion: string, azureCloud: string, appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
+    publish(azureRegion: string, azureCloud: string, appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(azureRegion: string, azureCloud: string, appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
 
 
     /**
-     * Get the application settings.
+     * Get the application settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8922,10 +11204,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSettings>>;
+    getSettingsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSettings>>;
 
     /**
-     * Get the application settings.
+     * Get the application settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -8956,22 +11246,30 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSettings>;
-    getSettings(appId: string, callback: ServiceCallback<models.ApplicationSettings>): void;
-    getSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSettings>): void;
+    getSettings(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSettings>;
+    getSettings(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.ApplicationSettings>): void;
+    getSettings(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSettings>): void;
 
 
     /**
-     * Updates the application settings.
+     * Updates the application settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} applicationSettingUpdateObject An object containing the new
      * application settings.
      *
-     * @param {boolean} [applicationSettingUpdateObject.publicProperty] Setting
-     * your application as public allows other people to use your application's
-     * endpoint using their own keys.
+     * @param {boolean} [applicationSettingUpdateObject.isPublic] Setting your
+     * application as public allows other people to use your application's endpoint
+     * using their own keys.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8984,19 +11282,27 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSettingsWithHttpOperationResponse(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateSettingsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application settings.
+     * Updates the application settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} applicationSettingUpdateObject An object containing the new
      * application settings.
      *
-     * @param {boolean} [applicationSettingUpdateObject.publicProperty] Setting
-     * your application as public allows other people to use your application's
-     * endpoint using their own keys.
+     * @param {boolean} [applicationSettingUpdateObject.isPublic] Setting your
+     * application as public allows other people to use your application's endpoint
+     * using their own keys.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9025,13 +11331,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSettings(azureRegion: string, azureCloud: string, appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updateSettings(azureRegion: string, azureCloud: string, appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSettings(azureRegion: string, azureCloud: string, appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Get the application publish settings.
+     * Get the application publish settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9046,10 +11360,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPublishSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublishSettings>>;
+    getPublishSettingsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublishSettings>>;
 
     /**
-     * Get the application publish settings.
+     * Get the application publish settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9080,13 +11402,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPublishSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublishSettings>;
-    getPublishSettings(appId: string, callback: ServiceCallback<models.PublishSettings>): void;
-    getPublishSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublishSettings>): void;
+    getPublishSettings(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublishSettings>;
+    getPublishSettings(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.PublishSettings>): void;
+    getPublishSettings(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublishSettings>): void;
 
 
     /**
-     * Updates the application publish settings.
+     * Updates the application publish settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9114,10 +11444,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePublishSettingsWithHttpOperationResponse(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePublishSettingsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application publish settings.
+     * Updates the application publish settings including 'UseAllTrainingData'.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9161,13 +11499,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePublishSettings(azureRegion: string, azureCloud: string, appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    updatePublishSettings(azureRegion: string, azureCloud: string, appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePublishSettings(azureRegion: string, azureCloud: string, appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Returns the available endpoint deployment regions and URLs.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9182,10 +11528,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listEndpointsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
+    listEndpointsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
 
     /**
      * Returns the available endpoint deployment regions and URLs.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9215,13 +11569,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listEndpoints(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: string }>;
-    listEndpoints(appId: string, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
-    listEndpoints(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
+    listEndpoints(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: string }>;
+    listEndpoints(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
+    listEndpoints(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
 
 
     /**
      * Gets all the available custom prebuilt domains for all cultures.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9234,10 +11596,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableCustomPrebuiltDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
+    listAvailableCustomPrebuiltDomainsWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
 
     /**
      * Gets all the available custom prebuilt domains for all cultures.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9265,13 +11635,22 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableCustomPrebuiltDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
-    listAvailableCustomPrebuiltDomains(callback: ServiceCallback<models.PrebuiltDomain[]>): void;
-    listAvailableCustomPrebuiltDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomains(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
+    listAvailableCustomPrebuiltDomains(azureRegion: string, azureCloud: string, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomains(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
 
 
     /**
-     * Adds a prebuilt domain along with its models as a new application.
+     * Adds a prebuilt domain along with its intent and entity models as a new
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} prebuiltDomainCreateObject A prebuilt domain create object
      * containing the name and culture of the domain.
@@ -9292,10 +11671,19 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltDomainWithHttpOperationResponse(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltDomainWithHttpOperationResponse(azureRegion: string, azureCloud: string, prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a prebuilt domain along with its models as a new application.
+     * Adds a prebuilt domain along with its intent and entity models as a new
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} prebuiltDomainCreateObject A prebuilt domain create object
      * containing the name and culture of the domain.
@@ -9331,13 +11719,21 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltDomain(azureRegion: string, azureCloud: string, prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets all the available custom prebuilt domains for a specific culture.
+     * Gets all the available prebuilt domains for a specific culture.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {string} culture Culture.
      *
@@ -9352,10 +11748,18 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableCustomPrebuiltDomainsForCultureWithHttpOperationResponse(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
+    listAvailableCustomPrebuiltDomainsForCultureWithHttpOperationResponse(azureRegion: string, azureCloud: string, culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
 
     /**
-     * Gets all the available custom prebuilt domains for a specific culture.
+     * Gets all the available prebuilt domains for a specific culture.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {string} culture Culture.
      *
@@ -9385,20 +11789,29 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomainsForCulture(azureRegion: string, azureCloud: string, culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
+    listAvailableCustomPrebuiltDomainsForCulture(azureRegion: string, azureCloud: string, culture: string, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomainsForCulture(azureRegion: string, azureCloud: string, culture: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
 
 
     /**
      * @summary package - Gets published LUIS application package in binary stream
      * GZip format
      *
-     * Packages published LUIS application as GZip.
+     * Packages a published LUIS application as a GZip file to be used in the LUIS
+     * container.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {uuid} slotName The publishing slot name.
+     * @param {string} slotName The publishing slot name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9411,17 +11824,26 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    packagePublishedApplicationAsGzipWithHttpOperationResponse(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    packagePublishedApplicationAsGzipWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary package - Gets published LUIS application package in binary stream
      * GZip format
      *
-     * Packages published LUIS application as GZip.
+     * Packages a published LUIS application as a GZip file to be used in the LUIS
+     * container.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {uuid} slotName The publishing slot name.
+     * @param {string} slotName The publishing slot name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9449,16 +11871,25 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, callback: ServiceCallback<stream.Readable>): void;
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    packagePublishedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    packagePublishedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, slotName: string, callback: ServiceCallback<stream.Readable>): void;
+    packagePublishedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
      * @summary package - Gets trained LUIS application package in binary stream
      * GZip format
      *
-     * Packages trained LUIS application as GZip.
+     * Packages trained LUIS application as GZip file to be used in the LUIS
+     * container.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9475,13 +11906,22 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    packageTrainedApplicationAsGzipWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    packageTrainedApplicationAsGzipWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary package - Gets trained LUIS application package in binary stream
      * GZip format
      *
-     * Packages trained LUIS application as GZip.
+     * Packages trained LUIS application as GZip file to be used in the LUIS
+     * container.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9513,9 +11953,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, callback: ServiceCallback<stream.Readable>): void;
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    packageTrainedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    packageTrainedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<stream.Readable>): void;
+    packageTrainedApplicationAsGzip(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 }
 
 /**
@@ -9528,20 +11968,26 @@ export interface Versions {
 
 
     /**
-     * Creates a new version using the current snapshot of the selected application
-     * version.
+     * Creates a new version from the selected version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
+     * @param {object} versionCloneObject A model containing the new version ID.
+     *
+     * @param {string} [versionCloneObject.version] The new version for the cloned
+     * model.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.versionCloneObject] A model containing the new
-     * version ID.
-     *
-     * @param {string} [options.versionCloneObject.version] The new version for the
-     * cloned model.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9552,23 +11998,29 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cloneWithHttpOperationResponse(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    cloneWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a new version using the current snapshot of the selected application
-     * version.
+     * Creates a new version from the selected version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
+     * @param {object} versionCloneObject A model containing the new version ID.
+     *
+     * @param {string} [versionCloneObject.version] The new version for the cloned
+     * model.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.versionCloneObject] A model containing the new
-     * version ID.
-     *
-     * @param {string} [options.versionCloneObject.version] The new version for the
-     * cloned model.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9594,13 +12046,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    clone(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    clone(appId: string, versionId: string, callback: ServiceCallback<string>): void;
-    clone(appId: string, versionId: string, options: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    clone(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    clone(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, callback: ServiceCallback<string>): void;
+    clone(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets the application versions info.
+     * Gets a list of versions for this application ID.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9621,10 +12081,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo[]>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo[]>>;
 
     /**
-     * Gets the application versions info.
+     * Gets a list of versions for this application ID.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9660,13 +12128,22 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo[]>;
-    list(appId: string, callback: ServiceCallback<models.VersionInfo[]>): void;
-    list(appId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo[]>;
+    list(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.VersionInfo[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo[]>): void;
 
 
     /**
-     * Gets the version info.
+     * Gets the version information such as date created, last modified date,
+     * endpoint URL, count of intents and entities, training and publishing status.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9683,10 +12160,19 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo>>;
+    getWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo>>;
 
     /**
-     * Gets the version info.
+     * Gets the version information such as date created, last modified date,
+     * endpoint URL, count of intents and entities, training and publishing status.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9719,13 +12205,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo>;
-    get(appId: string, versionId: string, callback: ServiceCallback<models.VersionInfo>): void;
-    get(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo>): void;
+    get(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo>;
+    get(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.VersionInfo>): void;
+    get(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo>): void;
 
 
     /**
      * Updates the name or description of the application version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9748,10 +12242,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Updates the name or description of the application version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9790,13 +12292,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Deletes an application version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9813,10 +12323,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Deletes an application version.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9849,13 +12367,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, versionId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Exports a LUIS application to JSON format.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9872,10 +12398,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    exportMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisApp>>;
+    exportMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisApp>>;
 
     /**
      * Exports a LUIS application to JSON format.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9908,13 +12442,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    exportMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisApp>;
-    exportMethod(appId: string, versionId: string, callback: ServiceCallback<models.LuisApp>): void;
-    exportMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisApp>): void;
+    exportMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisApp>;
+    exportMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.LuisApp>): void;
+    exportMethod(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisApp>): void;
 
 
     /**
      * Imports a new version into a LUIS application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9934,7 +12476,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -9950,7 +12492,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9966,10 +12508,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    importMethodWithHttpOperationResponse(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    importMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Imports a new version into a LUIS application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -9989,7 +12539,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -10005,7 +12555,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10036,13 +12586,21 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    importMethod(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    importMethod(appId: string, luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
-    importMethod(appId: string, luisApp: models.LuisApp, options: { versionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    importMethod(azureRegion: string, azureCloud: string, appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    importMethod(azureRegion: string, azureCloud: string, appId: string, luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
+    importMethod(azureRegion: string, azureCloud: string, appId: string, luisApp: models.LuisApp, options: { versionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Deleted an unlabelled utterance.
+     * Deleted an unlabelled utterance in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10061,10 +12619,18 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteUnlabelledUtteranceWithHttpOperationResponse(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteUnlabelledUtteranceWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deleted an unlabelled utterance.
+     * Deleted an unlabelled utterance in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10099,9 +12665,9 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteUnlabelledUtterance(azureRegion: string, azureCloud: string, appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteUnlabelledUtterance(azureRegion: string, azureCloud: string, appId: string, versionId: string, utterance: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteUnlabelledUtterance(azureRegion: string, azureCloud: string, appId: string, versionId: string, utterance: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -10122,6 +12688,14 @@ export interface Train {
      * training success, get the training status at least once after training is
      * complete.
      *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
@@ -10137,7 +12711,7 @@ export interface Train {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    trainVersionWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnqueueTrainingResponse>>;
+    trainVersionWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnqueueTrainingResponse>>;
 
     /**
      * Sends a training request for a version of a specified LUIS app. This POST
@@ -10147,6 +12721,14 @@ export interface Train {
      * (intents and entities) are trained successfully or are up to date. To verify
      * training success, get the training status at least once after training is
      * complete.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10180,9 +12762,9 @@ export interface Train {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    trainVersion(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnqueueTrainingResponse>;
-    trainVersion(appId: string, versionId: string, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
-    trainVersion(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
+    trainVersion(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnqueueTrainingResponse>;
+    trainVersion(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
+    trainVersion(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
 
 
     /**
@@ -10191,6 +12773,14 @@ export interface Train {
      * you call this API to get training status. "appID" specifies the LUIS app ID.
      * "versionId" specifies the version number of the LUIS app. For example,
      * "0.1".
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10207,7 +12797,7 @@ export interface Train {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getStatusWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelTrainingInfo[]>>;
+    getStatusWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelTrainingInfo[]>>;
 
     /**
      * Gets the training status of all models (intents and entities) for the
@@ -10215,6 +12805,14 @@ export interface Train {
      * you call this API to get training status. "appID" specifies the LUIS app ID.
      * "versionId" specifies the version number of the LUIS app. For example,
      * "0.1".
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10246,9 +12844,9 @@ export interface Train {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getStatus(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelTrainingInfo[]>;
-    getStatus(appId: string, versionId: string, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
-    getStatus(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
+    getStatus(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelTrainingInfo[]>;
+    getStatus(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
+    getStatus(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
 }
 
 /**
@@ -10264,6 +12862,14 @@ export interface Permissions {
      * Gets the list of user emails that have permissions to access your
      * application.
      *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
+     *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -10277,11 +12883,19 @@ export interface Permissions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserAccessList>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserAccessList>>;
 
     /**
      * Gets the list of user emails that have permissions to access your
      * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10312,14 +12926,22 @@ export interface Permissions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserAccessList>;
-    list(appId: string, callback: ServiceCallback<models.UserAccessList>): void;
-    list(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserAccessList>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserAccessList>;
+    list(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.UserAccessList>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserAccessList>): void;
 
 
     /**
      * Adds a user to the allowed list of users to access this LUIS application.
      * Users are added using their email address.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10338,11 +12960,19 @@ export interface Permissions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    addWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Adds a user to the allowed list of users to access this LUIS application.
      * Users are added using their email address.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10377,14 +13007,22 @@ export interface Permissions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    add(appId: string, userToAdd: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
-    add(appId: string, userToAdd: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    add(azureRegion: string, azureCloud: string, appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    add(azureRegion: string, azureCloud: string, appId: string, userToAdd: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
+    add(azureRegion: string, azureCloud: string, appId: string, userToAdd: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
      * Removes a user from the allowed list of users to access this LUIS
      * application. Users are removed using their email address.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10403,11 +13041,19 @@ export interface Permissions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Removes a user from the allowed list of users to access this LUIS
      * application. Users are removed using their email address.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10442,18 +13088,26 @@ export interface Permissions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, userToDelete: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(azureRegion: string, azureCloud: string, appId: string, userToDelete: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * Replaces the current users access list with the one sent in the body. If an
-     * empty list is sent, all access to other users will be removed.
+     * Replaces the current user access list with the new list sent in the body. If
+     * an empty list is sent, all access to other users will be removed.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {object} collaborators A model containing a list of user's email
+     * @param {object} collaborators A model containing a list of user email
      * addresses.
      *
      * @param {array} [collaborators.emails] The email address of the users.
@@ -10469,15 +13123,23 @@ export interface Permissions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Replaces the current users access list with the one sent in the body. If an
-     * empty list is sent, all access to other users will be removed.
+     * Replaces the current user access list with the new list sent in the body. If
+     * an empty list is sent, all access to other users will be removed.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {object} collaborators A model containing a list of user's email
+     * @param {object} collaborators A model containing a list of user email
      * addresses.
      *
      * @param {array} [collaborators.emails] The email address of the users.
@@ -10509,9 +13171,9 @@ export interface Permissions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, collaborators: models.CollaboratorsArray, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, collaborators: models.CollaboratorsArray, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(azureRegion: string, azureCloud: string, appId: string, collaborators: models.CollaboratorsArray, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, collaborators: models.CollaboratorsArray, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -10524,7 +13186,15 @@ export interface Pattern {
 
 
     /**
-     * @summary Adds one pattern to the specified application.
+     * @summary Adds a pattern to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10548,10 +13218,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPatternWithHttpOperationResponse(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
+    addPatternWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
 
     /**
-     * @summary Adds one pattern to the specified application.
+     * @summary Adds a pattern to a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10591,13 +13269,21 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    addPattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
+    addPattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, pattern: models.PatternRuleCreateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    addPattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
 
 
     /**
-     * @summary Returns an application version's patterns.
+     * @summary Gets patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10620,10 +13306,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    listPatternsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Returns an application version's patterns.
+     * @summary Gets patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10661,13 +13355,21 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatterns(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getPatterns(appId: string, versionId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getPatterns(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    listPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 
 
     /**
-     * @summary Updates patterns
+     * @summary Updates patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10686,10 +13388,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    updatePatternsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Updates patterns
+     * @summary Updates patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10723,13 +13433,21 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    updatePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    updatePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    updatePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 
 
     /**
-     * @summary Adds a batch of patterns to the specified application.
+     * @summary Adds a batch of patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10748,10 +13466,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    batchAddPatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    batchAddPatternsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Adds a batch of patterns to the specified application.
+     * @summary Adds a batch of patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10785,13 +13511,21 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    batchAddPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    batchAddPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    batchAddPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 
 
     /**
-     * @summary Deletes the patterns with the specified IDs.
+     * @summary Deletes a list of patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10810,10 +13544,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternsWithHttpOperationResponse(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes the patterns with the specified IDs.
+     * @summary Deletes a list of patterns in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10848,13 +13590,21 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePatterns(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatterns(appId: string, versionId: string, patternIds: string[], callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatterns(appId: string, versionId: string, patternIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternIds: string[], callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Updates a pattern
+     * @summary Updates a pattern in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10882,10 +13632,18 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
+    updatePatternWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
 
     /**
-     * @summary Updates a pattern
+     * @summary Updates a pattern in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10929,13 +13687,22 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    updatePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
+    updatePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    updatePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
 
 
     /**
-     * @summary Deletes the pattern with the specified ID.
+     * @summary Deletes the pattern with the specified ID from a version of the
+     * application..
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10954,10 +13721,19 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes the pattern with the specified ID.
+     * @summary Deletes the pattern with the specified ID from a version of the
+     * application..
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -10992,13 +13768,22 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePattern(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePattern(appId: string, versionId: string, patternId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePattern(appId: string, versionId: string, patternId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deletePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePattern(azureRegion: string, azureCloud: string, appId: string, versionId: string, patternId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary Returns patterns to be retrieved for the specific intent.
+     * @summary Returns patterns for the specific intent in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11023,10 +13808,19 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentPatternsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    listIntentPatternsWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Returns patterns to be retrieved for the specific intent.
+     * @summary Returns patterns for the specific intent in a version of the
+     * application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11066,9 +13860,9 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listIntentPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    listIntentPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listIntentPatterns(azureRegion: string, azureCloud: string, appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 }
 
 /**
@@ -11081,7 +13875,15 @@ export interface Settings {
 
 
     /**
-     * Gets the application version settings.
+     * Gets the settings in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11098,10 +13900,18 @@ export interface Settings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppVersionSettingObject[]>>;
+    listWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppVersionSettingObject[]>>;
 
     /**
-     * Gets the application version settings.
+     * Gets the settings in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11133,26 +13943,28 @@ export interface Settings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppVersionSettingObject[]>;
-    list(appId: string, versionId: string, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
-    list(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppVersionSettingObject[]>;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
+    list(azureRegion: string, azureCloud: string, appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
 
 
     /**
-     * Updates the application version settings.
+     * Updates the settings in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * @param {array} listOfAppVersionSettingObject A list of the updated
      * application version settings.
-     *
-     * @param {string} [listOfAppVersionSettingObject.name] The application version
-     * setting name.
-     *
-     * @param {string} [listOfAppVersionSettingObject.value] The application
-     * version setting value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11165,23 +13977,25 @@ export interface Settings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application version settings.
+     * Updates the settings in a version of the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * @param {array} listOfAppVersionSettingObject A list of the updated
      * application version settings.
-     *
-     * @param {string} [listOfAppVersionSettingObject.name] The application version
-     * setting name.
-     *
-     * @param {string} [listOfAppVersionSettingObject.value] The application
-     * version setting value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11210,9 +14024,9 @@ export interface Settings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], callback: ServiceCallback<models.OperationStatus>): void;
+    update(azureRegion: string, azureCloud: string, appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -11225,24 +14039,32 @@ export interface AzureAccounts {
 
 
     /**
-     * @summary apps - Assign a LUIS azure account to an application
+     * @summary apps - Assign a LUIS Azure account to an application
      *
-     * Assigns an azure account to the application.
+     * Assigns an Azure account to the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11254,27 +14076,35 @@ export interface AzureAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    assignToAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    assignToAppWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary apps - Assign a LUIS azure account to an application
+     * @summary apps - Assign a LUIS Azure account to an application
      *
-     * Assigns an azure account to the application.
+     * Assigns an Azure account to the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11302,16 +14132,24 @@ export interface AzureAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    assignToApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    assignToApp(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    assignToApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    assignToApp(azureRegion: string, azureCloud: string, appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    assignToApp(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    assignToApp(azureRegion: string, azureCloud: string, appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary apps - Get LUIS azure accounts assigned to the application
+     * @summary apps - Get LUIS Azure accounts assigned to the application
      *
-     * Gets the LUIS azure accounts assigned to the application for the user using
+     * Gets the LUIS Azure accounts assigned to the application for the user using
      * his ARM token.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11326,13 +14164,21 @@ export interface AzureAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAssignedWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
+    getAssignedWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
-     * @summary apps - Get LUIS azure accounts assigned to the application
+     * @summary apps - Get LUIS Azure accounts assigned to the application
      *
-     * Gets the LUIS azure accounts assigned to the application for the user using
+     * Gets the LUIS Azure accounts assigned to the application for the user using
      * his ARM token.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
@@ -11362,30 +14208,38 @@ export interface AzureAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAssigned(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
-    getAssigned(appId: string, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
-    getAssigned(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    getAssigned(azureRegion: string, azureCloud: string, appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
+    getAssigned(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    getAssigned(azureRegion: string, azureCloud: string, appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
 
 
     /**
-     * @summary apps - Removes an assigned LUIS azure account from an application
+     * @summary apps - Removes an assigned LUIS Azure account from an application
      *
-     * Removes assigned azure account from the application.
+     * Removes assigned Azure account from the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11397,27 +14251,35 @@ export interface AzureAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    removeFromAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    removeFromAppWithHttpOperationResponse(azureRegion: string, azureCloud: string, appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary apps - Removes an assigned LUIS azure account from an application
+     * @summary apps - Removes an assigned LUIS Azure account from an application
      *
-     * Removes assigned azure account from the application.
+     * Removes assigned Azure account from the application.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11445,15 +14307,23 @@ export interface AzureAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    removeFromApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    removeFromApp(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    removeFromApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    removeFromApp(azureRegion: string, azureCloud: string, appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    removeFromApp(azureRegion: string, azureCloud: string, appId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    removeFromApp(azureRegion: string, azureCloud: string, appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
-     * @summary user - Get LUIS azure accounts
+     * @summary user - Get LUIS Azure accounts
      *
-     * Gets the LUIS azure accounts for the user using his ARM token.
+     * Gets the LUIS Azure accounts for the user using his ARM token.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11466,12 +14336,20 @@ export interface AzureAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
+    listUserLUISAccountsWithHttpOperationResponse(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
-     * @summary user - Get LUIS azure accounts
+     * @summary user - Get LUIS Azure accounts
      *
-     * Gets the LUIS azure accounts for the user using his ARM token.
+     * Gets the LUIS Azure accounts for the user using his ARM token.
+     *
+     * @param {string} azureRegion Supported Azure regions for Cognitive Services
+     * endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia',
+     * 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus',
+     * 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth', 'virginia'
+     *
+     * @param {string} azureCloud Supported Azure Clouds for Cognitive Services
+     * endpoints. Possible values include: 'com', 'us'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11499,7 +14377,7 @@ export interface AzureAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
-    getUserLUISAccounts(callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
-    getUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    listUserLUISAccounts(azureRegion: string, azureCloud: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
+    listUserLUISAccounts(azureRegion: string, azureCloud: string, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    listUserLUISAccounts(azureRegion: string, azureCloud: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
 }

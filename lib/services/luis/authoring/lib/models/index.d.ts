@@ -98,7 +98,7 @@ export interface PrebuiltDomainModelCreateObject {
 }
 
 /**
- * A Hierarchical Entity Extractor.
+ * A hierarchical entity extractor.
  */
 export interface HierarchicalEntityModel {
   /**
@@ -112,7 +112,7 @@ export interface HierarchicalEntityModel {
 }
 
 /**
- * A composite entity.
+ * A composite entity extractor.
  */
 export interface CompositeEntityModel {
   /**
@@ -151,7 +151,7 @@ export interface ApplicationSettingUpdateObject {
    * Setting your application as public allows other people to use your application's endpoint
    * using their own keys.
    */
-  publicProperty?: boolean;
+  isPublic?: boolean;
 }
 
 /**
@@ -174,19 +174,19 @@ export interface PublishSettingUpdateObject {
 }
 
 /**
- * A labeled example.
+ * A labeled example utterance.
  */
 export interface ExampleLabelObject {
   /**
-   * The sample's utterance.
+   * The example utterance.
    */
   text?: string;
   /**
-   * The identified entities within the utterance.
+   * The identified entities within the example utterance.
    */
   entityLabels?: EntityLabelObject[];
   /**
-   * The identified intent representing the utterance.
+   * The identified intent representing the example utterance.
    */
   intentName?: string;
 }
@@ -204,21 +204,18 @@ export interface PhraselistCreateObject {
    */
   name?: string;
   /**
-   * An exchangeable phrase list feature are serves as single feature to the LUIS underlying
-   * training algorithm. It is used as a lexicon lookup feature where its value is 1 if the lexicon
-   * contains a given word or 0 if it doesn’t. Think of an exchangeable as a synonyms list. A
-   * non-exchangeable phrase list feature has all the phrases in the list serve as separate
-   * features to the underlying training algorithm. So, if you your phrase list feature contains 5
-   * phrases, they will be mapped to 5 separate features. You can think of the non-exchangeable
-   * phrase list feature as an additional bag of words that you are willing to add to LUIS existing
-   * vocabulary features. Think of a non-exchangeable as set of different words. Default value is
-   * true.
+   * An interchangeable phrase list feature serves as a list of synonyms for training. A
+   * non-exchangeable phrase list serves as separate features for training. So, if your
+   * non-interchangable phrase list contains 5 phrases, they will be mapped to 5 separate features.
+   * You can think of the non-interchangeable phrase list as an additional bag of words to add to
+   * LUIS existing vocabulary features. It is used as a lexicon lookup feature where its value is 1
+   * if the lexicon contains a given word or 0 if it doesn’t.  Default value is true.
    */
   isExchangeable?: boolean;
 }
 
 /**
- * Sublist of items for a Closed list.
+ * Sublist of items for a list entity.
  */
 export interface SubClosedList {
   /**
@@ -232,7 +229,7 @@ export interface SubClosedList {
 }
 
 /**
- * Sublist of items for a Closed list.
+ * Sublist of items for a list entity.
  */
 export interface SubClosedListResponse extends SubClosedList {
   /**
@@ -292,22 +289,22 @@ export interface PatternUpdateObject {
 }
 
 /**
- * Exported Model - A Closed List.
+ * Exported Model - A list entity.
  */
 export interface ClosedList {
   /**
-   * Name of the closed list feature.
+   * Name of the list entity.
    */
   name?: string;
   /**
-   * Sublists for the feature.
+   * Sublists for the list entity.
    */
   subLists?: SubClosedList[];
   roles?: string[];
 }
 
 /**
- * Sublist of items for a Closed list.
+ * Sublist of items for a list entity.
 */
 export interface WordListObject {
   /**
@@ -321,7 +318,7 @@ export interface WordListObject {
 }
 
 /**
- * Object model for adding a batch of sublists to an existing closedlist.
+ * Object model for adding a batch of sublists to an existing list entity.
 */
 export interface ClosedListModelPatchObject {
   /**
@@ -347,15 +344,12 @@ export interface JSONModelFeature {
   */
   words?: string;
   /**
-   * An exchangeable phrase list feature are serves as single feature to the LUIS underlying
-   * training algorithm. It is used as a lexicon lookup feature where its value is 1 if the lexicon
-   * contains a given word or 0 if it doesn’t. Think of an exchangeable as a synonyms list. A
-   * non-exchangeable phrase list feature has all the phrases in the list serve as separate
-   * features to the underlying training algorithm. So, if you your phrase list feature contains 5
-   * phrases, they will be mapped to 5 separate features. You can think of the non-exchangeable
-   * phrase list feature as an additional bag of words that you are willing to add to LUIS existing
-   * vocabulary features. Think of a non-exchangeable as set of different words. Default value is
-   * true.
+   * An interchangeable phrase list feature serves as a list of synonyms for training. A
+   * non-exchangeable phrase list serves as separate features for training. So, if your
+   * non-interchangable phrase list contains 5 phrases, they will be mapped to 5 separate features.
+   * You can think of the non-interchangeable phrase list as an additional bag of words to add to
+   * LUIS existing vocabulary features. It is used as a lexicon lookup feature where its value is 1
+   * if the lexicon contains a given word or 0 if it doesn’t.  Default value is true.
   */
   mode?: boolean;
 }
@@ -385,7 +379,7 @@ export interface PatternCreateObject {
 }
 
 /**
- * Object model for updating one of the closed list's sublists.
+ * Object model for updating one of the list entity's sublists.
 */
 export interface WordListBaseUpdateObject {
   /**
@@ -427,7 +421,7 @@ export interface ModelUpdateObject {
 }
 
 /**
- * Object model for updating a closed list.
+ * Object model for updating a list entity.
 */
 export interface ClosedListModelUpdateObject {
   /**
@@ -435,13 +429,13 @@ export interface ClosedListModelUpdateObject {
   */
   subLists?: WordListObject[];
   /**
-   * The new name of the closed list feature.
+   * The new name of the list entity.
   */
   name?: string;
 }
 
 /**
- * Object model for creating a closed list.
+ * Object model for creating a list entity.
 */
 export interface ClosedListModelCreateObject {
   /**
@@ -449,7 +443,7 @@ export interface ClosedListModelCreateObject {
   */
   subLists?: WordListObject[];
   /**
-   * Name of the closed list feature.
+   * Name of the list entity.
   */
   name?: string;
 }
@@ -643,7 +637,7 @@ export interface LuisApp {
   */
   entities?: HierarchicalModel[];
   /**
-   * List of closed lists.
+   * List of list entities.
   */
   closedLists?: ClosedList[];
   /**
@@ -675,7 +669,7 @@ export interface LuisApp {
   */
   patterns?: PatternRule[];
   /**
-   * List of sample utterances.
+   * List of example utterances.
   */
   utterances?: JSONUtterance[];
   /**
@@ -747,7 +741,7 @@ export interface LabeledUtterance {
   */
   id?: number;
   /**
-   * The utterance. E.g.: what's the weather like in seattle?
+   * The utterance. For example, "What's the weather like in seattle?"
   */
   text?: string;
   /**
@@ -777,11 +771,11 @@ export interface LabeledUtterance {
 */
 export interface IntentsSuggestionExample {
   /**
-   * The utterance. E.g.: what's the weather like in seattle?
+   * The utterance. For example, "What's the weather like in seattle?"
   */
   text?: string;
   /**
-   * The utterance tokenized.
+   * The tokenized utterance.
   */
   tokenizedText?: string[];
   /**
@@ -799,7 +793,7 @@ export interface IntentsSuggestionExample {
 */
 export interface EntitiesSuggestionExample {
   /**
-   * The utterance. E.g.: what's the weather like in seattle?
+   * The utterance. For example, "What's the weather like in seattle?"
   */
   text?: string;
   /**
@@ -843,8 +837,8 @@ export interface ModelInfo {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -879,7 +873,7 @@ export interface ChildEntity {
 }
 
 /**
- * Explicit list item
+ * Explicit (exception) list item
 */
 export interface ExplicitListItem {
   /**
@@ -910,8 +904,8 @@ export interface ModelInfoResponse {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -921,7 +915,7 @@ export interface ModelInfoResponse {
   */
   children?: ChildEntity[];
   /**
-   * List of sub-lists.
+   * List of sublists.
   */
   subLists?: SubClosedListResponse[];
   /**
@@ -933,7 +927,7 @@ export interface ModelInfoResponse {
   */
   customPrebuiltModelName?: string;
   /**
-   * The Regex entity pattern.
+   * The Regular Expression entity pattern.
   */
   regexPattern?: string;
   explicitList?: ExplicitListItem[];
@@ -964,8 +958,8 @@ export interface HierarchicalEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -994,8 +988,8 @@ export interface CompositeEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -1007,7 +1001,7 @@ export interface CompositeEntityExtractor {
 }
 
 /**
- * Closed List Entity Extractor.
+ * List Entity Extractor.
 */
 export interface ClosedListEntityExtractor {
   /**
@@ -1024,14 +1018,14 @@ export interface ClosedListEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
   roles?: EntityRole[];
   /**
-   * List of sub-lists.
+   * List of sublists.
   */
   subLists?: SubClosedListResponse[];
 }
@@ -1054,8 +1048,8 @@ export interface PrebuiltEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -1072,8 +1066,8 @@ export interface HierarchicalChildEntity extends ChildEntity {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType?: string;
@@ -1097,8 +1091,8 @@ export interface CustomPrebuiltModel {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -1145,8 +1139,8 @@ export interface EntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -1220,11 +1214,11 @@ export interface FeaturesResponseObject {
 }
 
 /**
- * Response when adding a labeled example.
+ * Response when adding a labeled example utterance.
 */
 export interface LabelExampleResponse {
   /**
-   * The sample's utterance.
+   * The example utterance.
   */
   utteranceText?: string;
   /**
@@ -1248,7 +1242,7 @@ export interface OperationStatus {
 }
 
 /**
- * Response when adding a batch of labeled examples.
+ * Response when adding a batch of labeled example utterances.
 */
 export interface BatchLabelExample {
   value?: LabelExampleResponse;
@@ -1273,15 +1267,15 @@ export interface ApplicationInfoResponse {
   */
   description?: string;
   /**
-   * The culture of the application. E.g.: en-us.
+   * The culture of the application. For example, "en-us".
   */
   culture?: string;
   /**
-   * Defines the scenario for the new application. Optional. E.g.: IoT.
+   * Defines the scenario for the new application. Optional. For example, IoT.
   */
   usageScenario?: string;
   /**
-   * The domain for the new application. Optional. E.g.: Comics.
+   * The domain for the new application. Optional. For example, Comics.
   */
   domain?: string;
   /**
@@ -1371,7 +1365,7 @@ export interface ApplicationSettings {
   id: string;
   /**
    * Setting your application as public allows other people to use your application's endpoint
-   * using their own keys.
+   * using their own keys for billing purposes.
   */
   isPublic: boolean;
 }
@@ -1385,16 +1379,16 @@ export interface PublishSettings {
   */
   id: string;
   /**
-   * Setting sentiment analysis as true returns the Sentiment of the input utterance along with the
+   * Setting sentiment analysis as true returns the sentiment of the input utterance along with the
    * response
   */
   isSentimentAnalysisEnabled: boolean;
   /**
-   * Setting speech as public enables speech priming in your app
+   * Enables speech priming in your app
   */
   isSpeechEnabled: boolean;
   /**
-   * Setting spell checker as public enables spell checking the input utterance.
+   * Enables spell checking of the utterance.
   */
   isSpellCheckerEnabled: boolean;
 }
@@ -1541,11 +1535,11 @@ export interface EntityRoleCreateObject {
 }
 
 /**
- * Model object for creating a regex entity model.
+ * Model object for creating a regular expression entity model.
 */
 export interface RegexModelCreateObject {
   /**
-   * The regex entity pattern.
+   * The regular expression entity pattern.
   */
   regexPattern?: string;
   /**
@@ -1569,7 +1563,7 @@ export interface PatternAnyModelCreateObject {
 }
 
 /**
- * Object model for creating an explicit list item.
+ * Object model for creating an explicit (exception) list item.
 */
 export interface ExplicitListItemCreateObject {
   /**
@@ -1579,11 +1573,11 @@ export interface ExplicitListItemCreateObject {
 }
 
 /**
- * Model object for updating a regex entity model.
+ * Model object for updating a regular expression entity model.
 */
 export interface RegexModelUpdateObject {
   /**
-   * The regex entity pattern.
+   * The regular expression entity pattern.
   */
   regexPattern?: string;
   /**
@@ -1617,7 +1611,7 @@ export interface EntityRoleUpdateObject {
 }
 
 /**
- * Model object for updating an explicit list item.
+ * Model object for updating an explicit (exception) list item.
 */
 export interface ExplicitListItemUpdateObject {
   /**
@@ -1659,7 +1653,7 @@ export interface PatternRuleUpdateObject {
 }
 
 /**
- * Regex Entity Extractor.
+ * Regular Expression Entity Extractor.
 */
 export interface RegexEntityExtractor {
   /**
@@ -1676,14 +1670,14 @@ export interface RegexEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
   roles?: EntityRole[];
   /**
-   * The Regex entity pattern.
+   * The Regular Expression entity pattern.
   */
   regexPattern?: string;
 }
@@ -1706,8 +1700,8 @@ export interface PatternAnyEntityExtractor {
   typeId?: number;
   /**
    * Possible values include: 'Entity Extractor', 'Hierarchical Entity Extractor', 'Hierarchical
-   * Child Entity Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
-   * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regex
+   * Child Entity Extractor', 'Composite Entity Extractor', 'List Entity Extractor', 'Prebuilt
+   * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor', 'Regular Expression
    * Entity Extractor'
   */
   readableType: string;
@@ -1734,7 +1728,7 @@ export interface PatternRuleInfo {
 }
 
 /**
- * An object containing the example's text.
+ * An object containing the example utterance's text.
 */
 export interface LabelTextObject {
   /**
@@ -1762,19 +1756,19 @@ export interface AppVersionSettingObject {
 }
 
 /**
- * Defines the azure account information object.
+ * Defines the Azure account information object.
 */
 export interface AzureAccountInfoObject {
   /**
-   * The id for the azure subscription.
+   * The id for the Azure subscription.
   */
   azureSubscriptionId: string;
   /**
-   * The azure resource group name.
+   * The Azure resource group name.
   */
   resourceGroup: string;
   /**
-   * The azure account name.
+   * The Azure account name.
   */
   accountName: string;
 }
