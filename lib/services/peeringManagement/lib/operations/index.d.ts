@@ -330,22 +330,21 @@ export interface PeerAsns {
      *
      * @param {string} peerAsnName The peer ASN name.
      *
-     * @param {object} peerInfo The peer info.
+     * @param {object} peerAsn The peer ASN.
      *
-     * @param {number} [peerInfo.peerAsn] The Autonomous System Number (ASN) of the
+     * @param {number} [peerAsn.peerAsn] The Autonomous System Number (ASN) of the
      * peer.
      *
-     * @param {object} [peerInfo.peerContactInfo] The contact information of the
+     * @param {object} [peerAsn.peerContactInfo] The contact information of the
      * peer.
      *
-     * @param {array} [peerInfo.peerContactInfo.emails] The list of email
-     * addresses.
+     * @param {array} [peerAsn.peerContactInfo.emails] The list of email addresses.
      *
-     * @param {array} [peerInfo.peerContactInfo.phone] The list of contact numbers.
+     * @param {array} [peerAsn.peerContactInfo.phone] The list of contact numbers.
      *
-     * @param {string} [peerInfo.peerName] The name of the peer.
+     * @param {string} [peerAsn.peerName] The name of the peer.
      *
-     * @param {string} [peerInfo.validationState] The validation state of the ASN
+     * @param {string} [peerAsn.validationState] The validation state of the ASN
      * associated with the peer. Possible values include: 'None', 'Pending',
      * 'Approved', 'Failed'
      *
@@ -360,7 +359,7 @@ export interface PeerAsns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(peerAsnName: string, peerInfo: models.PeerAsnProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerAsn>>;
+    createOrUpdateWithHttpOperationResponse(peerAsnName: string, peerAsn: models.PeerAsn, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerAsn>>;
 
     /**
      * Creates a new peer ASN or updates an existing peer ASN with the specified
@@ -368,22 +367,21 @@ export interface PeerAsns {
      *
      * @param {string} peerAsnName The peer ASN name.
      *
-     * @param {object} peerInfo The peer info.
+     * @param {object} peerAsn The peer ASN.
      *
-     * @param {number} [peerInfo.peerAsn] The Autonomous System Number (ASN) of the
+     * @param {number} [peerAsn.peerAsn] The Autonomous System Number (ASN) of the
      * peer.
      *
-     * @param {object} [peerInfo.peerContactInfo] The contact information of the
+     * @param {object} [peerAsn.peerContactInfo] The contact information of the
      * peer.
      *
-     * @param {array} [peerInfo.peerContactInfo.emails] The list of email
-     * addresses.
+     * @param {array} [peerAsn.peerContactInfo.emails] The list of email addresses.
      *
-     * @param {array} [peerInfo.peerContactInfo.phone] The list of contact numbers.
+     * @param {array} [peerAsn.peerContactInfo.phone] The list of contact numbers.
      *
-     * @param {string} [peerInfo.peerName] The name of the peer.
+     * @param {string} [peerAsn.peerName] The name of the peer.
      *
-     * @param {string} [peerInfo.validationState] The validation state of the ASN
+     * @param {string} [peerAsn.validationState] The validation state of the ASN
      * associated with the peer. Possible values include: 'None', 'Pending',
      * 'Approved', 'Failed'
      *
@@ -414,9 +412,9 @@ export interface PeerAsns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(peerAsnName: string, peerInfo: models.PeerAsnProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerAsn>;
-    createOrUpdate(peerAsnName: string, peerInfo: models.PeerAsnProperties, callback: ServiceCallback<models.PeerAsn>): void;
-    createOrUpdate(peerAsnName: string, peerInfo: models.PeerAsnProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerAsn>): void;
+    createOrUpdate(peerAsnName: string, peerAsn: models.PeerAsn, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerAsn>;
+    createOrUpdate(peerAsnName: string, peerAsn: models.PeerAsn, callback: ServiceCallback<models.PeerAsn>): void;
+    createOrUpdate(peerAsnName: string, peerAsn: models.PeerAsn, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerAsn>): void;
 
 
     /**

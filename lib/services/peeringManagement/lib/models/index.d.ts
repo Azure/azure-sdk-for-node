@@ -289,29 +289,6 @@ export interface ContactInfo {
 }
 
 /**
- * The properties that define a peer's ASN.
- */
-export interface PeerAsnProperties {
-  /**
-   * The Autonomous System Number (ASN) of the peer.
-   */
-  peerAsn?: number;
-  /**
-   * The contact information of the peer.
-   */
-  peerContactInfo?: ContactInfo;
-  /**
-   * The name of the peer.
-   */
-  peerName?: string;
-  /**
-   * The validation state of the ASN associated with the peer. Possible values include: 'None',
-   * 'Pending', 'Approved', 'Failed'
-   */
-  validationState?: string;
-}
-
-/**
  * The essential information related to the pee's ASN.
  */
 export interface PeerAsn extends BaseResource {
