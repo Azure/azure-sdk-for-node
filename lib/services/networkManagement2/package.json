@@ -2,7 +2,7 @@
   "name": "azure-arm-network",
   "author": "Microsoft Corporation",
   "description": "NetworkManagementClient Library with typescript type definitions for node",
-  "version": "12.0.0",
+  "version": "12.1.0",
   "dependencies": {
     "ms-rest": "^2.5.0",
     "ms-rest-azure": "^2.5.5"
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/azure/azure-sdk-for-node/issues"
   },
-  "scripts": {
+ "scripts": {
     "postinstall": "node .scripts/postinstall.js"
   }
 }
