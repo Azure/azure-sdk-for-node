@@ -806,8 +806,7 @@ export interface Peerings {
      * @param {string} [peering.sku.size] The size of the peering SKU. Possible
      * values include: 'Free', 'Metered', 'Unlimited'
      *
-     * @param {string} peering.kind The kind of the peering. Possible values
-     * include: 'Direct', 'Exchange'
+     * @param {string} peering.kind Polymorphic Discriminator
      *
      * @param {object} [peering.direct] The properties that define a direct
      * peering.
@@ -815,11 +814,10 @@ export interface Peerings {
      * @param {array} [peering.direct.connections] The set of connections that
      * constitute a direct peering.
      *
-     * @param {number} [peering.direct.peerAsn] The Autonomous System Number (ASN)
-     * associated with the peering.
-     *
      * @param {boolean} [peering.direct.useForPeeringService] The flag that
      * indicates whether or not the peering is used for peering service.
+     *
+     * @param {object} [peering.direct.peerAsn] The reference of the peer ASN.
      *
      * @param {object} [peering.exchange] The properties that define an exchange
      * peering.
@@ -827,14 +825,18 @@ export interface Peerings {
      * @param {array} [peering.exchange.connections] The set of connections that
      * constitute an exchange peering.
      *
-     * @param {number} [peering.exchange.peerAsn] The Autonomous System Number
-     * (ASN) associated with the peering.
+     * @param {object} [peering.exchange.peerAsn] The reference of the peer ASN.
+     *
+     * @param {string} [peering.exchange.peerAsn.id] The identifier of the
+     * referenced resource.
      *
      * @param {string} [peering.peeringLocation] The location of the peering.
      *
      * @param {string} peering.location The location of the resource.
      *
      * @param {object} [peering.tags] The resource tags.
+     *
+     * @param {string} peering.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -875,8 +877,7 @@ export interface Peerings {
      * @param {string} [peering.sku.size] The size of the peering SKU. Possible
      * values include: 'Free', 'Metered', 'Unlimited'
      *
-     * @param {string} peering.kind The kind of the peering. Possible values
-     * include: 'Direct', 'Exchange'
+     * @param {string} peering.kind Polymorphic Discriminator
      *
      * @param {object} [peering.direct] The properties that define a direct
      * peering.
@@ -884,11 +885,10 @@ export interface Peerings {
      * @param {array} [peering.direct.connections] The set of connections that
      * constitute a direct peering.
      *
-     * @param {number} [peering.direct.peerAsn] The Autonomous System Number (ASN)
-     * associated with the peering.
-     *
      * @param {boolean} [peering.direct.useForPeeringService] The flag that
      * indicates whether or not the peering is used for peering service.
+     *
+     * @param {object} [peering.direct.peerAsn] The reference of the peer ASN.
      *
      * @param {object} [peering.exchange] The properties that define an exchange
      * peering.
@@ -896,14 +896,18 @@ export interface Peerings {
      * @param {array} [peering.exchange.connections] The set of connections that
      * constitute an exchange peering.
      *
-     * @param {number} [peering.exchange.peerAsn] The Autonomous System Number
-     * (ASN) associated with the peering.
+     * @param {object} [peering.exchange.peerAsn] The reference of the peer ASN.
+     *
+     * @param {string} [peering.exchange.peerAsn.id] The identifier of the
+     * referenced resource.
      *
      * @param {string} [peering.peeringLocation] The location of the peering.
      *
      * @param {string} peering.location The location of the resource.
      *
      * @param {object} [peering.tags] The resource tags.
+     *
+     * @param {string} peering.kind Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *

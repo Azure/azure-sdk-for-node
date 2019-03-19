@@ -118,6 +118,16 @@ export interface DirectConnection {
 }
 
 /**
+ * The sub resource.
+ */
+export interface SubResource {
+  /**
+   * The identifier of the referenced resource.
+   */
+  id?: string;
+}
+
+/**
  * The properties that define a direct peering.
  */
 export interface PeeringPropertiesDirect {
@@ -126,13 +136,13 @@ export interface PeeringPropertiesDirect {
    */
   connections?: DirectConnection[];
   /**
-   * The Autonomous System Number (ASN) associated with the peering.
-   */
-  peerAsn?: number;
-  /**
    * The flag that indicates whether or not the peering is used for peering service.
    */
   useForPeeringService?: boolean;
+  /**
+   * The reference of the peer ASN.
+   */
+  peerAsn?: SubResource;
 }
 
 /**
@@ -163,9 +173,9 @@ export interface PeeringPropertiesExchange {
    */
   connections?: ExchangeConnection[];
   /**
-   * The Autonomous System Number (ASN) associated with the peering.
+   * The reference of the peer ASN.
    */
-  peerAsn?: number;
+  peerAsn?: SubResource;
 }
 
 /**
@@ -178,7 +188,7 @@ export interface Peering extends BaseResource {
    */
   sku: PeeringSku;
   /**
-   * The kind of the peering. Possible values include: 'Direct', 'Exchange'
+   * Polymorphic Discriminator
    */
   kind: string;
   /**
@@ -422,14 +432,13 @@ export interface PeeringLocationPropertiesExchange {
  */
 export interface PeeringLocation {
   /**
-   * The kind of peering that the peering location supports. Possible values include: 'Direct',
-   * 'Exchange'
-   */
-  kind?: string;
-  /**
    * The properties that define a direct peering location.
    */
   direct?: PeeringLocationPropertiesDirect;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
   /**
    * The properties that define an exchange peering location.
    */
