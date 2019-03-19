@@ -16,6 +16,116 @@ export {
 };
 
 /**
+ * The properties of the product to initiate a transfer.
+ */
+export interface TransferProductRequestProperties {
+  /**
+   * Destination invoice section id.
+   */
+  destinationInvoiceSectionId?: string;
+}
+
+/**
+ * Request parameters to transfer billing subscription.
+ */
+export interface TransferBillingSubscriptionResult {
+  /**
+   * The destination billing subscription id.
+   */
+  billingSubscriptionId?: string;
+}
+
+/**
+ * Request parameters to transfer billing subscription.
+ */
+export interface TransferBillingSubscriptionRequestProperties {
+  /**
+   * The destination invoiceSectionId.
+   */
+  destinationInvoiceSectionId?: string;
+}
+
+/**
+ * Request parameters to transfer billing subscription.
+ */
+export interface TransferBillingSubscriptionRequest {
+  /**
+   * The destination invoiceSectionId.
+   */
+  destinationInvoiceSectionId?: string;
+}
+
+/**
+ * Summary of cancel product operation
+ */
+export interface UpdateAutoRenewOperationSummary {
+  /**
+   * The end date of this asset
+   */
+  endDate?: Date;
+}
+
+/**
+ * Address details.
+ */
+export interface Address {
+  /**
+   * First Name.
+   */
+  firstName?: string;
+  /**
+   * Last Name.
+   */
+  lastName?: string;
+  /**
+   * Company Name.
+   */
+  companyName?: string;
+  /**
+   * Address Line1.
+   */
+  addressLine1?: string;
+  /**
+   * Address Line2.
+   */
+  addressLine2?: string;
+  /**
+   * Address Line3.
+   */
+  addressLine3?: string;
+  /**
+   * Address City.
+   */
+  city?: string;
+  /**
+   * Address Region.
+   */
+  region?: string;
+  /**
+   * Country code uses ISO2, 2-digit format.
+   */
+  country?: string;
+  /**
+   * Address Postal Code.
+   */
+  postalCode?: string;
+}
+
+/**
+ * Details about the product.
+ */
+export interface EnabledAzureSKUs {
+  /**
+   * The sku id.
+   */
+  skuId?: string;
+  /**
+   * The sku description.
+   */
+  readonly skuDescription?: string;
+}
+
+/**
  * The Resource model definition.
  */
 export interface Resource extends BaseResource {
@@ -34,35 +144,379 @@ export interface Resource extends BaseResource {
 }
 
 /**
- * An enrollment account resource.
+ * A billing profile resource.
+ */
+export interface BillingProfile extends Resource {
+  /**
+   * The billing profile name.
+   */
+  displayName?: string;
+  /**
+   * Purchase order number.
+   */
+  poNumber?: string;
+  /**
+   * Billing address.
+   */
+  billingAddress?: Address;
+  /**
+   * If the billing profile is opted in to recieve invoices via email.
+   */
+  readonly invoiceEmailOptIn?: boolean;
+  /**
+   * Is OMS bootstrapped billing profile.
+   */
+  readonly isClassic?: boolean;
+  /**
+   * Invoice day.
+   */
+  readonly invoiceDay?: number;
+  /**
+   * The currency associated with the billing profile.
+   */
+  readonly currency?: string;
+  /**
+   * Information about the product.
+   */
+  enabledAzureSKUs?: EnabledAzureSKUs[];
+  /**
+   * The invoice sections associated to the billing profile.
+   */
+  invoiceSections?: InvoiceSection[];
+}
+
+/**
+ * The properties of an InvoiceSection.
+ */
+export interface InvoiceSectionProperties {
+  /**
+   * The name of the InvoiceSection.
+   */
+  displayName?: string;
+  /**
+   * The billing profiles associated to the billing account.
+   */
+  billingProfiles?: BillingProfile[];
+}
+
+/**
+ * An InvoiceSection resource.
+ */
+export interface InvoiceSection extends Resource {
+  /**
+   * The name of the InvoiceSection.
+   */
+  displayName?: string;
+  /**
+   * The billing profiles associated to the billing account.
+   */
+  billingProfiles?: BillingProfile[];
+}
+
+/**
+ * The attributes associated with legacy enrollment
+ */
+export interface EnrollmentPolicies {
+  /**
+   * The accountOwnerViewCharges flag for Enrollment
+   */
+  readonly accountOwnerViewCharges?: boolean;
+  /**
+   * The departmentAdminViewCharges flag for Enrollment
+   */
+  readonly departmentAdminViewCharges?: boolean;
+  /**
+   * The marketplaces flag for Enrollment
+   */
+  readonly marketplacesEnabled?: boolean;
+  /**
+   * The reserved instances flag for Enrollment
+   */
+  readonly reservedInstancesEnabled?: boolean;
+}
+
+/**
+ * Current entity level details
+ */
+export interface Enrollment {
+  /**
+   * Enrollment Start Date
+   */
+  startDate?: Date;
+  /**
+   * Enrollment End Date
+   */
+  endDate?: Date;
+  /**
+   * The currency associated with enrollment
+   */
+  readonly currency?: string;
+  /**
+   * The channel for Enrollment
+   */
+  readonly channel?: string;
+  /**
+   * The attributes associated with legacy enrollment.
+   */
+  readonly policies?: EnrollmentPolicies;
+  /**
+   * The language for Enrollment
+   */
+  readonly language?: string;
+  /**
+   * The countryCode for Enrollment
+   */
+  readonly countryCode?: string;
+  /**
+   * Enrollment status
+   */
+  readonly status?: string;
+  /**
+   * Enrollment billing cycle
+   */
+  readonly billingCylce?: string;
+}
+
+/**
+ * An account resource.
  */
 export interface EnrollmentAccount extends Resource {
   /**
-   * The account owner's principal name.
+   * The account name.
    */
-  readonly principalName?: string;
+  accountName?: string;
+  /**
+   * The cost center name.
+   */
+  costCenter?: string;
+  /**
+   * The account owner
+   */
+  accountOwner?: string;
+  /**
+   * The status for account.
+   */
+  status?: string;
+  /**
+   * Account Start Date
+   */
+  startDate?: Date;
+  /**
+   * Account End Date
+   */
+  endDate?: Date;
+  /**
+   * Associated department. By default this is not populated, unless it's specified in $expand.
+   */
+  department?: Department;
 }
 
 /**
- * A billing period resource.
+ * A department resource.
  */
-export interface BillingPeriod extends Resource {
+export interface Department extends Resource {
   /**
-   * The start of the date range covered by the billing period.
+   * The name for department.
    */
-  readonly billingPeriodStartDate?: Date;
+  departmentName?: string;
   /**
-   * The end of the date range covered by the billing period.
+   * The cost center name.
    */
-  readonly billingPeriodEndDate?: Date;
+  costCenter?: string;
   /**
-   * Array of invoice ids that associated with.
+   * The status for department.
    */
-  readonly invoiceIds?: string[];
+  status?: string;
+  /**
+   * Associated enrollment accounts. By default this is not populated, unless it's specified in
+   * $expand.
+   */
+  enrollmentAccounts?: EnrollmentAccount[];
 }
 
 /**
- * A secure URL that can be used to download a PDF invoice until the URL expires.
+ * A billing account resource.
+ */
+export interface BillingAccount extends Resource {
+  /**
+   * The billing account name.
+   */
+  readonly displayName?: string;
+  /**
+   * The Company this billing account belongs to.
+   */
+  readonly company?: string;
+  /**
+   * The billing account Type. Possible values include: 'Organization', 'Enrollment'
+   */
+  readonly accountType?: string;
+  /**
+   * The address associated with billing account.
+   */
+  address?: Address;
+  /**
+   * The country associated with billing account..
+   */
+  readonly country?: string;
+  /**
+   * The invoice sections associated to the billing account.
+   */
+  invoiceSections?: InvoiceSection[];
+  /**
+   * The billing profiles associated to the billing account.
+   */
+  billingProfiles?: BillingProfile[];
+  /**
+   * The details about the associated legacy enrollment. By default this is not populated, unless
+   * it's specified in $expand.
+   */
+  readonly enrollmentDetails?: Enrollment;
+  /**
+   * The departments associated to the enrollment.
+   */
+  departments?: Department[];
+  /**
+   * The accounts associated to the enrollment.
+   */
+  enrollmentAccounts?: EnrollmentAccount[];
+}
+
+/**
+ * Result of listing billing accounts.
+ */
+export interface BillingAccountListResult {
+  /**
+   * The list of billing accounts.
+   */
+  readonly value?: BillingAccount[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * The billing property.
+ */
+export interface BillingProperty {
+  /**
+   * Product Id.
+   */
+  readonly productId?: string;
+  /**
+   * Billing tenant Id.
+   */
+  readonly billingTenantId?: string;
+  /**
+   * Billing account Id.
+   */
+  readonly billingAccountId?: string;
+  /**
+   * Billing account name.
+   */
+  readonly billingAccountName?: string;
+  /**
+   * Billing profile Id.
+   */
+  readonly billingProfileId?: string;
+  /**
+   * Billing profile name.
+   */
+  readonly billingProflieName?: string;
+  /**
+   * Invoice Section Id.
+   */
+  readonly invoiceSectionId?: string;
+  /**
+   * Invoice Section name.
+   */
+  readonly invoiceSectionName?: string;
+  /**
+   * SKU Id.
+   */
+  readonly skuId?: string;
+  /**
+   * SKU description.
+   */
+  readonly skuDescription?: string;
+}
+
+/**
+ * Result of listing departments.
+ */
+export interface DepartmentListResult {
+  /**
+   * The list of departments.
+   */
+  readonly value?: Department[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing enrollment accounts.
+ */
+export interface EnrollmentAccountListResult {
+  /**
+   * The list of enrollment accounts.
+   */
+  readonly value?: EnrollmentAccount[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing billing profiles.
+ */
+export interface BillingProfileListResult {
+  /**
+   * The list of billing profiles.
+   */
+  readonly value?: BillingProfile[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing invoice sections.
+ */
+export interface InvoiceSectionListResult {
+  /**
+   * The list of invoice sections.
+   */
+  readonly value?: InvoiceSection[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * status of the Billing POST/PUT operation.
+ */
+export interface OperationStatus {
+  /**
+   * The operation Id.
+   */
+  readonly id?: string;
+  /**
+   * Status of the pending operation
+   */
+  status?: string;
+  /**
+   * Status Detail of the pending operation
+   */
+  statusDetail?: string;
+}
+
+/**
+ * A secure URL that can be used to download a an entity until the URL expires.
  */
 export interface DownloadUrl {
   /**
@@ -105,26 +559,387 @@ export interface ErrorResponse {
 }
 
 /**
- * An invoice resource can be used download a PDF version of an invoice.
+ * The Amount.
  */
-export interface Invoice extends Resource {
+export interface Amount {
   /**
-   * A secure link to download the PDF version of an invoice. The link will cease to work after its
-   * expiry time is reached.
+   * The currency for the amount value.
    */
-  downloadUrl?: DownloadUrl;
+  readonly currency?: string;
   /**
-   * The start of the date range covered by the invoice.
+   * Amount value.
+   */
+  readonly value?: number;
+}
+
+/**
+ * The properties of the invoice download.
+ */
+export interface DownloadProperties {
+  /**
+   * Document type. Possible values include: 'Invoice', 'VoidNote', 'Receipt', 'CreditNote'
+   */
+  readonly kind?: string;
+  /**
+   * Document URL.
+   */
+  readonly url?: string;
+}
+
+/**
+ * The properties of the payment.
+ */
+export interface PaymentProperties {
+  /**
+   * The type of payment.
+   */
+  readonly paymentType?: string;
+  /**
+   * The paid amount.
+   */
+  readonly amount?: Amount;
+  /**
+   * The date of the payment.
+   */
+  readonly date?: Date;
+}
+
+/**
+ * An invoice resource.
+ */
+export interface InvoiceSummary extends Resource {
+  /**
+   * The due date for invoice.
+   */
+  readonly dueDate?: Date;
+  /**
+   * The date when invoice was created.
+   */
+  readonly invoiceDate?: Date;
+  /**
+   * Invoice status. Possible values include: 'PastDue', 'Due', 'Paid', 'Void'
+   */
+  readonly status?: string;
+  /**
+   * Amount due.
+   */
+  readonly amountDue?: Amount;
+  /**
+   * Amount billed.
+   */
+  readonly billedAmount?: Amount;
+  /**
+   * The start date of the billing period.
    */
   readonly invoicePeriodStartDate?: Date;
   /**
-   * The end of the date range covered by the invoice.
+   * The end date of the billing period.
    */
   readonly invoicePeriodEndDate?: Date;
   /**
-   * Array of billing period ids that the invoice is attributed to.
+   * The profile id which invoice belongs to.
    */
-  readonly billingPeriodIds?: string[];
+  readonly billingProfile?: string;
+  /**
+   * The profile name which invoice belongs to.
+   */
+  readonly billingProfileName?: string;
+  /**
+   * The purchase identifier for the invoice.
+   */
+  readonly purchaseOrderNumber?: string;
+  /**
+   * List of document urls available to download including invoice and tax documents.
+   */
+  readonly documentUrls?: DownloadProperties[];
+  /**
+   * List of payments.
+   */
+  readonly payments?: PaymentProperties[];
+}
+
+/**
+ * Result of listing invoices.
+ */
+export interface InvoiceListResult {
+  /**
+   * The list of invoices.
+   */
+  readonly value?: InvoiceSummary[];
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * A product summary resource.
+ */
+export interface ProductSummary extends Resource {
+  /**
+   * The display name of the product.
+   */
+  readonly displayName?: string;
+  /**
+   * The date of purchase.
+   */
+  readonly purchaseDate?: Date;
+  /**
+   * The product type id.
+   */
+  readonly productTypeId?: string;
+  /**
+   * The type of product.
+   */
+  readonly productType?: string;
+  /**
+   * Product status. Possible values include: 'Active', 'Inactive', 'PastDue', 'Expiring',
+   * 'Expired', 'Disabled', 'Cancelled', 'AutoRenew'
+   */
+  status?: string;
+  /**
+   * end date.
+   */
+  readonly endDate?: Date;
+  /**
+   * Billing frequency. Possible values include: 'OneTime', 'Monthly', 'UsageBased'
+   */
+  billingFrequency?: string;
+  /**
+   * Last month charges.
+   */
+  readonly lastCharge?: Amount;
+  /**
+   * The date of the last charge.
+   */
+  readonly lastChargeDate?: Date;
+  /**
+   * The purchased product quantity.
+   */
+  readonly quantity?: number;
+  /**
+   * Sku Id.
+   */
+  readonly skuId?: string;
+  /**
+   * Sku description.
+   */
+  readonly skuDescription?: string;
+  /**
+   * Availability Id.
+   */
+  readonly availabilityId?: string;
+  /**
+   * Parent Product Id.
+   */
+  readonly parentProductId?: string;
+  /**
+   * Invoice section id to which this product belongs.
+   */
+  readonly invoiceSectionId?: string;
+  /**
+   * Invoice section name to which this product belongs.
+   */
+  readonly invoiceSectionName?: string;
+  /**
+   * Billing Profile id to which this product belongs.
+   */
+  readonly billingProfileId?: string;
+  /**
+   * Billing Profile name to which this product belongs.
+   */
+  readonly billingProfileName?: string;
+}
+
+/**
+ * The rating context.
+ */
+export interface EnrollmentAccountContext {
+  /**
+   * The cost center name.
+   */
+  costCenter?: string;
+  /**
+   * Account Start Date
+   */
+  startDate?: Date;
+  /**
+   * Account End Date
+   */
+  endDate?: Date;
+  /**
+   * The enrollment account id.
+   */
+  enrollmentAccountId?: string;
+}
+
+/**
+ * A billing Subscription summary resource.
+ */
+export interface BillingSubscriptionSummary extends Resource {
+  /**
+   * display name.
+   */
+  readonly displayName?: string;
+  /**
+   * Subscription Id.
+   */
+  readonly subscriptionId?: string;
+  /**
+   * Subscription billing status. Possible values include: 'Active', 'Inactive', 'Abandoned',
+   * 'Deleted', 'Warning'
+   */
+  subscriptionBillingStatus?: string;
+  /**
+   * Last month charges.
+   */
+  readonly lastMonthCharges?: Amount;
+  /**
+   * Month to date charges.
+   */
+  readonly monthToDateCharges?: Amount;
+  /**
+   * The enrollment account context.
+   */
+  readonly enrollmentAccountContext?: EnrollmentAccountContext;
+  /**
+   * Billing Profile id to which this product belongs.
+   */
+  readonly billingProfileId?: string;
+  /**
+   * Billing Profile name to which this product belongs.
+   */
+  readonly billingProfileName?: string;
+  /**
+   * The sku id.
+   */
+  skuId?: string;
+  /**
+   * The sku description.
+   */
+  readonly skuDescription?: string;
+}
+
+/**
+ * A reservation transaction summary resource.
+ */
+export interface TransactionsSummary extends Resource {
+  /**
+   * The kind of transaction. Choices are all and reservation. Possible values include: 'all',
+   * 'reservation'
+   */
+  kind?: string;
+  /**
+   * The date of reservation transaction.
+   */
+  readonly date?: Date;
+  /**
+   * Invoice number or 'pending' if not invoiced.
+   */
+  readonly invoice?: string;
+  /**
+   * The reservation order id.
+   */
+  readonly orderId?: string;
+  /**
+   * The reservation order name.
+   */
+  readonly orderName?: string;
+  /**
+   * The product type id.
+   */
+  readonly productTypeId?: string;
+  /**
+   * The type of product.
+   */
+  readonly productType?: string;
+  /**
+   * Product description.
+   */
+  readonly productDescription?: string;
+  /**
+   * Transaction types. Possible values include: 'Purchase', 'Usage Charge'
+   */
+  transactionType?: string;
+  /**
+   * Last charge associated with the purchase.
+   */
+  readonly transactionAmount?: Amount;
+  /**
+   * Purchase quantity.
+   */
+  readonly quantity?: number;
+  /**
+   * Invoice section id to which this product belongs.
+   */
+  readonly invoiceSectionId?: string;
+  /**
+   * Invoice section name to which this product belongs.
+   */
+  readonly invoiceSectionName?: string;
+  /**
+   * Billing Profile id to which this product belongs.
+   */
+  readonly billingProfileId?: string;
+  /**
+   * Billing Profile name to which this product belongs.
+   */
+  readonly billingProfileName?: string;
+  /**
+   * The subscription id.
+   */
+  readonly subscriptionId?: string;
+  /**
+   * The subscription name.
+   */
+  readonly subscriptionName?: string;
+}
+
+/**
+ * The Policy.
+ */
+export interface Policy extends Resource {
+  /**
+   * The reservationPurchasesAllowed flag.
+   */
+  reservationPurchasesAllowed?: boolean;
+  /**
+   * The marketplacePurchasesAllowed flag.
+   */
+  marketplacePurchasesAllowed?: boolean;
+}
+
+/**
+ * A payment method resource.
+ */
+export interface PaymentMethod extends Resource {
+  /**
+   * Payment method type. Possible values include: 'Credits', 'ChequeWire'
+   */
+  methodType?: string;
+  /**
+   * Details about the payment method.
+   */
+  readonly details?: string;
+  /**
+   * Expiration date.
+   */
+  readonly expiration?: Date;
+  /**
+   * The currency associated with the payment method.
+   */
+  readonly currency?: string;
+}
+
+/**
+ * Request parameters to update auto renew for support prouct.
+ */
+export interface UpdateAutoRenewRequest {
+  /**
+   * Request parameters to update auto renew policy a product. Possible values include: 'true',
+   * 'false'
+   */
+  autoRenew?: string;
 }
 
 /**
@@ -160,9 +975,9 @@ export interface Operation {
 }
 
 /**
- * Result of listing enrollment accounts.
+ * Result of listing payment methods.
  */
-export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
+export interface PaymentMethodsListResult extends Array<PaymentMethod> {
   /**
    * The link (url) to the next page of results.
    */
@@ -170,10 +985,9 @@ export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
 }
 
 /**
- * Result of listing billing periods. It contains a list of available billing periods in reverse
- * chronological order.
+ * Result of listing billing subscriptions summary.
  */
-export interface BillingPeriodsListResult extends Array<BillingPeriod> {
+export interface BillingSubscriptionsListResult extends Array<BillingSubscriptionSummary> {
   /**
    * The link (url) to the next page of results.
    */
@@ -181,10 +995,20 @@ export interface BillingPeriodsListResult extends Array<BillingPeriod> {
 }
 
 /**
- * Result of listing invoices. It contains a list of available invoices in reverse chronological
- * order.
+ * Result of listing products summary. It contains a list of available products summaries in
+ * reverse chronological order by purchase date.
  */
-export interface InvoicesListResult extends Array<Invoice> {
+export interface ProductsListResult extends Array<ProductSummary> {
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing reservation transactions summary.
+ */
+export interface TransactionsListResult extends Array<TransactionsSummary> {
   /**
    * The link (url) to the next page of results.
    */

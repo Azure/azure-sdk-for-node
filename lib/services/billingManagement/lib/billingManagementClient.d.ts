@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -56,10 +56,249 @@ export default class BillingManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  billingAccounts: operations.BillingAccounts;
+  billingAccountsWithCreateInvoiceSectionPermission: operations.BillingAccountsWithCreateInvoiceSectionPermission;
+  paymentMethodsByBillingProfile: operations.PaymentMethodsByBillingProfile;
+  billingProfilesByBillingAccountId: operations.BillingProfilesByBillingAccountId;
+  billingProfiles: operations.BillingProfiles;
+  invoiceSectionsByBillingAccountId: operations.InvoiceSectionsByBillingAccountId;
+  invoiceSections: operations.InvoiceSections;
+  invoiceSectionsWithCreateSubscriptionPermission: operations.InvoiceSectionsWithCreateSubscriptionPermission;
+  departmentsByBillingAccountId: operations.DepartmentsByBillingAccountId;
+  departments: operations.Departments;
+  enrollmentAccountsByBillingAccountId: operations.EnrollmentAccountsByBillingAccountId;
   enrollmentAccounts: operations.EnrollmentAccounts;
-  billingPeriods: operations.BillingPeriods;
-  invoices: operations.Invoices;
+  invoicesByBillingAccount: operations.InvoicesByBillingAccount;
+  invoicePricesheet: operations.InvoicePricesheet;
+  invoicesByBillingProfile: operations.InvoicesByBillingProfile;
+  invoice: operations.Invoice;
+  productsByBillingSubscriptions: operations.ProductsByBillingSubscriptions;
+  billingSubscriptionsByBillingProfile: operations.BillingSubscriptionsByBillingProfile;
+  billingSubscriptionsByInvoiceSection: operations.BillingSubscriptionsByInvoiceSection;
+  billingSubscription: operations.BillingSubscription;
+  productsByBillingAccount: operations.ProductsByBillingAccount;
+  productsByInvoiceSection: operations.ProductsByInvoiceSection;
+  products: operations.Products;
+  transactionsByBillingAccount: operations.TransactionsByBillingAccount;
+  policyOperations: operations.PolicyOperations;
+  billingPropertyOperations: operations.BillingPropertyOperations;
   operations: operations.Operations;
+
+
+  /**
+   * Lists the transactions by billingProfileId for given start date and end
+   * date.
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} billingProfileId Billing Profile Id.
+   *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] May be used to filter by transaction kind.
+   * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<TransactionsListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  transactionsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransactionsListResult>>;
+
+  /**
+   * Lists the transactions by billingProfileId for given start date and end
+   * date.
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} billingProfileId Billing Profile Id.
+   *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] May be used to filter by transaction kind.
+   * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {TransactionsListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {TransactionsListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TransactionsListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  transactionsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TransactionsListResult>;
+  transactionsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.TransactionsListResult>): void;
+  transactionsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransactionsListResult>): void;
+
+
+  /**
+   * Cancel product by product id
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} productName Invoide Id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.autoRenew] Request parameters to update auto renew
+   * policy a product. Possible values include: 'true', 'false'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UpdateAutoRenewOperationSummary>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateAutoRenewForBillingAccountWithHttpOperationResponse(billingAccountId: string, productName: string, options?: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UpdateAutoRenewOperationSummary>>;
+
+  /**
+   * Cancel product by product id
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} productName Invoide Id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.autoRenew] Request parameters to update auto renew
+   * policy a product. Possible values include: 'true', 'false'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UpdateAutoRenewOperationSummary} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UpdateAutoRenewOperationSummary} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UpdateAutoRenewOperationSummary} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateAutoRenewForBillingAccount(billingAccountId: string, productName: string, options?: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UpdateAutoRenewOperationSummary>;
+  updateAutoRenewForBillingAccount(billingAccountId: string, productName: string, callback: ServiceCallback<models.UpdateAutoRenewOperationSummary>): void;
+  updateAutoRenewForBillingAccount(billingAccountId: string, productName: string, options: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UpdateAutoRenewOperationSummary>): void;
+
+
+  /**
+   * Cancel auto renew for product by product id
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} invoiceSectionId InvoiceSection Id.
+   *
+   * @param {string} productName Invoide Id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.autoRenew] Request parameters to update auto renew
+   * policy a product. Possible values include: 'true', 'false'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UpdateAutoRenewOperationSummary>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  updateAutoRenewForInvoiceSectionWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UpdateAutoRenewOperationSummary>>;
+
+  /**
+   * Cancel auto renew for product by product id
+   *
+   * @param {string} billingAccountId billing Account Id.
+   *
+   * @param {string} invoiceSectionId InvoiceSection Id.
+   *
+   * @param {string} productName Invoide Id.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.autoRenew] Request parameters to update auto renew
+   * policy a product. Possible values include: 'true', 'false'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UpdateAutoRenewOperationSummary} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UpdateAutoRenewOperationSummary} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UpdateAutoRenewOperationSummary} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  updateAutoRenewForInvoiceSection(billingAccountId: string, invoiceSectionId: string, productName: string, options?: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UpdateAutoRenewOperationSummary>;
+  updateAutoRenewForInvoiceSection(billingAccountId: string, invoiceSectionId: string, productName: string, callback: ServiceCallback<models.UpdateAutoRenewOperationSummary>): void;
+  updateAutoRenewForInvoiceSection(billingAccountId: string, invoiceSectionId: string, productName: string, options: { autoRenew? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UpdateAutoRenewOperationSummary>): void;
 }
 
 export { BillingManagementClient, models as BillingManagementModels };
