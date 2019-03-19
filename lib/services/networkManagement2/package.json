@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/azure/azure-sdk-for-node/issues"
   },
-  "scripts": {
+ "scripts": {
     "postinstall": "node .scripts/postinstall.js"
   }
 }
