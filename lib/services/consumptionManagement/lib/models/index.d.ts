@@ -324,116 +324,6 @@ export interface PricesheetDownloadResponse extends Resource {
 }
 
 /**
- * The start and end date for a budget.
- */
-export interface BudgetTimePeriod {
-  /**
-   * The start date for the budget.
-   */
-  startDate: Date;
-  /**
-   * The end date for the budget. If not provided, we default this to 10 years from the start date.
-   */
-  endDate?: Date;
-}
-
-/**
- * The current amount of cost which is being tracked for a budget.
- */
-export interface CurrentSpend {
-  /**
-   * The total amount of cost which is being tracked by the budget.
-   */
-  readonly amount?: number;
-  /**
-   * The unit of measure for the budget amount.
-   */
-  readonly unit?: string;
-}
-
-/**
- * The notification associated with a budget.
- */
-export interface Notification {
-  /**
-   * The notification is enabled or not.
-   */
-  enabled: boolean;
-  /**
-   * The comparison operator. Possible values include: 'EqualTo', 'GreaterThan',
-   * 'GreaterThanOrEqualTo'
-   */
-  operator: string;
-  /**
-   * Threshold value associated with a notification. Notification is sent when the cost exceeded
-   * the threshold. It is always percent and has to be between 0 and 1000.
-   */
-  threshold: number;
-  /**
-   * Email addresses to send the budget notification to when the threshold is exceeded.
-   */
-  contactEmails: string[];
-  /**
-   * Contact roles to send the budget notification to when the threshold is exceeded.
-   */
-  contactRoles?: string[];
-}
-
-/**
- * The Resource model definition.
- */
-export interface ProxyResource extends BaseResource {
-  /**
-   * Resource Id.
-   */
-  readonly id?: string;
-  /**
-   * Resource name.
-   */
-  readonly name?: string;
-  /**
-   * Resource type.
-   */
-  readonly type?: string;
-  /**
-   * eTag of the resource. To handle concurrent update scenario, this field will be used to
-   * determine whether the user is updating the latest version or not.
-   */
-  eTag?: string;
-}
-
-/**
- * A budget resource.
- */
-export interface Budget extends ProxyResource {
-  /**
-   * The total amount of cost to track with the budget
-   */
-  amount: number;
-  /**
-   * The time covered by a budget. Tracking of the amount will be reset based on the time grain.
-   * Possible values include: 'Monthly', 'Quarterly', 'Annually'
-   */
-  timeGrain: string;
-  /**
-   * Has start and end date of the budget. The start date must be first of the month and should be
-   * less than the end date. Budget start date must be on or after June 1, 2017. Future start date
-   * should not be more than three months. Past start date should  be selected within the timegrain
-   * period. There are no restrictions on the end date.
-   */
-  timePeriod: BudgetTimePeriod;
-  /**
-   * The current amount of cost which is being tracked for a budget.
-   */
-  readonly currentSpend?: CurrentSpend;
-  /**
-   * Dictionary of notifications associated with the budget. Budget can have up to five
-   * notifications.
-   */
-  notifications?: { [propertyName: string]: Notification };
-}
-
-/**
  * Summary of credit balances.
  */
 export interface CreditBalanceSummary {
@@ -778,9 +668,26 @@ export interface ErrorResponse {
 }
 
 /**
- * Result of listing budgets. It contains a list of available budgets in the scope provided.
+ * The Resource model definition.
  */
-export interface BudgetsListResult extends Array<Budget> {
+export interface ProxyResource extends BaseResource {
+  /**
+   * Resource Id.
+   */
+  readonly id?: string;
+  /**
+   * Resource name.
+   */
+  readonly name?: string;
+  /**
+   * Resource type.
+   */
+  readonly type?: string;
+  /**
+   * eTag of the resource. To handle concurrent update scenario, this field will be used to
+   * determine whether the user is updating the latest version or not.
+   */
+  eTag?: string;
 }
 
 /**

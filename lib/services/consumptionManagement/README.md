@@ -20,7 +20,7 @@ npm install azure-arm-consumption
 
 ### How to use
 
-#### Authentication, client creation, and list budgets as an example.
+#### Authentication, client creation, and list operations as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -29,7 +29,7 @@ msRestAzure.interactiveLogin().then((creds) => {
   const subscriptionId = "<Subscription_Id>";
   const client = new ConsumptionManagementClient(creds, subscriptionId);
 
-  return client.budgets.list().then((result) => {
+  return client.operations.list().then((result) => {
     console.log("The result is:");
     console.log(result);
   });

@@ -21,10 +21,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Azure Subscription ID.
-   *
-   * @param {string} name - Budget name.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -43,15 +39,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, name: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
-
-  subscriptionId: string;
-
-  name: string;
 
   acceptLanguage: string;
 
@@ -60,7 +52,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  budgets: operations.Budgets;
   operations: operations.Operations;
   creditSummaryByBillingProfile: operations.CreditSummaryByBillingProfile;
   eventsByBillingProfile: operations.EventsByBillingProfile;
