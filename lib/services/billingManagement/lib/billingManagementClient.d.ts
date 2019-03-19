@@ -58,6 +58,7 @@ export default class BillingManagementClient extends AzureServiceClient {
   // Operation groups
   billingAccounts: operations.BillingAccounts;
   billingAccountsWithCreateInvoiceSectionPermission: operations.BillingAccountsWithCreateInvoiceSectionPermission;
+  availableBalanceByBillingProfile: operations.AvailableBalanceByBillingProfile;
   paymentMethodsByBillingProfile: operations.PaymentMethodsByBillingProfile;
   billingProfilesByBillingAccountId: operations.BillingProfilesByBillingAccountId;
   billingProfiles: operations.BillingProfiles;

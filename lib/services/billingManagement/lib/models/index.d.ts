@@ -910,6 +910,16 @@ export interface Policy extends Resource {
 }
 
 /**
+ * Latest available balance on Monetary Credit PI.
+ */
+export interface AvailableBalance extends Resource {
+  /**
+   * Balance Amount.
+   */
+  readonly amount?: Amount;
+}
+
+/**
  * A payment method resource.
  */
 export interface PaymentMethod extends Resource {

@@ -209,6 +209,76 @@ export interface BillingAccountsWithCreateInvoiceSectionPermission {
 
 /**
  * @class
+ * AvailableBalanceByBillingProfile
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface AvailableBalanceByBillingProfile {
+
+
+    /**
+     * The latest available credit balance for a given billingAccountId and
+     * billingProfileId.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableBalance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableBalance>>;
+
+    /**
+     * The latest available credit balance for a given billingAccountId and
+     * billingProfileId.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableBalance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableBalance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableBalance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableBalance>;
+    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.AvailableBalance>): void;
+    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableBalance>): void;
+}
+
+/**
+ * @class
  * PaymentMethodsByBillingProfile
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
