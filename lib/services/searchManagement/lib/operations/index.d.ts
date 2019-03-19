@@ -567,10 +567,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -581,6 +584,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -646,10 +652,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -660,6 +669,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -736,10 +748,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -750,6 +765,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -807,10 +825,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -821,6 +842,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1095,6 +1119,72 @@ export interface Services {
 
 
     /**
+     * Gets a list of all Search services in the given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchServiceListResult>>;
+
+    /**
+     * Gets a list of all Search services in the given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.searchManagementRequestOptions] Additional
+     * parameters for the operation
+     *
+     * @param {uuid} [options.searchManagementRequestOptions.clientRequestId] A
+     * client-generated GUID value that identifies this request. If specified, this
+     * will be included in response information as a way to track the request.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchServiceListResult>;
+    listBySubscription(callback: ServiceCallback<models.SearchServiceListResult>): void;
+    listBySubscription(options: { searchManagementRequestOptions? : models.SearchManagementRequestOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchServiceListResult>): void;
+
+
+    /**
      * Checks whether or not the given Search service name is available for use.
      * Search service names must be globally unique since they are part of the
      * service URI (https://<name>.search.windows.net).
@@ -1218,10 +1308,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -1232,6 +1325,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1297,10 +1393,13 @@ export interface Services {
      * values include: 'free': Shared service. 'basic': Dedicated service with up
      * to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12
      * replicas. 'standard2': Similar to standard, but with more capacity per
-     * search unit. 'standard3': Offers maximum capacity per search unit with up to
-     * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
-     * you also set the hostingMode property to 'highDensity'). Possible values
-     * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+     * search unit. 'standard3': The largest Standard offering with up to 12
+     * partitions and 12 replicas (or up to 3 partitions with more indexes if you
+     * also set the hostingMode property to 'highDensity'). 'storage_optimized_l1':
+     * Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2':
+     * Supports 2TB per partition, up to 12 partitions.'. Possible values include:
+     * 'free', 'basic', 'standard', 'standard2', 'standard3',
+     * 'storage_optimized_l1', 'storage_optimized_l2'
      *
      * @param {string} [service.location] The geographic location of the resource.
      * This must be one of the supported and registered Azure Geo Regions (for
@@ -1311,6 +1410,9 @@ export interface Services {
      * Azure portal.
      *
      * @param {object} [service.identity] The identity of the resource.
+     *
+     * @param {string} service.identity.type The identity type. Possible values
+     * include: 'None', 'SystemAssigned'
      *
      * @param {object} [options] Optional Parameters.
      *
