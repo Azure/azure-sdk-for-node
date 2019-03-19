@@ -196,7 +196,7 @@ export interface Applications {
      *
      * @param {string} parameters.displayName The display name of the application.
      *
-     * @param {array} parameters.identifierUris A collection of URIs for the
+     * @param {array} [parameters.identifierUris] A collection of URIs for the
      * application.
      *
      * @param {boolean} [parameters.allowGuestsSignIn] A property on the
@@ -336,7 +336,7 @@ export interface Applications {
      *
      * @param {string} parameters.displayName The display name of the application.
      *
-     * @param {array} parameters.identifierUris A collection of URIs for the
+     * @param {array} [parameters.identifierUris] A collection of URIs for the
      * application.
      *
      * @param {boolean} [parameters.allowGuestsSignIn] A property on the
@@ -1385,6 +1385,8 @@ export interface Applications {
     /**
      * Gets an object id for a given application id from the current tenant.
      *
+     * @param {string} applicationID The application ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1396,10 +1398,12 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getServicePrincipalsIdByAppIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalObjectResult>>;
+    getServicePrincipalsIdByAppIdWithHttpOperationResponse(applicationID: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalObjectResult>>;
 
     /**
      * Gets an object id for a given application id from the current tenant.
+     *
+     * @param {string} applicationID The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1429,9 +1433,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getServicePrincipalsIdByAppId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalObjectResult>;
-    getServicePrincipalsIdByAppId(callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
-    getServicePrincipalsIdByAppId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
+    getServicePrincipalsIdByAppId(applicationID: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalObjectResult>;
+    getServicePrincipalsIdByAppId(applicationID: string, callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
+    getServicePrincipalsIdByAppId(applicationID: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
 
 
     /**

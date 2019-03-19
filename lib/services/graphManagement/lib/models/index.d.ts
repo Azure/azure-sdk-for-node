@@ -493,7 +493,7 @@ export interface ApplicationCreateParameters extends ApplicationBase {
   /**
    * A collection of URIs for the application.
   */
-  identifierUris: string[];
+  identifierUris?: string[];
 }
 
 /**
