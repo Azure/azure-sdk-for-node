@@ -1383,6 +1383,58 @@ export interface Applications {
 
 
     /**
+     * Gets an object id for a given application id from the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServicePrincipalObjectResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getServicePrincipalsIdByAppIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalObjectResult>>;
+
+    /**
+     * Gets an object id for a given application id from the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServicePrincipalObjectResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServicePrincipalObjectResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServicePrincipalObjectResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getServicePrincipalsIdByAppId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalObjectResult>;
+    getServicePrincipalsIdByAppId(callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
+    getServicePrincipalsIdByAppId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
+
+
+    /**
      * Gets a list of applications from the current tenant.
      *
      * @param {string} nextLink Next link for the list operation.
@@ -3453,67 +3505,6 @@ export interface ServicePrincipals {
     listOwnersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
     listOwnersNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
     listOwnersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
-}
-
-/**
- * @class
- * ServicePrincipalsByAppId
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the GraphRbacManagementClient.
- */
-export interface ServicePrincipalsByAppId {
-
-
-    /**
-     * Gets an object id for a given application id from the current tenant.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServicePrincipalObjectResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalObjectResult>>;
-
-    /**
-     * Gets an object id for a given application id from the current tenant.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServicePrincipalObjectResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServicePrincipalObjectResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServicePrincipalObjectResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalObjectResult>;
-    get(callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
-    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalObjectResult>): void;
 }
 
 /**
