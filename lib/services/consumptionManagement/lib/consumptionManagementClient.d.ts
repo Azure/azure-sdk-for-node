@@ -21,8 +21,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Azure Subscription ID.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,13 +39,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
-
-  subscriptionId: string;
 
   acceptLanguage: string;
 
@@ -56,19 +52,8 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  usageDetails: operations.UsageDetails;
-  marketplaces: operations.Marketplaces;
-  balances: operations.Balances;
-  reservationsSummaries: operations.ReservationsSummaries;
-  reservationsDetails: operations.ReservationsDetails;
-  reservationRecommendations: operations.ReservationRecommendations;
-  budgets: operations.Budgets;
-  priceSheet: operations.PriceSheet;
-  tags: operations.Tags;
-  forecasts: operations.Forecasts;
   operations: operations.Operations;
-  aggregatedCost: operations.AggregatedCost;
-  charges: operations.Charges;
+  tags: operations.Tags;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
