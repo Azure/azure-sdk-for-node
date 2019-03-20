@@ -15,6 +15,629 @@ import * as models from '../models';
 
 /**
  * @class
+ * RegulatoryComplianceStandards
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface RegulatoryComplianceStandards {
+
+
+    /**
+     * Supported regulatory compliance standards details and state
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceStandardList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceStandardList>>;
+
+    /**
+     * Supported regulatory compliance standards details and state
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceStandardList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceStandardList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceStandardList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceStandardList>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.RegulatoryComplianceStandardList>): void;
+    list(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceStandardList>): void;
+
+
+    /**
+     * Supported regulatory compliance details state for selected standard
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceStandard>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, regulatoryComplianceStandardName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceStandard>>;
+
+    /**
+     * Supported regulatory compliance details state for selected standard
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceStandard} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceStandard} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceStandard} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceStandard>;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, callback: ServiceCallback<models.RegulatoryComplianceStandard>): void;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceStandard>): void;
+
+
+    /**
+     * Supported regulatory compliance standards details and state
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceStandardList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceStandardList>>;
+
+    /**
+     * Supported regulatory compliance standards details and state
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceStandardList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceStandardList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceStandardList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceStandardList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RegulatoryComplianceStandardList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceStandardList>): void;
+}
+
+/**
+ * @class
+ * RegulatoryComplianceControls
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface RegulatoryComplianceControls {
+
+
+    /**
+     * All supported regulatory compliance controls details and state for selected
+     * standard
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceControlList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, regulatoryComplianceStandardName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceControlList>>;
+
+    /**
+     * All supported regulatory compliance controls details and state for selected
+     * standard
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceControlList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceControlList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceControlList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceControlList>;
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, callback: ServiceCallback<models.RegulatoryComplianceControlList>): void;
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceControlList>): void;
+
+
+    /**
+     * Selected regulatory compliance control details and state
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceControl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceControl>>;
+
+    /**
+     * Selected regulatory compliance control details and state
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceControl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceControl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceControl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceControl>;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, callback: ServiceCallback<models.RegulatoryComplianceControl>): void;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceControl>): void;
+
+
+    /**
+     * All supported regulatory compliance controls details and state for selected
+     * standard
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceControlList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceControlList>>;
+
+    /**
+     * All supported regulatory compliance controls details and state for selected
+     * standard
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceControlList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceControlList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceControlList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceControlList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RegulatoryComplianceControlList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceControlList>): void;
+}
+
+/**
+ * @class
+ * RegulatoryComplianceAssessments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface RegulatoryComplianceAssessments {
+
+
+    /**
+     * Details and state of assessments mapped to selected regulatory compliance
+     * control
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceAssessmentList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceAssessmentList>>;
+
+    /**
+     * Details and state of assessments mapped to selected regulatory compliance
+     * control
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceAssessmentList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceAssessmentList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceAssessmentList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceAssessmentList>;
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, callback: ServiceCallback<models.RegulatoryComplianceAssessmentList>): void;
+    list(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceAssessmentList>): void;
+
+
+    /**
+     * Supported regulatory compliance details and state for selected assessment
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {string} regulatoryComplianceAssessmentName Name of the regulatory
+     * compliance assessment object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, regulatoryComplianceAssessmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceAssessment>>;
+
+    /**
+     * Supported regulatory compliance details and state for selected assessment
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} regulatoryComplianceStandardName Name of the regulatory
+     * compliance standard object
+     *
+     * @param {string} regulatoryComplianceControlName Name of the regulatory
+     * compliance control object
+     *
+     * @param {string} regulatoryComplianceAssessmentName Name of the regulatory
+     * compliance assessment object
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, regulatoryComplianceAssessmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceAssessment>;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, regulatoryComplianceAssessmentName: string, callback: ServiceCallback<models.RegulatoryComplianceAssessment>): void;
+    get(resourceGroupName: string, regulatoryComplianceStandardName: string, regulatoryComplianceControlName: string, regulatoryComplianceAssessmentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceAssessment>): void;
+
+
+    /**
+     * Details and state of assessments mapped to selected regulatory compliance
+     * control
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegulatoryComplianceAssessmentList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegulatoryComplianceAssessmentList>>;
+
+    /**
+     * Details and state of assessments mapped to selected regulatory compliance
+     * control
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegulatoryComplianceAssessmentList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegulatoryComplianceAssessmentList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegulatoryComplianceAssessmentList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegulatoryComplianceAssessmentList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RegulatoryComplianceAssessmentList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegulatoryComplianceAssessmentList>): void;
+}
+
+/**
+ * @class
  * Pricings
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.

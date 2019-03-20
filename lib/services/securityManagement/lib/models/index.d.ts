@@ -34,28 +34,104 @@ export interface Resource extends BaseResource {
 }
 
 /**
- * Pricing tier will be applied for the scope based on the resource ID
+ * Regulatory compliance standard details and state
  */
-export interface Pricing extends Resource {
+export interface RegulatoryComplianceStandard extends Resource {
   /**
-   * The pricing tier value. Possible values include: 'Free', 'Standard'
+   * Aggregative state based on the standard's supported controls states. Possible values include:
+   * 'Passed', 'Failed', 'Skipped', 'Unsupported'
    */
-  pricingTier: string;
+  state?: string;
   /**
-   * The duration left for the subscriptions free trial period - in ISO 8601 format (e.g.
-   * P3Y6M4DT12H30M5S).
+   * The number of supported regulatory compliance controls of the given standard with a passed
+   * state
    */
-  readonly freeTrialRemainingTime?: moment.Duration;
+  readonly passedControls?: number;
+  /**
+   * The number of supported regulatory compliance controls of the given standard with a failed
+   * state
+   */
+  readonly failedControls?: number;
+  /**
+   * The number of supported regulatory compliance controls of the given standard with a skipped
+   * state
+   */
+  readonly skippedControls?: number;
+  /**
+   * The number of regulatory compliance controls of the given standard which are unsupported by
+   * automated assessments
+   */
+  readonly unsupportedControls?: number;
 }
 
 /**
- * List of pricing configurations response
+ * Regulatory compliance control details and state
  */
-export interface PricingList {
+export interface RegulatoryComplianceControl extends Resource {
   /**
-   * List of pricing configurations
+   * The description of the regulatory compliance control
    */
-  value: Pricing[];
+  readonly description?: string;
+  /**
+   * Aggregative state based on the control's supported assessments states. Possible values
+   * include: 'Passed', 'Failed', 'Skipped', 'Unsupported'
+   */
+  state?: string;
+  /**
+   * The number of supported regulatory compliance assessments of the given control with a passed
+   * state
+   */
+  readonly passedAssessments?: number;
+  /**
+   * The number of supported regulatory compliance assessments of the given control with a failed
+   * state
+   */
+  readonly failedAssessments?: number;
+  /**
+   * The number of supported regulatory compliance assessments of the given control with a skipped
+   * state
+   */
+  readonly skippedAssessments?: number;
+}
+
+/**
+ * Regulatory compliance assessment details and state
+ */
+export interface RegulatoryComplianceAssessment extends Resource {
+  /**
+   * The description of the regulatory compliance assessment
+   */
+  readonly description?: string;
+  /**
+   * The expected type of assessment contained in the AssessmentDetailsLink
+   */
+  readonly assessmentType?: string;
+  /**
+   * Link to more detailed assessment results data. The response type will be according to the
+   * assessmentType field
+   */
+  readonly assessmentDetailsLink?: string;
+  /**
+   * Aggregative state based on the assessment's scanned resources states. Possible values include:
+   * 'Passed', 'Failed', 'Skipped', 'Unsupported'
+   */
+  state?: string;
+  /**
+   * The given assessment's related resources count with passed state.
+   */
+  readonly passedResources?: number;
+  /**
+   * The given assessment's related resources count with failed state.
+   */
+  readonly failedResources?: number;
+  /**
+   * The given assessment's related resources count with skipped state.
+   */
+  readonly skippedResources?: number;
+  /**
+   * The given assessment's related resources count with unsupported state.
+   */
+  readonly unsupportedResources?: number;
 }
 
 /**
@@ -63,6 +139,31 @@ export interface PricingList {
  */
 export interface AscLocation extends Resource {
   properties?: any;
+}
+
+/**
+ * Pricing tier will be applied for the scope based on the resource ID
+*/
+export interface Pricing extends Resource {
+  /**
+   * The pricing tier value. Possible values include: 'Free', 'Standard'
+  */
+  pricingTier: string;
+  /**
+   * The duration left for the subscriptions free trial period - in ISO 8601 format (e.g.
+   * P3Y6M4DT12H30M5S).
+  */
+  readonly freeTrialRemainingTime?: moment.Duration;
+}
+
+/**
+ * List of pricing configurations response
+*/
+export interface PricingList {
+  /**
+   * List of pricing configurations
+  */
+  value: Pricing[];
 }
 
 /**
@@ -935,6 +1036,36 @@ export interface AllowedConnectionsResource {
    * List of connectable resources
   */
   readonly connectableResources?: ConnectableResource[];
+}
+
+/**
+ * List of regulatory compliance standards response
+*/
+export interface RegulatoryComplianceStandardList extends Array<RegulatoryComplianceStandard> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of regulatory compliance controls response
+*/
+export interface RegulatoryComplianceControlList extends Array<RegulatoryComplianceControl> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of regulatory compliance assessment response
+*/
+export interface RegulatoryComplianceAssessmentList extends Array<RegulatoryComplianceAssessment> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
 }
 
 /**
