@@ -180,38 +180,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -220,7 +234,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -262,6 +278,11 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
+     *
+     * @param {object} [parameters.firewallPolicy] Reference of the FirewallPolicy
+     * resource.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -369,38 +390,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -409,7 +444,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -451,6 +488,11 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
+     *
+     * @param {object} [parameters.firewallPolicy] Reference of the FirewallPolicy
+     * resource.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -1360,38 +1402,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -1400,7 +1456,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -1442,6 +1500,11 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
+     *
+     * @param {object} [parameters.firewallPolicy] Reference of the FirewallPolicy
+     * resource.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -1549,38 +1612,52 @@ export interface ApplicationGateways {
      * Ssl protocol to be supported on application gateway. Possible values
      * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
-     * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
-     * the gateway resource.
+     * @param {array} [parameters.gatewayIPConfigurations] Subnets of the
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
+     * certificates of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendIPConfigurations] Frontend IP addresses
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.frontendPorts] Frontend ports of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.probes] Probes of the application gateway
      * resource.
      *
      * @param {array} [parameters.backendAddressPools] Backend address pool of the
-     * application gateway resource.
+     * application gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.backendHttpSettingsCollection] Backend http
-     * settings of the application gateway resource.
+     * settings of the application gateway resource. For default limits, see
+     * [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.httpListeners] Http listeners of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.urlPathMaps] URL path map of the application
-     * gateway resource.
+     * gateway resource. For default limits, see [Application Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
@@ -1589,7 +1666,9 @@ export interface ApplicationGateways {
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
-     * of the application gateway resource.
+     * of the application gateway resource. For default limits, see [Application
+     * Gateway
+     * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -1631,6 +1710,11 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
+     *
+     * @param {object} [parameters.firewallPolicy] Reference of the FirewallPolicy
+     * resource.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -7153,6 +7237,213 @@ export interface ExpressRouteCircuitConnections {
 
 /**
  * @class
+ * PeerExpressRouteCircuitConnections
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface PeerExpressRouteCircuitConnections {
+
+
+    /**
+     * Gets the specified Peer Express Route Circuit Connection from the specified
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the express route circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {string} connectionName The name of the peer express route circuit
+     * connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnection>>;
+
+    /**
+     * Gets the specified Peer Express Route Circuit Connection from the specified
+     * express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the express route circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {string} connectionName The name of the peer express route circuit
+     * connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnection>;
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnection>): void;
+    get(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnection>): void;
+
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} circuitName The name of the circuit.
+     *
+     * @param {string} peeringName The name of the peering.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnectionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnectionListResult>;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+    list(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PeerExpressRouteCircuitConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PeerExpressRouteCircuitConnectionListResult>>;
+
+    /**
+     * Gets all global reach peer connections associated with a private peering in
+     * an express route circuit.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PeerExpressRouteCircuitConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PeerExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PeerExpressRouteCircuitConnectionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PeerExpressRouteCircuitConnectionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PeerExpressRouteCircuitConnectionListResult>): void;
+}
+
+/**
+ * @class
  * ExpressRouteCircuits
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -7292,8 +7583,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
-     * 'Premium', 'Basic'
+     * are 'Standard', 'Premium' or 'Local'. Possible values include: 'Standard',
+     * 'Premium', 'Basic', 'Local'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -7348,6 +7639,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
      * on the circuit.
+     *
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -7383,8 +7677,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
-     * 'Premium', 'Basic'
+     * are 'Standard', 'Premium' or 'Local'. Possible values include: 'Standard',
+     * 'Premium', 'Basic', 'Local'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -7439,6 +7733,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
      * on the circuit.
+     *
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -8063,8 +8360,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
-     * 'Premium', 'Basic'
+     * are 'Standard', 'Premium' or 'Local'. Possible values include: 'Standard',
+     * 'Premium', 'Basic', 'Local'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -8119,6 +8416,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
      * on the circuit.
+     *
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -8154,8 +8454,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
-     * 'Premium', 'Basic'
+     * are 'Standard', 'Premium' or 'Local'. Possible values include: 'Standard',
+     * 'Premium', 'Basic', 'Local'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -8210,6 +8510,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
      * on the circuit.
+     *
+     * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
+     * status.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -33274,7 +33577,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33320,7 +33623,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33514,7 +33817,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -33560,7 +33863,7 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} [serviceEndpointPolicyDefinitions.description] A description
      * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * @param {string} [serviceEndpointPolicyDefinitions.service] Service endpoint
      * name.
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
@@ -43861,7 +44164,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -43915,7 +44218,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -44219,7 +44522,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -44273,7 +44576,7 @@ export interface VirtualWans {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] List of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -45699,7 +46002,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -45708,7 +46011,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -45758,7 +46061,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -45767,7 +46070,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46069,7 +46372,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -46078,7 +46381,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46128,7 +46431,7 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
-     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] List of all
      * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
@@ -46137,7 +46440,7 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.routeTable] The routeTable associated
      * with this virtual hub.
      *
-     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     * @param {array} [virtualHubParameters.routeTable.routes] List of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -46697,7 +47000,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -46754,7 +47057,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47063,7 +47366,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47120,7 +47423,7 @@ export interface VpnGateways {
      *
      * @param {string} [vpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {array} [vpnGatewayParameters.connections] list of all vpn
+     * @param {array} [vpnGatewayParameters.connections] List of all vpn
      * connections to the gateway.
      *
      * @param {object} [vpnGatewayParameters.bgpSettings] Local network gateway's
@@ -47511,7 +47814,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47579,7 +47882,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47788,7 +48091,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -47856,7 +48159,7 @@ export interface VpnConnections {
      *
      * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
      *
-     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * @param {number} [vpnConnectionParameters.routingWeight] Routing weight for
      * vpn connection.
      *
      * @param {string} [vpnConnectionParameters.connectionStatus] The connection
@@ -48142,8 +48445,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48215,8 +48518,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48434,8 +48737,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -48507,8 +48810,8 @@ export interface P2sVpnServerConfigurations {
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols] VPN
+     * protocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
@@ -49668,4 +49971,525 @@ export interface P2sVpnGateways {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+}
+
+/**
+ * @class
+ * WebApplicationFirewallPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface WebApplicationFirewallPolicies {
+
+
+    /**
+     * Lists all of the protection policies within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+
+    /**
+     * Lists all of the protection policies within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+
+
+    /**
+     * Gets all the WAF policies in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+
+    /**
+     * Gets all the WAF policies in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
+    listAll(callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+
+
+    /**
+     * Retrieve protection policy with specified name within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
+
+    /**
+     * Retrieve protection policy with specified name within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
+    get(resourceGroupName: string, policyName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    get(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+
+
+    /**
+     * Creates or update policy with specified rule set name within a resource
+     * group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} parameters Policy to be created.
+     *
+     * @param {object} [parameters.policySettings] Describes  policySettings for
+     * policy
+     *
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled state or disabled state. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.policySettings.mode] Describes if it is in
+     * detection mode  or prevention mode at policy level. Possible values include:
+     * 'Prevention', 'Detection'
+     *
+     * @param {array} [parameters.customRules] Describes custom rules inside the
+     * policy
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
+
+    /**
+     * Creates or update policy with specified rule set name within a resource
+     * group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} parameters Policy to be created.
+     *
+     * @param {object} [parameters.policySettings] Describes  policySettings for
+     * policy
+     *
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled state or disabled state. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.policySettings.mode] Describes if it is in
+     * detection mode  or prevention mode at policy level. Possible values include:
+     * 'Prevention', 'Detection'
+     *
+     * @param {array} [parameters.customRules] Describes custom rules inside the
+     * policy
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+
+
+    /**
+     * Deletes Policy
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes Policy
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, policyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Deletes Policy
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes Policy
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} policyName The name of the policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, policyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all of the protection policies within a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+
+    /**
+     * Lists all of the protection policies within a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+
+
+    /**
+     * Gets all the WAF policies in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+
+    /**
+     * Gets all the WAF policies in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
 }

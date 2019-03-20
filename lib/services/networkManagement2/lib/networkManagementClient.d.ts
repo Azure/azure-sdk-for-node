@@ -66,6 +66,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
   expressRouteCircuitPeerings: operations.ExpressRouteCircuitPeerings;
   expressRouteCircuitConnections: operations.ExpressRouteCircuitConnections;
+  peerExpressRouteCircuitConnections: operations.PeerExpressRouteCircuitConnections;
   expressRouteCircuits: operations.ExpressRouteCircuits;
   expressRouteServiceProviders: operations.ExpressRouteServiceProviders;
   expressRouteCrossConnections: operations.ExpressRouteCrossConnections;
@@ -122,6 +123,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   vpnConnections: operations.VpnConnections;
   p2sVpnServerConfigurations: operations.P2sVpnServerConfigurations;
   p2sVpnGateways: operations.P2sVpnGateways;
+  webApplicationFirewallPolicies: operations.WebApplicationFirewallPolicies;
 
 
   /**

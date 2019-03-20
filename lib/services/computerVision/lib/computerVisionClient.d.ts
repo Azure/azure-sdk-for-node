@@ -65,7 +65,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -116,7 +118,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -934,6 +938,137 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
+   * Use this interface to get the result of a Read operation, employing the
+   * state-of-the-art Optical Character Recognition (OCR) algorithms optimized
+   * for text-heavy documents. When you use the Read File interface, the response
+   * contains a field called "Operation-Location". The "Operation-Location" field
+   * contains the URL that you must use for your "Read Operation Result"
+   * operation to access OCR results.​
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  batchReadFileWithHttpOperationResponse(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * Use this interface to get the result of a Read operation, employing the
+   * state-of-the-art Optical Character Recognition (OCR) algorithms optimized
+   * for text-heavy documents. When you use the Read File interface, the response
+   * contains a field called "Operation-Location". The "Operation-Location" field
+   * contains the URL that you must use for your "Read Operation Result"
+   * operation to access OCR results.​
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  batchReadFile(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  batchReadFile(url: string, mode: string, callback: ServiceCallback<void>): void;
+  batchReadFile(url: string, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * This interface is used for getting OCR results of Read operation. The URL to
+   * this interface should be retrieved from "Operation-Location" field returned
+   * from Batch Read File interface.
+   *
+   * @param {string} operationId Id of read operation returned in the response of
+   * the "Batch Read File" interface.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ReadOperationResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReadOperationResultWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReadOperationResult>>;
+
+  /**
+   * This interface is used for getting OCR results of Read operation. The URL to
+   * this interface should be retrieved from "Operation-Location" field returned
+   * from Batch Read File interface.
+   *
+   * @param {string} operationId Id of read operation returned in the response of
+   * the "Batch Read File" interface.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ReadOperationResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ReadOperationResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ReadOperationResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReadOperationResult(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReadOperationResult>;
+  getReadOperationResult(operationId: string, callback: ServiceCallback<models.ReadOperationResult>): void;
+  getReadOperationResult(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReadOperationResult>): void;
+
+
+  /**
    * This operation extracts a rich set of visual features based on the image
    * content.
    * Two input methods are supported -- (1) Uploading an image or (2) specifying
@@ -960,7 +1095,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -1011,7 +1148,9 @@ export default class ComputerVisionClient extends ServiceClient {
    * black&white. Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected. Objects
    * - detects various objects within an image, including the approximate
-   * location. The Objects argument is only available in English.
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
@@ -1704,6 +1843,76 @@ export default class ComputerVisionClient extends ServiceClient {
   recognizeTextInStream(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   recognizeTextInStream(image: stream.Readable, mode: string, callback: ServiceCallback<void>): void;
   recognizeTextInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * Use this interface to get the result of a Read Document operation, employing
+   * the state-of-the-art Optical Character Recognition (OCR) algorithms
+   * optimized for text-heavy documents. When you use the Read Document
+   * interface, the response contains a field called "Operation-Location". The
+   * "Operation-Location" field contains the URL that you must use for your "Get
+   * Read Result operation" to access OCR results.​
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  batchReadFileInStreamWithHttpOperationResponse(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * Use this interface to get the result of a Read Document operation, employing
+   * the state-of-the-art Optical Character Recognition (OCR) algorithms
+   * optimized for text-heavy documents. When you use the Read Document
+   * interface, the response contains a field called "Operation-Location". The
+   * "Operation-Location" field contains the URL that you must use for your "Get
+   * Read Result operation" to access OCR results.​
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  batchReadFileInStream(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  batchReadFileInStream(image: stream.Readable, mode: string, callback: ServiceCallback<void>): void;
+  batchReadFileInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 export { ComputerVisionClient, models as ComputerVisionModels };

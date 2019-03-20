@@ -289,6 +289,24 @@ export interface DetectedObject {
 }
 
 /**
+ * A brand detected in an image.
+ */
+export interface DetectedBrand {
+  /**
+   * Label for the brand.
+   */
+  readonly name?: string;
+  /**
+   * Confidence score of having observed the brand in the image, as a value ranging from 0 to 1.
+   */
+  readonly confidence?: number;
+  /**
+   * Approximate location of the detected brand.
+   */
+  readonly rectangle?: BoundingRect;
+}
+
+/**
  * Image metadata.
  */
 export interface ImageMetadata {
@@ -343,6 +361,10 @@ export interface ImageAnalysis {
    * Array of objects describing what was detected in the image.
    */
   objects?: DetectedObject[];
+  /**
+   * Array of brands detected in the image.
+   */
+  brands?: DetectedBrand[];
   /**
    * Id of the REST API request.
    */
@@ -590,26 +612,99 @@ export interface CelebrityResults {
   metadata?: ImageMetadata;
 }
 
+/**
+ * Json object representing a recognized word.
+*/
 export interface Word {
-  boundingBox?: number[];
-  text?: string;
+  /**
+   * Bounding box of a recognized word.
+  */
+  boundingBox: number[];
+  /**
+   * The text content of the word.
+  */
+  text: string;
+  /**
+   * Qualitative confidence measure. Possible values include: 'High', 'Low'
+  */
+  confidence?: string;
 }
 
+/**
+ * Json object representing a recognized text line.
+*/
 export interface Line {
+  /**
+   * Bounding box of a recognized line.
+  */
   boundingBox?: number[];
+  /**
+   * The text content of the line.
+  */
   text?: string;
+  /**
+   * List of words in the text line.
+  */
   words?: Word[];
 }
 
-export interface RecognitionResult {
-  lines?: Line[];
+/**
+ * Json object representing a recognized text region
+*/
+export interface TextRecognitionResult {
+  /**
+   * The 1-based page number of the recognition result.
+  */
+  page?: number;
+  /**
+   * The orientation of the image in degrees in the clockwise direction. Range between [0, 360).
+  */
+  clockwiseOrientation?: number;
+  /**
+   * The width of the image in pixels or the PDF in inches.
+  */
+  width?: number;
+  /**
+   * The height of the image in pixels or the PDF in inches.
+  */
+  height?: number;
+  /**
+   * The unit used in the Width, Height and BoundingBox. For images, the unit is "pixel". For PDF,
+   * the unit is "inch". Possible values include: 'pixel', 'inch'
+  */
+  unit?: string;
+  /**
+   * A list of recognized text lines.
+  */
+  lines: Line[];
 }
 
+/**
+ * Result of recognition text operation.
+*/
 export interface TextOperationResult {
   /**
    * Status of the text operation. Possible values include: 'Not Started', 'Running', 'Failed',
    * 'Succeeded'
   */
   status?: string;
-  recognitionResult?: RecognitionResult;
+  /**
+   * Text recognition result of the text operation.
+  */
+  recognitionResult?: TextRecognitionResult;
+}
+
+/**
+ * OCR result of the read operation.
+*/
+export interface ReadOperationResult {
+  /**
+   * Status of the read operation. Possible values include: 'Not Started', 'Running', 'Failed',
+   * 'Succeeded'
+  */
+  status?: string;
+  /**
+   * A array of text recognition result of the read operation.
+  */
+  recognitionResults?: TextRecognitionResult[];
 }

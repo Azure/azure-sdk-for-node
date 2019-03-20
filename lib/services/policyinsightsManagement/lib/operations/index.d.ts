@@ -56,6 +56,10 @@ export interface PolicyTrackedResources {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -101,6 +105,10 @@ export interface PolicyTrackedResources {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -168,6 +176,10 @@ export interface PolicyTrackedResources {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -213,6 +225,10 @@ export interface PolicyTrackedResources {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -282,6 +298,10 @@ export interface PolicyTrackedResources {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -329,6 +349,10 @@ export interface PolicyTrackedResources {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -396,6 +420,10 @@ export interface PolicyTrackedResources {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -441,6 +469,10 @@ export interface PolicyTrackedResources {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -751,6 +783,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -798,6 +834,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -924,6 +964,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -969,6 +1013,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1270,6 +1318,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1317,6 +1369,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1443,6 +1499,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1488,6 +1548,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1791,6 +1855,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1840,6 +1908,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1972,6 +2044,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2019,6 +2095,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2332,6 +2412,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2379,6 +2463,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2505,6 +2593,10 @@ export interface Remediations {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2550,6 +2642,10 @@ export interface Remediations {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3318,6 +3414,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3363,6 +3463,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3430,6 +3534,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3475,6 +3583,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3544,6 +3656,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3591,6 +3707,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3658,6 +3778,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3703,6 +3827,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3772,6 +3900,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3819,6 +3951,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3888,6 +4024,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3935,6 +4075,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4004,6 +4148,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4051,6 +4199,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4122,6 +4274,10 @@ export interface PolicyEvents {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4171,6 +4327,10 @@ export interface PolicyEvents {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4310,6 +4470,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4360,6 +4524,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4427,6 +4595,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4472,6 +4644,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4543,6 +4719,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4593,6 +4773,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4660,6 +4844,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4705,6 +4893,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4778,6 +4970,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4830,6 +5026,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4899,6 +5099,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4946,6 +5150,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5017,6 +5225,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5067,6 +5279,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5134,6 +5350,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5179,6 +5399,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5252,6 +5476,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5304,6 +5532,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5373,6 +5605,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5420,6 +5656,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5493,6 +5733,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5545,6 +5789,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5614,6 +5862,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5661,6 +5913,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5734,6 +5990,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5786,6 +6046,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5855,6 +6119,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5902,6 +6170,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5977,6 +6249,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -6031,6 +6307,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6102,6 +6382,10 @@ export interface PolicyStates {
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
      *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -6151,6 +6435,10 @@ export interface PolicyStates {
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
+     *
+     * @param {string} [options.queryOptions.expand] The $expand query parameter.
+     * For example, to expand policyEvaluationDetails, use
+     * $expand=policyEvaluationDetails
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request

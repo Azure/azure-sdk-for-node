@@ -3,7 +3,3 @@ sudo: false
 node_js:
   - "8"
   - "6"
-
-before_script:
-  - npm i -g typescript
-  - tsc
