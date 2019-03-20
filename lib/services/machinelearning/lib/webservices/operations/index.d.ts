@@ -226,7 +226,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -404,7 +404,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -542,7 +542,7 @@ export interface WebServices {
      *
      * @param {object} patchPayload The payload to use to patch the web service.
      *
-     * @param {object} patchPayload.properties Contains the property payload that
+     * @param {object} [patchPayload.properties] Contains the property payload that
      * describes the web service.
      *
      * @param {string} [patchPayload.properties.title] The title of the web
@@ -671,7 +671,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -684,9 +684,6 @@ export interface WebServices {
      *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} patchPayload.location Specifies the location of the
-     * resource.
      *
      * @param {object} [patchPayload.tags] Contains resource tags defined as
      * key/value pairs.
@@ -702,7 +699,7 @@ export interface WebServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
+    patchWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
 
     /**
      * Modifies an existing web service resource. The PATCH API call is an
@@ -716,7 +713,7 @@ export interface WebServices {
      *
      * @param {object} patchPayload The payload to use to patch the web service.
      *
-     * @param {object} patchPayload.properties Contains the property payload that
+     * @param {object} [patchPayload.properties] Contains the property payload that
      * describes the web service.
      *
      * @param {string} [patchPayload.properties.title] The title of the web
@@ -845,7 +842,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -858,9 +855,6 @@ export interface WebServices {
      *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} patchPayload.location Specifies the location of the
-     * resource.
      *
      * @param {object} [patchPayload.tags] Contains resource tags defined as
      * key/value pairs.
@@ -892,9 +886,9 @@ export interface WebServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
-    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, callback: ServiceCallback<models.WebService>): void;
-    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
+    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
+    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, callback: ServiceCallback<models.WebService>): void;
+    patch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
 
 
     /**
@@ -1357,7 +1351,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -1535,7 +1529,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -1600,7 +1594,7 @@ export interface WebServices {
      *
      * @param {object} patchPayload The payload to use to patch the web service.
      *
-     * @param {object} patchPayload.properties Contains the property payload that
+     * @param {object} [patchPayload.properties] Contains the property payload that
      * describes the web service.
      *
      * @param {string} [patchPayload.properties.title] The title of the web
@@ -1729,7 +1723,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -1742,9 +1736,6 @@ export interface WebServices {
      *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} patchPayload.location Specifies the location of the
-     * resource.
      *
      * @param {object} [patchPayload.tags] Contains resource tags defined as
      * key/value pairs.
@@ -1760,7 +1751,7 @@ export interface WebServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPatchWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
+    beginPatchWithHttpOperationResponse(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebService>>;
 
     /**
      * Modifies an existing web service resource. The PATCH API call is an
@@ -1774,7 +1765,7 @@ export interface WebServices {
      *
      * @param {object} patchPayload The payload to use to patch the web service.
      *
-     * @param {object} patchPayload.properties Contains the property payload that
+     * @param {object} [patchPayload.properties] Contains the property payload that
      * describes the web service.
      *
      * @param {string} [patchPayload.properties.title] The title of the web
@@ -1903,7 +1894,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -1916,9 +1907,6 @@ export interface WebServices {
      *
      * @param {string} patchPayload.properties.packageType Polymorphic
      * Discriminator
-     *
-     * @param {string} patchPayload.location Specifies the location of the
-     * resource.
      *
      * @param {object} [patchPayload.tags] Contains resource tags defined as
      * key/value pairs.
@@ -1950,9 +1938,9 @@ export interface WebServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
-    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, callback: ServiceCallback<models.WebService>): void;
-    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.WebService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
+    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebService>;
+    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, callback: ServiceCallback<models.WebService>): void;
+    beginPatch(resourceGroupName: string, webServiceName: string, patchPayload: models.PatchedWebService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebService>): void;
 
 
     /**
