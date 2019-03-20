@@ -2501,11 +2501,11 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  unpublishIterationWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
+  unpublishIterationWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Unpublish a specific iteration.
@@ -2526,7 +2526,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {Boolean} - The deserialized result object.
+   *                      @resolve {null} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -2534,15 +2534,15 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  unpublishIteration(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
-  unpublishIteration(projectId: string, iterationId: string, callback: ServiceCallback<boolean>): void;
-  unpublishIteration(projectId: string, iterationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+  unpublishIteration(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  unpublishIteration(projectId: string, iterationId: string, callback: ServiceCallback<void>): void;
+  unpublishIteration(projectId: string, iterationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
