@@ -43,6 +43,7 @@
     "async": "^2.5.0",
     "azure-arm-hdinsight": "^0.12.0",
     "azure-arm-hdinsight-jobs": "^0.1.1",
+    "azure-arm-storage": "^7.0.0",
     "azure-asm-compute": "^0.18.0",
     "azure-asm-hdinsight": "^0.10.3",
     "azure-asm-mgmt": "^0.10.2",
