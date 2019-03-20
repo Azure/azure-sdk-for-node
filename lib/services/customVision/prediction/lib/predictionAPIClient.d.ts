@@ -17,9 +17,9 @@ export default class PredictionAPIClient extends ServiceClient {
    * Initializes a new instance of the PredictionAPIClient class.
    * @constructor
    *
-   * @param {string} apiKey -
+   * @param {string} apiKey - API key.
    *
-   * @param {string} endpoint - Supported Cognitive Services endpoints
+   * @param {string} endpoint - Supported Cognitive Services endpoints.
    *
    * @param {object} [options] - The parameter options
    *
@@ -39,23 +39,22 @@ export default class PredictionAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Predict an image url and saves the result
+   * @summary Classify an image url and saves the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
    *
-   * @param {string} [imageUrl.url]
+   * @param {object} imageUrl An ImageUrl that contains the url of the image to
+   * be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -66,26 +65,25 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  predictImageUrlWithHttpOperationResponse(projectId: string, imageUrl: models.ImageUrl, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+  classifyImageUrlWithHttpOperationResponse(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Predict an image url and saves the result
+   * @summary Classify an image url and saves the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
    *
-   * @param {string} [imageUrl.url]
+   * @param {object} imageUrl An ImageUrl that contains the url of the image to
+   * be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -112,26 +110,26 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  predictImageUrl(projectId: string, imageUrl: models.ImageUrl, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
-  predictImageUrl(projectId: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
-  predictImageUrl(projectId: string, imageUrl: models.ImageUrl, options: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  classifyImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
 
 
   /**
-   * @summary Predict an image and saves the result
+   * @summary Classify an image and saves the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 4MB.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -142,23 +140,23 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  predictImageWithHttpOperationResponse(projectId: string, imageData: stream.Readable, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+  classifyImageWithHttpOperationResponse(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Predict an image and saves the result
+   * @summary Classify an image and saves the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 4MB.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -185,29 +183,28 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  predictImage(projectId: string, imageData: stream.Readable, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
-  predictImage(projectId: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
-  predictImage(projectId: string, imageData: stream.Readable, options: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImage(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  classifyImage(projectId: string, publishedName: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImage(projectId: string, publishedName: string, imageData: stream.Readable, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
 
 
   /**
-   * @summary Predict an image url without saving the result
+   * @summary Classify an image url without saving the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
    *
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * url of the image to be evaluated.
    *
-   * @param {string} [imageUrl.url]
+   * @param {string} imageUrl.url Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -218,26 +215,25 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  predictImageUrlWithNoStoreWithHttpOperationResponse(projectId: string, imageUrl: models.ImageUrl, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+  classifyImageUrlWithNoStoreWithHttpOperationResponse(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Predict an image url without saving the result
+   * @summary Classify an image url without saving the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
    *
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * url of the image to be evaluated.
    *
-   * @param {string} [imageUrl.url]
+   * @param {string} imageUrl.url Url of the image.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -264,26 +260,26 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  predictImageUrlWithNoStore(projectId: string, imageUrl: models.ImageUrl, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
-  predictImageUrlWithNoStore(projectId: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
-  predictImageUrlWithNoStore(projectId: string, imageUrl: models.ImageUrl, options: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  classifyImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
 
 
   /**
-   * @summary Predict an image without saving the result
+   * @summary Classify an image without saving the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 0MB.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -294,23 +290,23 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  predictImageWithNoStoreWithHttpOperationResponse(projectId: string, imageData: stream.Readable, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+  classifyImageWithNoStoreWithHttpOperationResponse(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Predict an image without saving the result
+   * @summary Classify an image without saving the result.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 0MB.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] Optional. Specifies the id of a
-   * particular iteration to evaluate against.
-   * The default iteration for the project will be used when not specified
-   *
    * @param {string} [options.application] Optional. Specifies the name of
-   * application using the endpoint
+   * application using the endpoint.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -337,9 +333,309 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  predictImageWithNoStore(projectId: string, imageData: stream.Readable, options?: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
-  predictImageWithNoStore(projectId: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
-  predictImageWithNoStore(projectId: string, imageData: stream.Readable, options: { iterationId? : string, application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  classifyImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
+  classifyImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+
+
+  /**
+   * @summary Detect objects in an image url and saves the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageUrl An ImageUrl that contains the url of the image to
+   * be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImagePrediction>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  detectImageUrlWithHttpOperationResponse(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+
+  /**
+   * @summary Detect objects in an image url and saves the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageUrl An ImageUrl that contains the url of the image to
+   * be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImagePrediction} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImagePrediction} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImagePrediction} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  detectImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  detectImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
+  detectImageUrl(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+
+
+  /**
+   * @summary Detect objects in an image and saves the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 4MB.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImagePrediction>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  detectImageWithHttpOperationResponse(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+
+  /**
+   * @summary Detect objects in an image and saves the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 4MB.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImagePrediction} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImagePrediction} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImagePrediction} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  detectImage(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  detectImage(projectId: string, publishedName: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
+  detectImage(projectId: string, publishedName: string, imageData: stream.Readable, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+
+
+  /**
+   * @summary Detect objects in an image url without saving the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
+   * url of the image to be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImagePrediction>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  detectImageUrlWithNoStoreWithHttpOperationResponse(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+
+  /**
+   * @summary Detect objects in an image url without saving the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
+   * url of the image to be evaluated.
+   *
+   * @param {string} imageUrl.url Url of the image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImagePrediction} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImagePrediction} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImagePrediction} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  detectImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  detectImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, callback: ServiceCallback<models.ImagePrediction>): void;
+  detectImageUrlWithNoStore(projectId: string, publishedName: string, imageUrl: models.ImageUrl, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
+
+
+  /**
+   * @summary Detect objects in an image without saving the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 0MB.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImagePrediction>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  detectImageWithNoStoreWithHttpOperationResponse(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
+
+  /**
+   * @summary Detect objects in an image without saving the result.
+   *
+   * @param {uuid} projectId The project id.
+   *
+   * @param {string} publishedName Specifies the name of the model to evaluate
+   * against.
+   *
+   * @param {object} imageData Binary image data. Supported formats are JPEG,
+   * GIF, PNG, and BMP. Supports images up to 0MB.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.application] Optional. Specifies the name of
+   * application using the endpoint.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImagePrediction} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImagePrediction} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImagePrediction} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  detectImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, options?: { application? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePrediction>;
+  detectImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, callback: ServiceCallback<models.ImagePrediction>): void;
+  detectImageWithNoStore(projectId: string, publishedName: string, imageData: stream.Readable, options: { application? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePrediction>): void;
 }
 
 export { PredictionAPIClient, models as PredictionAPIModels };
