@@ -30,11 +30,11 @@ const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new PredictionAPIClient(creds, subscriptionId);
-const projectId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
+const projectId = "ec7b1657-199d-4d8a-bbb2-89a11a42e02a";
 const imageUrl = {
   url: "testurl"
 };
-const iterationId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
+const iterationId = "ec7b1657-199d-4d8a-bbb2-89a11a42e02a";
 const application = "testapplication";
 
 client.predictImageUrl(projectId, imageUrl, iterationId, application).then((result) => {
