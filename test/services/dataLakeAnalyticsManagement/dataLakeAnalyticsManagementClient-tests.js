@@ -335,7 +335,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       });
     });
     
-    it('adding and removing blob storage accounts to the account should work', function (done) {
+    it.skip('adding and removing blob storage accounts to the account should work', function (done) {
       storageClient.storageAccounts.listKeys(testResourceGroup, azureBlobAccountName, function (err, result) {
         azureBlobAccountKey = result.keys[0].value;
         var storageParams = {

@@ -3,7 +3,8 @@ uid: azure-cognitiveservices-customvision-prediction
 summary: *content
 
 ---
-**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://github.com/Azure/azure-sdk-for-js) which works on Node.js and browsers.**
+**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) which works on Node.js and browsers.**
+**See https://aka.ms/azure-sdk-for-js-migration to learn more.**
 ## Microsoft Azure SDK for Node.js - PredictionAPIClient
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
@@ -29,11 +30,11 @@ const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new PredictionAPIClient(creds, subscriptionId);
-const projectId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
+const projectId = "ec7b1657-199d-4d8a-bbb2-89a11a42e02a";
 const imageUrl = {
   url: "testurl"
 };
-const iterationId = ec7b1657-199d-4d8a-bbb2-89a11a42e02a;
+const iterationId = "ec7b1657-199d-4d8a-bbb2-89a11a42e02a";
 const application = "testapplication";
 
 client.predictImageUrl(projectId, imageUrl, iterationId, application).then((result) => {
@@ -48,6 +49,3 @@ client.predictImageUrl(projectId, imageUrl, iterationId, application).then((resu
 ### Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
-
-
-![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FcustomVision%2Fprediction%2FREADME.png)
