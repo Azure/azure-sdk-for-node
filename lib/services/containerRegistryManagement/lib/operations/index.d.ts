@@ -4519,6 +4519,28 @@ export interface Tasks {
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
+     *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
      *
@@ -4602,6 +4624,28 @@ export interface Tasks {
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -4771,6 +4815,28 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
+     *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -4852,6 +4918,28 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
@@ -5018,6 +5106,28 @@ export interface Tasks {
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
+     *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
      *
@@ -5101,6 +5211,28 @@ export interface Tasks {
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -5270,6 +5402,28 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
+     *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -5351,6 +5505,28 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
