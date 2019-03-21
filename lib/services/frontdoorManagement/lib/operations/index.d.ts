@@ -4301,7 +4301,8 @@ export interface Policies {
     /**
      * Lists all of the protection policies within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4310,16 +4311,17 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyList>>;
 
     /**
      * Lists all of the protection policies within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4333,7 +4335,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicyList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4341,25 +4343,26 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicyListResult} for
-     *                      more information.
+     *                      {WebApplicationFirewallPolicyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyList} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyList>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyList>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyList>): void;
 
 
     /**
      * Retrieve protection policy with specified name within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4368,18 +4371,19 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy1>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy1>>;
+    getWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
 
     /**
      * Retrieve protection policy with specified name within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4393,7 +4397,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicy1} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4401,49 +4405,59 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicy1} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicy1} for more
+     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy1>;
-    get(resourceGroupName: string, policyName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
-    get(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
+    get(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
+    get(resourceGroupName: string, policyName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    get(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
 
 
     /**
-     * Creates or update policy with specified ruleset name within a resource
-     * group.
+     * Create or update policy with specified ruleset name within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} parameters Policy to be created.
      *
-     * @param {object} [parameters.policySettings] Describes  policySettings for
-     * policy
+     * @param {object} [parameters.policySettings] Describes settings for the
+     * policy.
      *
-     * @param {string} [parameters.policySettings.enabledState] describes if the
-     * policy is in enabled state or disabled state. Possible values include:
-     * 'Disabled', 'Enabled'
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled or disabled state. Defaults to Enabled if not
+     * specified. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} [parameters.policySettings.mode] Describes if it is in
-     * detection mode  or prevention mode at policy level. Possible values include:
+     * detection mode or prevention mode at policy level. Possible values include:
      * 'Prevention', 'Detection'
      *
+     * @param {string} [parameters.policySettings.redirectUrl] If action type is
+     * redirect, this field represents redirect URL for the client.
+     *
+     * @param {number} [parameters.policySettings.customBlockResponseStatusCode] If
+     * the action type is block, customer can override the response status code.
+     *
+     * @param {string} [parameters.policySettings.customBlockResponseBody] If the
+     * action type is block, customer can override the response body. The body must
+     * be specified in base64 encoding.
+     *
      * @param {object} [parameters.customRules] Describes custom rules inside the
-     * policy
+     * policy.
      *
      * @param {array} [parameters.customRules.rules] List of rules
      *
      * @param {object} [parameters.managedRules] Describes managed rules inside the
-     * policy
+     * policy.
      *
-     * @param {array} [parameters.managedRules.ruleSets] List of rules
+     * @param {array} [parameters.managedRules.managedRuleSets] List of rule sets.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -4459,42 +4473,52 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy1>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy1>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
 
     /**
-     * Creates or update policy with specified ruleset name within a resource
-     * group.
+     * Create or update policy with specified ruleset name within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} parameters Policy to be created.
      *
-     * @param {object} [parameters.policySettings] Describes  policySettings for
-     * policy
+     * @param {object} [parameters.policySettings] Describes settings for the
+     * policy.
      *
-     * @param {string} [parameters.policySettings.enabledState] describes if the
-     * policy is in enabled state or disabled state. Possible values include:
-     * 'Disabled', 'Enabled'
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled or disabled state. Defaults to Enabled if not
+     * specified. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} [parameters.policySettings.mode] Describes if it is in
-     * detection mode  or prevention mode at policy level. Possible values include:
+     * detection mode or prevention mode at policy level. Possible values include:
      * 'Prevention', 'Detection'
      *
+     * @param {string} [parameters.policySettings.redirectUrl] If action type is
+     * redirect, this field represents redirect URL for the client.
+     *
+     * @param {number} [parameters.policySettings.customBlockResponseStatusCode] If
+     * the action type is block, customer can override the response status code.
+     *
+     * @param {string} [parameters.policySettings.customBlockResponseBody] If the
+     * action type is block, customer can override the response body. The body must
+     * be specified in base64 encoding.
+     *
      * @param {object} [parameters.customRules] Describes custom rules inside the
-     * policy
+     * policy.
      *
      * @param {array} [parameters.customRules.rules] List of rules
      *
      * @param {object} [parameters.managedRules] Describes managed rules inside the
-     * policy
+     * policy.
      *
-     * @param {array} [parameters.managedRules.ruleSets] List of rules
+     * @param {array} [parameters.managedRules.managedRuleSets] List of rule sets.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -4515,7 +4539,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicy1} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4523,25 +4547,26 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicy1} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicy1} for more
+     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy1>;
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
 
 
     /**
      * Deletes Policy
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4559,9 +4584,10 @@ export interface Policies {
     /**
      * Deletes Policy
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4595,11 +4621,154 @@ export interface Policies {
 
 
     /**
+     * Create or update policy with specified ruleset name within a resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} policyName The name of the Web Application Firewall Policy.
+     *
+     * @param {object} parameters Policy to be created.
+     *
+     * @param {object} [parameters.policySettings] Describes settings for the
+     * policy.
+     *
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled or disabled state. Defaults to Enabled if not
+     * specified. Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.policySettings.mode] Describes if it is in
+     * detection mode or prevention mode at policy level. Possible values include:
+     * 'Prevention', 'Detection'
+     *
+     * @param {string} [parameters.policySettings.redirectUrl] If action type is
+     * redirect, this field represents redirect URL for the client.
+     *
+     * @param {number} [parameters.policySettings.customBlockResponseStatusCode] If
+     * the action type is block, customer can override the response status code.
+     *
+     * @param {string} [parameters.policySettings.customBlockResponseBody] If the
+     * action type is block, customer can override the response body. The body must
+     * be specified in base64 encoding.
+     *
+     * @param {object} [parameters.customRules] Describes custom rules inside the
+     * policy.
+     *
+     * @param {array} [parameters.customRules.rules] List of rules
+     *
+     * @param {object} [parameters.managedRules] Describes managed rules inside the
+     * policy.
+     *
+     * @param {array} [parameters.managedRules.managedRuleSets] List of rule sets.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
+
+    /**
+     * Create or update policy with specified ruleset name within a resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} policyName The name of the Web Application Firewall Policy.
+     *
+     * @param {object} parameters Policy to be created.
+     *
+     * @param {object} [parameters.policySettings] Describes settings for the
+     * policy.
+     *
+     * @param {string} [parameters.policySettings.enabledState] Describes if the
+     * policy is in enabled or disabled state. Defaults to Enabled if not
+     * specified. Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.policySettings.mode] Describes if it is in
+     * detection mode or prevention mode at policy level. Possible values include:
+     * 'Prevention', 'Detection'
+     *
+     * @param {string} [parameters.policySettings.redirectUrl] If action type is
+     * redirect, this field represents redirect URL for the client.
+     *
+     * @param {number} [parameters.policySettings.customBlockResponseStatusCode] If
+     * the action type is block, customer can override the response status code.
+     *
+     * @param {string} [parameters.policySettings.customBlockResponseBody] If the
+     * action type is block, customer can override the response body. The body must
+     * be specified in base64 encoding.
+     *
+     * @param {object} [parameters.customRules] Describes custom rules inside the
+     * policy.
+     *
+     * @param {array} [parameters.customRules.rules] List of rules
+     *
+     * @param {object} [parameters.managedRules] Describes managed rules inside the
+     * policy.
+     *
+     * @param {array} [parameters.managedRules.managedRuleSets] List of rule sets.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+
+
+    /**
      * Deletes Policy
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4617,9 +4786,10 @@ export interface Policies {
     /**
      * Deletes Policy
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
      *
-     * @param {string} policyName The name of the resource group.
+     * @param {string} policyName The name of the Web Application Firewall Policy.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4665,11 +4835,11 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicyList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicyList>>;
 
     /**
      * Lists all of the protection policies within a resource group.
@@ -4689,7 +4859,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicyListResult} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicyList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4697,15 +4867,134 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicyListResult} for
-     *                      more information.
+     *                      {WebApplicationFirewallPolicyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicyList} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicyList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WebApplicationFirewallPolicyList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicyList>): void;
+}
+
+/**
+ * @class
+ * ManagedRuleSets
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FrontDoorManagementClient.
+ */
+export interface ManagedRuleSets {
+
+
+    /**
+     * Lists all available managed rule sets.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedRuleSetDefinitionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedRuleSetDefinitionList>>;
+
+    /**
+     * Lists all available managed rule sets.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedRuleSetDefinitionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedRuleSetDefinitionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedRuleSetDefinitionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedRuleSetDefinitionList>;
+    list(callback: ServiceCallback<models.ManagedRuleSetDefinitionList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedRuleSetDefinitionList>): void;
+
+
+    /**
+     * Lists all available managed rule sets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedRuleSetDefinitionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedRuleSetDefinitionList>>;
+
+    /**
+     * Lists all available managed rule sets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedRuleSetDefinitionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedRuleSetDefinitionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedRuleSetDefinitionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedRuleSetDefinitionList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ManagedRuleSetDefinitionList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedRuleSetDefinitionList>): void;
 }
