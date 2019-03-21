@@ -62,6 +62,7 @@ export default class FrontDoorManagementClient extends AzureServiceClient {
   frontendEndpoints: operations.FrontendEndpoints;
   endpoints: operations.Endpoints;
   policies: operations.Policies;
+  managedRuleSets: operations.ManagedRuleSets;
 
 
   /**
