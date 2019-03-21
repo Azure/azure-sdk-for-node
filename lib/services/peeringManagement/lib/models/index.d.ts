@@ -179,10 +179,28 @@ export interface PeeringPropertiesExchange {
 }
 
 /**
+ * The ARM resource class.
+ */
+export interface Resource extends BaseResource {
+  /**
+   * The name of the resource.
+   */
+  readonly name?: string;
+  /**
+   * The ID of the resource.
+   */
+  readonly id?: string;
+  /**
+   * The type of the resource.
+   */
+  readonly type?: string;
+}
+
+/**
  * Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a
  * location.
  */
-export interface Peering extends BaseResource {
+export interface Peering extends Resource {
   /**
    * The SKU that defines the tier and kind of the peering.
    */
@@ -216,18 +234,6 @@ export interface Peering extends BaseResource {
    * The resource tags.
    */
   tags?: { [propertyName: string]: string };
-  /**
-   * The name of the resource.
-   */
-  readonly name?: string;
-  /**
-   * The ID of the resource.
-   */
-  readonly id?: string;
-  /**
-   * The type of the resource.
-   */
-  readonly type?: string;
 }
 
 /**
@@ -301,7 +307,7 @@ export interface ContactInfo {
 /**
  * The essential information related to the peer's ASN.
  */
-export interface PeerAsn extends BaseResource {
+export interface PeerAsn extends Resource {
   /**
    * The Autonomous System Number (ASN) of the peer.
    */
@@ -319,18 +325,6 @@ export interface PeerAsn extends BaseResource {
    * 'Pending', 'Approved', 'Failed'
    */
   validationState?: string;
-  /**
-   * The name of the resource.
-   */
-  readonly name?: string;
-  /**
-   * The ID of the resource.
-   */
-  readonly id?: string;
-  /**
-   * The type of the resource.
-   */
-  readonly type?: string;
 }
 
 /**
@@ -430,7 +424,7 @@ export interface PeeringLocationPropertiesExchange {
 /**
  * Peering location is where connectivity could be established to the Microsoft Cloud Edge.
  */
-export interface PeeringLocation {
+export interface PeeringLocation extends Resource {
   /**
    * The kind of peering that the peering location supports. Possible values include: 'Direct',
    * 'Exchange'
@@ -456,18 +450,6 @@ export interface PeeringLocation {
    * The Azure region associated with the peering location.
    */
   azureRegion?: string;
-  /**
-   * The name of the resource.
-   */
-  readonly name?: string;
-  /**
-   * The ID of the resource.
-   */
-  readonly id?: string;
-  /**
-   * The type of the resource.
-   */
-  readonly type?: string;
 }
 
 /**
