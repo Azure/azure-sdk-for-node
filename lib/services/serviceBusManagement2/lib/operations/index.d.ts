@@ -145,7 +145,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters to check availability of the given
      * namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name The Name to check the namespace name
      * availability and The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
@@ -169,7 +169,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters to check availability of the given
      * namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name The Name to check the namespace name
      * availability and The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
@@ -329,7 +329,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -370,7 +370,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -553,7 +553,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to update a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -593,7 +593,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to update a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -710,7 +710,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -737,7 +737,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -783,7 +783,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -806,7 +806,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -847,7 +847,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -870,7 +870,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -912,7 +912,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -935,7 +935,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -977,7 +977,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
@@ -1009,7 +1009,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
@@ -1123,6 +1123,146 @@ export interface Namespaces {
 
 
     /**
+     * Create or update NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.defaultAction] Default Action for Network Rule
+     * Set. Possible values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.virtualNetworkRules] List VirtualNetwork Rules
+     *
+     * @param {array} [parameters.ipRules] List of IpRules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkRuleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateNetworkRuleSetWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkRuleSet>>;
+
+    /**
+     * Create or update NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.defaultAction] Default Action for Network Rule
+     * Set. Possible values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.virtualNetworkRules] List VirtualNetwork Rules
+     *
+     * @param {array} [parameters.ipRules] List of IpRules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkRuleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkRuleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkRuleSet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkRuleSet>;
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, callback: ServiceCallback<models.NetworkRuleSet>): void;
+    createOrUpdateNetworkRuleSet(resourceGroupName: string, namespaceName: string, parameters: models.NetworkRuleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkRuleSet>): void;
+
+
+    /**
+     * Gets NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkRuleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkRuleSetWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkRuleSet>>;
+
+    /**
+     * Gets NetworkRuleSet for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkRuleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkRuleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkRuleSet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkRuleSet>;
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.NetworkRuleSet>): void;
+    getNetworkRuleSet(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkRuleSet>): void;
+
+
+    /**
      * Creates or updates a service namespace. Once created, this namespace's
      * resource manifest is immutable. This operation is idempotent.
      *
@@ -1134,7 +1274,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -1175,7 +1315,7 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a namespace
      * resource.
      *
-     * @param {object} [parameters.sku] Porperties of Sku
+     * @param {object} [parameters.sku] Properties of Sku
      *
      * @param {string} parameters.sku.name Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
@@ -1479,7 +1619,7 @@ export interface DisasterRecoveryConfigs {
      * @param {object} parameters Parameters to check availability of the given
      * namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name The Name to check the namespace name
      * availability and The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
@@ -1508,7 +1648,7 @@ export interface DisasterRecoveryConfigs {
      * @param {object} parameters Parameters to check availability of the given
      * namespace name
      *
-     * @param {string} parameters.name The Name to check the namespce name
+     * @param {string} parameters.name The Name to check the namespace name
      * availability and The namespace name can contain only letters, numbers, and
      * hyphens. The namespace must start with a letter, and it must end with a
      * letter or number.
@@ -1622,10 +1762,10 @@ export interface DisasterRecoveryConfigs {
      * Recovery configuration)
      *
      * @param {string} [parameters.partnerNamespace] ARM Id of the
-     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairning
+     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      *
      * @param {string} [parameters.alternateName] Primary/Secondary eventhub
-     * namespace name, which is part of GEO DR pairning
+     * namespace name, which is part of GEO DR pairing
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1654,10 +1794,10 @@ export interface DisasterRecoveryConfigs {
      * Recovery configuration)
      *
      * @param {string} [parameters.partnerNamespace] ARM Id of the
-     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairning
+     * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      *
      * @param {string} [parameters.alternateName] Primary/Secondary eventhub
-     * namespace name, which is part of GEO DR pairning
+     * namespace name, which is part of GEO DR pairing
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1889,7 +2029,7 @@ export interface DisasterRecoveryConfigs {
 
 
     /**
-     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * Invokes GEO DR failover and reconfigure the alias to point to the secondary
      * namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -1913,7 +2053,7 @@ export interface DisasterRecoveryConfigs {
     failOverWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, alias: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * envokes GEO DR failover and reconfigure the alias to point to the secondary
+     * Invokes GEO DR failover and reconfigure the alias to point to the secondary
      * namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -2030,7 +2170,7 @@ export interface DisasterRecoveryConfigs {
      *
      * @param {string} alias The Disaster Recovery configuration name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2055,7 +2195,7 @@ export interface DisasterRecoveryConfigs {
      *
      * @param {string} alias The Disaster Recovery configuration name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2099,7 +2239,7 @@ export interface DisasterRecoveryConfigs {
      *
      * @param {string} alias The Disaster Recovery configuration name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2124,7 +2264,7 @@ export interface DisasterRecoveryConfigs {
      *
      * @param {string} alias The Disaster Recovery configuration name
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2346,8 +2486,8 @@ export interface MigrationConfigs {
 
 
     /**
-     * Creates Migration configuration and starts migration of enties from Standard
-     * to Premium namespace
+     * Creates Migration configuration and starts migration of entities from
+     * Standard to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2377,8 +2517,8 @@ export interface MigrationConfigs {
     createAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
 
     /**
-     * Creates Migration configuration and starts migration of enties from Standard
-     * to Premium namespace
+     * Creates Migration configuration and starts migration of entities from
+     * Standard to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2551,8 +2691,8 @@ export interface MigrationConfigs {
 
     /**
      * This operation Completes Migration of entities by pointing the connection
-     * strings to Premium namespace and any enties created after the operation will
-     * be under Premium Namespace. CompleteMigration operation will fail when
+     * strings to Premium namespace and any entities created after the operation
+     * will be under Premium Namespace. CompleteMigration operation will fail when
      * entity migration is in-progress.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -2575,8 +2715,8 @@ export interface MigrationConfigs {
 
     /**
      * This operation Completes Migration of entities by pointing the connection
-     * strings to Premium namespace and any enties created after the operation will
-     * be under Premium Namespace. CompleteMigration operation will fail when
+     * strings to Premium namespace and any entities created after the operation
+     * will be under Premium Namespace. CompleteMigration operation will fail when
      * entity migration is in-progress.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -2676,8 +2816,8 @@ export interface MigrationConfigs {
 
 
     /**
-     * Creates Migration configuration and starts migration of enties from Standard
-     * to Premium namespace
+     * Creates Migration configuration and starts migration of entities from
+     * Standard to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2707,8 +2847,8 @@ export interface MigrationConfigs {
     beginCreateAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
 
     /**
-     * Creates Migration configuration and starts migration of enties from Standard
-     * to Premium namespace
+     * Creates Migration configuration and starts migration of entities from
+     * Standard to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -3289,7 +3429,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -3318,7 +3458,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -3366,7 +3506,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3391,7 +3531,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3434,7 +3574,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3459,7 +3599,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3503,7 +3643,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3528,7 +3668,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3572,7 +3712,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
@@ -3606,7 +3746,7 @@ export interface Queues {
      *
      * @param {string} queueName The queue name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
@@ -4193,7 +4333,7 @@ export interface Topics {
 
 
     /**
-     * Creates an authorizatio rule for the specified topic.
+     * Creates an authorization rule for the specified topic.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -4202,7 +4342,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -4222,7 +4362,7 @@ export interface Topics {
     createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, authorizationRuleName: string, parameters: models.SBAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBAuthorizationRule>>;
 
     /**
-     * Creates an authorizatio rule for the specified topic.
+     * Creates an authorization rule for the specified topic.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -4231,7 +4371,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -4279,7 +4419,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4304,7 +4444,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4348,7 +4488,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4373,7 +4513,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4416,7 +4556,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4441,7 +4581,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4485,7 +4625,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
@@ -4519,7 +4659,7 @@ export interface Topics {
      *
      * @param {string} topicName The topic name.
      *
-     * @param {string} authorizationRuleName The authorizationrule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      *
      * @param {object} parameters Parameters supplied to regenerate the
      * authorization rule.
