@@ -23,7 +23,79 @@ export interface Features {
 
 
     /**
-     * Creates a new phraselist feature.
+     * [DEPRECATED NOTICE: This operation will soon be removed] Gets all the
+     * pattern features.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of entries to skip. Default value
+     * is 0.
+     *
+     * @param {number} [options.take] The number of entries to return. Maximum page
+     * size is 500. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listApplicationVersionPatternFeaturesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternFeatureInfo[]>>;
+
+    /**
+     * [DEPRECATED NOTICE: This operation will soon be removed] Gets all the
+     * pattern features.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of entries to skip. Default value
+     * is 0.
+     *
+     * @param {number} [options.take] The number of entries to return. Maximum page
+     * size is 500. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listApplicationVersionPatternFeatures(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternFeatureInfo[]>;
+    listApplicationVersionPatternFeatures(appId: string, versionId: string, callback: ServiceCallback<models.PatternFeatureInfo[]>): void;
+    listApplicationVersionPatternFeatures(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternFeatureInfo[]>): void;
+
+
+    /**
+     * Creates a new phraselist feature in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -38,17 +110,14 @@ export interface Features {
      *
      * @param {string} [phraselistCreateObject.name] The Phraselist name.
      *
-     * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
-     * training algorithm. It is used as a lexicon lookup feature where its value
-     * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
-     * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
-     * all the phrases in the list serve as separate features to the underlying
-     * training algorithm. So, if you your phrase list feature contains 5 phrases,
-     * they will be mapped to 5 separate features. You can think of the
-     * non-exchangeable phrase list feature as an additional bag of words that you
-     * are willing to add to LUIS existing vocabulary features. Think of a
-     * non-exchangeable as set of different words. Default value is true.
+     * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
+     * phrase list feature serves as a list of synonyms for training. A
+     * non-exchangeable phrase list serves as separate features for training. So,
+     * if your non-interchangeable phrase list contains 5 phrases, they will be
+     * mapped to 5 separate features. You can think of the non-interchangeable
+     * phrase list as an additional bag of words to add to LUIS existing vocabulary
+     * features. It is used as a lexicon lookup feature where its value is 1 if the
+     * lexicon contains a given word or 0 if it doesn’t.  Default value is true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -64,7 +133,7 @@ export interface Features {
     addPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
     /**
-     * Creates a new phraselist feature.
+     * Creates a new phraselist feature in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -79,17 +148,14 @@ export interface Features {
      *
      * @param {string} [phraselistCreateObject.name] The Phraselist name.
      *
-     * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
-     * training algorithm. It is used as a lexicon lookup feature where its value
-     * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
-     * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
-     * all the phrases in the list serve as separate features to the underlying
-     * training algorithm. So, if you your phrase list feature contains 5 phrases,
-     * they will be mapped to 5 separate features. You can think of the
-     * non-exchangeable phrase list feature as an additional bag of words that you
-     * are willing to add to LUIS existing vocabulary features. Think of a
-     * non-exchangeable as set of different words. Default value is true.
+     * @param {boolean} [phraselistCreateObject.isExchangeable] An interchangeable
+     * phrase list feature serves as a list of synonyms for training. A
+     * non-exchangeable phrase list serves as separate features for training. So,
+     * if your non-interchangeable phrase list contains 5 phrases, they will be
+     * mapped to 5 separate features. You can think of the non-interchangeable
+     * phrase list as an additional bag of words to add to LUIS existing vocabulary
+     * features. It is used as a lexicon lookup feature where its value is 1 if the
+     * lexicon contains a given word or 0 if it doesn’t.  Default value is true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -123,7 +189,7 @@ export interface Features {
 
 
     /**
-     * Gets all the phraselist features.
+     * Gets all the phraselist features in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -149,7 +215,7 @@ export interface Features {
     listPhraseListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo[]>>;
 
     /**
-     * Gets all the phraselist features.
+     * Gets all the phraselist features in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -193,7 +259,8 @@ export interface Features {
 
 
     /**
-     * Gets all the extraction features for the specified application version.
+     * Gets all the extraction phraselist and pattern features in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -219,7 +286,8 @@ export interface Features {
     listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FeaturesResponseObject>>;
 
     /**
-     * Gets all the extraction features for the specified application version.
+     * Gets all the extraction phraselist and pattern features in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -265,7 +333,7 @@ export interface Features {
 
 
     /**
-     * Gets phraselist feature info.
+     * Gets phraselist feature info in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -287,7 +355,7 @@ export interface Features {
     getPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo>>;
 
     /**
-     * Gets phraselist feature info.
+     * Gets phraselist feature info in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -328,7 +396,8 @@ export interface Features {
 
 
     /**
-     * Updates the phrases, the state and the name of the phraselist feature.
+     * Updates the phrases, the state and the name of the phraselist feature in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -375,7 +444,8 @@ export interface Features {
     updatePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the phrases, the state and the name of the phraselist feature.
+     * Updates the phrases, the state and the name of the phraselist feature in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -441,7 +511,7 @@ export interface Features {
 
 
     /**
-     * Deletes a phraselist feature.
+     * Deletes a phraselist feature from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -463,7 +533,7 @@ export interface Features {
     deletePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a phraselist feature.
+     * Deletes a phraselist feature from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -513,22 +583,22 @@ export interface Examples {
 
 
     /**
-     * Adds a labeled example to the application.
+     * Adds a labeled example utterance in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} exampleLabelObject An example label with the expected intent
-     * and entities.
+     * @param {object} exampleLabelObject A labeled example utterance with the
+     * expected intent and entities.
      *
-     * @param {string} [exampleLabelObject.text] The sample's utterance.
+     * @param {string} [exampleLabelObject.text] The example utterance.
      *
      * @param {array} [exampleLabelObject.entityLabels] The identified entities
-     * within the utterance.
+     * within the example utterance.
      *
      * @param {string} [exampleLabelObject.intentName] The identified intent
-     * representing the utterance.
+     * representing the example utterance.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -544,22 +614,22 @@ export interface Examples {
     addWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelExampleResponse>>;
 
     /**
-     * Adds a labeled example to the application.
+     * Adds a labeled example utterance in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} exampleLabelObject An example label with the expected intent
-     * and entities.
+     * @param {object} exampleLabelObject A labeled example utterance with the
+     * expected intent and entities.
      *
-     * @param {string} [exampleLabelObject.text] The sample's utterance.
+     * @param {string} [exampleLabelObject.text] The example utterance.
      *
      * @param {array} [exampleLabelObject.entityLabels] The identified entities
-     * within the utterance.
+     * within the example utterance.
      *
      * @param {string} [exampleLabelObject.intentName] The identified intent
-     * representing the utterance.
+     * representing the example utterance.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -594,13 +664,13 @@ export interface Examples {
 
 
     /**
-     * Adds a batch of labeled examples to the application.
+     * Adds a batch of labeled example utterances to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {array} exampleLabelObjectArray Array of examples.
+     * @param {array} exampleLabelObjectArray Array of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -616,13 +686,13 @@ export interface Examples {
     batchWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchLabelExample[]>>;
 
     /**
-     * Adds a batch of labeled examples to the application.
+     * Adds a batch of labeled example utterances to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {array} exampleLabelObjectArray Array of examples.
+     * @param {array} exampleLabelObjectArray Array of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -656,7 +726,7 @@ export interface Examples {
 
 
     /**
-     * Returns examples to be reviewed.
+     * Returns example utterances to be reviewed from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -682,7 +752,7 @@ export interface Examples {
     listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabeledUtterance[]>>;
 
     /**
-     * Returns examples to be reviewed.
+     * Returns example utterances to be reviewed from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -726,7 +796,8 @@ export interface Examples {
 
 
     /**
-     * Deletes the labeled example with the specified ID.
+     * Deletes the labeled example utterances with the specified ID from a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -748,7 +819,8 @@ export interface Examples {
     deleteMethodWithHttpOperationResponse(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes the labeled example with the specified ID.
+     * Deletes the labeled example utterances with the specified ID from a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -798,14 +870,14 @@ export interface Model {
 
 
     /**
-     * Adds an intent classifier to the application.
+     * Adds an intent to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} intentCreateObject A model object containing the name of the
-     * new intent classifier.
+     * new intent.
      *
      * @param {string} [intentCreateObject.name] Name of the new entity extractor.
      *
@@ -823,14 +895,14 @@ export interface Model {
     addIntentWithHttpOperationResponse(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds an intent classifier to the application.
+     * Adds an intent to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} intentCreateObject A model object containing the name of the
-     * new intent classifier.
+     * new intent.
      *
      * @param {string} [intentCreateObject.name] Name of the new entity extractor.
      *
@@ -866,7 +938,7 @@ export interface Model {
 
 
     /**
-     * Gets information about the intent models.
+     * Gets information about the intent models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -892,7 +964,7 @@ export interface Model {
     listIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
 
     /**
-     * Gets information about the intent models.
+     * Gets information about the intent models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -936,14 +1008,14 @@ export interface Model {
 
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
@@ -961,14 +1033,14 @@ export interface Model {
     addEntityWithHttpOperationResponse(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds an entity extractor to the application.
+     * Adds a simple entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} modelCreateObject A model object containing the name for the
-     * new entity extractor.
+     * new simple entity extractor.
      *
      * @param {string} [modelCreateObject.name] Name of the new entity extractor.
      *
@@ -1004,7 +1076,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the entity models.
+     * Gets information about all the simple entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1030,7 +1103,8 @@ export interface Model {
     listEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
 
     /**
-     * Gets information about the entity models.
+     * Gets information about all the simple entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1074,7 +1148,7 @@ export interface Model {
 
 
     /**
-     * Adds a hierarchical entity extractor to the application version.
+     * Adds a hierarchical entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1101,7 +1175,7 @@ export interface Model {
     addHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a hierarchical entity extractor to the application version.
+     * Adds a hierarchical entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1146,7 +1220,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the hierarchical entity models.
+     * Gets information about all the hierarchical entity models in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1172,7 +1247,8 @@ export interface Model {
     listHierarchicalEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor[]>>;
 
     /**
-     * Gets information about the hierarchical entity models.
+     * Gets information about all the hierarchical entity models in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1216,7 +1292,7 @@ export interface Model {
 
 
     /**
-     * Adds a composite entity extractor to the application.
+     * Adds a composite entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1243,7 +1319,7 @@ export interface Model {
     addCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a composite entity extractor to the application.
+     * Adds a composite entity extractor to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1288,7 +1364,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the composite entity models.
+     * Gets information about all the composite entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1314,7 +1391,8 @@ export interface Model {
     listCompositeEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor[]>>;
 
     /**
-     * Gets information about the composite entity models.
+     * Gets information about all the composite entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1358,7 +1436,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the closedlist models.
+     * Gets information about all the list entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1384,7 +1463,8 @@ export interface Model {
     listClosedListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor[]>>;
 
     /**
-     * Gets information about the closedlist models.
+     * Gets information about all the list entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1428,20 +1508,19 @@ export interface Model {
 
 
     /**
-     * Adds a closed list model to the application.
+     * Adds a list entity model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} closedListModelCreateObject A model containing the name and
-     * words for the new closed list entity extractor.
+     * words for the new list entity extractor.
      *
      * @param {array} [closedListModelCreateObject.subLists] Sublists for the
      * feature.
      *
-     * @param {string} [closedListModelCreateObject.name] Name of the closed list
-     * feature.
+     * @param {string} [closedListModelCreateObject.name] Name of the list entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1457,20 +1536,19 @@ export interface Model {
     addClosedListWithHttpOperationResponse(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a closed list model to the application.
+     * Adds a list entity model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} closedListModelCreateObject A model containing the name and
-     * words for the new closed list entity extractor.
+     * words for the new list entity extractor.
      *
      * @param {array} [closedListModelCreateObject.subLists] Sublists for the
      * feature.
      *
-     * @param {string} [closedListModelCreateObject.name] Name of the closed list
-     * feature.
+     * @param {string} [closedListModelCreateObject.name] Name of the list entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1504,7 +1582,7 @@ export interface Model {
 
 
     /**
-     * Adds a list of prebuilt entity extractors to the application.
+     * Adds a list of prebuilt entities to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1527,7 +1605,7 @@ export interface Model {
     addPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
 
     /**
-     * Adds a list of prebuilt entity extractors to the application.
+     * Adds a list of prebuilt entities to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1568,7 +1646,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the prebuilt entity models.
+     * Gets information about all the prebuilt entities in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1594,7 +1673,8 @@ export interface Model {
     listPrebuiltsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
 
     /**
-     * Gets information about the prebuilt entity models.
+     * Gets information about all the prebuilt entities in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1638,7 +1718,7 @@ export interface Model {
 
 
     /**
-     * Gets all the available prebuilt entity extractors for the application.
+     * Gets all the available prebuilt entities in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1658,7 +1738,7 @@ export interface Model {
     listPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailablePrebuiltEntityModel[]>>;
 
     /**
-     * Gets all the available prebuilt entity extractors for the application.
+     * Gets all the available prebuilt entities in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1696,7 +1776,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the application version models.
+     * Gets information about all the intent and entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1722,7 +1803,8 @@ export interface Model {
     listModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelInfoResponse[]>>;
 
     /**
-     * Gets information about the application version models.
+     * Gets information about all the intent and entity models in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1766,7 +1848,8 @@ export interface Model {
 
 
     /**
-     * Gets the utterances for the given model in the given app version.
+     * Gets the example utterances for the given intent or entity model in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1794,7 +1877,8 @@ export interface Model {
     examplesMethodWithHttpOperationResponse(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelTextObject[]>>;
 
     /**
-     * Gets the utterances for the given model in the given app version.
+     * Gets the example utterances for the given intent or entity model in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1840,7 +1924,7 @@ export interface Model {
 
 
     /**
-     * Gets information about the intent model.
+     * Gets information about the intent model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1862,7 +1946,7 @@ export interface Model {
     getIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier>>;
 
     /**
-     * Gets information about the intent model.
+     * Gets information about the intent model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1903,7 +1987,7 @@ export interface Model {
 
 
     /**
-     * Updates the name of an intent classifier.
+     * Updates the name of an intent in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1912,7 +1996,7 @@ export interface Model {
      * @param {uuid} intentId The intent classifier ID.
      *
      * @param {object} modelUpdateObject A model object containing the new intent
-     * classifier name.
+     * name.
      *
      * @param {string} [modelUpdateObject.name] The entity's new name.
      *
@@ -1930,7 +2014,7 @@ export interface Model {
     updateIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name of an intent classifier.
+     * Updates the name of an intent in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1939,7 +2023,7 @@ export interface Model {
      * @param {uuid} intentId The intent classifier ID.
      *
      * @param {object} modelUpdateObject A model object containing the new intent
-     * classifier name.
+     * name.
      *
      * @param {string} [modelUpdateObject.name] The entity's new name.
      *
@@ -1976,7 +2060,7 @@ export interface Model {
 
 
     /**
-     * Deletes an intent classifier from the application.
+     * Deletes an intent from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -1986,9 +2070,9 @@ export interface Model {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.deleteUtterances] Also delete the intent's
-     * utterances (true). Or move the utterances to the None intent (false - the
-     * default value).
+     * @param {boolean} [options.deleteUtterances] If true, deletes the intent's
+     * example utterances. If false, moves the example utterances to the None
+     * intent. The default value is false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2002,7 +2086,7 @@ export interface Model {
     deleteIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes an intent classifier from the application.
+     * Deletes an intent from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2012,9 +2096,9 @@ export interface Model {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.deleteUtterances] Also delete the intent's
-     * utterances (true). Or move the utterances to the None intent (false - the
-     * default value).
+     * @param {boolean} [options.deleteUtterances] If true, deletes the intent's
+     * example utterances. If false, moves the example utterances to the None
+     * intent. The default value is false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2047,7 +2131,7 @@ export interface Model {
 
 
     /**
-     * Gets information about the entity model.
+     * Gets information about an entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2069,7 +2153,7 @@ export interface Model {
     getEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor>>;
 
     /**
-     * Gets information about the entity model.
+     * Gets information about an entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2110,7 +2194,7 @@ export interface Model {
 
 
     /**
-     * Updates the name of an entity extractor.
+     * Updates the name of an entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2137,7 +2221,7 @@ export interface Model {
     updateEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name of an entity extractor.
+     * Updates the name of an entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2183,7 +2267,7 @@ export interface Model {
 
 
     /**
-     * Deletes an entity extractor from the application.
+     * Deletes an entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2205,7 +2289,7 @@ export interface Model {
     deleteEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes an entity extractor from the application.
+     * Deletes an entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2246,7 +2330,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the hierarchical entity model.
+     * Gets information about a hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2268,7 +2353,8 @@ export interface Model {
     getHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor>>;
 
     /**
-     * Gets information about the hierarchical entity model.
+     * Gets information about a hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2310,7 +2396,8 @@ export interface Model {
 
 
     /**
-     * Updates the name and children of a hierarchical entity model.
+     * Updates the name and children of a hierarchical entity model in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2339,7 +2426,8 @@ export interface Model {
     updateHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the name and children of a hierarchical entity model.
+     * Updates the name and children of a hierarchical entity model in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2387,7 +2475,7 @@ export interface Model {
 
 
     /**
-     * Deletes a hierarchical entity extractor from the application version.
+     * Deletes a hierarchical entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2409,7 +2497,7 @@ export interface Model {
     deleteHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a hierarchical entity extractor from the application version.
+     * Deletes a hierarchical entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2450,7 +2538,7 @@ export interface Model {
 
 
     /**
-     * Gets information about the composite entity model.
+     * Gets information about a composite entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2472,7 +2560,7 @@ export interface Model {
     getCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor>>;
 
     /**
-     * Gets information about the composite entity model.
+     * Gets information about a composite entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2514,7 +2602,7 @@ export interface Model {
 
 
     /**
-     * Updates the composite entity extractor.
+     * Updates a composite entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2543,7 +2631,7 @@ export interface Model {
     updateCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the composite entity extractor.
+     * Updates a composite entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2591,7 +2679,7 @@ export interface Model {
 
 
     /**
-     * Deletes a composite entity extractor from the application.
+     * Deletes a composite entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2613,7 +2701,7 @@ export interface Model {
     deleteCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a composite entity extractor from the application.
+     * Deletes a composite entity from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2654,13 +2742,13 @@ export interface Model {
 
 
     /**
-     * Gets information of a closed list model.
+     * Gets information about a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2676,13 +2764,13 @@ export interface Model {
     getClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor>>;
 
     /**
-     * Gets information of a closed list model.
+     * Gets information about a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2718,22 +2806,22 @@ export interface Model {
 
 
     /**
-     * Updates the closed list model.
+     * Updates the list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
-     * @param {object} closedListModelUpdateObject The new entity name and words
-     * list.
+     * @param {object} closedListModelUpdateObject The new list entity name and
+     * words list.
      *
      * @param {array} [closedListModelUpdateObject.subLists] The new sublists for
      * the feature.
      *
-     * @param {string} [closedListModelUpdateObject.name] The new name of the
-     * closed list feature.
+     * @param {string} [closedListModelUpdateObject.name] The new name of the list
+     * entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2749,22 +2837,22 @@ export interface Model {
     updateClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the closed list model.
+     * Updates the list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list model ID.
      *
-     * @param {object} closedListModelUpdateObject The new entity name and words
-     * list.
+     * @param {object} closedListModelUpdateObject The new list entity name and
+     * words list.
      *
      * @param {array} [closedListModelUpdateObject.subLists] The new sublists for
      * the feature.
      *
-     * @param {string} [closedListModelUpdateObject.name] The new name of the
-     * closed list feature.
+     * @param {string} [closedListModelUpdateObject.name] The new name of the list
+     * entity.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2799,13 +2887,14 @@ export interface Model {
 
 
     /**
-     * Adds a batch of sublists to an existing closedlist.
+     * Adds a batch of sublists to an existing list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} closedListModelPatchObject A words list batch.
      *
@@ -2825,13 +2914,14 @@ export interface Model {
     patchClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Adds a batch of sublists to an existing closedlist.
+     * Adds a batch of sublists to an existing list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} closedListModelPatchObject A words list batch.
      *
@@ -2870,13 +2960,13 @@ export interface Model {
 
 
     /**
-     * Deletes a closed list model from the application.
+     * Deletes a list entity model from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2892,13 +2982,13 @@ export interface Model {
     deleteClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a closed list model from the application.
+     * Deletes a list entity model from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list model ID.
+     * @param {uuid} clEntityId The list entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2933,7 +3023,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the prebuilt entity model.
+     * Gets information about a prebuilt entity model in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2955,7 +3046,8 @@ export interface Model {
     getPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor>>;
 
     /**
-     * Gets information about the prebuilt entity model.
+     * Gets information about a prebuilt entity model in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -2997,7 +3089,7 @@ export interface Model {
 
 
     /**
-     * Deletes a prebuilt entity extractor from the application.
+     * Deletes a prebuilt entity extractor from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3019,7 +3111,7 @@ export interface Model {
     deletePrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a prebuilt entity extractor from the application.
+     * Deletes a prebuilt entity extractor from a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3060,13 +3152,14 @@ export interface Model {
 
 
     /**
-     * Deletes a sublist of a specific closed list model.
+     * Deletes a sublist of a specific list entity model from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3084,13 +3177,14 @@ export interface Model {
     deleteSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a sublist of a specific closed list model.
+     * Deletes a sublist of a specific list entity model from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3127,13 +3221,13 @@ export interface Model {
 
 
     /**
-     * Updates one of the closed list's sublists.
+     * Updates one of the list entity's sublists in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3159,13 +3253,13 @@ export interface Model {
     updateSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates one of the closed list's sublists.
+     * Updates one of the list entity's sublists in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {number} subListId The sublist ID.
      *
@@ -3210,7 +3304,8 @@ export interface Model {
 
 
     /**
-     * Suggests examples that would improve the accuracy of the intent model.
+     * Suggests example utterances that would improve the accuracy of the intent
+     * model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3232,10 +3327,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentSuggestionsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentsSuggestionExample[]>>;
+    listIntentSuggestionsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentsSuggestionExample[]>>;
 
     /**
-     * Suggests examples that would improve the accuracy of the intent model.
+     * Suggests example utterances that would improve the accuracy of the intent
+     * model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3272,13 +3368,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentsSuggestionExample[]>;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
+    listIntentSuggestions(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentsSuggestionExample[]>;
+    listIntentSuggestions(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
+    listIntentSuggestions(appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
 
 
     /**
-     * Get suggestion examples that would improve the accuracy of the entity model.
+     * Get suggested example utterances that would improve the accuracy of the
+     * entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3300,10 +3397,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntitySuggestionsWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesSuggestionExample[]>>;
+    listEntitySuggestionsWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesSuggestionExample[]>>;
 
     /**
-     * Get suggestion examples that would improve the accuracy of the entity model.
+     * Get suggested example utterances that would improve the accuracy of the
+     * entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3340,19 +3438,19 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesSuggestionExample[]>;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
+    listEntitySuggestions(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesSuggestionExample[]>;
+    listEntitySuggestions(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
+    listEntitySuggestions(appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
 
 
     /**
-     * Adds a list to an existing closed list.
+     * Adds a sublist to an existing list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {object} wordListCreateObject Words list.
      *
@@ -3375,13 +3473,13 @@ export interface Model {
     addSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
     /**
-     * Adds a list to an existing closed list.
+     * Adds a sublist to an existing list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} clEntityId The closed list entity extractor ID.
+     * @param {uuid} clEntityId The list entity extractor ID.
      *
      * @param {object} wordListCreateObject Words list.
      *
@@ -3422,8 +3520,8 @@ export interface Model {
 
 
     /**
-     * Adds a customizable prebuilt domain along with all of its models to this
-     * application.
+     * Adds a customizable prebuilt domain along with all of its intent and entity
+     * models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3448,8 +3546,8 @@ export interface Model {
     addCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
-     * Adds a customizable prebuilt domain along with all of its models to this
-     * application.
+     * Adds a customizable prebuilt domain along with all of its intent and entity
+     * models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3492,15 +3590,15 @@ export interface Model {
 
 
     /**
-     * Adds a custom prebuilt intent model to the application.
+     * Adds a customizable prebuilt intent model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt intent and the name of the domain to which
-     * this model belongs.
+     * the name of the customizable prebuilt intent and the name of the domain to
+     * which this model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3522,15 +3620,15 @@ export interface Model {
     addCustomPrebuiltIntentWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a custom prebuilt intent model to the application.
+     * Adds a customizable prebuilt intent model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt intent and the name of the domain to which
-     * this model belongs.
+     * the name of the customizable prebuilt intent and the name of the domain to
+     * which this model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3570,7 +3668,8 @@ export interface Model {
 
 
     /**
-     * Gets custom prebuilt intents information of this application.
+     * Gets information about customizable prebuilt intents added to a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3590,7 +3689,8 @@ export interface Model {
     listCustomPrebuiltIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
 
     /**
-     * Gets custom prebuilt intents information of this application.
+     * Gets information about customizable prebuilt intents added to a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3628,15 +3728,15 @@ export interface Model {
 
 
     /**
-     * Adds a custom prebuilt entity model to the application.
+     * Adds a prebuilt entity model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt entity and the name of the domain to which
-     * this model belongs.
+     * the name of the prebuilt entity and the name of the domain to which this
+     * model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3658,15 +3758,15 @@ export interface Model {
     addCustomPrebuiltEntityWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a custom prebuilt entity model to the application.
+     * Adds a prebuilt entity model to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} prebuiltDomainModelCreateObject A model object containing
-     * the name of the custom prebuilt entity and the name of the domain to which
-     * this model belongs.
+     * the name of the prebuilt entity and the name of the domain to which this
+     * model belongs.
      *
      * @param {string} [prebuiltDomainModelCreateObject.domainName] The domain
      * name.
@@ -3706,7 +3806,7 @@ export interface Model {
 
 
     /**
-     * Gets all custom prebuilt entities information of this application.
+     * Gets all prebuilt entities used in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3726,7 +3826,7 @@ export interface Model {
     listCustomPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
 
     /**
-     * Gets all custom prebuilt entities information of this application.
+     * Gets all prebuilt entities used in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3764,7 +3864,8 @@ export interface Model {
 
 
     /**
-     * Gets all custom prebuilt models information of this application.
+     * Gets all prebuilt intent and entity model information used in a version of
+     * this application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3784,7 +3885,8 @@ export interface Model {
     listCustomPrebuiltModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomPrebuiltModel[]>>;
 
     /**
-     * Gets all custom prebuilt models information of this application.
+     * Gets all prebuilt intent and entity model information used in a version of
+     * this application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3822,7 +3924,7 @@ export interface Model {
 
 
     /**
-     * Deletes a prebuilt domain's models from the application.
+     * Deletes a prebuilt domain's models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3844,7 +3946,7 @@ export interface Model {
     deleteCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a prebuilt domain's models from the application.
+     * Deletes a prebuilt domain's models in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3885,7 +3987,8 @@ export interface Model {
 
 
     /**
-     * Gets information about the hierarchical entity child model.
+     * Gets information about the child's model contained in an hierarchical entity
+     * child model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3909,7 +4012,8 @@ export interface Model {
     getHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalChildEntity>>;
 
     /**
-     * Gets information about the hierarchical entity child model.
+     * Gets information about the child's model contained in an hierarchical entity
+     * child model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3953,7 +4057,8 @@ export interface Model {
 
 
     /**
-     * Renames a single child in an existing hierarchical entity model.
+     * Renames a single child in an existing hierarchical entity model in a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -3982,7 +4087,8 @@ export interface Model {
     updateHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Renames a single child in an existing hierarchical entity model.
+     * Renames a single child in an existing hierarchical entity model in a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4030,7 +4136,8 @@ export interface Model {
 
 
     /**
-     * Deletes a hierarchical entity extractor child from the application.
+     * Deletes a hierarchical entity extractor child in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4054,7 +4161,8 @@ export interface Model {
     deleteHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a hierarchical entity extractor child from the application.
+     * Deletes a hierarchical entity extractor child in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4097,7 +4205,8 @@ export interface Model {
 
 
     /**
-     * Creates a single child in an existing hierarchical entity model.
+     * Creates a single child in an existing hierarchical entity model in a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4124,7 +4233,8 @@ export interface Model {
     addHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a single child in an existing hierarchical entity model.
+     * Creates a single child in an existing hierarchical entity model in a version
+     * of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4169,7 +4279,8 @@ export interface Model {
 
 
     /**
-     * Creates a single child in an existing composite entity model.
+     * Creates a single child in an existing composite entity model in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4196,7 +4307,8 @@ export interface Model {
     addCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a single child in an existing composite entity model.
+     * Creates a single child in an existing composite entity model in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4241,7 +4353,8 @@ export interface Model {
 
 
     /**
-     * Deletes a composite entity extractor child from the application.
+     * Deletes a composite entity extractor child from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4265,7 +4378,8 @@ export interface Model {
     deleteCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deletes a composite entity extractor child from the application.
+     * Deletes a composite entity extractor child from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4308,7 +4422,8 @@ export interface Model {
 
 
     /**
-     * @summary Gets information about the regex entity models.
+     * @summary Gets information about the regular expression entity models in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4331,10 +4446,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor[]>>;
+    listRegexEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor[]>>;
 
     /**
-     * @summary Gets information about the regex entity models.
+     * @summary Gets information about the regular expression entity models in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4372,23 +4488,24 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor[]>;
-    getRegexEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
-    getRegexEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
+    listRegexEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor[]>;
+    listRegexEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
+    listRegexEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
 
 
     /**
-     * @summary Adds a regex entity model to the application version.
+     * @summary Adds a regular expression entity model to a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} regexEntityExtractorCreateObj A model object containing the
-     * name and regex pattern for the new regex entity extractor.
+     * name and regex pattern for the new regular expression entity extractor.
      *
-     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regex
-     * entity pattern.
+     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityExtractorCreateObj.name] The model name.
      *
@@ -4406,17 +4523,18 @@ export interface Model {
     createRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Adds a regex entity model to the application version.
+     * @summary Adds a regular expression entity model to a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
      * @param {object} regexEntityExtractorCreateObj A model object containing the
-     * name and regex pattern for the new regex entity extractor.
+     * name and regex pattern for the new regular expression entity extractor.
      *
-     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regex
-     * entity pattern.
+     * @param {string} [regexEntityExtractorCreateObj.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityExtractorCreateObj.name] The model name.
      *
@@ -4452,7 +4570,8 @@ export interface Model {
 
 
     /**
-     * @summary Get information about the Pattern.Any entity models.
+     * @summary Get information about the Pattern.Any entity models in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4475,10 +4594,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor[]>>;
+    listPatternAnyEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor[]>>;
 
     /**
-     * @summary Get information about the Pattern.Any entity models.
+     * @summary Get information about the Pattern.Any entity models in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4516,13 +4636,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor[]>;
-    getPatternAnyEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
-    getPatternAnyEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
+    listPatternAnyEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor[]>;
+    listPatternAnyEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
+    listPatternAnyEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
 
 
     /**
-     * @summary Adds a pattern.any entity extractor to the application.
+     * @summary Adds a pattern.any entity extractor to a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4550,7 +4671,8 @@ export interface Model {
     createPatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Adds a pattern.any entity extractor to the application.
+     * @summary Adds a pattern.any entity extractor to a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4596,7 +4718,7 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for an entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -4615,10 +4737,10 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for an entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -4652,13 +4774,13 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create an entity role in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4685,7 +4807,7 @@ export interface Model {
     createEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create an entity role in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4730,7 +4852,7 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get a prebuilt entity's roles in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4749,10 +4871,10 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get a prebuilt entity's roles in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4786,13 +4908,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4819,7 +4942,8 @@ export interface Model {
     createPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4864,7 +4988,7 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4883,10 +5007,10 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listClosedListEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4920,13 +5044,13 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listClosedListEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listClosedListEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listClosedListEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4953,7 +5077,7 @@ export interface Model {
     createClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a list entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -4998,7 +5122,8 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5017,10 +5142,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listRegexEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5054,13 +5180,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listRegexEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listRegexEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listRegexEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5087,7 +5214,8 @@ export interface Model {
     createRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5132,7 +5260,8 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5151,10 +5280,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityRolesWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listCompositeEntityRolesWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5188,13 +5318,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a composite entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5221,7 +5352,8 @@ export interface Model {
     createCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a composite entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5266,7 +5398,8 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a Pattern.any entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5285,10 +5418,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listPatternAnyEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a Pattern.any entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5322,13 +5456,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5355,7 +5490,8 @@ export interface Model {
     createPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5400,7 +5536,8 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a hierarchical entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5419,10 +5556,11 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityRolesWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listHierarchicalEntityRolesWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a hierarchical entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5456,13 +5594,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5489,7 +5628,8 @@ export interface Model {
     createHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for an hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5534,7 +5674,7 @@ export interface Model {
 
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a prebuilt entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5553,10 +5693,10 @@ export interface Model {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCustomPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    listCustomPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
 
     /**
-     * @summary Get All Entity Roles for a given entity
+     * @summary Get all roles for a prebuilt entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -5590,13 +5730,14 @@ export interface Model {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
+    listCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
+    listCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
 
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5623,7 +5764,8 @@ export interface Model {
     createCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Create an entity role for an entity in the application.
+     * @summary Create a role for a prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5668,7 +5810,8 @@ export interface Model {
 
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5690,7 +5833,8 @@ export interface Model {
     getExplicitListWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem[]>>;
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5730,7 +5874,8 @@ export interface Model {
 
 
     /**
-     * @summary Add a new item to the explicit list for the Pattern.Any entity.
+     * @summary Add a new exception to the explicit list for the Pattern.Any entity
+     * in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5756,7 +5901,8 @@ export interface Model {
     addExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
     /**
-     * @summary Add a new item to the explicit list for the Pattern.Any entity.
+     * @summary Add a new exception to the explicit list for the Pattern.Any entity
+     * in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5800,13 +5946,14 @@ export interface Model {
 
 
     /**
-     * @summary Gets information of a regex entity model.
+     * @summary Gets information about a regular expression entity in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity model ID.
+     * @param {uuid} regexEntityId The regular expression entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5822,13 +5969,14 @@ export interface Model {
     getRegexEntityEntityInfoWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor>>;
 
     /**
-     * @summary Gets information of a regex entity model.
+     * @summary Gets information about a regular expression entity in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity model ID.
+     * @param {uuid} regexEntityId The regular expression entity model ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5863,19 +6011,20 @@ export interface Model {
 
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} regexEntityUpdateObject An object containing the new entity
      * name and regex pattern.
      *
-     * @param {string} [regexEntityUpdateObject.regexPattern] The regex entity
-     * pattern.
+     * @param {string} [regexEntityUpdateObject.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityUpdateObject.name] The model name.
      *
@@ -5893,19 +6042,20 @@ export interface Model {
     updateRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regular expression entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} regexEntityUpdateObject An object containing the new entity
      * name and regex pattern.
      *
-     * @param {string} [regexEntityUpdateObject.regexPattern] The regex entity
-     * pattern.
+     * @param {string} [regexEntityUpdateObject.regexPattern] The regular
+     * expression entity pattern.
      *
      * @param {string} [regexEntityUpdateObject.name] The model name.
      *
@@ -5942,13 +6092,14 @@ export interface Model {
 
 
     /**
-     * @summary Deletes a regex entity model from the application.
+     * @summary Deletes a regular expression entity from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5964,13 +6115,14 @@ export interface Model {
     deleteRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes a regex entity model from the application.
+     * @summary Deletes a regular expression entity from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {uuid} regexEntityId The regex entity extractor ID.
+     * @param {uuid} regexEntityId The regular expression entity extractor ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6005,7 +6157,8 @@ export interface Model {
 
 
     /**
-     * @summary Gets information about the application version's Pattern.Any model.
+     * @summary Gets information about the Pattern.Any model in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6027,7 +6180,8 @@ export interface Model {
     getPatternAnyEntityInfoWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor>>;
 
     /**
-     * @summary Gets information about the application version's Pattern.Any model.
+     * @summary Gets information about the Pattern.Any model in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6069,7 +6223,8 @@ export interface Model {
 
 
     /**
-     * @summary Updates the name and explicit list of a Pattern.Any entity model.
+     * @summary Updates the name and explicit (exception) list of a Pattern.Any
+     * entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6099,7 +6254,8 @@ export interface Model {
     updatePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates the name and explicit list of a Pattern.Any entity model.
+     * @summary Updates the name and explicit (exception) list of a Pattern.Any
+     * entity model in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6148,7 +6304,8 @@ export interface Model {
 
 
     /**
-     * @summary Deletes a Pattern.Any entity extractor from the application.
+     * @summary Deletes a Pattern.Any entity extractor from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6170,7 +6327,8 @@ export interface Model {
     deletePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes a Pattern.Any entity extractor from the application.
+     * @summary Deletes a Pattern.Any entity extractor from a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6211,7 +6369,7 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6235,7 +6393,7 @@ export interface Model {
     getEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given entity in a version of the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6278,7 +6436,7 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6306,7 +6464,7 @@ export interface Model {
     updateEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6353,7 +6511,7 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete an entity role in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6377,7 +6535,7 @@ export interface Model {
     deleteEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete an entity role in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6420,7 +6578,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6444,7 +6603,8 @@ export interface Model {
     getPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6487,7 +6647,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6515,7 +6676,8 @@ export interface Model {
     updatePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6562,7 +6724,7 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role in a prebuilt entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6586,7 +6748,7 @@ export interface Model {
     deletePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role in a prebuilt entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6629,7 +6791,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6653,7 +6816,8 @@ export interface Model {
     getClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6696,7 +6860,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6724,7 +6889,8 @@ export interface Model {
     updateClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6771,7 +6937,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6795,7 +6962,8 @@ export interface Model {
     deleteClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given list entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6838,7 +7006,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given regular expression entity in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6862,7 +7031,8 @@ export interface Model {
     getRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given regular expression entity in a version of
+     * the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -6905,7 +7075,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given regular expression entity in a version of
+     * the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6933,7 +7104,8 @@ export interface Model {
     updateRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given regular expression entity in a version of
+     * the application
      *
      * @param {uuid} appId The application ID.
      *
@@ -6980,7 +7152,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given regular expression in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7004,7 +7177,8 @@ export interface Model {
     deleteRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given regular expression in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7047,7 +7221,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -7071,7 +7246,8 @@ export interface Model {
     getCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -7114,7 +7290,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -7142,7 +7319,8 @@ export interface Model {
     updateCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given composite entity in a version of the
+     * application
      *
      * @param {uuid} appId The application ID.
      *
@@ -7189,7 +7367,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given composite entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7213,7 +7392,8 @@ export interface Model {
     deleteCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given composite entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7256,7 +7436,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7280,7 +7461,8 @@ export interface Model {
     getPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7323,7 +7505,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7351,7 +7534,8 @@ export interface Model {
     updatePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7398,7 +7582,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7422,7 +7607,8 @@ export interface Model {
     deletePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given Pattern.any entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7465,7 +7651,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7489,7 +7676,8 @@ export interface Model {
     getHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7532,7 +7720,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7560,7 +7749,8 @@ export interface Model {
     updateHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given hierarchical entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7607,7 +7797,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given hierarchical role in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7631,7 +7822,8 @@ export interface Model {
     deleteHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given hierarchical role in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7674,7 +7866,8 @@ export interface Model {
 
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7698,7 +7891,8 @@ export interface Model {
     getCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
 
     /**
-     * @summary Get one entity role for a given entity
+     * @summary Get one role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7741,7 +7935,8 @@ export interface Model {
 
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7769,7 +7964,8 @@ export interface Model {
     updateCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Update an entity role for a given entity
+     * @summary Update a role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7816,7 +8012,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7840,7 +8037,8 @@ export interface Model {
     deleteCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete an entity role.
+     * @summary Delete a role for a given prebuilt entity in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7883,7 +8081,8 @@ export interface Model {
 
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7907,7 +8106,8 @@ export interface Model {
     getExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem>>;
 
     /**
-     * @summary Get the explicit list of the pattern.any entity.
+     * @summary Get the explicit (exception) list of the pattern.any entity in a
+     * version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7950,7 +8150,8 @@ export interface Model {
 
 
     /**
-     * @summary Updates an explicit list item for a Pattern.Any entity.
+     * @summary Updates an explicit (exception) list item for a Pattern.Any entity
+     * in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -7978,7 +8179,8 @@ export interface Model {
     updateExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Updates an explicit list item for a Pattern.Any entity.
+     * @summary Updates an explicit (exception) list item for a Pattern.Any entity
+     * in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8025,7 +8227,8 @@ export interface Model {
 
 
     /**
-     * @summary Delete the explicit list item from the Pattern.any explicit list.
+     * @summary Delete an item from the explicit (exception) list for a Pattern.any
+     * entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8049,7 +8252,8 @@ export interface Model {
     deleteExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Delete the explicit list item from the Pattern.any explicit list.
+     * @summary Delete an item from the explicit (exception) list for a Pattern.any
+     * entity in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8103,11 +8307,11 @@ export interface Apps {
     /**
      * Creates a new LUIS app.
      *
-     * @param {object} applicationCreateObject A model containing Name, Description
-     * (optional), Culture, Usage Scenario (optional), Domain (optional) and
-     * initial version ID (optional) of the application. Default value for the
-     * version ID is 0.1. Note: the culture cannot be changed after the app is
-     * created.
+     * @param {object} applicationCreateObject An application containing Name,
+     * Description (optional), Culture, Usage Scenario (optional), Domain
+     * (optional) and initial version ID (optional) of the application. Default
+     * value for the version ID is "0.1". Note: the culture cannot be changed after
+     * the app is created.
      *
      * @param {string} applicationCreateObject.culture The culture for the new
      * application. It is the language that your app understands and speaks. E.g.:
@@ -8144,11 +8348,11 @@ export interface Apps {
     /**
      * Creates a new LUIS app.
      *
-     * @param {object} applicationCreateObject A model containing Name, Description
-     * (optional), Culture, Usage Scenario (optional), Domain (optional) and
-     * initial version ID (optional) of the application. Default value for the
-     * version ID is 0.1. Note: the culture cannot be changed after the app is
-     * created.
+     * @param {object} applicationCreateObject An application containing Name,
+     * Description (optional), Culture, Usage Scenario (optional), Domain
+     * (optional) and initial version ID (optional) of the application. Default
+     * value for the version ID is "0.1". Note: the culture cannot be changed after
+     * the app is created.
      *
      * @param {string} applicationCreateObject.culture The culture for the new
      * application. It is the language that your app understands and speaks. E.g.:
@@ -8201,7 +8405,7 @@ export interface Apps {
 
 
     /**
-     * Lists all of the user applications.
+     * Lists all of the user's applications.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8223,7 +8427,7 @@ export interface Apps {
     listWithHttpOperationResponse(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse[]>>;
 
     /**
-     * Lists all of the user applications.
+     * Lists all of the user's applications.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8263,8 +8467,8 @@ export interface Apps {
 
 
     /**
-     * Imports an application to LUIS, the application's structure should be
-     * included in the request body.
+     * Imports an application to LUIS, the application's structure is included in
+     * the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8282,7 +8486,7 @@ export interface Apps {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -8298,12 +8502,13 @@ export interface Apps {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.appName] The application name to create. If not
-     * specified, the application name will be read from the imported object.
+     * specified, the application name will be read from the imported object. If
+     * the application name already exists, an error is returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8317,8 +8522,8 @@ export interface Apps {
     importMethodWithHttpOperationResponse(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Imports an application to LUIS, the application's structure should be
-     * included in the request body.
+     * Imports an application to LUIS, the application's structure is included in
+     * the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8336,7 +8541,7 @@ export interface Apps {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -8352,12 +8557,13 @@ export interface Apps {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.appName] The application name to create. If not
-     * specified, the application name will be read from the imported object.
+     * specified, the application name will be read from the imported object. If
+     * the application name already exists, an error is returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8541,7 +8747,9 @@ export interface Apps {
 
 
     /**
-     * Gets the supported application cultures.
+     * Gets a list of supported cultures. Cultures are equivalent to the written
+     * language and locale. For example,"en-us" represents the U.S. variation of
+     * English.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8557,7 +8765,9 @@ export interface Apps {
     listSupportedCulturesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableCulture[]>>;
 
     /**
-     * Gets the supported application cultures.
+     * Gets a list of supported cultures. Cultures are equivalent to the written
+     * language and locale. For example,"en-us" represents the U.S. variation of
+     * English.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8591,7 +8801,7 @@ export interface Apps {
 
 
     /**
-     * Gets the query logs of the past month for the application.
+     * Gets the logs of the past month's endpoint queries for the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8609,7 +8819,7 @@ export interface Apps {
     downloadQueryLogsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
-     * Gets the query logs of the past month for the application.
+     * Gets the logs of the past month's endpoint queries for the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8907,7 +9117,7 @@ export interface Apps {
 
 
     /**
-     * Get the application settings.
+     * Get the application settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8925,7 +9135,7 @@ export interface Apps {
     getSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSettings>>;
 
     /**
-     * Get the application settings.
+     * Get the application settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -8962,16 +9172,16 @@ export interface Apps {
 
 
     /**
-     * Updates the application settings.
+     * Updates the application settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} applicationSettingUpdateObject An object containing the new
      * application settings.
      *
-     * @param {boolean} [applicationSettingUpdateObject.publicProperty] Setting
-     * your application as public allows other people to use your application's
-     * endpoint using their own keys.
+     * @param {boolean} [applicationSettingUpdateObject.isPublic] Setting your
+     * application as public allows other people to use your application's endpoint
+     * using their own keys.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8987,16 +9197,16 @@ export interface Apps {
     updateSettingsWithHttpOperationResponse(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application settings.
+     * Updates the application settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} applicationSettingUpdateObject An object containing the new
      * application settings.
      *
-     * @param {boolean} [applicationSettingUpdateObject.publicProperty] Setting
-     * your application as public allows other people to use your application's
-     * endpoint using their own keys.
+     * @param {boolean} [applicationSettingUpdateObject.isPublic] Setting your
+     * application as public allows other people to use your application's endpoint
+     * using their own keys.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9031,7 +9241,7 @@ export interface Apps {
 
 
     /**
-     * Get the application publish settings.
+     * Get the application publish settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9049,7 +9259,7 @@ export interface Apps {
     getPublishSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublishSettings>>;
 
     /**
-     * Get the application publish settings.
+     * Get the application publish settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9086,7 +9296,7 @@ export interface Apps {
 
 
     /**
-     * Updates the application publish settings.
+     * Updates the application publish settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9117,7 +9327,7 @@ export interface Apps {
     updatePublishSettingsWithHttpOperationResponse(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application publish settings.
+     * Updates the application publish settings including 'UseAllTrainingData'.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9271,7 +9481,8 @@ export interface Apps {
 
 
     /**
-     * Adds a prebuilt domain along with its models as a new application.
+     * Adds a prebuilt domain along with its intent and entity models as a new
+     * application.
      *
      * @param {object} prebuiltDomainCreateObject A prebuilt domain create object
      * containing the name and culture of the domain.
@@ -9295,7 +9506,8 @@ export interface Apps {
     addCustomPrebuiltDomainWithHttpOperationResponse(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Adds a prebuilt domain along with its models as a new application.
+     * Adds a prebuilt domain along with its intent and entity models as a new
+     * application.
      *
      * @param {object} prebuiltDomainCreateObject A prebuilt domain create object
      * containing the name and culture of the domain.
@@ -9337,7 +9549,7 @@ export interface Apps {
 
 
     /**
-     * Gets all the available custom prebuilt domains for a specific culture.
+     * Gets all the available prebuilt domains for a specific culture.
      *
      * @param {string} culture Culture.
      *
@@ -9355,7 +9567,7 @@ export interface Apps {
     listAvailableCustomPrebuiltDomainsForCultureWithHttpOperationResponse(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
 
     /**
-     * Gets all the available custom prebuilt domains for a specific culture.
+     * Gets all the available prebuilt domains for a specific culture.
      *
      * @param {string} culture Culture.
      *
@@ -9394,11 +9606,12 @@ export interface Apps {
      * @summary package - Gets published LUIS application package in binary stream
      * GZip format
      *
-     * Packages published LUIS application as GZip.
+     * Packages a published LUIS application as a GZip file to be used in the LUIS
+     * container.
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {uuid} slotName The publishing slot name.
+     * @param {string} slotName The publishing slot name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9417,11 +9630,12 @@ export interface Apps {
      * @summary package - Gets published LUIS application package in binary stream
      * GZip format
      *
-     * Packages published LUIS application as GZip.
+     * Packages a published LUIS application as a GZip file to be used in the LUIS
+     * container.
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {uuid} slotName The publishing slot name.
+     * @param {string} slotName The publishing slot name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9458,7 +9672,8 @@ export interface Apps {
      * @summary package - Gets trained LUIS application package in binary stream
      * GZip format
      *
-     * Packages trained LUIS application as GZip.
+     * Packages trained LUIS application as GZip file to be used in the LUIS
+     * container.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9481,7 +9696,8 @@ export interface Apps {
      * @summary package - Gets trained LUIS application package in binary stream
      * GZip format
      *
-     * Packages trained LUIS application as GZip.
+     * Packages trained LUIS application as GZip file to be used in the LUIS
+     * container.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9528,20 +9744,18 @@ export interface Versions {
 
 
     /**
-     * Creates a new version using the current snapshot of the selected application
-     * version.
+     * Creates a new version from the selected version.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
+     * @param {object} versionCloneObject A model containing the new version ID.
+     *
+     * @param {string} [versionCloneObject.version] The new version for the cloned
+     * model.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.versionCloneObject] A model containing the new
-     * version ID.
-     *
-     * @param {string} [options.versionCloneObject.version] The new version for the
-     * cloned model.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9552,23 +9766,21 @@ export interface Versions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cloneWithHttpOperationResponse(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    cloneWithHttpOperationResponse(appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * Creates a new version using the current snapshot of the selected application
-     * version.
+     * Creates a new version from the selected version.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
+     * @param {object} versionCloneObject A model containing the new version ID.
+     *
+     * @param {string} [versionCloneObject.version] The new version for the cloned
+     * model.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.versionCloneObject] A model containing the new
-     * version ID.
-     *
-     * @param {string} [options.versionCloneObject.version] The new version for the
-     * cloned model.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9594,13 +9806,13 @@ export interface Versions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    clone(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    clone(appId: string, versionId: string, callback: ServiceCallback<string>): void;
-    clone(appId: string, versionId: string, options: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    clone(appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    clone(appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, callback: ServiceCallback<string>): void;
+    clone(appId: string, versionId: string, versionCloneObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
-     * Gets the application versions info.
+     * Gets a list of versions for this application ID.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9624,7 +9836,7 @@ export interface Versions {
     listWithHttpOperationResponse(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo[]>>;
 
     /**
-     * Gets the application versions info.
+     * Gets a list of versions for this application ID.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9666,7 +9878,8 @@ export interface Versions {
 
 
     /**
-     * Gets the version info.
+     * Gets the version information such as date created, last modified date,
+     * endpoint URL, count of intents and entities, training and publishing status.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9686,7 +9899,8 @@ export interface Versions {
     getWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo>>;
 
     /**
-     * Gets the version info.
+     * Gets the version information such as date created, last modified date,
+     * endpoint URL, count of intents and entities, training and publishing status.
      *
      * @param {uuid} appId The application ID.
      *
@@ -9934,7 +10148,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -9950,7 +10164,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9989,7 +10203,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.entities] List of entities.
      *
-     * @param {array} [luisApp.closedLists] List of closed lists.
+     * @param {array} [luisApp.closedLists] List of list entities.
      *
      * @param {array} [luisApp.composites] List of composite entities.
      *
@@ -10005,7 +10219,7 @@ export interface Versions {
      *
      * @param {array} [luisApp.patterns] List of patterns.
      *
-     * @param {array} [luisApp.utterances] List of sample utterances.
+     * @param {array} [luisApp.utterances] List of example utterances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10042,7 +10256,7 @@ export interface Versions {
 
 
     /**
-     * Deleted an unlabelled utterance.
+     * Deleted an unlabelled utterance in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10064,7 +10278,7 @@ export interface Versions {
     deleteUnlabelledUtteranceWithHttpOperationResponse(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Deleted an unlabelled utterance.
+     * Deleted an unlabelled utterance in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10448,12 +10662,12 @@ export interface Permissions {
 
 
     /**
-     * Replaces the current users access list with the one sent in the body. If an
-     * empty list is sent, all access to other users will be removed.
+     * Replaces the current user access list with the new list sent in the body. If
+     * an empty list is sent, all access to other users will be removed.
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {object} collaborators A model containing a list of user's email
+     * @param {object} collaborators A model containing a list of user email
      * addresses.
      *
      * @param {array} [collaborators.emails] The email address of the users.
@@ -10472,12 +10686,12 @@ export interface Permissions {
     updateWithHttpOperationResponse(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Replaces the current users access list with the one sent in the body. If an
-     * empty list is sent, all access to other users will be removed.
+     * Replaces the current user access list with the new list sent in the body. If
+     * an empty list is sent, all access to other users will be removed.
      *
      * @param {uuid} appId The application ID.
      *
-     * @param {object} collaborators A model containing a list of user's email
+     * @param {object} collaborators A model containing a list of user email
      * addresses.
      *
      * @param {array} [collaborators.emails] The email address of the users.
@@ -10524,7 +10738,7 @@ export interface Pattern {
 
 
     /**
-     * @summary Adds one pattern to the specified application.
+     * @summary Adds a pattern to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10551,7 +10765,7 @@ export interface Pattern {
     addPatternWithHttpOperationResponse(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
 
     /**
-     * @summary Adds one pattern to the specified application.
+     * @summary Adds a pattern to a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10597,7 +10811,7 @@ export interface Pattern {
 
 
     /**
-     * @summary Returns an application version's patterns.
+     * @summary Gets patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10620,10 +10834,10 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    listPatternsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Returns an application version's patterns.
+     * @summary Gets patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10661,13 +10875,13 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatterns(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getPatterns(appId: string, versionId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getPatterns(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listPatterns(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    listPatterns(appId: string, versionId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listPatterns(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 
 
     /**
-     * @summary Updates patterns
+     * @summary Updates patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10689,7 +10903,7 @@ export interface Pattern {
     updatePatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Updates patterns
+     * @summary Updates patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10729,7 +10943,7 @@ export interface Pattern {
 
 
     /**
-     * @summary Adds a batch of patterns to the specified application.
+     * @summary Adds a batch of patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10751,7 +10965,7 @@ export interface Pattern {
     batchAddPatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Adds a batch of patterns to the specified application.
+     * @summary Adds a batch of patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10791,7 +11005,7 @@ export interface Pattern {
 
 
     /**
-     * @summary Deletes the patterns with the specified IDs.
+     * @summary Deletes a list of patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10813,7 +11027,7 @@ export interface Pattern {
     deletePatternsWithHttpOperationResponse(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes the patterns with the specified IDs.
+     * @summary Deletes a list of patterns in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10854,7 +11068,7 @@ export interface Pattern {
 
 
     /**
-     * @summary Updates a pattern
+     * @summary Updates a pattern in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10885,7 +11099,7 @@ export interface Pattern {
     updatePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
 
     /**
-     * @summary Updates a pattern
+     * @summary Updates a pattern in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -10935,7 +11149,8 @@ export interface Pattern {
 
 
     /**
-     * @summary Deletes the pattern with the specified ID.
+     * @summary Deletes the pattern with the specified ID from a version of the
+     * application..
      *
      * @param {uuid} appId The application ID.
      *
@@ -10957,7 +11172,8 @@ export interface Pattern {
     deletePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary Deletes the pattern with the specified ID.
+     * @summary Deletes the pattern with the specified ID from a version of the
+     * application..
      *
      * @param {uuid} appId The application ID.
      *
@@ -10998,7 +11214,8 @@ export interface Pattern {
 
 
     /**
-     * @summary Returns patterns to be retrieved for the specific intent.
+     * @summary Returns patterns for the specific intent in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -11023,10 +11240,11 @@ export interface Pattern {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentPatternsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    listIntentPatternsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
 
     /**
-     * @summary Returns patterns to be retrieved for the specific intent.
+     * @summary Returns patterns for the specific intent in a version of the
+     * application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -11066,9 +11284,9 @@ export interface Pattern {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
+    listIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    listIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
 }
 
 /**
@@ -11081,7 +11299,7 @@ export interface Settings {
 
 
     /**
-     * Gets the application version settings.
+     * Gets the settings in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -11101,7 +11319,7 @@ export interface Settings {
     listWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppVersionSettingObject[]>>;
 
     /**
-     * Gets the application version settings.
+     * Gets the settings in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
@@ -11139,20 +11357,14 @@ export interface Settings {
 
 
     /**
-     * Updates the application version settings.
+     * Updates the settings in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * @param {array} listOfAppVersionSettingObject A list of the updated
      * application version settings.
-     *
-     * @param {string} [listOfAppVersionSettingObject.name] The application version
-     * setting name.
-     *
-     * @param {string} [listOfAppVersionSettingObject.value] The application
-     * version setting value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11165,23 +11377,17 @@ export interface Settings {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Updates the application version settings.
+     * Updates the settings in a version of the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {string} versionId The version ID.
      *
-     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * @param {array} listOfAppVersionSettingObject A list of the updated
      * application version settings.
-     *
-     * @param {string} [listOfAppVersionSettingObject.name] The application version
-     * setting name.
-     *
-     * @param {string} [listOfAppVersionSettingObject.value] The application
-     * version setting value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11210,9 +11416,9 @@ export interface Settings {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
 
 /**
@@ -11225,24 +11431,24 @@ export interface AzureAccounts {
 
 
     /**
-     * @summary apps - Assign a LUIS azure account to an application
+     * @summary apps - Assign a LUIS Azure account to an application
      *
-     * Assigns an azure account to the application.
+     * Assigns an Azure account to the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11257,24 +11463,24 @@ export interface AzureAccounts {
     assignToAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary apps - Assign a LUIS azure account to an application
+     * @summary apps - Assign a LUIS Azure account to an application
      *
-     * Assigns an azure account to the application.
+     * Assigns an Azure account to the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11308,9 +11514,9 @@ export interface AzureAccounts {
 
 
     /**
-     * @summary apps - Get LUIS azure accounts assigned to the application
+     * @summary apps - Get LUIS Azure accounts assigned to the application
      *
-     * Gets the LUIS azure accounts assigned to the application for the user using
+     * Gets the LUIS Azure accounts assigned to the application for the user using
      * his ARM token.
      *
      * @param {uuid} appId The application ID.
@@ -11329,9 +11535,9 @@ export interface AzureAccounts {
     getAssignedWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
-     * @summary apps - Get LUIS azure accounts assigned to the application
+     * @summary apps - Get LUIS Azure accounts assigned to the application
      *
-     * Gets the LUIS azure accounts assigned to the application for the user using
+     * Gets the LUIS Azure accounts assigned to the application for the user using
      * his ARM token.
      *
      * @param {uuid} appId The application ID.
@@ -11368,24 +11574,24 @@ export interface AzureAccounts {
 
 
     /**
-     * @summary apps - Removes an assigned LUIS azure account from an application
+     * @summary apps - Removes an assigned LUIS Azure account from an application
      *
-     * Removes assigned azure account from the application.
+     * Removes assigned Azure account from the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11400,24 +11606,24 @@ export interface AzureAccounts {
     removeFromAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * @summary apps - Removes an assigned LUIS azure account from an application
+     * @summary apps - Removes an assigned LUIS Azure account from an application
      *
-     * Removes assigned azure account from the application.
+     * Removes assigned Azure account from the application.
      *
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.azureAccountInfoObject] The azure account
+     * @param {object} [options.azureAccountInfoObject] The Azure account
      * information object.
      *
      * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
-     * for the azure subscription.
+     * for the Azure subscription.
      *
-     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * @param {string} options.azureAccountInfoObject.resourceGroup The Azure
      * resource group name.
      *
-     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * @param {string} options.azureAccountInfoObject.accountName The Azure account
      * name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -11451,9 +11657,9 @@ export interface AzureAccounts {
 
 
     /**
-     * @summary user - Get LUIS azure accounts
+     * @summary user - Get LUIS Azure accounts
      *
-     * Gets the LUIS azure accounts for the user using his ARM token.
+     * Gets the LUIS Azure accounts for the user using his ARM token.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11466,12 +11672,12 @@ export interface AzureAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
+    listUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
-     * @summary user - Get LUIS azure accounts
+     * @summary user - Get LUIS Azure accounts
      *
-     * Gets the LUIS azure accounts for the user using his ARM token.
+     * Gets the LUIS Azure accounts for the user using his ARM token.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11499,7 +11705,7 @@ export interface AzureAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
-    getUserLUISAccounts(callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
-    getUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    listUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
+    listUserLUISAccounts(callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    listUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
 }
