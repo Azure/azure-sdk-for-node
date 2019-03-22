@@ -25,7 +25,7 @@ export interface Prediction {
      * Gets predictions for a given utterance, in the form of intents and entities.
      * The current maximum query size is 500 characters.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {uuid} appId The LUIS application ID (Guid).
      *
      * @param {string} query The utterance to predict.
      *
@@ -42,7 +42,7 @@ export interface Prediction {
      * @param {boolean} [options.spellCheck] Enable spell checking.
      *
      * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
-     * to use when enabling bing spell check
+     * to use when enabling Bing spell check
      *
      * @param {boolean} [options.log] Log query (default is true)
      *
@@ -61,7 +61,7 @@ export interface Prediction {
      * Gets predictions for a given utterance, in the form of intents and entities.
      * The current maximum query size is 500 characters.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {uuid} appId The LUIS application ID (Guid).
      *
      * @param {string} query The utterance to predict.
      *
@@ -78,7 +78,7 @@ export interface Prediction {
      * @param {boolean} [options.spellCheck] Enable spell checking.
      *
      * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
-     * to use when enabling bing spell check
+     * to use when enabling Bing spell check
      *
      * @param {boolean} [options.log] Log query (default is true)
      *
