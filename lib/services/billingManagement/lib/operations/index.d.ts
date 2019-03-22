@@ -1921,7 +1921,7 @@ export interface Invoice {
      *
      * @param {string} billingProfileName Billing Profile Id.
      *
-     * @param {string} invoiceName Invoide Id.
+     * @param {string} invoiceName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1943,7 +1943,7 @@ export interface Invoice {
      *
      * @param {string} billingProfileName Billing Profile Id.
      *
-     * @param {string} invoiceName Invoide Id.
+     * @param {string} invoiceName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2680,7 +2680,7 @@ export interface Products {
      *
      * @param {string} invoiceSectionName InvoiceSection Id.
      *
-     * @param {string} productName Invoide Id.
+     * @param {string} productName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2702,7 +2702,7 @@ export interface Products {
      *
      * @param {string} invoiceSectionName InvoiceSection Id.
      *
-     * @param {string} productName Invoide Id.
+     * @param {string} productName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2743,7 +2743,7 @@ export interface Products {
      *
      * @param {string} invoiceSectionName InvoiceSection Id.
      *
-     * @param {string} productName Invoide Id.
+     * @param {string} productName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2768,7 +2768,7 @@ export interface Products {
      *
      * @param {string} invoiceSectionName InvoiceSection Id.
      *
-     * @param {string} productName Invoide Id.
+     * @param {string} productName Invoice Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3335,11 +3335,11 @@ export interface BillingAccountBillingPermissions {
 
 /**
  * @class
- * InvoiceSectionsbillingPermissions
+ * InvoiceSectionsBillingPermissions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
  */
-export interface InvoiceSectionsbillingPermissions {
+export interface InvoiceSectionsBillingPermissions {
 
 
     /**

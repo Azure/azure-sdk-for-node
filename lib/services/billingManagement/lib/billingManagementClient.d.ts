@@ -85,7 +85,7 @@ export default class BillingManagementClient extends AzureServiceClient {
   billingPropertyOperations: operations.BillingPropertyOperations;
   operations: operations.Operations;
   billingAccountBillingPermissions: operations.BillingAccountBillingPermissions;
-  invoiceSectionsbillingPermissions: operations.InvoiceSectionsbillingPermissions;
+  invoiceSectionsBillingPermissions: operations.InvoiceSectionsBillingPermissions;
   billingProfileBillingPermissions: operations.BillingProfileBillingPermissions;
   billingAccountBillingRoleDefinition: operations.BillingAccountBillingRoleDefinition;
   invoiceSectionBillingRoleDefinition: operations.InvoiceSectionBillingRoleDefinition;
@@ -180,7 +180,7 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} billingAccountName billing Account Id.
    *
-   * @param {string} productName Invoide Id.
+   * @param {string} productName Invoice Id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -203,7 +203,7 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} billingAccountName billing Account Id.
    *
-   * @param {string} productName Invoide Id.
+   * @param {string} productName Invoice Id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -248,7 +248,7 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} invoiceSectionName InvoiceSection Id.
    *
-   * @param {string} productName Invoide Id.
+   * @param {string} productName Invoice Id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -273,7 +273,7 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} invoiceSectionName InvoiceSection Id.
    *
-   * @param {string} productName Invoide Id.
+   * @param {string} productName Invoice Id.
    *
    * @param {object} [options] Optional Parameters.
    *

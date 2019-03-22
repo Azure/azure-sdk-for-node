@@ -160,7 +160,7 @@ export interface BillingProfile extends Resource {
    */
   billingAddress?: Address;
   /**
-   * If the billing profile is opted in to recieve invoices via email.
+   * If the billing profile is opted in to receive invoices via email.
    */
   readonly invoiceEmailOptIn?: boolean;
   /**
@@ -942,7 +942,7 @@ export interface PaymentMethod extends Resource {
 }
 
 /**
- * Request parameters to update auto renew for support prouct.
+ * Request parameters to update auto renew for support product.
  */
 export interface UpdateAutoRenewRequest {
   /**
@@ -993,7 +993,7 @@ export interface BillingRoleAssignmentPayload {
    */
   readonly principalId?: string;
   /**
-   * The role defintion id
+   * The role definition id
    */
   readonly billingRoleDefinitionName?: string;
 }
@@ -1023,7 +1023,7 @@ export interface BillingRoleAssignment extends Resource {
    */
   readonly principalId?: string;
   /**
-   * The role defintion id
+   * The role definition id
    */
   readonly roleDefinitionName?: string;
   /**
