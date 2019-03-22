@@ -56,15 +56,27 @@ export interface ImageRegionCreateEntry {
   /**
    * Id of the image.
   */
-  imageId?: string;
+  imageId: string;
   /**
    * Id of the tag associated with this region.
   */
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
+  tagId: string;
+  /**
+   * Coordinate of the left boundary.
+  */
+  left: number;
+  /**
+   * Coordinate of the top boundary.
+  */
+  top: number;
+  /**
+   * Width.
+  */
+  width: number;
+  /**
+   * Height.
+  */
+  height: number;
 }
 
 /**
@@ -82,11 +94,23 @@ export interface ImageRegionCreateResult {
   /**
    * Id of the tag associated with this region.
   */
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
+  tagId: string;
+  /**
+   * Coordinate of the left boundary.
+  */
+  left: number;
+  /**
+   * Coordinate of the top boundary.
+  */
+  top: number;
+  /**
+   * Width.
+  */
+  width: number;
+  /**
+   * Height.
+  */
+  height: number;
 }
 
 export interface ImageRegionCreateSummary {
@@ -108,11 +132,23 @@ export interface ImageRegion {
   /**
    * Id of the tag associated with this region.
   */
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
+  tagId: string;
+  /**
+   * Coordinate of the left boundary.
+  */
+  left: number;
+  /**
+   * Coordinate of the top boundary.
+  */
+  top: number;
+  /**
+   * Width.
+  */
+  width: number;
+  /**
+   * Height.
+  */
+  height: number;
 }
 
 /**
@@ -190,11 +226,23 @@ export interface Region {
   /**
    * Id of the tag associated with this region.
   */
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
+  tagId: string;
+  /**
+   * Coordinate of the left boundary.
+  */
+  left: number;
+  /**
+   * Coordinate of the top boundary.
+  */
+  top: number;
+  /**
+   * Width.
+  */
+  width: number;
+  /**
+   * Height.
+  */
+  height: number;
 }
 
 export interface ImageFileCreateEntry {
@@ -210,7 +258,10 @@ export interface ImageFileCreateBatch {
 }
 
 export interface ImageUrlCreateEntry {
-  url?: string;
+  /**
+   * Url of the image.
+  */
+  url: string;
   tagIds?: string[];
   regions?: Region[];
 }
@@ -221,6 +272,9 @@ export interface ImageUrlCreateBatch {
 }
 
 export interface ImageIdCreateEntry {
+  /**
+   * Id of the image.
+  */
   id?: string;
   tagIds?: string[];
   regions?: Region[];
@@ -231,11 +285,26 @@ export interface ImageIdCreateBatch {
   tagIds?: string[];
 }
 
+/**
+ * Bounding box that defines a region of an image.
+*/
 export interface BoundingBox {
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
+  /**
+   * Coordinate of the left boundary.
+  */
+  left: number;
+  /**
+   * Coordinate of the top boundary.
+  */
+  top: number;
+  /**
+   * Width.
+  */
+  width: number;
+  /**
+   * Height.
+  */
+  height: number;
 }
 
 export interface RegionProposal {
@@ -249,22 +318,61 @@ export interface ImageRegionProposal {
   readonly proposals?: RegionProposal[];
 }
 
+/**
+ * Image url.
+*/
 export interface ImageUrl {
-  url?: string;
+  /**
+   * Url of the image.
+  */
+  url: string;
 }
 
+/**
+ * Prediction result.
+*/
 export interface Prediction {
+  /**
+   * Probability of the tag.
+  */
   readonly probability?: number;
+  /**
+   * Id of the predicted tag.
+  */
   readonly tagId?: string;
+  /**
+   * Name of the predicted tag.
+  */
   readonly tagName?: string;
+  /**
+   * Bounding box of the prediction.
+  */
   readonly boundingBox?: BoundingBox;
 }
 
+/**
+ * Result of an image prediction request.
+*/
 export interface ImagePrediction {
+  /**
+   * Prediction Id.
+  */
   readonly id?: string;
+  /**
+   * Project Id.
+  */
   readonly project?: string;
+  /**
+   * Iteration Id.
+  */
   readonly iteration?: string;
+  /**
+   * Date this prediction was created.
+  */
   readonly created?: Date;
+  /**
+   * List of predictions.
+  */
   readonly predictions?: Prediction[];
 }
 
@@ -309,10 +417,25 @@ export interface StoredImagePrediction {
    * Domain used for the prediction.
   */
   readonly domain?: string;
+  /**
+   * Prediction Id.
+  */
   readonly id?: string;
+  /**
+   * Project Id.
+  */
   readonly project?: string;
+  /**
+   * Iteration Id.
+  */
   readonly iteration?: string;
+  /**
+   * Date this prediction was created.
+  */
   readonly created?: Date;
+  /**
+   * List of predictions.
+  */
   readonly predictions?: Prediction[];
 }
 
@@ -407,6 +530,10 @@ export interface ProjectSettings {
    * 'Multilabel'
   */
   classificationType?: string;
+  /**
+   * A list of ExportPlatform that the trained model should be able to support.
+  */
+  targetExportPlatforms?: string[];
 }
 
 /**
@@ -414,33 +541,37 @@ export interface ProjectSettings {
 */
 export interface Project {
   /**
-   * Gets The project id.
+   * Gets the project id.
   */
   readonly id?: string;
   /**
    * Gets or sets the name of the project.
   */
-  name?: string;
+  name: string;
   /**
    * Gets or sets the description of the project.
   */
-  description?: string;
+  description: string;
   /**
    * Gets or sets the project settings.
   */
-  settings?: ProjectSettings;
+  settings: ProjectSettings;
   /**
    * Gets the date this project was created.
   */
   readonly created?: Date;
   /**
-   * Gets the date this project was last modifed.
+   * Gets the date this project was last modified.
   */
   readonly lastModified?: Date;
   /**
-   * Gets the thumbnail url representing the project.
+   * Gets the thumbnail url representing the image.
   */
   readonly thumbnailUri?: string;
+  /**
+   * Gets if the DR mode is on.
+  */
+  readonly drModeEnabled?: boolean;
 }
 
 /**
@@ -454,12 +585,7 @@ export interface Iteration {
   /**
    * Gets or sets the name of the iteration.
   */
-  name?: string;
-  /**
-   * Gets or sets a value indicating whether the iteration is the default iteration for the
-   * project.
-  */
-  isDefault?: boolean;
+  name: string;
   /**
    * Gets the current iteration status.
   */
@@ -477,13 +603,17 @@ export interface Iteration {
   */
   readonly trainedAt?: Date;
   /**
-   * Gets The project id. of the iteration.
+   * Gets the project id of the iteration.
   */
   readonly projectId?: string;
   /**
    * Whether the iteration can be exported to another format for download.
   */
   readonly exportable?: boolean;
+  /**
+   * A set of platforms this iteration can export to.
+  */
+  readonly exportableTo?: string[];
   /**
    * Get or sets a guid of the domain the iteration has been trained on.
   */
@@ -493,11 +623,28 @@ export interface Iteration {
    * 'Multilabel'
   */
   readonly classificationType?: string;
+  /**
+   * Gets the training type of the iteration. Possible values include: 'Regular', 'Advanced'
+  */
+  readonly trainingType?: string;
+  /**
+   * Gets the reserved advanced training budget for the iteration.
+  */
+  readonly reservedBudgetInHours?: number;
+  /**
+   * Name of the published model.
+  */
+  readonly publishName?: string;
+  /**
+   * Resource Provider Id this iteration was originally published to.
+  */
+  readonly originalPublishResourceId?: string;
 }
 
 export interface ExportModel {
   /**
-   * Platform of the export. Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
+   * Platform of the export. Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX',
+   * 'VAIDK'
   */
   readonly platform?: string;
   /**
@@ -509,7 +656,7 @@ export interface ExportModel {
   */
   readonly downloadUri?: string;
   /**
-   * Flavor of the export. Possible values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12'
+   * Flavor of the export. Possible values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12', 'ARM'
   */
   readonly flavor?: string;
   /**
@@ -530,17 +677,77 @@ export interface Tag {
   /**
    * Gets or sets the name of the tag.
   */
-  name?: string;
+  name: string;
   /**
    * Gets or sets the description of the tag.
   */
-  description?: string;
+  description: string;
   /**
    * Gets or sets the type of the tag. Possible values include: 'Regular', 'Negative'
   */
-  type?: string;
+  type: string;
   /**
    * Gets the number of images with this tag.
   */
   readonly imageCount?: number;
+}
+
+export interface CustomVisionError {
+  /**
+   * The error code. Possible values include: 'NoError', 'BadRequest',
+   * 'BadRequestExceededBatchSize', 'BadRequestNotSupported', 'BadRequestInvalidIds',
+   * 'BadRequestProjectName', 'BadRequestProjectNameNotUnique', 'BadRequestProjectDescription',
+   * 'BadRequestProjectUnknownDomain', 'BadRequestProjectUnknownClassification',
+   * 'BadRequestProjectUnsupportedDomainTypeChange', 'BadRequestProjectUnsupportedExportPlatform',
+   * 'BadRequestIterationName', 'BadRequestIterationNameNotUnique',
+   * 'BadRequestIterationDescription', 'BadRequestIterationIsNotTrained',
+   * 'BadRequestWorkspaceCannotBeModified', 'BadRequestWorkspaceNotDeletable', 'BadRequestTagName',
+   * 'BadRequestTagNameNotUnique', 'BadRequestTagDescription', 'BadRequestTagType',
+   * 'BadRequestMultipleNegativeTag', 'BadRequestImageTags', 'BadRequestImageRegions',
+   * 'BadRequestNegativeAndRegularTagOnSameImage', 'BadRequestRequiredParamIsNull',
+   * 'BadRequestIterationIsPublished', 'BadRequestInvalidPublishName',
+   * 'BadRequestInvalidPublishTarget', 'BadRequestUnpublishFailed',
+   * 'BadRequestIterationNotPublished', 'BadRequestSubscriptionApi',
+   * 'BadRequestExceedProjectLimit', 'BadRequestExceedIterationPerProjectLimit',
+   * 'BadRequestExceedTagPerProjectLimit', 'BadRequestExceedTagPerImageLimit',
+   * 'BadRequestExceededQuota', 'BadRequestCannotMigrateProjectWithName',
+   * 'BadRequestNotLimitedTrial', 'BadRequestImageBatch', 'BadRequestImageStream',
+   * 'BadRequestImageUrl', 'BadRequestImageFormat', 'BadRequestImageSizeBytes',
+   * 'BadRequestImageExceededCount', 'BadRequestTrainingNotNeeded',
+   * 'BadRequestTrainingNotNeededButTrainingPipelineUpdated', 'BadRequestTrainingValidationFailed',
+   * 'BadRequestClassificationTrainingValidationFailed',
+   * 'BadRequestMultiClassClassificationTrainingValidationFailed',
+   * 'BadRequestMultiLabelClassificationTrainingValidationFailed',
+   * 'BadRequestDetectionTrainingValidationFailed', 'BadRequestTrainingAlreadyInProgress',
+   * 'BadRequestDetectionTrainingNotAllowNegativeTag', 'BadRequestInvalidEmailAddress',
+   * 'BadRequestDomainNotSupportedForAdvancedTraining',
+   * 'BadRequestExportPlatformNotSupportedForAdvancedTraining',
+   * 'BadRequestReservedBudgetInHoursNotEnoughForAdvancedTraining',
+   * 'BadRequestExportValidationFailed', 'BadRequestExportAlreadyInProgress',
+   * 'BadRequestPredictionIdsMissing', 'BadRequestPredictionIdsExceededCount',
+   * 'BadRequestPredictionTagsExceededCount', 'BadRequestPredictionResultsExceededCount',
+   * 'BadRequestPredictionInvalidApplicationName', 'BadRequestPredictionInvalidQueryParameters',
+   * 'BadRequestInvalid', 'UnsupportedMediaType', 'Forbidden', 'ForbiddenUser',
+   * 'ForbiddenUserResource', 'ForbiddenUserSignupDisabled',
+   * 'ForbiddenUserSignupAllowanceExceeded', 'ForbiddenUserDoesNotExist', 'ForbiddenUserDisabled',
+   * 'ForbiddenUserInsufficientCapability', 'ForbiddenDRModeEnabled', 'ForbiddenInvalid',
+   * 'NotFound', 'NotFoundProject', 'NotFoundProjectDefaultIteration', 'NotFoundIteration',
+   * 'NotFoundIterationPerformance', 'NotFoundTag', 'NotFoundImage', 'NotFoundDomain',
+   * 'NotFoundApimSubscription', 'NotFoundInvalid', 'Conflict', 'ConflictInvalid', 'ErrorUnknown',
+   * 'ErrorProjectInvalidWorkspace', 'ErrorProjectInvalidPipelineConfiguration',
+   * 'ErrorProjectInvalidDomain', 'ErrorProjectTrainingRequestFailed',
+   * 'ErrorProjectExportRequestFailed', 'ErrorFeaturizationServiceUnavailable',
+   * 'ErrorFeaturizationQueueTimeout', 'ErrorFeaturizationInvalidFeaturizer',
+   * 'ErrorFeaturizationAugmentationUnavailable', 'ErrorFeaturizationUnrecognizedJob',
+   * 'ErrorFeaturizationAugmentationError', 'ErrorExporterInvalidPlatform',
+   * 'ErrorExporterInvalidFeaturizer', 'ErrorExporterInvalidClassifier',
+   * 'ErrorPredictionServiceUnavailable', 'ErrorPredictionModelNotFound',
+   * 'ErrorPredictionModelNotCached', 'ErrorPrediction', 'ErrorPredictionStorage',
+   * 'ErrorRegionProposal', 'ErrorInvalid'
+  */
+  code: string;
+  /**
+   * A message explaining the error reported by the service.
+  */
+  message: string;
 }
