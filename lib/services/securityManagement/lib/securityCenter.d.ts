@@ -67,6 +67,7 @@ export default class SecurityCenter extends AzureServiceClient {
   autoProvisioningSettings: operations.AutoProvisioningSettings;
   compliances: operations.Compliances;
   advancedThreatProtection: operations.AdvancedThreatProtection;
+  deviceSecurityGroups: operations.DeviceSecurityGroups;
   settings: operations.Settings;
   informationProtectionPolicies: operations.InformationProtectionPolicies;
   operations: operations.Operations;
@@ -78,6 +79,7 @@ export default class SecurityCenter extends AzureServiceClient {
   externalSecuritySolutions: operations.ExternalSecuritySolutions;
   topology: operations.Topology;
   allowedConnections: operations.AllowedConnections;
+  adaptiveNetworkHardenings: operations.AdaptiveNetworkHardenings;
 }
 
 export { SecurityCenter, models as SecurityCenterModels };

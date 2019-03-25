@@ -2158,6 +2158,341 @@ export interface AdvancedThreatProtection {
 
 /**
  * @class
+ * DeviceSecurityGroups
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface DeviceSecurityGroups {
+
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeviceSecurityGroupList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroupList>>;
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeviceSecurityGroupList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeviceSecurityGroupList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroupList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroupList>;
+    list(resourceId: string, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+    list(resourceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+
+
+    /**
+     * Gets the device security group for the specified IoT hub resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeviceSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroup>>;
+
+    /**
+     * Gets the device security group for the specified IoT hub resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeviceSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeviceSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroup>;
+    get(resourceId: string, deviceSecurityGroupName: string, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+    get(resourceId: string, deviceSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+
+
+    /**
+     * Creates or updates the device security group on a specified IoT hub
+     * resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} deviceSecurityGroup Security group object.
+     *
+     * @param {array} [deviceSecurityGroup.thresholdRules] A list of threshold
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.timeWindowRules] A list of time window
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.allowlistRules] A list of allow-list
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.denylistRules] A list of deny-list
+     * custom alert rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeviceSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroup>>;
+
+    /**
+     * Creates or updates the device security group on a specified IoT hub
+     * resource.
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} deviceSecurityGroup Security group object.
+     *
+     * @param {array} [deviceSecurityGroup.thresholdRules] A list of threshold
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.timeWindowRules] A list of time window
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.allowlistRules] A list of allow-list
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.denylistRules] A list of deny-list
+     * custom alert rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeviceSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeviceSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroup>;
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+
+
+    /**
+     * Deletes the security group
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the security group
+     *
+     * @param {string} resourceId The identifier of the resource.
+     *
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeviceSecurityGroupList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroupList>>;
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeviceSecurityGroupList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeviceSecurityGroupList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroupList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroupList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+}
+
+/**
+ * @class
  * Settings
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.
@@ -6261,4 +6596,401 @@ export interface AllowedConnections {
     listByHomeRegionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsList>;
     listByHomeRegionNext(nextPageLink: string, callback: ServiceCallback<models.AllowedConnectionsList>): void;
     listByHomeRegionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+}
+
+/**
+ * @class
+ * AdaptiveNetworkHardenings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface AdaptiveNetworkHardenings {
+
+
+    /**
+     * Gets a list of Adaptive Network Hardenings resources in scope of an extended
+     * resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AdaptiveNetworkHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByExtendedResourceWithHttpOperationResponse(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AdaptiveNetworkHardeningsList>>;
+
+    /**
+     * Gets a list of Adaptive Network Hardenings resources in scope of an extended
+     * resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AdaptiveNetworkHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AdaptiveNetworkHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AdaptiveNetworkHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByExtendedResource(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AdaptiveNetworkHardeningsList>;
+    listByExtendedResource(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.AdaptiveNetworkHardeningsList>): void;
+    listByExtendedResource(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AdaptiveNetworkHardeningsList>): void;
+
+
+    /**
+     * Gets a single Adaptive Network Hardening resource
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AdaptiveNetworkHardening>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AdaptiveNetworkHardening>>;
+
+    /**
+     * Gets a single Adaptive Network Hardening resource
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AdaptiveNetworkHardening} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AdaptiveNetworkHardening} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AdaptiveNetworkHardening} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AdaptiveNetworkHardening>;
+    get(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, callback: ServiceCallback<models.AdaptiveNetworkHardening>): void;
+    get(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AdaptiveNetworkHardening>): void;
+
+
+    /**
+     * Enforces the given rules on the NSG(s) listed in the request
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} body
+     *
+     * @param {array} body.rules The rules to enforce
+     *
+     * @param {array} body.networkSecurityGroups The Azure resource IDs of the
+     * effective network security groups that will be updated with the created
+     * security rules from the Adaptive Network Hardening rules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enforceWithHttpOperationResponse(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enforces the given rules on the NSG(s) listed in the request
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} body
+     *
+     * @param {array} body.rules The rules to enforce
+     *
+     * @param {array} body.networkSecurityGroups The Azure resource IDs of the
+     * effective network security groups that will be updated with the created
+     * security rules from the Adaptive Network Hardening rules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, callback: ServiceCallback<void>): void;
+    enforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Enforces the given rules on the NSG(s) listed in the request
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} body
+     *
+     * @param {array} body.rules The rules to enforce
+     *
+     * @param {array} body.networkSecurityGroups The Azure resource IDs of the
+     * effective network security groups that will be updated with the created
+     * security rules from the Adaptive Network Hardening rules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginEnforceWithHttpOperationResponse(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enforces the given rules on the NSG(s) listed in the request
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} resourceNamespace The Namespace of the resource.
+     *
+     * @param {string} resourceType The type of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {string} adaptiveNetworkHardeningResourceName The name of the
+     * Adaptive Network Hardening resource.
+     *
+     * @param {object} body
+     *
+     * @param {array} body.rules The rules to enforce
+     *
+     * @param {array} body.networkSecurityGroups The Azure resource IDs of the
+     * effective network security groups that will be updated with the created
+     * security rules from the Adaptive Network Hardening rules
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginEnforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginEnforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, callback: ServiceCallback<void>): void;
+    beginEnforce(resourceGroupName: string, resourceNamespace: string, resourceType: string, resourceName: string, adaptiveNetworkHardeningResourceName: string, body: models.AdaptiveNetworkHardeningEnforceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of Adaptive Network Hardenings resources in scope of an extended
+     * resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AdaptiveNetworkHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByExtendedResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AdaptiveNetworkHardeningsList>>;
+
+    /**
+     * Gets a list of Adaptive Network Hardenings resources in scope of an extended
+     * resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AdaptiveNetworkHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AdaptiveNetworkHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AdaptiveNetworkHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByExtendedResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AdaptiveNetworkHardeningsList>;
+    listByExtendedResourceNext(nextPageLink: string, callback: ServiceCallback<models.AdaptiveNetworkHardeningsList>): void;
+    listByExtendedResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AdaptiveNetworkHardeningsList>): void;
 }
