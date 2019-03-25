@@ -58,6 +58,9 @@ export default class SecurityCenter extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  regulatoryComplianceStandards: operations.RegulatoryComplianceStandards;
+  regulatoryComplianceControls: operations.RegulatoryComplianceControls;
+  regulatoryComplianceAssessments: operations.RegulatoryComplianceAssessments;
   pricings: operations.Pricings;
   securityContacts: operations.SecurityContacts;
   workspaceSettings: operations.WorkspaceSettings;
