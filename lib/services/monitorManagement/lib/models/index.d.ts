@@ -2359,9 +2359,9 @@ export interface Criteria {
  */
 export interface LogToMetricAction extends Action {
   /**
-   * Severity of the alert
+   * Criteria of Metric
    */
-  criteria: Criteria;
+  criteria: Criteria[];
 }
 
 /**
