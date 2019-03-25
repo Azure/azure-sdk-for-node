@@ -83,6 +83,9 @@ export default class BillingManagementClient extends AzureServiceClient {
   transactionsByBillingAccount: operations.TransactionsByBillingAccount;
   policyOperations: operations.PolicyOperations;
   billingPropertyOperations: operations.BillingPropertyOperations;
+  transfer: operations.Transfer;
+  transfers: operations.Transfers;
+  recipientTransfer: operations.RecipientTransfer;
   operations: operations.Operations;
   billingAccountBillingPermissions: operations.BillingAccountBillingPermissions;
   invoiceSectionsBillingPermissions: operations.InvoiceSectionsBillingPermissions;

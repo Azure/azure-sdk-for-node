@@ -3153,6 +3153,636 @@ export interface BillingPropertyOperations {
 
 /**
  * @class
+ * Transfer
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface Transfer {
+
+
+    /**
+     * Initiates the request to transfer the GTM or legacy subscriptions or RIs to
+     * GTM.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {object} body Initiate transfer parameters.
+     *
+     * @param {string} [body.billingProfileId] Target Usage context for devTest
+     * subscriptions.
+     *
+     * @param {string} [body.recipientEmailId] Email Id of recipient for transfer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    initiateWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, body: models.InitiateTransferRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransferDetails>>;
+
+    /**
+     * Initiates the request to transfer the GTM or legacy subscriptions or RIs to
+     * GTM.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {object} body Initiate transfer parameters.
+     *
+     * @param {string} [body.billingProfileId] Target Usage context for devTest
+     * subscriptions.
+     *
+     * @param {string} [body.recipientEmailId] Email Id of recipient for transfer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TransferDetails} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    initiate(billingAccountName: string, invoiceSectionName: string, body: models.InitiateTransferRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TransferDetails>;
+    initiate(billingAccountName: string, invoiceSectionName: string, body: models.InitiateTransferRequest, callback: ServiceCallback<models.TransferDetails>): void;
+    initiate(billingAccountName: string, invoiceSectionName: string, body: models.InitiateTransferRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransferDetails>): void;
+
+
+    /**
+     * Gets the transfer details for given transfer Id.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransferDetails>>;
+
+    /**
+     * Gets the transfer details for given transfer Id.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TransferDetails} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountName: string, invoiceSectionName: string, transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TransferDetails>;
+    get(billingAccountName: string, invoiceSectionName: string, transferName: string, callback: ServiceCallback<models.TransferDetails>): void;
+    get(billingAccountName: string, invoiceSectionName: string, transferName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransferDetails>): void;
+
+
+    /**
+     * Cancels the transfer for given transfer Id.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransferDetails>>;
+
+    /**
+     * Cancels the transfer for given transfer Id.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TransferDetails} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(billingAccountName: string, invoiceSectionName: string, transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TransferDetails>;
+    cancel(billingAccountName: string, invoiceSectionName: string, transferName: string, callback: ServiceCallback<models.TransferDetails>): void;
+    cancel(billingAccountName: string, invoiceSectionName: string, transferName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransferDetails>): void;
+
+
+    /**
+     * @summary Accepts the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.productDetails] Request parameters to accept
+     * transfer.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecipientTransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    acceptWithHttpOperationResponse(transferName: string, options?: { productDetails? : models.ProductDetails[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecipientTransferDetails>>;
+
+    /**
+     * @summary Accepts the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.productDetails] Request parameters to accept
+     * transfer.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecipientTransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecipientTransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecipientTransferDetails} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    accept(transferName: string, options?: { productDetails? : models.ProductDetails[], customHeaders? : { [headerName: string]: string; } }): Promise<models.RecipientTransferDetails>;
+    accept(transferName: string, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+    accept(transferName: string, options: { productDetails? : models.ProductDetails[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+
+
+    /**
+     * @summary Declines the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecipientTransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    declineWithHttpOperationResponse(transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecipientTransferDetails>>;
+
+    /**
+     * @summary Declines the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecipientTransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecipientTransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecipientTransferDetails} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    decline(transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecipientTransferDetails>;
+    decline(transferName: string, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+    decline(transferName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+}
+
+/**
+ * @class
+ * Transfers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface Transfers {
+
+
+    /**
+     * Lists all transfer's details initiated from given invoice section.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TransferDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransferDetailsListResult>>;
+
+    /**
+     * Lists all transfer's details initiated from given invoice section.
+     *
+     * @param {string} billingAccountName billing Account Id.
+     *
+     * @param {string} invoiceSectionName InvoiceSection Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TransferDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TransferDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TransferDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountName: string, invoiceSectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TransferDetailsListResult>;
+    list(billingAccountName: string, invoiceSectionName: string, callback: ServiceCallback<models.TransferDetailsListResult>): void;
+    list(billingAccountName: string, invoiceSectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransferDetailsListResult>): void;
+
+
+    /**
+     * Lists all transfer's details initiated from given invoice section.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TransferDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransferDetailsListResult>>;
+
+    /**
+     * Lists all transfer's details initiated from given invoice section.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TransferDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TransferDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TransferDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TransferDetailsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.TransferDetailsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransferDetailsListResult>): void;
+}
+
+/**
+ * @class
+ * RecipientTransfer
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface RecipientTransfer {
+
+
+    /**
+     * @summary Gets the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecipientTransferDetails>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecipientTransferDetails>>;
+
+    /**
+     * @summary Gets the transfer with given transfer Id.
+     *
+     * @param {string} transferName Transfer Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecipientTransferDetails} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecipientTransferDetails} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecipientTransferDetails} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(transferName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecipientTransferDetails>;
+    get(transferName: string, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+    get(transferName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecipientTransferDetails>): void;
+
+
+    /**
+     * @summary Lists the transfers received by caller.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecipientTransferDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecipientTransferDetailsListResult>>;
+
+    /**
+     * @summary Lists the transfers received by caller.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecipientTransferDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecipientTransferDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecipientTransferDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecipientTransferDetailsListResult>;
+    list(callback: ServiceCallback<models.RecipientTransferDetailsListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecipientTransferDetailsListResult>): void;
+
+
+    /**
+     * @summary Lists the transfers received by caller.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecipientTransferDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecipientTransferDetailsListResult>>;
+
+    /**
+     * @summary Lists the transfers received by caller.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecipientTransferDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecipientTransferDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecipientTransferDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecipientTransferDetailsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RecipientTransferDetailsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecipientTransferDetailsListResult>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.

@@ -16,6 +16,172 @@ export {
 };
 
 /**
+ * Request parameters to initiate transfer.
+ */
+export interface InitiateTransferRequest {
+  /**
+   * Target Usage context for devTest subscriptions.
+   */
+  billingProfileId?: string;
+  /**
+   * Email Id of recipient for transfer.
+   */
+  recipientEmailId?: string;
+}
+
+/**
+ * Details of the product to be transferred.
+ */
+export interface ProductDetails {
+  /**
+   * Type of the prouct to be transferred. Possible values include: 'AzureSubscription',
+   * 'AzureReservation'
+   */
+  productType?: string;
+  /**
+   * Id of product to be transferred.
+   */
+  productId?: string;
+}
+
+/**
+ * Request parameters to accept transfer.
+ */
+export interface AcceptTransferRequest {
+  /**
+   * Request parameters to accept transfer.
+   */
+  productDetails?: ProductDetails[];
+}
+
+/**
+ * Error details for transfer execution.
+ */
+export interface ErrorModel {
+  /**
+   * Error code.
+   */
+  readonly errorCode?: string;
+  /**
+   * Error message.
+   */
+  readonly errorMessage?: string;
+}
+
+/**
+ * Detailed transfer status.
+ */
+export interface DetailedTransferStatus {
+  /**
+   * Type of product being transferred. Possible values include: 'AzureSubscription',
+   * 'AzureReservation'
+   */
+  readonly productType?: string;
+  /**
+   * Id of product being transferred.
+   */
+  readonly productId?: string;
+  /**
+   * Transfer status. Possible values include: 'NotStarted', 'InProgress', 'Completed', 'Failed'
+   */
+  readonly transferStatus?: string;
+  /**
+   * Error details for transfer execution.
+   */
+  errorDetails?: ErrorModel;
+}
+
+/**
+ * Details of the transfer.
+ */
+export interface TransferDetails {
+  /**
+   * Transfer creation time.
+   */
+  readonly creationTime?: Date;
+  /**
+   * Transfer expiration time.
+   */
+  readonly expirationTime?: Date;
+  /**
+   * Target invoice setion Id.
+   */
+  readonly invoiceSectionId?: string;
+  /**
+   * Target billing account Id.
+   */
+  readonly billingAccountId?: string;
+  /**
+   * Overall transfer status. Possible values include: 'Pending', 'InProgress', 'Completed',
+   * 'CompletedWithErrors', 'Failed', 'Canceled', 'Declined'
+   */
+  readonly transferStatus?: string;
+  /**
+   * Email Id of recipient of transfer.
+   */
+  readonly recipientEmailId?: string;
+  /**
+   * Email Id of initiator of transfer.
+   */
+  readonly initiatorEmailId?: string;
+  /**
+   * Email Id who user canceled the transfer.
+   */
+  readonly canceledBy?: string;
+  /**
+   * Transfer last modification time.
+   */
+  readonly lastModifiedTime?: Date;
+  /**
+   * Detailed transfer status.
+   */
+  readonly detailedTransferStatus?: DetailedTransferStatus[];
+}
+
+/**
+ * Details of the transfer.
+ */
+export interface RecipientTransferDetails {
+  /**
+   * Transfer creation time.
+   */
+  readonly creationTime?: Date;
+  /**
+   * Transfer expiration time.
+   */
+  readonly expirationTime?: Date;
+  /**
+   * Type of subscriptions that can be transferred.
+   */
+  readonly allowedProductType?: string[];
+  /**
+   * Overall transfer status. Possible values include: 'Pending', 'InProgress', 'Completed',
+   * 'CompletedWithErrors', 'Failed', 'Canceled', 'Declined'
+   */
+  readonly transferStatus?: string;
+  /**
+   * Email Id of recipient of transfer.
+   */
+  readonly recipientEmailId?: string;
+  /**
+   * Email Id of initiator of transfer.
+   */
+  readonly initiatorEmailId?: string;
+  /**
+   * Email Id who user canceled the transfer.
+   */
+  readonly canceledBy?: string;
+  /**
+   * Transfer last modification time.
+   */
+  readonly lastModifiedTime?: Date;
+  /**
+   * Detailed transfer status.
+   */
+  readonly detailedTransferStatus?: DetailedTransferStatus[];
+}
+
+/**
  * The properties of the product to initiate a transfer.
  */
 export interface TransferProductRequestProperties {
@@ -1129,6 +1295,26 @@ export interface ProductsListResult extends Array<ProductSummary> {
  * Result of listing reservation transactions summary.
  */
 export interface TransactionsListResult extends Array<TransactionsSummary> {
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing details of the transfer initiated by caller.
+ */
+export interface TransferDetailsListResult extends Array<TransferDetails> {
+  /**
+   * The link (url) to the next page of results.
+   */
+  readonly nextLink?: string;
+}
+
+/**
+ * Result of listing details of the transfer received by caller.
+ */
+export interface RecipientTransferDetailsListResult extends Array<RecipientTransferDetails> {
   /**
    * The link (url) to the next page of results.
    */
