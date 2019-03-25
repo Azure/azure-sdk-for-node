@@ -78,6 +78,7 @@ export default class SecurityCenter extends AzureServiceClient {
   externalSecuritySolutions: operations.ExternalSecuritySolutions;
   topology: operations.Topology;
   allowedConnections: operations.AllowedConnections;
+  adaptiveNetworkHardenings: operations.AdaptiveNetworkHardenings;
 }
 
 export { SecurityCenter, models as SecurityCenterModels };

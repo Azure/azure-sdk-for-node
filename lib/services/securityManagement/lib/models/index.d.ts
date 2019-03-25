@@ -1039,6 +1039,79 @@ export interface AllowedConnectionsResource {
 }
 
 /**
+ * Describes remote addresses that is recommended to communicate with the Azure resource on some
+ * (Protocol, Port, Direction). All other remote addresses are recommended to be blocked
+*/
+export interface Rule {
+  /**
+   * The name of the rule
+  */
+  name?: string;
+  /**
+   * The rule's direction. Possible values include: 'Inbound', 'Outbound'
+  */
+  direction?: string;
+  /**
+   * The rule's destination port
+  */
+  destinationPort?: number;
+  /**
+   * The rule's transport protocols
+  */
+  protocols?: string[];
+  /**
+   * The remote IP addresses that should be able to communicate with the Azure resource on the
+   * rule's destination port and protocol
+  */
+  ipAddresses?: string[];
+}
+
+/**
+ * Describes the Network Security Groups effective on a network interface
+*/
+export interface EffectiveNetworkSecurityGroups {
+  /**
+   * The Azure resource ID of the network interface
+  */
+  networkInterface?: string;
+  /**
+   * The Network Security Groups effective on the network interface
+  */
+  networkSecurityGroups?: string[];
+}
+
+/**
+ * The resource whose properties describes the Adaptive Network Hardening settings for some Azure
+ * resource
+*/
+export interface AdaptiveNetworkHardening extends Resource {
+  /**
+   * The security rules which are recommended to be effective on the VM
+  */
+  rules?: Rule[];
+  /**
+   * The UTC time on which the rules were calculated
+  */
+  rulesCalculationTime?: Date;
+  /**
+   * The Network Security Groups effective on the network interfaces of the protected resource
+  */
+  effectiveNetworkSecurityGroups?: EffectiveNetworkSecurityGroups[];
+}
+
+export interface AdaptiveNetworkHardeningEnforceRequest {
+  /**
+   * The rules to enforce
+  */
+  rules: Rule[];
+  /**
+   * The Azure resource IDs of the effective network security groups that will be updated with the
+   * created security rules from the Adaptive Network Hardening rules
+  */
+  networkSecurityGroups: string[];
+}
+
+/**
  * List of regulatory compliance standards response
 */
 export interface RegulatoryComplianceStandardList extends Array<RegulatoryComplianceStandard> {
@@ -1204,4 +1277,14 @@ export interface AllowedConnectionsList extends Array<AllowedConnectionsResource
    * The URI to fetch the next page.
   */
   readonly nextLink?: string;
+}
+
+/**
+ * Response for ListAdaptiveNetworkHardenings API service call
+*/
+export interface AdaptiveNetworkHardeningsList extends Array<AdaptiveNetworkHardening> {
+  /**
+   * The URL to get the next set of results
+  */
+  nextLink?: string;
 }
