@@ -3,7 +3,8 @@ uid: azure-arm-mediaservices
 summary: *content
 
 ---
-**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://github.com/Azure/azure-sdk-for-js) which works on Node.js and browsers.**
+**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://www.npmjs.com/package/@azure/arm-mediaservices) which works on Node.js and browsers.**
+**See https://aka.ms/azure-sdk-for-js-migration to learn more.**
 ## Microsoft Azure SDK for Node.js - AzureMediaServices
 
 This project provides a Node.js package for accessing Azure. Right now it supports:
@@ -43,6 +44,3 @@ msRestAzure.interactiveLogin().then((creds) => {
 ### Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
-
-
-![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FmediaServicesManagement%2FREADME.png)
