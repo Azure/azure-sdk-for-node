@@ -3857,8 +3857,8 @@ export interface Jobs {
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
      *
-     * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job and JobOutput state events.
+     * @param {object} [parameters.correlationData] Customer provided key, value
+     * pairs that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3903,8 +3903,8 @@ export interface Jobs {
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
      *
-     * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job and JobOutput state events.
+     * @param {object} [parameters.correlationData] Customer provided key, value
+     * pairs that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4042,8 +4042,8 @@ export interface Jobs {
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
      *
-     * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job and JobOutput state events.
+     * @param {object} [parameters.correlationData] Customer provided key, value
+     * pairs that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4090,8 +4090,8 @@ export interface Jobs {
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
      *
-     * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job and JobOutput state events.
+     * @param {object} [parameters.correlationData] Customer provided key, value
+     * pairs that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4451,9 +4451,14 @@ export interface StreamingPolicies {
      * specific tracks
      *
      * @param {string}
-     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquisitionUrlTemplate is used to point to user specified service to
-     * delivery content keys
+     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate] Template for
+     * the URL of the custom service delivering keys to end user players.  Not
+     * required when using Azure Media Services for issuing keys.  The template
+     * supports replaceable tokens that the service will update at runtime with the
+     * value specific to the request.  The currently supported token values are
+     * {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
      * CommonEncryptionCenc
@@ -4513,8 +4518,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.fairPlay.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {boolean}
      * parameters.commonEncryptionCbcs.drm.fairPlay.allowPersistentLicense All
@@ -4525,8 +4535,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.playReady.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.playReady.playReadyCustomAttributes]
@@ -4537,8 +4552,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.widevine.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {object} [parameters.noEncryption] Configurations of NoEncryption
      *
@@ -4601,9 +4621,14 @@ export interface StreamingPolicies {
      * specific tracks
      *
      * @param {string}
-     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquisitionUrlTemplate is used to point to user specified service to
-     * delivery content keys
+     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate] Template for
+     * the URL of the custom service delivering keys to end user players.  Not
+     * required when using Azure Media Services for issuing keys.  The template
+     * supports replaceable tokens that the service will update at runtime with the
+     * value specific to the request.  The currently supported token values are
+     * {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
      * CommonEncryptionCenc
@@ -4663,8 +4688,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.fairPlay.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {boolean}
      * parameters.commonEncryptionCbcs.drm.fairPlay.allowPersistentLicense All
@@ -4675,8 +4705,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.playReady.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.playReady.playReadyCustomAttributes]
@@ -4687,8 +4722,13 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.drm.widevine.customLicenseAcquisitionUrlTemplate]
-     * The template for a customer service to deliver keys to end users.  Not
-     * needed when using Azure Media Services for issuing keys.
+     * Template for the URL of the custom service delivering licenses to end user
+     * players.  Not required when using Azure Media Services for issuing licenses.
+     * The template supports replaceable tokens that the service will update at
+     * runtime with the value specific to the request.  The currently supported
+     * token values are {AlternativeMediaId}, which is replaced with the value of
+     * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+     * with the value of identifier of the key being requested.
      *
      * @param {object} [parameters.noEncryption] Configurations of NoEncryption
      *
@@ -5072,6 +5112,9 @@ export interface StreamingLocators {
      * @param {string} [parameters.alternativeMediaId] Alternative Media ID of this
      * Streaming Locator
      *
+     * @param {array} [parameters.filters] A list of asset or account filters which
+     * apply to this streaming locator
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5125,6 +5168,9 @@ export interface StreamingLocators {
      *
      * @param {string} [parameters.alternativeMediaId] Alternative Media ID of this
      * Streaming Locator
+     *
+     * @param {array} [parameters.filters] A list of asset or account filters which
+     * apply to this streaming locator
      *
      * @param {object} [options] Optional Parameters.
      *

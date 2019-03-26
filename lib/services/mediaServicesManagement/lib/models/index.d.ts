@@ -1024,6 +1024,26 @@ export interface AacAudio extends Audio {
 }
 
 /**
+ * Describes all the settings to be used when analyzing a video in order to detect all the faces
+ * present.
+*/
+export interface FaceDetectorPreset extends Preset {
+  /**
+   * Specifies the maximum resolution at which your video is analyzed. The default behavior is
+   * "SourceResolution," which will keep the input video at its original resolution when analyzed.
+   * Using "StandardDefinition" will resize input videos to standard definition while preserving
+   * the appropriate aspect ratio. It will only resize if the video is of higher resolution. For
+   * example, a 1920x1080 input would be scaled to 640x360 before processing. Switching to
+   * "StandardDefinition" will reduce the time it takes to process high resolution video. It may
+   * also reduce the cost of using this component (see
+   * https://azure.microsoft.com/en-us/pricing/details/media-services/#analytics for details).
+   * However, faces that end up being too small in the resized video may not be detected. Possible
+   * values include: 'SourceResolution', 'StandardDefinition'
+  */
+  resolution?: string;
+}
+
+/**
  * The Audio Analyzer preset applies a pre-defined set of AI-based analysis operations, including
  * speech transcription. Currently, the preset supports processing of content with a single audio
  * track.
@@ -1031,12 +1051,18 @@ export interface AacAudio extends Audio {
 export interface AudioAnalyzerPreset extends Preset {
   /**
    * The language for the audio payload in the input using the BCP-47 format of 'language
-   * tag-region' (e.g: 'en-US'). The list of supported languages are, 'en-US', 'en-GB', 'es-ES',
-   * 'es-MX', 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU', 'hi-IN'. If
-   * not specified, automatic language detection would be employed. This feature currently supports
-   * English, Chinese, French, German, Italian, Japanese, Spanish, Russian, and Portuguese. The
-   * automatic detection works best with audio recordings with clearly discernable speech. If
-   * automatic detection fails to find the language, transcription would fallback to English.
+   * tag-region' (e.g: 'en-US').  The list of supported languages are English ('en-US' and
+   * 'en-GB'), Spanish ('es-ES' and 'es-MX'), French ('fr-FR'), Italian ('it-IT'), Japanese
+   * ('ja-JP'), Portuguese ('pt-BR'), Chinese ('zh-CN'), German ('de-DE'), Arabic ('ar-EG' and
+   * 'ar-SY'), Russian ('ru-RU'), Hindi ('hi-IN'), and Korean ('ko-KR'). If you know the language
+   * of your content, it is recommended that you specify it. If the language isn't specified or set
+   * to null, automatic language detection will choose the first language detected and process with
+   * the selected language for the duration of the file. This language detection feature currently
+   * supports English, Chinese, French, German, Italian, Japanese, Spanish, Russian, and
+   * Portuguese. It does not currently support dynamically switching between languages after the
+   * first language is detected. The automatic detection works best with audio recordings with
+   * clearly discernable speech. If automatic detection fails to find the language, transcription
+   * would fallback to 'en-US'."
   */
   audioLanguage?: string;
 }
@@ -1051,7 +1077,7 @@ export interface Overlay {
    * WAV, MP3, WMA or M4A file), or a video file. See https://aka.ms/mesformats for the complete
    * list of supported audio and video file formats.
   */
-  inputLabel?: string;
+  inputLabel: string;
   /**
    * The start position, with reference to the input video, at which the overlay starts. The value
    * should be in ISO 8601 format. For example, PT05S to start the overlay at 5 seconds in to the
@@ -1128,7 +1154,7 @@ export interface Image extends Video {
    * frame), or a relative value (For example, 1%). Also supports a macro {Best}, which tells the
    * encoder to select the best thumbnail from the first few seconds of the video.
   */
-  start?: string;
+  start: string;
   /**
    * The intervals at which thumbnails are generated. The value can be in absolute timestamp (ISO
    * 8601, e.g: PT05S for one image every 5 seconds), or a frame count (For example, 30 for every
@@ -1155,7 +1181,7 @@ export interface Format {
    * audio/video bitrate. Not applicable to thumbnails. {Codec} - The type of the audio/video
    * codec. Any unsubstituted macros will be collapsed and removed from the filename.
   */
-  filenamePattern?: string;
+  filenamePattern: string;
   /**
    * Polymorphic Discriminator
   */
@@ -1292,7 +1318,7 @@ export interface VideoLayer extends Layer {
    * The average bitrate in bits per second at which to encode the input video when generating this
    * layer. This is a required field.
   */
-  bitrate?: number;
+  bitrate: number;
   /**
    * The maximum bitrate (in bits per second), at which the VBV buffer should be assumed to refill.
    * If not specified, defaults to the same value as bitrate.
@@ -1329,14 +1355,14 @@ export interface VideoLayer extends Layer {
 */
 export interface H264Layer extends VideoLayer {
   /**
-   * Which profile of the H.264 standard should be used when encoding this layer. Default is Auto.
-   * Possible values include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
+   * We currently support Baseline, Main, High, High422, High444. Default is Auto. Possible values
+   * include: 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
   */
   profile?: string;
   /**
-   * Which level of the H.264 standard should be used when encoding this layer. The value can be
-   * Auto, or a number that matches the H.264 profile. If not specified, the default is Auto, which
-   * lets the encoder choose the Level that is appropriate for this layer.
+   * We currently support Level up to 6.2. The value can be Auto, or a number that matches the
+   * H.264 profile. If not specified, the default is Auto, which lets the encoder choose the Level
+   * that is appropriate for this layer.
   */
   level?: string;
   /**
@@ -1407,7 +1433,7 @@ export interface OutputFile {
    * and one audio layer with label a1, then an array like '[v1, a1]' tells the encoder to produce
    * an output file with the video track represented by v1 and the audio track represented by a1.
   */
-  labels?: string[];
+  labels: string[];
 }
 
 /**
@@ -1453,8 +1479,8 @@ export interface BuiltInStandardEncoderPreset extends Preset {
   /**
    * The built-in preset to be used for encoding videos. Possible values include:
    * 'H264SingleBitrateSD', 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-   * 'AACGoodQualityAudio', 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
-   * 'H264MultipleBitrateSD'
+   * 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental', 'H264MultipleBitrate1080p',
+   * 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
   */
   presetName: string;
 }
@@ -1470,11 +1496,11 @@ export interface StandardEncoderPreset extends Preset {
   /**
    * The list of codecs to be used when encoding the input video.
   */
-  codecs?: Codec[];
+  codecs: Codec[];
   /**
    * The list of outputs to be produced by the encoder.
   */
-  formats?: Format[];
+  formats: Format[];
 }
 
 /**
@@ -1581,7 +1607,7 @@ export interface JobInput {
 */
 export interface JobInputClip extends JobInput {
   /**
-   * List of files. Required for JobInputHttp.
+   * List of files. Required for JobInputHttp. Maximum of 4000 characters each.
   */
   files?: string[];
   /**
@@ -1619,8 +1645,9 @@ export interface JobInputAsset extends JobInputClip {
 */
 export interface JobInputHttp extends JobInputClip {
   /**
-   * Base URI for HTTPS job input. It will be concatenated with provided file names.   If no base
-   * uri is given, then the provided file list is assumed to be fully qualified uris.
+   * Base URI for HTTPS job input. It will be concatenated with provided file names. If no base uri
+   * is given, then the provided file list is assumed to be fully qualified uris. Maximum length of
+   * 4000 characters.
   */
   baseUri?: string;
 }
@@ -1755,7 +1782,7 @@ export interface Job extends ProxyResource {
   */
   priority?: string;
   /**
-   * Customer provided correlation data that will be returned in Job and JobOutput state events.
+   * Customer provided key, value pairs that will be returned in Job and JobOutput state events.
   */
   correlationData?: { [propertyName: string]: string };
 }
@@ -1839,8 +1866,12 @@ export interface StreamingPolicyContentKeys {
 */
 export interface StreamingPolicyPlayReadyConfiguration {
   /**
-   * The template for a customer service to deliver keys to end users.  Not needed when using Azure
-   * Media Services for issuing keys.
+   * Template for the URL of the custom service delivering licenses to end user players.  Not
+   * required when using Azure Media Services for issuing licenses.  The template supports
+   * replaceable tokens that the service will update at runtime with the value specific to the
+   * request.  The currently supported token values are {AlternativeMediaId}, which is replaced
+   * with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+   * with the value of identifier of the key being requested.
   */
   customLicenseAcquisitionUrlTemplate?: string;
   /**
@@ -1854,8 +1885,12 @@ export interface StreamingPolicyPlayReadyConfiguration {
 */
 export interface StreamingPolicyWidevineConfiguration {
   /**
-   * The template for a customer service to deliver keys to end users.  Not needed when using Azure
-   * Media Services for issuing keys.
+   * Template for the URL of the custom service delivering licenses to end user players.  Not
+   * required when using Azure Media Services for issuing licenses.  The template supports
+   * replaceable tokens that the service will update at runtime with the value specific to the
+   * request.  The currently supported token values are {AlternativeMediaId}, which is replaced
+   * with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+   * with the value of identifier of the key being requested.
   */
   customLicenseAcquisitionUrlTemplate?: string;
 }
@@ -1865,8 +1900,12 @@ export interface StreamingPolicyWidevineConfiguration {
 */
 export interface StreamingPolicyFairPlayConfiguration {
   /**
-   * The template for a customer service to deliver keys to end users.  Not needed when using Azure
-   * Media Services for issuing keys.
+   * Template for the URL of the custom service delivering licenses to end user players.  Not
+   * required when using Azure Media Services for issuing licenses.  The template supports
+   * replaceable tokens that the service will update at runtime with the value specific to the
+   * request.  The currently supported token values are {AlternativeMediaId}, which is replaced
+   * with the value of StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced
+   * with the value of identifier of the key being requested.
   */
   customLicenseAcquisitionUrlTemplate?: string;
   /**
@@ -1957,7 +1996,12 @@ export interface EnvelopeEncryption {
   */
   contentKeys?: StreamingPolicyContentKeys;
   /**
-   * KeyAcquisitionUrlTemplate is used to point to user specified service to delivery content keys
+   * Template for the URL of the custom service delivering keys to end user players.  Not required
+   * when using Azure Media Services for issuing keys.  The template supports replaceable tokens
+   * that the service will update at runtime with the value specific to the request.  The currently
+   * supported token values are {AlternativeMediaId}, which is replaced with the value of
+   * StreamingLocatorId.AlternativeMediaId, and {ContentKeyId}, which is replaced with the value of
+   * identifier of the key being requested.
   */
   customKeyAcquisitionUrlTemplate?: string;
 }
@@ -2156,6 +2200,10 @@ export interface StreamingLocator extends ProxyResource {
    * Alternative Media ID of this Streaming Locator
   */
   alternativeMediaId?: string;
+  /**
+   * A list of asset or account filters which apply to this streaming locator
+  */
+  filters?: string[];
 }
 
 /**
