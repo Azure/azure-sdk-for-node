@@ -717,6 +717,42 @@ export interface ClusterDiskEncryptionParameters {
 }
 
 /**
+ * The update gateway settings request parameters.
+*/
+export interface UpdateGatewaySettingsParameters {
+  /**
+   * Indicates whether or not the gateway settings based authorization is enabled.
+  */
+  isCredentialEnabled?: boolean;
+  /**
+   * The gateway settings user name.
+  */
+  userName?: string;
+  /**
+   * The gateway settings user password.
+  */
+  password?: string;
+}
+
+/**
+ * Gateway settings.
+*/
+export interface GatewaySettings {
+  /**
+   * Indicates whether or not the gateway settings based authorization is enabled.
+  */
+  readonly isCredentialEnabled?: string;
+  /**
+   * The gateway settings user name.
+  */
+  readonly userName?: string;
+  /**
+   * The gateway settings user password.
+  */
+  readonly password?: string;
+}
+
+/**
  * The azure async operation response.
 */
 export interface OperationResource {
@@ -903,6 +939,16 @@ export interface UsagesListResult {
    * The list of usages.
   */
   value?: Usage[];
+}
+
+/**
+ * The configuration object for the specified cluster.
+*/
+export interface ClusterConfigurations {
+  /**
+   * The configuration object for the specified configuration for the specified cluster.
+  */
+  configurations?: { [propertyName: string]: { [propertyName: string]: string } };
 }
 
 /**
