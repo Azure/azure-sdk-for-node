@@ -739,6 +739,141 @@ export interface Clusters {
 
 
     /**
+     * Gets the gateway settings for the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewaySettings>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewaySettings>>;
+
+    /**
+     * Gets the gateway settings for the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewaySettings} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewaySettings} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewaySettings} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getGatewaySettings(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewaySettings>;
+    getGatewaySettings(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.GatewaySettings>): void;
+    getGatewaySettings(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewaySettings>): void;
+
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, callback: ServiceCallback<void>): void;
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1295,6 +1430,82 @@ export interface Clusters {
     beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, callback: ServiceCallback<void>): void;
     beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, callback: ServiceCallback<void>): void;
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2121,7 +2332,67 @@ export interface Configurations {
 
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Gets all configuration information for an HDI cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterConfigurations>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterConfigurations>>;
+
+    /**
+     * Gets all configuration information for an HDI cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterConfigurations} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterConfigurations} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterConfigurations} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterConfigurations>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ClusterConfigurations>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterConfigurations>): void;
+
+
+    /**
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2145,7 +2416,8 @@ export interface Configurations {
     updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2187,7 +2459,9 @@ export interface Configurations {
 
 
     /**
-     * The configuration object for the specified cluster.
+     * The configuration object for the specified cluster. This API is not
+     * recommended and might be removed in the future. Please consider using List
+     * configurations API instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2209,7 +2483,9 @@ export interface Configurations {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
 
     /**
-     * The configuration object for the specified cluster.
+     * The configuration object for the specified cluster. This API is not
+     * recommended and might be removed in the future. Please consider using List
+     * configurations API instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2249,7 +2525,8 @@ export interface Configurations {
 
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2273,7 +2550,8 @@ export interface Configurations {
     beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
