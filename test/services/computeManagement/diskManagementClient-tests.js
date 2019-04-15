@@ -36,7 +36,7 @@ var client;
 var groupName;
 var location;
 
-describe('Compute Management', function () {
+describe.skip('Compute Management', function () {
   
   before(function (done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
