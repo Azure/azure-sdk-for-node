@@ -66,6 +66,7 @@ export default class ComputeManagementClient extends AzureServiceClient {
   virtualMachineScaleSets: operations.VirtualMachineScaleSets;
   virtualMachineScaleSetExtensions: operations.VirtualMachineScaleSetExtensions;
   virtualMachineScaleSetRollingUpgrades: operations.VirtualMachineScaleSetRollingUpgrades;
+  virtualMachineScaleSetOperations: operations.VirtualMachineScaleSetOperations;
   virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
   logAnalytics: operations.LogAnalytics;
   virtualMachineRunCommands: operations.VirtualMachineRunCommands;
