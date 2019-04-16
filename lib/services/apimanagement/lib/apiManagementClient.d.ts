@@ -56,39 +56,43 @@ export default class ApiManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  policy: operations.Policy;
-  policySnippets: operations.PolicySnippets;
-  regions: operations.Regions;
   api: operations.Api;
-  apiRevisions: operations.ApiRevisions;
+  apiRevision: operations.ApiRevision;
   apiRelease: operations.ApiRelease;
   apiOperation: operations.ApiOperation;
   apiOperationPolicy: operations.ApiOperationPolicy;
+  tag: operations.Tag;
   apiProduct: operations.ApiProduct;
   apiPolicy: operations.ApiPolicy;
   apiSchema: operations.ApiSchema;
   apiDiagnostic: operations.ApiDiagnostic;
-  apiDiagnosticLogger: operations.ApiDiagnosticLogger;
   apiIssue: operations.ApiIssue;
   apiIssueComment: operations.ApiIssueComment;
   apiIssueAttachment: operations.ApiIssueAttachment;
+  apiTagDescription: operations.ApiTagDescription;
+  operationOperations: operations.OperationOperations;
+  apiVersionSet: operations.ApiVersionSet;
   authorizationServer: operations.AuthorizationServer;
   backend: operations.Backend;
+  cache: operations.Cache;
   certificate: operations.Certificate;
   apiManagementOperations: operations.ApiManagementOperations;
+  apiManagementServiceSkus: operations.ApiManagementServiceSkus;
   apiManagementService: operations.ApiManagementService;
   diagnostic: operations.Diagnostic;
-  diagnosticLogger: operations.DiagnosticLogger;
   emailTemplate: operations.EmailTemplate;
   group: operations.Group;
   groupUser: operations.GroupUser;
   identityProvider: operations.IdentityProvider;
+  issue: operations.Issue;
   logger: operations.Logger;
+  networkStatus: operations.NetworkStatus;
   notification: operations.Notification;
   notificationRecipientUser: operations.NotificationRecipientUser;
   notificationRecipientEmail: operations.NotificationRecipientEmail;
-  networkStatus: operations.NetworkStatus;
   openIdConnectProvider: operations.OpenIdConnectProvider;
+  policy: operations.Policy;
+  policySnippet: operations.PolicySnippet;
   signInSettings: operations.SignInSettings;
   signUpSettings: operations.SignUpSettings;
   delegationSettings: operations.DelegationSettings;
@@ -100,12 +104,10 @@ export default class ApiManagementClient extends AzureServiceClient {
   property: operations.Property;
   quotaByCounterKeys: operations.QuotaByCounterKeys;
   quotaByPeriodKeys: operations.QuotaByPeriodKeys;
+  region: operations.Region;
   reports: operations.Reports;
   subscription: operations.Subscription;
   tagResource: operations.TagResource;
-  tag: operations.Tag;
-  tagDescription: operations.TagDescription;
-  operationOperations: operations.OperationOperations;
   tenantAccess: operations.TenantAccess;
   tenantAccessGit: operations.TenantAccessGit;
   tenantConfiguration: operations.TenantConfiguration;
@@ -113,7 +115,7 @@ export default class ApiManagementClient extends AzureServiceClient {
   userGroup: operations.UserGroup;
   userSubscription: operations.UserSubscription;
   userIdentities: operations.UserIdentities;
-  apiVersionSet: operations.ApiVersionSet;
+  userConfirmationPassword: operations.UserConfirmationPassword;
   apiExport: operations.ApiExport;
 }
 
