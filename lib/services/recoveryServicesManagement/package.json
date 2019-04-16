@@ -2,7 +2,7 @@
   "name": "azure-arm-recoveryservices",
   "author": "Microsoft Corporation",
   "description": "RecoveryServicesClient Library with typescript type definitions for node",
-  "version": "2.1.0-preview",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.5.0",
     "ms-rest-azure": "^2.5.5"
