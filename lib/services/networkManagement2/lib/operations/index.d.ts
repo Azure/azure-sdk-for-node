@@ -939,6 +939,142 @@ export interface ApplicationGateways {
 
 
     /**
+     * Gets the backend health for given combination of backend pool and http
+     * setting of the specified application gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} probeRequest Request body for on-demand test probe
+     * operation.
+     *
+     * @param {string} [probeRequest.protocol] The protocol used for the probe.
+     * Possible values include: 'Http', 'Https'
+     *
+     * @param {string} [probeRequest.host] Host name to send the probe to.
+     *
+     * @param {string} [probeRequest.path] Relative path of probe. Valid path
+     * starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+     *
+     * @param {number} [probeRequest.timeout] The probe timeout in seconds. Probe
+     * marked as failed if valid response is not received with this timeout period.
+     * Acceptable values are from 1 second to 86400 seconds.
+     *
+     * @param {boolean} [probeRequest.pickHostNameFromBackendHttpSettings] Whether
+     * the host header should be picked from the backend http settings. Default
+     * value is false.
+     *
+     * @param {object} [probeRequest.match] Criterion for classifying a healthy
+     * probe response.
+     *
+     * @param {string} [probeRequest.match.body] Body that must be contained in the
+     * health response. Default value is empty.
+     *
+     * @param {array} [probeRequest.match.statusCodes] Allowed ranges of healthy
+     * status codes. Default range of healthy status codes is 200-399.
+     *
+     * @param {string} [probeRequest.backendPoolName] Name of backend pool of
+     * application gateway to which probe request will be sent.
+     *
+     * @param {string} [probeRequest.backendHttpSettingName] Name of backend http
+     * setting of application gateway to be used for test probe
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayBackendHealthOnDemand>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    backendHealthOnDemandWithHttpOperationResponse(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayBackendHealthOnDemand>>;
+
+    /**
+     * Gets the backend health for given combination of backend pool and http
+     * setting of the specified application gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} probeRequest Request body for on-demand test probe
+     * operation.
+     *
+     * @param {string} [probeRequest.protocol] The protocol used for the probe.
+     * Possible values include: 'Http', 'Https'
+     *
+     * @param {string} [probeRequest.host] Host name to send the probe to.
+     *
+     * @param {string} [probeRequest.path] Relative path of probe. Valid path
+     * starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+     *
+     * @param {number} [probeRequest.timeout] The probe timeout in seconds. Probe
+     * marked as failed if valid response is not received with this timeout period.
+     * Acceptable values are from 1 second to 86400 seconds.
+     *
+     * @param {boolean} [probeRequest.pickHostNameFromBackendHttpSettings] Whether
+     * the host header should be picked from the backend http settings. Default
+     * value is false.
+     *
+     * @param {object} [probeRequest.match] Criterion for classifying a healthy
+     * probe response.
+     *
+     * @param {string} [probeRequest.match.body] Body that must be contained in the
+     * health response. Default value is empty.
+     *
+     * @param {array} [probeRequest.match.statusCodes] Allowed ranges of healthy
+     * status codes. Default range of healthy status codes is 200-399.
+     *
+     * @param {string} [probeRequest.backendPoolName] Name of backend pool of
+     * application gateway to which probe request will be sent.
+     *
+     * @param {string} [probeRequest.backendHttpSettingName] Name of backend http
+     * setting of application gateway to be used for test probe
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayBackendHealthOnDemand} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayBackendHealthOnDemand} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGatewayBackendHealthOnDemand} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    backendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayBackendHealthOnDemand>;
+    backendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, callback: ServiceCallback<models.ApplicationGatewayBackendHealthOnDemand>): void;
+    backendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayBackendHealthOnDemand>): void;
+
+
+    /**
      * Lists all available server variables.
      *
      * @param {object} [options] Optional Parameters.
@@ -2050,6 +2186,142 @@ export interface ApplicationGateways {
     beginBackendHealth(resourceGroupName: string, applicationGatewayName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayBackendHealth>;
     beginBackendHealth(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
     beginBackendHealth(resourceGroupName: string, applicationGatewayName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
+
+
+    /**
+     * Gets the backend health for given combination of backend pool and http
+     * setting of the specified application gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} probeRequest Request body for on-demand test probe
+     * operation.
+     *
+     * @param {string} [probeRequest.protocol] The protocol used for the probe.
+     * Possible values include: 'Http', 'Https'
+     *
+     * @param {string} [probeRequest.host] Host name to send the probe to.
+     *
+     * @param {string} [probeRequest.path] Relative path of probe. Valid path
+     * starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+     *
+     * @param {number} [probeRequest.timeout] The probe timeout in seconds. Probe
+     * marked as failed if valid response is not received with this timeout period.
+     * Acceptable values are from 1 second to 86400 seconds.
+     *
+     * @param {boolean} [probeRequest.pickHostNameFromBackendHttpSettings] Whether
+     * the host header should be picked from the backend http settings. Default
+     * value is false.
+     *
+     * @param {object} [probeRequest.match] Criterion for classifying a healthy
+     * probe response.
+     *
+     * @param {string} [probeRequest.match.body] Body that must be contained in the
+     * health response. Default value is empty.
+     *
+     * @param {array} [probeRequest.match.statusCodes] Allowed ranges of healthy
+     * status codes. Default range of healthy status codes is 200-399.
+     *
+     * @param {string} [probeRequest.backendPoolName] Name of backend pool of
+     * application gateway to which probe request will be sent.
+     *
+     * @param {string} [probeRequest.backendHttpSettingName] Name of backend http
+     * setting of application gateway to be used for test probe
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayBackendHealthOnDemand>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginBackendHealthOnDemandWithHttpOperationResponse(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayBackendHealthOnDemand>>;
+
+    /**
+     * Gets the backend health for given combination of backend pool and http
+     * setting of the specified application gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationGatewayName The name of the application gateway.
+     *
+     * @param {object} probeRequest Request body for on-demand test probe
+     * operation.
+     *
+     * @param {string} [probeRequest.protocol] The protocol used for the probe.
+     * Possible values include: 'Http', 'Https'
+     *
+     * @param {string} [probeRequest.host] Host name to send the probe to.
+     *
+     * @param {string} [probeRequest.path] Relative path of probe. Valid path
+     * starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+     *
+     * @param {number} [probeRequest.timeout] The probe timeout in seconds. Probe
+     * marked as failed if valid response is not received with this timeout period.
+     * Acceptable values are from 1 second to 86400 seconds.
+     *
+     * @param {boolean} [probeRequest.pickHostNameFromBackendHttpSettings] Whether
+     * the host header should be picked from the backend http settings. Default
+     * value is false.
+     *
+     * @param {object} [probeRequest.match] Criterion for classifying a healthy
+     * probe response.
+     *
+     * @param {string} [probeRequest.match.body] Body that must be contained in the
+     * health response. Default value is empty.
+     *
+     * @param {array} [probeRequest.match.statusCodes] Allowed ranges of healthy
+     * status codes. Default range of healthy status codes is 200-399.
+     *
+     * @param {string} [probeRequest.backendPoolName] Name of backend pool of
+     * application gateway to which probe request will be sent.
+     *
+     * @param {string} [probeRequest.backendHttpSettingName] Name of backend http
+     * setting of application gateway to be used for test probe
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayBackendHealthOnDemand} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayBackendHealthOnDemand} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGatewayBackendHealthOnDemand} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginBackendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayBackendHealthOnDemand>;
+    beginBackendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, callback: ServiceCallback<models.ApplicationGatewayBackendHealthOnDemand>): void;
+    beginBackendHealthOnDemand(resourceGroupName: string, applicationGatewayName: string, probeRequest: models.ApplicationGatewayOnDemandProbe, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayBackendHealthOnDemand>): void;
 
 
     /**
@@ -4649,6 +4921,75 @@ export interface DdosProtectionPlans {
 
 
     /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosProtectionPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosProtectionPlan>>;
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosProtectionPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosProtectionPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosProtectionPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+    updateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+
+
+    /**
      * Gets all DDoS protection plans in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -4885,6 +5226,75 @@ export interface DdosProtectionPlans {
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, callback: ServiceCallback<models.DdosProtectionPlan>): void;
     beginCreateOrUpdate(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.DdosProtectionPlan, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosProtectionPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosProtectionPlan>>;
+
+    /**
+     * Update a DDoS protection plan tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosProtectionPlanName The name of the DDoS protection plan.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS protection
+     * plan resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosProtectionPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosProtectionPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosProtectionPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosProtectionPlan>;
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosProtectionPlan>): void;
+    beginUpdateTags(resourceGroupName: string, ddosProtectionPlanName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosProtectionPlan>): void;
 
 
     /**
@@ -6815,6 +7225,11 @@ export interface ExpressRouteCircuitConnections {
      * @param {string} [expressRouteCircuitConnectionParameters.authorizationKey]
      * The authorization key.
      *
+     * @param {string}
+     * [expressRouteCircuitConnectionParameters.circuitConnectionStatus] Express
+     * Route Circuit connection state. Possible values include: 'Connected',
+     * 'Connecting', 'Disconnected'
+     *
      * @param {string} [expressRouteCircuitConnectionParameters.name] Gets name of
      * the resource that is unique within a resource group. This name can be used
      * to access the resource.
@@ -6869,6 +7284,11 @@ export interface ExpressRouteCircuitConnections {
      *
      * @param {string} [expressRouteCircuitConnectionParameters.authorizationKey]
      * The authorization key.
+     *
+     * @param {string}
+     * [expressRouteCircuitConnectionParameters.circuitConnectionStatus] Express
+     * Route Circuit connection state. Possible values include: 'Connected',
+     * 'Connecting', 'Disconnected'
      *
      * @param {string} [expressRouteCircuitConnectionParameters.name] Gets name of
      * the resource that is unique within a resource group. This name can be used
@@ -7081,6 +7501,11 @@ export interface ExpressRouteCircuitConnections {
      * @param {string} [expressRouteCircuitConnectionParameters.authorizationKey]
      * The authorization key.
      *
+     * @param {string}
+     * [expressRouteCircuitConnectionParameters.circuitConnectionStatus] Express
+     * Route Circuit connection state. Possible values include: 'Connected',
+     * 'Connecting', 'Disconnected'
+     *
      * @param {string} [expressRouteCircuitConnectionParameters.name] Gets name of
      * the resource that is unique within a resource group. This name can be used
      * to access the resource.
@@ -7135,6 +7560,11 @@ export interface ExpressRouteCircuitConnections {
      *
      * @param {string} [expressRouteCircuitConnectionParameters.authorizationKey]
      * The authorization key.
+     *
+     * @param {string}
+     * [expressRouteCircuitConnectionParameters.circuitConnectionStatus] Express
+     * Route Circuit connection state. Possible values include: 'Connected',
+     * 'Connecting', 'Disconnected'
      *
      * @param {string} [expressRouteCircuitConnectionParameters.name] Gets name of
      * the resource that is unique within a resource group. This name can be used
@@ -7597,10 +8027,8 @@ export interface ExpressRouteCircuits {
      * CircuitProvisioningState state of the resource.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
-     * ServiceProviderProvisioningState state of the resource. Possible values are
-     * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
-     * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
-     * 'Deprovisioning'
+     * ServiceProviderProvisioningState state of the resource. Possible values
+     * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
      *
      * @param {array} [parameters.authorizations] The list of authorizations.
      *
@@ -7636,9 +8064,6 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
-     *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
      *
      * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
      * status.
@@ -7691,10 +8116,8 @@ export interface ExpressRouteCircuits {
      * CircuitProvisioningState state of the resource.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
-     * ServiceProviderProvisioningState state of the resource. Possible values are
-     * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
-     * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
-     * 'Deprovisioning'
+     * ServiceProviderProvisioningState state of the resource. Possible values
+     * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
      *
      * @param {array} [parameters.authorizations] The list of authorizations.
      *
@@ -7730,9 +8153,6 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
-     *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
      *
      * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
      * status.
@@ -8374,10 +8794,8 @@ export interface ExpressRouteCircuits {
      * CircuitProvisioningState state of the resource.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
-     * ServiceProviderProvisioningState state of the resource. Possible values are
-     * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
-     * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
-     * 'Deprovisioning'
+     * ServiceProviderProvisioningState state of the resource. Possible values
+     * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
      *
      * @param {array} [parameters.authorizations] The list of authorizations.
      *
@@ -8413,9 +8831,6 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
-     *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
      *
      * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
      * status.
@@ -8468,10 +8883,8 @@ export interface ExpressRouteCircuits {
      * CircuitProvisioningState state of the resource.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
-     * ServiceProviderProvisioningState state of the resource. Possible values are
-     * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
-     * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
-     * 'Deprovisioning'
+     * ServiceProviderProvisioningState state of the resource. Possible values
+     * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
      *
      * @param {array} [parameters.authorizations] The list of authorizations.
      *
@@ -8507,9 +8920,6 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
-     *
-     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
-     * on the circuit.
      *
      * @param {boolean} [parameters.globalReachEnabled] Flag denoting Global reach
      * status.
@@ -9271,7 +9681,6 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
-     * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
      * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
      * 'Deprovisioning'
      *
@@ -9322,7 +9731,6 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
-     * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
      * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
      * 'Deprovisioning'
      *
@@ -9680,7 +10088,6 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
-     * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
      * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
      * 'Deprovisioning'
      *
@@ -9731,7 +10138,6 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
-     * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
      * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
      * 'Deprovisioning'
      *
@@ -11180,6 +11586,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
+     * @param {string} [putExpressRouteGatewayParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
+     *
      * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
      * where the ExpressRoute gateway is or will be deployed.
      *
@@ -11233,6 +11643,10 @@ export interface ExpressRouteGateways {
      * @param {number}
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
      *
      * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
      * where the ExpressRoute gateway is or will be deployed.
@@ -11432,6 +11846,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
+     * @param {string} [putExpressRouteGatewayParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
+     *
      * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
      * where the ExpressRoute gateway is or will be deployed.
      *
@@ -11485,6 +11903,10 @@ export interface ExpressRouteGateways {
      * @param {number}
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
      *
      * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
      * where the ExpressRoute gateway is or will be deployed.
@@ -11620,6 +12042,10 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
+     * @param {string} [putExpressRouteConnectionParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
+     *
      * @param {object}
      * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
@@ -11665,6 +12091,10 @@ export interface ExpressRouteConnections {
      *
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
      *
      * @param {object}
      * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
@@ -11924,6 +12354,10 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
+     * @param {string} [putExpressRouteConnectionParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
+     *
      * @param {object}
      * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
@@ -11969,6 +12403,10 @@ export interface ExpressRouteConnections {
      *
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.provisioningState] The
+     * provisioning state of the resource. Possible values include: 'Succeeded',
+     * 'Updating', 'Deleting', 'Failed'
      *
      * @param {object}
      * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
@@ -13450,6 +13888,11 @@ export interface InterfaceEndpoints {
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
      *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -13575,6 +14018,11 @@ export interface InterfaceEndpoints {
      * @param {string} [parameters.subnet.routeTable.location] Resource location.
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
      *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
@@ -13887,6 +14335,11 @@ export interface InterfaceEndpoints {
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
      *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -14012,6 +14465,11 @@ export interface InterfaceEndpoints {
      * @param {string} [parameters.subnet.routeTable.location] Resource location.
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
      *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
@@ -15682,7 +16140,8 @@ export interface InboundNatRules {
      * @param {string} [inboundNatRuleParameters.frontendIPConfiguration.id]
      * Resource ID.
      *
-     * @param {string} [inboundNatRuleParameters.protocol] Possible values include:
+     * @param {string} [inboundNatRuleParameters.protocol] The reference to the
+     * transport protocol used by the load balancing rule. Possible values include:
      * 'Udp', 'Tcp', 'All'
      *
      * @param {number} [inboundNatRuleParameters.frontendPort] The port for the
@@ -15751,7 +16210,8 @@ export interface InboundNatRules {
      * @param {string} [inboundNatRuleParameters.frontendIPConfiguration.id]
      * Resource ID.
      *
-     * @param {string} [inboundNatRuleParameters.protocol] Possible values include:
+     * @param {string} [inboundNatRuleParameters.protocol] The reference to the
+     * transport protocol used by the load balancing rule. Possible values include:
      * 'Udp', 'Tcp', 'All'
      *
      * @param {number} [inboundNatRuleParameters.frontendPort] The port for the
@@ -15901,7 +16361,8 @@ export interface InboundNatRules {
      * @param {string} [inboundNatRuleParameters.frontendIPConfiguration.id]
      * Resource ID.
      *
-     * @param {string} [inboundNatRuleParameters.protocol] Possible values include:
+     * @param {string} [inboundNatRuleParameters.protocol] The reference to the
+     * transport protocol used by the load balancing rule. Possible values include:
      * 'Udp', 'Tcp', 'All'
      *
      * @param {number} [inboundNatRuleParameters.frontendPort] The port for the
@@ -15970,7 +16431,8 @@ export interface InboundNatRules {
      * @param {string} [inboundNatRuleParameters.frontendIPConfiguration.id]
      * Resource ID.
      *
-     * @param {string} [inboundNatRuleParameters.protocol] Possible values include:
+     * @param {string} [inboundNatRuleParameters.protocol] The reference to the
+     * transport protocol used by the load balancing rule. Possible values include:
      * 'Udp', 'Tcp', 'All'
      *
      * @param {number} [inboundNatRuleParameters.frontendPort] The port for the
@@ -16793,6 +17255,731 @@ export interface LoadBalancerProbes {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancerProbeListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.LoadBalancerProbeListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancerProbeListResult>): void;
+}
+
+/**
+ * @class
+ * NatGateways
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface NatGateways {
+
+
+    /**
+     * Deletes the specified nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, natGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, natGatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, natGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified nat gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGateway>>;
+
+    /**
+     * Gets the specified nat gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, natGatewayName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGateway>;
+    get(resourceGroupName: string, natGatewayName: string, callback: ServiceCallback<models.NatGateway>): void;
+    get(resourceGroupName: string, natGatewayName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGateway>): void;
+
+
+    /**
+     * Creates or updates a nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to the create or update nat
+     * gateway operation.
+     *
+     * @param {object} [parameters.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of Nat Gateway SKU. Possible
+     * values include: 'Standard'
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * nat gateway.
+     *
+     * @param {array} [parameters.publicIpAddresses] An array of public ip
+     * addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.publicIpPrefixes] An array of public ip prefixes
+     * associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * nat gateway resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGateway>>;
+
+    /**
+     * Creates or updates a nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to the create or update nat
+     * gateway operation.
+     *
+     * @param {object} [parameters.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of Nat Gateway SKU. Possible
+     * values include: 'Standard'
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * nat gateway.
+     *
+     * @param {array} [parameters.publicIpAddresses] An array of public ip
+     * addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.publicIpPrefixes] An array of public ip prefixes
+     * associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * nat gateway resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGateway>;
+    createOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, callback: ServiceCallback<models.NatGateway>): void;
+    createOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGateway>): void;
+
+
+    /**
+     * Updates nat gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to update nat gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGateway>>;
+
+    /**
+     * Updates nat gateway tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to update nat gateway tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, natGatewayName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGateway>;
+    updateTags(resourceGroupName: string, natGatewayName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NatGateway>): void;
+    updateTags(resourceGroupName: string, natGatewayName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGateway>): void;
+
+
+    /**
+     * Gets all the Nat Gateways in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGatewayListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGatewayListResult>>;
+
+    /**
+     * Gets all the Nat Gateways in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGatewayListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGatewayListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGatewayListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGatewayListResult>;
+    listAll(callback: ServiceCallback<models.NatGatewayListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGatewayListResult>): void;
+
+
+    /**
+     * Gets all nat gateways in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGatewayListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGatewayListResult>>;
+
+    /**
+     * Gets all nat gateways in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGatewayListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGatewayListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGatewayListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGatewayListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.NatGatewayListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGatewayListResult>): void;
+
+
+    /**
+     * Deletes the specified nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, natGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, natGatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, natGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to the create or update nat
+     * gateway operation.
+     *
+     * @param {object} [parameters.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of Nat Gateway SKU. Possible
+     * values include: 'Standard'
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * nat gateway.
+     *
+     * @param {array} [parameters.publicIpAddresses] An array of public ip
+     * addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.publicIpPrefixes] An array of public ip prefixes
+     * associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * nat gateway resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGateway>>;
+
+    /**
+     * Creates or updates a nat gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} natGatewayName The name of the nat gateway.
+     *
+     * @param {object} parameters Parameters supplied to the create or update nat
+     * gateway operation.
+     *
+     * @param {object} [parameters.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of Nat Gateway SKU. Possible
+     * values include: 'Standard'
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * nat gateway.
+     *
+     * @param {array} [parameters.publicIpAddresses] An array of public ip
+     * addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.publicIpPrefixes] An array of public ip prefixes
+     * associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * nat gateway resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGateway>;
+    beginCreateOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, callback: ServiceCallback<models.NatGateway>): void;
+    beginCreateOrUpdate(resourceGroupName: string, natGatewayName: string, parameters: models.NatGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGateway>): void;
+
+
+    /**
+     * Gets all the Nat Gateways in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGatewayListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGatewayListResult>>;
+
+    /**
+     * Gets all the Nat Gateways in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGatewayListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGatewayListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGatewayListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGatewayListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.NatGatewayListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGatewayListResult>): void;
+
+
+    /**
+     * Gets all nat gateways in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NatGatewayListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NatGatewayListResult>>;
+
+    /**
+     * Gets all nat gateways in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NatGatewayListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NatGatewayListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NatGatewayListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NatGatewayListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.NatGatewayListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NatGatewayListResult>): void;
 }
 
 /**
@@ -19091,15 +20278,14 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
@@ -19146,8 +20332,8 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
@@ -19233,6 +20419,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -19285,13 +20475,12 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -19489,15 +20678,14 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
@@ -19544,8 +20732,8 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
@@ -19631,6 +20819,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -19683,13 +20875,12 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -20029,15 +21220,14 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
@@ -20084,8 +21274,8 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
@@ -20171,6 +21361,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -20223,13 +21417,12 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -20427,15 +21620,14 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
@@ -20482,8 +21674,8 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
@@ -20569,6 +21761,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -20621,13 +21817,12 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -22316,8 +23511,8 @@ export interface SecurityRules {
      * rule. Restricted to 140 chars.
      *
      * @param {string} securityRuleParameters.protocol Network protocol this rule
-     * applies to. Possible values are 'Tcp', 'Udp', and '*'. Possible values
-     * include: 'Tcp', 'Udp', '*'
+     * applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     * Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
      * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
@@ -22357,8 +23552,7 @@ export interface SecurityRules {
      * destination port ranges.
      *
      * @param {string} securityRuleParameters.access The network traffic is allowed
-     * or denied. Possible values are: 'Allow' and 'Deny'. Possible values include:
-     * 'Allow', 'Deny'
+     * or denied. Possible values include: 'Allow', 'Deny'
      *
      * @param {number} [securityRuleParameters.priority] The priority of the rule.
      * The value can be between 100 and 4096. The priority number must be unique
@@ -22367,8 +23561,7 @@ export interface SecurityRules {
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
      * The direction specifies if rule will be evaluated on incoming or outgoing
-     * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
-     * include: 'Inbound', 'Outbound'
+     * traffic. Possible values include: 'Inbound', 'Outbound'
      *
      * @param {string} [securityRuleParameters.provisioningState] The provisioning
      * state of the public IP resource. Possible values are: 'Updating',
@@ -22413,8 +23606,8 @@ export interface SecurityRules {
      * rule. Restricted to 140 chars.
      *
      * @param {string} securityRuleParameters.protocol Network protocol this rule
-     * applies to. Possible values are 'Tcp', 'Udp', and '*'. Possible values
-     * include: 'Tcp', 'Udp', '*'
+     * applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     * Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
      * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
@@ -22454,8 +23647,7 @@ export interface SecurityRules {
      * destination port ranges.
      *
      * @param {string} securityRuleParameters.access The network traffic is allowed
-     * or denied. Possible values are: 'Allow' and 'Deny'. Possible values include:
-     * 'Allow', 'Deny'
+     * or denied. Possible values include: 'Allow', 'Deny'
      *
      * @param {number} [securityRuleParameters.priority] The priority of the rule.
      * The value can be between 100 and 4096. The priority number must be unique
@@ -22464,8 +23656,7 @@ export interface SecurityRules {
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
      * The direction specifies if rule will be evaluated on incoming or outgoing
-     * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
-     * include: 'Inbound', 'Outbound'
+     * traffic. Possible values include: 'Inbound', 'Outbound'
      *
      * @param {string} [securityRuleParameters.provisioningState] The provisioning
      * state of the public IP resource. Possible values are: 'Updating',
@@ -22655,8 +23846,8 @@ export interface SecurityRules {
      * rule. Restricted to 140 chars.
      *
      * @param {string} securityRuleParameters.protocol Network protocol this rule
-     * applies to. Possible values are 'Tcp', 'Udp', and '*'. Possible values
-     * include: 'Tcp', 'Udp', '*'
+     * applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     * Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
      * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
@@ -22696,8 +23887,7 @@ export interface SecurityRules {
      * destination port ranges.
      *
      * @param {string} securityRuleParameters.access The network traffic is allowed
-     * or denied. Possible values are: 'Allow' and 'Deny'. Possible values include:
-     * 'Allow', 'Deny'
+     * or denied. Possible values include: 'Allow', 'Deny'
      *
      * @param {number} [securityRuleParameters.priority] The priority of the rule.
      * The value can be between 100 and 4096. The priority number must be unique
@@ -22706,8 +23896,7 @@ export interface SecurityRules {
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
      * The direction specifies if rule will be evaluated on incoming or outgoing
-     * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
-     * include: 'Inbound', 'Outbound'
+     * traffic. Possible values include: 'Inbound', 'Outbound'
      *
      * @param {string} [securityRuleParameters.provisioningState] The provisioning
      * state of the public IP resource. Possible values are: 'Updating',
@@ -22752,8 +23941,8 @@ export interface SecurityRules {
      * rule. Restricted to 140 chars.
      *
      * @param {string} securityRuleParameters.protocol Network protocol this rule
-     * applies to. Possible values are 'Tcp', 'Udp', and '*'. Possible values
-     * include: 'Tcp', 'Udp', '*'
+     * applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     * Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
      * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
@@ -22793,8 +23982,7 @@ export interface SecurityRules {
      * destination port ranges.
      *
      * @param {string} securityRuleParameters.access The network traffic is allowed
-     * or denied. Possible values are: 'Allow' and 'Deny'. Possible values include:
-     * 'Allow', 'Deny'
+     * or denied. Possible values include: 'Allow', 'Deny'
      *
      * @param {number} [securityRuleParameters.priority] The priority of the rule.
      * The value can be between 100 and 4096. The priority number must be unique
@@ -22803,8 +23991,7 @@ export interface SecurityRules {
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
      * The direction specifies if rule will be evaluated on incoming or outgoing
-     * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
-     * include: 'Inbound', 'Outbound'
+     * traffic. Possible values include: 'Inbound', 'Outbound'
      *
      * @param {string} [securityRuleParameters.provisioningState] The provisioning
      * state of the public IP resource. Possible values are: 'Updating',
@@ -23127,6 +24314,10 @@ export interface NetworkWatchers {
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -23158,6 +24349,10 @@ export interface NetworkWatchers {
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -24031,7 +25226,8 @@ export interface NetworkWatchers {
      *
      * @param {boolean} parameters.enabled Flag to enable/disable flow logging.
      *
-     * @param {object} [parameters.retentionPolicy]
+     * @param {object} [parameters.retentionPolicy] Parameters that define the
+     * retention policy for flow log.
      *
      * @param {number} [parameters.retentionPolicy.days] Number of days to retain
      * flow log records.
@@ -24039,7 +25235,8 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
+     * @param {object} [parameters.format] Parameters that define the flow log
+     * format.
      *
      * @param {string} [parameters.format.type] The file type of flow log. Possible
      * values include: 'JSON'
@@ -24047,10 +25244,12 @@ export interface NetworkWatchers {
      * @param {number} [parameters.format.version] The version (revision) of the
      * flow log.
      *
-     * @param {object} [parameters.flowAnalyticsConfiguration]
+     * @param {object} [parameters.flowAnalyticsConfiguration] Parameters that
+     * define the configuration of traffic analytics.
      *
      * @param {object}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     * Parameters that define the configuration of traffic analytics.
      *
      * @param {boolean}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
@@ -24106,7 +25305,8 @@ export interface NetworkWatchers {
      *
      * @param {boolean} parameters.enabled Flag to enable/disable flow logging.
      *
-     * @param {object} [parameters.retentionPolicy]
+     * @param {object} [parameters.retentionPolicy] Parameters that define the
+     * retention policy for flow log.
      *
      * @param {number} [parameters.retentionPolicy.days] Number of days to retain
      * flow log records.
@@ -24114,7 +25314,8 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
+     * @param {object} [parameters.format] Parameters that define the flow log
+     * format.
      *
      * @param {string} [parameters.format.type] The file type of flow log. Possible
      * values include: 'JSON'
@@ -24122,10 +25323,12 @@ export interface NetworkWatchers {
      * @param {number} [parameters.format.version] The version (revision) of the
      * flow log.
      *
-     * @param {object} [parameters.flowAnalyticsConfiguration]
+     * @param {object} [parameters.flowAnalyticsConfiguration] Parameters that
+     * define the configuration of traffic analytics.
      *
      * @param {object}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     * Parameters that define the configuration of traffic analytics.
      *
      * @param {boolean}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
@@ -24268,7 +25471,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine how the connectivity
      * check will be performed.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of the connection.
      *
      * @param {string} parameters.source.resourceId The ID of the resource from
      * which a connectivity check will be initiated.
@@ -24276,7 +25479,8 @@ export interface NetworkWatchers {
      * @param {number} [parameters.source.port] The source port from which a
      * connectivity check will be performed.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * to which a connection attempt will be made.
@@ -24290,9 +25494,11 @@ export interface NetworkWatchers {
      * @param {string} [parameters.protocol] Network protocol. Possible values
      * include: 'Tcp', 'Http', 'Https', 'Icmp'
      *
-     * @param {object} [parameters.protocolConfiguration]
+     * @param {object} [parameters.protocolConfiguration] Configuration of the
+     * protocol.
      *
-     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration] HTTP
+     * configuration of the connectivity check.
      *
      * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
@@ -24330,7 +25536,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine how the connectivity
      * check will be performed.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of the connection.
      *
      * @param {string} parameters.source.resourceId The ID of the resource from
      * which a connectivity check will be initiated.
@@ -24338,7 +25544,8 @@ export interface NetworkWatchers {
      * @param {number} [parameters.source.port] The source port from which a
      * connectivity check will be performed.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * to which a connection attempt will be made.
@@ -24352,9 +25559,11 @@ export interface NetworkWatchers {
      * @param {string} [parameters.protocol] Network protocol. Possible values
      * include: 'Tcp', 'Http', 'Https', 'Icmp'
      *
-     * @param {object} [parameters.protocolConfiguration]
+     * @param {object} [parameters.protocolConfiguration] Configuration of the
+     * protocol.
      *
-     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration] HTTP
+     * configuration of the connectivity check.
      *
      * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
@@ -24411,7 +25620,8 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine Azure reachability
      * report configuration.
      *
-     * @param {object} parameters.providerLocation
+     * @param {object} parameters.providerLocation Parameters that define a
+     * geographic location.
      *
      * @param {string} parameters.providerLocation.country The name of the country.
      *
@@ -24456,7 +25666,8 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine Azure reachability
      * report configuration.
      *
-     * @param {object} parameters.providerLocation
+     * @param {object} parameters.providerLocation Parameters that define a
+     * geographic location.
      *
      * @param {string} parameters.providerLocation.country The name of the country.
      *
@@ -25196,7 +26407,8 @@ export interface NetworkWatchers {
      *
      * @param {boolean} parameters.enabled Flag to enable/disable flow logging.
      *
-     * @param {object} [parameters.retentionPolicy]
+     * @param {object} [parameters.retentionPolicy] Parameters that define the
+     * retention policy for flow log.
      *
      * @param {number} [parameters.retentionPolicy.days] Number of days to retain
      * flow log records.
@@ -25204,7 +26416,8 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
+     * @param {object} [parameters.format] Parameters that define the flow log
+     * format.
      *
      * @param {string} [parameters.format.type] The file type of flow log. Possible
      * values include: 'JSON'
@@ -25212,10 +26425,12 @@ export interface NetworkWatchers {
      * @param {number} [parameters.format.version] The version (revision) of the
      * flow log.
      *
-     * @param {object} [parameters.flowAnalyticsConfiguration]
+     * @param {object} [parameters.flowAnalyticsConfiguration] Parameters that
+     * define the configuration of traffic analytics.
      *
      * @param {object}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     * Parameters that define the configuration of traffic analytics.
      *
      * @param {boolean}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
@@ -25271,7 +26486,8 @@ export interface NetworkWatchers {
      *
      * @param {boolean} parameters.enabled Flag to enable/disable flow logging.
      *
-     * @param {object} [parameters.retentionPolicy]
+     * @param {object} [parameters.retentionPolicy] Parameters that define the
+     * retention policy for flow log.
      *
      * @param {number} [parameters.retentionPolicy.days] Number of days to retain
      * flow log records.
@@ -25279,7 +26495,8 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
+     * @param {object} [parameters.format] Parameters that define the flow log
+     * format.
      *
      * @param {string} [parameters.format.type] The file type of flow log. Possible
      * values include: 'JSON'
@@ -25287,10 +26504,12 @@ export interface NetworkWatchers {
      * @param {number} [parameters.format.version] The version (revision) of the
      * flow log.
      *
-     * @param {object} [parameters.flowAnalyticsConfiguration]
+     * @param {object} [parameters.flowAnalyticsConfiguration] Parameters that
+     * define the configuration of traffic analytics.
      *
      * @param {object}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration
+     * Parameters that define the configuration of traffic analytics.
      *
      * @param {boolean}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled
@@ -25433,7 +26652,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine how the connectivity
      * check will be performed.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of the connection.
      *
      * @param {string} parameters.source.resourceId The ID of the resource from
      * which a connectivity check will be initiated.
@@ -25441,7 +26660,8 @@ export interface NetworkWatchers {
      * @param {number} [parameters.source.port] The source port from which a
      * connectivity check will be performed.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * to which a connection attempt will be made.
@@ -25455,9 +26675,11 @@ export interface NetworkWatchers {
      * @param {string} [parameters.protocol] Network protocol. Possible values
      * include: 'Tcp', 'Http', 'Https', 'Icmp'
      *
-     * @param {object} [parameters.protocolConfiguration]
+     * @param {object} [parameters.protocolConfiguration] Configuration of the
+     * protocol.
      *
-     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration] HTTP
+     * configuration of the connectivity check.
      *
      * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
@@ -25495,7 +26717,7 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine how the connectivity
      * check will be performed.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of the connection.
      *
      * @param {string} parameters.source.resourceId The ID of the resource from
      * which a connectivity check will be initiated.
@@ -25503,7 +26725,8 @@ export interface NetworkWatchers {
      * @param {number} [parameters.source.port] The source port from which a
      * connectivity check will be performed.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * to which a connection attempt will be made.
@@ -25517,9 +26740,11 @@ export interface NetworkWatchers {
      * @param {string} [parameters.protocol] Network protocol. Possible values
      * include: 'Tcp', 'Http', 'Https', 'Icmp'
      *
-     * @param {object} [parameters.protocolConfiguration]
+     * @param {object} [parameters.protocolConfiguration] Configuration of the
+     * protocol.
      *
-     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration] HTTP
+     * configuration of the connectivity check.
      *
      * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
@@ -25576,7 +26801,8 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine Azure reachability
      * report configuration.
      *
-     * @param {object} parameters.providerLocation
+     * @param {object} parameters.providerLocation Parameters that define a
+     * geographic location.
      *
      * @param {string} parameters.providerLocation.country The name of the country.
      *
@@ -25621,7 +26847,8 @@ export interface NetworkWatchers {
      * @param {object} parameters Parameters that determine Azure reachability
      * report configuration.
      *
-     * @param {object} parameters.providerLocation
+     * @param {object} parameters.providerLocation Parameters that define a
+     * geographic location.
      *
      * @param {string} parameters.providerLocation.country The name of the country.
      *
@@ -25883,7 +27110,8 @@ export interface PacketCaptures {
      * @param {number} [parameters.timeLimitInSeconds] Maximum duration of the
      * capture session in seconds.
      *
-     * @param {object} parameters.storageLocation
+     * @param {object} parameters.storageLocation Describes the storage location
+     * for a packet capture session.
      *
      * @param {string} [parameters.storageLocation.storageId] The ID of the storage
      * account to save the packet capture session. Required if no local file path
@@ -25898,7 +27126,7 @@ export interface PacketCaptures {
      * linux virtual machine it must start with /var/captures. Required if no
      * storage ID is provided, otherwise optional.
      *
-     * @param {array} [parameters.filters]
+     * @param {array} [parameters.filters] A list of packet capture filters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -25937,7 +27165,8 @@ export interface PacketCaptures {
      * @param {number} [parameters.timeLimitInSeconds] Maximum duration of the
      * capture session in seconds.
      *
-     * @param {object} parameters.storageLocation
+     * @param {object} parameters.storageLocation Describes the storage location
+     * for a packet capture session.
      *
      * @param {string} [parameters.storageLocation.storageId] The ID of the storage
      * account to save the packet capture session. Required if no local file path
@@ -25952,7 +27181,7 @@ export interface PacketCaptures {
      * linux virtual machine it must start with /var/captures. Required if no
      * storage ID is provided, otherwise optional.
      *
-     * @param {array} [parameters.filters]
+     * @param {array} [parameters.filters] A list of packet capture filters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26323,7 +27552,8 @@ export interface PacketCaptures {
      * @param {number} [parameters.timeLimitInSeconds] Maximum duration of the
      * capture session in seconds.
      *
-     * @param {object} parameters.storageLocation
+     * @param {object} parameters.storageLocation Describes the storage location
+     * for a packet capture session.
      *
      * @param {string} [parameters.storageLocation.storageId] The ID of the storage
      * account to save the packet capture session. Required if no local file path
@@ -26338,7 +27568,7 @@ export interface PacketCaptures {
      * linux virtual machine it must start with /var/captures. Required if no
      * storage ID is provided, otherwise optional.
      *
-     * @param {array} [parameters.filters]
+     * @param {array} [parameters.filters] A list of packet capture filters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26377,7 +27607,8 @@ export interface PacketCaptures {
      * @param {number} [parameters.timeLimitInSeconds] Maximum duration of the
      * capture session in seconds.
      *
-     * @param {object} parameters.storageLocation
+     * @param {object} parameters.storageLocation Describes the storage location
+     * for a packet capture session.
      *
      * @param {string} [parameters.storageLocation.storageId] The ID of the storage
      * account to save the packet capture session. Required if no local file path
@@ -26392,7 +27623,7 @@ export interface PacketCaptures {
      * linux virtual machine it must start with /var/captures. Required if no
      * storage ID is provided, otherwise optional.
      *
-     * @param {array} [parameters.filters]
+     * @param {array} [parameters.filters] A list of packet capture filters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26642,7 +27873,8 @@ export interface ConnectionMonitors {
      *
      * @param {object} [parameters.tags] Connection monitor tags.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of connection
+     * monitor.
      *
      * @param {string} parameters.source.resourceId The ID of the resource used as
      * the source by connection monitor.
@@ -26650,7 +27882,8 @@ export interface ConnectionMonitors {
      * @param {number} [parameters.source.port] The source port used by connection
      * monitor.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection monitor.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * used as the destination by connection monitor.
@@ -26697,7 +27930,8 @@ export interface ConnectionMonitors {
      *
      * @param {object} [parameters.tags] Connection monitor tags.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of connection
+     * monitor.
      *
      * @param {string} parameters.source.resourceId The ID of the resource used as
      * the source by connection monitor.
@@ -26705,7 +27939,8 @@ export interface ConnectionMonitors {
      * @param {number} [parameters.source.port] The source port used by connection
      * monitor.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection monitor.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * used as the destination by connection monitor.
@@ -27160,7 +28395,8 @@ export interface ConnectionMonitors {
      *
      * @param {object} [parameters.tags] Connection monitor tags.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of connection
+     * monitor.
      *
      * @param {string} parameters.source.resourceId The ID of the resource used as
      * the source by connection monitor.
@@ -27168,7 +28404,8 @@ export interface ConnectionMonitors {
      * @param {number} [parameters.source.port] The source port used by connection
      * monitor.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection monitor.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * used as the destination by connection monitor.
@@ -27215,7 +28452,8 @@ export interface ConnectionMonitors {
      *
      * @param {object} [parameters.tags] Connection monitor tags.
      *
-     * @param {object} parameters.source
+     * @param {object} parameters.source Describes the source of connection
+     * monitor.
      *
      * @param {string} parameters.source.resourceId The ID of the resource used as
      * the source by connection monitor.
@@ -27223,7 +28461,8 @@ export interface ConnectionMonitors {
      * @param {number} [parameters.source.port] The source port used by connection
      * monitor.
      *
-     * @param {object} parameters.destination
+     * @param {object} parameters.destination Describes the destination of
+     * connection monitor.
      *
      * @param {string} [parameters.destination.resourceId] The ID of the resource
      * used as the destination by connection monitor.
@@ -27795,13 +29034,11 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.sku.name] Name of a public IP address SKU.
      * Possible values include: 'Basic', 'Standard'
      *
-     * @param {string} [parameters.publicIPAllocationMethod] The public IP
-     * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
-     * values include: 'Static', 'Dynamic'
+     * @param {string} [parameters.publicIPAllocationMethod] The public IP address
+     * allocation method. Possible values include: 'Static', 'Dynamic'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object} [parameters.dnsSettings] The FQDN of the DNS record
      * associated with the public IP address.
@@ -27894,13 +29131,11 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.sku.name] Name of a public IP address SKU.
      * Possible values include: 'Basic', 'Standard'
      *
-     * @param {string} [parameters.publicIPAllocationMethod] The public IP
-     * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
-     * values include: 'Static', 'Dynamic'
+     * @param {string} [parameters.publicIPAllocationMethod] The public IP address
+     * allocation method. Possible values include: 'Static', 'Dynamic'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object} [parameters.dnsSettings] The FQDN of the DNS record
      * associated with the public IP address.
@@ -28468,13 +29703,11 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.sku.name] Name of a public IP address SKU.
      * Possible values include: 'Basic', 'Standard'
      *
-     * @param {string} [parameters.publicIPAllocationMethod] The public IP
-     * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
-     * values include: 'Static', 'Dynamic'
+     * @param {string} [parameters.publicIPAllocationMethod] The public IP address
+     * allocation method. Possible values include: 'Static', 'Dynamic'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object} [parameters.dnsSettings] The FQDN of the DNS record
      * associated with the public IP address.
@@ -28567,13 +29800,11 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.sku.name] Name of a public IP address SKU.
      * Possible values include: 'Basic', 'Standard'
      *
-     * @param {string} [parameters.publicIPAllocationMethod] The public IP
-     * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
-     * values include: 'Static', 'Dynamic'
+     * @param {string} [parameters.publicIPAllocationMethod] The public IP address
+     * allocation method. Possible values include: 'Static', 'Dynamic'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object} [parameters.dnsSettings] The FQDN of the DNS record
      * associated with the public IP address.
@@ -29121,8 +30352,7 @@ export interface PublicIPPrefixes {
      * Possible values include: 'Standard'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP prefix.
@@ -29183,8 +30413,7 @@ export interface PublicIPPrefixes {
      * Possible values include: 'Standard'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP prefix.
@@ -29499,8 +30728,7 @@ export interface PublicIPPrefixes {
      * Possible values include: 'Standard'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP prefix.
@@ -29561,8 +30789,7 @@ export interface PublicIPPrefixes {
      * Possible values include: 'Standard'
      *
      * @param {string} [parameters.publicIPAddressVersion] The public IP address
-     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
-     * 'IPv4', 'IPv6'
+     * version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP prefix.
@@ -30716,8 +31943,7 @@ export interface RouteFilterRules {
      * or update route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -30756,8 +31982,7 @@ export interface RouteFilterRules {
      * or update route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -30815,8 +32040,7 @@ export interface RouteFilterRules {
      * route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -30849,8 +32073,7 @@ export interface RouteFilterRules {
      * route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -31024,8 +32247,7 @@ export interface RouteFilterRules {
      * or update route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -31064,8 +32286,7 @@ export interface RouteFilterRules {
      * or update route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -31123,8 +32344,7 @@ export interface RouteFilterRules {
      * route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -31157,8 +32377,7 @@ export interface RouteFilterRules {
      * route filter rule operation.
      *
      * @param {string} routeFilterRuleParameters.access The access type of the
-     * rule. Valid values are: 'Allow', 'Deny'. Possible values include: 'Allow',
-     * 'Deny'
+     * rule. Possible values include: 'Allow', 'Deny'
      *
      * @param {array} routeFilterRuleParameters.communities The collection for bgp
      * community values to filter on. e.g. ['12076:5010','12076:5020']
@@ -32153,10 +33372,8 @@ export interface Routes {
      * which the route applies.
      *
      * @param {string} routeParameters.nextHopType The type of Azure hop the packet
-     * should be sent to. Possible values are: 'VirtualNetworkGateway',
-     * 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible values
-     * include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-     * 'VirtualAppliance', 'None'
+     * should be sent to. Possible values include: 'VirtualNetworkGateway',
+     * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
      *
      * @param {string} [routeParameters.nextHopIpAddress] The IP address packets
      * should be forwarded to. Next hop values are only allowed in routes where the
@@ -32203,10 +33420,8 @@ export interface Routes {
      * which the route applies.
      *
      * @param {string} routeParameters.nextHopType The type of Azure hop the packet
-     * should be sent to. Possible values are: 'VirtualNetworkGateway',
-     * 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible values
-     * include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-     * 'VirtualAppliance', 'None'
+     * should be sent to. Possible values include: 'VirtualNetworkGateway',
+     * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
      *
      * @param {string} [routeParameters.nextHopIpAddress] The IP address packets
      * should be forwarded to. Next hop values are only allowed in routes where the
@@ -32393,10 +33608,8 @@ export interface Routes {
      * which the route applies.
      *
      * @param {string} routeParameters.nextHopType The type of Azure hop the packet
-     * should be sent to. Possible values are: 'VirtualNetworkGateway',
-     * 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible values
-     * include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-     * 'VirtualAppliance', 'None'
+     * should be sent to. Possible values include: 'VirtualNetworkGateway',
+     * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
      *
      * @param {string} [routeParameters.nextHopIpAddress] The IP address packets
      * should be forwarded to. Next hop values are only allowed in routes where the
@@ -32443,10 +33656,8 @@ export interface Routes {
      * which the route applies.
      *
      * @param {string} routeParameters.nextHopType The type of Azure hop the packet
-     * should be sent to. Possible values are: 'VirtualNetworkGateway',
-     * 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible values
-     * include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
-     * 'VirtualAppliance', 'None'
+     * should be sent to. Possible values include: 'VirtualNetworkGateway',
+     * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
      *
      * @param {string} [routeParameters.nextHopIpAddress] The IP address packets
      * should be forwarded to. Next hop values are only allowed in routes where the
@@ -35337,6 +36548,11 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -35443,6 +36659,11 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
@@ -35781,6 +37002,11 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -35887,6 +37113,11 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
@@ -36245,12 +37476,12 @@ export interface VirtualNetworkPeerings {
      * create or update virtual network peering operation.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowVirtualNetworkAccess]
-     * Whether the VMs in the linked virtual network space would be able to access
-     * all the VMs in local Virtual network space.
+     * Whether the VMs in the local virtual network space would be able to access
+     * the VMs in remote virtual network space.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowForwardedTraffic]
-     * Whether the forwarded traffic from the VMs in the remote virtual network
-     * will be allowed/disallowed.
+     * Whether the forwarded traffic from the VMs in the local virtual network will
+     * be allowed/disallowed in remote virtual network.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowGatewayTransit] If
      * gateway links can be used in remote virtual networking to link to this
@@ -36322,12 +37553,12 @@ export interface VirtualNetworkPeerings {
      * create or update virtual network peering operation.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowVirtualNetworkAccess]
-     * Whether the VMs in the linked virtual network space would be able to access
-     * all the VMs in local Virtual network space.
+     * Whether the VMs in the local virtual network space would be able to access
+     * the VMs in remote virtual network space.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowForwardedTraffic]
-     * Whether the forwarded traffic from the VMs in the remote virtual network
-     * will be allowed/disallowed.
+     * Whether the forwarded traffic from the VMs in the local virtual network will
+     * be allowed/disallowed in remote virtual network.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowGatewayTransit] If
      * gateway links can be used in remote virtual networking to link to this
@@ -36542,12 +37773,12 @@ export interface VirtualNetworkPeerings {
      * create or update virtual network peering operation.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowVirtualNetworkAccess]
-     * Whether the VMs in the linked virtual network space would be able to access
-     * all the VMs in local Virtual network space.
+     * Whether the VMs in the local virtual network space would be able to access
+     * the VMs in remote virtual network space.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowForwardedTraffic]
-     * Whether the forwarded traffic from the VMs in the remote virtual network
-     * will be allowed/disallowed.
+     * Whether the forwarded traffic from the VMs in the local virtual network will
+     * be allowed/disallowed in remote virtual network.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowGatewayTransit] If
      * gateway links can be used in remote virtual networking to link to this
@@ -36619,12 +37850,12 @@ export interface VirtualNetworkPeerings {
      * create or update virtual network peering operation.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowVirtualNetworkAccess]
-     * Whether the VMs in the linked virtual network space would be able to access
-     * all the VMs in local Virtual network space.
+     * Whether the VMs in the local virtual network space would be able to access
+     * the VMs in remote virtual network space.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowForwardedTraffic]
-     * Whether the forwarded traffic from the VMs in the remote virtual network
-     * will be allowed/disallowed.
+     * Whether the forwarded traffic from the VMs in the local virtual network will
+     * be allowed/disallowed in remote virtual network.
      *
      * @param {boolean} [virtualNetworkPeeringParameters.allowGatewayTransit] If
      * gateway links can be used in remote virtual networking to link to this
@@ -36828,10 +38059,6 @@ export interface VirtualNetworkGateways {
      * reference of the address space resource which represents Address space for
      * P2S VpnClient.
      *
-     * @param {array}
-     * [parameters.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] A
-     * list of address blocks reserved for this virtual network in CIDR notation.
-     *
      * @param {array} [parameters.vpnClientConfiguration.vpnClientRootCertificates]
      * VpnClientRootCertificate for virtual network gateway.
      *
@@ -36863,6 +38090,13 @@ export interface VirtualNetworkGateways {
      *
      * @param {number} [parameters.bgpSettings.peerWeight] The weight added to
      * routes learned from this BGP speaker.
+     *
+     * @param {object} [parameters.customRoutes] The reference of the address space
+     * resource which represents the custom routes address space specified by the
+     * the customer for virtual network gateway and VpnClient.
+     *
+     * @param {array} [parameters.customRoutes.addressPrefixes] A list of address
+     * blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGateway resource.
@@ -36948,10 +38182,6 @@ export interface VirtualNetworkGateways {
      * reference of the address space resource which represents Address space for
      * P2S VpnClient.
      *
-     * @param {array}
-     * [parameters.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] A
-     * list of address blocks reserved for this virtual network in CIDR notation.
-     *
      * @param {array} [parameters.vpnClientConfiguration.vpnClientRootCertificates]
      * VpnClientRootCertificate for virtual network gateway.
      *
@@ -36983,6 +38213,13 @@ export interface VirtualNetworkGateways {
      *
      * @param {number} [parameters.bgpSettings.peerWeight] The weight added to
      * routes learned from this BGP speaker.
+     *
+     * @param {object} [parameters.customRoutes] The reference of the address space
+     * resource which represents the custom routes address space specified by the
+     * the customer for virtual network gateway and VpnClient.
+     *
+     * @param {array} [parameters.customRoutes.addressPrefixes] A list of address
+     * blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGateway resource.
@@ -37485,9 +38722,8 @@ export interface VirtualNetworkGateways {
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {string} [parameters.radiusServerAuthCertificate] The public
      * certificate data for the radius server authentication certificate as a
@@ -37527,9 +38763,8 @@ export interface VirtualNetworkGateways {
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {string} [parameters.radiusServerAuthCertificate] The public
      * certificate data for the radius server authentication certificate as a
@@ -37587,9 +38822,8 @@ export interface VirtualNetworkGateways {
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {string} [parameters.radiusServerAuthCertificate] The public
      * certificate data for the radius server authentication certificate as a
@@ -37629,9 +38863,8 @@ export interface VirtualNetworkGateways {
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {string} [parameters.radiusServerAuthCertificate] The public
      * certificate data for the radius server authentication certificate as a
@@ -38035,11 +39268,11 @@ export interface VirtualNetworkGateways {
      * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
      * 'SHA384', 'GCMAES256', 'GCMAES128'
      *
-     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Group used in IKE Phase
      * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
      * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
      *
-     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Group used in IKE
      * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
      * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
      *
@@ -38094,11 +39327,11 @@ export interface VirtualNetworkGateways {
      * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
      * 'SHA384', 'GCMAES256', 'GCMAES128'
      *
-     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Group used in IKE Phase
      * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
      * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
      *
-     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Group used in IKE
      * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
      * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
      *
@@ -38340,10 +39573,6 @@ export interface VirtualNetworkGateways {
      * reference of the address space resource which represents Address space for
      * P2S VpnClient.
      *
-     * @param {array}
-     * [parameters.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] A
-     * list of address blocks reserved for this virtual network in CIDR notation.
-     *
      * @param {array} [parameters.vpnClientConfiguration.vpnClientRootCertificates]
      * VpnClientRootCertificate for virtual network gateway.
      *
@@ -38375,6 +39604,13 @@ export interface VirtualNetworkGateways {
      *
      * @param {number} [parameters.bgpSettings.peerWeight] The weight added to
      * routes learned from this BGP speaker.
+     *
+     * @param {object} [parameters.customRoutes] The reference of the address space
+     * resource which represents the custom routes address space specified by the
+     * the customer for virtual network gateway and VpnClient.
+     *
+     * @param {array} [parameters.customRoutes.addressPrefixes] A list of address
+     * blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGateway resource.
@@ -38460,10 +39696,6 @@ export interface VirtualNetworkGateways {
      * reference of the address space resource which represents Address space for
      * P2S VpnClient.
      *
-     * @param {array}
-     * [parameters.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] A
-     * list of address blocks reserved for this virtual network in CIDR notation.
-     *
      * @param {array} [parameters.vpnClientConfiguration.vpnClientRootCertificates]
      * VpnClientRootCertificate for virtual network gateway.
      *
@@ -38495,6 +39727,13 @@ export interface VirtualNetworkGateways {
      *
      * @param {number} [parameters.bgpSettings.peerWeight] The weight added to
      * routes learned from this BGP speaker.
+     *
+     * @param {object} [parameters.customRoutes] The reference of the address space
+     * resource which represents the custom routes address space specified by the
+     * the customer for virtual network gateway and VpnClient.
+     *
+     * @param {array} [parameters.customRoutes.addressPrefixes] A list of address
+     * blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGateway resource.
@@ -38803,210 +40042,6 @@ export interface VirtualNetworkGateways {
 
 
     /**
-     * Generates VPN client package for P2S client of the virtual network gateway
-     * in the specified resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkGatewayName The name of the virtual network
-     * gateway.
-     *
-     * @param {object} parameters Parameters supplied to the generate virtual
-     * network gateway VPN client package operation.
-     *
-     * @param {string} [parameters.processorArchitecture] VPN client Processor
-     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
-     * include: 'Amd64', 'X86'
-     *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
-     *
-     * @param {string} [parameters.radiusServerAuthCertificate] The public
-     * certificate data for the radius server authentication certificate as a
-     * Base-64 encoded string. Required only if external radius authentication has
-     * been configured with EAPTLS authentication.
-     *
-     * @param {array} [parameters.clientRootCertificates] A list of client root
-     * certificates public certificate data encoded as Base-64 strings. Optional
-     * parameter for external radius based authentication with EAPTLS.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginGeneratevpnclientpackageWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Generates VPN client package for P2S client of the virtual network gateway
-     * in the specified resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkGatewayName The name of the virtual network
-     * gateway.
-     *
-     * @param {object} parameters Parameters supplied to the generate virtual
-     * network gateway VPN client package operation.
-     *
-     * @param {string} [parameters.processorArchitecture] VPN client Processor
-     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
-     * include: 'Amd64', 'X86'
-     *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
-     *
-     * @param {string} [parameters.radiusServerAuthCertificate] The public
-     * certificate data for the radius server authentication certificate as a
-     * Base-64 encoded string. Required only if external radius authentication has
-     * been configured with EAPTLS authentication.
-     *
-     * @param {array} [parameters.clientRootCertificates] A list of client root
-     * certificates public certificate data encoded as Base-64 strings. Optional
-     * parameter for external radius based authentication with EAPTLS.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
-    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * Generates VPN profile for P2S client of the virtual network gateway in the
-     * specified resource group. Used for IKEV2 and radius based authentication.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkGatewayName The name of the virtual network
-     * gateway.
-     *
-     * @param {object} parameters Parameters supplied to the generate virtual
-     * network gateway VPN client package operation.
-     *
-     * @param {string} [parameters.processorArchitecture] VPN client Processor
-     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
-     * include: 'Amd64', 'X86'
-     *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
-     *
-     * @param {string} [parameters.radiusServerAuthCertificate] The public
-     * certificate data for the radius server authentication certificate as a
-     * Base-64 encoded string. Required only if external radius authentication has
-     * been configured with EAPTLS authentication.
-     *
-     * @param {array} [parameters.clientRootCertificates] A list of client root
-     * certificates public certificate data encoded as Base-64 strings. Optional
-     * parameter for external radius based authentication with EAPTLS.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginGenerateVpnProfileWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Generates VPN profile for P2S client of the virtual network gateway in the
-     * specified resource group. Used for IKEV2 and radius based authentication.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkGatewayName The name of the virtual network
-     * gateway.
-     *
-     * @param {object} parameters Parameters supplied to the generate virtual
-     * network gateway VPN client package operation.
-     *
-     * @param {string} [parameters.processorArchitecture] VPN client Processor
-     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
-     * include: 'Amd64', 'X86'
-     *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
-     *
-     * @param {string} [parameters.radiusServerAuthCertificate] The public
-     * certificate data for the radius server authentication certificate as a
-     * Base-64 encoded string. Required only if external radius authentication has
-     * been configured with EAPTLS authentication.
-     *
-     * @param {array} [parameters.clientRootCertificates] A list of client root
-     * certificates public certificate data encoded as Base-64 strings. Optional
-     * parameter for external radius based authentication with EAPTLS.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
-    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
      * Gets pre-generated VPN profile for P2S client of the virtual network gateway
      * in the specified resource group. The profile needs to be generated first
      * using generateVpnProfile.
@@ -39308,11 +40343,11 @@ export interface VirtualNetworkGateways {
      * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
      * 'SHA384', 'GCMAES256', 'GCMAES128'
      *
-     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Group used in IKE Phase
      * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
      * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
      *
-     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Group used in IKE
      * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
      * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
      *
@@ -39367,11 +40402,11 @@ export interface VirtualNetworkGateways {
      * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
      * 'SHA384', 'GCMAES256', 'GCMAES128'
      *
-     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Group used in IKE Phase
      * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
      * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
      *
-     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Group used in IKE
      * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
      * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
      *
@@ -39694,6 +40729,11 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
+     * @param {object} [parameters.virtualNetworkGateway2.customRoutes] The
+     * reference of the address space resource which represents the custom routes
+     * address space specified by the the customer for virtual network gateway and
+     * VpnClient.
+     *
      * @param {string} [parameters.virtualNetworkGateway2.resourceGuid] The
      * resource GUID property of the VirtualNetworkGateway resource.
      *
@@ -39747,7 +40787,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -39894,6 +40933,11 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
+     * @param {object} [parameters.virtualNetworkGateway2.customRoutes] The
+     * reference of the address space resource which represents the custom routes
+     * address space specified by the the customer for virtual network gateway and
+     * VpnClient.
+     *
      * @param {string} [parameters.virtualNetworkGateway2.resourceGuid] The
      * resource GUID property of the VirtualNetworkGateway resource.
      *
@@ -39947,7 +40991,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -40598,6 +41641,11 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
+     * @param {object} [parameters.virtualNetworkGateway2.customRoutes] The
+     * reference of the address space resource which represents the custom routes
+     * address space specified by the the customer for virtual network gateway and
+     * VpnClient.
+     *
      * @param {string} [parameters.virtualNetworkGateway2.resourceGuid] The
      * resource GUID property of the VirtualNetworkGateway resource.
      *
@@ -40651,7 +41699,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -40798,6 +41845,11 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
+     * @param {object} [parameters.virtualNetworkGateway2.customRoutes] The
+     * reference of the address space resource which represents the custom routes
+     * address space specified by the the customer for virtual network gateway and
+     * VpnClient.
+     *
      * @param {string} [parameters.virtualNetworkGateway2.resourceGuid] The
      * resource GUID property of the VirtualNetworkGateway resource.
      *
@@ -40851,7 +41903,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -42150,15 +43201,14 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
@@ -42201,8 +43251,8 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
@@ -42288,6 +43338,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -42340,13 +43394,12 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -42524,15 +43577,14 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
@@ -42575,8 +43627,8 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
@@ -42662,6 +43714,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -42714,13 +43770,12 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -43152,15 +44207,14 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
@@ -43203,8 +44257,8 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
@@ -43290,6 +44344,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -43342,13 +44400,12 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -43526,15 +44583,14 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * Defines how a private IP address is assigned. Possible values are: 'Static'
-     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The private IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
      * Available from Api-Version 2016-03-30 onwards, it represents whether the
-     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
-     * 'IPv6'
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
@@ -43577,8 +44633,8 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
-     * The Private IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The Private IP allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet] The
@@ -43664,6 +44720,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -43716,13 +44776,12 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
-     * The public IP allocation method. Possible values are: 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * The public IP address allocation method. Possible values include: 'Static',
+     * 'Dynamic'
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
-     * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
-     * Possible values include: 'IPv4', 'IPv6'
+     * The public IP address version. Possible values include: 'IPv4', 'IPv6'
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
@@ -45764,7 +46823,7 @@ export interface VpnSitesConfiguration {
      * @param {array} [request.vpnSites] List of resource-ids of the vpn-sites for
      * which config is to be downloaded.
      *
-     * @param {string} [request.outputBlobSasUrl] The sas-url to download the
+     * @param {string} request.outputBlobSasUrl The sas-url to download the
      * configurations for vpn-sites
      *
      * @param {object} [options] Optional Parameters.
@@ -45795,7 +46854,7 @@ export interface VpnSitesConfiguration {
      * @param {array} [request.vpnSites] List of resource-ids of the vpn-sites for
      * which config is to be downloaded.
      *
-     * @param {string} [request.outputBlobSasUrl] The sas-url to download the
+     * @param {string} request.outputBlobSasUrl The sas-url to download the
      * configurations for vpn-sites
      *
      * @param {object} [options] Optional Parameters.
@@ -45844,7 +46903,7 @@ export interface VpnSitesConfiguration {
      * @param {array} [request.vpnSites] List of resource-ids of the vpn-sites for
      * which config is to be downloaded.
      *
-     * @param {string} [request.outputBlobSasUrl] The sas-url to download the
+     * @param {string} request.outputBlobSasUrl The sas-url to download the
      * configurations for vpn-sites
      *
      * @param {object} [options] Optional Parameters.
@@ -45875,7 +46934,7 @@ export interface VpnSitesConfiguration {
      * @param {array} [request.vpnSites] List of resource-ids of the vpn-sites for
      * which config is to be downloaded.
      *
-     * @param {string} [request.outputBlobSasUrl] The sas-url to download the
+     * @param {string} request.outputBlobSasUrl The sas-url to download the
      * configurations for vpn-sites
      *
      * @param {object} [options] Optional Parameters.
@@ -47841,6 +48900,9 @@ export interface VpnConnections {
      * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
      * internet security
      *
+     * @param {boolean} [vpnConnectionParameters.useLocalAzureIpAddress] Use local
+     * azure ip to initiate connection
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -47908,6 +48970,9 @@ export interface VpnConnections {
      *
      * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
      * internet security
+     *
+     * @param {boolean} [vpnConnectionParameters.useLocalAzureIpAddress] Use local
+     * azure ip to initiate connection
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -48118,6 +49183,9 @@ export interface VpnConnections {
      * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
      * internet security
      *
+     * @param {boolean} [vpnConnectionParameters.useLocalAzureIpAddress] Use local
+     * azure ip to initiate connection
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -48185,6 +49253,9 @@ export interface VpnConnections {
      *
      * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
      * internet security
+     *
+     * @param {boolean} [vpnConnectionParameters.useLocalAzureIpAddress] Use local
+     * azure ip to initiate connection
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -49109,9 +50180,12 @@ export interface P2sVpnGateways {
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
-     * @param {array}
-     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
-     * address blocks reserved for this virtual network in CIDR notation.
+     * @param {object} [p2SVpnGatewayParameters.customRoutes] The reference of the
+     * address space resource which represents the custom routes specified by the
+     * customer for P2SVpnGateway and P2S VpnClient.
+     *
+     * @param {array} [p2SVpnGatewayParameters.customRoutes.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
@@ -49164,9 +50238,12 @@ export interface P2sVpnGateways {
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
-     * @param {array}
-     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
-     * address blocks reserved for this virtual network in CIDR notation.
+     * @param {object} [p2SVpnGatewayParameters.customRoutes] The reference of the
+     * address space resource which represents the custom routes specified by the
+     * customer for P2SVpnGateway and P2S VpnClient.
+     *
+     * @param {array} [p2SVpnGatewayParameters.customRoutes.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
@@ -49458,9 +50535,8 @@ export interface P2sVpnGateways {
      * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
      * VPN client package operation.
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -49486,9 +50562,8 @@ export interface P2sVpnGateways {
      * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
      * VPN client package operation.
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -49554,9 +50629,12 @@ export interface P2sVpnGateways {
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
-     * @param {array}
-     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
-     * address blocks reserved for this virtual network in CIDR notation.
+     * @param {object} [p2SVpnGatewayParameters.customRoutes] The reference of the
+     * address space resource which represents the custom routes specified by the
+     * customer for P2SVpnGateway and P2S VpnClient.
+     *
+     * @param {array} [p2SVpnGatewayParameters.customRoutes.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
@@ -49609,9 +50687,12 @@ export interface P2sVpnGateways {
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
-     * @param {array}
-     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
-     * address blocks reserved for this virtual network in CIDR notation.
+     * @param {object} [p2SVpnGatewayParameters.customRoutes] The reference of the
+     * address space resource which represents the custom routes specified by the
+     * customer for P2SVpnGateway and P2S VpnClient.
+     *
+     * @param {array} [p2SVpnGatewayParameters.customRoutes.addressPrefixes] A list
+     * of address blocks reserved for this virtual network in CIDR notation.
      *
      * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
@@ -49793,9 +50874,8 @@ export interface P2sVpnGateways {
      * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
      * VPN client package operation.
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -49821,9 +50901,8 @@ export interface P2sVpnGateways {
      * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
      * VPN client package operation.
      *
-     * @param {string} [parameters.authenticationMethod] VPN client Authentication
-     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
-     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     * @param {string} [parameters.authenticationMethod] VPN client authentication
+     * method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
      *
      * @param {object} [options] Optional Parameters.
      *
