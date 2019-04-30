@@ -243,12 +243,6 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.openShiftVersion Version of OpenShift specified
      * when creating the cluster.
      *
-     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
-     * OpenShift API server.
-     *
-     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
-     * server loadbalancer internal hostname.
-     *
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
@@ -257,6 +251,9 @@ export interface OpenShiftManagedClusters {
      *
      * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
+     *
+     * @param {string} [parameters.networkProfile.vnetId] ID of the Vnet created
+     * for OSA cluster.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
@@ -345,12 +342,6 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.openShiftVersion Version of OpenShift specified
      * when creating the cluster.
      *
-     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
-     * OpenShift API server.
-     *
-     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
-     * server loadbalancer internal hostname.
-     *
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
@@ -359,6 +350,9 @@ export interface OpenShiftManagedClusters {
      *
      * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
+     *
+     * @param {string} [parameters.networkProfile.vnetId] ID of the Vnet created
+     * for OSA cluster.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
@@ -609,12 +603,6 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.openShiftVersion Version of OpenShift specified
      * when creating the cluster.
      *
-     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
-     * OpenShift API server.
-     *
-     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
-     * server loadbalancer internal hostname.
-     *
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
@@ -623,6 +611,9 @@ export interface OpenShiftManagedClusters {
      *
      * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
+     *
+     * @param {string} [parameters.networkProfile.vnetId] ID of the Vnet created
+     * for OSA cluster.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
@@ -711,12 +702,6 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.openShiftVersion Version of OpenShift specified
      * when creating the cluster.
      *
-     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
-     * OpenShift API server.
-     *
-     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
-     * server loadbalancer internal hostname.
-     *
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
@@ -725,6 +710,9 @@ export interface OpenShiftManagedClusters {
      *
      * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
+     *
+     * @param {string} [parameters.networkProfile.vnetId] ID of the Vnet created
+     * for OSA cluster.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
