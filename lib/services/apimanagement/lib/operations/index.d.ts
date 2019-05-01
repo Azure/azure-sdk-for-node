@@ -3022,6 +3022,9 @@ export interface ApiOperationPolicy {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3031,7 +3034,7 @@ export interface ApiOperationPolicy {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
 
     /**
      * Get the policy configuration at the API Operation level.
@@ -3048,6 +3051,9 @@ export interface ApiOperationPolicy {
      * unique in the current API Management service instance.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3074,9 +3080,9 @@ export interface ApiOperationPolicy {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
     get(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, callback: ServiceCallback<models.PolicyContract>): void;
-    get(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, operationId: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
 
 
     /**
@@ -5403,6 +5409,9 @@ export interface ApiPolicy {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5412,7 +5421,7 @@ export interface ApiPolicy {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
 
     /**
      * Get the policy configuration at the API level.
@@ -5426,6 +5435,9 @@ export interface ApiPolicy {
      * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5452,9 +5464,9 @@ export interface ApiPolicy {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serviceName: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
     get(resourceGroupName: string, serviceName: string, apiId: string, callback: ServiceCallback<models.PolicyContract>): void;
-    get(resourceGroupName: string, serviceName: string, apiId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
 
 
     /**
@@ -5881,7 +5893,11 @@ export interface ApiSchema {
      *
      * @param {string} parameters.contentType Must be a valid a media type used in
      * a Content-Type header as defined in the RFC 2616. Media type of the schema
-     * document (e.g. application/json, application/xml).
+     * document (e.g. application/json, application/xml). </br> - `Swagger` Schema
+     * use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL`
+     * Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema
+     * use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use
+     * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
      *
      * @param {string} [parameters.value] Json escaped string defining the document
      * representing the Schema.
@@ -5900,7 +5916,7 @@ export interface ApiSchema {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SchemaContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SchemaContract>>;
 
     /**
      * Creates or updates schema configuration for the API.
@@ -5920,7 +5936,11 @@ export interface ApiSchema {
      *
      * @param {string} parameters.contentType Must be a valid a media type used in
      * a Content-Type header as defined in the RFC 2616. Media type of the schema
-     * document (e.g. application/json, application/xml).
+     * document (e.g. application/json, application/xml). </br> - `Swagger` Schema
+     * use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL`
+     * Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema
+     * use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use
+     * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
      *
      * @param {string} [parameters.value] Json escaped string defining the document
      * representing the Schema.
@@ -5955,9 +5975,9 @@ export interface ApiSchema {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SchemaContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, callback: ServiceCallback<models.SchemaContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SchemaContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SchemaContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, callback: ServiceCallback<models.SchemaContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SchemaContract>): void;
 
 
     /**
@@ -12739,7 +12759,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -12825,7 +12845,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -12931,7 +12951,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -13015,7 +13035,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -13735,7 +13755,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -13821,7 +13841,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -13927,7 +13947,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -14011,7 +14031,7 @@ export interface ApiManagementService {
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
      * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU). The default value is 1.
+     * deployed units of the SKU).
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
@@ -19644,6 +19664,9 @@ export interface Policy {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -19653,7 +19676,7 @@ export interface Policy {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
 
     /**
      * Get the Global policy definition of the Api Management service.
@@ -19663,6 +19686,9 @@ export interface Policy {
      * @param {string} serviceName The name of the API Management service.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -19689,9 +19715,9 @@ export interface Policy {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
+    get(resourceGroupName: string, serviceName: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
     get(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.PolicyContract>): void;
-    get(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
+    get(resourceGroupName: string, serviceName: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
 
 
     /**
@@ -22741,6 +22767,9 @@ export interface ProductPolicy {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -22750,7 +22779,7 @@ export interface ProductPolicy {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, productId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, productId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyContract>>;
 
     /**
      * Get the policy configuration at the Product level.
@@ -22763,6 +22792,9 @@ export interface ProductPolicy {
      * API Management service instance.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.format] Policy Export Format. Possible values
+     * include: 'xml', 'rawxml'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -22789,9 +22821,9 @@ export interface ProductPolicy {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serviceName: string, productId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
+    get(resourceGroupName: string, serviceName: string, productId: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyContract>;
     get(resourceGroupName: string, serviceName: string, productId: string, callback: ServiceCallback<models.PolicyContract>): void;
-    get(resourceGroupName: string, serviceName: string, productId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
+    get(resourceGroupName: string, serviceName: string, productId: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyContract>): void;
 
 
     /**
