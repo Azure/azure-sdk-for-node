@@ -77,6 +77,10 @@ export interface CognitiveServicesAccountUpdateParameters {
    * greater than 256 characters.
    */
   tags?: { [propertyName: string]: string };
+  /**
+   * Additional properties for Account. Only provided fields will be updated.
+   */
+  properties?: any;
 }
 
 /**
@@ -118,6 +122,10 @@ export interface CognitiveServicesAccount extends BaseResource {
    * The internal identifier.
    */
   internalId?: string;
+  /**
+   * Optional subdomain name used for token-based authentication.
+   */
+  customSubDomainName?: string;
   /**
    * The SKU of Cognitive Services account.
    */
