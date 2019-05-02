@@ -21,7 +21,7 @@ npm install azure-cognitiveservices-luis-runtime
 
 ### How to use
 
-#### Authentication, client creation, and resolve prediction as an example.
+#### Authentication, client creation, and getVersionPrediction prediction as an example.
 
 ```javascript
 const msRest = require("ms-rest");
@@ -30,16 +30,34 @@ const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new LUISRuntimeClient(creds, subscriptionId);
-const appId = "testappId";
-const query = "testquery";
-const timezoneOffset = 1.01;
+const appId = "ec7b1657-199d-4d8a-bbb2-89a11a42e02a";
+const versionId = "testversionId";
+const predictionRequest = {
+  query: "testquery",
+  options: {
+    datetimeReference: new Date().toISOString(),
+    overridePredictions: true
+  },
+  externalEntities: [{
+    entityName: "testentityName",
+    startIndex: 1,
+    entityLength: 1,
+    resolution: {}
+  }],
+  dynamicLists: [{
+    listEntityName: "testlistEntityName",
+    requestLists: [{
+      name: "testname",
+      canonicalForm: "testcanonicalForm",
+      synonyms: ["testsynonyms"]
+    }]
+  }]
+};
 const verbose = true;
-const staging = true;
-const spellCheck = true;
-const bingSpellCheckSubscriptionKey = "testbingSpellCheckSubscriptionKey";
+const showAllIntents = true;
 const log = true;
 
-client.prediction.resolve(appId, query, timezoneOffset, verbose, staging, spellCheck, bingSpellCheckSubscriptionKey, log).then((result) => {
+client.prediction.getVersionPrediction(appId, versionId, predictionRequest, verbose, showAllIntents, log).then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {
@@ -51,6 +69,3 @@ client.prediction.resolve(appId, query, timezoneOffset, verbose, staging, spellC
 ### Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
-
-
-![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2Fluis%2Fruntime%2FREADME.png)
