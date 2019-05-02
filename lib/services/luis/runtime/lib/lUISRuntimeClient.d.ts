@@ -39,7 +39,7 @@ export default class LUISRuntimeClient extends ServiceClient {
   endpoint: string;
 
   // Operation groups
-  prediction: operations.Prediction;
+  predictionOperations: operations.PredictionOperations;
 }
 
 export { LUISRuntimeClient, models as LUISRuntimeModels };

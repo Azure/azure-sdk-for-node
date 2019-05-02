@@ -14,73 +14,99 @@ import * as models from '../models';
 
 /**
  * @class
- * Prediction
+ * PredictionOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LUISRuntimeClient.
  */
-export interface Prediction {
+export interface PredictionOperations {
 
 
     /**
-     * Gets predictions for a given utterance, in the form of intents and entities.
-     * The current maximum query size is 500 characters.
+     * Gets the predictions for an application version.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {uuid} appId The application ID.
      *
-     * @param {string} query The utterance to predict.
+     * @param {string} versionId The application version ID.
+     *
+     * @param {object} predictionRequest The prediction request parameters.
+     *
+     * @param {string} predictionRequest.query The query to predict
+     *
+     * @param {object} [predictionRequest.options] The custom options defined for
+     * this request.
+     *
+     * @param {date} [predictionRequest.options.datetimeReference] The reference
+     * DateTime used for predicting datetime entities.
+     *
+     * @param {boolean} [predictionRequest.options.overridePredictions] Whether to
+     * make the external entities resolution override the predictions if an overlap
+     * occurs.
+     *
+     * @param {array} [predictionRequest.externalEntities] The externally predicted
+     * entities for this request
+     *
+     * @param {array} [predictionRequest.dynamicLists] The dynamically created list
+     * entities for this request
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {number} [options.timezoneOffset] The timezone offset for the
-     * location of the request.
+     * @param {boolean} [options.verbose] Indicates whether to get extra metadata
+     * for the entities predictions or not.
      *
-     * @param {boolean} [options.verbose] If true, return all intents instead of
-     * just the top scoring intent.
+     * @param {boolean} [options.showAllIntents] Indicates whether to return all
+     * the intents in the response or just the top intent.
      *
-     * @param {boolean} [options.staging] Use the staging endpoint slot.
-     *
-     * @param {boolean} [options.spellCheck] Enable spell checking.
-     *
-     * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
-     * to use when enabling bing spell check
-     *
-     * @param {boolean} [options.log] Log query (default is true)
+     * @param {boolean} [options.log] Indicates whether to log the endpoint query
+     * or not.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LuisResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PredictionResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resolveWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisResult>>;
+    getVersionPredictionWithHttpOperationResponse(appId: string, versionId: string, predictionRequest: models.PredictionRequest, options?: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionResponse>>;
 
     /**
-     * Gets predictions for a given utterance, in the form of intents and entities.
-     * The current maximum query size is 500 characters.
+     * Gets the predictions for an application version.
      *
-     * @param {string} appId The LUIS application ID (Guid).
+     * @param {uuid} appId The application ID.
      *
-     * @param {string} query The utterance to predict.
+     * @param {string} versionId The application version ID.
+     *
+     * @param {object} predictionRequest The prediction request parameters.
+     *
+     * @param {string} predictionRequest.query The query to predict
+     *
+     * @param {object} [predictionRequest.options] The custom options defined for
+     * this request.
+     *
+     * @param {date} [predictionRequest.options.datetimeReference] The reference
+     * DateTime used for predicting datetime entities.
+     *
+     * @param {boolean} [predictionRequest.options.overridePredictions] Whether to
+     * make the external entities resolution override the predictions if an overlap
+     * occurs.
+     *
+     * @param {array} [predictionRequest.externalEntities] The externally predicted
+     * entities for this request
+     *
+     * @param {array} [predictionRequest.dynamicLists] The dynamically created list
+     * entities for this request
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {number} [options.timezoneOffset] The timezone offset for the
-     * location of the request.
+     * @param {boolean} [options.verbose] Indicates whether to get extra metadata
+     * for the entities predictions or not.
      *
-     * @param {boolean} [options.verbose] If true, return all intents instead of
-     * just the top scoring intent.
+     * @param {boolean} [options.showAllIntents] Indicates whether to return all
+     * the intents in the response or just the top intent.
      *
-     * @param {boolean} [options.staging] Use the staging endpoint slot.
-     *
-     * @param {boolean} [options.spellCheck] Enable spell checking.
-     *
-     * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
-     * to use when enabling bing spell check
-     *
-     * @param {boolean} [options.log] Log query (default is true)
+     * @param {boolean} [options.log] Indicates whether to log the endpoint query
+     * or not.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -92,7 +118,7 @@ export interface Prediction {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LuisResult} - The deserialized result object.
+     *                      @resolve {PredictionResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -100,14 +126,131 @@ export interface Prediction {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LuisResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LuisResult} for more information.
+     *                      {PredictionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resolve(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisResult>;
-    resolve(appId: string, query: string, callback: ServiceCallback<models.LuisResult>): void;
-    resolve(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisResult>): void;
+    getVersionPrediction(appId: string, versionId: string, predictionRequest: models.PredictionRequest, options?: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionResponse>;
+    getVersionPrediction(appId: string, versionId: string, predictionRequest: models.PredictionRequest, callback: ServiceCallback<models.PredictionResponse>): void;
+    getVersionPrediction(appId: string, versionId: string, predictionRequest: models.PredictionRequest, options: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionResponse>): void;
+
+
+    /**
+     * Gets the predictions for an application slot.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} slotName The application slot name.
+     *
+     * @param {object} predictionRequest The prediction request parameters.
+     *
+     * @param {string} predictionRequest.query The query to predict
+     *
+     * @param {object} [predictionRequest.options] The custom options defined for
+     * this request.
+     *
+     * @param {date} [predictionRequest.options.datetimeReference] The reference
+     * DateTime used for predicting datetime entities.
+     *
+     * @param {boolean} [predictionRequest.options.overridePredictions] Whether to
+     * make the external entities resolution override the predictions if an overlap
+     * occurs.
+     *
+     * @param {array} [predictionRequest.externalEntities] The externally predicted
+     * entities for this request
+     *
+     * @param {array} [predictionRequest.dynamicLists] The dynamically created list
+     * entities for this request
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.verbose] Indicates whether to get extra metadata
+     * for the entities predictions or not.
+     *
+     * @param {boolean} [options.showAllIntents] Indicates whether to return all
+     * the intents in the response or just the top intent.
+     *
+     * @param {boolean} [options.log] Indicates whether to log the endpoint query
+     * or not.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PredictionResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSlotPredictionWithHttpOperationResponse(appId: string, slotName: string, predictionRequest: models.PredictionRequest, options?: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionResponse>>;
+
+    /**
+     * Gets the predictions for an application slot.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} slotName The application slot name.
+     *
+     * @param {object} predictionRequest The prediction request parameters.
+     *
+     * @param {string} predictionRequest.query The query to predict
+     *
+     * @param {object} [predictionRequest.options] The custom options defined for
+     * this request.
+     *
+     * @param {date} [predictionRequest.options.datetimeReference] The reference
+     * DateTime used for predicting datetime entities.
+     *
+     * @param {boolean} [predictionRequest.options.overridePredictions] Whether to
+     * make the external entities resolution override the predictions if an overlap
+     * occurs.
+     *
+     * @param {array} [predictionRequest.externalEntities] The externally predicted
+     * entities for this request
+     *
+     * @param {array} [predictionRequest.dynamicLists] The dynamically created list
+     * entities for this request
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.verbose] Indicates whether to get extra metadata
+     * for the entities predictions or not.
+     *
+     * @param {boolean} [options.showAllIntents] Indicates whether to return all
+     * the intents in the response or just the top intent.
+     *
+     * @param {boolean} [options.log] Indicates whether to log the endpoint query
+     * or not.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PredictionResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PredictionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PredictionResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSlotPrediction(appId: string, slotName: string, predictionRequest: models.PredictionRequest, options?: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionResponse>;
+    getSlotPrediction(appId: string, slotName: string, predictionRequest: models.PredictionRequest, callback: ServiceCallback<models.PredictionResponse>): void;
+    getSlotPrediction(appId: string, slotName: string, predictionRequest: models.PredictionRequest, options: { verbose? : boolean, showAllIntents? : boolean, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionResponse>): void;
 }

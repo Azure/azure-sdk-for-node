@@ -9,144 +9,186 @@
 import * as moment from "moment";
 
 /**
- * An intent detected from the utterance.
+ * The custom options for the prediction request.
  */
-export interface IntentModel {
+export interface PredictionRequestOptions {
   /**
-   * Name of the intent, as defined in LUIS.
+   * The reference DateTime used for predicting datetime entities.
    */
-  intent?: string;
+  datetimeReference?: Date;
   /**
-   * Associated prediction score for the intent (float).
+   * Whether to make the external entities resolution override the predictions if an overlap
+   * occurs.
    */
-  score?: number;
+  overridePredictions?: boolean;
 }
 
 /**
- * An entity extracted from the utterance.
+ * Defines a user predicted entity that extends an already existing one.
  */
-export interface EntityModel {
+export interface ExternalEntity {
   /**
-   * Name of the entity, as defined in LUIS.
+   * The name of the entity to extend.
    */
-  entity: string;
+  entityName: string;
   /**
-   * Type of the entity, as defined in LUIS.
-   */
-  type: string;
-  /**
-   * The position of the first character of the matched entity within the utterance.
+   * The start character index of the predicted entity.
    */
   startIndex: number;
   /**
-   * The position of the last character of the matched entity within the utterance.
+   * The length of the predicted entity.
    */
-  endIndex: number;
+  entityLength: number;
   /**
-   * Describes unknown properties. The value of an unknown property can be of "any" type.
+   * A user supplied custom resolution to return as the entity's prediction.
    */
-  [additionalPropertyName: string]: any;
+  resolution?: any;
 }
 
 /**
- * Child entity in a LUIS Composite Entity.
+ * Defines a sub-list to append to an existing list entity.
  */
-export interface CompositeChildModel {
+export interface RequestList {
   /**
-   * Type of child entity.
+   * The name of the sub-list.
    */
-  type: string;
+  name?: string;
   /**
-   * Value extracted by LUIS.
+   * The canonical form of the sub-list.
    */
-  value: string;
+  canonicalForm: string;
+  /**
+   * The synonyms of the canonical form.
+   */
+  synonyms?: string[];
 }
 
 /**
- * LUIS Composite Entity.
+ * Defines an extension for a list entity.
  */
-export interface CompositeEntityModel {
+export interface DynamicList {
   /**
-   * Type/name of parent entity.
+   * The name of the list entity to extend.
    */
-  parentType: string;
+  listEntityName: string;
   /**
-   * Value for composite entity extracted by LUIS.
+   * The lists to append on the extended list entity.
    */
-  value: string;
-  /**
-   * Child entities.
-   */
-  children: CompositeChildModel[];
+  requestLists: RequestList[];
 }
 
 /**
- * Sentiment of the input utterance.
+ * Represents the prediction request parameters.
+ */
+export interface PredictionRequest {
+  /**
+   * The query to predict
+   */
+  query: string;
+  /**
+   * The custom options defined for this request.
+   */
+  options?: PredictionRequestOptions;
+  /**
+   * The externally predicted entities for this request
+   */
+  externalEntities?: ExternalEntity[];
+  /**
+   * The dynamically created list entities for this request
+   */
+  dynamicLists?: DynamicList[];
+}
+
+/**
+ * Represents an intent prediction.
+ */
+export interface Intent {
+  /**
+   * The score of the fired intent.
+   */
+  score?: number;
+  /**
+   * The prediction of the dispatched application.
+   */
+  childApp?: Prediction;
+}
+
+/**
+ * The result of the sentiment analysis.
  */
 export interface Sentiment {
   /**
-   * The polarity of the sentiment, can be positive, neutral or negative.
+   * The sentiment score of the query.
+   */
+  score: number;
+  /**
+   * The label of the sentiment analysis result.
    */
   label?: string;
-  /**
-   * Score of the sentiment, ranges from 0 (most negative) to 1 (most positive).
-   */
-  score?: number;
 }
 
 /**
- * Prediction, based on the input query, containing intent(s) and entities.
+ * Represents the prediction of a query.
  */
-export interface LuisResult {
+export interface Prediction {
   /**
-   * The input utterance that was analyzed.
+   * The query after pre-processing and normalization.
    */
-  query?: string;
+  normalizedQuery: string;
   /**
-   * The corrected utterance (when spell checking was enabled).
+   * The query after spell checking. Only set if spell check was enabled and a spelling mistake was
+   * found.
    */
   alteredQuery?: string;
-  topScoringIntent?: IntentModel;
   /**
-   * All the intents (and their score) that were detected from utterance.
-  */
-  intents?: IntentModel[];
+   * The name of the top scoring intent.
+   */
+  topIntent: string;
   /**
-   * The entities extracted from the utterance.
-  */
-  entities?: EntityModel[];
+   * A dictionary representing the intents that fired.
+   */
+  intents: { [propertyName: string]: Intent };
   /**
-   * The composite entities extracted from the utterance.
-  */
-  compositeEntities?: CompositeEntityModel[];
-  sentimentAnalysis?: Sentiment;
-  connectedServiceResult?: LuisResult;
-}
-
-export interface EntityWithScore extends EntityModel {
+   * The dictionary representing the entities that fired.
+   */
+  entities: { [propertyName: string]: any };
   /**
-   * Associated prediction score for the intent (float).
-  */
-  score: number;
-}
-
-export interface EntityWithResolution extends EntityModel {
-  /**
-   * Resolution values for pre-built LUIS entities.
-  */
-  resolution: any;
+   * The result of the sentiment analysis.
+   */
+  sentiment?: Sentiment;
 }
 
 /**
- * Error information returned by the API
-*/
-export interface APIError {
+ * Represents the prediction response.
+ */
+export interface PredictionResponse {
   /**
-   * HTTP Status code
-  */
-  statusCode?: string;
+   * The query used in the prediction.
+   */
+  query: string;
   /**
-   * Cause of the error.
-  */
-  message?: string;
+   * The prediction of the requested query.
+   */
+  prediction: Prediction;
+}
+
+/**
+ * Represents the definition of the error that occurred.
+ */
+export interface ErrorBody {
+  /**
+   * The error code.
+   */
+  code: string;
+  /**
+   * The error message.
+   */
+  message: string;
+}
+
+/**
+ * Represents the error that occurred.
+ */
+export interface ErrorModel {
+  error: ErrorBody;
 }
