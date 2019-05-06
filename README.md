@@ -1,15 +1,24 @@
-# Azure SDK for Node.js
+## Azure SDK for Node.js
 
-| Component | Build Status |
-| --------- | ------ |
-| Management Libraries | [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node) |
-| Client Libraries | [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/azure-sdk-for-node.client)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=33) |
+# **WARNING**
+Most of the sdks in this repository will be deprecated in July 2019 and will be replaced by sdks in https://github.com/azure/azure-sdk-for-js. The packages in azure-sdk-for-js are isomorphic and will be actively supported moving forward. You will find any equivalent JS package in `@azure` org on npm for the existing node sdk package.
+For example: [azure-arm-compute](https://www.npmjs.com/package/azure-arm-compute) node sdk's equivalent JS sdk is [@azure/arm-compute](https://www.npmjs.com/package/@azure/arm-compute). 
+
+**NOTE:** Apart from the noticable changes in require/important statements, we have tried our level best to make lesser breaking changes in the API calls.
+
+### Migration
+You can find more information on migrating your scripts from node sdk to JS sdk over [here](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md).
 
 This project provides Node.js packages that makes it easy to consume and manage Microsoft Azure Services.
 
 If you are new to Azure and Node.js, see [Azure for Node.js developers](https://docs.microsoft.com/en-us/javascript/azure).
 
 For documentation specific to the Azure SDK Node.js packages, see the [Azure Node SDK Reference](https://docs.microsoft.com/en-us/javascript/api/overview/azure).
+
+| Component | Build Status |
+| --------- | ------ |
+| Management Libraries | [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node) |
+| Client Libraries | [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/azure-sdk-for-node.client)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=33) |
 
 ## Usage
 
