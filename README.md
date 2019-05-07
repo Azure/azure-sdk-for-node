@@ -1,11 +1,12 @@
 
 # **WARNING**
-- All the management plane `azure-arm-*` sdks and most of the data plane `azure-*` sdks, along with the rollup package [azure](https://www.npmjs.com/package/azure) in this repository, will be deprecated in **July, 2019**. They will be replaced by JS sdks in [azure-sdk-for-js](https://github.com/azure/azure-sdk-for-js).
+- _All_ the management plane `azure-arm-*` sdks and _most_ of the data plane `azure-*` sdks, along with the rollup package [azure](https://www.npmjs.com/package/azure) in this repository, will be deprecated in **July, 2019**. They will be replaced by JS sdks in [azure-sdk-for-js](https://github.com/azure/azure-sdk-for-js).
 - The packages in [azure-sdk-for-js](https://github.com/azure/azure-sdk-for-js/tree/master/sdk) are isomorphic (can be run in the browser and on the server (node.js)) with accurate TypeScript type definitions.
 - They will be actively supported moving forward.
 - You will find any equivalent JS package in `@azure` org on npm for the existing node sdk package. For example: [azure-arm-compute](https://www.npmjs.com/package/azure-arm-compute) node sdk's equivalent JS sdk is [@azure/arm-compute](https://www.npmjs.com/package/@azure/arm-compute). 
+- _All_ the management plane sdks for the V1 Azure API (Azure Service Management) `azure-asm-*` will still be maintained from this repository. We would expect customers using these packages to move to Azure Resource Manager API packages at the earliest.
 
-**NOTE:** Apart from the noticable changes in **require/important** statements, we have tried our level best to make lesser breaking changes in the API calls.
+**NOTE:** Apart from the noticable changes in **require/import** statements, we have tried our level best to make _lesser_ breaking changes in the API calls.
 
 ### Migration
 You can find more information on migrating your scripts from **node** sdk to **JS** sdk over [here](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md).
