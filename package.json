@@ -32,7 +32,6 @@
     "moment": "^2.22.2",
     "ms-rest": "^2.3.8",
     "ms-rest-azure": "^2.5.0",
-    "natives": "^1.1.6",
     "request": "^2.81.0",
     "underscore": "1.8.3",
     "uuid": "^3.0.1"
@@ -68,7 +67,7 @@
     "colors": "1.1.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-exec": "2.1.2",
     "jshint": "^2.9.5",
     "json-stable-stringify": "^1.0.1",
