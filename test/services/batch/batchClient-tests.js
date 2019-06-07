@@ -87,12 +87,12 @@ describe('Batch Service', function () {
   });
 
   describe('operations', function () {
-    it('should list node agent sku successfully', function (done) {
-      client.account.listNodeAgentSkus(function (err, result, request, response) {
+    it('should list supported images successfully', function (done) {
+      client.account.listSupportedImages(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].id.should.equal('batch.node.centos 7');
+        result[0].nodeAgentSKUId.should.equal('batch.node.centos 7');
         result[0].osType.should.equal('linux');
         response.statusCode.should.equal(200);
         done();
@@ -103,7 +103,7 @@ describe('Batch Service', function () {
       var verifyAadAuth = function(token, callback) {
         var tokenCreds = new msRest.TokenCredentials(token, 'Bearer');
         aadClient = new BatchServiceClient(tokenCreds, process.env['AZURE_BATCH_ENDPOINT']);
-        aadClient.account.listNodeAgentSkus(function (err, result, request, response) {
+        aadClient.account.listSupportedImages(function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
@@ -477,7 +477,7 @@ describe('Batch Service', function () {
       });
     });
 
-    it.skip('should update a compute node user successfully', function (done) {
+    it('should update a compute node user successfully', function (done) {
       var options = { password: 'liilef#$DdRGSa_ewkjh' }
       client.computeNodeOperations.updateUser('nodesdktestpool1', compute_nodes[0], 'NodeSDKTestUser', options, function (err, result, request, response) {
         should.not.exist(err);
@@ -545,14 +545,14 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should fail to upload pool node logs at paas pool', function (done) {
+    it('should upload pool node logs at paas pool', function (done) {
       container = 'https://teststorage.blob.core.windows.net/fakecontainer'
       var config = { containerUrl: container, startTime: '2018-02-25T00:00:00.00' }
-      client.computeNodeOperations.uploadBatchServiceLogs('nodesdktestpool1', compute_nodes[1], config, function (err, result, request, response) {
-        should.exist(err);
-        should.not.exist(result);
-        err.statusCode.should.equal(403);
-        err.body.code.should.equal('TVMCurrentOperationUnsupported');
+      client.computeNodeOperations.uploadBatchServiceLogs('nodesdktestpool1', compute_nodes[2], config, function (err, result, request, response) {
+        should.exist(result);
+        should.not.exist(err);
+        response.statusCode.should.equal(200);
+        result.numberOfFilesUploaded.should.be.above(0);
         done();
       });
     });
@@ -706,7 +706,7 @@ describe('Batch Service', function () {
       client.pool.listUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(2);
+        result.length.should.be.aboveOrEqual(1);
         response.statusCode.should.equal(200);
         done();
       });
@@ -1063,7 +1063,7 @@ describe('Batch Service', function () {
     });
 
     it('should list files from compute node successfully', function (done) {
-      client.file.listFromComputeNode('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
+      client.file.listFromComputeNode('nodesdktestpool1', compute_nodes[2], function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
@@ -1073,7 +1073,7 @@ describe('Batch Service', function () {
     });
 
     it('should get file properties from node successfully', function (done) {
-      client.file.getPropertiesFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+      client.file.getPropertiesFromComputeNode('nodesdktestpool1', compute_nodes[2], 'startup/wd/hello.txt', function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -1082,7 +1082,7 @@ describe('Batch Service', function () {
     });
 
     it('should get file from node successfully', function (done) {
-      client.file.getFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+      client.file.getFromComputeNode('nodesdktestpool1', compute_nodes[2], 'startup/wd/hello.txt', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -1095,7 +1095,7 @@ describe('Batch Service', function () {
     });
 
     it('should delete file from node successfully', function (done) {
-      client.file.deleteFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+      client.file.deleteFromComputeNode('nodesdktestpool1', compute_nodes[2], 'startup/wd/hello.txt', function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -1243,7 +1243,7 @@ describe('Batch Service', function () {
     it('should create a job schdule successfully', function (done) {
       var options = {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
-        schedule: { doNotRunUntil: "2018-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
+        schedule: { doNotRunUntil: "2019-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
       };
 
       var requestModelMapper = new client.models['JobScheduleAddParameter']().mapper();
