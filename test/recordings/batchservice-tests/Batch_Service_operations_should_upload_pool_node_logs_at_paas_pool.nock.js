@@ -9,14 +9,15 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test1.westus.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2019-06-01.9.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2019-06-07T03:30:00Z\",\"endTime\":\"2019-06-07T04:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999997222216\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .filteringRequestBody(function (path) { return '*';})
+.post('/pools/nodesdktestpool1/nodes/tvm-1650185656_6-20190607t074944z/uploadbatchservicelogs?api-version=2019-06-01.9.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.UploadBatchServiceLogsResult\",\"virtualDirectoryName\":\"test1-22F5BD3D9EFD33EE/nodesdktestpool1/tvm-1650185656_6-20190607t074944z/a3cdd0bc-4565-49cd-9b56-fed9fa10c257\",\"numberOfFilesUploaded\":4\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c1d1217f-edb1-461b-b3a4-4cf1acacc90f',
+  'request-id': 'a3cdd0bc-4565-49cd-9b56-fed9fa10c257',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 07 Jun 2019 07:27:31 GMT',
+  date: 'Fri, 07 Jun 2019 08:05:07 GMT',
   connection: 'close' });
  return result; }]];
