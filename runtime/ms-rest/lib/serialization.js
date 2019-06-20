@@ -156,7 +156,7 @@ function validateConstraints(mapper, value, objectName) {
         if (value.length % mapper.constraints[constraintType] !== 0) {
           throw new Error(`${objectName}" with value "${value}" should satify the constraint "MultipleOf": ${mapper.constraints[constraintType]}.`);
         }
-      } else if (constraintType.match(/^Pattern$/ig) !== null) {
+      } else if (constraintType.match(/^Pattern$/ig) !== null && mapper.constraints[constraintType]) {
         if (value.match(mapper.constraints[constraintType].split('/').join('\/')) === null) {
           throw new Error(`${objectName}" with value "${value}" should satify the constraint "Pattern": ${mapper.constraints[constraintType]}.`);
         }
