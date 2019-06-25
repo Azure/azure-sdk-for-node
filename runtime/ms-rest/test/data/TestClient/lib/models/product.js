@@ -49,6 +49,11 @@ class Product {
             required: true,
             type: {
               name: 'String'
+            },
+            constraints: {
+              MaxLength: 256,
+              MinLength: 1,
+              Pattern: /^[A-Za-z0-9-._]+$/
             }
           },
           provisioningState: {

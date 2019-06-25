@@ -157,7 +157,12 @@ function validateConstraints(mapper, value, objectName) {
           throw new Error(`${objectName}" with value "${value}" should satify the constraint "MultipleOf": ${mapper.constraints[constraintType]}.`);
         }
       } else if (constraintType.match(/^Pattern$/ig) !== null) {
-        if (value.match(mapper.constraints[constraintType].split('/').join('\/')) === null) {
+        const constraint = mapper.constraints[constraintType];
+        const match = typeof constraint === "string" ?
+          constraint.split('/').join('\/') :
+          constraint;
+
+        if (value.match(match) === null) {
           throw new Error(`${objectName}" with value "${value}" should satify the constraint "Pattern": ${mapper.constraints[constraintType]}.`);
         }
       } else if (constraintType.match(/^UniqueItems/ig) !== null) {
