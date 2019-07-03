@@ -25,7 +25,7 @@ class WebResource {
     this.url = null;
     this.method = null;
     this.headers = {};
-    this.body = null;
+    this.body = undefined;
   }
 
   /**
@@ -280,8 +280,7 @@ class WebResource {
     }
 
     //set the request body. request.js automatically sets the Content-Length request header, so we need not set it explicilty
-    this.body = null;
-    if (options.body !== null && options.body !== undefined) {
+    if (options.body !== undefined && options.body !== null) {
       //body as a stream special case. set the body as-is and check for some special request headers specific to sending a stream. 
       if (options.bodyIsStream) {
         this.body = options.body;

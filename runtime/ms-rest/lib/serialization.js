@@ -158,7 +158,7 @@ function validateConstraints(mapper, value, objectName) {
         }
       } else if (constraintType.match(/^Pattern$/ig) !== null) {
         const constraint = mapper.constraints[constraintType];
-        const match = typeof constraint === "string" ?
+        const match = typeof constraint === 'string' ?
           constraint.split('/').join('\/') :
           constraint;
 
