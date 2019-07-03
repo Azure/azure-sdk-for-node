@@ -100,3 +100,6 @@ vnetManagementClient.networks.getConfiguration(function (err, result) {
 
 - [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Compute Management](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/computeManagement)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FnetworkManagement%2FREADME.png)

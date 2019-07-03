@@ -924,8 +924,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Azure file share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -961,8 +960,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Azure file share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -1686,8 +1684,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Azure file share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -1723,8 +1720,7 @@ export interface CloudEndpoints {
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
-     * @param {string} [parameters.storageAccountShareName] Storage Account Share
-     * name
+     * @param {string} [parameters.azureFileShareName] Azure file share name
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
@@ -2261,6 +2257,12 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2303,6 +2305,12 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
+     *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2363,6 +2371,12 @@ export interface ServerEndpoints {
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
      *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2400,6 +2414,12 @@ export interface ServerEndpoints {
      *
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
+     *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2640,7 +2660,7 @@ export interface ServerEndpoints {
 
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -2672,7 +2692,7 @@ export interface ServerEndpoints {
     recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -2751,6 +2771,12 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2793,6 +2819,12 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
+     *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2853,6 +2885,12 @@ export interface ServerEndpoints {
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
      *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2890,6 +2928,12 @@ export interface ServerEndpoints {
      *
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
+     *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2992,7 +3036,7 @@ export interface ServerEndpoints {
 
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3024,7 +3068,7 @@ export interface ServerEndpoints {
     beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.

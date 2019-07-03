@@ -16,6 +16,61 @@ export {
 };
 
 /**
+ * Application gateway probe health response match
+ */
+export interface ApplicationGatewayProbeHealthResponseMatch {
+  /**
+   * Body that must be contained in the health response. Default value is empty.
+   */
+  body?: string;
+  /**
+   * Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
+   */
+  statusCodes?: string[];
+}
+
+/**
+ * Details of on demand test probe request
+ */
+export interface ApplicationGatewayOnDemandProbe {
+  /**
+   * The protocol used for the probe. Possible values include: 'Http', 'Https'
+   */
+  protocol?: string;
+  /**
+   * Host name to send the probe to.
+   */
+  host?: string;
+  /**
+   * Relative path of probe. Valid path starts from '/'. Probe is sent to
+   * <Protocol>://<host>:<port><path>
+   */
+  path?: string;
+  /**
+   * The probe timeout in seconds. Probe marked as failed if valid response is not received with
+   * this timeout period. Acceptable values are from 1 second to 86400 seconds.
+   */
+  timeout?: number;
+  /**
+   * Whether the host header should be picked from the backend http settings. Default value is
+   * false.
+   */
+  pickHostNameFromBackendHttpSettings?: boolean;
+  /**
+   * Criterion for classifying a healthy probe response.
+   */
+  match?: ApplicationGatewayProbeHealthResponseMatch;
+  /**
+   * Name of backend pool of application gateway to which probe request will be sent.
+   */
+  backendPoolName?: string;
+  /**
+   * Name of backend http setting of application gateway to be used for test probe
+   */
+  backendHttpSettingName?: string;
+}
+
+/**
  * Reference to another subresource.
  */
 export interface SubResource extends BaseResource {
@@ -109,22 +164,22 @@ export interface SecurityRule extends SubResource {
    */
   description?: string;
   /**
-   * Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'. Possible
-   * values include: 'Tcp', 'Udp', '*'
+   * Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and
+   * '*'. Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*'
    */
   protocol: string;
   /**
-   * The source port or range. Integer or range between 0 and 65535. Asterix '*' can also be used
+   * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used
    * to match all ports.
    */
   sourcePortRange?: string;
   /**
-   * The destination port or range. Integer or range between 0 and 65535. Asterix '*' can also be
+   * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be
    * used to match all ports.
    */
   destinationPortRange?: string;
   /**
-   * The CIDR or source IP range. Asterix '*' can also be used to match all source IPs. Default
+   * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default
    * tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is
    * an ingress rule, specifies where network traffic originates from.
    */
@@ -138,7 +193,7 @@ export interface SecurityRule extends SubResource {
    */
   sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
   /**
-   * The destination address prefix. CIDR or destination IP range. Asterix '*' can also be used to
+   * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to
    * match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
    * 'Internet' can also be used.
    */
@@ -160,8 +215,7 @@ export interface SecurityRule extends SubResource {
    */
   destinationPortRanges?: string[];
   /**
-   * The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'. Possible
-   * values include: 'Allow', 'Deny'
+   * The network traffic is allowed or denied. Possible values include: 'Allow', 'Deny'
    */
   access: string;
   /**
@@ -172,8 +226,7 @@ export interface SecurityRule extends SubResource {
   priority?: number;
   /**
    * The direction of the rule. The direction specifies if rule will be evaluated on incoming or
-   * outcoming traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values include:
-   * 'Inbound', 'Outbound'
+   * outgoing traffic. Possible values include: 'Inbound', 'Outbound'
    */
   direction: string;
   /**
@@ -379,9 +432,8 @@ export interface Route extends SubResource {
    */
   addressPrefix?: string;
   /**
-   * The type of Azure hop the packet should be sent to. Possible values are:
-   * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
-   * values include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
+   * The type of Azure hop the packet should be sent to. Possible values include:
+   * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
    */
   nextHopType: string;
   /**
@@ -460,7 +512,7 @@ export interface ServiceEndpointPolicyDefinition extends SubResource {
    */
   description?: string;
   /**
-   * service endpoint name.
+   * Service endpoint name.
    */
   service?: string;
   /**
@@ -582,13 +634,11 @@ export interface PublicIPAddress extends Resource {
    */
   sku?: PublicIPAddressSku;
   /**
-   * The public IP allocation method. Possible values are: 'Static' and 'Dynamic'. Possible values
-   * include: 'Static', 'Dynamic'
+   * The public IP address allocation method. Possible values include: 'Static', 'Dynamic'
    */
   publicIPAllocationMethod?: string;
   /**
-   * The public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
-   * include: 'IPv4', 'IPv6'
+   * The public IP address version. Possible values include: 'IPv4', 'IPv6'
    */
   publicIPAddressVersion?: string;
   /**
@@ -647,8 +697,7 @@ export interface IPConfiguration extends SubResource {
    */
   privateIPAddress?: string;
   /**
-   * The private IP allocation method. Possible values are 'Static' and 'Dynamic'. Possible values
-   * include: 'Static', 'Dynamic'
+   * The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
    */
   privateIPAllocationMethod?: string;
   /**
@@ -680,8 +729,7 @@ export interface IPConfiguration extends SubResource {
  */
 export interface IPConfigurationProfile extends SubResource {
   /**
-   * The reference of the subnet resource to create a contatainer network interface ip
-   * configruation.
+   * The reference of the subnet resource to create a container network interface ip configuration.
    */
   subnet?: Subnet;
   /**
@@ -804,6 +852,10 @@ export interface Subnet extends SubResource {
    */
   routeTable?: RouteTable;
   /**
+   * Nat gateway associated with this subnet.
+   */
+  natGateway?: SubResource;
+  /**
    * An array of service endpoints.
    */
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
@@ -880,8 +932,7 @@ export interface FrontendIPConfiguration extends SubResource {
    */
   privateIPAddress?: string;
   /**
-   * The Private IP allocation method. Possible values are: 'Static' and 'Dynamic'. Possible values
-   * include: 'Static', 'Dynamic'
+   * The Private IP allocation method. Possible values include: 'Static', 'Dynamic'
    */
   privateIPAllocationMethod?: string;
   /**
@@ -999,7 +1050,8 @@ export interface InboundNatRule extends SubResource {
    */
   readonly backendIPConfiguration?: NetworkInterfaceIPConfiguration;
   /**
-   * Possible values include: 'Udp', 'Tcp', 'All'
+   * The reference to the transport protocol used by the load balancing rule. Possible values
+   * include: 'Udp', 'Tcp', 'All'
    */
   protocol?: string;
   /**
@@ -1069,14 +1121,13 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
    */
   privateIPAddress?: string;
   /**
-   * Defines how a private IP address is assigned. Possible values are: 'Static' and 'Dynamic'.
-   * Possible values include: 'Static', 'Dynamic'
+   * The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
    */
   privateIPAllocationMethod?: string;
   /**
    * Available from Api-Version 2016-03-30 onwards, it represents whether the specific
-   * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
-   * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+   * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values include: 'IPv4',
+   * 'IPv6'
    */
   privateIPAddressVersion?: string;
   /**
@@ -1181,8 +1232,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
    */
   port?: number;
   /**
-   * The protocol used to communicate with the backend. Possible values are 'Http' and 'Https'.
-   * Possible values include: 'Http', 'Https'
+   * The protocol used to communicate with the backend. Possible values include: 'Http', 'Https'
    */
   protocol?: string;
   /**
@@ -1268,6 +1318,10 @@ export interface ApplicationGatewayBackendHealthServer {
    * 'Draining'
    */
   health?: string;
+  /**
+   * Health Probe Log.
+   */
+  healthProbeLog?: string;
 }
 
 /**
@@ -1285,6 +1339,20 @@ export interface ApplicationGatewayBackendHealthHttpSettings {
 }
 
 /**
+ * Result of on demand test probe
+ */
+export interface ApplicationGatewayBackendHealthOnDemand {
+  /**
+   * Reference of an ApplicationGatewayBackendAddressPool resource.
+   */
+  backendAddressPool?: ApplicationGatewayBackendAddressPool;
+  /**
+   * Application gateway BackendHealthHttp settings.
+   */
+  backendHealthHttpSettings?: ApplicationGatewayBackendHealthHttpSettings;
+}
+
+/**
  * Application gateway BackendHealth pool.
  */
 export interface ApplicationGatewayBackendHealthPool {
@@ -1299,742 +1367,766 @@ export interface ApplicationGatewayBackendHealthPool {
 }
 
 /**
- * List of ApplicationGatewayBackendHealthPool resources.
+ * Response for ApplicationGatewayBackendHealth API service call.
  */
 export interface ApplicationGatewayBackendHealth {
+  /**
+   * A list of ApplicationGatewayBackendHealthPool resources.
+   */
   backendAddressPools?: ApplicationGatewayBackendHealthPool[];
 }
 
 /**
  * SKU of an application gateway
-*/
+ */
 export interface ApplicationGatewaySku {
   /**
    * Name of an application gateway SKU. Possible values include: 'Standard_Small',
    * 'Standard_Medium', 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
-  */
+   */
   name?: string;
   /**
    * Tier of an application gateway. Possible values include: 'Standard', 'WAF', 'Standard_v2',
    * 'WAF_v2'
-  */
+   */
   tier?: string;
   /**
    * Capacity (instance count) of an application gateway.
-  */
+   */
   capacity?: number;
 }
 
 /**
  * Application Gateway Ssl policy.
-*/
+ */
 export interface ApplicationGatewaySslPolicy {
   /**
    * Ssl protocols to be disabled on application gateway.
-  */
+   */
   disabledSslProtocols?: string[];
   /**
    * Type of Ssl Policy. Possible values include: 'Predefined', 'Custom'
-  */
+   */
   policyType?: string;
   /**
    * Name of Ssl predefined policy. Possible values include: 'AppGwSslPolicy20150501',
    * 'AppGwSslPolicy20170401', 'AppGwSslPolicy20170401S'
-  */
+   */
   policyName?: string;
   /**
    * Ssl cipher suites to be enabled in the specified order to application gateway.
-  */
+   */
   cipherSuites?: string[];
   /**
    * Minimum version of Ssl protocol to be supported on application gateway. Possible values
    * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
-  */
+   */
   minProtocolVersion?: string;
 }
 
 /**
  * IP configuration of an application gateway. Currently 1 public and 1 private IP configuration is
  * allowed.
-*/
+ */
 export interface ApplicationGatewayIPConfiguration extends SubResource {
   /**
    * Reference of the subnet resource. A subnet from where application gateway gets its private
    * address.
-  */
+   */
   subnet?: SubResource;
   /**
    * Provisioning state of the application gateway subnet resource. Possible values are:
    * 'Updating', 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the IP configuration that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Authentication certificates of an application gateway.
-*/
+ */
 export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
   /**
    * Certificate public data.
-  */
+   */
   data?: string;
   /**
    * Provisioning state of the authentication certificate resource. Possible values are:
    * 'Updating', 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the authentication certificate that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Trusted Root certificates of an application gateway.
-*/
+ */
 export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
   /**
    * Certificate public data.
-  */
+   */
   data?: string;
   /**
    * Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in
    * KeyVault.
-  */
+   */
   keyVaultSecretId?: string;
   /**
    * Provisioning state of the trusted root certificate resource. Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the trusted root certificate that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * SSL certificates of an application gateway.
-*/
+ */
 export interface ApplicationGatewaySslCertificate extends SubResource {
   /**
    * Base-64 encoded pfx certificate. Only applicable in PUT Request.
-  */
+   */
   data?: string;
   /**
    * Password for the pfx file specified in data. Only applicable in PUT request.
-  */
+   */
   password?: string;
   /**
    * Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in
    * GET request.
-  */
+   */
   publicCertData?: string;
   /**
    * Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in
    * KeyVault.
-  */
+   */
   keyVaultSecretId?: string;
   /**
    * Provisioning state of the SSL certificate resource Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the SSL certificate that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Frontend IP configuration of an application gateway.
-*/
+ */
 export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
   /**
    * PrivateIPAddress of the network interface IP Configuration.
-  */
+   */
   privateIPAddress?: string;
   /**
-   * PrivateIP allocation method. Possible values include: 'Static', 'Dynamic'
-  */
+   * The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
+   */
   privateIPAllocationMethod?: string;
   /**
    * Reference of the subnet resource.
-  */
+   */
   subnet?: SubResource;
   /**
    * Reference of the PublicIP resource.
-  */
+   */
   publicIPAddress?: SubResource;
   /**
    * Provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and
    * 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the frontend IP configuration that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Frontend port of an application gateway.
-*/
+ */
 export interface ApplicationGatewayFrontendPort extends SubResource {
   /**
    * Frontend port
-  */
+   */
   port?: number;
   /**
    * Provisioning state of the frontend port resource. Possible values are: 'Updating', 'Deleting',
    * and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the frontend port that is unique within an Application Gateway
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Customer error of an application gateway.
-*/
+ */
 export interface ApplicationGatewayCustomError {
   /**
    * Status code of the application gateway customer error. Possible values include:
    * 'HttpStatus403', 'HttpStatus502'
-  */
+   */
   statusCode?: string;
   /**
    * Error page URL of the application gateway customer error.
-  */
+   */
   customErrorPageUrl?: string;
 }
 
 /**
  * Http listener of an application gateway.
-*/
+ */
 export interface ApplicationGatewayHttpListener extends SubResource {
   /**
    * Frontend IP configuration resource of an application gateway.
-  */
+   */
   frontendIPConfiguration?: SubResource;
   /**
    * Frontend port resource of an application gateway.
-  */
+   */
   frontendPort?: SubResource;
   /**
-   * Protocol of the HTTP listener. Possible values are 'Http' and 'Https'. Possible values
-   * include: 'Http', 'Https'
-  */
+   * Protocol of the HTTP listener. Possible values include: 'Http', 'Https'
+   */
   protocol?: string;
   /**
    * Host name of HTTP listener.
-  */
+   */
   hostName?: string;
   /**
    * SSL certificate resource of an application gateway.
-  */
+   */
   sslCertificate?: SubResource;
   /**
    * Applicable only if protocol is https. Enables SNI for multi-hosting.
-  */
+   */
   requireServerNameIndication?: boolean;
   /**
    * Provisioning state of the HTTP listener resource. Possible values are: 'Updating', 'Deleting',
    * and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Custom error configurations of the HTTP listener.
-  */
+   */
   customErrorConfigurations?: ApplicationGatewayCustomError[];
   /**
    * Name of the HTTP listener that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Path rule of URL path map of an application gateway.
-*/
+ */
 export interface ApplicationGatewayPathRule extends SubResource {
   /**
    * Path rules of URL path map.
-  */
+   */
   paths?: string[];
   /**
    * Backend address pool resource of URL path map path rule.
-  */
+   */
   backendAddressPool?: SubResource;
   /**
    * Backend http settings resource of URL path map path rule.
-  */
+   */
   backendHttpSettings?: SubResource;
   /**
    * Redirect configuration resource of URL path map path rule.
-  */
+   */
   redirectConfiguration?: SubResource;
   /**
    * Rewrite rule set resource of URL path map path rule.
-  */
+   */
   rewriteRuleSet?: SubResource;
   /**
    * Path rule of URL path map resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the path rule that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
- * Application gateway probe health response match
-*/
-export interface ApplicationGatewayProbeHealthResponseMatch {
-  /**
-   * Body that must be contained in the health response. Default value is empty.
-  */
-  body?: string;
-  /**
-   * Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
-  */
-  statusCodes?: string[];
-}
-
-/**
  * Probe of the application gateway.
-*/
+ */
 export interface ApplicationGatewayProbe extends SubResource {
   /**
-   * The protocol used for the probe. Possible values are 'Http' and 'Https'. Possible values
-   * include: 'Http', 'Https'
-  */
+   * The protocol used for the probe. Possible values include: 'Http', 'Https'
+   */
   protocol?: string;
   /**
    * Host name to send the probe to.
-  */
+   */
   host?: string;
   /**
    * Relative path of probe. Valid path starts from '/'. Probe is sent to
    * <Protocol>://<host>:<port><path>
-  */
+   */
   path?: string;
   /**
    * The probing interval in seconds. This is the time interval between two consecutive probes.
    * Acceptable values are from 1 second to 86400 seconds.
-  */
+   */
   interval?: number;
   /**
-   * the probe timeout in seconds. Probe marked as failed if valid response is not received with
+   * The probe timeout in seconds. Probe marked as failed if valid response is not received with
    * this timeout period. Acceptable values are from 1 second to 86400 seconds.
-  */
+   */
   timeout?: number;
   /**
    * The probe retry count. Backend server is marked down after consecutive probe failure count
    * reaches UnhealthyThreshold. Acceptable values are from 1 second to 20.
-  */
+   */
   unhealthyThreshold?: number;
   /**
    * Whether the host header should be picked from the backend http settings. Default value is
    * false.
-  */
+   */
   pickHostNameFromBackendHttpSettings?: boolean;
   /**
    * Minimum number of servers that are always marked healthy. Default value is 0.
-  */
+   */
   minServers?: number;
   /**
    * Criterion for classifying a healthy probe response.
-  */
+   */
   match?: ApplicationGatewayProbeHealthResponseMatch;
   /**
    * Provisioning state of the backend http settings resource. Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the probe that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Request routing rule of an application gateway.
-*/
+ */
 export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   /**
    * Rule type. Possible values include: 'Basic', 'PathBasedRouting'
-  */
+   */
   ruleType?: string;
   /**
    * Backend address pool resource of the application gateway.
-  */
+   */
   backendAddressPool?: SubResource;
   /**
    * Backend http settings resource of the application gateway.
-  */
+   */
   backendHttpSettings?: SubResource;
   /**
    * Http listener resource of the application gateway.
-  */
+   */
   httpListener?: SubResource;
   /**
    * URL path map resource of the application gateway.
-  */
+   */
   urlPathMap?: SubResource;
   /**
    * Rewrite Rule Set resource in Basic rule of the application gateway.
-  */
+   */
   rewriteRuleSet?: SubResource;
   /**
    * Redirect configuration resource of the application gateway.
-  */
+   */
   redirectConfiguration?: SubResource;
   /**
    * Provisioning state of the request routing rule resource. Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the request routing rule that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
+ * Set of conditions in the Rewrite Rule in Application Gateway.
+ */
+export interface ApplicationGatewayRewriteRuleCondition {
+  /**
+   * The condition parameter of the RewriteRuleCondition.
+   */
+  variable?: string;
+  /**
+   * The pattern, either fixed string or regular expression, that evaluates the truthfulness of the
+   * condition
+   */
+  pattern?: string;
+  /**
+   * Setting this paramter to truth value with force the pattern to do a case in-sensitive
+   * comparison.
+   */
+  ignoreCase?: boolean;
+  /**
+   * Setting this value as truth will force to check the negation of the condition given by the
+   * user.
+   */
+  negate?: boolean;
+}
+
+/**
  * Header configuration of the Actions set in Application Gateway.
-*/
+ */
 export interface ApplicationGatewayHeaderConfiguration {
   /**
    * Header name of the header configuration
-  */
+   */
   headerName?: string;
   /**
    * Header value of the header configuration
-  */
+   */
   headerValue?: string;
 }
 
 /**
  * Set of actions in the Rewrite Rule in Application Gateway.
-*/
+ */
 export interface ApplicationGatewayRewriteRuleActionSet {
   /**
    * Request Header Actions in the Action Set
-  */
+   */
   requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
   /**
    * Response Header Actions in the Action Set
-  */
+   */
   responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
 }
 
 /**
  * Rewrite rule of an application gateway.
-*/
+ */
 export interface ApplicationGatewayRewriteRule {
   /**
    * Name of the rewrite rule that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
+   * Rule Sequence of the rewrite rule that determines the order of execution of a particular rule
+   * in a RewriteRuleSet.
+   */
+  ruleSequence?: number;
+  /**
+   * Conditions based on which the action set execution will be evaluated.
+   */
+  conditions?: ApplicationGatewayRewriteRuleCondition[];
+  /**
    * Set of actions to be done as part of the rewrite Rule.
-  */
+   */
   actionSet?: ApplicationGatewayRewriteRuleActionSet;
 }
 
 /**
  * Rewrite rule set of an application gateway.
-*/
+ */
 export interface ApplicationGatewayRewriteRuleSet extends SubResource {
   /**
    * Rewrite rules in the rewrite rule set.
-  */
+   */
   rewriteRules?: ApplicationGatewayRewriteRule[];
   /**
    * Provisioning state of the rewrite rule set resource. Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   readonly provisioningState?: string;
   /**
    * Name of the rewrite rule set that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   readonly etag?: string;
 }
 
 /**
  * Redirect configuration of an application gateway.
-*/
+ */
 export interface ApplicationGatewayRedirectConfiguration extends SubResource {
   /**
-   * Supported http redirection types - Permanent, Temporary, Found, SeeOther. Possible values
-   * include: 'Permanent', 'Found', 'SeeOther', 'Temporary'
-  */
+   * HTTP redirection type. Possible values include: 'Permanent', 'Found', 'SeeOther', 'Temporary'
+   */
   redirectType?: string;
   /**
    * Reference to a listener to redirect the request to.
-  */
+   */
   targetListener?: SubResource;
   /**
    * Url to redirect the request to.
-  */
+   */
   targetUrl?: string;
   /**
    * Include path in the redirected url.
-  */
+   */
   includePath?: boolean;
   /**
    * Include query string in the redirected url.
-  */
+   */
   includeQueryString?: boolean;
   /**
    * Request routing specifying redirect configuration.
-  */
+   */
   requestRoutingRules?: SubResource[];
   /**
    * Url path maps specifying default redirect configuration.
-  */
+   */
   urlPathMaps?: SubResource[];
   /**
    * Path rules specifying redirect configuration.
-  */
+   */
   pathRules?: SubResource[];
   /**
    * Name of the redirect configuration that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
-*/
+ */
 export interface ApplicationGatewayUrlPathMap extends SubResource {
   /**
    * Default backend address pool resource of URL path map.
-  */
+   */
   defaultBackendAddressPool?: SubResource;
   /**
    * Default backend http settings resource of URL path map.
-  */
+   */
   defaultBackendHttpSettings?: SubResource;
   /**
    * Default Rewrite rule set resource of URL path map.
-  */
+   */
   defaultRewriteRuleSet?: SubResource;
   /**
    * Default redirect configuration resource of URL path map.
-  */
+   */
   defaultRedirectConfiguration?: SubResource;
   /**
    * Path rule of URL path map resource.
-  */
+   */
   pathRules?: ApplicationGatewayPathRule[];
   /**
    * Provisioning state of the backend http settings resource. Possible values are: 'Updating',
    * 'Deleting', and 'Failed'.
-  */
+   */
   provisioningState?: string;
   /**
    * Name of the URL path map that is unique within an Application Gateway.
-  */
+   */
   name?: string;
   /**
    * A unique read-only string that changes whenever the resource is updated.
-  */
+   */
   etag?: string;
   /**
    * Type of the resource.
-  */
+   */
   type?: string;
 }
 
 /**
  * Allows to disable rules within a rule group or an entire rule group.
-*/
+ */
 export interface ApplicationGatewayFirewallDisabledRuleGroup {
   /**
    * The name of the rule group that will be disabled.
-  */
+   */
   ruleGroupName: string;
   /**
    * The list of rules that will be disabled. If null, all rules of the rule group will be
    * disabled.
-  */
+   */
   rules?: number[];
 }
 
 /**
  * Allow to exclude some variable satisfy the condition for the WAF check
-*/
+ */
 export interface ApplicationGatewayFirewallExclusion {
   /**
    * The variable to be excluded.
-  */
+   */
   matchVariable: string;
   /**
    * When matchVariable is a collection, operate on the selector to specify which elements in the
    * collection this exclusion applies to.
-  */
+   */
   selectorMatchOperator: string;
   /**
    * When matchVariable is a collection, operator used to specify which elements in the collection
    * this exclusion applies to.
-  */
+   */
   selector: string;
 }
 
 /**
  * Application gateway web application firewall configuration.
-*/
+ */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   /**
    * Whether the web application firewall is enabled or not.
-  */
+   */
   enabled: boolean;
   /**
    * Web application firewall mode. Possible values include: 'Detection', 'Prevention'
-  */
+   */
   firewallMode: string;
   /**
    * The type of the web application firewall rule set. Possible values are: 'OWASP'.
-  */
+   */
   ruleSetType: string;
   /**
    * The version of the rule set type.
-  */
+   */
   ruleSetVersion: string;
   /**
    * The disabled rule groups.
-  */
+   */
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
   /**
    * Whether allow WAF to check request Body.
-  */
+   */
   requestBodyCheck?: boolean;
   /**
-   * Maxium request body size for WAF.
-  */
+   * Maximum request body size for WAF.
+   */
   maxRequestBodySize?: number;
   /**
-   * Maxium request body size in Kb for WAF.
-  */
+   * Maximum request body size in Kb for WAF.
+   */
   maxRequestBodySizeInKb?: number;
   /**
-   * Maxium file upload size in Mb for WAF.
-  */
+   * Maximum file upload size in Mb for WAF.
+   */
   fileUploadLimitInMb?: number;
   /**
    * The exclusion list.
-  */
+   */
   exclusions?: ApplicationGatewayFirewallExclusion[];
 }
 
 /**
  * Application Gateway autoscale configuration.
-*/
+ */
 export interface ApplicationGatewayAutoscaleConfiguration {
   /**
-   * Lower bound on number of Application Gateway instances
-  */
+   * Lower bound on number of Application Gateway capacity
+   */
   minCapacity: number;
+  /**
+   * Upper bound on number of Application Gateway capacity
+   */
+  maxCapacity?: number;
 }
 
 export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
@@ -2096,27 +2188,38 @@ export interface ApplicationGateway extends Resource {
   */
   readonly operationalState?: string;
   /**
-   * Subnets of application the gateway resource.
+   * Subnets of the application gateway resource. For default limits, see [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   gatewayIPConfigurations?: ApplicationGatewayIPConfiguration[];
   /**
-   * Authentication certificates of the application gateway resource.
+   * Authentication certificates of the application gateway resource. For default limits, see
+   * [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   authenticationCertificates?: ApplicationGatewayAuthenticationCertificate[];
   /**
-   * Trusted Root certificates of the application gateway resource.
+   * Trusted Root certificates of the application gateway resource. For default limits, see
+   * [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   trustedRootCertificates?: ApplicationGatewayTrustedRootCertificate[];
   /**
-   * SSL certificates of the application gateway resource.
+   * SSL certificates of the application gateway resource. For default limits, see [Application
+   * Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   sslCertificates?: ApplicationGatewaySslCertificate[];
   /**
-   * Frontend IP addresses of the application gateway resource.
+   * Frontend IP addresses of the application gateway resource. For default limits, see
+   * [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   frontendIPConfigurations?: ApplicationGatewayFrontendIPConfiguration[];
   /**
-   * Frontend ports of the application gateway resource.
+   * Frontend ports of the application gateway resource. For default limits, see [Application
+   * Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   frontendPorts?: ApplicationGatewayFrontendPort[];
   /**
@@ -2124,19 +2227,26 @@ export interface ApplicationGateway extends Resource {
   */
   probes?: ApplicationGatewayProbe[];
   /**
-   * Backend address pool of the application gateway resource.
+   * Backend address pool of the application gateway resource. For default limits, see [Application
+   * Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   backendAddressPools?: ApplicationGatewayBackendAddressPool[];
   /**
-   * Backend http settings of the application gateway resource.
+   * Backend http settings of the application gateway resource. For default limits, see
+   * [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   backendHttpSettingsCollection?: ApplicationGatewayBackendHttpSettings[];
   /**
-   * Http listeners of the application gateway resource.
+   * Http listeners of the application gateway resource. For default limits, see [Application
+   * Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   httpListeners?: ApplicationGatewayHttpListener[];
   /**
-   * URL path map of the application gateway resource.
+   * URL path map of the application gateway resource. For default limits, see [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   urlPathMaps?: ApplicationGatewayUrlPathMap[];
   /**
@@ -2148,13 +2258,19 @@ export interface ApplicationGateway extends Resource {
   */
   rewriteRuleSets?: ApplicationGatewayRewriteRuleSet[];
   /**
-   * Redirect configurations of the application gateway resource.
+   * Redirect configurations of the application gateway resource. For default limits, see
+   * [Application Gateway
+   * limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   */
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   /**
    * Web application firewall configuration.
   */
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
+  /**
+   * Reference of the FirewallPolicy resource.
+  */
+  firewallPolicy?: SubResource;
   /**
    * Whether HTTP2 is enabled on the application gateway resource.
   */
@@ -2192,36 +2308,6 @@ export interface ApplicationGateway extends Resource {
    * The identity of the application gateway, if configured.
   */
   identity?: ManagedServiceIdentity;
-}
-
-/**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
 }
 
 /**
@@ -2330,17 +2416,47 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
   minProtocolVersion?: string;
 }
 
+/**
+ * Common error details representation.
+*/
 export interface ErrorDetails {
+  /**
+   * Error code.
+  */
   code?: string;
+  /**
+   * Error target.
+  */
   target?: string;
+  /**
+   * Error message.
+  */
   message?: string;
 }
 
+/**
+ * Common error representation.
+*/
 export interface ErrorModel {
+  /**
+   * Error code.
+  */
   code?: string;
+  /**
+   * Error message.
+  */
   message?: string;
+  /**
+   * Error target.
+  */
   target?: string;
+  /**
+   * Error details.
+  */
   details?: ErrorDetails[];
+  /**
+   * Inner error message.
+  */
   innerError?: string;
 }
 
@@ -2525,7 +2641,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
@@ -2665,6 +2782,10 @@ export interface AzureFirewall extends Resource {
    * 'Deleting', 'Failed'
   */
   provisioningState?: string;
+  /**
+   * The operation mode for Threat Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
+  */
+  threatIntelMode?: string;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -2854,7 +2975,7 @@ export interface ExpressRouteCircuitPeeringConfig {
   */
   advertisedPublicPrefixes?: string[];
   /**
-   * The communities of bgp peering. Spepcified for microsoft peering
+   * The communities of bgp peering. Specified for microsoft peering
   */
   advertisedCommunities?: string[];
   /**
@@ -2882,8 +3003,7 @@ export interface ExpressRouteCircuitPeeringConfig {
 */
 export interface RouteFilterRule extends SubResource {
   /**
-   * The access type of the rule. Valid values are: 'Allow', 'Deny'. Possible values include:
-   * 'Allow', 'Deny'
+   * The access type of the rule. Possible values include: 'Allow', 'Deny'
   */
   access: string;
   /**
@@ -2964,13 +3084,58 @@ export interface ExpressRouteCircuitConnection extends SubResource {
   */
   authorizationKey?: string;
   /**
-   * Express Route Circuit Connection State. Possible values are: 'Connected' and 'Disconnected'.
-   * Possible values include: 'Connected', 'Connecting', 'Disconnected'
+   * Express Route Circuit connection state. Possible values include: 'Connected', 'Connecting',
+   * 'Disconnected'
   */
-  readonly circuitConnectionStatus?: string;
+  circuitConnectionStatus?: string;
   /**
-   * Provisioning state of the circuit connection resource. Possible values are: 'Succeded',
+   * Provisioning state of the circuit connection resource. Possible values are: 'Succeeded',
    * 'Updating', 'Deleting', and 'Failed'.
+  */
+  readonly provisioningState?: string;
+  /**
+   * Gets name of the resource that is unique within a resource group. This name can be used to
+   * access the resource.
+  */
+  name?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+}
+
+/**
+ * Peer Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+*/
+export interface PeerExpressRouteCircuitConnection extends SubResource {
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the circuit.
+  */
+  expressRouteCircuitPeering?: SubResource;
+  /**
+   * Reference to Express Route Circuit Private Peering Resource of the peered circuit.
+  */
+  peerExpressRouteCircuitPeering?: SubResource;
+  /**
+   * /29 IP address space to carve out Customer addresses for tunnels.
+  */
+  addressPrefix?: string;
+  /**
+   * Express Route Circuit connection state. Possible values include: 'Connected', 'Connecting',
+   * 'Disconnected'
+  */
+  circuitConnectionStatus?: string;
+  /**
+   * The name of the express route circuit connection resource.
+  */
+  connectionName?: string;
+  /**
+   * The resource guid of the authorization used for the express route circuit connection.
+  */
+  authResourceGuid?: string;
+  /**
+   * Provisioning state of the peer express route circuit connection resource. Possible values are:
+   * 'Succeeded', 'Updating', 'Deleting', and 'Failed'.
   */
   readonly provisioningState?: string;
   /**
@@ -3067,6 +3232,10 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   */
   connections?: ExpressRouteCircuitConnection[];
   /**
+   * The list of peered circuit connections associated with Azure Private Peering for this circuit.
+  */
+  readonly peeredConnections?: PeerExpressRouteCircuitConnection[];
+  /**
    * Gets name of the resource that is unique within a resource group. This name can be used to
    * access the resource.
   */
@@ -3136,8 +3305,8 @@ export interface ExpressRouteCircuitSku {
   */
   name?: string;
   /**
-   * The tier of the SKU. Possible values are 'Standard', 'Premium' or 'Basic'. Possible values
-   * include: 'Standard', 'Premium', 'Basic'
+   * The tier of the SKU. Possible values are 'Standard', 'Premium' or 'Local'. Possible values
+   * include: 'Standard', 'Premium', 'Basic', 'Local'
   */
   tier?: string;
   /**
@@ -3182,9 +3351,8 @@ export interface ExpressRouteCircuit extends Resource {
   */
   circuitProvisioningState?: string;
   /**
-   * The ServiceProviderProvisioningState state of the resource. Possible values are
-   * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'. Possible values
-   * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
+   * The ServiceProviderProvisioningState state of the resource. Possible values include:
+   * 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
   */
   serviceProviderProvisioningState?: string;
   /**
@@ -3230,9 +3398,9 @@ export interface ExpressRouteCircuit extends Resource {
   */
   gatewayManagerEtag?: string;
   /**
-   * Flag to enable Global Reach on the circuit.
+   * Flag denoting Global reach status.
   */
-  allowGlobalReach?: boolean;
+  globalReachEnabled?: boolean;
   /**
    * Gets a unique read-only string that changes whenever the resource is updated.
   */
@@ -3427,6 +3595,9 @@ export interface ExpressRouteCrossConnectionsRoutesTableSummaryListResult {
   readonly nextLink?: string;
 }
 
+/**
+ * Reference to an express route circuit.
+*/
 export interface ExpressRouteCircuitReference {
   /**
    * Corresponding Express Route Circuit Id.
@@ -3540,9 +3711,8 @@ export interface ExpressRouteCrossConnection extends Resource {
   */
   expressRouteCircuit?: ExpressRouteCircuitReference;
   /**
-   * The provisioning state of the circuit in the connectivity provider system. Possible values are
-   * 'NotProvisioned', 'Provisioning', 'Provisioned'. Possible values include: 'NotProvisioned',
-   * 'Provisioning', 'Provisioned', 'Deprovisioning'
+   * The provisioning state of the circuit in the connectivity provider system. Possible values
+   * include: 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
   */
   serviceProviderProvisioningState?: string;
   /**
@@ -3618,7 +3788,7 @@ export interface ExpressRouteConnection extends SubResource {
    * The provisioning state of the resource. Possible values include: 'Succeeded', 'Updating',
    * 'Deleting', 'Failed'
   */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The ExpressRoute circuit peering.
   */
@@ -3653,7 +3823,7 @@ export interface ExpressRouteGateway extends Resource {
    * The provisioning state of the resource. Possible values include: 'Succeeded', 'Updating',
    * 'Deleting', 'Failed'
   */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
   */
@@ -3793,7 +3963,7 @@ export interface ExpressRoutePort extends Resource {
   */
   encapsulation?: string;
   /**
-   * Ethertype of the physical port.
+   * Ether type of the physical port.
   */
   readonly etherType?: string;
   /**
@@ -3852,7 +4022,8 @@ export interface LoadBalancingRule extends SubResource {
   */
   probe?: SubResource;
   /**
-   * Possible values include: 'Udp', 'Tcp', 'All'
+   * The reference to the transport protocol used by the load balancing rule. Possible values
+   * include: 'Udp', 'Tcp', 'All'
   */
   protocol: string;
   /**
@@ -3970,7 +4141,8 @@ export interface InboundNatPool extends SubResource {
   */
   frontendIPConfiguration?: SubResource;
   /**
-   * Possible values include: 'Udp', 'Tcp', 'All'
+   * The reference to the transport protocol used by the inbound NAT pool. Possible values include:
+   * 'Udp', 'Tcp', 'All'
   */
   protocol: string;
   /**
@@ -4044,7 +4216,8 @@ export interface OutboundRule extends SubResource {
   */
   provisioningState?: string;
   /**
-   * Protocol - TCP, UDP or All. Possible values include: 'Tcp', 'Udp', 'All'
+   * The protocol for the outbound rule in load balancer. Possible values are: 'Tcp', 'Udp', and
+   * 'All'. Possible values include: 'Tcp', 'Udp', 'All'
   */
   protocol: string;
   /**
@@ -4129,6 +4302,55 @@ export interface LoadBalancer extends Resource {
 }
 
 /**
+ * SKU of nat gateway
+*/
+export interface NatGatewaySku {
+  /**
+   * Name of Nat Gateway SKU. Possible values include: 'Standard'
+  */
+  name?: string;
+}
+
+/**
+ * Nat Gateway resource.
+*/
+export interface NatGateway extends Resource {
+  /**
+   * The nat gateway SKU.
+  */
+  sku?: NatGatewaySku;
+  /**
+   * The idle timeout of the nat gateway.
+  */
+  idleTimeoutInMinutes?: number;
+  /**
+   * An array of public ip addresses associated with the nat gateway resource.
+  */
+  publicIpAddresses?: SubResource[];
+  /**
+   * An array of public ip prefixes associated with the nat gateway resource.
+  */
+  publicIpPrefixes?: SubResource[];
+  /**
+   * An array of references to the subnets using this nat gateway resource.
+  */
+  readonly subnets?: SubResource[];
+  /**
+   * The resource GUID property of the nat gateway resource.
+  */
+  resourceGuid?: string;
+  /**
+   * The provisioning state of the NatGateway resource. Possible values are: 'Updating',
+   * 'Deleting', and 'Failed'.
+  */
+  provisioningState?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+/**
  * The response body contains the status of the specified asynchronous operation, indicating
  * whether it has succeeded, is in progress, or has failed. Note that this status is distinct from
  * the HTTP status code returned for the Get Operation Status operation itself. If the asynchronous
@@ -4142,6 +4364,9 @@ export interface AzureAsyncOperationResult {
    * 'Failed'. Possible values include: 'InProgress', 'Succeeded', 'Failed'
   */
   status?: string;
+  /**
+   * Details of the error occurred during specified asynchronous operation.
+  */
   error?: ErrorModel;
 }
 
@@ -4182,12 +4407,12 @@ export interface EffectiveNetworkSecurityRule {
   destinationPortRange?: string;
   /**
    * The source port ranges. Expected values include a single integer between 0 and 65535, a range
-   * using '-' as seperator (e.g. 100-400), or an asterix (*)
+   * using '-' as separator (e.g. 100-400), or an asterisk (*)
   */
   sourcePortRanges?: string[];
   /**
    * The destination port ranges. Expected values include a single integer between 0 and 65535, a
-   * range using '-' as seperator (e.g. 100-400), or an asterix (*)
+   * range using '-' as separator (e.g. 100-400), or an asterisk (*)
   */
   destinationPortRanges?: string[];
   /**
@@ -4200,12 +4425,12 @@ export interface EffectiveNetworkSecurityRule {
   destinationAddressPrefix?: string;
   /**
    * The source address prefixes. Expected values include CIDR IP ranges, Default Tags
-   * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix (*).
+   * (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
   */
   sourceAddressPrefixes?: string[];
   /**
    * The destination address prefixes. Expected values include CIDR IP ranges, Default Tags
-   * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix (*).
+   * (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*).
   */
   destinationAddressPrefixes?: string[];
   /**
@@ -4217,8 +4442,7 @@ export interface EffectiveNetworkSecurityRule {
   */
   expandedDestinationAddressPrefix?: string[];
   /**
-   * Whether network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
-   * Possible values include: 'Allow', 'Deny'
+   * Whether network traffic is allowed or denied. Possible values include: 'Allow', 'Deny'
   */
   access?: string;
   /**
@@ -4226,8 +4450,7 @@ export interface EffectiveNetworkSecurityRule {
   */
   priority?: number;
   /**
-   * The direction of the rule. Possible values are: 'Inbound and Outbound'. Possible values
-   * include: 'Inbound', 'Outbound'
+   * The direction of the rule. Possible values include: 'Inbound', 'Outbound'
   */
   direction?: string;
 }
@@ -4277,6 +4500,10 @@ export interface EffectiveRoute {
   */
   name?: string;
   /**
+   * If true, on-premises routes are not propagated to the network interfaces in the subnet.
+  */
+  disableBgpRoutePropagation?: boolean;
+  /**
    * Who created the route. Possible values are: 'Unknown', 'User', 'VirtualNetworkGateway', and
    * 'Default'. Possible values include: 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
   */
@@ -4295,9 +4522,8 @@ export interface EffectiveRoute {
   */
   nextHopIpAddress?: string[];
   /**
-   * The type of Azure hop the packet should be sent to. Possible values are:
-   * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'. Possible
-   * values include: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
+   * The type of Azure hop the packet should be sent to. Possible values include:
+   * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
   */
   nextHopType?: string;
 }
@@ -4317,7 +4543,7 @@ export interface EffectiveRouteListResult {
 }
 
 /**
- * Container network interface configruation child resource.
+ * Container network interface configuration child resource.
 */
 export interface ContainerNetworkInterfaceConfiguration extends SubResource {
   /**
@@ -4385,7 +4611,7 @@ export interface ContainerNetworkInterface extends SubResource {
   */
   containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
   /**
-   * Reference to the conatinaer to which this container network interface is attached.
+   * Reference to the container to which this container network interface is attached.
   */
   container?: Container;
   /**
@@ -4442,6 +4668,7 @@ export interface NetworkProfile extends Resource {
 export interface ErrorResponse {
   /**
    * @summary Error
+   * @description The error details object.
   */
   error?: ErrorDetails;
 }
@@ -4458,7 +4685,7 @@ export interface NetworkWatcher extends Resource {
    * The provisioning state of the resource. Possible values include: 'Succeeded', 'Updating',
    * 'Deleting', 'Failed'
   */
-  readonly provisioningState?: string;
+  provisioningState?: string;
 }
 
 /**
@@ -4536,6 +4763,9 @@ export interface Topology {
    * The datetime when the topology was last modified.
   */
   readonly lastModified?: Date;
+  /**
+   * A list of topology resources.
+  */
   resources?: TopologyResource[];
 }
 
@@ -4664,7 +4894,7 @@ export interface NetworkInterfaceAssociation {
 }
 
 /**
- * Network interface and its custom security rules.
+ * Subnet and it's custom security rules.
 */
 export interface SubnetAssociation {
   /**
@@ -4681,7 +4911,13 @@ export interface SubnetAssociation {
  * All security rules associated with the network interface.
 */
 export interface SecurityRuleAssociations {
+  /**
+   * Network interface and it's custom security rules.
+  */
   networkInterfaceAssociation?: NetworkInterfaceAssociation;
+  /**
+   * Subnet and it's custom security rules.
+  */
   subnetAssociation?: SubnetAssociation;
   /**
    * Collection of default security rules of the network security group.
@@ -4701,6 +4937,9 @@ export interface SecurityGroupNetworkInterface {
    * ID of the network interface.
   */
   id?: string;
+  /**
+   * All security rules associated with the network interface.
+  */
   securityRuleAssociations?: SecurityRuleAssociations;
 }
 
@@ -4792,7 +5031,13 @@ export interface PacketCaptureParameters {
    * Maximum duration of the capture session in seconds.
   */
   timeLimitInSeconds?: number;
+  /**
+   * Describes the storage location for a packet capture session.
+  */
   storageLocation: PacketCaptureStorageLocation;
+  /**
+   * A list of packet capture filters.
+  */
   filters?: PacketCaptureFilter[];
 }
 
@@ -4816,7 +5061,13 @@ export interface PacketCapture {
    * Maximum duration of the capture session in seconds.
   */
   timeLimitInSeconds?: number;
+  /**
+   * Describes the storage location for a packet capture session.
+  */
   storageLocation: PacketCaptureStorageLocation;
+  /**
+   * A list of packet capture filters.
+  */
   filters?: PacketCaptureFilter[];
 }
 
@@ -4832,6 +5083,9 @@ export interface PacketCaptureResult {
    * ID of the packet capture operation.
   */
   readonly id?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
   etag?: string;
   /**
    * The ID of the targeted resource, only VM is currently supported.
@@ -4849,7 +5103,13 @@ export interface PacketCaptureResult {
    * Maximum duration of the capture session in seconds.
   */
   timeLimitInSeconds?: number;
+  /**
+   * Describes the storage location for a packet capture session.
+  */
   storageLocation: PacketCaptureStorageLocation;
+  /**
+   * A list of packet capture filters.
+  */
   filters?: PacketCaptureFilter[];
   /**
    * The provisioning state of the packet capture session. Possible values include: 'Succeeded',
@@ -5055,6 +5315,9 @@ export interface TrafficAnalyticsConfigurationProperties {
  * Parameters that define the configuration of traffic analytics.
 */
 export interface TrafficAnalyticsProperties {
+  /**
+   * Parameters that define the configuration of traffic analytics.
+  */
   networkWatcherFlowAnalyticsConfiguration: TrafficAnalyticsConfigurationProperties;
 }
 
@@ -5074,8 +5337,17 @@ export interface FlowLogInformation {
    * Flag to enable/disable flow logging.
   */
   enabled: boolean;
+  /**
+   * Parameters that define the retention policy for flow log.
+  */
   retentionPolicy?: RetentionPolicyParameters;
+  /**
+   * Parameters that define the flow log format.
+  */
   format?: FlowLogFormatParameters;
+  /**
+   * Parameters that define the configuration of traffic analytics.
+  */
   flowAnalyticsConfiguration?: TrafficAnalyticsProperties;
 }
 
@@ -5147,6 +5419,9 @@ export interface HTTPConfiguration {
  * Configuration of the protocol.
 */
 export interface ProtocolConfiguration {
+  /**
+   * HTTP configuration of the connectivity check.
+  */
   hTTPConfiguration?: HTTPConfiguration;
 }
 
@@ -5154,12 +5429,21 @@ export interface ProtocolConfiguration {
  * Parameters that determine how the connectivity check will be performed.
 */
 export interface ConnectivityParameters {
+  /**
+   * Describes the source of the connection.
+  */
   source: ConnectivitySource;
+  /**
+   * Describes the destination of connection.
+  */
   destination: ConnectivityDestination;
   /**
    * Network protocol. Possible values include: 'Tcp', 'Http', 'Https', 'Icmp'
   */
   protocol?: string;
+  /**
+   * Configuration of the protocol.
+  */
   protocolConfiguration?: ProtocolConfiguration;
 }
 
@@ -5274,6 +5558,9 @@ export interface AzureReachabilityReportLocation {
  * Geographic and time constraints for Azure reachability report.
 */
 export interface AzureReachabilityReportParameters {
+  /**
+   * Parameters that define a geographic location.
+  */
   providerLocation: AzureReachabilityReportLocation;
   /**
    * List of Internet service providers.
@@ -5333,6 +5620,9 @@ export interface AzureReachabilityReport {
    * The aggregation level of Azure reachability report. Can be Country, State or City.
   */
   aggregationLevel: string;
+  /**
+   * Parameters that define a geographic location.
+  */
   providerLocation: AzureReachabilityReportLocation;
   /**
    * List of Azure reachability report items.
@@ -5458,7 +5748,13 @@ export interface ConnectionMonitorDestination {
  * Parameters that define the operation to create a connection monitor.
 */
 export interface ConnectionMonitorParameters {
+  /**
+   * Describes the source of connection monitor.
+  */
   source: ConnectionMonitorSource;
+  /**
+   * Describes the destination of connection monitor.
+  */
   destination: ConnectionMonitorDestination;
   /**
    * Determines if the connection monitor will start automatically once created.
@@ -5482,7 +5778,13 @@ export interface ConnectionMonitor {
    * Connection monitor tags.
   */
   tags?: { [propertyName: string]: string };
+  /**
+   * Describes the source of connection monitor.
+  */
   source: ConnectionMonitorSource;
+  /**
+   * Describes the destination of connection monitor.
+  */
   destination: ConnectionMonitorDestination;
   /**
    * Determines if the connection monitor will start automatically once created.
@@ -5506,6 +5808,9 @@ export interface ConnectionMonitorResult extends BaseResource {
    * ID of the connection monitor.
   */
   readonly id?: string;
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
   etag?: string;
   /**
    * Connection monitor type.
@@ -5519,7 +5824,13 @@ export interface ConnectionMonitorResult extends BaseResource {
    * Connection monitor tags.
   */
   tags?: { [propertyName: string]: string };
+  /**
+   * Describes the source of connection monitor.
+  */
   source: ConnectionMonitorSource;
+  /**
+   * Describes the destination of connection monitor.
+  */
   destination: ConnectionMonitorDestination;
   /**
    * Determines if the connection monitor will start automatically once created.
@@ -5592,11 +5903,11 @@ export interface ConnectionStateSnapshot {
 }
 
 /**
- * List of connection states snaphots.
+ * List of connection states snapshots.
 */
 export interface ConnectionMonitorQueryResult {
   /**
-   * Status of connection monitor source. Possible values include: 'Uknown', 'Active', 'Inactive'
+   * Status of connection monitor source. Possible values include: 'Unknown', 'Active', 'Inactive'
   */
   sourceStatus?: string;
   /**
@@ -5610,8 +5921,7 @@ export interface ConnectionMonitorQueryResult {
 */
 export interface NetworkConfigurationDiagnosticProfile {
   /**
-   * The direction of the traffic. Accepted values are 'Inbound' and 'Outbound'. Possible values
-   * include: 'Inbound', 'Outbound'
+   * The direction of the traffic. Possible values include: 'Inbound', 'Outbound'
   */
   direction: string;
   /**
@@ -5627,7 +5937,7 @@ export interface NetworkConfigurationDiagnosticProfile {
   */
   destination: string;
   /**
-   * Traffice destination port. Accepted values are '*', port (for example, 3389) and port range
+   * Traffic destination port. Accepted values are '*', port (for example, 3389) and port range
    * (for example, 80-100).
   */
   destinationPort: string;
@@ -5709,6 +6019,9 @@ export interface EvaluatedNetworkSecurityGroup {
    * Resource ID of nic or subnet to which network security group is applied.
   */
   appliedTo?: string;
+  /**
+   * Matched network security rule.
+  */
   matchedRule?: MatchedRule;
   /**
    * List of network security rules evaluation results.
@@ -5721,8 +6034,7 @@ export interface EvaluatedNetworkSecurityGroup {
 */
 export interface NetworkSecurityGroupResult {
   /**
-   * The network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'. Possible
-   * values include: 'Allow', 'Deny'
+   * The network traffic is allowed or denied. Possible values include: 'Allow', 'Deny'
   */
   securityRuleAccessResult?: string;
   /**
@@ -5735,7 +6047,13 @@ export interface NetworkSecurityGroupResult {
  * Network configuration diagnostic result corresponded to provided traffic query.
 */
 export interface NetworkConfigurationDiagnosticResult {
+  /**
+   * Network configuration diagnostic profile.
+  */
   profile?: NetworkConfigurationDiagnosticProfile;
+  /**
+   * Network security group result.
+  */
   networkSecurityGroupResult?: NetworkSecurityGroupResult;
 }
 
@@ -5933,6 +6251,9 @@ export interface PublicIPPrefixSku {
   name?: string;
 }
 
+/**
+ * Reference to a public IP address.
+*/
 export interface ReferencedPublicIpAddress {
   /**
    * The PublicIPAddress Reference
@@ -5949,8 +6270,7 @@ export interface PublicIPPrefix extends Resource {
   */
   sku?: PublicIPPrefixSku;
   /**
-   * The public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
-   * include: 'IPv4', 'IPv6'
+   * The public IP address version. Possible values include: 'IPv4', 'IPv6'
   */
   publicIPAddressVersion?: string;
   /**
@@ -5993,8 +6313,7 @@ export interface PublicIPPrefix extends Resource {
 */
 export interface PatchRouteFilterRule extends SubResource {
   /**
-   * The access type of the rule. Valid values are: 'Allow', 'Deny'. Possible values include:
-   * 'Allow', 'Deny'
+   * The access type of the rule. Possible values include: 'Allow', 'Deny'
   */
   access: string;
   /**
@@ -6150,13 +6469,13 @@ export interface AddressSpace {
 */
 export interface VirtualNetworkPeering extends SubResource {
   /**
-   * Whether the VMs in the linked virtual network space would be able to access all the VMs in
-   * local Virtual network space.
+   * Whether the VMs in the local virtual network space would be able to access the VMs in remote
+   * virtual network space.
   */
   allowVirtualNetworkAccess?: boolean;
   /**
-   * Whether the forwarded traffic from the VMs in the remote virtual network will be
-   * allowed/disallowed.
+   * Whether the forwarded traffic from the VMs in the local virtual network will be
+   * allowed/disallowed in remote virtual network.
   */
   allowForwardedTraffic?: boolean;
   /**
@@ -6315,12 +6634,53 @@ export interface VirtualNetworkUsage {
 }
 
 /**
+ * Network Intent Policy resource.
+*/
+export interface NetworkIntentPolicy extends Resource {
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+/**
+ * Details of NetworkIntentPolicyConfiguration for PrepareNetworkPoliciesRequest.
+*/
+export interface NetworkIntentPolicyConfiguration {
+  /**
+   * The name of the Network Intent Policy for storing in target subscription.
+  */
+  networkIntentPolicyName?: string;
+  /**
+   * Source network intent policy.
+  */
+  sourceNetworkIntentPolicy?: NetworkIntentPolicy;
+}
+
+/**
+ * Details of PrepareNetworkPolicies for Subnet.
+*/
+export interface PrepareNetworkPoliciesRequest {
+  /**
+   * The name of the service for which subnet is being prepared for.
+  */
+  serviceName?: string;
+  /**
+   * The name of the resource group where the Network Intent Policy will be stored.
+  */
+  resourceGroupName?: string;
+  /**
+   * A list of NetworkIntentPolicyConfiguration.
+  */
+  networkIntentPolicyConfigurations?: NetworkIntentPolicyConfiguration[];
+}
+
+/**
  * IP configuration for virtual network gateway
 */
 export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
   /**
-   * The private IP allocation method. Possible values are: 'Static' and 'Dynamic'. Possible values
-   * include: 'Static', 'Dynamic'
+   * The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
   */
   privateIPAllocationMethod?: string;
   /**
@@ -6452,12 +6812,12 @@ export interface IpsecPolicy {
   */
   ikeIntegrity: string;
   /**
-   * The DH Groups used in IKE Phase 1 for initial SA. Possible values include: 'None', 'DHGroup1',
+   * The DH Group used in IKE Phase 1 for initial SA. Possible values include: 'None', 'DHGroup1',
    * 'DHGroup2', 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
   */
   dhGroup: string;
   /**
-   * The Pfs Groups used in IKE Phase 2 for new child SA. Possible values include: 'None', 'PFS1',
+   * The Pfs Group used in IKE Phase 2 for new child SA. Possible values include: 'None', 'PFS1',
    * 'PFS2', 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
   */
   pfsGroup: string;
@@ -6635,6 +6995,11 @@ export interface VirtualNetworkGateway extends Resource {
   */
   bgpSettings?: BgpSettings;
   /**
+   * The reference of the address space resource which represents the custom routes address space
+   * specified by the the customer for virtual network gateway and VpnClient.
+  */
+  customRoutes?: AddressSpace;
+  /**
    * The resource GUID property of the VirtualNetworkGateway resource.
   */
   resourceGuid?: string;
@@ -6659,8 +7024,7 @@ export interface VpnClientParameters {
   */
   processorArchitecture?: string;
   /**
-   * VPN client Authentication Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible
-   * values include: 'EAPTLS', 'EAPMSCHAPv2'
+   * VPN client authentication method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
   */
   authenticationMethod?: string;
   /**
@@ -6705,7 +7069,7 @@ export interface TunnelConnectionHealth {
   */
   readonly tunnel?: string;
   /**
-   * Virtual network Gateway connection status. Possible values include: 'Unknown', 'Connecting',
+   * Virtual Network Gateway connection status. Possible values include: 'Unknown', 'Connecting',
    * 'Connected', 'NotConnected'
   */
   readonly connectionStatus?: string;
@@ -6775,8 +7139,8 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   */
   localNetworkGateway2?: LocalNetworkGateway;
   /**
-   * Gateway connection type. Possible values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and
-   * 'VPNClient. Possible values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+   * Gateway connection type. Possible values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute',
+   * 'VPNClient'
   */
   connectionType: string;
   /**
@@ -6792,9 +7156,8 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   */
   sharedKey?: string;
   /**
-   * Virtual network Gateway connection status. Possible values are 'Unknown', 'Connecting',
-   * 'Connected' and 'NotConnected'. Possible values include: 'Unknown', 'Connecting', 'Connected',
-   * 'NotConnected'
+   * Virtual Network Gateway connection status. Possible values include: 'Unknown', 'Connecting',
+   * 'Connected', 'NotConnected'
   */
   readonly connectionStatus?: string;
   /**
@@ -6899,12 +7262,12 @@ export interface VpnClientIPsecParameters {
   */
   ikeIntegrity: string;
   /**
-   * The DH Groups used in IKE Phase 1 for initial SA. Possible values include: 'None', 'DHGroup1',
+   * The DH Group used in IKE Phase 1 for initial SA. Possible values include: 'None', 'DHGroup1',
    * 'DHGroup2', 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
   */
   dhGroup: string;
   /**
-   * The Pfs Groups used in IKE Phase 2 for new child SA. Possible values include: 'None', 'PFS1',
+   * The Pfs Group used in IKE Phase 2 for new child SA. Possible values include: 'None', 'PFS1',
    * 'PFS2', 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
   */
   pfsGroup: string;
@@ -6941,8 +7304,8 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   */
   localNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
   /**
-   * Gateway connection type. Possible values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and
-   * 'VPNClient. Possible values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+   * Gateway connection type. Possible values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute',
+   * 'VPNClient'
   */
   connectionType: string;
   /**
@@ -6958,9 +7321,8 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   */
   sharedKey?: string;
   /**
-   * Virtual network Gateway connection status. Possible values are 'Unknown', 'Connecting',
-   * 'Connected' and 'NotConnected'. Possible values include: 'Unknown', 'Connecting', 'Connected',
-   * 'NotConnected'
+   * Virtual Network Gateway connection status. Possible values include: 'Unknown', 'Connecting',
+   * 'Connected', 'NotConnected'
   */
   readonly connectionStatus?: string;
   /**
@@ -7134,7 +7496,7 @@ export interface P2SVpnServerConfiguration extends SubResource {
   */
   p2SVpnServerConfigurationPropertiesName?: string;
   /**
-   * vpnProtocols for the P2SVpnServerConfiguration.
+   * VPN protocols for the P2SVpnServerConfiguration.
   */
   vpnProtocols?: string[];
   /**
@@ -7163,8 +7525,8 @@ export interface P2SVpnServerConfiguration extends SubResource {
   */
   radiusServerAddress?: string;
   /**
-   * The radius secret property of the P2SVpnServerConfiguration resource for for point to site
-   * client connection.
+   * The radius secret property of the P2SVpnServerConfiguration resource for point to site client
+   * connection.
   */
   radiusServerSecret?: string;
   /**
@@ -7172,6 +7534,9 @@ export interface P2SVpnServerConfiguration extends SubResource {
    * 'Updating', 'Deleting', and 'Failed'.
   */
   readonly provisioningState?: string;
+  /**
+   * List of references to P2SVpnGateways.
+  */
   readonly p2SVpnGateways?: SubResource[];
   /**
    * A unique read-only string that changes whenever the resource is updated.
@@ -7200,6 +7565,9 @@ export interface VirtualWAN extends Resource {
    * List of VirtualHubs in the VirtualWAN.
   */
   readonly virtualHubs?: SubResource[];
+  /**
+   * List of VpnSites in the VirtualWAN.
+  */
   readonly vpnSites?: SubResource[];
   /**
    * The Security Provider name.
@@ -7219,7 +7587,7 @@ export interface VirtualWAN extends Resource {
   */
   office365LocalBreakoutCategory?: string;
   /**
-   * list of all P2SVpnServerConfigurations associated with the virtual wan.
+   * List of all P2SVpnServerConfigurations associated with the virtual wan.
   */
   p2SVpnServerConfigurations?: P2SVpnServerConfiguration[];
   /**
@@ -7305,7 +7673,7 @@ export interface GetVpnSitesConfigurationRequest {
   /**
    * The sas-url to download the configurations for vpn-sites
   */
-  outputBlobSasUrl?: string;
+  outputBlobSasUrl: string;
 }
 
 /**
@@ -7349,7 +7717,7 @@ export interface HubVirtualNetworkConnection extends SubResource {
 */
 export interface VirtualHubRoute {
   /**
-   * list of all addressPrefixes.
+   * List of all addressPrefixes.
   */
   addressPrefixes?: string[];
   /**
@@ -7363,7 +7731,7 @@ export interface VirtualHubRoute {
 */
 export interface VirtualHubRouteTable {
   /**
-   * list of all routes.
+   * List of all routes.
   */
   routes?: VirtualHubRoute[];
 }
@@ -7389,7 +7757,7 @@ export interface VirtualHub extends Resource {
   */
   expressRouteGateway?: SubResource;
   /**
-   * list of all vnet connections with this VirtualHub.
+   * List of all vnet connections with this VirtualHub.
   */
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   /**
@@ -7420,7 +7788,7 @@ export interface VpnConnection extends SubResource {
   */
   remoteVpnSite?: SubResource;
   /**
-   * routing weight for vpn connection.
+   * Routing weight for vpn connection.
   */
   routingWeight?: number;
   /**
@@ -7465,6 +7833,10 @@ export interface VpnConnection extends SubResource {
   */
   enableInternetSecurity?: boolean;
   /**
+   * Use local azure ip to initiate connection
+  */
+  useLocalAzureIpAddress?: boolean;
+  /**
    * The provisioning state of the resource. Possible values include: 'Succeeded', 'Updating',
    * 'Deleting', 'Failed'
   */
@@ -7489,7 +7861,7 @@ export interface VpnGateway extends Resource {
   */
   virtualHub?: SubResource;
   /**
-   * list of all vpn connections to the gateway.
+   * List of all vpn connections to the gateway.
   */
   connections?: VpnConnection[];
   /**
@@ -7543,6 +7915,9 @@ export interface VirtualWanSecurityProvider {
  * Collection of SecurityProviders.
 */
 export interface VirtualWanSecurityProviders {
+  /**
+   * List of VirtualWAN security providers.
+  */
   supportedProviders?: VirtualWanSecurityProvider[];
 }
 
@@ -7594,7 +7969,12 @@ export interface P2SVpnGateway extends Resource {
   */
   vpnClientAddressPool?: AddressSpace;
   /**
-   * All P2S vpnclients' connection health status.
+   * The reference of the address space resource which represents the custom routes specified by
+   * the customer for P2SVpnGateway and P2S VpnClient.
+  */
+  customRoutes?: AddressSpace;
+  /**
+   * All P2S VPN clients' connection health status.
   */
   readonly vpnClientConnectionHealth?: VpnClientConnectionHealth;
   /**
@@ -7608,8 +7988,7 @@ export interface P2SVpnGateway extends Resource {
 */
 export interface P2SVpnProfileParameters {
   /**
-   * VPN client Authentication Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible
-   * values include: 'EAPTLS', 'EAPMSCHAPv2'
+   * VPN client authentication method. Possible values include: 'EAPTLS', 'EAPMSCHAPv2'
   */
   authenticationMethod?: string;
 }
@@ -7622,6 +8001,129 @@ export interface VpnProfileResponse {
    * URL to the VPN profile
   */
   profileUrl?: string;
+}
+
+/**
+ * Defines contents of a web application firewall global configuration
+*/
+export interface PolicySettings {
+  /**
+   * Describes if the policy is in enabled state or disabled state. Possible values include:
+   * 'Disabled', 'Enabled'
+  */
+  enabledState?: string;
+  /**
+   * Describes if it is in detection mode  or prevention mode at policy level. Possible values
+   * include: 'Prevention', 'Detection'
+  */
+  mode?: string;
+}
+
+/**
+ * Define match variables
+*/
+export interface MatchVariable {
+  /**
+   * Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString',
+   * 'PostArgs', 'RequestUri', 'RequestHeaders', 'RequestBody', 'RequestCookies'
+  */
+  variableName: string;
+  /**
+   * Describes field of the matchVariable collection
+  */
+  selector?: string;
+}
+
+/**
+ * Define match conditions
+*/
+export interface MatchCondition {
+  /**
+   * List of match variables
+  */
+  matchVariables: MatchVariable[];
+  /**
+   * Describes operator to be matched. Possible values include: 'IPMatch', 'Equal', 'Contains',
+   * 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith',
+   * 'Regex'
+  */
+  operator: string;
+  /**
+   * Describes if this is negate condition or not
+  */
+  negationConditon?: boolean;
+  /**
+   * Match value
+  */
+  matchValues: string[];
+  /**
+   * List of transforms
+  */
+  transforms?: string[];
+}
+
+/**
+ * Defines contents of a web application rule
+*/
+export interface WebApplicationFirewallCustomRule {
+  /**
+   * Gets name of the resource that is unique within a policy. This name can be used to access the
+   * resource.
+  */
+  name?: string;
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+  /**
+   * Describes priority of the rule. Rules with a lower value will be evaluated before rules with a
+   * higher value
+  */
+  priority: number;
+  /**
+   * Describes type of rule. Possible values include: 'MatchRule', 'Invalid'
+  */
+  ruleType: string;
+  /**
+   * List of match conditions
+  */
+  matchConditions: MatchCondition[];
+  /**
+   * Type of Actions. Possible values include: 'Allow', 'Block', 'Log'
+  */
+  action: string;
+}
+
+/**
+ * Defines web application firewall policy.
+*/
+export interface WebApplicationFirewallPolicy extends Resource {
+  /**
+   * Describes  policySettings for policy
+  */
+  policySettings?: PolicySettings;
+  /**
+   * Describes custom rules inside the policy
+  */
+  customRules?: WebApplicationFirewallCustomRule[];
+  /**
+   * A collection of references to application gateways.
+  */
+  readonly applicationGateways?: ApplicationGateway[];
+  /**
+   * Provisioning state of the WebApplicationFirewallPolicy.
+  */
+  readonly provisioningState?: string;
+  /**
+   * @summary Resource status of the policy.
+   * @description Resource status of the policy. Possible values include: 'Creating', 'Enabling',
+   * 'Enabled', 'Disabling', 'Disabled', 'Deleting'
+  */
+  readonly resourceState?: string;
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
 }
 
 /**
@@ -7733,6 +8235,18 @@ export interface ExpressRouteCircuitPeeringListResult extends Array<ExpressRoute
 */
 export interface ExpressRouteCircuitConnectionListResult extends
 Array<ExpressRouteCircuitConnection> {
+  /**
+   * The URL to get the next set of results.
+  */
+  nextLink?: string;
+}
+
+/**
+ * Response for ListPeeredConnections API service call retrieves all global reach peer circuit
+ * connections that belongs to a Private Peering for an ExpressRouteCircuit.
+*/
+export interface PeerExpressRouteCircuitConnectionListResult extends
+Array<PeerExpressRouteCircuitConnection> {
   /**
    * The URL to get the next set of results.
   */
@@ -7906,6 +8420,16 @@ export interface LoadBalancerProbeListResult extends Array<Probe> {
 }
 
 /**
+ * Response for ListNatGateways API service call.
+*/
+export interface NatGatewayListResult extends Array<NatGateway> {
+  /**
+   * The URL to get the next set of results.
+  */
+  nextLink?: string;
+}
+
+/**
  * Response for list ip configurations API service call.
 */
 export interface NetworkInterfaceIPConfigurationListResult extends
@@ -7969,7 +8493,7 @@ export interface SecurityRuleListResult extends Array<SecurityRule> {
 }
 
 /**
- * List of network watcher resources.
+ * Response for ListNetworkWatchers API service call.
 */
 export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
 }
@@ -8278,4 +8802,16 @@ export interface ListP2SVpnGatewaysResult extends Array<P2SVpnGateway> {
    * URL to get the next set of operation list results if there are any.
   */
   nextLink?: string;
+}
+
+/**
+ * Result of the request to list WebApplicationFirewallPolicies. It contains a list of
+ * WebApplicationFirewallPolicy objects and a URL link to get the the next set of results.
+*/
+export interface WebApplicationFirewallPolicyListResult extends Array<WebApplicationFirewallPolicy>
+{
+  /**
+   * URL to get the next set of WebApplicationFirewallPolicy objects if there are any.
+  */
+  readonly nextLink?: string;
 }

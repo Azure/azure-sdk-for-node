@@ -156,3 +156,6 @@ client.notificationHubs.getPnsCredentials(groupName, namespaceName, notification
 
 - [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [AutoRest](https://github.com/Azure/autorest)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FnotificationHubsManagement%2FREADME.png)

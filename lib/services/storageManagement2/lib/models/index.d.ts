@@ -180,7 +180,8 @@ export interface Sku {
   /**
    * Gets or sets the SKU name. Required for account creation; optional for update. Note that in
    * older versions, SKU name was called accountType. Possible values include: 'Standard_LRS',
-   * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
+   * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS',
+   * 'Standard_GZRS', 'Standard_RAGZRS'
    */
   name: string;
   /**
@@ -933,6 +934,144 @@ export interface ListServiceSasResponse {
 }
 
 /**
+ * Object to define the number of days after last modification.
+*/
+export interface DateAfterModification {
+  /**
+   * Integer value indicating the age in days after last modification
+  */
+  daysAfterModificationGreaterThan: number;
+}
+
+/**
+ * Management policy action for base blob.
+*/
+export interface ManagementPolicyBaseBlob {
+  /**
+   * The function to tier blobs to cool storage. Support blobs currently at Hot tier
+  */
+  tierToCool?: DateAfterModification;
+  /**
+   * The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
+  */
+  tierToArchive?: DateAfterModification;
+  /**
+   * The function to delete the blob
+  */
+  deleteProperty?: DateAfterModification;
+}
+
+/**
+ * Object to define the number of days after creation.
+*/
+export interface DateAfterCreation {
+  /**
+   * Integer value indicating the age in days after creation
+  */
+  daysAfterCreationGreaterThan: number;
+}
+
+/**
+ * Management policy action for snapshot.
+*/
+export interface ManagementPolicySnapShot {
+  /**
+   * The function to delete the blob snapshot
+  */
+  deleteProperty?: DateAfterCreation;
+}
+
+/**
+ * Actions are applied to the filtered blobs when the execution condition is met.
+*/
+export interface ManagementPolicyAction {
+  /**
+   * The management policy action for base blob
+  */
+  baseBlob?: ManagementPolicyBaseBlob;
+  /**
+   * The management policy action for snapshot
+  */
+  snapshot?: ManagementPolicySnapShot;
+}
+
+/**
+ * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters
+ * are defined, a logical AND is performed on all filters.
+*/
+export interface ManagementPolicyFilter {
+  /**
+   * An array of strings for prefixes to be match.
+  */
+  prefixMatch?: string[];
+  /**
+   * An array of predefined enum values. Only blockBlob is supported.
+  */
+  blobTypes: string[];
+}
+
+/**
+ * An object that defines the Lifecycle rule. Each definition is made up with a filters set and an
+ * actions set.
+*/
+export interface ManagementPolicyDefinition {
+  /**
+   * An object that defines the action set.
+  */
+  actions: ManagementPolicyAction;
+  /**
+   * An object that defines the filter set.
+  */
+  filters?: ManagementPolicyFilter;
+}
+
+/**
+ * An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.
+*/
+export interface ManagementPolicyRule {
+  /**
+   * Rule is enabled if set to true.
+  */
+  enabled?: boolean;
+  /**
+   * A rule name can contain any combination of alpha numeric characters. Rule name is
+   * case-sensitive. It must be unique within a policy.
+  */
+  name: string;
+  /**
+   * An object that defines the Lifecycle rule.
+  */
+  definition: ManagementPolicyDefinition;
+}
+
+/**
+ * The Storage Account ManagementPolicies Rules. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+*/
+export interface ManagementPolicySchema {
+  /**
+   * The Storage Account ManagementPolicies Rules. See more details in:
+   * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+  */
+  rules: ManagementPolicyRule[];
+}
+
+/**
+ * The Get Storage Account ManagementPolicies operation response.
+*/
+export interface ManagementPolicy extends Resource {
+  /**
+   * Returns the date and time the ManagementPolicies was last modified.
+  */
+  readonly lastModifiedTime?: Date;
+  /**
+   * The Storage Account ManagementPolicy, in JSON format. See more details in:
+   * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+  */
+  policy: ManagementPolicySchema;
+}
+
+/**
  * The resource model definition for a ARM proxy resource. It will have everything other than
  * required location and tags
 */
@@ -1272,33 +1411,54 @@ export interface BlobServiceProperties extends Resource {
    * The blob service properties for soft delete.
   */
   deleteRetentionPolicy?: DeleteRetentionPolicy;
+  /**
+   * Automatic Snapshot is enabled if set to true.
+  */
+  automaticSnapshotPolicyEnabled?: boolean;
 }
 
 /**
- * The Get Storage Account ManagementPolicies operation response.
+ * Lease Container request schema.
 */
-export interface StorageAccountManagementPolicies extends Resource {
+export interface LeaseContainerRequest {
   /**
-   * The Storage Account ManagementPolicies Rules, in JSON format. See more details in:
-   * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+   * Specifies the lease action. Can be one of the available actions. Possible values include:
+   * 'Acquire', 'Renew', 'Change', 'Release', 'Break'
   */
-  policy?: any;
+  action: string;
   /**
-   * Returns the date and time the ManagementPolicies was last modified.
+   * Identifies the lease. Can be specified in any valid GUID string format.
   */
-  readonly lastModifiedTime?: Date;
+  leaseId?: string;
+  /**
+   * Optional. For a break action, proposed duration the lease should continue before it is broken,
+   * in seconds, between 0 and 60.
+  */
+  breakPeriod?: number;
+  /**
+   * Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1)
+   * for a lease that never expires.
+  */
+  leaseDuration?: number;
+  /**
+   * Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
+  */
+  proposedLeaseId?: string;
 }
 
 /**
- * The Storage Account ManagementPolicies Rules, in JSON format. See more details in:
- * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * Lease Container response schema.
 */
-export interface ManagementPoliciesRulesSetParameter {
+export interface LeaseContainerResponse {
   /**
-   * The Storage Account ManagementPolicies Rules, in JSON format. See more details in:
-   * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+   * Returned unique lease ID that must be included with any request to delete the container, or to
+   * renew, change, or release the lease.
   */
-  policy?: any;
+  leaseId?: string;
+  /**
+   * Approximate time remaining in the lease period, in seconds.
+  */
+  leaseTimeSeconds?: string;
 }
 
 /**

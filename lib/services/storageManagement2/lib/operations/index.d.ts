@@ -222,7 +222,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -356,7 +356,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -658,7 +658,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -789,7 +789,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1547,6 +1547,70 @@ export interface StorageAccounts {
 
 
     /**
+     * Revoke user delegation keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revokeUserDelegationKeysWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revoke user delegation keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeUserDelegationKeys(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeUserDelegationKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    revokeUserDelegationKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Asynchronously creates a new storage account with the specified parameters.
      * If an account is already created and a subsequent create request is issued
      * with different properties, the account properties will be updated. If an
@@ -1569,7 +1633,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1703,7 +1767,7 @@ export interface StorageAccounts {
      * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
-     * 'Premium_ZRS'
+     * 'Premium_ZRS', 'Standard_GZRS', 'Standard_RAGZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1971,6 +2035,225 @@ export interface Usages {
 
 /**
  * @class
+ * ManagementPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageManagementClient.
+ */
+export interface ManagementPolicies {
+
+
+    /**
+     * Gets the managementpolicy associated with the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementPolicy>>;
+
+    /**
+     * Gets the managementpolicy associated with the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementPolicy>;
+    get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ManagementPolicy>): void;
+    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementPolicy>): void;
+
+
+    /**
+     * Sets the managementpolicy to the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} policy The Storage Account ManagementPolicy, in JSON format.
+     * See more details in:
+     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     *
+     * @param {array} policy.rules The Storage Account ManagementPolicies Rules.
+     * See more details in:
+     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, policy: models.ManagementPolicySchema, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementPolicy>>;
+
+    /**
+     * Sets the managementpolicy to the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} policy The Storage Account ManagementPolicy, in JSON format.
+     * See more details in:
+     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     *
+     * @param {array} policy.rules The Storage Account ManagementPolicies Rules.
+     * See more details in:
+     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, policy: models.ManagementPolicySchema, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementPolicy>;
+    createOrUpdate(resourceGroupName: string, accountName: string, policy: models.ManagementPolicySchema, callback: ServiceCallback<models.ManagementPolicy>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, policy: models.ManagementPolicySchema, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementPolicy>): void;
+
+
+    /**
+     * Deletes the managementpolicy associated with the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the managementpolicy associated with the specified storage account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
  * BlobServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageManagementClient.
@@ -2016,6 +2299,9 @@ export interface BlobServices {
      * @param {number} [parameters.deleteRetentionPolicy.days] Indicates the number
      * of days that the deleted blob should be retained. The minimum specified
      * value can be 1 and the maximum value can be 365.
+     *
+     * @param {boolean} [parameters.automaticSnapshotPolicyEnabled] Automatic
+     * Snapshot is enabled if set to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2068,6 +2354,9 @@ export interface BlobServices {
      * @param {number} [parameters.deleteRetentionPolicy.days] Indicates the number
      * of days that the deleted blob should be retained. The minimum specified
      * value can be 1 and the maximum value can be 365.
+     *
+     * @param {boolean} [parameters.automaticSnapshotPolicyEnabled] Automatic
+     * Snapshot is enabled if set to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3230,19 +3519,12 @@ export interface BlobContainers {
     extendImmutabilityPolicy(resourceGroupName: string, accountName: string, containerName: string, ifMatch: string, immutabilityPeriodSinceCreationInDays: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImmutabilityPolicy>;
     extendImmutabilityPolicy(resourceGroupName: string, accountName: string, containerName: string, ifMatch: string, immutabilityPeriodSinceCreationInDays: number, callback: ServiceCallback<models.ImmutabilityPolicy>): void;
     extendImmutabilityPolicy(resourceGroupName: string, accountName: string, containerName: string, ifMatch: string, immutabilityPeriodSinceCreationInDays: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImmutabilityPolicy>): void;
-}
-
-/**
- * @class
- * ManagementPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the StorageManagementClient.
- */
-export interface ManagementPolicies {
 
 
     /**
-     * Gets the data policy rules associated with the specified storage account.
+     * The Lease Container operation establishes and manages a lock on a container
+     * for delete operations. The lock duration can be 15 to 60 seconds, or can be
+     * infinite.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3251,21 +3533,49 @@ export interface ManagementPolicies {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
+     * @param {string} containerName The name of the blob container within the
+     * specified storage account. Blob container names must be between 3 and 63
+     * characters in length and use numbers, lower-case letters and dash (-) only.
+     * Every dash (-) character must be immediately preceded and followed by a
+     * letter or number.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Lease Container request body.
+     *
+     * @param {string} options.parameters.action Specifies the lease action. Can be
+     * one of the available actions. Possible values include: 'Acquire', 'Renew',
+     * 'Change', 'Release', 'Break'
+     *
+     * @param {string} [options.parameters.leaseId] Identifies the lease. Can be
+     * specified in any valid GUID string format.
+     *
+     * @param {number} [options.parameters.breakPeriod] Optional. For a break
+     * action, proposed duration the lease should continue before it is broken, in
+     * seconds, between 0 and 60.
+     *
+     * @param {number} [options.parameters.leaseDuration] Required for acquire.
+     * Specifies the duration of the lease, in seconds, or negative one (-1) for a
+     * lease that never expires.
+     *
+     * @param {string} [options.parameters.proposedLeaseId] Optional for acquire,
+     * required for change. Proposed lease ID, in a GUID string format.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<StorageAccountManagementPolicies>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<LeaseContainerResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountManagementPolicies>>;
+    leaseWithHttpOperationResponse(resourceGroupName: string, accountName: string, containerName: string, options?: { parameters? : models.LeaseContainerRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LeaseContainerResponse>>;
 
     /**
-     * Gets the data policy rules associated with the specified storage account.
+     * The Lease Container operation establishes and manages a lock on a container
+     * for delete operations. The lock duration can be 15 to 60 seconds, or can be
+     * infinite.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3274,7 +3584,33 @@ export interface ManagementPolicies {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
+     * @param {string} containerName The name of the blob container within the
+     * specified storage account. Blob container names must be between 3 and 63
+     * characters in length and use numbers, lower-case letters and dash (-) only.
+     * Every dash (-) character must be immediately preceded and followed by a
+     * letter or number.
+     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Lease Container request body.
+     *
+     * @param {string} options.parameters.action Specifies the lease action. Can be
+     * one of the available actions. Possible values include: 'Acquire', 'Renew',
+     * 'Change', 'Release', 'Break'
+     *
+     * @param {string} [options.parameters.leaseId] Identifies the lease. Can be
+     * specified in any valid GUID string format.
+     *
+     * @param {number} [options.parameters.breakPeriod] Optional. For a break
+     * action, proposed duration the lease should continue before it is broken, in
+     * seconds, between 0 and 60.
+     *
+     * @param {number} [options.parameters.leaseDuration] Required for acquire.
+     * Specifies the duration of the lease, in seconds, or negative one (-1) for a
+     * lease that never expires.
+     *
+     * @param {string} [options.parameters.proposedLeaseId] Optional for acquire,
+     * required for change. Proposed lease ID, in a GUID string format.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3286,7 +3622,7 @@ export interface ManagementPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {StorageAccountManagementPolicies} - The deserialized result object.
+     *                      @resolve {LeaseContainerResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3294,153 +3630,15 @@ export interface ManagementPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {StorageAccountManagementPolicies} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link StorageAccountManagementPolicies} for more
+     *                      {LeaseContainerResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LeaseContainerResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountManagementPolicies>;
-    get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccountManagementPolicies>): void;
-    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountManagementPolicies>): void;
-
-
-    /**
-     * Sets the data policy rules associated with the specified storage account.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.policy] The Storage Account ManagementPolicies
-     * Rules, in JSON format. See more details in:
-     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<StorageAccountManagementPolicies>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { policy? : any, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountManagementPolicies>>;
-
-    /**
-     * Sets the data policy rules associated with the specified storage account.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.policy] The Storage Account ManagementPolicies
-     * Rules, in JSON format. See more details in:
-     * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {StorageAccountManagementPolicies} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {StorageAccountManagementPolicies} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link StorageAccountManagementPolicies} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, accountName: string, options?: { policy? : any, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountManagementPolicies>;
-    createOrUpdate(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccountManagementPolicies>): void;
-    createOrUpdate(resourceGroupName: string, accountName: string, options: { policy? : any, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountManagementPolicies>): void;
-
-
-    /**
-     * Deletes the data policy rules associated with the specified storage account.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the data policy rules associated with the specified storage account.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    lease(resourceGroupName: string, accountName: string, containerName: string, options?: { parameters? : models.LeaseContainerRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.LeaseContainerResponse>;
+    lease(resourceGroupName: string, accountName: string, containerName: string, callback: ServiceCallback<models.LeaseContainerResponse>): void;
+    lease(resourceGroupName: string, accountName: string, containerName: string, options: { parameters? : models.LeaseContainerRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LeaseContainerResponse>): void;
 }

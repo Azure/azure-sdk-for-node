@@ -162,6 +162,9 @@ export interface Accounts {
      * a resource. Each tag must have a key no greater than 128 characters and
      * value no greater than 256 characters.
      *
+     * @param {object} [options.properties] Additional properties for Account. Only
+     * provided fields will be updated.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -171,7 +174,7 @@ export interface Accounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CognitiveServicesAccount>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CognitiveServicesAccount>>;
 
     /**
      * Updates a Cognitive Services account
@@ -193,6 +196,9 @@ export interface Accounts {
      * resource (across resource groups). A maximum of 15 tags can be provided for
      * a resource. Each tag must have a key no greater than 128 characters and
      * value no greater than 256 characters.
+     *
+     * @param {object} [options.properties] Additional properties for Account. Only
+     * provided fields will be updated.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -220,9 +226,9 @@ export interface Accounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CognitiveServicesAccount>;
+    update(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }): Promise<models.CognitiveServicesAccount>;
     update(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
-    update(resourceGroupName: string, accountName: string, options: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
+    update(resourceGroupName: string, accountName: string, options: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
 
 
     /**

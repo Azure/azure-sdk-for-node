@@ -41,7 +41,7 @@ var accType;
 var createParameters;
 
 describe('Storage Management', function () {
-  
+
   before(function (done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
@@ -88,7 +88,7 @@ describe('Storage Management', function () {
     suite.baseTeardownTest(done);
   });
   
-  describe('storage accounts', function () {
+  describe.skip('storage accounts', function () {
     it('should create an account with vnet rule set correctly', function (done) {
       accountNameVnet = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersVnet = {

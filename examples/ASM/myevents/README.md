@@ -13,3 +13,6 @@ To see original example as it was written invoke this git command from console:
 git checkout 1bf63bc957316182d346a43cc0add712360b338a
 HEAD is now at 1bf63bc... Added myevents example.
 ```
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Fexamples%2FASM%2Fmyevents%2FREADME.png)

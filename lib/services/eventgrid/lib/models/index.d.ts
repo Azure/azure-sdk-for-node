@@ -668,6 +668,35 @@ export interface IotHubDeviceDisconnectedEventData extends DeviceConnectionState
 
 /**
  * @class
+ * Initializes a new instance of the DeviceTelemetryEventProperties class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a device telemetry
+ * event (DeviceTelemetry).
+ *
+ * @member {object} [body] The content of the message from the device.
+ * @member {object} [properties] Application properties are user-defined
+ * strings that can be added to the message. These fields are optional.
+ * @member {object} [systemProperties] System properties help identify contents
+ * and source of the messages.
+ */
+export interface DeviceTelemetryEventProperties {
+  body?: any;
+  properties?: { [propertyName: string]: string };
+  systemProperties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IotHubDeviceTelemetryEventData class.
+ * @constructor
+ * Event data for Microsoft.Devices.DeviceTelemetry event.
+ *
+ */
+export interface IotHubDeviceTelemetryEventData extends DeviceTelemetryEventProperties {
+}
+
+/**
+ * @class
  * Initializes a new instance of the DeviceTwinMetadata class.
  * @constructor
  * Metadata information for the properties JSON document.
@@ -898,6 +927,53 @@ export interface ContainerRegistryImageDeletedEventData extends ContainerRegistr
 
 /**
  * @class
+ * Initializes a new instance of the ContainerRegistryArtifactEventData class.
+ * @constructor
+ * The content of the event request message.
+ *
+ * @member {string} [id] The event ID.
+ * @member {date} [timestamp] The time at which the event occurred.
+ * @member {string} [action] The action that encompasses the provided event.
+ * @member {object} [target] The target of the event.
+ * @member {string} [target.mediaType] The MIME type of the artifact.
+ * @member {number} [target.size] The size in bytes of the artifact.
+ * @member {string} [target.digest] The digest of the artifact.
+ * @member {string} [target.repository] The repository name of the artifact.
+ * @member {string} [target.tag] The tag of the artifact.
+ * @member {string} [target.name] The name of the artifact.
+ * @member {string} [target.version] The version of the artifact.
+ */
+export interface ContainerRegistryArtifactEventData {
+  id?: string;
+  timestamp?: Date;
+  action?: string;
+  target?: ContainerRegistryArtifactEventTarget;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryChartPushedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ContainerRegistry.ChartPushed event.
+ *
+ */
+export interface ContainerRegistryChartPushedEventData extends ContainerRegistryArtifactEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryChartDeletedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ContainerRegistry.ChartDeleted event.
+ *
+ */
+export interface ContainerRegistryChartDeletedEventData extends ContainerRegistryArtifactEventData {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerRegistryEventTarget class.
  * @constructor
  * The target of the event.
@@ -976,6 +1052,30 @@ export interface ContainerRegistryEventActor {
 export interface ContainerRegistryEventSource {
   addr?: string;
   instanceID?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerRegistryArtifactEventTarget class.
+ * @constructor
+ * The target of the event.
+ *
+ * @member {string} [mediaType] The MIME type of the artifact.
+ * @member {number} [size] The size in bytes of the artifact.
+ * @member {string} [digest] The digest of the artifact.
+ * @member {string} [repository] The repository name of the artifact.
+ * @member {string} [tag] The tag of the artifact.
+ * @member {string} [name] The name of the artifact.
+ * @member {string} [version] The version of the artifact.
+ */
+export interface ContainerRegistryArtifactEventTarget {
+  mediaType?: string;
+  size?: number;
+  digest?: string;
+  repository?: string;
+  tag?: string;
+  name?: string;
+  version?: string;
 }
 
 /**
@@ -1148,6 +1248,22 @@ export interface MediaJobOutput {
  */
 export interface MediaJobOutputAsset extends MediaJobOutput {
   assetName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputProgressEventData class.
+ * @constructor
+ * Job Output Progress Event Data.
+ *
+ * @member {string} [label] Gets the Job output label.
+ * @member {number} [progress] Gets the Job output progress.
+ * @member {object} [jobCorrelationData] Gets the Job correlation data.
+ */
+export interface MediaJobOutputProgressEventData {
+  label?: string;
+  progress?: number;
+  jobCorrelationData?: { [propertyName: string]: string };
 }
 
 /**
@@ -1462,7 +1578,7 @@ export interface MediaLiveEventIncomingVideoStreamsOutOfSyncEventData {
  * @class
  * Initializes a new instance of the MediaLiveEventIncomingDataChunkDroppedEventData class.
  * @constructor
- * Ingest fragment dropped event event data.
+ * Ingest fragment dropped event data.
  *
  * @member {string} [timestamp] Gets the timestamp of the data chunk dropped.
  * @member {string} [trackType] Gets the type of the track (Audio / Video).
@@ -1486,7 +1602,7 @@ export interface MediaLiveEventIncomingDataChunkDroppedEventData {
  * @class
  * Initializes a new instance of the MediaLiveEventIngestHeartbeatEventData class.
  * @constructor
- * Ingest fragment dropped event event data.
+ * Ingest fragment dropped event data.
  *
  * @member {string} [trackType] Gets the type of the track (Audio / Video).
  * @member {string} [trackName] Gets the track name.
@@ -1543,5 +1659,137 @@ export interface MediaLiveEventTrackDiscontinuityDetectedEventData {
   readonly newTimestamp?: string;
   readonly timescale?: string;
   readonly discontinuityGap?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MapsGeofenceEventProperties class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a Geofence event
+ * (GeofenceEntered, GeofenceExited, GeofenceResult).
+ *
+ * @member {array} [expiredGeofenceGeometryId] Lists of the geometry ID of the
+ * geofence which is expired relative to the user time in the request.
+ * @member {array} [geometries] Lists the fence geometries that either fully
+ * contain the coordinate position or have an overlap with the searchBuffer
+ * around the fence.
+ * @member {array} [invalidPeriodGeofenceGeometryId] Lists of the geometry ID
+ * of the geofence which is in invalid period relative to the user time in the
+ * request.
+ * @member {boolean} [isEventPublished] True if at least one event is published
+ * to the Azure Maps event subscriber, false if no event is published to the
+ * Azure Maps event subscriber.
+ */
+export interface MapsGeofenceEventProperties {
+  expiredGeofenceGeometryId?: string[];
+  geometries?: MapsGeofenceGeometry[];
+  invalidPeriodGeofenceGeometryId?: string[];
+  isEventPublished?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MapsGeofenceEnteredEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Maps.GeofenceEntered event.
+ *
+ */
+export interface MapsGeofenceEnteredEventData extends MapsGeofenceEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MapsGeofenceExitedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Maps.GeofenceExited event.
+ *
+ */
+export interface MapsGeofenceExitedEventData extends MapsGeofenceEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MapsGeofenceResultEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Maps.GeofenceResult event.
+ *
+ */
+export interface MapsGeofenceResultEventData extends MapsGeofenceEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MapsGeofenceGeometry class.
+ * @constructor
+ * The geofence geometry.
+ *
+ * @member {string} [deviceId] ID of the device.
+ * @member {number} [distance] Distance from the coordinate to the closest
+ * border of the geofence. Positive means the coordinate is outside of the
+ * geofence. If the coordinate is outside of the geofence, but more than the
+ * value of searchBuffer away from the closest geofence border, then the value
+ * is 999. Negative means the coordinate is inside of the geofence. If the
+ * coordinate is inside the polygon, but more than the value of searchBuffer
+ * away from the closest geofencing border,then the value is -999. A value of
+ * 999 means that there is great confidence the coordinate is well outside the
+ * geofence. A value of -999 means that there is great confidence the
+ * coordinate is well within the geofence.
+ * @member {string} [geometryId] The unique ID for the geofence geometry.
+ * @member {number} [nearestLat] Latitude of the nearest point of the geometry.
+ * @member {number} [nearestLon] Longitude of the nearest point of the
+ * geometry.
+ * @member {string} [udId] The unique id returned from user upload service when
+ * uploading a geofence. Will not be included in geofencing post API.
+ */
+export interface MapsGeofenceGeometry {
+  deviceId?: string;
+  distance?: number;
+  geometryId?: string;
+  nearestLat?: number;
+  nearestLon?: number;
+  udId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AppConfigurationKeyValueModifiedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for an
+ * Microsoft.AppConfiguration.KeyValueModified event.
+ *
+ * @member {string} [key] The key used to identify the key-value that was
+ * modified.
+ * @member {string} [label] The label, if any, used to identify the key-value
+ * that was modified.
+ * @member {string} [etag] The etag representing the new state of the
+ * key-value.
+ */
+export interface AppConfigurationKeyValueModifiedEventData {
+  key?: string;
+  label?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AppConfigurationKeyValueDeletedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for an
+ * Microsoft.AppConfiguration.KeyValueDeleted event.
+ *
+ * @member {string} [key] The key used to identify the key-value that was
+ * deleted.
+ * @member {string} [label] The label, if any, used to identify the key-value
+ * that was deleted.
+ * @member {string} [etag] The etag representing the key-value that was
+ * deleted.
+ */
+export interface AppConfigurationKeyValueDeletedEventData {
+  key?: string;
+  label?: string;
+  etag?: string;
 }
 

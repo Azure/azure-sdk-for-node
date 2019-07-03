@@ -39,90 +39,21 @@ export default class TextAnalyticsClient extends ServiceClient {
 
 
   /**
-   * @summary The API returns a list of strings denoting the key talking points
-   * in the input text.
-   *
-   * See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-   * Analytics Documentation</a> for details about the languages that are
-   * supported by key phrase extraction.
-   *
-   * @param {object} input Collection of documents to analyze. Documents can now
-   * contain a language field to indicate the text language
-   *
-   * @param {array} [input.documents]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<KeyPhraseBatchResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  keyPhrasesWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyPhraseBatchResult>>;
-
-  /**
-   * @summary The API returns a list of strings denoting the key talking points
-   * in the input text.
-   *
-   * See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-   * Analytics Documentation</a> for details about the languages that are
-   * supported by key phrase extraction.
-   *
-   * @param {object} input Collection of documents to analyze. Documents can now
-   * contain a language field to indicate the text language
-   *
-   * @param {array} [input.documents]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {KeyPhraseBatchResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {KeyPhraseBatchResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link KeyPhraseBatchResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  keyPhrases(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyPhraseBatchResult>;
-  keyPhrases(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
-  keyPhrases(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
-
-
-  /**
    * @summary The API returns the detected language and a numeric score between 0
    * and 1.
    *
    * Scores close to 1 indicate 100% certainty that the identified language is
    * true. A total of 120 languages are supported.
    *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.languageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.languageBatchInput.documents]
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -133,7 +64,7 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  detectLanguageWithHttpOperationResponse(input: models.BatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LanguageBatchResult>>;
+  detectLanguageWithHttpOperationResponse(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LanguageBatchResult>>;
 
   /**
    * @summary The API returns the detected language and a numeric score between 0
@@ -142,11 +73,15 @@ export default class TextAnalyticsClient extends ServiceClient {
    * Scores close to 1 indicate 100% certainty that the identified language is
    * true. A total of 120 languages are supported.
    *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.languageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.languageBatchInput.documents]
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -173,82 +108,9 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  detectLanguage(input: models.BatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LanguageBatchResult>;
-  detectLanguage(input: models.BatchInput, callback: ServiceCallback<models.LanguageBatchResult>): void;
-  detectLanguage(input: models.BatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LanguageBatchResult>): void;
-
-
-  /**
-   * @summary The API returns a numeric score between 0 and 1.
-   *
-   * Scores close to 1 indicate positive sentiment, while scores close to 0
-   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
-   * (e.g. a factoid statement). See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-   * Analytics Documentation</a> for details about the languages that are
-   * supported by sentiment analysis.
-   *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<SentimentBatchResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  sentimentWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SentimentBatchResult>>;
-
-  /**
-   * @summary The API returns a numeric score between 0 and 1.
-   *
-   * Scores close to 1 indicate positive sentiment, while scores close to 0
-   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
-   * (e.g. a factoid statement). See the <a
-   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
-   * Analytics Documentation</a> for details about the languages that are
-   * supported by sentiment analysis.
-   *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {SentimentBatchResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {SentimentBatchResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link SentimentBatchResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  sentiment(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SentimentBatchResult>;
-  sentiment(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.SentimentBatchResult>): void;
-  sentiment(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SentimentBatchResult>): void;
+  detectLanguage(options?: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.LanguageBatchResult>;
+  detectLanguage(callback: ServiceCallback<models.LanguageBatchResult>): void;
+  detectLanguage(options: { showStats? : boolean, languageBatchInput? : models.LanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LanguageBatchResult>): void;
 
 
   /**
@@ -260,11 +122,15 @@ export default class TextAnalyticsClient extends ServiceClient {
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
    *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -275,7 +141,7 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  entitiesWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
+  entitiesWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
 
   /**
    * @summary The API returns a list of recognized entities in a given document.
@@ -286,11 +152,15 @@ export default class TextAnalyticsClient extends ServiceClient {
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
    *
-   * @param {object} input Collection of documents to analyze.
-   *
-   * @param {array} [input.documents]
-   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -317,9 +187,170 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  entities(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
-  entities(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.EntitiesBatchResult>): void;
-  entities(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
+  entities(callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
+
+
+  /**
+   * @summary The API returns a list of strings denoting the key talking points
+   * in the input text.
+   *
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by key phrase extraction.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze. Documents can now contain a language field to indicate the text
+   * language
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<KeyPhraseBatchResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  keyPhrasesWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyPhraseBatchResult>>;
+
+  /**
+   * @summary The API returns a list of strings denoting the key talking points
+   * in the input text.
+   *
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by key phrase extraction.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze. Documents can now contain a language field to indicate the text
+   * language
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {KeyPhraseBatchResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {KeyPhraseBatchResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link KeyPhraseBatchResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  keyPhrases(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyPhraseBatchResult>;
+  keyPhrases(callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
+  keyPhrases(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyPhraseBatchResult>): void;
+
+
+  /**
+   * @summary The API returns a numeric score between 0 and 1.
+   *
+   * Scores close to 1 indicate positive sentiment, while scores close to 0
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by sentiment analysis.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  sentimentWithHttpOperationResponse(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+  /**
+   * @summary The API returns a numeric score between 0 and 1.
+   *
+   * Scores close to 1 indicate positive sentiment, while scores close to 0
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
+   * Analytics Documentation</a> for details about the languages that are
+   * supported by sentiment analysis.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.showStats] (optional) if set to true, response
+   * will contain input and document level statistics.
+   *
+   * @param {object} [options.multiLanguageBatchInput] Collection of documents to
+   * analyze.
+   *
+   * @param {array} [options.multiLanguageBatchInput.documents]
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  sentiment(options?: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+  sentiment(callback: ServiceCallback<any>): void;
+  sentiment(options: { showStats? : boolean, multiLanguageBatchInput? : models.MultiLanguageBatchInput, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 export { TextAnalyticsClient, models as TextAnalyticsModels };

@@ -421,6 +421,64 @@ export interface PolicyEventsQueryResults {
 }
 
 /**
+ * Evaluation details of policy language expressions.
+ */
+export interface ExpressionEvaluationDetails {
+  /**
+   * Evaluation result.
+   */
+  result?: string;
+  /**
+   * Expression evaluated.
+   */
+  expression?: string;
+  /**
+   * Property path if the expression is a field or an alias.
+   */
+  path?: string;
+  /**
+   * Value of the expression.
+   */
+  expressionValue?: any;
+  /**
+   * Target value to be compared with the expression value.
+   */
+  targetValue?: any;
+  /**
+   * Operator to compare the expression value and the target value.
+   */
+  operator?: string;
+}
+
+/**
+ * Evaluation details of IfNotExists effect.
+ */
+export interface IfNotExistsEvaluationDetails {
+  /**
+   * ID of the last evaluated resource for IfNotExists effect.
+   */
+  resourceId?: string;
+  /**
+   * Total number of resources to which the existence condition is applicable.
+   */
+  totalResources?: number;
+}
+
+/**
+ * Policy evaluation details.
+ */
+export interface PolicyEvaluationDetails {
+  /**
+   * Details of the evaluated expressions.
+   */
+  evaluatedExpressions?: ExpressionEvaluationDetails[];
+  /**
+   * Evaluation details of IfNotExists effect.
+   */
+  ifNotExistsDetails?: IfNotExistsEvaluationDetails;
+}
+
+/**
  * Policy state record.
  */
 export interface PolicyState {
@@ -535,6 +593,14 @@ export interface PolicyState {
    * a policy set.
    */
   policyDefinitionReferenceId?: string;
+  /**
+   * Compliance state of the resource.
+   */
+  complianceState?: string;
+  /**
+   * Policy evaluation details.
+   */
+  policyEvaluationDetails?: PolicyEvaluationDetails;
   /**
    * Describes unknown properties. The value of an unknown property can be of "any" type.
    */
@@ -748,6 +814,11 @@ export interface QueryOptions {
    * OData apply expression for aggregations.
    */
   apply?: string;
+  /**
+   * The $expand query parameter. For example, to expand policyEvaluationDetails, use
+   * $expand=policyEvaluationDetails
+   */
+  expand?: string;
 }
 
 /**
