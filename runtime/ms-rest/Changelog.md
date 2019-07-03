@@ -1,8 +1,12 @@
 # Changelog
 
+## 2.5.2
+
+- Initialize body to undefined instead of null because body is nullable in webResource.
+
 ## 2.5.1
 
-Fix bug in string properties with a RegExp pattern constraint.
+- Fix bug in string properties with a RegExp pattern constraint.
 
 ## 2.5.0
 

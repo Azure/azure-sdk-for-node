@@ -25,6 +25,7 @@ class WebResource {
     this.url = null;
     this.method = null;
     this.headers = {};
+    this.body = undefined;
   }
 
   /**
