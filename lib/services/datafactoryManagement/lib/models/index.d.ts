@@ -584,6 +584,21 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the VariableSpecification class.
+ * @constructor
+ * Definition of a single variable for a Pipeline.
+ *
+ * @member {string} type Variable type. Possible values include: 'String',
+ * 'Bool', 'Array'
+ * @member {object} [defaultValue] Default value of variable.
+ */
+export interface VariableSpecification {
+  type: string;
+  defaultValue?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineFolder class.
  * @constructor
  * The folder that this Pipeline is in. If not specified, Pipeline will appear
@@ -604,6 +619,7 @@ export interface PipelineFolder {
  * @member {string} [description] The description of the pipeline.
  * @member {array} [activities] List of activities in pipeline.
  * @member {object} [parameters] List of parameters for pipeline.
+ * @member {object} [variables] List of variables for pipeline.
  * @member {number} [concurrency] The max number of concurrent runs for the
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
@@ -617,6 +633,7 @@ export interface PipelineResource extends SubResource {
   description?: string;
   activities?: Activity[];
   parameters?: { [propertyName: string]: ParameterSpecification };
+  variables?: { [propertyName: string]: VariableSpecification };
   concurrency?: number;
   annotations?: any[];
   folder?: PipelineFolder;
@@ -726,6 +743,34 @@ export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
 export interface FactoryRepoUpdate {
   factoryResourceId?: string;
   repoConfiguration?: FactoryRepoConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
 }
 
 /**
@@ -1040,6 +1085,68 @@ export interface TriggerRunsQueryResponse {
 
 /**
  * @class
+ * Initializes a new instance of the RerunTumblingWindowTriggerActionParameters class.
+ * @constructor
+ * Rerun tumbling window trigger Parameters.
+ *
+ * @member {date} startTime The start time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {date} endTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTriggerActionParameters {
+  startTime: Date;
+  endTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline reruns for all fixed time interval windows
+ * from a requested start time to requested end time.
+ *
+ * @member {object} [parentTrigger] The parent trigger reference.
+ * @member {date} requestedStartTime The start time for the time period for
+ * which restatement is initiated. Only UTC time is currently supported.
+ * @member {date} requestedEndTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTrigger extends Trigger {
+  parentTrigger?: any;
+  requestedStartTime: Date;
+  requestedEndTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerResource class.
+ * @constructor
+ * RerunTrigger resource type.
+ *
+ * @member {object} properties Properties of the rerun trigger.
+ * @member {object} [properties.parentTrigger] The parent trigger reference.
+ * @member {date} [properties.requestedStartTime] The start time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {date} [properties.requestedEndTime] The end time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {number} [properties.maxConcurrency] The max number of parallel time
+ * windows (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTriggerResource extends SubResource {
+  properties: RerunTumblingWindowTrigger;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Metadata associated with the operation.
@@ -1184,6 +1291,305 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the DependencyReference class.
+ * @constructor
+ * Referenced dependency.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface DependencyReference {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
+ * @constructor
+ * Self referenced tumbling window trigger dependency.
+ *
+ * @member {string} offset Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
+  offset: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerReference class.
+ * @constructor
+ * Trigger reference type.
+ *
+ * @member {string} referenceName Reference trigger name.
+ */
+export interface TriggerReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerDependencyReference class.
+ * @constructor
+ * Trigger referenced dependency.
+ *
+ * @member {object} referenceTrigger Referenced trigger.
+ * @member {string} [referenceTrigger.referenceName] Reference trigger name.
+ */
+export interface TriggerDependencyReference extends DependencyReference {
+  referenceTrigger: TriggerReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
+ * @constructor
+ * Referenced tumbling window trigger dependency.
+ *
+ * @member {string} [offset] Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
+  offset?: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RetryPolicy class.
+ * @constructor
+ * Execution policy for an activity.
+ *
+ * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
+ * Type: integer (or Expression with resultType integer), minimum: 0.
+ * @member {number} [intervalInSeconds] Interval between retries in seconds.
+ * Default is 30.
+ */
+export interface RetryPolicy {
+  count?: any;
+  intervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline runs for all fixed time interval windows
+ * from a start time without gaps and also supports backfill scenarios (when
+ * start time is in the past).
+ *
+ * @member {object} pipelineProperty Pipeline for which runs are created when
+ * an event is fired for trigger window that is ready.
+ * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
+ * @member {string} [pipelineProperty.pipelineReference.referenceName]
+ * Reference pipeline name.
+ * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
+ * @member {object} [pipelineProperty.parameters] Pipeline parameters.
+ * @member {string} frequency The frequency of the time windows. Possible
+ * values include: 'Minute', 'Hour'
+ * @member {number} interval The interval of the time windows. The minimum
+ * interval allowed is 15 Minutes.
+ * @member {date} startTime The start time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {date} [endTime] The end time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {object} [delay] Specifies how long the trigger waits past due time
+ * before triggering new run. It doesn't alter window start and end time. The
+ * default is 0. Type: string (or Expression with resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a new run is triggered.
+ * @member {object} [retryPolicy] Retry policy that will be applied for failed
+ * pipeline runs.
+ * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
+ * Default is 0. Type: integer (or Expression with resultType integer),
+ * minimum: 0.
+ * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
+ * seconds. Default is 30.
+ * @member {array} [dependsOn] Triggers that this trigger depends on. Only
+ * tumbling window triggers are supported.
+ */
+export interface TumblingWindowTrigger extends Trigger {
+  pipelineProperty: TriggerPipelineReference;
+  frequency: string;
+  interval: number;
+  startTime: Date;
+  endTime?: Date;
+  delay?: any;
+  maxConcurrency: number;
+  retryPolicy?: RetryPolicy;
+  dependsOn?: DependencyReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiplePipelineTrigger class.
+ * @constructor
+ * Base class for all triggers that support one to many model for trigger to
+ * pipeline.
+ *
+ * @member {array} [pipelines] Pipelines that need to be started.
+ */
+export interface MultiplePipelineTrigger extends Trigger {
+  pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobTrigger class.
+ * @constructor
+ * Trigger that runs everytime the selected Blob container changes.
+ *
+ * @member {string} folderPath The path of the container/folder that will
+ * trigger the pipeline.
+ * @member {number} maxConcurrency The max number of parallel files to handle
+ * when it is triggered.
+ * @member {object} linkedService The Azure Storage linked service reference.
+ * @member {string} [linkedService.referenceName] Reference LinkedService name.
+ * @member {object} [linkedService.parameters] Arguments for LinkedService.
+ */
+export interface BlobTrigger extends MultiplePipelineTrigger {
+  folderPath: string;
+  maxConcurrency: number;
+  linkedService: LinkedServiceReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceScheduleOccurrence class.
+ * @constructor
+ * The recurrence schedule occurence.
+ *
+ * @member {string} [day] The day of the week. Possible values include:
+ * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+ * @member {number} [occurrence] The occurrence.
+ */
+export interface RecurrenceScheduleOccurrence {
+  day?: string;
+  occurrence?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceSchedule class.
+ * @constructor
+ * The recurrence schedule.
+ *
+ * @member {array} [minutes] The minutes.
+ * @member {array} [hours] The hours.
+ * @member {array} [weekDays] The days of the week.
+ * @member {array} [monthDays] The month days.
+ * @member {array} [monthlyOccurrences] The monthly occurrences.
+ */
+export interface RecurrenceSchedule {
+  minutes?: number[];
+  hours?: number[];
+  weekDays?: string[];
+  monthDays?: number[];
+  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTriggerRecurrence class.
+ * @constructor
+ * The workflow trigger recurrence.
+ *
+ * @member {string} [frequency] The frequency. Possible values include:
+ * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [interval] The interval.
+ * @member {date} [startTime] The start time.
+ * @member {date} [endTime] The end time.
+ * @member {string} [timeZone] The time zone.
+ * @member {object} [schedule] The recurrence schedule.
+ * @member {array} [schedule.minutes] The minutes.
+ * @member {array} [schedule.hours] The hours.
+ * @member {array} [schedule.weekDays] The days of the week.
+ * @member {array} [schedule.monthDays] The month days.
+ * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
+ */
+export interface ScheduleTriggerRecurrence {
+  frequency?: string;
+  interval?: number;
+  startTime?: Date;
+  endTime?: Date;
+  timeZone?: string;
+  schedule?: RecurrenceSchedule;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTrigger class.
+ * @constructor
+ * Trigger that creates pipeline runs periodically, on schedule.
+ *
+ * @member {object} recurrence Recurrence schedule configuration.
+ * @member {string} [recurrence.frequency] The frequency. Possible values
+ * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [recurrence.interval] The interval.
+ * @member {date} [recurrence.startTime] The start time.
+ * @member {date} [recurrence.endTime] The end time.
+ * @member {string} [recurrence.timeZone] The time zone.
+ * @member {object} [recurrence.schedule] The recurrence schedule.
+ * @member {array} [recurrence.schedule.minutes] The minutes.
+ * @member {array} [recurrence.schedule.hours] The hours.
+ * @member {array} [recurrence.schedule.weekDays] The days of the week.
+ * @member {array} [recurrence.schedule.monthDays] The month days.
+ * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
+ * occurrences.
+ */
+export interface ScheduleTrigger extends MultiplePipelineTrigger {
+  recurrence: ScheduleTriggerRecurrence;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResponsysLinkedService class.
  * @constructor
  * Responsys linked service.
@@ -1241,8 +1647,10 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
+ * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -1257,6 +1665,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterSparkEnvVars?: { [propertyName: string]: any };
   newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
@@ -1298,6 +1707,25 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
   resourceGroupName?: any;
   dataLakeAnalyticsUri?: any;
   encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScriptAction class.
+ * @constructor
+ * Custom script action to run on HDI ondemand cluster once it's up.
+ *
+ * @member {string} name The user provided name of the script action.
+ * @member {string} uri The URI for the script action.
+ * @member {object} roles The node types on which the script action should be
+ * executed.
+ * @member {string} [parameters] The parameters for the script action.
+ */
+export interface ScriptAction {
+  name: string;
+  uri: string;
+  roles: any;
+  parameters?: string;
 }
 
 /**
@@ -1382,6 +1810,9 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * HDInsight cluster.
  * @member {object} [zookeeperNodeSize] Specifies the size of the Zoo Keeper
  * node for the HDInsight cluster.
+ * @member {array} [scriptActions] Custom script actions to run on HDI ondemand
+ * cluster once it's up. Please refer to
+ * https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
  */
 export interface HDInsightOnDemandLinkedService extends LinkedService {
   clusterSize: any;
@@ -1414,6 +1845,7 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   headNodeSize?: any;
   dataNodeSize?: any;
   zookeeperNodeSize?: any;
+  scriptActions?: ScriptAction[];
 }
 
 /**
@@ -1460,12 +1892,23 @@ export interface SalesforceMarketingCloudLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface NetezzaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -1477,12 +1920,23 @@ export interface NetezzaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface VerticaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -1941,12 +2395,23 @@ export interface MarketoLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MariaDBLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2228,12 +2693,23 @@ export interface HBaseLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface GreenplumLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2335,12 +2811,23 @@ export interface EloquaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DrillLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2352,12 +2839,25 @@ export interface DrillLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [credString] The Azure key vault secret reference of
+ * credString in connection string.
+ * @member {object} [credString.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [credString.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [credString.store.parameters] Arguments for LinkedService.
+ * @member {object} [credString.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [credString.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CouchbaseLinkedService extends LinkedService {
   connectionString?: any;
+  credString?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2403,12 +2903,25 @@ export interface ConcurLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzurePostgreSqlLinkedService extends LinkedService {
   connectionString?: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3225,12 +3738,25 @@ export interface SybaseLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3242,12 +3768,25 @@ export interface PostgreSqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3259,12 +3798,25 @@ export interface MySqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3276,12 +3828,25 @@ export interface AzureMySqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3397,12 +3962,25 @@ export interface DynamicsLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
   connectionString: any;
+  accountKey?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3460,6 +4038,18 @@ export interface AzureBatchLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Database. Type: string (or Expression with
  * resultType string).
@@ -3474,6 +4064,7 @@ export interface AzureBatchLinkedService extends LinkedService {
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3512,6 +4103,18 @@ export interface SqlServerLinkedService extends LinkedService {
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Data Warehouse. Type: string (or
  * Expression with resultType string).
@@ -3526,6 +4129,7 @@ export interface SqlServerLinkedService extends LinkedService {
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3541,16 +4145,42 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureTableStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
@@ -3563,9 +4193,33 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri, serviceEndpoint property. Type: string, SecureString
  * or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
- * mutually exclusive with connectionString, serviceEndpoint property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString, serviceEndpoint property. Type:
+ * string, SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [serviceEndpoint] Blob service endpoint of the Azure Blob
  * Storage resource. It is mutually exclusive with connectionString, sasUri
  * property.
@@ -3583,7 +4237,9 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  */
 export interface AzureBlobStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   serviceEndpoint?: string;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
@@ -3600,16 +4256,42 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
@@ -3619,8 +4301,11 @@ export interface AzureStorageLinkedService extends LinkedService {
  * @constructor
  * Responsys dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ResponsysObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3629,8 +4314,11 @@ export interface ResponsysObjectDataset extends Dataset {
  * @constructor
  * Salesforce Marketing Cloud dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SalesforceMarketingCloudObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3639,8 +4327,11 @@ export interface SalesforceMarketingCloudObjectDataset extends Dataset {
  * @constructor
  * Vertica dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface VerticaTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3649,8 +4340,11 @@ export interface VerticaTableDataset extends Dataset {
  * @constructor
  * Netezza dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface NetezzaTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3659,8 +4353,11 @@ export interface NetezzaTableDataset extends Dataset {
  * @constructor
  * Zoho server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ZohoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3669,8 +4366,11 @@ export interface ZohoObjectDataset extends Dataset {
  * @constructor
  * Xero Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface XeroObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3679,8 +4379,11 @@ export interface XeroObjectDataset extends Dataset {
  * @constructor
  * Square Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SquareObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3689,8 +4392,11 @@ export interface SquareObjectDataset extends Dataset {
  * @constructor
  * Spark Server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SparkObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3699,8 +4405,11 @@ export interface SparkObjectDataset extends Dataset {
  * @constructor
  * Shopify Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ShopifyObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3709,8 +4418,11 @@ export interface ShopifyObjectDataset extends Dataset {
  * @constructor
  * ServiceNow server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ServiceNowObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3719,8 +4431,11 @@ export interface ServiceNowObjectDataset extends Dataset {
  * @constructor
  * QuickBooks server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface QuickBooksObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3729,8 +4444,11 @@ export interface QuickBooksObjectDataset extends Dataset {
  * @constructor
  * Presto server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PrestoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3739,8 +4457,11 @@ export interface PrestoObjectDataset extends Dataset {
  * @constructor
  * Phoenix server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PhoenixObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3749,8 +4470,11 @@ export interface PhoenixObjectDataset extends Dataset {
  * @constructor
  * Paypal Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PaypalObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3759,8 +4483,11 @@ export interface PaypalObjectDataset extends Dataset {
  * @constructor
  * Marketo server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MarketoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3769,8 +4496,11 @@ export interface MarketoObjectDataset extends Dataset {
  * @constructor
  * MariaDB server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MariaDBTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3779,8 +4509,11 @@ export interface MariaDBTableDataset extends Dataset {
  * @constructor
  * Magento server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MagentoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3789,8 +4522,11 @@ export interface MagentoObjectDataset extends Dataset {
  * @constructor
  * Jira Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface JiraObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3799,8 +4535,11 @@ export interface JiraObjectDataset extends Dataset {
  * @constructor
  * Impala server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ImpalaObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3809,8 +4548,11 @@ export interface ImpalaObjectDataset extends Dataset {
  * @constructor
  * Hubspot Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HubspotObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3819,8 +4561,11 @@ export interface HubspotObjectDataset extends Dataset {
  * @constructor
  * Hive Server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HiveObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3829,8 +4574,11 @@ export interface HiveObjectDataset extends Dataset {
  * @constructor
  * HBase server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HBaseObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3839,8 +4587,11 @@ export interface HBaseObjectDataset extends Dataset {
  * @constructor
  * Greenplum Database dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface GreenplumTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3849,8 +4600,11 @@ export interface GreenplumTableDataset extends Dataset {
  * @constructor
  * Google BigQuery service dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface GoogleBigQueryObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3859,8 +4613,11 @@ export interface GoogleBigQueryObjectDataset extends Dataset {
  * @constructor
  * Eloqua server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface EloquaObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3869,8 +4626,11 @@ export interface EloquaObjectDataset extends Dataset {
  * @constructor
  * Drill server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface DrillTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3879,8 +4639,11 @@ export interface DrillTableDataset extends Dataset {
  * @constructor
  * Couchbase server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface CouchbaseTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3889,8 +4652,11 @@ export interface CouchbaseTableDataset extends Dataset {
  * @constructor
  * Concur Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ConcurObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3899,8 +4665,11 @@ export interface ConcurObjectDataset extends Dataset {
  * @constructor
  * Azure PostgreSQL dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface AzurePostgreSqlTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -3909,8 +4678,11 @@ export interface AzurePostgreSqlTableDataset extends Dataset {
  * @constructor
  * Amazon Marketplace Web Service dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface AmazonMWSObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4512,305 +5284,6 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the DependencyReference class.
- * @constructor
- * Referenced dependency.
- *
- * @member {string} type Polymorphic Discriminator
- */
-export interface DependencyReference {
-  type: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
- * @constructor
- * Self referenced tumbling window trigger dependency.
- *
- * @member {string} offset Timespan applied to the start time of a tumbling
- * window when evaluating dependency.
- * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used.
- */
-export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
-  offset: string;
-  size?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerReference class.
- * @constructor
- * Trigger reference type.
- *
- * @member {string} referenceName Reference trigger name.
- */
-export interface TriggerReference {
-  referenceName: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerDependencyReference class.
- * @constructor
- * Trigger referenced dependency.
- *
- * @member {object} referenceTrigger Referenced trigger.
- * @member {string} [referenceTrigger.referenceName] Reference trigger name.
- */
-export interface TriggerDependencyReference extends DependencyReference {
-  referenceTrigger: TriggerReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
- * @constructor
- * Referenced tumbling window trigger dependency.
- *
- * @member {string} [offset] Timespan applied to the start time of a tumbling
- * window when evaluating dependency.
- * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used.
- */
-export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
-  offset?: string;
-  size?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RetryPolicy class.
- * @constructor
- * Execution policy for an activity.
- *
- * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
- * Type: integer (or Expression with resultType integer), minimum: 0.
- * @member {number} [intervalInSeconds] Interval between retries in seconds.
- * Default is 30.
- */
-export interface RetryPolicy {
-  count?: any;
-  intervalInSeconds?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TumblingWindowTrigger class.
- * @constructor
- * Trigger that schedules pipeline runs for all fixed time interval windows
- * from a start time without gaps and also supports backfill scenarios (when
- * start time is in the past).
- *
- * @member {object} pipelineProperty Pipeline for which runs are created when
- * an event is fired for trigger window that is ready.
- * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
- * @member {string} [pipelineProperty.pipelineReference.referenceName]
- * Reference pipeline name.
- * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
- * @member {object} [pipelineProperty.parameters] Pipeline parameters.
- * @member {string} frequency The frequency of the time windows. Possible
- * values include: 'Minute', 'Hour'
- * @member {number} interval The interval of the time windows. The minimum
- * interval allowed is 15 Minutes.
- * @member {date} startTime The start time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {date} [endTime] The end time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {object} [delay] Specifies how long the trigger waits past due time
- * before triggering new run. It doesn't alter window start and end time. The
- * default is 0. Type: string (or Expression with resultType string), pattern:
- * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- * @member {number} maxConcurrency The max number of parallel time windows
- * (ready for execution) for which a new run is triggered.
- * @member {object} [retryPolicy] Retry policy that will be applied for failed
- * pipeline runs.
- * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
- * Default is 0. Type: integer (or Expression with resultType integer),
- * minimum: 0.
- * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
- * seconds. Default is 30.
- * @member {array} [dependsOn] Triggers that this trigger depends on. Only
- * tumbling window triggers are supported.
- */
-export interface TumblingWindowTrigger extends Trigger {
-  pipelineProperty: TriggerPipelineReference;
-  frequency: string;
-  interval: number;
-  startTime: Date;
-  endTime?: Date;
-  delay?: any;
-  maxConcurrency: number;
-  retryPolicy?: RetryPolicy;
-  dependsOn?: DependencyReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MultiplePipelineTrigger class.
- * @constructor
- * Base class for all triggers that support one to many model for trigger to
- * pipeline.
- *
- * @member {array} [pipelines] Pipelines that need to be started.
- */
-export interface MultiplePipelineTrigger extends Trigger {
-  pipelines?: TriggerPipelineReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobEventsTrigger class.
- * @constructor
- * Trigger that runs everytime a Blob event occurs.
- *
- * @member {string} [blobPathBeginsWith] The blob path must begin with the
- * pattern provided for trigger to fire. For example,
- * '/records/blobs/december/' will only fire the trigger for blobs in the
- * december folder under the records container. At least one of these must be
- * provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {string} [blobPathEndsWith] The blob path must end with the pattern
- * provided for trigger to fire. For example, 'december/boxes.csv' will only
- * fire the trigger for blobs named boxes in a december folder. At least one of
- * these must be provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {array} events The type of events that cause this trigger to fire.
- * @member {string} scope The ARM resource ID of the Storage Account.
- */
-export interface BlobEventsTrigger extends MultiplePipelineTrigger {
-  blobPathBeginsWith?: string;
-  blobPathEndsWith?: string;
-  events: string[];
-  scope: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobTrigger class.
- * @constructor
- * Trigger that runs everytime the selected Blob container changes.
- *
- * @member {string} folderPath The path of the container/folder that will
- * trigger the pipeline.
- * @member {number} maxConcurrency The max number of parallel files to handle
- * when it is triggered.
- * @member {object} linkedService The Azure Storage linked service reference.
- * @member {string} [linkedService.referenceName] Reference LinkedService name.
- * @member {object} [linkedService.parameters] Arguments for LinkedService.
- */
-export interface BlobTrigger extends MultiplePipelineTrigger {
-  folderPath: string;
-  maxConcurrency: number;
-  linkedService: LinkedServiceReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceScheduleOccurrence class.
- * @constructor
- * The recurrence schedule occurence.
- *
- * @member {string} [day] The day of the week. Possible values include:
- * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
- * @member {number} [occurrence] The occurrence.
- */
-export interface RecurrenceScheduleOccurrence {
-  day?: string;
-  occurrence?: number;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceSchedule class.
- * @constructor
- * The recurrence schedule.
- *
- * @member {array} [minutes] The minutes.
- * @member {array} [hours] The hours.
- * @member {array} [weekDays] The days of the week.
- * @member {array} [monthDays] The month days.
- * @member {array} [monthlyOccurrences] The monthly occurrences.
- */
-export interface RecurrenceSchedule {
-  minutes?: number[];
-  hours?: number[];
-  weekDays?: string[];
-  monthDays?: number[];
-  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTriggerRecurrence class.
- * @constructor
- * The workflow trigger recurrence.
- *
- * @member {string} [frequency] The frequency. Possible values include:
- * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [interval] The interval.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {string} [timeZone] The time zone.
- * @member {object} [schedule] The recurrence schedule.
- * @member {array} [schedule.minutes] The minutes.
- * @member {array} [schedule.hours] The hours.
- * @member {array} [schedule.weekDays] The days of the week.
- * @member {array} [schedule.monthDays] The month days.
- * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
- */
-export interface ScheduleTriggerRecurrence {
-  frequency?: string;
-  interval?: number;
-  startTime?: Date;
-  endTime?: Date;
-  timeZone?: string;
-  schedule?: RecurrenceSchedule;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTrigger class.
- * @constructor
- * Trigger that creates pipeline runs periodically, on schedule.
- *
- * @member {object} recurrence Recurrence schedule configuration.
- * @member {string} [recurrence.frequency] The frequency. Possible values
- * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {date} [recurrence.startTime] The start time.
- * @member {date} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- */
-export interface ScheduleTrigger extends MultiplePipelineTrigger {
-  recurrence: ScheduleTriggerRecurrence;
-}
-
-/**
- * @class
  * Initializes a new instance of the ActivityPolicy class.
  * @constructor
  * Execution policy for an activity.
@@ -4822,6 +5295,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, Input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4829,6 +5304,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4856,6 +5332,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, Input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
@@ -5782,13 +6260,13 @@ export interface SqlDWSource extends CopySource {
  * @constructor
  * SQL stored procedure parameter.
  *
- * @member {object} value Stored procedure parameter value. Type: string (or
+ * @member {object} [value] Stored procedure parameter value. Type: string (or
  * Expression with resultType string).
  * @member {string} [type] Stored procedure parameter type. Possible values
  * include: 'String', 'Int', 'Decimal', 'Guid', 'Boolean', 'Date'
  */
 export interface StoredProcedureParameter {
-  value: any;
+  value?: any;
   type?: string;
 }
 
@@ -5960,6 +6438,24 @@ export interface LookupActivity extends ExecutionActivity {
   source: CopySource;
   dataset: DatasetReference;
   firstRowOnly?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeleteActivity class.
+ * @constructor
+ * Delete activity.
+ *
+ * @member {object} [recursive] If true, files under the folder path will be
+ * deleted recursively. Default is true. Type: boolean (or Expression with
+ * resultType boolean).
+ * @member {object} dataset Delete activity dataset reference.
+ * @member {string} [dataset.referenceName] Reference dataset name.
+ * @member {object} [dataset.parameters] Arguments for dataset.
+ */
+export interface DeleteActivity extends ExecutionActivity {
+  recursive?: any;
+  dataset: DatasetReference;
 }
 
 /**
@@ -6762,6 +7258,38 @@ export interface CopyActivity extends ExecutionActivity {
  *
  */
 export interface ControlActivity extends Activity {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AppendVariableActivity class.
+ * @constructor
+ * Append value for a Variable of type Array.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * appended to.
+ * @member {object} [value] Value to be appended. Could be a static value or
+ * Expression
+ */
+export interface AppendVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetVariableActivity class.
+ * @constructor
+ * Set value for a Variable.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * set.
+ * @member {object} [value] Value to be set. Could be a static value or
+ * Expression
+ */
+export interface SetVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
 }
 
 /**
@@ -7607,4 +8135,17 @@ export interface PipelineListResponse extends Array<PipelineResource> {
  */
 export interface TriggerListResponse extends Array<TriggerResource> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerListResponse class.
+ * @constructor
+ * A list of rerun triggers.
+ *
+ * @member {string} [nextLink] The continuation token for getting the next page
+ * of results, if any remaining results exist, null otherwise.
+ */
+export interface RerunTriggerListResponse extends Array<RerunTriggerResource> {
+  readonly nextLink?: string;
 }

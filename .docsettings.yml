@@ -1,0 +1,8 @@
+omitted_paths:
+  - Documentation/*
+  - examples/*
+  - runtime/ms-rest/test/*
+  - runtime/ms-rest-azure/test/*
+  - lib/services/visualSearch/* # exception. swagger changes to generate readme.md is checked in.
+language: js
+root_check_enabled: True

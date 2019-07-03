@@ -85,6 +85,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -94,6 +101,42 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -172,6 +215,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -181,6 +231,42 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -573,6 +659,221 @@ export interface Clusters {
 
 
     /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    rotateDiskEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, callback: ServiceCallback<void>): void;
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the gateway settings for the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewaySettings>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewaySettings>>;
+
+    /**
+     * Gets the gateway settings for the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewaySettings} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewaySettings} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewaySettings} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getGatewaySettings(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewaySettings>;
+    getGatewaySettings(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.GatewaySettings>): void;
+    getGatewaySettings(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewaySettings>): void;
+
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, callback: ServiceCallback<void>): void;
+    updateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -710,6 +1011,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -719,6 +1027,42 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -797,6 +1141,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -806,6 +1157,42 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -963,6 +1350,162 @@ export interface Clusters {
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, callback: ServiceCallback<void>): void;
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRotateDiskEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, callback: ServiceCallback<void>): void;
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateGatewaySettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Configures the gateway settings on the specified cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The cluster configurations.
+     *
+     * @param {boolean} [parameters.isCredentialEnabled] Indicates whether or not
+     * the gateway settings based authorization is enabled.
+     *
+     * @param {string} [parameters.userName] The gateway settings user name.
+     *
+     * @param {string} [parameters.password] The gateway settings user password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, callback: ServiceCallback<void>): void;
+    beginUpdateGatewaySettings(resourceGroupName: string, clusterName: string, parameters: models.UpdateGatewaySettingsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1324,9 +1867,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1379,9 +1919,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1517,9 +2054,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1572,9 +2106,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1801,7 +2332,67 @@ export interface Configurations {
 
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Gets all configuration information for an HDI cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterConfigurations>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterConfigurations>>;
+
+    /**
+     * Gets all configuration information for an HDI cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterConfigurations} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterConfigurations} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterConfigurations} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterConfigurations>;
+    list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ClusterConfigurations>): void;
+    list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterConfigurations>): void;
+
+
+    /**
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1825,7 +2416,8 @@ export interface Configurations {
     updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1867,7 +2459,9 @@ export interface Configurations {
 
 
     /**
-     * The configuration object for the specified cluster.
+     * The configuration object for the specified cluster. This API is not
+     * recommended and might be removed in the future. Please consider using List
+     * configurations API instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1889,7 +2483,9 @@ export interface Configurations {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
 
     /**
-     * The configuration object for the specified cluster.
+     * The configuration object for the specified cluster. This API is not
+     * recommended and might be removed in the future. Please consider using List
+     * configurations API instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1929,7 +2525,8 @@ export interface Configurations {
 
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1953,7 +2550,8 @@ export interface Configurations {
     beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the configuration on the specified cluster.
+     * Configures the HTTP settings on the specified cluster. This API is
+     * deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *

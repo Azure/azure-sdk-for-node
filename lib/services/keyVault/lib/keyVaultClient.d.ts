@@ -9,7 +9,7 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
-import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import { AzureServiceClient, AzureServiceClientOptions, KeyVaultCredentials } from 'ms-rest-azure';
 import * as models from "./models";
 
 export default class KeyVaultClient extends AzureServiceClient {
@@ -7969,4 +7969,4 @@ export default class KeyVaultClient extends AzureServiceClient {
   getDeletedSasDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
 }
 
-export { KeyVaultClient, models as KeyVaultModels };
+export { KeyVaultClient, models as KeyVaultModels, KeyVaultCredentials };

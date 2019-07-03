@@ -180,7 +180,10 @@ export interface ProtectionPolicy {
  * @constructor
  * AzureStorage backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management
+ * @member {string} [workLoadType] Type of workload for the backup management.
+ * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+ * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+ * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
  * @member {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
  * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
@@ -866,7 +869,8 @@ export interface Settings {
  * @constructor
  * Sub-protection policy which includes schedule and retention
  *
- * @member {string} [policyType] Type of backup policy type
+ * @member {string} [policyType] Type of backup policy type. Possible values
+ * include: 'Invalid', 'Full', 'Differential', 'Log', 'CopyOnlyFull'
  * @member {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
  * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
@@ -888,7 +892,10 @@ export interface SubProtectionPolicy {
  * @constructor
  * Azure VM (Mercury) workload-specific backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management
+ * @member {string} [workLoadType] Type of workload for the backup management.
+ * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+ * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+ * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
  * @member {object} [settings] Common settings for the backup management
  * @member {string} [settings.timeZone] TimeZone optional input as string. For
  * example: TimeZone = "Pacific Standard Time".
@@ -1279,7 +1286,6 @@ export interface BackupStatusRequest {
  * @member {string} [protectionStatus] Specifies whether the container is
  * registered or not. Possible values include: 'Invalid', 'NotProtected',
  * 'Protecting', 'Protected', 'ProtectionFailed'
- * @member {string} [vaultId] Specifies the arm resource id of the vault
  * @member {string} [fabricName] Specifies the fabric name - Azure or AD.
  * Possible values include: 'Invalid', 'Azure'
  * @member {string} [containerName] Specifies the product specific container
@@ -1294,7 +1300,6 @@ export interface BackupStatusRequest {
  */
 export interface BackupStatusResponse {
   protectionStatus?: string;
-  vaultId?: string;
   fabricName?: string;
   containerName?: string;
   protectedItemName?: string;
@@ -2274,14 +2279,12 @@ export interface OperationResultInfoBaseResource extends OperationWorkerResponse
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
  * @member {string} [resourceId] ARM Virtual Machine Id
- * @member {string} [vaultId] ARM id of the Recovery Services Vault
  * @member {string} [properties] Configuration of VM if any needs to be
  * validated like OS type etc
  */
 export interface PreValidateEnableBackupRequest {
   resourceType?: string;
   resourceId?: string;
-  vaultId?: string;
   properties?: string;
 }
 
@@ -2379,6 +2382,28 @@ export interface ProtectedItemQueryObject {
  */
 export interface ProtectedItemResource extends Resource {
   properties?: ProtectedItem;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectionIntentQueryObject class.
+ * @constructor
+ * Filters to list protection intent.
+ *
+ * @member {string} [backupManagementType] Backup management type for the
+ * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+ * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+ * 'DefaultBackup'
+ * @member {string} [itemType] Type of workload this item represents. Possible
+ * values include: 'Invalid', 'SQLInstance', 'SQLAvailabilityGroupContainer'
+ * @member {string} [parentName] Parent name of the intent
+ * @member {string} [itemName] Item name of the intent
+ */
+export interface ProtectionIntentQueryObject {
+  backupManagementType?: string;
+  itemType?: string;
+  parentName?: string;
+  itemName?: string;
 }
 
 /**
@@ -3088,6 +3113,8 @@ export interface PreBackupValidation {
  * @member {string} [serverName] Host/Cluster Name for instance or AG
  * @member {boolean} [isAutoProtectable] Indicates if protectable item is
  * auto-protectable
+ * @member {boolean} [isAutoProtected] Indicates if protectable item is
+ * auto-protected
  * @member {number} [subinquireditemcount] For instance or AG, indicates number
  * of DB's present
  * @member {number} [subprotectableitemcount] For instance or AG, indicates
@@ -3106,6 +3133,7 @@ export interface AzureVmWorkloadProtectableItem extends WorkloadProtectableItem 
   parentUniqueName?: string;
   serverName?: string;
   isAutoProtectable?: boolean;
+  isAutoProtected?: boolean;
   subinquireditemcount?: number;
   subprotectableitemcount?: number;
   prebackupvalidation?: PreBackupValidation;
@@ -4634,6 +4662,16 @@ export interface ProtectionPolicyResourceList extends Array<ProtectionPolicyReso
  *
  */
 export interface ProtectedItemResourceList extends Array<ProtectedItemResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectionIntentResourceList class.
+ * @constructor
+ * List of ProtectionIntent resources
+ *
+ */
+export interface ProtectionIntentResourceList extends Array<ProtectionIntentResource> {
 }
 
 /**

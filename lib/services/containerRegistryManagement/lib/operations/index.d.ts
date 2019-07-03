@@ -39,7 +39,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -92,7 +101,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -298,6 +316,18 @@ export interface Registries {
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
      *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -340,6 +370,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -470,6 +512,19 @@ export interface Registries {
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
      *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -514,6 +569,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1176,7 +1244,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1229,7 +1306,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1307,6 +1393,18 @@ export interface Registries {
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
      *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -1349,6 +1447,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1479,6 +1589,19 @@ export interface Registries {
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
      *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1523,6 +1646,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4329,6 +4465,24 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters The parameters for creating a task.
      *
+     * @param {object} [taskCreateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskCreateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskCreateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskCreateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskCreateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskCreateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4354,10 +4508,20 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
      * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4371,11 +4535,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -4407,6 +4592,24 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters The parameters for creating a task.
      *
+     * @param {object} [taskCreateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskCreateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskCreateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskCreateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskCreateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskCreateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4432,10 +4635,20 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
      * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4449,11 +4662,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -4568,6 +4802,24 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {object} [taskUpdateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskUpdateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskUpdateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4594,10 +4846,20 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
      * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4611,11 +4873,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
@@ -4644,6 +4927,24 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {object} [taskUpdateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskUpdateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskUpdateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4670,10 +4971,20 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
      * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4687,11 +4998,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
@@ -4804,6 +5136,24 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters The parameters for creating a task.
      *
+     * @param {object} [taskCreateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskCreateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskCreateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskCreateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskCreateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskCreateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4829,10 +5179,20 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
      * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4846,11 +5206,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -4882,6 +5263,24 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters The parameters for creating a task.
      *
+     * @param {object} [taskCreateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskCreateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskCreateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskCreateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskCreateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskCreateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -4907,10 +5306,20 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
      * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4924,11 +5333,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskCreateParameters.credentials] The properties that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskCreateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskCreateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskCreateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -5043,6 +5473,24 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {object} [taskUpdateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskUpdateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskUpdateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -5069,10 +5517,20 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
      * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -5086,11 +5544,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
@@ -5119,6 +5598,24 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {object} [taskUpdateParameters.identity] Identity for the resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.principalId] The principal ID
+     * of resource identity.
+     *
+     * @param {string} [taskUpdateParameters.identity.tenantId] The tenant ID of
+     * resource.
+     *
+     * @param {string} [taskUpdateParameters.identity.type] The identity type.
+     * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [taskUpdateParameters.identity.userAssignedIdentities] The
+     * list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
@@ -5145,10 +5642,20 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
      * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.timerTriggers] The collection
+     * of timer triggers.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -5162,11 +5669,32 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.credentials] The parameters that
+     * describes a set of credentials that will be used when this run is invoked.
+     *
+     * @param {object} [taskUpdateParameters.credentials.sourceRegistry] Describes
+     * the credential parameters for accessing the source registry.
+     *
+     * @param {string} [taskUpdateParameters.credentials.sourceRegistry.loginMode]
+     * The authentication mode which determines the source registry login scope.
+     * The credentials for the source registry
+     * will be generated using the given scope. These credentials will be used to
+     * login to
+     * the source registry during the run. Possible values include: 'None',
+     * 'Default'
+     *
+     * @param {object} [taskUpdateParameters.credentials.customRegistries]
+     * Describes the credential parameters for accessing other custom registries.
+     * The key
+     * for the dictionary item will be the registry login server
+     * (myregistry.azurecr.io) and
+     * the value of the item will be the registry credentials for accessing the
+     * registry.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *

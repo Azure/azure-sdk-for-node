@@ -132,6 +132,21 @@ export interface ContainerPropertiesInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the GpuResource class.
+ * @constructor
+ * The GPU resource.
+ *
+ * @member {number} count The count of the GPU resource.
+ * @member {string} sku The SKU of the GPU resource. Possible values include:
+ * 'K80', 'P100', 'V100'
+ */
+export interface GpuResource {
+  count: number;
+  sku: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceRequests class.
  * @constructor
  * The resource requests.
@@ -139,10 +154,15 @@ export interface ContainerPropertiesInstanceView {
  * @member {number} memoryInGB The memory request in GB of this container
  * instance.
  * @member {number} cpu The CPU request of this container instance.
+ * @member {object} [gpu] The GPU request of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequests {
   memoryInGB: number;
   cpu: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -154,10 +174,15 @@ export interface ResourceRequests {
  * @member {number} [memoryInGB] The memory limit in GB of this container
  * instance.
  * @member {number} [cpu] The CPU limit of this container instance.
+ * @member {object} [gpu] The GPU limit of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceLimits {
   memoryInGB?: number;
   cpu?: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -170,10 +195,18 @@ export interface ResourceLimits {
  * @member {number} [requests.memoryInGB] The memory request in GB of this
  * container instance.
  * @member {number} [requests.cpu] The CPU request of this container instance.
+ * @member {object} [requests.gpu] The GPU request of this container instance.
+ * @member {number} [requests.gpu.count] The count of the GPU resource.
+ * @member {string} [requests.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  * @member {object} [limits] The resource limits of this container instance.
  * @member {number} [limits.memoryInGB] The memory limit in GB of this
  * container instance.
  * @member {number} [limits.cpu] The CPU limit of this container instance.
+ * @member {object} [limits.gpu] The GPU limit of this container instance.
+ * @member {number} [limits.gpu.count] The count of the GPU resource.
+ * @member {string} [limits.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequirements {
   requests: ResourceRequests;
@@ -307,12 +340,23 @@ export interface ContainerProbe {
  * this container instance.
  * @member {number} [resources.requests.cpu] The CPU request of this container
  * instance.
+ * @member {object} [resources.requests.gpu] The GPU request of this container
+ * instance.
+ * @member {number} [resources.requests.gpu.count] The count of the GPU
+ * resource.
+ * @member {string} [resources.requests.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {object} [resources.limits] The resource limits of this container
  * instance.
  * @member {number} [resources.limits.memoryInGB] The memory limit in GB of
  * this container instance.
  * @member {number} [resources.limits.cpu] The CPU limit of this container
  * instance.
+ * @member {object} [resources.limits.gpu] The GPU limit of this container
+ * instance.
+ * @member {number} [resources.limits.gpu.count] The count of the GPU resource.
+ * @member {string} [resources.limits.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {array} [volumeMounts] The volume mounts available to the container
  * instance.
  * @member {object} [livenessProbe] The liveness probe.
@@ -437,6 +481,46 @@ export interface Volume {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerGroupIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ContainerGroupIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupIdentity class.
+ * @constructor
+ * Identity for the container group.
+ *
+ * @member {string} [principalId] The principal id of the container group
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [tenantId] The tenant id associated with the container
+ * group. This property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the container group.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. The type 'None' will remove
+ * any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the container group. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ContainerGroupIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ContainerGroupIdentityUserAssignedIdentitiesValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageRegistryCredential class.
  * @constructor
  * Image registry credential.
@@ -474,12 +558,15 @@ export interface Port {
  * IP address for the container group.
  *
  * @member {array} ports The list of ports exposed on the container group.
+ * @member {string} type Specifies if the IP is exposed to the public internet
+ * or private VNET. Possible values include: 'Public', 'Private'
  * @member {string} [ip] The IP exposed to the public internet.
  * @member {string} [dnsNameLabel] The Dns name label for the IP.
  * @member {string} [fqdn] The FQDN for the IP.
  */
 export interface IpAddress {
   ports: Port[];
+  type: string;
   ip?: string;
   dnsNameLabel?: string;
   readonly fqdn?: string;
@@ -552,6 +639,23 @@ export interface ContainerGroupNetworkProfile {
 
 /**
  * @class
+ * Initializes a new instance of the DnsConfiguration class.
+ * @constructor
+ * DNS configuration for the container group.
+ *
+ * @member {array} nameServers The DNS servers for the container group.
+ * @member {string} [searchDomains] The DNS search domains for hostname lookup
+ * in the container group.
+ * @member {string} [options] The DNS options for the container group.
+ */
+export interface DnsConfiguration {
+  nameServers: string[];
+  searchDomains?: string;
+  options?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -576,6 +680,23 @@ export interface Resource extends BaseResource {
  * @constructor
  * A container group.
  *
+ * @member {object} [identity] The identity of the container group, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of the container
+ * group identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * container group. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.type] The type of identity used for the container
+ * group. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+ * created identity and a set of user assigned identities. The type 'None' will
+ * remove any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the container group. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {string} [provisioningState] The provisioning state of the container
  * group. This only appears in the response.
  * @member {array} containers The containers within the container group.
@@ -590,6 +711,9 @@ export interface Resource extends BaseResource {
  * @member {object} [ipAddress] The IP address type of the container group.
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
+ * @member {string} [ipAddress.type] Specifies if the IP is exposed to the
+ * public internet or private VNET. Possible values include: 'Public',
+ * 'Private'
  * @member {string} [ipAddress.ip] The IP exposed to the public internet.
  * @member {string} [ipAddress.dnsNameLabel] The Dns name label for the IP.
  * @member {string} [ipAddress.fqdn] The FQDN for the IP.
@@ -617,8 +741,17 @@ export interface Resource extends BaseResource {
  * @member {object} [networkProfile] The network profile information for a
  * container group.
  * @member {string} [networkProfile.id] The identifier for a network profile.
+ * @member {object} [dnsConfig] The DNS config information for a container
+ * group.
+ * @member {array} [dnsConfig.nameServers] The DNS servers for the container
+ * group.
+ * @member {string} [dnsConfig.searchDomains] The DNS search domains for
+ * hostname lookup in the container group.
+ * @member {string} [dnsConfig.options] The DNS options for the container
+ * group.
  */
 export interface ContainerGroup extends Resource {
+  identity?: ContainerGroupIdentity;
   readonly provisioningState?: string;
   containers: Container[];
   imageRegistryCredentials?: ImageRegistryCredential[];
@@ -629,6 +762,7 @@ export interface ContainerGroup extends Resource {
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
   diagnostics?: ContainerGroupDiagnostics;
   networkProfile?: ContainerGroupNetworkProfile;
+  dnsConfig?: DnsConfiguration;
 }
 
 /**

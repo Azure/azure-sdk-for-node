@@ -56,6 +56,7 @@ export default class ManagementLockClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  authorizationOperations: operations.AuthorizationOperations;
   managementLocks: operations.ManagementLocks;
 }
 

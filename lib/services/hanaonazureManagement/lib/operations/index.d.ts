@@ -271,6 +271,81 @@ export interface HanaInstances {
 
 
     /**
+     * @summary Patches the Tags field of a SAP HANA instance.
+     *
+     * Patches the Tags field of a SAP HANA instance for the specified
+     * subscription, resource group, and instance name.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} tagsParameter Request body that only contains the new Tags
+     * field
+     *
+     * @param {object} [tagsParameter.tags] Tags field of the HANA instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HanaInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HanaInstance>>;
+
+    /**
+     * @summary Patches the Tags field of a SAP HANA instance.
+     *
+     * Patches the Tags field of a SAP HANA instance for the specified
+     * subscription, resource group, and instance name.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} tagsParameter Request body that only contains the new Tags
+     * field
+     *
+     * @param {object} [tagsParameter.tags] Tags field of the HANA instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HanaInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HanaInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HanaInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HanaInstance>;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, callback: ServiceCallback<models.HanaInstance>): void;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HanaInstance>): void;
+
+
+    /**
      * The operation to restart a SAP HANA instance.
      *
      * @param {string} resourceGroupName Name of the resource group.
@@ -326,6 +401,280 @@ export interface HanaInstances {
     restart(resourceGroupName: string, hanaInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     restart(resourceGroupName: string, hanaInstanceName: string, callback: ServiceCallback<void>): void;
     restart(resourceGroupName: string, hanaInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to add a monitor to an SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} monitoringParameter Request body that only contains
+     * monitoring attributes
+     *
+     * @param {string} [monitoringParameter.hanaVnet] ARM ID of an Azure Vnet with
+     * access to the HANA instance.
+     *
+     * @param {string} [monitoringParameter.hanaHostname] Hostname of the HANA
+     * Instance blade.
+     *
+     * @param {string} [monitoringParameter.hanaInstanceNum] A number between 00
+     * and 99, stored as a string to maintain leading zero.
+     *
+     * @param {string} [monitoringParameter.dbContainer] Either single or multiple
+     * depending on the use of MDC(Multiple Database Containers). Possible values
+     * include: 'single', 'multiple'
+     *
+     * @param {string} [monitoringParameter.hanaDatabase] Name of the database
+     * itself.  It only needs to be specified if using MDC
+     *
+     * @param {string} [monitoringParameter.hanaDbUsername] Username for the HANA
+     * database to login to for monitoring
+     *
+     * @param {string} [monitoringParameter.hanaDbPassword] Password for the HANA
+     * database to login for monitoring
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enableMonitoringWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to add a monitor to an SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} monitoringParameter Request body that only contains
+     * monitoring attributes
+     *
+     * @param {string} [monitoringParameter.hanaVnet] ARM ID of an Azure Vnet with
+     * access to the HANA instance.
+     *
+     * @param {string} [monitoringParameter.hanaHostname] Hostname of the HANA
+     * Instance blade.
+     *
+     * @param {string} [monitoringParameter.hanaInstanceNum] A number between 00
+     * and 99, stored as a string to maintain leading zero.
+     *
+     * @param {string} [monitoringParameter.dbContainer] Either single or multiple
+     * depending on the use of MDC(Multiple Database Containers). Possible values
+     * include: 'single', 'multiple'
+     *
+     * @param {string} [monitoringParameter.hanaDatabase] Name of the database
+     * itself.  It only needs to be specified if using MDC
+     *
+     * @param {string} [monitoringParameter.hanaDbUsername] Username for the HANA
+     * database to login to for monitoring
+     *
+     * @param {string} [monitoringParameter.hanaDbPassword] Password for the HANA
+     * database to login for monitoring
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, callback: ServiceCallback<void>): void;
+    enableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to restart a SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to restart a SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, hanaInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, hanaInstanceName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, hanaInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to add a monitor to an SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} monitoringParameter Request body that only contains
+     * monitoring attributes
+     *
+     * @param {string} [monitoringParameter.hanaVnet] ARM ID of an Azure Vnet with
+     * access to the HANA instance.
+     *
+     * @param {string} [monitoringParameter.hanaHostname] Hostname of the HANA
+     * Instance blade.
+     *
+     * @param {string} [monitoringParameter.hanaInstanceNum] A number between 00
+     * and 99, stored as a string to maintain leading zero.
+     *
+     * @param {string} [monitoringParameter.dbContainer] Either single or multiple
+     * depending on the use of MDC(Multiple Database Containers). Possible values
+     * include: 'single', 'multiple'
+     *
+     * @param {string} [monitoringParameter.hanaDatabase] Name of the database
+     * itself.  It only needs to be specified if using MDC
+     *
+     * @param {string} [monitoringParameter.hanaDbUsername] Username for the HANA
+     * database to login to for monitoring
+     *
+     * @param {string} [monitoringParameter.hanaDbPassword] Password for the HANA
+     * database to login for monitoring
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginEnableMonitoringWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to add a monitor to an SAP HANA instance.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} monitoringParameter Request body that only contains
+     * monitoring attributes
+     *
+     * @param {string} [monitoringParameter.hanaVnet] ARM ID of an Azure Vnet with
+     * access to the HANA instance.
+     *
+     * @param {string} [monitoringParameter.hanaHostname] Hostname of the HANA
+     * Instance blade.
+     *
+     * @param {string} [monitoringParameter.hanaInstanceNum] A number between 00
+     * and 99, stored as a string to maintain leading zero.
+     *
+     * @param {string} [monitoringParameter.dbContainer] Either single or multiple
+     * depending on the use of MDC(Multiple Database Containers). Possible values
+     * include: 'single', 'multiple'
+     *
+     * @param {string} [monitoringParameter.hanaDatabase] Name of the database
+     * itself.  It only needs to be specified if using MDC
+     *
+     * @param {string} [monitoringParameter.hanaDbUsername] Username for the HANA
+     * database to login to for monitoring
+     *
+     * @param {string} [monitoringParameter.hanaDbPassword] Password for the HANA
+     * database to login for monitoring
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginEnableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginEnableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, callback: ServiceCallback<void>): void;
+    beginEnableMonitoring(resourceGroupName: string, hanaInstanceName: string, monitoringParameter: models.MonitoringDetails, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

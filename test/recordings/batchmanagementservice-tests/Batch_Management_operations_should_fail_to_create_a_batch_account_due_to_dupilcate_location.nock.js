@@ -3,86 +3,49 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2017-09-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2018-12-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/92b83318-8a13-47e5-bd12-9315fa412820?api-version=2017-09-01',
+  location:
+   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/5705eea1-dd20-43bd-986a-523348241130?api-version=2018-12-01',
   'retry-after': '15',
-  'x-ms-request-id': '92b83318-8a13-47e5-bd12-9315fa412820',
+  'x-ms-request-id': '5705eea1-dd20-43bd-986a-523348241130',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '450a18a1-7e3e-4143-8444-548a728668c9',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220149Z:450a18a1-7e3e-4143-8444-548a728668c9',
-  date: 'Wed, 08 Nov 2017 22:01:49 GMT',
+  'x-ms-correlation-request-id': '3181b9b2-715c-452c-893e-7f0a1ea7779a',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001604Z:3181b9b2-715c-452c-893e-7f0a1ea7779a',
+  date: 'Fri, 11 Jan 2019 00:16:04 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2017-09-01', '*')
-  .reply(202, "", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  expires: '-1',
-  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/92b83318-8a13-47e5-bd12-9315fa412820?api-version=2017-09-01',
-  'retry-after': '15',
-  'x-ms-request-id': '92b83318-8a13-47e5-bd12-9315fa412820',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '450a18a1-7e3e-4143-8444-548a728668c9',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220149Z:450a18a1-7e3e-4143-8444-548a728668c9',
-  date: 'Wed, 08 Nov 2017 22:01:49 GMT',
-  connection: 'close',
-  'content-length': '0' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/92b83318-8a13-47e5-bd12-9315fa412820?api-version=2017-09-01')
-  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional account quota for the specified subscription has been reached.\\nRequestId:312841e6-bce6-4e38-a668-d2cc965d3992\\nTime:2017-11-08T22:02:19.8525276Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/5705eea1-dd20-43bd-986a-523348241130?api-version=2018-12-01')
+  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional account quota for the specified subscription has been reached.\\nRequestId:e989217b-b126-4d05-81a4-5d44d2deb5a1\\nTime:2019-01-11T00:16:35.5296344Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '241',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-request-id': '312841e6-bce6-4e38-a668-d2cc965d3992',
+  'x-ms-correlation-request-id': '7ee66222-9413-4c44-824b-aa3db6ac3971',
+  'x-ms-request-id': 'e989217b-b126-4d05-81a4-5d44d2deb5a1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
+  'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '080587f0-d808-4dd9-a84b-2a58d9f30302',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220219Z:080587f0-d808-4dd9-a84b-2a58d9f30302',
-  date: 'Wed, 08 Nov 2017 22:02:19 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/92b83318-8a13-47e5-bd12-9315fa412820?api-version=2017-09-01')
-  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional account quota for the specified subscription has been reached.\\nRequestId:312841e6-bce6-4e38-a668-d2cc965d3992\\nTime:2017-11-08T22:02:19.8525276Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '241',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-request-id': '312841e6-bce6-4e38-a668-d2cc965d3992',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '080587f0-d808-4dd9-a84b-2a58d9f30302',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220219Z:080587f0-d808-4dd9-a84b-2a58d9f30302',
-  date: 'Wed, 08 Nov 2017 22:02:19 GMT',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001635Z:7ee66222-9413-4c44-824b-aa3db6ac3971',
+  date: 'Fri, 11 Jan 2019 00:16:35 GMT',
   connection: 'close' });
  return result; }]];

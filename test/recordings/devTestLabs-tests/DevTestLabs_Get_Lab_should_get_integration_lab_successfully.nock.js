@@ -7,14 +7,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2016-05-15')
+  .get('/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2018-09-15')
   .reply(200, "{\"properties\":{\"defaultStorageAccount\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.Storage/storageAccounts/msdtlvm1114508600\",\"artifactsStorageAccount\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.Storage/storageAccounts/msdtlvm1287512904\",\"vaultName\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.KeyVault/vaults/msdtl2063424927\",\"labStorageType\":\"Standard\",\"createdDate\":\"2016-05-04T23:05:53.560711+00:00\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourcegroups/keepintegrationtestresources/providers/microsoft.devtestlab/labs/labforintegration\",\"name\":\"LabForIntegration\",\"type\":\"Microsoft.DevTestLab/labs\",\"location\":\"Southeast Asia\",\"tags\":{\"CreatedOn\":\"5/4/2016 11:05:50 PM +00:00\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '955',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
-  'x-rp-requesturi': 'https://dtl-dev-rp.azurewebsites.net/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2016-05-15',
+  'x-rp-requesturi': 'https://dtl-dev-rp.azurewebsites.net/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2018-09-15',
   'x-dtl-processedby': 'dtl-dev-rp.azurewebsites.net',
   'set-cookie': 
    [ 'ARRAffinity=aa7a076a03f0cc68ff10821062cd9951acb337c68ed7becf8367b21e1910d41c;Path=/;Domain=dev.rp1.vsdth.visualstudio.com',
@@ -33,14 +33,14 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2016-05-15')
+  .get('/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2018-09-15')
   .reply(200, "{\"properties\":{\"defaultStorageAccount\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.Storage/storageAccounts/msdtlvm1114508600\",\"artifactsStorageAccount\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.Storage/storageAccounts/msdtlvm1287512904\",\"vaultName\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/keepintegrationtestresources/providers/Microsoft.KeyVault/vaults/msdtl2063424927\",\"labStorageType\":\"Standard\",\"createdDate\":\"2016-05-04T23:05:53.560711+00:00\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourcegroups/keepintegrationtestresources/providers/microsoft.devtestlab/labs/labforintegration\",\"name\":\"LabForIntegration\",\"type\":\"Microsoft.DevTestLab/labs\",\"location\":\"Southeast Asia\",\"tags\":{\"CreatedOn\":\"5/4/2016 11:05:50 PM +00:00\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '955',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
-  'x-rp-requesturi': 'https://dtl-dev-rp.azurewebsites.net/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2016-05-15',
+  'x-rp-requesturi': 'https://dtl-dev-rp.azurewebsites.net/subscriptions/33855c90-c8cf-44a0-a266-9b548fb8e7b0/resourceGroups/KeepIntegrationTestResources/providers/Microsoft.DevTestLab/labs/LabForIntegration?api-version=2018-09-15',
   'x-dtl-processedby': 'dtl-dev-rp.azurewebsites.net',
   'set-cookie': 
    [ 'ARRAffinity=aa7a076a03f0cc68ff10821062cd9951acb337c68ed7becf8367b21e1910d41c;Path=/;Domain=dev.rp1.vsdth.visualstudio.com',

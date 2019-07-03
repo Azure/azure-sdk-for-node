@@ -1,0 +1,25 @@
+{
+  "name": "azure-arm-security",
+  "author": "Microsoft Corporation",
+  "description": "SecurityCenter Library with typescript type definitions for node",
+  "version": "1.2.0-preview",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/securityCenter.js",
+  "types": "./lib/securityCenter.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/securityManagement",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  }
+}

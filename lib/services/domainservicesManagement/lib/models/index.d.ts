@@ -25,7 +25,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [id] Resource Id
  * @member {string} [name] Resource name
  * @member {string} [type] Resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  * @member {string} [etag] Resource etag
  */
@@ -33,7 +33,7 @@ export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   etag?: string;
 }
@@ -75,52 +75,80 @@ export interface LdapsSettings {
 
 /**
  * @class
- * Initializes a new instance of the DomainServiceProperties class.
+ * Initializes a new instance of the HealthMonitor class.
  * @constructor
- * Properties of the Domain Service.
+ * Health Monitor Description
  *
- * @member {string} [tenantId] Azure Active Directory tenant id
- * @member {string} [domainName] The name of the Azure domain that the user
- * would like to deploy Domain Services to.
- * @member {string} [vnetSiteId] Virtual network site id
- * @member {string} [subnetId] The name of the virtual network that Domain
- * Services will be deployed on. The id of the subnet that Domain Services will
- * be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
- * @member {object} [ldapsSettings] Secure LDAP Settings
- * @member {string} [ldapsSettings.ldaps] A flag to determine whether or not
- * Secure LDAP is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [ldapsSettings.pfxCertificate] The certificate required to
- * configure Secure LDAP. The parameter passed here should be a base64encoded
- * representation of the certificate pfx file.
- * @member {string} [ldapsSettings.pfxCertificatePassword] The password to
- * decrypt the provided Secure LDAP certificate pfx file.
- * @member {string} [ldapsSettings.publicCertificate] Public certificate used
- * to configure secure ldap.
- * @member {string} [ldapsSettings.certificateThumbprint] Thumbprint of
- * configure ldaps certificate.
- * @member {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
- * configure ldaps certificate.
- * @member {string} [ldapsSettings.externalAccess] A flag to determine whether
- * or not Secure LDAP access over the internet is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
- * address.
- * @member {array} [domainControllerIpAddress] List of Domain Controller IP
- * Address
- * @member {string} [serviceStatus] Status of Domain Service instance
- * @member {string} [provisioningState] the current deployment or provisioning
- * state, which only appears in the response.
+ * @member {string} [id] Health Monitor Id
+ * @member {string} [name] Health Monitor Name
+ * @member {string} [details] Health Monitor Details
  */
-export interface DomainServiceProperties {
-  readonly tenantId?: string;
-  domainName?: string;
-  readonly vnetSiteId?: string;
-  subnetId?: string;
-  ldapsSettings?: LdapsSettings;
-  readonly domainControllerIpAddress?: string[];
-  readonly serviceStatus?: string;
-  readonly provisioningState?: string;
+export interface HealthMonitor {
+  readonly id?: string;
+  readonly name?: string;
+  readonly details?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HealthAlert class.
+ * @constructor
+ * Health Alert Description
+ *
+ * @member {string} [id] Health Alert Id
+ * @member {string} [name] Health Alert Name
+ * @member {string} [issue] Health Alert Issue
+ * @member {string} [severity] Health Alert Severity
+ * @member {date} [raised] Health Alert Raised DateTime
+ * @member {date} [lastDetected] Health Alert Last Detected DateTime
+ * @member {string} [resolutionUri] Health Alert TSG Link
+ */
+export interface HealthAlert {
+  readonly id?: string;
+  readonly name?: string;
+  readonly issue?: string;
+  readonly severity?: string;
+  readonly raised?: Date;
+  readonly lastDetected?: Date;
+  readonly resolutionUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationSettings class.
+ * @constructor
+ * Settings for notification
+ *
+ * @member {string} [notifyGlobalAdmins] Should global admins be notified.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notifyDcAdmins] Should domain controller admins be
+ * notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {array} [additionalRecipients] The list of additional recipients
+ */
+export interface NotificationSettings {
+  notifyGlobalAdmins?: string;
+  notifyDcAdmins?: string;
+  additionalRecipients?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainSecuritySettings class.
+ * @constructor
+ * Domain Security Settings
+ *
+ * @member {string} [ntlmV1] A flag to determine whether or not NtlmV1 is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [tlsV1] A flag to determine whether or not TlsV1 is enabled
+ * or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [syncNtlmPasswords] A flag to determine whether or not
+ * SyncNtlmPasswords is enabled or disabled. Possible values include:
+ * 'Enabled', 'Disabled'
+ */
+export interface DomainSecuritySettings {
+  ntlmV1?: string;
+  tlsV1?: string;
+  syncNtlmPasswords?: string;
 }
 
 /**
@@ -156,6 +184,29 @@ export interface DomainServiceProperties {
  * values include: 'Enabled', 'Disabled'
  * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
  * address.
+ * @member {date} [healthLastEvaluated] Last domain evaluation run DateTime
+ * @member {array} [healthMonitors] List of Domain Health Monitors
+ * @member {array} [healthAlerts] List of Domain Health Alerts
+ * @member {object} [notificationSettings] Notification Settings
+ * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
+ * admins be notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notificationSettings.notifyDcAdmins] Should domain
+ * controller admins be notified. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {array} [notificationSettings.additionalRecipients] The list of
+ * additional recipients
+ * @member {object} [domainSecuritySettings] DomainSecurity Settings
+ * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
+ * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
+ * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
+ * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [filteredSync] Enabled or Disabled flag to turn on
+ * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
  * @member {array} [domainControllerIpAddress] List of Domain Controller IP
  * Address
  * @member {string} [serviceStatus] Status of Domain Service instance
@@ -168,40 +219,15 @@ export interface DomainService extends Resource {
   readonly vnetSiteId?: string;
   subnetId?: string;
   ldapsSettings?: LdapsSettings;
+  readonly healthLastEvaluated?: Date;
+  readonly healthMonitors?: HealthMonitor[];
+  readonly healthAlerts?: HealthAlert[];
+  notificationSettings?: NotificationSettings;
+  domainSecuritySettings?: DomainSecuritySettings;
+  filteredSync?: string;
   readonly domainControllerIpAddress?: string[];
   readonly serviceStatus?: string;
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainServicePatchProperties class.
- * @constructor
- * Update Properties of the Domain Service.
- *
- * @member {object} [ldapsSettings] Secure LDAP Settings
- * @member {string} [ldapsSettings.ldaps] A flag to determine whether or not
- * Secure LDAP is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [ldapsSettings.pfxCertificate] The certificate required to
- * configure Secure LDAP. The parameter passed here should be a base64encoded
- * representation of the certificate pfx file.
- * @member {string} [ldapsSettings.pfxCertificatePassword] The password to
- * decrypt the provided Secure LDAP certificate pfx file.
- * @member {string} [ldapsSettings.publicCertificate] Public certificate used
- * to configure secure ldap.
- * @member {string} [ldapsSettings.certificateThumbprint] Thumbprint of
- * configure ldaps certificate.
- * @member {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
- * configure ldaps certificate.
- * @member {string} [ldapsSettings.externalAccess] A flag to determine whether
- * or not Secure LDAP access over the internet is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
- * address.
- */
-export interface DomainServicePatchProperties {
-  ldapsSettings?: LdapsSettings;
 }
 
 /**
@@ -245,18 +271,19 @@ export interface OperationEntity {
   origin?: string;
 }
 
+
 /**
  * @class
  * Initializes a new instance of the OperationEntityListResult class.
  * @constructor
  * The list of domain service operation response.
  *
- * @member {array} [value] The list of operations.
+ * @member {string} [nextLink] The continuation token for the next page of
+ * results.
  */
-export interface OperationEntityListResult {
-  value?: OperationEntity[];
+export interface OperationEntityListResult extends Array<OperationEntity> {
+  readonly nextLink?: string;
 }
-
 
 /**
  * @class
@@ -264,6 +291,9 @@ export interface OperationEntityListResult {
  * @constructor
  * The response from the List Domain Services operation.
  *
+ * @member {string} [nextLink] The continuation token for the next page of
+ * results.
  */
 export interface DomainServiceListResult extends Array<DomainService> {
+  readonly nextLink?: string;
 }

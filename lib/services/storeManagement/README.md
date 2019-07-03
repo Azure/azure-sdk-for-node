@@ -41,3 +41,6 @@ var storeManagementClient = storeManagement.createStoreManagementClient(storeMan
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FstoreManagement%2FREADME.png)

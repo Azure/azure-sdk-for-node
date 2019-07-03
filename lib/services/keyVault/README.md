@@ -30,41 +30,20 @@ Others you might want to take a look at:
 The following are some examples on how to create and consume secrets, certificates and keys.
 For a complete sample, please check one of the above links. 
 
-### Authentication
+### Authentication and Client creation
 
 ```javascript
-
 var KeyVault = require('azure-keyvault');
-var AuthenticationContext = require('adal-node').AuthenticationContext;
+var msRestAzure = require('ms-rest-azure');
 
-var clientId = "<to-be-filled>";
-var clientSecret = "<to-be-filled>";
-var vaultUri = "<to-be-filled>";
+async function main(): Promise<void> {
+  const credentials = await msRestAzure.interactiveLogin();
+  // OR const credentials = await msRestAzure.loginWithServicePrincipalSecret("clientId", "secret", "domain");
+  // OR any other login method from msRestAzure.
+  const client = new KeyVault.KeyVaultClient(credentials);
+}
 
-// Authenticator - retrieves the access token
-var authenticator = function (challenge, callback) {
-
-  // Create a new authentication context.
-  var context = new AuthenticationContext(challenge.authorization);
-  
-  // Use the context to acquire an authentication token.
-  return context.acquireTokenWithClientCredentials(challenge.resource, clientId, clientSecret, function (err, tokenResponse) {
-    if (err) throw err;
-    // Calculate the value to be set in the request's Authorization header and resume the call.
-    var authorizationValue = tokenResponse.tokenType + ' ' + tokenResponse.accessToken;
-
-    return callback(null, authorizationValue);
-  });
-
-};
-```
-
-### Create the KeyVaultClient
-
-```javascript
-
-var credentials = new KeyVault.KeyVaultCredentials(authenticator);
-var client = new KeyVault.KeyVaultClient(credentials);
+main();
 ```
 
 ### Create a key and use it
@@ -107,3 +86,6 @@ client.createCertificate(vaultUri, 'mycertificate', options).then( (certificateO
 
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/keyVaultManagement)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FkeyVault%2FREADME.png)

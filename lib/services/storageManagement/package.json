@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Microsoft Azure Storage Management Client Library for node",
   "tags": [
     "azure",

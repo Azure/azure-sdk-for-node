@@ -2,9 +2,9 @@
   "name": "azure-cognitiveservices-customvision-training",
   "author": "Microsoft Corporation",
   "description": "TrainingAPIClient Library with typescript type definitions for node",
-  "version": "1.0.0-preview",
+  "version": "3.0.0",
   "dependencies": {
-    "ms-rest": "^2.3.3"
+    "ms-rest": "^2.5.0"
   },
   "keywords": [
     "node",
@@ -13,12 +13,15 @@
   "license": "MIT",
   "main": "./lib/trainingAPIClient.js",
   "types": "./lib/trainingAPIClient.d.ts",
-  "homepage": "http://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/customVision/training",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  },
+ "scripts": {
+    "postinstall": "node .scripts/postinstall.js"
   }
 }

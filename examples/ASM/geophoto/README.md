@@ -32,3 +32,6 @@ The step 1) is optional, as example provides a `setup` action to allow you to en
 ```
 node server.js
 ```
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Fexamples%2FASM%2Fgeophoto%2FREADME.png)

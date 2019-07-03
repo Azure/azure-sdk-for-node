@@ -60,6 +60,7 @@ export default class ContainerInstanceManagementClient extends AzureServiceClien
   operations: operations.Operations;
   containerGroupUsage: operations.ContainerGroupUsage;
   containerOperations: operations.ContainerOperations;
+  serviceAssociationLink: operations.ServiceAssociationLink;
 }
 
 export { ContainerInstanceManagementClient, models as ContainerInstanceManagementModels };

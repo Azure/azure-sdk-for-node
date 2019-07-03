@@ -4,7 +4,7 @@
   "contributors": [
     "Mazzola, Matt <mattm@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
+  "version": "1.2.0-preview",
   "description": "Microsoft Azure Power BI Embedded Client Library for node",
   "tags": [
     "azure",

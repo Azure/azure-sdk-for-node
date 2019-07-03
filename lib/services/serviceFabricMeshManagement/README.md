@@ -18,7 +18,7 @@ npm install azure-arm-servicefabricmesh
 
 ## How to use
 
-### Authentication, client creation and get application as an example.
+### Authentication, client creation and list operations as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -26,9 +26,7 @@ const ServiceFabricMeshManagementClient = require("azure-arm-servicefabricmesh")
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new ServiceFabricMeshManagementClient(creds, subscriptionId);
-    const resourceGroupName = "testresourceGroupName";
-    const applicationName = "testapplicationName";
-    return client.application.get(resourceGroupName, applicationName).then((result) => {
+    return client.operations.list().then((result) => {
       console.log("The result is:");
       console.log(result);
     });
@@ -40,3 +38,6 @@ msRestAzure.interactiveLogin().then((creds) => {
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FserviceFabricMeshManagement%2FREADME.png)

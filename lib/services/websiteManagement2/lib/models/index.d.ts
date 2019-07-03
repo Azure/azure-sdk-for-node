@@ -659,6 +659,7 @@ export interface HybridConnection extends ProxyOnlyResource {
  * @member {string} [deletedSiteName] Name of the deleted site
  * @member {string} [slot] Slot of the deleted site
  * @member {string} [deletedSiteKind] Kind of site that was deleted
+ * @member {string} [geoRegionName] Geo Region of the deleted site
  */
 export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteId?: number;
@@ -668,6 +669,7 @@ export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteName?: string;
   readonly slot?: string;
   readonly deletedSiteKind?: string;
+  readonly geoRegionName?: string;
 }
 
 /**
@@ -1811,6 +1813,8 @@ export interface SkuDescription {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -1861,6 +1865,7 @@ export interface AppServicePlan extends Resource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
@@ -4537,11 +4542,14 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @member {string} [snapshotTime] Point in time to restore the deleted app
  * from, formatted as a DateTime string.
  * If unspecified, default value is the time that the app was deleted.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
   deletedSiteId?: string;
   recoverConfiguration?: boolean;
   snapshotTime?: string;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -4892,6 +4900,24 @@ export interface NetworkFeatures extends ProxyOnlyResource {
   readonly virtualNetworkConnection?: VnetInfo;
   readonly hybridConnections?: RelayServiceConnectionEntity[];
   readonly hybridConnectionsV2?: HybridConnection[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkTrace class.
+ * @constructor
+ * Network trace
+ *
+ * @member {string} [path] Local file path for the captured network trace file.
+ * @member {string} [status] Current status of the network trace operation,
+ * same as Operation.Status (InProgress/Succeeded/Failed).
+ * @member {string} [message] Detailed message of a network trace operation,
+ * e.g. error message in case of failure.
+ */
+export interface NetworkTrace {
+  path?: string;
+  status?: string;
+  message?: string;
 }
 
 /**
@@ -6226,6 +6252,8 @@ export interface SnapshotRecoverySource {
  * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
  * conflicts will be ignored when recovering to a target web app.
  * This setting is only necessary when RecoverConfiguration is enabled.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   snapshotTime?: string;
@@ -6233,6 +6261,7 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   overwrite: boolean;
   recoverConfiguration?: boolean;
   ignoreConflictingHostNames?: boolean;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -6888,6 +6917,8 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -6918,6 +6949,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;

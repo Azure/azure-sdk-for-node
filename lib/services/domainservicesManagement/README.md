@@ -31,10 +31,13 @@ msRestAzure.interactiveLogin().then((creds) => {
       console.log(result);
     });
 }).catch((err) => {
-  console.log('An error ocurred:');
+  console.log('An error occurred:');
   console.dir(err, {depth: null, colors: true});
 });
 
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FdomainservicesManagement%2FREADME.png)

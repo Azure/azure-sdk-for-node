@@ -1,0 +1,180 @@
+trigger:
+  - master
+
+variables:
+  NodeVersion: '10.x'
+
+jobs:
+  - job: 'Build'
+
+    pool:
+      vmImage: 'ubuntu-16.04'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(NodeVersion)'
+        displayName: 'Install Node.js $(NodeVersion)'
+
+      # Rather than running "npm install" in the repo root, reduce build time by only installing the "npm-run-all" package,
+      # which is the minimum required to run the composite script commands.
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'install npm-run-all'
+        displayName: 'npm install npm-run-all'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run install-client'
+        displayName: 'npm run install-client'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run pack-client'
+        displayName: 'npm run pack-client'
+
+      - task: CopyFiles@2
+        inputs:
+          contents: 'lib/**/*.tgz'
+          targetFolder: $(Build.ArtifactStagingDirectory)
+          flattenFolders: true
+        displayName: 'Copy Package'
+
+      - task: PublishBuildArtifacts@1
+        condition: succeededOrFailed()
+        displayName: 'Publish Artifacts'
+        inputs:
+          artifactName: packages
+
+  - job: 'Analyze'
+
+    dependsOn:
+      - 'Build'
+
+    pool:
+      vmImage: 'ubuntu-16.04'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(NodeVersion)'
+        displayName: 'Install Node.js $(NodeVersion)'
+
+      # Rather than running "npm install" in the repo root, reduce build time by only installing the "npm-run-all" package,
+      # which is the minimum required to run the composite script commands.
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'install npm-run-all'
+        displayName: 'npm install npm-run-all'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run audit-client'
+        displayName: 'npm run audit-client'
+
+      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+        # ComponentGovernance is currently unable to run on pull requests of public projects. Running on non-PR
+        # builds should be sufficient.
+        condition: and(succeededOrFailed(), ne(variables['Build.Reason'], 'PullRequest'))
+        displayName: 'Component Detection'
+
+  - job: 'Test'
+
+    dependsOn:
+      - 'Build'
+
+    strategy:
+      matrix:
+        Linux_Node6:
+          OSName: 'Linux'
+          OSVmImage: 'ubuntu-16.04'
+          NodeVersion: '6.x'
+        Linux_Node8:
+          OSName: 'Linux'
+          OSVmImage: 'ubuntu-16.04'
+          NodeVersion: '8.x'
+        Linux_Node10:
+          OSName: 'Linux'
+          OSVmImage: 'ubuntu-16.04'
+          NodeVersion: '10.x'
+        Linux_Node11:
+          OSName: 'Linux'
+          OSVmImage: 'ubuntu-16.04'
+          NodeVersion: '11.x'
+        macOS_Node6:
+          OSName: 'macOS'
+          OSVmImage: 'macOS-10.13'
+          NodeVersion: '6.x'
+        macOS_Node8:
+          OSName: 'macOS'
+          OSVmImage: 'macOS-10.13'
+          NodeVersion: '8.x'
+        macOS_Node10:
+          OSName: 'macOS'
+          OSVmImage: 'macOS-10.13'
+          NodeVersion: '10.x'
+        macOS_Node11:
+          OSName: 'macOS'
+          OSVmImage: 'macOS-10.13'
+          NodeVersion: '11.x'
+        Windows_Node6:
+          OSName: 'Windows'
+          OSVmImage: 'vs2017-win2016'
+          NodeVersion: '6.x'
+        Windows_Node8:
+          OSName: 'Windows'
+          OSVmImage: 'vs2017-win2016'
+          NodeVersion: '8.x'
+        Windows_Node10:
+          OSName: 'Windows'
+          OSVmImage: 'vs2017-win2016'
+          NodeVersion: '10.x'
+        Windows_Node11:
+          OSName: 'Windows'
+          OSVmImage: 'vs2017-win2016'
+          NodeVersion: '11.x'
+
+    pool:
+      vmImage: '$(OSVmImage)'
+
+    steps:
+      - powershell: |
+            Invoke-WebRequest -Uri "https://github.com/Azure/azure-sdk-tools/releases/download/sdk-tools_14793/sdk-tools.zip" `
+            -OutFile "sdk-tools.zip" | Wait-Process; Expand-Archive -Path "sdk-tools.zip" -DestinationPath "./sdk-tools/"
+        workingDirectory: '$(Build.BinariesDirectory)'
+        displayName: 'Download Tools Archive From Github Release and Extract it'
+
+      - task: PythonScript@0
+        displayName: 'Run VerifyAgentOS script'
+        inputs:
+          scriptPath: '$(Build.BinariesDirectory)/sdk-tools/scripts/python/verify_agent_os.py'
+          arguments: $(OSName)
+
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(NodeVersion)'
+        displayName: 'Install Node.js $(NodeVersion)'
+
+      # Tests depend on running "npm install" in repo root
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: 'npm install'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run test-client -- -- --reporter mocha-junit-reporter'
+        displayName: 'npm run test-client'
+
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFiles: '**/test-results.xml'
+          testRunTitle: '{OSName} Node $(NodeVersion)'
+        condition: succeededOrFailed()
+        displayName: 'Publish test results'

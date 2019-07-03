@@ -23,8 +23,31 @@ export interface Face {
 
 
     /**
-     * Given query face's faceId, find the similar-looking faces from a faceId
-     * array, a face list or a large face list.
+     * Given query face's faceId, to search the similar-looking faces from a faceId
+     * array, a face list or a large face list. faceId array contains the faces
+     * created by [Face -
+     * Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+     * which will expire 24 hours after creation. A "faceListId" is created by
+     * [FaceList -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)
+     * containing persistedFaceIds that will not expire. And a "largeFaceListId" is
+     * created by [LargeFaceList -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)
+     * containing persistedFaceIds that will also not expire. Depending on the
+     * input the returned similar faces list contains faceIds or persistedFaceIds
+     * ranked by similarity.
+     * <br/>Find similar has two working modes, "matchPerson" and "matchFace".
+     * "matchPerson" is the default mode that it tries to find faces of the same
+     * person as possible by using internal same-person thresholds. It is useful to
+     * find a known person's other photos. Note that an empty list will be returned
+     * if no faces pass the internal thresholds. "matchFace" mode ignores
+     * same-person thresholds and returns ranked similar faces anyway, even the
+     * similarity is low. It can be used in the cases like searching
+     * celebrity-looking faces.
+     * <br/>The 'recognitionModel' associated with the query face's faceId should
+     * be the same as the 'recognitionModel' used by the target faceId array, face
+     * list or large face list.
+     *
      *
      * @param {uuid} faceId FaceId of the query face. User needs to call Face -
      * Detect first to get a valid faceId. Note that this faceId is not persisted
@@ -36,7 +59,7 @@ export interface Face {
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
      * expire. Parameter faceListId, largeFaceListId and faceIds should not be
-     * provided at the same time。
+     * provided at the same time.
      *
      * @param {string} [options.largeFaceListId] An existing user-specified unique
      * candidate large face list, created in LargeFaceList - Create. Large face
@@ -69,8 +92,31 @@ export interface Face {
     findSimilarWithHttpOperationResponse(faceId: string, options?: { faceListId? : string, largeFaceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SimilarFace[]>>;
 
     /**
-     * Given query face's faceId, find the similar-looking faces from a faceId
-     * array, a face list or a large face list.
+     * Given query face's faceId, to search the similar-looking faces from a faceId
+     * array, a face list or a large face list. faceId array contains the faces
+     * created by [Face -
+     * Detect](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236),
+     * which will expire 24 hours after creation. A "faceListId" is created by
+     * [FaceList -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)
+     * containing persistedFaceIds that will not expire. And a "largeFaceListId" is
+     * created by [LargeFaceList -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)
+     * containing persistedFaceIds that will also not expire. Depending on the
+     * input the returned similar faces list contains faceIds or persistedFaceIds
+     * ranked by similarity.
+     * <br/>Find similar has two working modes, "matchPerson" and "matchFace".
+     * "matchPerson" is the default mode that it tries to find faces of the same
+     * person as possible by using internal same-person thresholds. It is useful to
+     * find a known person's other photos. Note that an empty list will be returned
+     * if no faces pass the internal thresholds. "matchFace" mode ignores
+     * same-person thresholds and returns ranked similar faces anyway, even the
+     * similarity is low. It can be used in the cases like searching
+     * celebrity-looking faces.
+     * <br/>The 'recognitionModel' associated with the query face's faceId should
+     * be the same as the 'recognitionModel' used by the target faceId array, face
+     * list or large face list.
+     *
      *
      * @param {uuid} faceId FaceId of the query face. User needs to call Face -
      * Detect first to get a valid faceId. Note that this faceId is not persisted
@@ -82,7 +128,7 @@ export interface Face {
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
      * expire. Parameter faceListId, largeFaceListId and faceIds should not be
-     * provided at the same time。
+     * provided at the same time.
      *
      * @param {string} [options.largeFaceListId] An existing user-specified unique
      * candidate large face list, created in LargeFaceList - Create. Large face
@@ -133,7 +179,22 @@ export interface Face {
 
 
     /**
-     * Divide candidate faces into groups based on face similarity.
+     * Divide candidate faces into groups based on face similarity.<br />
+     * * The output is one or more disjointed face groups and a messyGroup. A face
+     * group contains faces that have similar looking, often of the same person.
+     * Face groups are ranked by group size, i.e. number of faces. Notice that
+     * faces belonging to a same person might be split into several groups in the
+     * result.
+     * * MessyGroup is a special face group containing faces that cannot find any
+     * similar counterpart face from original faces. The messyGroup will not appear
+     * in the result if all faces found their counterparts.
+     * * Group API needs at least 2 candidate faces and 1000 at most. We suggest to
+     * try [Face -
+     * Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)
+     * when you only have 2 candidate faces.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same.
+     *
      *
      * @param {array} faceIds Array of candidate faceId created by Face - Detect.
      * The maximum is 1000 faces
@@ -152,7 +213,22 @@ export interface Face {
     groupWithHttpOperationResponse(faceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GroupResult>>;
 
     /**
-     * Divide candidate faces into groups based on face similarity.
+     * Divide candidate faces into groups based on face similarity.<br />
+     * * The output is one or more disjointed face groups and a messyGroup. A face
+     * group contains faces that have similar looking, often of the same person.
+     * Face groups are ranked by group size, i.e. number of faces. Notice that
+     * faces belonging to a same person might be split into several groups in the
+     * result.
+     * * MessyGroup is a special face group containing faces that cannot find any
+     * similar counterpart face from original faces. The messyGroup will not appear
+     * in the result if all faces found their counterparts.
+     * * Group API needs at least 2 candidate faces and 1000 at most. We suggest to
+     * try [Face -
+     * Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)
+     * when you only have 2 candidate faces.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same.
+     *
      *
      * @param {array} faceIds Array of candidate faceId created by Face - Detect.
      * The maximum is 1000 faces
@@ -192,6 +268,36 @@ export interface Face {
     /**
      * 1-to-many identification to find the closest matches of the specific query
      * person face from a person group or large person group.
+     * <br/> For each face in the faceIds array, Face Identify will compute
+     * similarities between the query face and all the faces in the person group
+     * (given by personGroupId) or large person group (given by
+     * largePersonGroupId), and return candidate person(s) for that face ranked by
+     * similarity confidence. The person group/large person group should be trained
+     * to make it ready for identification. See more in [PersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+     * and [LargePersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4).
+     * <br/>
+     *
+     * Remarks:<br />
+     * * The algorithm allows more than one face to be identified independently at
+     * the same request, but no more than 10 faces.
+     * * Each person in the person group/large person group could have more than
+     * one face, but no more than 248 faces.
+     * * Higher face image quality means better identification precision. Please
+     * consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+     * (100 pixels between eyes) or bigger.
+     * * Number of candidates returned is restricted by maxNumOfCandidatesReturned
+     * and confidenceThreshold. If no person is identified, the returned candidates
+     * will be an empty array.
+     * * Try [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)
+     * when you need to find similar faces from a face list/large face list instead
+     * of a person group/large person group.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same as the 'recognitionModel' used by the target person group or large
+     * person group.
+     *
      *
      * @param {array} faceIds Array of query faces faceIds, created by the Face -
      * Detect. Each of the faces are identified independently. The valid number of
@@ -229,6 +335,36 @@ export interface Face {
     /**
      * 1-to-many identification to find the closest matches of the specific query
      * person face from a person group or large person group.
+     * <br/> For each face in the faceIds array, Face Identify will compute
+     * similarities between the query face and all the faces in the person group
+     * (given by personGroupId) or large person group (given by
+     * largePersonGroupId), and return candidate person(s) for that face ranked by
+     * similarity confidence. The person group/large person group should be trained
+     * to make it ready for identification. See more in [PersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+     * and [LargePersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4).
+     * <br/>
+     *
+     * Remarks:<br />
+     * * The algorithm allows more than one face to be identified independently at
+     * the same request, but no more than 10 faces.
+     * * Each person in the person group/large person group could have more than
+     * one face, but no more than 248 faces.
+     * * Higher face image quality means better identification precision. Please
+     * consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+     * (100 pixels between eyes) or bigger.
+     * * Number of candidates returned is restricted by maxNumOfCandidatesReturned
+     * and confidenceThreshold. If no person is identified, the returned candidates
+     * will be an empty array.
+     * * Try [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)
+     * when you need to find similar faces from a face list/large face list instead
+     * of a person group/large person group.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same as the 'recognitionModel' used by the target person group or large
+     * person group.
+     *
      *
      * @param {array} faceIds Array of query faces faceIds, created by the Face -
      * Detect. Each of the faces are identified independently. The valid number of
@@ -284,6 +420,17 @@ export interface Face {
     /**
      * Verify whether two faces belong to a same person or whether one face belongs
      * to a person.
+     * <br/>
+     * Remarks:<br />
+     * * Higher face image quality means better identification precision. Please
+     * consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+     * (100 pixels between eyes) or bigger.
+     * * For the scenarios that are sensitive to accuracy please make your own
+     * judgment.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same as the 'recognitionModel' used by the target face, person group or
+     * large person group.
+     *
      *
      * @param {uuid} faceId1 FaceId of the first face, comes from Face - Detect
      *
@@ -305,6 +452,17 @@ export interface Face {
     /**
      * Verify whether two faces belong to a same person or whether one face belongs
      * to a person.
+     * <br/>
+     * Remarks:<br />
+     * * Higher face image quality means better identification precision. Please
+     * consider high-quality faces: frontal, clear, and face size is 200x200 pixels
+     * (100 pixels between eyes) or bigger.
+     * * For the scenarios that are sensitive to accuracy please make your own
+     * judgment.
+     * * The 'recognitionModel' associated with the query faces' faceIds should be
+     * the same as the 'recognitionModel' used by the target face, person group or
+     * large person group.
+     *
      *
      * @param {uuid} faceId1 FaceId of the first face, comes from Face - Detect
      *
@@ -343,8 +501,45 @@ export interface Face {
 
 
     /**
-     * Detect human faces in an image and returns face locations, and optionally
-     * with faceIds, landmarks, and attributes.
+     * Detect human faces in an image, return face rectangles, and optionally with
+     * faceIds, landmarks, and attributes.<br />
+     * * Optional parameters including faceId, landmarks, and attributes.
+     * Attributes include age, gender, headPose, smile, facialHair, glasses,
+     * emotion, hair, makeup, occlusion, accessories, blur, exposure and noise.
+     * * The extracted face feature, instead of the actual image, will be stored on
+     * server. The faceId is an identifier of the face feature and will be used in
+     * [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
+     * [Face -
+     * Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
+     * and [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * It will expire 24 hours after the detection call.
+     * * Higher face image quality means better detection and recognition
+     * precision. Please consider high-quality faces: frontal, clear, and face size
+     * is 200x200 pixels (100 pixels between eyes) or bigger.
+     * * JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+     * allowed image file size is from 1KB to 6MB.
+     * * Faces are detectable when its size is 36x36 to 4096x4096 pixels. If need
+     * to detect very small but clear faces, please try to enlarge the input image.
+     * * Up to 64 faces can be returned for an image. Faces are ranked by face
+     * rectangle size from large to small.
+     * * Face detector prefer frontal and near-frontal faces. There are cases that
+     * faces may not be detected, e.g. exceptionally large face angles (head-pose)
+     * or being occluded, or wrong image orientation.
+     * * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
+     * hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
+     * perfectly accurate. HeadPose's pitch value is a reserved field and will
+     * always return 0.
+     * * Different 'recognitionModel' values are provided. If follow-up operations
+     * like Verify, Identify, Find Similar are needed, please specify the
+     * recognition model with 'recognitionModel' parameter. The default value for
+     * 'recognitionModel' is 'recognition_01', if latest model needed, please
+     * explicitly specify the model you need in this parameter. Once specified, the
+     * detected faceIds will be associated with the specified recognition model.
+     * More details, please refer to [How to specify a recognition
+     * model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
+     *
      *
      * @param {string} url Publicly reachable URL of an image
      *
@@ -361,6 +556,17 @@ export interface Face {
      * "returnFaceAttributes=age,gender". Supported face attributes include age,
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
      * face attribute analysis has additional computational and time cost.
+     *
+     * @param {string} [options.recognitionModel] Name of recognition model.
+     * Recognition model is used when the face features are extracted and
+     * associated with detected faceIds, (Large)FaceList or (Large)PersonGroup. A
+     * recognition model name can be provided when performing Face - Detect or
+     * (Large)FaceList - Create or (Large)PersonGroup - Create. The default value
+     * is 'recognition_01', if latest model needed, please explicitly specify the
+     * model you need. Possible values include: 'recognition_01', 'recognition_02'
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -371,11 +577,48 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    detectWithUrlWithHttpOperationResponse(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
+    detectWithUrlWithHttpOperationResponse(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
 
     /**
-     * Detect human faces in an image and returns face locations, and optionally
-     * with faceIds, landmarks, and attributes.
+     * Detect human faces in an image, return face rectangles, and optionally with
+     * faceIds, landmarks, and attributes.<br />
+     * * Optional parameters including faceId, landmarks, and attributes.
+     * Attributes include age, gender, headPose, smile, facialHair, glasses,
+     * emotion, hair, makeup, occlusion, accessories, blur, exposure and noise.
+     * * The extracted face feature, instead of the actual image, will be stored on
+     * server. The faceId is an identifier of the face feature and will be used in
+     * [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239),
+     * [Face -
+     * Verify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a),
+     * and [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * It will expire 24 hours after the detection call.
+     * * Higher face image quality means better detection and recognition
+     * precision. Please consider high-quality faces: frontal, clear, and face size
+     * is 200x200 pixels (100 pixels between eyes) or bigger.
+     * * JPEG, PNG, GIF (the first frame), and BMP format are supported. The
+     * allowed image file size is from 1KB to 6MB.
+     * * Faces are detectable when its size is 36x36 to 4096x4096 pixels. If need
+     * to detect very small but clear faces, please try to enlarge the input image.
+     * * Up to 64 faces can be returned for an image. Faces are ranked by face
+     * rectangle size from large to small.
+     * * Face detector prefer frontal and near-frontal faces. There are cases that
+     * faces may not be detected, e.g. exceptionally large face angles (head-pose)
+     * or being occluded, or wrong image orientation.
+     * * Attributes (age, gender, headPose, smile, facialHair, glasses, emotion,
+     * hair, makeup, occlusion, accessories, blur, exposure and noise) may not be
+     * perfectly accurate. HeadPose's pitch value is a reserved field and will
+     * always return 0.
+     * * Different 'recognitionModel' values are provided. If follow-up operations
+     * like Verify, Identify, Find Similar are needed, please specify the
+     * recognition model with 'recognitionModel' parameter. The default value for
+     * 'recognitionModel' is 'recognition_01', if latest model needed, please
+     * explicitly specify the model you need in this parameter. Once specified, the
+     * detected faceIds will be associated with the specified recognition model.
+     * More details, please refer to [How to specify a recognition
+     * model](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)
+     *
      *
      * @param {string} url Publicly reachable URL of an image
      *
@@ -392,6 +635,17 @@ export interface Face {
      * "returnFaceAttributes=age,gender". Supported face attributes include age,
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
      * face attribute analysis has additional computational and time cost.
+     *
+     * @param {string} [options.recognitionModel] Name of recognition model.
+     * Recognition model is used when the face features are extracted and
+     * associated with detected faceIds, (Large)FaceList or (Large)PersonGroup. A
+     * recognition model name can be provided when performing Face - Detect or
+     * (Large)FaceList - Create or (Large)PersonGroup - Create. The default value
+     * is 'recognition_01', if latest model needed, please explicitly specify the
+     * model you need. Possible values include: 'recognition_01', 'recognition_02'
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -417,9 +671,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    detectWithUrl(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
+    detectWithUrl(url: string, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
     detectWithUrl(url: string, callback: ServiceCallback<models.DetectedFace[]>): void;
-    detectWithUrl(url: string, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
+    detectWithUrl(url: string, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
 
 
     /**
@@ -529,6 +783,17 @@ export interface Face {
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
      * face attribute analysis has additional computational and time cost.
      *
+     * @param {string} [options.recognitionModel] Name of recognition model.
+     * Recognition model is used when the face features are extracted and
+     * associated with detected faceIds, (Large)FaceList or (Large)PersonGroup. A
+     * recognition model name can be provided when performing Face - Detect or
+     * (Large)FaceList - Create or (Large)PersonGroup - Create. The default value
+     * is 'recognition_01', if latest model needed, please explicitly specify the
+     * model you need. Possible values include: 'recognition_01', 'recognition_02'
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -538,7 +803,7 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    detectWithStreamWithHttpOperationResponse(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
+    detectWithStreamWithHttpOperationResponse(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectedFace[]>>;
 
     /**
      * Detect human faces in an image and returns face locations, and optionally
@@ -559,6 +824,17 @@ export interface Face {
      * "returnFaceAttributes=age,gender". Supported face attributes include age,
      * gender, headPose, smile, facialHair, glasses and emotion. Note that each
      * face attribute analysis has additional computational and time cost.
+     *
+     * @param {string} [options.recognitionModel] Name of recognition model.
+     * Recognition model is used when the face features are extracted and
+     * associated with detected faceIds, (Large)FaceList or (Large)PersonGroup. A
+     * recognition model name can be provided when performing Face - Detect or
+     * (Large)FaceList - Create or (Large)PersonGroup - Create. The default value
+     * is 'recognition_01', if latest model needed, please explicitly specify the
+     * model you need. Possible values include: 'recognition_01', 'recognition_02'
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -584,9 +860,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    detectWithStream(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
+    detectWithStream(image: stream.Readable, options?: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectedFace[]>;
     detectWithStream(image: stream.Readable, callback: ServiceCallback<models.DetectedFace[]>): void;
-    detectWithStream(image: stream.Readable, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
+    detectWithStream(image: stream.Readable, options: { returnFaceId? : boolean, returnFaceLandmarks? : boolean, returnFaceAttributes? : string[], recognitionModel? : string, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectedFace[]>): void;
 }
 
 /**
@@ -1305,8 +1581,38 @@ export interface PersonGroupOperations {
 
 
     /**
-     * Create a new person group with specified personGroupId, name and
-     * user-provided userData.
+     * Create a new person group with specified personGroupId, name, user-provided
+     * userData and recognitionModel.
+     * <br /> A person group is the container of the uploaded person data,
+     * including face images and face recognition features.
+     * <br /> After creation, use [PersonGroup Person -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+     * to add persons into the group, and then call [PersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+     * to get this group ready for [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> The person's face, image, and userData will be stored on server until
+     * [PersonGroup Person -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+     * or [PersonGroup -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+     * is called.
+     * <br />
+     * * Free-tier subscription quota: 1,000 person groups. Each holds up to 1,000
+     * persons.
+     * * S0-tier subscription quota: 1,000,000 person groups. Each holds up to
+     * 10,000 persons.
+     * * to handle larger scale face identification problem, please consider using
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d).
+     * <br />
+     * 'recognitionModel' should be specified to associate with this person group.
+     * The default value for 'recognitionModel' is 'recognition_01', if the latest
+     * model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing person group will use the
+     * recognition model that's already associated with the collection. Existing
+     * face features in a person group can't be updated to features extracted by
+     * another version of recognition model.
+     *
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -1316,6 +1622,9 @@ export interface PersonGroupOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1326,11 +1635,41 @@ export interface PersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(personGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createWithHttpOperationResponse(personGroupId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create a new person group with specified personGroupId, name and
-     * user-provided userData.
+     * Create a new person group with specified personGroupId, name, user-provided
+     * userData and recognitionModel.
+     * <br /> A person group is the container of the uploaded person data,
+     * including face images and face recognition features.
+     * <br /> After creation, use [PersonGroup Person -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+     * to add persons into the group, and then call [PersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+     * to get this group ready for [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> The person's face, image, and userData will be stored on server until
+     * [PersonGroup Person -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d)
+     * or [PersonGroup -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245)
+     * is called.
+     * <br />
+     * * Free-tier subscription quota: 1,000 person groups. Each holds up to 1,000
+     * persons.
+     * * S0-tier subscription quota: 1,000,000 person groups. Each holds up to
+     * 10,000 persons.
+     * * to handle larger scale face identification problem, please consider using
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d).
+     * <br />
+     * 'recognitionModel' should be specified to associate with this person group.
+     * The default value for 'recognitionModel' is 'recognition_01', if the latest
+     * model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing person group will use the
+     * recognition model that's already associated with the collection. Existing
+     * face features in a person group can't be updated to features extracted by
+     * another version of recognition model.
+     *
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -1340,6 +1679,9 @@ export interface PersonGroupOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1365,9 +1707,9 @@ export interface PersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(personGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(personGroupId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     create(personGroupId: string, callback: ServiceCallback<void>): void;
-    create(personGroupId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(personGroupId: string, options: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1427,11 +1769,16 @@ export interface PersonGroupOperations {
 
 
     /**
-     * Retrieve the information of a person group, including its name and userData.
+     * Retrieve person group name, userData and recognitionModel. To get person
+     * information under this personGroup, use [PersonGroup Person -
+     * List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1442,14 +1789,19 @@ export interface PersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonGroup>>;
+    getWithHttpOperationResponse(personGroupId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonGroup>>;
 
     /**
-     * Retrieve the information of a person group, including its name and userData.
+     * Retrieve person group name, userData and recognitionModel. To get person
+     * information under this personGroup, use [PersonGroup Person -
+     * List](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1476,9 +1828,9 @@ export interface PersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonGroup>;
+    get(personGroupId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonGroup>;
     get(personGroupId: string, callback: ServiceCallback<models.PersonGroup>): void;
-    get(personGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonGroup>): void;
+    get(personGroupId: string, options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonGroup>): void;
 
 
     /**
@@ -1603,7 +1955,21 @@ export interface PersonGroupOperations {
 
 
     /**
-     * List person groups and their information.
+     * List person groups’ personGroupId, name, userData and recognitionModel.<br
+     * />
+     * * Person groups are stored in alphabetical order of personGroupId.
+     * * "start" parameter (string, optional) is a user-provided personGroupId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 person groups: "group1", ..., "group5".
+     * <br /> "start=&top=" will return all 5 groups.
+     * <br /> "start=&top=2" will return "group1", "group2".
+     * <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1611,6 +1977,9 @@ export interface PersonGroupOperations {
      * personGroupId greater than the "start".
      *
      * @param {number} [options.top] The number of person groups to list.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1621,10 +1990,24 @@ export interface PersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonGroup[]>>;
+    listWithHttpOperationResponse(options?: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonGroup[]>>;
 
     /**
-     * List person groups and their information.
+     * List person groups’ personGroupId, name, userData and recognitionModel.<br
+     * />
+     * * Person groups are stored in alphabetical order of personGroupId.
+     * * "start" parameter (string, optional) is a user-provided personGroupId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 person groups: "group1", ..., "group5".
+     * <br /> "start=&top=" will return all 5 groups.
+     * <br /> "start=&top=2" will return "group1", "group2".
+     * <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1632,6 +2015,9 @@ export interface PersonGroupOperations {
      * personGroupId greater than the "start".
      *
      * @param {number} [options.top] The number of person groups to list.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1657,9 +2043,9 @@ export interface PersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonGroup[]>;
+    list(options?: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonGroup[]>;
     list(callback: ServiceCallback<models.PersonGroup[]>): void;
-    list(options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonGroup[]>): void;
+    list(options: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonGroup[]>): void;
 
 
     /**
@@ -1728,8 +2114,36 @@ export interface FaceListOperations {
 
 
     /**
-     * Create an empty face list. Up to 64 face lists are allowed to exist in one
+     * Create an empty face list with user-specified faceListId, name, an optional
+     * userData and recognitionModel. Up to 64 face lists are allowed in one
      * subscription.
+     * <br /> Face list is a list of faces, up to 1,000 faces, and used by [Face -
+     * Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * <br /> After creation, user should use [FaceList - Add
+     * Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)
+     * to import the faces. Faces are stored on server until [FaceList -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524f)
+     * is called.
+     * <br /> Find Similar is used for scenario like finding celebrity-like faces,
+     * similar face filtering, or as a light way face identification. But if the
+     * actual use is to identify person, please use
+     * [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+     * /
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+     * and [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> Please consider
+     * [LargeFaceList](/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)
+     * when the face number is large. It can support up to 1,000,000 faces.
+     * 'recognitionModel' should be specified to associate with this face list. The
+     * default value for 'recognitionModel' is 'recognition_01', if the latest
+     * model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing face list will use the
+     * recognition model that's already associated with the collection. Existing
+     * face features in a face list can't be updated to features extracted by
+     * another version of recognition model.
+     *
      *
      * @param {string} faceListId Id referencing a particular face list.
      *
@@ -1739,6 +2153,9 @@ export interface FaceListOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1749,11 +2166,39 @@ export interface FaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(faceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createWithHttpOperationResponse(faceListId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create an empty face list. Up to 64 face lists are allowed to exist in one
+     * Create an empty face list with user-specified faceListId, name, an optional
+     * userData and recognitionModel. Up to 64 face lists are allowed in one
      * subscription.
+     * <br /> Face list is a list of faces, up to 1,000 faces, and used by [Face -
+     * Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * <br /> After creation, user should use [FaceList - Add
+     * Face](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)
+     * to import the faces. Faces are stored on server until [FaceList -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524f)
+     * is called.
+     * <br /> Find Similar is used for scenario like finding celebrity-like faces,
+     * similar face filtering, or as a light way face identification. But if the
+     * actual use is to identify person, please use
+     * [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+     * /
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+     * and [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> Please consider
+     * [LargeFaceList](/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)
+     * when the face number is large. It can support up to 1,000,000 faces.
+     * 'recognitionModel' should be specified to associate with this face list. The
+     * default value for 'recognitionModel' is 'recognition_01', if the latest
+     * model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing face list will use the
+     * recognition model that's already associated with the collection. Existing
+     * face features in a face list can't be updated to features extracted by
+     * another version of recognition model.
+     *
      *
      * @param {string} faceListId Id referencing a particular face list.
      *
@@ -1763,6 +2208,9 @@ export interface FaceListOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1788,17 +2236,22 @@ export interface FaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(faceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(faceListId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     create(faceListId: string, callback: ServiceCallback<void>): void;
-    create(faceListId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(faceListId: string, options: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Retrieve a face list's information.
+     * Retrieve a face list’s faceListId, name, userData, recognitionModel and
+     * faces in the face list.
+     *
      *
      * @param {string} faceListId Id referencing a particular face list.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1809,14 +2262,19 @@ export interface FaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(faceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FaceList>>;
+    getWithHttpOperationResponse(faceListId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FaceList>>;
 
     /**
-     * Retrieve a face list's information.
+     * Retrieve a face list’s faceListId, name, userData, recognitionModel and
+     * faces in the face list.
+     *
      *
      * @param {string} faceListId Id referencing a particular face list.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1843,9 +2301,9 @@ export interface FaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(faceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FaceList>;
+    get(faceListId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.FaceList>;
     get(faceListId: string, callback: ServiceCallback<models.FaceList>): void;
-    get(faceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FaceList>): void;
+    get(faceListId: string, options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FaceList>): void;
 
 
     /**
@@ -1969,10 +2427,15 @@ export interface FaceListOperations {
 
 
     /**
-     * Retrieve information about all existing face lists. Only faceListId, name
-     * and userData will be returned.
+     * List face lists’ faceListId, name, userData and recognitionModel. <br />
+     * To get face information inside faceList use [FaceList -
+     * Get](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)
+     *
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1983,13 +2446,18 @@ export interface FaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FaceList[]>>;
+    listWithHttpOperationResponse(options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FaceList[]>>;
 
     /**
-     * Retrieve information about all existing face lists. Only faceListId, name
-     * and userData will be returned.
+     * List face lists’ faceListId, name, userData and recognitionModel. <br />
+     * To get face information inside faceList use [FaceList -
+     * Get](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)
+     *
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2015,13 +2483,13 @@ export interface FaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FaceList[]>;
+    list(options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.FaceList[]>;
     list(callback: ServiceCallback<models.FaceList[]>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FaceList[]>): void;
+    list(options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FaceList[]>): void;
 
 
     /**
-     * Delete an existing face from a face list (given by a persisitedFaceId and a
+     * Delete an existing face from a face list (given by a persistedFaceId and a
      * faceListId). Persisted image related to the face will also be deleted.
      *
      * @param {string} faceListId Id referencing a particular face list.
@@ -2043,7 +2511,7 @@ export interface FaceListOperations {
     deleteFaceWithHttpOperationResponse(faceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing face from a face list (given by a persisitedFaceId and a
+     * Delete an existing face from a face list (given by a persistedFaceId and a
      * faceListId). Persisted image related to the face will also be deleted.
      *
      * @param {string} faceListId Id referencing a particular face list.
@@ -2984,8 +3452,35 @@ export interface LargePersonGroupOperations {
 
 
     /**
-     * Create a new large person group with specified largePersonGroupId, name and
-     * user-provided userData.
+     * Create a new large person group with user-specified largePersonGroupId,
+     * name, an optional userData and recognitionModel.
+     * <br /> A large person group is the container of the uploaded person data,
+     * including face images and face recognition feature, and up to 1,000,000
+     * people.
+     * <br /> After creation, use [LargePersonGroup Person -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
+     * to add person into the group, and call [LargePersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
+     * to get this group ready for [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> The person face, image, and userData will be stored on server until
+     * [LargePersonGroup Person -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/599ade5c6ac60f11b48b5aa2)
+     * or [LargePersonGroup -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/599adc216ac60f11b48b5a9f)
+     * is called.
+     * <br />
+     * * Free-tier subscription quota: 1,000 large person groups.
+     * * S0-tier subscription quota: 1,000,000 large person groups.
+     * <br />
+     * 'recognitionModel' should be specified to associate with this large person
+     * group. The default value for 'recognitionModel' is 'recognition_01', if the
+     * latest model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing large person group will
+     * use the recognition model that's already associated with the collection.
+     * Existing face features in a large person group can't be updated to features
+     * extracted by another version of recognition model.
+     *
      *
      * @param {string} largePersonGroupId Id referencing a particular large person
      * group.
@@ -2996,6 +3491,9 @@ export interface LargePersonGroupOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3006,11 +3504,38 @@ export interface LargePersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createWithHttpOperationResponse(largePersonGroupId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create a new large person group with specified largePersonGroupId, name and
-     * user-provided userData.
+     * Create a new large person group with user-specified largePersonGroupId,
+     * name, an optional userData and recognitionModel.
+     * <br /> A large person group is the container of the uploaded person data,
+     * including face images and face recognition feature, and up to 1,000,000
+     * people.
+     * <br /> After creation, use [LargePersonGroup Person -
+     * Create](/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
+     * to add person into the group, and call [LargePersonGroup -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
+     * to get this group ready for [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br /> The person face, image, and userData will be stored on server until
+     * [LargePersonGroup Person -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/599ade5c6ac60f11b48b5aa2)
+     * or [LargePersonGroup -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/599adc216ac60f11b48b5a9f)
+     * is called.
+     * <br />
+     * * Free-tier subscription quota: 1,000 large person groups.
+     * * S0-tier subscription quota: 1,000,000 large person groups.
+     * <br />
+     * 'recognitionModel' should be specified to associate with this large person
+     * group. The default value for 'recognitionModel' is 'recognition_01', if the
+     * latest model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing large person group will
+     * use the recognition model that's already associated with the collection.
+     * Existing face features in a large person group can't be updated to features
+     * extracted by another version of recognition model.
+     *
      *
      * @param {string} largePersonGroupId Id referencing a particular large person
      * group.
@@ -3021,6 +3546,9 @@ export interface LargePersonGroupOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3046,9 +3574,9 @@ export interface LargePersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(largePersonGroupId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     create(largePersonGroupId: string, callback: ServiceCallback<void>): void;
-    create(largePersonGroupId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(largePersonGroupId: string, options: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3110,13 +3638,20 @@ export interface LargePersonGroupOperations {
 
 
     /**
-     * Retrieve the information of a large person group, including its name and
-     * userData.
+     * Retrieve the information of a large person group, including its name,
+     * userData and recognitionModel. This API returns large person group
+     * information only, use [LargePersonGroup Person -
+     * List](/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1)
+     * instead to retrieve person information under the large person group.
+     *
      *
      * @param {string} largePersonGroupId Id referencing a particular large person
      * group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3127,16 +3662,23 @@ export interface LargePersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup>>;
+    getWithHttpOperationResponse(largePersonGroupId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup>>;
 
     /**
-     * Retrieve the information of a large person group, including its name and
-     * userData.
+     * Retrieve the information of a large person group, including its name,
+     * userData and recognitionModel. This API returns large person group
+     * information only, use [LargePersonGroup Person -
+     * List](/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1)
+     * instead to retrieve person information under the large person group.
+     *
      *
      * @param {string} largePersonGroupId Id referencing a particular large person
      * group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3163,9 +3705,9 @@ export interface LargePersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup>;
+    get(largePersonGroupId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup>;
     get(largePersonGroupId: string, callback: ServiceCallback<models.LargePersonGroup>): void;
-    get(largePersonGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup>): void;
+    get(largePersonGroupId: string, options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup>): void;
 
 
     /**
@@ -3294,7 +3836,22 @@ export interface LargePersonGroupOperations {
 
 
     /**
-     * List large person groups and their information.
+     * List all existing large person groups’ largePersonGroupId, name, userData
+     * and recognitionModel.<br />
+     * * Large person groups are stored in alphabetical order of
+     * largePersonGroupId.
+     * * "start" parameter (string, optional) is a user-provided largePersonGroupId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 large person groups: "group1", ..., "group5".
+     * <br /> "start=&top=" will return all 5 groups.
+     * <br /> "start=&top=2" will return "group1", "group2".
+     * <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3302,6 +3859,9 @@ export interface LargePersonGroupOperations {
      * largePersonGroupId greater than the "start".
      *
      * @param {number} [options.top] The number of large person groups to list.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3312,10 +3872,25 @@ export interface LargePersonGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup[]>>;
+    listWithHttpOperationResponse(options?: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup[]>>;
 
     /**
-     * List large person groups and their information.
+     * List all existing large person groups’ largePersonGroupId, name, userData
+     * and recognitionModel.<br />
+     * * Large person groups are stored in alphabetical order of
+     * largePersonGroupId.
+     * * "start" parameter (string, optional) is a user-provided largePersonGroupId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 large person groups: "group1", ..., "group5".
+     * <br /> "start=&top=" will return all 5 groups.
+     * <br /> "start=&top=2" will return "group1", "group2".
+     * <br /> "start=group2&top=3" will return "group3", "group4", "group5".
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3323,6 +3898,9 @@ export interface LargePersonGroupOperations {
      * largePersonGroupId greater than the "start".
      *
      * @param {number} [options.top] The number of large person groups to list.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3348,9 +3926,9 @@ export interface LargePersonGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup[]>;
+    list(options?: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup[]>;
     list(callback: ServiceCallback<models.LargePersonGroup[]>): void;
-    list(options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup[]>): void;
+    list(options: { start? : string, top? : number, returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup[]>): void;
 
 
     /**
@@ -3421,8 +3999,40 @@ export interface LargeFaceListOperations {
 
 
     /**
-     * Create an empty large face list. Up to 64 large face lists are allowed to
-     * exist in one subscription.
+     * Create an empty large face list with user-specified largeFaceListId, name,
+     * an optional userData and recognitionModel.
+     * <br /> Large face list is a list of faces, up to 1,000,000 faces, and used
+     * by [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * <br /> After creation, user should use [LargeFaceList Face -
+     * Add](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)
+     * to import the faces and [LargeFaceList -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)
+     * to make it ready for [Face -
+     * FindSimilar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * Faces are stored on server until [LargeFaceList -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+     * is called.
+     * <br /> Find Similar is used for scenario like finding celebrity-like faces,
+     * similar face filtering, or as a light way face identification. But if the
+     * actual use is to identify person, please use
+     * [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+     * /
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+     * and [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br />
+     * * Free-tier subscription quota: 64 large face lists.
+     * * S0-tier subscription quota: 1,000,000 large face lists.
+     * <br />
+     * 'recognitionModel' should be specified to associate with this large face
+     * list. The default value for 'recognitionModel' is 'recognition_01', if the
+     * latest model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing large face list will use
+     * the recognition model that's already associated with the collection.
+     * Existing face features in a large face list can't be updated to features
+     * extracted by another version of recognition model.
+     *
      *
      * @param {string} largeFaceListId Id referencing a particular large face list.
      *
@@ -3432,6 +4042,9 @@ export interface LargeFaceListOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3442,11 +4055,43 @@ export interface LargeFaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createWithHttpOperationResponse(largeFaceListId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create an empty large face list. Up to 64 large face lists are allowed to
-     * exist in one subscription.
+     * Create an empty large face list with user-specified largeFaceListId, name,
+     * an optional userData and recognitionModel.
+     * <br /> Large face list is a list of faces, up to 1,000,000 faces, and used
+     * by [Face - Find
+     * Similar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * <br /> After creation, user should use [LargeFaceList Face -
+     * Add](/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)
+     * to import the faces and [LargeFaceList -
+     * Train](/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)
+     * to make it ready for [Face -
+     * FindSimilar](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+     * Faces are stored on server until [LargeFaceList -
+     * Delete](/docs/services/563879b61984550e40cbbe8d/operations/5a1580d5d2de3616c086f2cd)
+     * is called.
+     * <br /> Find Similar is used for scenario like finding celebrity-like faces,
+     * similar face filtering, or as a light way face identification. But if the
+     * actual use is to identify person, please use
+     * [PersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+     * /
+     * [LargePersonGroup](/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+     * and [Face -
+     * Identify](/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+     * <br />
+     * * Free-tier subscription quota: 64 large face lists.
+     * * S0-tier subscription quota: 1,000,000 large face lists.
+     * <br />
+     * 'recognitionModel' should be specified to associate with this large face
+     * list. The default value for 'recognitionModel' is 'recognition_01', if the
+     * latest model needed, please explicitly specify the model you need in this
+     * parameter. New faces that are added to an existing large face list will use
+     * the recognition model that's already associated with the collection.
+     * Existing face features in a large face list can't be updated to features
+     * extracted by another version of recognition model.
+     *
      *
      * @param {string} largeFaceListId Id referencing a particular large face list.
      *
@@ -3456,6 +4101,9 @@ export interface LargeFaceListOperations {
      *
      * @param {string} [options.userData] User specified data. Length should not
      * exceed 16KB.
+     *
+     * @param {string} [options.recognitionModel] Possible values include:
+     * 'recognition_01', 'recognition_02'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3481,17 +4129,21 @@ export interface LargeFaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(largeFaceListId: string, options?: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     create(largeFaceListId: string, callback: ServiceCallback<void>): void;
-    create(largeFaceListId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(largeFaceListId: string, options: { name? : string, userData? : string, recognitionModel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Retrieve a large face list's information.
+     * Retrieve a large face list’s largeFaceListId, name, userData and
+     * recognitionModel.
      *
      * @param {string} largeFaceListId Id referencing a particular large face list.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3502,14 +4154,18 @@ export interface LargeFaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList>>;
+    getWithHttpOperationResponse(largeFaceListId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList>>;
 
     /**
-     * Retrieve a large face list's information.
+     * Retrieve a large face list’s largeFaceListId, name, userData and
+     * recognitionModel.
      *
      * @param {string} largeFaceListId Id referencing a particular large face list.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3536,9 +4192,9 @@ export interface LargeFaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList>;
+    get(largeFaceListId: string, options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList>;
     get(largeFaceListId: string, callback: ServiceCallback<models.LargeFaceList>): void;
-    get(largeFaceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList>): void;
+    get(largeFaceListId: string, options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList>): void;
 
 
     /**
@@ -3717,10 +4373,29 @@ export interface LargeFaceListOperations {
 
 
     /**
-     * Retrieve information about all existing large face lists. Only
-     * largeFaceListId, name and userData will be returned.
+     * List large face lists’ information of largeFaceListId, name, userData and
+     * recognitionModel. <br />
+     * To get face information inside largeFaceList use [LargeFaceList Face -
+     * Get](/docs/services/563879b61984550e40cbbe8d/operations/5a158cf2d2de3616c086f2d5)<br
+     * />
+     * * Large face lists are stored in alphabetical order of largeFaceListId.
+     * * "start" parameter (string, optional) is a user-provided largeFaceListId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 large person lists: "list1", ..., "list5".
+     * <br /> "start=&top=" will return all 5 lists.
+     * <br /> "start=&top=2" will return "list1", "list2".
+     * <br /> "start=list2&top=3" will return "list3", "list4", "list5".
+     *
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3731,13 +4406,32 @@ export interface LargeFaceListOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList[]>>;
+    listWithHttpOperationResponse(options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList[]>>;
 
     /**
-     * Retrieve information about all existing large face lists. Only
-     * largeFaceListId, name and userData will be returned.
+     * List large face lists’ information of largeFaceListId, name, userData and
+     * recognitionModel. <br />
+     * To get face information inside largeFaceList use [LargeFaceList Face -
+     * Get](/docs/services/563879b61984550e40cbbe8d/operations/5a158cf2d2de3616c086f2d5)<br
+     * />
+     * * Large face lists are stored in alphabetical order of largeFaceListId.
+     * * "start" parameter (string, optional) is a user-provided largeFaceListId
+     * value that returned entries have larger ids by string comparison. "start"
+     * set to empty to indicate return from the first item.
+     * * "top" parameter (int, optional) specifies the number of entries to return.
+     * A maximal of 1000 entries can be returned in one call. To fetch more, you
+     * can specify "start" with the last returned entry’s Id of the current call.
+     * <br />
+     * For example, total 5 large person lists: "list1", ..., "list5".
+     * <br /> "start=&top=" will return all 5 lists.
+     * <br /> "start=&top=2" will return "list1", "list2".
+     * <br /> "start=list2&top=3" will return "list3", "list4", "list5".
+     *
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.returnRecognitionModel] A value indicating whether
+     * the operation should return 'recognitionModel' in response.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3763,9 +4457,9 @@ export interface LargeFaceListOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList[]>;
+    list(options?: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList[]>;
     list(callback: ServiceCallback<models.LargeFaceList[]>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList[]>): void;
+    list(options: { returnRecognitionModel? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList[]>): void;
 
 
     /**
@@ -3825,7 +4519,7 @@ export interface LargeFaceListOperations {
 
 
     /**
-     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * Delete an existing face from a large face list (given by a persistedFaceId
      * and a largeFaceListId). Persisted image related to the face will also be
      * deleted.
      *
@@ -3848,7 +4542,7 @@ export interface LargeFaceListOperations {
     deleteFaceWithHttpOperationResponse(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * Delete an existing face from a large face list (given by a persistedFaceId
      * and a largeFaceListId). Persisted image related to the face will also be
      * deleted.
      *
@@ -4249,4 +4943,625 @@ export interface LargeFaceListOperations {
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+}
+
+/**
+ * @class
+ * SnapshotOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FaceClient.
+ */
+export interface SnapshotOperations {
+
+
+    /**
+     * Submit an operation to take a snapshot of face list, large face list, person
+     * group or large person group, with user-specified snapshot type, source
+     * object id, apply scope and an optional user data.<br />
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.<br />
+     * Taking snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of creating the snapshot.
+     * The snapshot id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
+     * Snapshot taking time depends on the number of person and face entries in the
+     * source object. It could be in seconds, or up to several hours for 1,000,000
+     * persons with multiple faces.<br />
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. User can delete the snapshot using Snapshot -
+     * Delete by themselves any time before expiration.<br />
+     * Taking snapshot for a certain object will not block any other operations
+     * against the object. All read-only operations (Get/List and
+     * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
+     * operations, including Add/Update/Delete the source object or its
+     * persons/faces and Train, they are not blocked but not recommended because
+     * writable updates may not be reflected on the snapshot during its taking.
+     * After snapshot taking is completed, all readable and writable operations can
+     * work as normal. Snapshot will also include the training results of the
+     * source object, which means target subscription the snapshot applied to does
+     * not need re-train the target object before calling Identify/FindSimilar.<br
+     * />
+     * * Free-tier subscription quota: 100 take operations per month.
+     * * S0-tier subscription quota: 100 take operations per day.
+     *
+     * @param {string} type User specified type for the source object to take
+     * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
+     * LargePersonGroup are supported. Possible values include: 'FaceList',
+     * 'LargeFaceList', 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {string} objectId User specified source object id to take snapshot
+     * from.
+     *
+     * @param {array} applyScope User specified array of target Face subscription
+     * ids for the snapshot. For each snapshot, only subscriptions included in the
+     * applyScope of Snapshot - Take can apply it.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    takeWithHttpOperationResponse(type: string, objectId: string, applyScope: string[], options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Submit an operation to take a snapshot of face list, large face list, person
+     * group or large person group, with user-specified snapshot type, source
+     * object id, apply scope and an optional user data.<br />
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.<br />
+     * Taking snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of creating the snapshot.
+     * The snapshot id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
+     * Snapshot taking time depends on the number of person and face entries in the
+     * source object. It could be in seconds, or up to several hours for 1,000,000
+     * persons with multiple faces.<br />
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. User can delete the snapshot using Snapshot -
+     * Delete by themselves any time before expiration.<br />
+     * Taking snapshot for a certain object will not block any other operations
+     * against the object. All read-only operations (Get/List and
+     * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
+     * operations, including Add/Update/Delete the source object or its
+     * persons/faces and Train, they are not blocked but not recommended because
+     * writable updates may not be reflected on the snapshot during its taking.
+     * After snapshot taking is completed, all readable and writable operations can
+     * work as normal. Snapshot will also include the training results of the
+     * source object, which means target subscription the snapshot applied to does
+     * not need re-train the target object before calling Identify/FindSimilar.<br
+     * />
+     * * Free-tier subscription quota: 100 take operations per month.
+     * * S0-tier subscription quota: 100 take operations per day.
+     *
+     * @param {string} type User specified type for the source object to take
+     * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
+     * LargePersonGroup are supported. Possible values include: 'FaceList',
+     * 'LargeFaceList', 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {string} objectId User specified source object id to take snapshot
+     * from.
+     *
+     * @param {array} applyScope User specified array of target Face subscription
+     * ids for the snapshot. For each snapshot, only subscriptions included in the
+     * applyScope of Snapshot - Take can apply it.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    take(type: string, objectId: string, applyScope: string[], options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    take(type: string, objectId: string, applyScope: string[], callback: ServiceCallback<void>): void;
+    take(type: string, objectId: string, applyScope: string[], options: { userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List all accessible snapshots with related information, including snapshots
+     * that were taken by the user, or snapshots to be applied to the user
+     * (subscription id was included in the applyScope in Snapshot - Take).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.type] User specified object type as a search
+     * filter. Possible values include: 'FaceList', 'LargeFaceList',
+     * 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {array} [options.applyScope] User specified snapshot apply scopes as
+     * a search filter. ApplyScope is an array of the target Azure subscription ids
+     * for the snapshot, specified by the user who created the snapshot by Snapshot
+     * - Take.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot[]>>;
+
+    /**
+     * List all accessible snapshots with related information, including snapshots
+     * that were taken by the user, or snapshots to be applied to the user
+     * (subscription id was included in the applyScope in Snapshot - Take).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.type] User specified object type as a search
+     * filter. Possible values include: 'FaceList', 'LargeFaceList',
+     * 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {array} [options.applyScope] User specified snapshot apply scopes as
+     * a search filter. ApplyScope is an array of the target Azure subscription ids
+     * for the snapshot, specified by the user who created the snapshot by Snapshot
+     * - Take.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot[]>;
+    list(callback: ServiceCallback<models.Snapshot[]>): void;
+    list(options: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot[]>): void;
+
+
+    /**
+     * Retrieve information about a snapshot. Snapshot is only accessible to the
+     * source subscription who took it, and target subscriptions included in the
+     * applyScope in Snapshot - Take.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Retrieve information about a snapshot. Snapshot is only accessible to the
+     * source subscription who took it, and target subscriptions included in the
+     * applyScope in Snapshot - Take.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    get(snapshotId: string, callback: ServiceCallback<models.Snapshot>): void;
+    get(snapshotId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Update the information of a snapshot. Only the source subscription who took
+     * the snapshot can update the snapshot.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.applyScope] Array of the target Face subscription
+     * ids for the snapshot, specified by the user who created the snapshot when
+     * calling Snapshot - Take. For each snapshot, only subscriptions included in
+     * the applyScope of Snapshot - Take can apply it.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(snapshotId: string, options?: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update the information of a snapshot. Only the source subscription who took
+     * the snapshot can update the snapshot.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.applyScope] Array of the target Face subscription
+     * ids for the snapshot, specified by the user who created the snapshot when
+     * calling Snapshot - Take. For each snapshot, only subscriptions included in
+     * the applyScope of Snapshot - Take can apply it.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(snapshotId: string, options?: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(snapshotId: string, callback: ServiceCallback<void>): void;
+    update(snapshotId: string, options: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete an existing snapshot according to the snapshotId. All object data and
+     * information in the snapshot will also be deleted. Only the source
+     * subscription who took the snapshot can delete the snapshot. If the user does
+     * not delete a snapshot with this API, the snapshot will still be
+     * automatically deleted in 48 hours after creation.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing snapshot according to the snapshotId. All object data and
+     * information in the snapshot will also be deleted. Only the source
+     * subscription who took the snapshot can delete the snapshot. If the user does
+     * not delete a snapshot with this API, the snapshot will still be
+     * automatically deleted in 48 hours after creation.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(snapshotId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(snapshotId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Submit an operation to apply a snapshot to current subscription. For each
+     * snapshot, only subscriptions included in the applyScope of Snapshot - Take
+     * can apply it.<br />
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.<br />
+     * Applying snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of applying the snapshot.
+     * The target object id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
+     * Snapshot applying time depends on the number of person and face entries in
+     * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
+     * persons with multiple faces.<br />
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. So the target subscription is required to apply
+     * the snapshot in 48 hours since its creation.<br />
+     * Applying a snapshot will not block any other operations against the target
+     * object, however it is not recommended because the correctness cannot be
+     * guaranteed during snapshot applying. After snapshot applying is completed,
+     * all operations towards the target object can work as normal. Snapshot also
+     * includes the training results of the source object, which means target
+     * subscription the snapshot applied to does not need re-train the target
+     * object before calling Identify/FindSimilar.<br />
+     * One snapshot can be applied multiple times in parallel, while currently only
+     * CreateNew apply mode is supported, which means the apply operation will fail
+     * if target subscription already contains an object of same type and using the
+     * same objectId. Users can specify the "objectId" in request body to avoid
+     * such conflicts.<br />
+     * * Free-tier subscription quota: 100 apply operations per month.
+     * * S0-tier subscription quota: 100 apply operations per day.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {string} objectId User specified target object id to be created from
+     * the snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.mode] Snapshot applying mode. Currently only
+     * CreateNew is supported, which means the apply operation will fail if target
+     * subscription already contains an object of same type and using the same
+     * objectId. Users can specify the "objectId" in request body to avoid such
+     * conflicts. Possible values include: 'CreateNew'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    applyWithHttpOperationResponse(snapshotId: string, objectId: string, options?: { mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Submit an operation to apply a snapshot to current subscription. For each
+     * snapshot, only subscriptions included in the applyScope of Snapshot - Take
+     * can apply it.<br />
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.<br />
+     * Applying snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of applying the snapshot.
+     * The target object id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".<br
+     * />
+     * Snapshot applying time depends on the number of person and face entries in
+     * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
+     * persons with multiple faces.<br />
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. So the target subscription is required to apply
+     * the snapshot in 48 hours since its creation.<br />
+     * Applying a snapshot will not block any other operations against the target
+     * object, however it is not recommended because the correctness cannot be
+     * guaranteed during snapshot applying. After snapshot applying is completed,
+     * all operations towards the target object can work as normal. Snapshot also
+     * includes the training results of the source object, which means target
+     * subscription the snapshot applied to does not need re-train the target
+     * object before calling Identify/FindSimilar.<br />
+     * One snapshot can be applied multiple times in parallel, while currently only
+     * CreateNew apply mode is supported, which means the apply operation will fail
+     * if target subscription already contains an object of same type and using the
+     * same objectId. Users can specify the "objectId" in request body to avoid
+     * such conflicts.<br />
+     * * Free-tier subscription quota: 100 apply operations per month.
+     * * S0-tier subscription quota: 100 apply operations per day.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {string} objectId User specified target object id to be created from
+     * the snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.mode] Snapshot applying mode. Currently only
+     * CreateNew is supported, which means the apply operation will fail if target
+     * subscription already contains an object of same type and using the same
+     * objectId. Users can specify the "objectId" in request body to avoid such
+     * conflicts. Possible values include: 'CreateNew'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    apply(snapshotId: string, objectId: string, options?: { mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    apply(snapshotId: string, objectId: string, callback: ServiceCallback<void>): void;
+    apply(snapshotId: string, objectId: string, options: { mode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the status of a take/apply snapshot operation.
+     *
+     * @param {uuid} operationId Id referencing a particular take/apply snapshot
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOperationStatusWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+
+    /**
+     * Retrieve the status of a take/apply snapshot operation.
+     *
+     * @param {uuid} operationId Id referencing a particular take/apply snapshot
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOperationStatus(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    getOperationStatus(operationId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    getOperationStatus(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }

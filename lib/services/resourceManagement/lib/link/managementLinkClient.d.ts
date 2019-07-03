@@ -56,6 +56,7 @@ export default class ManagementLinkClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   resourceLinks: operations.ResourceLinks;
 }
 

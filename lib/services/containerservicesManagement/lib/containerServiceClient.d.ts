@@ -54,9 +54,11 @@ export default class ContainerServiceClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  openShiftManagedClusters: operations.OpenShiftManagedClusters;
   containerServices: operations.ContainerServices;
   operations: operations.Operations;
   managedClusters: operations.ManagedClusters;
+  agentPools: operations.AgentPools;
 }
 
 export { ContainerServiceClient, models as ContainerServiceModels };

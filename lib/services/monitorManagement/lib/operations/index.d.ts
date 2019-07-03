@@ -2118,6 +2118,10 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -2178,6 +2182,10 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -3906,7 +3914,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Retrieve alert rule defintions in a resource group.
+     * Retrieve alert rule definitions in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3924,7 +3932,7 @@ export interface MetricAlerts {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResourceCollection>>;
 
     /**
-     * Retrieve alert rule defintions in a resource group.
+     * Retrieve alert rule definitions in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3962,7 +3970,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Retrieve an alert rule definiton.
+     * Retrieve an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3982,7 +3990,7 @@ export interface MetricAlerts {
     getWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResource>>;
 
     /**
-     * Retrieve an alert rule definiton.
+     * Retrieve an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4047,6 +4055,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4101,6 +4117,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
@@ -4178,6 +4202,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4231,6 +4263,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4275,7 +4315,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Delete an alert rule defitiniton.
+     * Delete an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4295,7 +4335,7 @@ export interface MetricAlerts {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an alert rule defitiniton.
+     * Delete an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4493,7 +4533,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4504,8 +4545,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequency, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.
@@ -4555,7 +4596,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4566,8 +4608,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequency, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.
@@ -5002,4 +5044,73 @@ export interface MetricNamespaces {
     list(resourceUri: string, options?: { startTime? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricNamespaceCollection>;
     list(resourceUri: string, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
     list(resourceUri: string, options: { startTime? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
+}
+
+/**
+ * @class
+ * VMInsights
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface VMInsights {
+
+
+    /**
+     * Retrieves the VM Insights onboarding status for the specified resource or
+     * resource scope.
+     *
+     * @param {string} resourceUri The fully qualified Azure Resource manager
+     * identifier of the resource, or scope, whose status to retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VMInsightsOnboardingStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOnboardingStatusWithHttpOperationResponse(resourceUri: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VMInsightsOnboardingStatus>>;
+
+    /**
+     * Retrieves the VM Insights onboarding status for the specified resource or
+     * resource scope.
+     *
+     * @param {string} resourceUri The fully qualified Azure Resource manager
+     * identifier of the resource, or scope, whose status to retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VMInsightsOnboardingStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VMInsightsOnboardingStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VMInsightsOnboardingStatus} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOnboardingStatus(resourceUri: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VMInsightsOnboardingStatus>;
+    getOnboardingStatus(resourceUri: string, callback: ServiceCallback<models.VMInsightsOnboardingStatus>): void;
+    getOnboardingStatus(resourceUri: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VMInsightsOnboardingStatus>): void;
 }

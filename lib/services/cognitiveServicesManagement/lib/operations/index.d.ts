@@ -38,16 +38,10 @@ export interface Accounts {
      * resource.
      *
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation, optional for update. Possible values include: 'F0', 'P0',
-     * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+     * account creation, optional for update.
      *
      * @param {string} parameters.kind Required. Gets or sets the Kind of the
-     * resource. Possible values include: 'Bing.Autosuggest.v7',
-     * 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7',
-     * 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-     * 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * resource.
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
@@ -94,16 +88,10 @@ export interface Accounts {
      * resource.
      *
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation, optional for update. Possible values include: 'F0', 'P0',
-     * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+     * account creation, optional for update.
      *
      * @param {string} parameters.kind Required. Gets or sets the Kind of the
-     * resource. Possible values include: 'Bing.Autosuggest.v7',
-     * 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7',
-     * 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-     * 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * resource.
      *
      * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
@@ -166,14 +154,16 @@ export interface Accounts {
      * @param {object} [options.sku] Gets or sets the SKU of the resource.
      *
      * @param {string} options.sku.name Gets or sets the sku name. Required for
-     * account creation, optional for update. Possible values include: 'F0', 'P0',
-     * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+     * account creation, optional for update.
      *
      * @param {object} [options.tags] Gets or sets a list of key value pairs that
      * describe the resource. These tags can be used in viewing and grouping this
      * resource (across resource groups). A maximum of 15 tags can be provided for
      * a resource. Each tag must have a key no greater than 128 characters and
      * value no greater than 256 characters.
+     *
+     * @param {object} [options.properties] Additional properties for Account. Only
+     * provided fields will be updated.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -184,7 +174,7 @@ export interface Accounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CognitiveServicesAccount>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CognitiveServicesAccount>>;
 
     /**
      * Updates a Cognitive Services account
@@ -199,14 +189,16 @@ export interface Accounts {
      * @param {object} [options.sku] Gets or sets the SKU of the resource.
      *
      * @param {string} options.sku.name Gets or sets the sku name. Required for
-     * account creation, optional for update. Possible values include: 'F0', 'P0',
-     * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+     * account creation, optional for update.
      *
      * @param {object} [options.tags] Gets or sets a list of key value pairs that
      * describe the resource. These tags can be used in viewing and grouping this
      * resource (across resource groups). A maximum of 15 tags can be provided for
      * a resource. Each tag must have a key no greater than 128 characters and
      * value no greater than 256 characters.
+     *
+     * @param {object} [options.properties] Additional properties for Account. Only
+     * provided fields will be updated.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -234,9 +226,9 @@ export interface Accounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CognitiveServicesAccount>;
+    update(resourceGroupName: string, accountName: string, options?: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }): Promise<models.CognitiveServicesAccount>;
     update(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
-    update(resourceGroupName: string, accountName: string, options: { sku? : models.Sku, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
+    update(resourceGroupName: string, accountName: string, options: { sku? : models.Sku, tags? : { [propertyName: string]: string }, properties? : any, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CognitiveServicesAccount>): void;
 
 
     /**
@@ -1106,12 +1098,7 @@ export interface CheckSkuAvailability {
      *
      * @param {array} skus The SKU of the resource.
      *
-     * @param {string} kind The Kind of the resource. Possible values include:
-     * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
-     * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-     * 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * @param {string} kind The Kind of the resource.
      *
      * @param {string} type The Type of the resource.
      *
@@ -1135,12 +1122,7 @@ export interface CheckSkuAvailability {
      *
      * @param {array} skus The SKU of the resource.
      *
-     * @param {string} kind The Kind of the resource. Possible values include:
-     * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
-     * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
-     * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
-     * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
-     * 'TextAnalytics', 'TextTranslation', 'WebLM'
+     * @param {string} kind The Kind of the resource.
      *
      * @param {string} type The Type of the resource.
      *

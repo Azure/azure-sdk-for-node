@@ -110,9 +110,12 @@ export interface FailoverPolicy {
  *
  * @member {string} [id] Resource ID of a subnet, for example:
  * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+ * @member {boolean} [ignoreMissingVNetServiceEndpoint] Create firewall rule
+ * before the virtual network has vnet service endpoint enabled.
  */
 export interface VirtualNetworkRule {
   id?: string;
+  ignoreMissingVNetServiceEndpoint?: boolean;
 }
 
 /**
@@ -187,6 +190,8 @@ export interface Resource extends BaseResource {
  * ordered by their failover priorities.
  * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
  * configured for the Cosmos DB account.
+ * @member {boolean} [enableMultipleWriteLocations] Enables the account to
+ * write in multiple locations
  */
 export interface DatabaseAccount extends Resource {
   kind?: string;
@@ -202,6 +207,7 @@ export interface DatabaseAccount extends Resource {
   readonly readLocations?: Location[];
   readonly failoverPolicies?: FailoverPolicy[];
   virtualNetworkRules?: VirtualNetworkRule[];
+  enableMultipleWriteLocations?: boolean;
 }
 
 /**
@@ -284,6 +290,8 @@ export interface RegionForOnlineOffline {
  * account
  * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
  * configured for the Cosmos DB account.
+ * @member {boolean} [enableMultipleWriteLocations] Enables the account to
+ * write in multiple locations
  */
 export interface DatabaseAccountCreateUpdateParameters extends Resource {
   kind?: string;
@@ -294,6 +302,7 @@ export interface DatabaseAccountCreateUpdateParameters extends Resource {
   enableAutomaticFailover?: boolean;
   capabilities?: Capability[];
   virtualNetworkRules?: VirtualNetworkRule[];
+  enableMultipleWriteLocations?: boolean;
 }
 
 /**

@@ -19,7 +19,7 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
-   * @param {string} endpoint - Supported Cognitive Services endpoints
+   * @param {string} endpoint - Supported Cognitive Services endpoints.
    *
    * @param {object} [options] - The parameter options
    *
@@ -39,91 +39,40 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
-   * This operation returns the list of domain-specific models that are supported
-   * by the Computer Vision API.  Currently, the API only supports one
-   * domain-specific model: a celebrity recognizer. A successful response will be
-   * returned in JSON.  If the request failed, the response will contain an error
-   * code and a message to help understand what went wrong.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ListModelsResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listModelsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListModelsResult>>;
-
-  /**
-   * This operation returns the list of domain-specific models that are supported
-   * by the Computer Vision API.  Currently, the API only supports one
-   * domain-specific model: a celebrity recognizer. A successful response will be
-   * returned in JSON.  If the request failed, the response will contain an error
-   * code and a message to help understand what went wrong.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ListModelsResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ListModelsResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ListModelsResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listModels(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListModelsResult>;
-  listModels(callback: ServiceCallback<models.ListModelsResult>): void;
-  listModels(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListModelsResult>): void;
-
-
-  /**
    * This operation extracts a rich set of visual features based on the image
-   * content. Two input methods are supported -- (1) Uploading an image or (2)
-   * specifying an image URL.  Within your request, there is an optional
-   * parameter to allow you to choose which features to return.  By default,
-   * image categories are returned in the response.
+   * content.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL. Within your request, there is an optional parameter to allow
+   * you to choose which features to return. By default, image categories are
+   * returned in the response.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.visualFeatures] A string indicating what visual
    * feature types to return. Multiple values should be comma-separated. Valid
-   * visual feature types include:Categories - categorizes image content
+   * visual feature types include: Categories - categorizes image content
    * according to a taxonomy defined in documentation. Tags - tags the image with
    * a detailed list of words related to the image content. Description -
    * describes the image content with a complete English sentence. Faces -
    * detects if faces are present. If present, generate coordinates, gender and
    * age. ImageType - detects if image is clipart or a line drawing. Color -
    * determines the accent color, dominant color, and whether an image is
-   * black&white.Adult - detects if the image is pornographic in nature (depicts
-   * nudity or a sex act).  Sexually suggestive content is also detected.
+   * black&white. Adult - detects if the image is pornographic in nature (depicts
+   * nudity or a sex act).  Sexually suggestive content is also detected. Objects
+   * - detects various objects within an image, including the approximate
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
-   * feature types include:Celebrities - identifies celebrities if detected in
-   * the image.
+   * feature types include: Celebrities - identifies celebrities if detected in
+   * the image, Landmarks - identifies notable landmarks in the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -144,31 +93,39 @@ export default class ComputerVisionClient extends ServiceClient {
 
   /**
    * This operation extracts a rich set of visual features based on the image
-   * content. Two input methods are supported -- (1) Uploading an image or (2)
-   * specifying an image URL.  Within your request, there is an optional
-   * parameter to allow you to choose which features to return.  By default,
-   * image categories are returned in the response.
+   * content.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL. Within your request, there is an optional parameter to allow
+   * you to choose which features to return. By default, image categories are
+   * returned in the response.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.visualFeatures] A string indicating what visual
    * feature types to return. Multiple values should be comma-separated. Valid
-   * visual feature types include:Categories - categorizes image content
+   * visual feature types include: Categories - categorizes image content
    * according to a taxonomy defined in documentation. Tags - tags the image with
    * a detailed list of words related to the image content. Description -
    * describes the image content with a complete English sentence. Faces -
    * detects if faces are present. If present, generate coordinates, gender and
    * age. ImageType - detects if image is clipart or a line drawing. Color -
    * determines the accent color, dominant color, and whether an image is
-   * black&white.Adult - detects if the image is pornographic in nature (depicts
-   * nudity or a sex act).  Sexually suggestive content is also detected.
+   * black&white. Adult - detects if the image is pornographic in nature (depicts
+   * nudity or a sex act).  Sexually suggestive content is also detected. Objects
+   * - detects various objects within an image, including the approximate
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
-   * feature types include:Celebrities - identifies celebrities if detected in
-   * the image.
+   * feature types include: Celebrities - identifies celebrities if detected in
+   * the image, Landmarks - identifies notable landmarks in the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -207,188 +164,18 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
-   * This operation generates a thumbnail image with the user-specified width and
-   * height. By default, the service analyzes the image, identifies the region of
-   * interest (ROI), and generates smart cropping coordinates based on the ROI.
-   * Smart cropping helps when you specify an aspect ratio that differs from that
-   * of the input image. A successful response contains the thumbnail image
-   * binary. If the request failed, the response contains an error code and a
-   * message to help determine what went wrong.
-   *
-   * @param {number} width Width of the thumbnail. It must be between 1 and 1024.
-   * Recommended minimum of 50.
-   *
-   * @param {number} height Height of the thumbnail. It must be between 1 and
-   * 1024. Recommended minimum of 50.
-   *
-   * @param {string} url Publicly reachable URL of an image
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
-   * cropping.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  generateThumbnailWithHttpOperationResponse(width: number, height: number, url: string, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
-
-  /**
-   * This operation generates a thumbnail image with the user-specified width and
-   * height. By default, the service analyzes the image, identifies the region of
-   * interest (ROI), and generates smart cropping coordinates based on the ROI.
-   * Smart cropping helps when you specify an aspect ratio that differs from that
-   * of the input image. A successful response contains the thumbnail image
-   * binary. If the request failed, the response contains an error code and a
-   * message to help determine what went wrong.
-   *
-   * @param {number} width Width of the thumbnail. It must be between 1 and 1024.
-   * Recommended minimum of 50.
-   *
-   * @param {number} height Height of the thumbnail. It must be between 1 and
-   * 1024. Recommended minimum of 50.
-   *
-   * @param {string} url Publicly reachable URL of an image
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
-   * cropping.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Object} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Object} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  generateThumbnail(width: number, height: number, url: string, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-  generateThumbnail(width: number, height: number, url: string, callback: ServiceCallback<stream.Readable>): void;
-  generateThumbnail(width: number, height: number, url: string, options: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
-
-
-  /**
-   * Optical Character Recognition (OCR) detects printed text in an image and
-   * extracts the recognized characters into a machine-usable character stream.
-   * Upon success, the OCR results will be returned. Upon failure, the error code
-   * together with an error message will be returned. The error code can be one
-   * of InvalidImageUrl, InvalidImageFormat, InvalidImageSize, NotSupportedImage,
-   * NotSupportedLanguage, or InternalServerError.
-   *
-   * @param {boolean} detectOrientation Whether detect the text orientation in
-   * the image. With detectOrientation=true the OCR service tries to detect the
-   * image orientation and correct it before further processing (e.g. if it's
-   * upside-down).
-   *
-   * @param {string} url Publicly reachable URL of an image
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The BCP-47 language code of the text to
-   * be detected in the image. The default value is 'unk'. Possible values
-   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
-   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
-   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OcrResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  recognizePrintedTextWithHttpOperationResponse(detectOrientation: boolean, url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OcrResult>>;
-
-  /**
-   * Optical Character Recognition (OCR) detects printed text in an image and
-   * extracts the recognized characters into a machine-usable character stream.
-   * Upon success, the OCR results will be returned. Upon failure, the error code
-   * together with an error message will be returned. The error code can be one
-   * of InvalidImageUrl, InvalidImageFormat, InvalidImageSize, NotSupportedImage,
-   * NotSupportedLanguage, or InternalServerError.
-   *
-   * @param {boolean} detectOrientation Whether detect the text orientation in
-   * the image. With detectOrientation=true the OCR service tries to detect the
-   * image orientation and correct it before further processing (e.g. if it's
-   * upside-down).
-   *
-   * @param {string} url Publicly reachable URL of an image
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The BCP-47 language code of the text to
-   * be detected in the image. The default value is 'unk'. Possible values
-   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
-   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
-   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OcrResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OcrResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OcrResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  recognizePrintedText(detectOrientation: boolean, url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OcrResult>;
-  recognizePrintedText(detectOrientation: boolean, url: string, callback: ServiceCallback<models.OcrResult>): void;
-  recognizePrintedText(detectOrientation: boolean, url: string, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OcrResult>): void;
-
-
-  /**
    * This operation generates a description of an image in human readable
-   * language with complete sentences.  The description is based on a collection
+   * language with complete sentences. The description is based on a collection
    * of content tags, which are also returned by the operation. More than one
-   * description can be generated for each image.  Descriptions are ordered by
-   * their confidence score. All descriptions are in English. Two input methods
-   * are supported -- (1) Uploading an image or (2) specifying an image URL.A
-   * successful response will be returned in JSON.  If the request failed, the
+   * description can be generated for each image. Descriptions are ordered by
+   * their confidence score. All descriptions are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
    * response will contain an error code and a message to help understand what
    * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -414,16 +201,17 @@ export default class ComputerVisionClient extends ServiceClient {
 
   /**
    * This operation generates a description of an image in human readable
-   * language with complete sentences.  The description is based on a collection
+   * language with complete sentences. The description is based on a collection
    * of content tags, which are also returned by the operation. More than one
-   * description can be generated for each image.  Descriptions are ordered by
-   * their confidence score. All descriptions are in English. Two input methods
-   * are supported -- (1) Uploading an image or (2) specifying an image URL.A
-   * successful response will be returned in JSON.  If the request failed, the
+   * description can be generated for each image. Descriptions are ordered by
+   * their confidence score. All descriptions are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
    * response will contain an error code and a message to help understand what
    * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -467,53 +255,39 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
-   * This operation generates a list of words, or tags, that are relevant to the
-   * content of the supplied image. The Computer Vision API can return tags based
-   * on objects, living beings, scenery or actions found in images. Unlike
-   * categories, tags are not organized according to a hierarchical
-   * classification system, but correspond to image content. Tags may contain
-   * hints to avoid ambiguity or provide context, for example the tag 'cello' may
-   * be accompanied by the hint 'musical instrument'. All tags are in English.
+   * Performs object detection on the specified image.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The desired language for output
-   * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
-   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
-   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<TagResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<DetectResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  tagImageWithHttpOperationResponse(url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagResult>>;
+  detectObjectsWithHttpOperationResponse(url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectResult>>;
 
   /**
-   * This operation generates a list of words, or tags, that are relevant to the
-   * content of the supplied image. The Computer Vision API can return tags based
-   * on objects, living beings, scenery or actions found in images. Unlike
-   * categories, tags are not organized according to a hierarchical
-   * classification system, but correspond to image content. Tags may contain
-   * hints to avoid ambiguity or provide context, for example the tag 'cello' may
-   * be accompanied by the hint 'musical instrument'. All tags are in English.
+   * Performs object detection on the specified image.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The desired language for output
-   * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
-   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
-   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -525,7 +299,7 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {TagResult} - The deserialized result object.
+   *                      @resolve {DetectResult} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -533,31 +307,94 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {TagResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link TagResult} for more information.
+   *                      {DetectResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DetectResult} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  tagImage(url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagResult>;
-  tagImage(url: string, callback: ServiceCallback<models.TagResult>): void;
-  tagImage(url: string, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagResult>): void;
+  detectObjects(url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectResult>;
+  detectObjects(url: string, callback: ServiceCallback<models.DetectResult>): void;
+  detectObjects(url: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectResult>): void;
+
+
+  /**
+   * This operation returns the list of domain-specific models that are supported
+   * by the Computer Vision API. Currently, the API supports following
+   * domain-specific models: celebrity recognizer, landmark recognizer.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ListModelsResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listModelsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListModelsResult>>;
+
+  /**
+   * This operation returns the list of domain-specific models that are supported
+   * by the Computer Vision API. Currently, the API supports following
+   * domain-specific models: celebrity recognizer, landmark recognizer.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ListModelsResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ListModelsResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ListModelsResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listModels(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListModelsResult>;
+  listModels(callback: ServiceCallback<models.ListModelsResult>): void;
+  listModels(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListModelsResult>): void;
 
 
   /**
    * This operation recognizes content within an image by applying a
-   * domain-specific model.  The list of domain-specific models that are
-   * supported by the Computer Vision API can be retrieved using the /models GET
-   * request.  Currently, the API only provides a single domain-specific model:
-   * celebrities. Two input methods are supported -- (1) Uploading an image or
-   * (2) specifying an image URL. A successful response will be returned in JSON.
+   * domain-specific model. The list of domain-specific models that are supported
+   * by the Computer Vision API can be retrieved using the /models GET request.
+   * Currently, the API provides following domain-specific models: celebrities,
+   * landmarks.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON.
    * If the request failed, the response will contain an error code and a message
    * to help understand what went wrong.
    *
    * @param {string} model The domain-specific content to recognize.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -580,17 +417,19 @@ export default class ComputerVisionClient extends ServiceClient {
 
   /**
    * This operation recognizes content within an image by applying a
-   * domain-specific model.  The list of domain-specific models that are
-   * supported by the Computer Vision API can be retrieved using the /models GET
-   * request.  Currently, the API only provides a single domain-specific model:
-   * celebrities. Two input methods are supported -- (1) Uploading an image or
-   * (2) specifying an image URL. A successful response will be returned in JSON.
+   * domain-specific model. The list of domain-specific models that are supported
+   * by the Computer Vision API can be retrieved using the /models GET request.
+   * Currently, the API provides following domain-specific models: celebrities,
+   * landmarks.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON.
    * If the request failed, the response will contain an error code and a message
    * to help understand what went wrong.
    *
    * @param {string} model The domain-specific content to recognize.
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -631,6 +470,347 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
+   * Optical Character Recognition (OCR) detects text in an image and extracts
+   * the recognized characters into a machine-usable character stream.
+   * Upon success, the OCR results will be returned.
+   * Upon failure, the error code together with an error message will be
+   * returned. The error code can be one of InvalidImageUrl, InvalidImageFormat,
+   * InvalidImageSize, NotSupportedImage, NotSupportedLanguage, or
+   * InternalServerError.
+   *
+   * @param {boolean} detectOrientation Whether detect the text orientation in
+   * the image. With detectOrientation=true the OCR service tries to detect the
+   * image orientation and correct it before further processing (e.g. if it's
+   * upside-down).
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The BCP-47 language code of the text to
+   * be detected in the image. The default value is 'unk'. Possible values
+   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
+   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
+   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<OcrResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recognizePrintedTextWithHttpOperationResponse(detectOrientation: boolean, url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OcrResult>>;
+
+  /**
+   * Optical Character Recognition (OCR) detects text in an image and extracts
+   * the recognized characters into a machine-usable character stream.
+   * Upon success, the OCR results will be returned.
+   * Upon failure, the error code together with an error message will be
+   * returned. The error code can be one of InvalidImageUrl, InvalidImageFormat,
+   * InvalidImageSize, NotSupportedImage, NotSupportedLanguage, or
+   * InternalServerError.
+   *
+   * @param {boolean} detectOrientation Whether detect the text orientation in
+   * the image. With detectOrientation=true the OCR service tries to detect the
+   * image orientation and correct it before further processing (e.g. if it's
+   * upside-down).
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The BCP-47 language code of the text to
+   * be detected in the image. The default value is 'unk'. Possible values
+   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
+   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
+   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {OcrResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {OcrResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link OcrResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recognizePrintedText(detectOrientation: boolean, url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OcrResult>;
+  recognizePrintedText(detectOrientation: boolean, url: string, callback: ServiceCallback<models.OcrResult>): void;
+  recognizePrintedText(detectOrientation: boolean, url: string, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OcrResult>): void;
+
+
+  /**
+   * This operation generates a list of words, or tags, that are relevant to the
+   * content of the supplied image. The Computer Vision API can return tags based
+   * on objects, living beings, scenery or actions found in images. Unlike
+   * categories, tags are not organized according to a hierarchical
+   * classification system, but correspond to image content. Tags may contain
+   * hints to avoid ambiguity or provide context, for example the tag "cello" may
+   * be accompanied by the hint "musical instrument". All tags are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The desired language for output
+   * generation. If this parameter is not specified, the default value is
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<TagResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  tagImageWithHttpOperationResponse(url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagResult>>;
+
+  /**
+   * This operation generates a list of words, or tags, that are relevant to the
+   * content of the supplied image. The Computer Vision API can return tags based
+   * on objects, living beings, scenery or actions found in images. Unlike
+   * categories, tags are not organized according to a hierarchical
+   * classification system, but correspond to image content. Tags may contain
+   * hints to avoid ambiguity or provide context, for example the tag "cello" may
+   * be accompanied by the hint "musical instrument". All tags are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The desired language for output
+   * generation. If this parameter is not specified, the default value is
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {TagResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {TagResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TagResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  tagImage(url: string, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagResult>;
+  tagImage(url: string, callback: ServiceCallback<models.TagResult>): void;
+  tagImage(url: string, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagResult>): void;
+
+
+  /**
+   * This operation generates a thumbnail image with the user-specified width and
+   * height. By default, the service analyzes the image, identifies the region of
+   * interest (ROI), and generates smart cropping coordinates based on the ROI.
+   * Smart cropping helps when you specify an aspect ratio that differs from that
+   * of the input image.
+   * A successful response contains the thumbnail image binary. If the request
+   * failed, the response contains an error code and a message to help determine
+   * what went wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * InvalidThumbnailSize, NotSupportedImage, FailedToProcess, Timeout, or
+   * InternalServerError.
+   *
+   * @param {number} width Width of the thumbnail, in pixels. It must be between
+   * 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {number} height Height of the thumbnail, in pixels. It must be
+   * between 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
+   * cropping.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  generateThumbnailWithHttpOperationResponse(width: number, height: number, url: string, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+  /**
+   * This operation generates a thumbnail image with the user-specified width and
+   * height. By default, the service analyzes the image, identifies the region of
+   * interest (ROI), and generates smart cropping coordinates based on the ROI.
+   * Smart cropping helps when you specify an aspect ratio that differs from that
+   * of the input image.
+   * A successful response contains the thumbnail image binary. If the request
+   * failed, the response contains an error code and a message to help determine
+   * what went wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * InvalidThumbnailSize, NotSupportedImage, FailedToProcess, Timeout, or
+   * InternalServerError.
+   *
+   * @param {number} width Width of the thumbnail, in pixels. It must be between
+   * 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {number} height Height of the thumbnail, in pixels. It must be
+   * between 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
+   * cropping.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  generateThumbnail(width: number, height: number, url: string, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+  generateThumbnail(width: number, height: number, url: string, callback: ServiceCallback<stream.Readable>): void;
+  generateThumbnail(width: number, height: number, url: string, options: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+  /**
+   * This operation returns a bounding box around the most important area of the
+   * image.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response contains an error code and a message to help determine what went
+   * wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * NotSupportedImage, FailedToProcess, Timeout, or InternalServerError.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<AreaOfInterestResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getAreaOfInterestWithHttpOperationResponse(url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AreaOfInterestResult>>;
+
+  /**
+   * This operation returns a bounding box around the most important area of the
+   * image.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response contains an error code and a message to help determine what went
+   * wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * NotSupportedImage, FailedToProcess, Timeout, or InternalServerError.
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {AreaOfInterestResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {AreaOfInterestResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link AreaOfInterestResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getAreaOfInterest(url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AreaOfInterestResult>;
+  getAreaOfInterest(url: string, callback: ServiceCallback<models.AreaOfInterestResult>): void;
+  getAreaOfInterest(url: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AreaOfInterestResult>): void;
+
+
+  /**
    * Recognize Text operation. When you use the Recognize Text interface, the
    * response contains a field called 'Operation-Location'. The
    * 'Operation-Location' field contains the URL that you must use for your Get
@@ -639,7 +819,7 @@ export default class ComputerVisionClient extends ServiceClient {
    * @param {string} mode Type of text to recognize. Possible values include:
    * 'Handwritten', 'Printed'
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -663,7 +843,7 @@ export default class ComputerVisionClient extends ServiceClient {
    * @param {string} mode Type of text to recognize. Possible values include:
    * 'Handwritten', 'Printed'
    *
-   * @param {string} url Publicly reachable URL of an image
+   * @param {string} url Publicly reachable URL of an image.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -758,8 +938,146 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
+   * Use this interface to get the result of a Read operation, employing the
+   * state-of-the-art Optical Character Recognition (OCR) algorithms optimized
+   * for text-heavy documents. When you use the Read File interface, the response
+   * contains a field called "Operation-Location". The "Operation-Location" field
+   * contains the URL that you must use for your "Read Operation Result"
+   * operation to access OCR results.​
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  batchReadFileWithHttpOperationResponse(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * Use this interface to get the result of a Read operation, employing the
+   * state-of-the-art Optical Character Recognition (OCR) algorithms optimized
+   * for text-heavy documents. When you use the Read File interface, the response
+   * contains a field called "Operation-Location". The "Operation-Location" field
+   * contains the URL that you must use for your "Read Operation Result"
+   * operation to access OCR results.​
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {string} url Publicly reachable URL of an image.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  batchReadFile(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  batchReadFile(url: string, mode: string, callback: ServiceCallback<void>): void;
+  batchReadFile(url: string, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * This interface is used for getting OCR results of Read operation. The URL to
+   * this interface should be retrieved from "Operation-Location" field returned
+   * from Batch Read File interface.
+   *
+   * @param {string} operationId Id of read operation returned in the response of
+   * the "Batch Read File" interface.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ReadOperationResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getReadOperationResultWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReadOperationResult>>;
+
+  /**
+   * This interface is used for getting OCR results of Read operation. The URL to
+   * this interface should be retrieved from "Operation-Location" field returned
+   * from Batch Read File interface.
+   *
+   * @param {string} operationId Id of read operation returned in the response of
+   * the "Batch Read File" interface.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ReadOperationResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ReadOperationResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ReadOperationResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getReadOperationResult(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReadOperationResult>;
+  getReadOperationResult(operationId: string, callback: ServiceCallback<models.ReadOperationResult>): void;
+  getReadOperationResult(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReadOperationResult>): void;
+
+
+  /**
    * This operation extracts a rich set of visual features based on the image
    * content.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL. Within your request, there is an optional parameter to allow
+   * you to choose which features to return. By default, image categories are
+   * returned in the response.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
    * @param {object} image An image stream.
    *
@@ -767,20 +1085,24 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * @param {array} [options.visualFeatures] A string indicating what visual
    * feature types to return. Multiple values should be comma-separated. Valid
-   * visual feature types include:Categories - categorizes image content
+   * visual feature types include: Categories - categorizes image content
    * according to a taxonomy defined in documentation. Tags - tags the image with
    * a detailed list of words related to the image content. Description -
    * describes the image content with a complete English sentence. Faces -
    * detects if faces are present. If present, generate coordinates, gender and
    * age. ImageType - detects if image is clipart or a line drawing. Color -
    * determines the accent color, dominant color, and whether an image is
-   * black&white.Adult - detects if the image is pornographic in nature (depicts
-   * nudity or a sex act).  Sexually suggestive content is also detected.
+   * black&white. Adult - detects if the image is pornographic in nature (depicts
+   * nudity or a sex act).  Sexually suggestive content is also detected. Objects
+   * - detects various objects within an image, including the approximate
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
-   * feature types include:Celebrities - identifies celebrities if detected in
-   * the image.
+   * feature types include: Celebrities - identifies celebrities if detected in
+   * the image, Landmarks - identifies notable landmarks in the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -802,6 +1124,13 @@ export default class ComputerVisionClient extends ServiceClient {
   /**
    * This operation extracts a rich set of visual features based on the image
    * content.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL. Within your request, there is an optional parameter to allow
+   * you to choose which features to return. By default, image categories are
+   * returned in the response.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
    * @param {object} image An image stream.
    *
@@ -809,20 +1138,24 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * @param {array} [options.visualFeatures] A string indicating what visual
    * feature types to return. Multiple values should be comma-separated. Valid
-   * visual feature types include:Categories - categorizes image content
+   * visual feature types include: Categories - categorizes image content
    * according to a taxonomy defined in documentation. Tags - tags the image with
    * a detailed list of words related to the image content. Description -
    * describes the image content with a complete English sentence. Faces -
    * detects if faces are present. If present, generate coordinates, gender and
    * age. ImageType - detects if image is clipart or a line drawing. Color -
    * determines the accent color, dominant color, and whether an image is
-   * black&white.Adult - detects if the image is pornographic in nature (depicts
-   * nudity or a sex act).  Sexually suggestive content is also detected.
+   * black&white. Adult - detects if the image is pornographic in nature (depicts
+   * nudity or a sex act).  Sexually suggestive content is also detected. Objects
+   * - detects various objects within an image, including the approximate
+   * location. The Objects argument is only available in English. Brands -
+   * detects various brands within an image, including the approximate location.
+   * The Brands argument is only available in English.
    *
    * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
-   * feature types include:Celebrities - identifies celebrities if detected in
-   * the image.
+   * feature types include: Celebrities - identifies celebrities if detected in
+   * the image, Landmarks - identifies notable landmarks in the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -861,59 +1194,43 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
-   * This operation generates a thumbnail image with the user-specified width and
-   * height. By default, the service analyzes the image, identifies the region of
-   * interest (ROI), and generates smart cropping coordinates based on the ROI.
-   * Smart cropping helps when you specify an aspect ratio that differs from that
-   * of the input image. A successful response contains the thumbnail image
-   * binary. If the request failed, the response contains an error code and a
-   * message to help determine what went wrong.
-   *
-   * @param {number} width Width of the thumbnail. It must be between 1 and 1024.
-   * Recommended minimum of 50.
-   *
-   * @param {number} height Height of the thumbnail. It must be between 1 and
-   * 1024. Recommended minimum of 50.
+   * This operation returns a bounding box around the most important area of the
+   * image.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response contains an error code and a message to help determine what went
+   * wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * NotSupportedImage, FailedToProcess, Timeout, or InternalServerError.
    *
    * @param {object} image An image stream.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
-   * cropping.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<AreaOfInterestResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  generateThumbnailInStreamWithHttpOperationResponse(width: number, height: number, image: stream.Readable, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+  getAreaOfInterestInStreamWithHttpOperationResponse(image: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AreaOfInterestResult>>;
 
   /**
-   * This operation generates a thumbnail image with the user-specified width and
-   * height. By default, the service analyzes the image, identifies the region of
-   * interest (ROI), and generates smart cropping coordinates based on the ROI.
-   * Smart cropping helps when you specify an aspect ratio that differs from that
-   * of the input image. A successful response contains the thumbnail image
-   * binary. If the request failed, the response contains an error code and a
-   * message to help determine what went wrong.
-   *
-   * @param {number} width Width of the thumbnail. It must be between 1 and 1024.
-   * Recommended minimum of 50.
-   *
-   * @param {number} height Height of the thumbnail. It must be between 1 and
-   * 1024. Recommended minimum of 50.
+   * This operation returns a bounding box around the most important area of the
+   * image.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response contains an error code and a message to help determine what went
+   * wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * NotSupportedImage, FailedToProcess, Timeout, or InternalServerError.
    *
    * @param {object} image An image stream.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
-   * cropping.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -925,7 +1242,7 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {Object} - The deserialized result object.
+   *                      @resolve {AreaOfInterestResult} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -933,112 +1250,27 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *                      {AreaOfInterestResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link AreaOfInterestResult} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  generateThumbnailInStream(width: number, height: number, image: stream.Readable, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-  generateThumbnailInStream(width: number, height: number, image: stream.Readable, callback: ServiceCallback<stream.Readable>): void;
-  generateThumbnailInStream(width: number, height: number, image: stream.Readable, options: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
-
-
-  /**
-   * Optical Character Recognition (OCR) detects printed text in an image and
-   * extracts the recognized characters into a machine-usable character stream.
-   * Upon success, the OCR results will be returned. Upon failure, the error code
-   * together with an error message will be returned. The error code can be one
-   * of InvalidImageUrl, InvalidImageFormat, InvalidImageSize, NotSupportedImage,
-   * NotSupportedLanguage, or InternalServerError.
-   *
-   * @param {boolean} detectOrientation Whether detect the text orientation in
-   * the image. With detectOrientation=true the OCR service tries to detect the
-   * image orientation and correct it before further processing (e.g. if it's
-   * upside-down).
-   *
-   * @param {object} image An image stream.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The BCP-47 language code of the text to
-   * be detected in the image. The default value is 'unk'. Possible values
-   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
-   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
-   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OcrResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  recognizePrintedTextInStreamWithHttpOperationResponse(detectOrientation: boolean, image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OcrResult>>;
-
-  /**
-   * Optical Character Recognition (OCR) detects printed text in an image and
-   * extracts the recognized characters into a machine-usable character stream.
-   * Upon success, the OCR results will be returned. Upon failure, the error code
-   * together with an error message will be returned. The error code can be one
-   * of InvalidImageUrl, InvalidImageFormat, InvalidImageSize, NotSupportedImage,
-   * NotSupportedLanguage, or InternalServerError.
-   *
-   * @param {boolean} detectOrientation Whether detect the text orientation in
-   * the image. With detectOrientation=true the OCR service tries to detect the
-   * image orientation and correct it before further processing (e.g. if it's
-   * upside-down).
-   *
-   * @param {object} image An image stream.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The BCP-47 language code of the text to
-   * be detected in the image. The default value is 'unk'. Possible values
-   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
-   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
-   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OcrResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OcrResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OcrResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OcrResult>;
-  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, callback: ServiceCallback<models.OcrResult>): void;
-  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OcrResult>): void;
+  getAreaOfInterestInStream(image: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AreaOfInterestResult>;
+  getAreaOfInterestInStream(image: stream.Readable, callback: ServiceCallback<models.AreaOfInterestResult>): void;
+  getAreaOfInterestInStream(image: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AreaOfInterestResult>): void;
 
 
   /**
    * This operation generates a description of an image in human readable
-   * language with complete sentences.  The description is based on a collection
+   * language with complete sentences. The description is based on a collection
    * of content tags, which are also returned by the operation. More than one
-   * description can be generated for each image.  Descriptions are ordered by
-   * their confidence score. All descriptions are in English. Two input methods
-   * are supported -- (1) Uploading an image or (2) specifying an image URL.A
-   * successful response will be returned in JSON.  If the request failed, the
+   * description can be generated for each image. Descriptions are ordered by
+   * their confidence score. All descriptions are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
    * response will contain an error code and a message to help understand what
    * went wrong.
    *
@@ -1068,12 +1300,13 @@ export default class ComputerVisionClient extends ServiceClient {
 
   /**
    * This operation generates a description of an image in human readable
-   * language with complete sentences.  The description is based on a collection
+   * language with complete sentences. The description is based on a collection
    * of content tags, which are also returned by the operation. More than one
-   * description can be generated for each image.  Descriptions are ordered by
-   * their confidence score. All descriptions are in English. Two input methods
-   * are supported -- (1) Uploading an image or (2) specifying an image URL.A
-   * successful response will be returned in JSON.  If the request failed, the
+   * description can be generated for each image. Descriptions are ordered by
+   * their confidence score. All descriptions are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
    * response will contain an error code and a message to help understand what
    * went wrong.
    *
@@ -1121,53 +1354,39 @@ export default class ComputerVisionClient extends ServiceClient {
 
 
   /**
-   * This operation generates a list of words, or tags, that are relevant to the
-   * content of the supplied image. The Computer Vision API can return tags based
-   * on objects, living beings, scenery or actions found in images. Unlike
-   * categories, tags are not organized according to a hierarchical
-   * classification system, but correspond to image content. Tags may contain
-   * hints to avoid ambiguity or provide context, for example the tag 'cello' may
-   * be accompanied by the hint 'musical instrument'. All tags are in English.
+   * Performs object detection on the specified image.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
    * @param {object} image An image stream.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The desired language for output
-   * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
-   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
-   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<TagResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<DetectResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  tagImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagResult>>;
+  detectObjectsInStreamWithHttpOperationResponse(image: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectResult>>;
 
   /**
-   * This operation generates a list of words, or tags, that are relevant to the
-   * content of the supplied image. The Computer Vision API can return tags based
-   * on objects, living beings, scenery or actions found in images. Unlike
-   * categories, tags are not organized according to a hierarchical
-   * classification system, but correspond to image content. Tags may contain
-   * hints to avoid ambiguity or provide context, for example the tag 'cello' may
-   * be accompanied by the hint 'musical instrument'. All tags are in English.
+   * Performs object detection on the specified image.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
    *
    * @param {object} image An image stream.
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {string} [options.language] The desired language for output
-   * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
-   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
-   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1179,7 +1398,7 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {TagResult} - The deserialized result object.
+   *                      @resolve {DetectResult} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -1187,25 +1406,121 @@ export default class ComputerVisionClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {TagResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link TagResult} for more information.
+   *                      {DetectResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DetectResult} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  tagImageInStream(image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagResult>;
-  tagImageInStream(image: stream.Readable, callback: ServiceCallback<models.TagResult>): void;
-  tagImageInStream(image: stream.Readable, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagResult>): void;
+  detectObjectsInStream(image: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectResult>;
+  detectObjectsInStream(image: stream.Readable, callback: ServiceCallback<models.DetectResult>): void;
+  detectObjectsInStream(image: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectResult>): void;
+
+
+  /**
+   * This operation generates a thumbnail image with the user-specified width and
+   * height. By default, the service analyzes the image, identifies the region of
+   * interest (ROI), and generates smart cropping coordinates based on the ROI.
+   * Smart cropping helps when you specify an aspect ratio that differs from that
+   * of the input image.
+   * A successful response contains the thumbnail image binary. If the request
+   * failed, the response contains an error code and a message to help determine
+   * what went wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * InvalidThumbnailSize, NotSupportedImage, FailedToProcess, Timeout, or
+   * InternalServerError.
+   *
+   * @param {number} width Width of the thumbnail, in pixels. It must be between
+   * 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {number} height Height of the thumbnail, in pixels. It must be
+   * between 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
+   * cropping.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  generateThumbnailInStreamWithHttpOperationResponse(width: number, height: number, image: stream.Readable, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+  /**
+   * This operation generates a thumbnail image with the user-specified width and
+   * height. By default, the service analyzes the image, identifies the region of
+   * interest (ROI), and generates smart cropping coordinates based on the ROI.
+   * Smart cropping helps when you specify an aspect ratio that differs from that
+   * of the input image.
+   * A successful response contains the thumbnail image binary. If the request
+   * failed, the response contains an error code and a message to help determine
+   * what went wrong.
+   * Upon failure, the error code and an error message are returned. The error
+   * code could be one of InvalidImageUrl, InvalidImageFormat, InvalidImageSize,
+   * InvalidThumbnailSize, NotSupportedImage, FailedToProcess, Timeout, or
+   * InternalServerError.
+   *
+   * @param {number} width Width of the thumbnail, in pixels. It must be between
+   * 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {number} height Height of the thumbnail, in pixels. It must be
+   * between 1 and 1024. Recommended minimum of 50.
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {boolean} [options.smartCropping] Boolean flag for enabling smart
+   * cropping.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  generateThumbnailInStream(width: number, height: number, image: stream.Readable, options?: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+  generateThumbnailInStream(width: number, height: number, image: stream.Readable, callback: ServiceCallback<stream.Readable>): void;
+  generateThumbnailInStream(width: number, height: number, image: stream.Readable, options: { smartCropping? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
   /**
    * This operation recognizes content within an image by applying a
-   * domain-specific model.  The list of domain-specific models that are
-   * supported by the Computer Vision API can be retrieved using the /models GET
-   * request.  Currently, the API only provides a single domain-specific model:
-   * celebrities. Two input methods are supported -- (1) Uploading an image or
-   * (2) specifying an image URL. A successful response will be returned in JSON.
+   * domain-specific model. The list of domain-specific models that are supported
+   * by the Computer Vision API can be retrieved using the /models GET request.
+   * Currently, the API provides following domain-specific models: celebrities,
+   * landmarks.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON.
    * If the request failed, the response will contain an error code and a message
    * to help understand what went wrong.
    *
@@ -1234,11 +1549,13 @@ export default class ComputerVisionClient extends ServiceClient {
 
   /**
    * This operation recognizes content within an image by applying a
-   * domain-specific model.  The list of domain-specific models that are
-   * supported by the Computer Vision API can be retrieved using the /models GET
-   * request.  Currently, the API only provides a single domain-specific model:
-   * celebrities. Two input methods are supported -- (1) Uploading an image or
-   * (2) specifying an image URL. A successful response will be returned in JSON.
+   * domain-specific model. The list of domain-specific models that are supported
+   * by the Computer Vision API can be retrieved using the /models GET request.
+   * Currently, the API provides following domain-specific models: celebrities,
+   * landmarks.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON.
    * If the request failed, the response will contain an error code and a message
    * to help understand what went wrong.
    *
@@ -1282,6 +1599,184 @@ export default class ComputerVisionClient extends ServiceClient {
   analyzeImageByDomainInStream(model: string, image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainModelResults>;
   analyzeImageByDomainInStream(model: string, image: stream.Readable, callback: ServiceCallback<models.DomainModelResults>): void;
   analyzeImageByDomainInStream(model: string, image: stream.Readable, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainModelResults>): void;
+
+
+  /**
+   * Optical Character Recognition (OCR) detects text in an image and extracts
+   * the recognized characters into a machine-usable character stream.
+   * Upon success, the OCR results will be returned.
+   * Upon failure, the error code together with an error message will be
+   * returned. The error code can be one of InvalidImageUrl, InvalidImageFormat,
+   * InvalidImageSize, NotSupportedImage, NotSupportedLanguage, or
+   * InternalServerError.
+   *
+   * @param {boolean} detectOrientation Whether detect the text orientation in
+   * the image. With detectOrientation=true the OCR service tries to detect the
+   * image orientation and correct it before further processing (e.g. if it's
+   * upside-down).
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The BCP-47 language code of the text to
+   * be detected in the image. The default value is 'unk'. Possible values
+   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
+   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
+   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<OcrResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  recognizePrintedTextInStreamWithHttpOperationResponse(detectOrientation: boolean, image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OcrResult>>;
+
+  /**
+   * Optical Character Recognition (OCR) detects text in an image and extracts
+   * the recognized characters into a machine-usable character stream.
+   * Upon success, the OCR results will be returned.
+   * Upon failure, the error code together with an error message will be
+   * returned. The error code can be one of InvalidImageUrl, InvalidImageFormat,
+   * InvalidImageSize, NotSupportedImage, NotSupportedLanguage, or
+   * InternalServerError.
+   *
+   * @param {boolean} detectOrientation Whether detect the text orientation in
+   * the image. With detectOrientation=true the OCR service tries to detect the
+   * image orientation and correct it before further processing (e.g. if it's
+   * upside-down).
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The BCP-47 language code of the text to
+   * be detected in the image. The default value is 'unk'. Possible values
+   * include: 'unk', 'zh-Hans', 'zh-Hant', 'cs', 'da', 'nl', 'en', 'fi', 'fr',
+   * 'de', 'el', 'hu', 'it', 'ja', 'ko', 'nb', 'pl', 'pt', 'ru', 'es', 'sv',
+   * 'tr', 'ar', 'ro', 'sr-Cyrl', 'sr-Latn', 'sk'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {OcrResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {OcrResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link OcrResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OcrResult>;
+  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, callback: ServiceCallback<models.OcrResult>): void;
+  recognizePrintedTextInStream(detectOrientation: boolean, image: stream.Readable, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OcrResult>): void;
+
+
+  /**
+   * This operation generates a list of words, or tags, that are relevant to the
+   * content of the supplied image. The Computer Vision API can return tags based
+   * on objects, living beings, scenery or actions found in images. Unlike
+   * categories, tags are not organized according to a hierarchical
+   * classification system, but correspond to image content. Tags may contain
+   * hints to avoid ambiguity or provide context, for example the tag "cello" may
+   * be accompanied by the hint "musical instrument". All tags are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The desired language for output
+   * generation. If this parameter is not specified, the default value is
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<TagResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  tagImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagResult>>;
+
+  /**
+   * This operation generates a list of words, or tags, that are relevant to the
+   * content of the supplied image. The Computer Vision API can return tags based
+   * on objects, living beings, scenery or actions found in images. Unlike
+   * categories, tags are not organized according to a hierarchical
+   * classification system, but correspond to image content. Tags may contain
+   * hints to avoid ambiguity or provide context, for example the tag "cello" may
+   * be accompanied by the hint "musical instrument". All tags are in English.
+   * Two input methods are supported -- (1) Uploading an image or (2) specifying
+   * an image URL.
+   * A successful response will be returned in JSON. If the request failed, the
+   * response will contain an error code and a message to help understand what
+   * went wrong.
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.language] The desired language for output
+   * generation. If this parameter is not specified, the default value is
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {TagResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {TagResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TagResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  tagImageInStream(image: stream.Readable, options?: { language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagResult>;
+  tagImageInStream(image: stream.Readable, callback: ServiceCallback<models.TagResult>): void;
+  tagImageInStream(image: stream.Readable, options: { language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagResult>): void;
 
 
   /**
@@ -1348,6 +1843,76 @@ export default class ComputerVisionClient extends ServiceClient {
   recognizeTextInStream(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   recognizeTextInStream(image: stream.Readable, mode: string, callback: ServiceCallback<void>): void;
   recognizeTextInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * Use this interface to get the result of a Read Document operation, employing
+   * the state-of-the-art Optical Character Recognition (OCR) algorithms
+   * optimized for text-heavy documents. When you use the Read Document
+   * interface, the response contains a field called "Operation-Location". The
+   * "Operation-Location" field contains the URL that you must use for your "Get
+   * Read Result operation" to access OCR results.​
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  batchReadFileInStreamWithHttpOperationResponse(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * Use this interface to get the result of a Read Document operation, employing
+   * the state-of-the-art Optical Character Recognition (OCR) algorithms
+   * optimized for text-heavy documents. When you use the Read Document
+   * interface, the response contains a field called "Operation-Location". The
+   * "Operation-Location" field contains the URL that you must use for your "Get
+   * Read Result operation" to access OCR results.​
+   *
+   * @param {object} image An image stream.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  batchReadFileInStream(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  batchReadFileInStream(image: stream.Readable, mode: string, callback: ServiceCallback<void>): void;
+  batchReadFileInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 export { ComputerVisionClient, models as ComputerVisionModels };

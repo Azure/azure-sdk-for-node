@@ -52,6 +52,7 @@ export default class SubscriptionClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   subscriptions: operations.Subscriptions;
   tenants: operations.Tenants;
 }

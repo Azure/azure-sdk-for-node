@@ -232,6 +232,21 @@ export interface ContainerGroups {
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
      *
+     * @param {object} [containerGroup.identity] The identity of the container
+     * group, if configured.
+     *
+     * @param {string} [containerGroup.identity.type] The type of identity used for
+     * the container group. The type 'SystemAssigned, UserAssigned' includes both
+     * an implicitly created identity and a set of user assigned identities. The
+     * type 'None' will remove any identities from the container group. Possible
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [containerGroup.identity.userAssignedIdentities] The list of
+     * user identities associated with the container group. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {array} containerGroup.containers The containers within the container
      * group.
      *
@@ -250,6 +265,10 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet or private VNET. Possible values include: 'Public',
+     * 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
@@ -288,6 +307,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -318,6 +349,21 @@ export interface ContainerGroups {
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
      *
+     * @param {object} [containerGroup.identity] The identity of the container
+     * group, if configured.
+     *
+     * @param {string} [containerGroup.identity.type] The type of identity used for
+     * the container group. The type 'SystemAssigned, UserAssigned' includes both
+     * an implicitly created identity and a set of user assigned identities. The
+     * type 'None' will remove any identities from the container group. Possible
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [containerGroup.identity.userAssignedIdentities] The list of
+     * user identities associated with the container group. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {array} containerGroup.containers The containers within the container
      * group.
      *
@@ -336,6 +382,10 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet or private VNET. Possible values include: 'Public',
+     * 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
@@ -374,6 +424,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -684,6 +746,68 @@ export interface ContainerGroups {
 
 
     /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * @summary Create or update container groups.
      *
      * Create or update container groups with specified configurations.
@@ -694,6 +818,21 @@ export interface ContainerGroups {
      *
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
+     *
+     * @param {object} [containerGroup.identity] The identity of the container
+     * group, if configured.
+     *
+     * @param {string} [containerGroup.identity.type] The type of identity used for
+     * the container group. The type 'SystemAssigned, UserAssigned' includes both
+     * an implicitly created identity and a set of user assigned identities. The
+     * type 'None' will remove any identities from the container group. Possible
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [containerGroup.identity.userAssignedIdentities] The list of
+     * user identities associated with the container group. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {array} containerGroup.containers The containers within the container
      * group.
@@ -713,6 +852,10 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet or private VNET. Possible values include: 'Public',
+     * 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
@@ -751,6 +894,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -781,6 +936,21 @@ export interface ContainerGroups {
      * @param {object} containerGroup The properties of the container group to be
      * created or updated.
      *
+     * @param {object} [containerGroup.identity] The identity of the container
+     * group, if configured.
+     *
+     * @param {string} [containerGroup.identity.type] The type of identity used for
+     * the container group. The type 'SystemAssigned, UserAssigned' includes both
+     * an implicitly created identity and a set of user assigned identities. The
+     * type 'None' will remove any identities from the container group. Possible
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [containerGroup.identity.userAssignedIdentities] The list of
+     * user identities associated with the container group. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {array} containerGroup.containers The containers within the container
      * group.
      *
@@ -799,6 +969,10 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet or private VNET. Possible values include: 'Public',
+     * 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
@@ -837,6 +1011,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -936,6 +1122,68 @@ export interface ContainerGroups {
     beginRestart(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginRestart(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1379,4 +1627,83 @@ export interface ContainerOperations {
     executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerExecResponse>;
     executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, callback: ServiceCallback<models.ContainerExecResponse>): void;
     executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerExecResponse>): void;
+}
+
+/**
+ * @class
+ * ServiceAssociationLink
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerInstanceManagementClient.
+ */
+export interface ServiceAssociationLink {
+
+
+    /**
+     * @summary Delete the container instance service association link for the
+     * subnet.
+     *
+     * Delete the container instance service association link for the subnet. This
+     * operation unblocks user from deleting subnet.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete the container instance service association link for the
+     * subnet.
+     *
+     * Delete the container instance service association link for the subnet. This
+     * operation unblocks user from deleting subnet.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, virtualNetworkName: string, subnetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, virtualNetworkName: string, subnetName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, virtualNetworkName: string, subnetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

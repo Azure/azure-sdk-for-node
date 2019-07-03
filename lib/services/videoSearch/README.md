@@ -79,3 +79,6 @@ https://azure.microsoft.com/en-us/try/cognitive-services/ under "Search"
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
 - [AutoRest](https://github.com/Azure/autorest)
+
+
+![Impressions](https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-node%2Flib%2Fservices%2FvideoSearch%2FREADME.png)
