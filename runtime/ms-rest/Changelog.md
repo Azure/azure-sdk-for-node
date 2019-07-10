@@ -1,4 +1,7 @@
 # Changelog
+## 2.5.3
+- Do not serialize default values for model properties.
+- During deserialization, set the value of an entity to it's default value if specified in the mapper.
 
 ## 2.5.2
 

@@ -74,6 +74,14 @@ class PetAP {
               name: 'String'
             }
           },
+          favoriteFood: {
+            required: false,
+            serializedName: 'favoriteFood',
+            defaultValue: 'bones',
+            type: {
+              name: 'String'
+            }
+          },
           status: {
             required: false,
             readOnly: true,

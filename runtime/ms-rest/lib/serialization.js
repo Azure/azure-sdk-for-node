@@ -58,11 +58,6 @@ exports.serialize = function (mapper, object, objectName) {
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
-  //Set Defaults
-  if ((mapper.defaultValue !== null && mapper.defaultValue !== undefined) &&
-    (object === null || object === undefined)) {
-    object = mapper.defaultValue;
-  }
   if (mapper.isConstant) object = mapper.defaultValue;
 
   // This table of allowed values should help explain
@@ -421,7 +416,7 @@ function serializeDateTypes(typeName, value, objectName) {
  */
 exports.deserialize = function (mapper, responseBody, objectName) {
   if (responseBody === null || responseBody === undefined) {
-    if (mapper && mapper.isConstant) {
+    if (mapper && mapper.defaultValue) {
       responseBody = mapper.defaultValue;
     } else {
       return responseBody;
@@ -582,7 +577,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         if (Array.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
           instance = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
-        } else if ((propertyInstance !== null && propertyInstance !== undefined) || (propertyMapper && propertyMapper.isConstant)) {
+        } else if ((propertyInstance !== null && propertyInstance !== undefined) || (propertyMapper && propertyMapper.defaultValue)) {
           serializedValue = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
           instance[key] = serializedValue;
         }

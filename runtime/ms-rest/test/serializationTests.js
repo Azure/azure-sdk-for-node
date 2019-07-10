@@ -571,6 +571,7 @@ describe('msrest', function () {
       var result = client.serialize(mapper, bodyParameter, 'bodyParameter');
       result.id.should.equal(5);
       result.eyeColor.should.equal('brown');
+      should.not.exist(result.favoriteFood);
       result['@odata.location'].should.equal('westus');
       result.color.should.equal('red');
       result.city.should.equal('Seattle');
@@ -1119,6 +1120,7 @@ describe('msrest', function () {
       result.id.should.equal(5);
       result.status.should.equal(true);
       result.eyeColor.should.equal('brown');
+      result.favoriteFood.should.equal('bones');
       result.odatalocation.should.equal('westus');
       result.color.should.equal('red');
       result.city.should.equal('Seattle');
