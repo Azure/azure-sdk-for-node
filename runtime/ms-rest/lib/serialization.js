@@ -58,11 +58,6 @@ exports.serialize = function (mapper, object, objectName) {
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
-  //Set Defaults
-  if ((mapper.defaultValue !== null && mapper.defaultValue !== undefined) &&
-    (object === null || object === undefined)) {
-    object = mapper.defaultValue;
-  }
   if (mapper.isConstant) object = mapper.defaultValue;
 
   // This table of allowed values should help explain

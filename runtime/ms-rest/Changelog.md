@@ -1,4 +1,6 @@
 # Changelog
+## 2.5.3
+- Do not serialize default values for model properties.
 
 ## 2.5.2
 
