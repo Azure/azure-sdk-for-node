@@ -147,14 +147,14 @@ describe('BlobService', function () {
         if (serviceProperties) {
           assert.notEqual(serviceProperties.Logging, null);
           if (serviceProperties.Logging) {
-            assert.notEqual(serviceProperties.Logging.RetentionPolicy);
-            assert.notEqual(serviceProperties.Logging.Version);
+            assert.notEqual(serviceProperties.Logging.RetentionPolicy, null);
+            assert.notEqual(serviceProperties.Logging.Version, null);
           }
 
           if (serviceProperties.Metrics) {
             assert.notEqual(serviceProperties.Metrics, null);
-            assert.notEqual(serviceProperties.Metrics.RetentionPolicy);
-            assert.notEqual(serviceProperties.Metrics.Version);
+            assert.notEqual(serviceProperties.Metrics.RetentionPolicy, null);
+            assert.notEqual(serviceProperties.Metrics.Version, null);
           }
         }
 
@@ -786,7 +786,7 @@ describe('BlobService', function () {
 
               // Clear the page blob
               blobService.clearBlobPages(containerName, blobName, 0, 1023, function (err4) {
-                assert.equal(err4);
+                assert.equal(err4, null);
 
                 // Upload other data in 2 pages
                 blobService.createBlobPagesFromText(containerName, blobName, data2, 0, 511, function (err5) {
