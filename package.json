@@ -28,7 +28,7 @@
   "main": "./lib/azure.js",
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "mime": "^1.6.0",
+    "mime": "^2.4.4",
     "moment": "^2.22.2",
     "ms-rest": "^2.3.8",
     "ms-rest-azure": "^2.5.0",

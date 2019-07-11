@@ -68,14 +68,14 @@ suite('queueservice-tests', function () {
       if (serviceProperties) {
         assert.notEqual(serviceProperties.Logging, null);
         if (serviceProperties.Logging) {
-          assert.notEqual(serviceProperties.Logging.RetentionPolicy);
-          assert.notEqual(serviceProperties.Logging.Version);
+          assert.notEqual(serviceProperties.Logging.RetentionPolicy, null);
+          assert.notEqual(serviceProperties.Logging.Version, null);
         }
 
         if (serviceProperties.Metrics) {
           assert.notEqual(serviceProperties.Metrics, null);
-          assert.notEqual(serviceProperties.Metrics.RetentionPolicy);
-          assert.notEqual(serviceProperties.Metrics.Version);
+          assert.notEqual(serviceProperties.Metrics.RetentionPolicy, null);
+          assert.notEqual(serviceProperties.Metrics.Version, null);
         }
       }
 
