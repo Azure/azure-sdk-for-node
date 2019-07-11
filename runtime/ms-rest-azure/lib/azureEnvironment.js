@@ -60,7 +60,7 @@ var supportedEnvironments = {
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
     batchResourceId: 'https://batch.core.windows.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
-    storageEndpointSuffix: '.core.windows.net',
+    storageEndpointSuffix: 'core.windows.net',
     keyVaultDnsSuffix: '.vault.azure.net',
     azureDataLakeStoreFileSystemEndpointSuffix: 'azuredatalakestore.net',
     azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'azuredatalakeanalytics.net'
@@ -79,7 +79,7 @@ var supportedEnvironments = {
     activeDirectoryGraphResourceId: 'https://graph.chinacloudapi.cn/',
     batchResourceId: 'https://batch.chinacloudapi.cn/',
     activeDirectoryGraphApiVersion: '2013-04-05',
-    storageEndpointSuffix: '.core.chinacloudapi.cn',
+    storageEndpointSuffix: 'core.chinacloudapi.cn',
     keyVaultDnsSuffix: '.vault.azure.cn',
     // TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
@@ -99,7 +99,7 @@ var supportedEnvironments = {
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
     batchResourceId: 'https://batch.core.usgovcloudapi.net/',
     activeDirectoryGraphApiVersion: '2013-04-05',
-    storageEndpointSuffix: '.core.usgovcloudapi.net',
+    storageEndpointSuffix: 'core.usgovcloudapi.net',
     keyVaultDnsSuffix: '.vault.usgovcloudapi.net',
     // TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
@@ -119,7 +119,7 @@ var supportedEnvironments = {
     activeDirectoryGraphResourceId: 'https://graph.cloudapi.de/',
     batchResourceId: 'https://batch.microsoftazure.de/',
     activeDirectoryGraphApiVersion: '2013-04-05',
-    storageEndpointSuffix: '.core.cloudapi.de',
+    storageEndpointSuffix: 'core.cloudapi.de',
     keyVaultDnsSuffix: '.vault.microsoftazure.de',
     // TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
