@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2018-12-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:c02aa83e-20fe-4392-adcc-6179ae1a00c6\\nTime:2019-01-11T00:15:54.9182717Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2019-08-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:083371f9-9f88-4288-86c1-113165a048d9\\nTime:2019-08-05T19:01:29.2846686Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '08689415-498d-4bbd-85d6-bc6ebef32a34',
-  'x-ms-request-id': 'c02aa83e-20fe-4392-adcc-6179ae1a00c6',
+  'x-ms-correlation-request-id': 'ceb0be30-238b-49b5-93ab-905b604e1aa8',
+  'x-ms-request-id': '083371f9-9f88-4288-86c1-113165a048d9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001554Z:08689415-498d-4bbd-85d6-bc6ebef32a34',
-  date: 'Fri, 11 Jan 2019 00:15:54 GMT',
+   'WESTUS:20190805T190129Z:ceb0be30-238b-49b5-93ab-905b604e1aa8',
+  date: 'Mon, 05 Aug 2019 19:01:28 GMT',
   connection: 'close' });
  return result; }]];

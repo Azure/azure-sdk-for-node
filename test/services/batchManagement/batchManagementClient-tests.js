@@ -77,7 +77,7 @@ describe('Batch Management', function () {
       client.operations.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(35);
+        result.length.should.equal(41);
         result[0].name.should.equal('Microsoft.Batch/batchAccounts/providers/Microsoft.Insights/diagnosticSettings/read');
         result[0].origin.should.equal('system');
         result[0].display.provider.should.equal('Microsoft Batch');
@@ -114,8 +114,8 @@ describe('Batch Management', function () {
         should.exist(result);
         result.location.should.equal(location);
         result.poolQuota.should.equal(100);
-        result.dedicatedCoreQuota.should.equal(20);
-        result.lowPriorityCoreQuota.should.equal(100);
+        result.dedicatedCoreQuota.should.equal(700);
+        result.lowPriorityCoreQuota.should.equal(500);
         response.statusCode.should.equal(200);
         done();
       });
@@ -386,7 +386,7 @@ describe('Batch Management', function () {
       client.certificateOperations.create(groupName, batchAccount, certificate, parameters, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        result.name.should.equal('sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7');
         done();
       });
     });
@@ -405,9 +405,9 @@ describe('Batch Management', function () {
       client.certificateOperations.get(groupName, batchAccount, certificate, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
-        result.thumbprintAlgorithm.should.equal('SHA1');
-        result.thumbprint.should.equal('CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        result.name.should.equal('sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7');
+        result.thumbprintAlgorithm.should.equal('sha1');
+        result.thumbprint.should.equal('cff2ab63c8c955aaf71989efa641b906558d9fb7');
         done();
       });
     });
@@ -421,7 +421,7 @@ describe('Batch Management', function () {
       client.certificateOperations.update(groupName, batchAccount, certificate, parameters, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('SHA1-CFF2AB63C8C955AAF71989EFA641B906558D9FB7');
+        result.name.should.equal('sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7');
         done();
       });
     });

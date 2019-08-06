@@ -62,7 +62,7 @@ export interface ImageReference {
   offer?: string;
   /**
    * @summary The SKU of the Azure Virtual Machines Marketplace Image.
-   * @description For example, 14.04.0-LTS or 2012-R2-Datacenter.
+   * @description For example, 18.04-LTS or 2019-Datacenter.
    */
   sku?: string;
   /**
@@ -72,11 +72,16 @@ export interface ImageReference {
    */
   version?: string;
   /**
-   * @summary The ARM resource identifier of the Virtual Machine Image. Computes Compute Nodes of
-   * the Pool will be created using this custom Image. This is of the form
+   * @summary The ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
+   * Image. Computes Compute Nodes of the Pool will be created using this Image Id. This is of
+   * either the form
    * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-   * @description This property is mutually exclusive with other ImageReference properties. The
-   * Virtual Machine Image must be in the same region and subscription as the Azure Batch Account.
+   * for Virtual Machine Image or
+   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+   * for SIG image.
+   * @description This property is mutually exclusive with other ImageReference properties. For
+   * Virtual Machine Image it must be in the same region and subscription as the Azure Batch
+   * account. For SIG image it must have replicas in the same region as the Azure Batch account.
    * For information about the firewall settings for the Batch Compute Node agent to communicate
    * with the Batch service see
    * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
@@ -765,11 +770,9 @@ export interface ExitOptions {
   jobAction?: string;
   /**
    * @summary An action that the Batch service performs on Tasks that depend on this Task.
-   * @description The default is 'satisfy' for exit code 0, and 'block' for all other exit
-   * conditions. If the Job's usesTaskDependencies property is set to false, then specifying the
-   * dependencyAction property returns an error and the add Task request fails with an invalid
-   * property value error; if you are calling the REST API directly, the HTTP status code is 400
-   * (Bad Request). Possible values include: 'satisfy', 'block'
+   * @description Possible values are 'satisfy' (allowing dependent tasks to progress) and 'block'
+   * (dependent tasks continue to wait). Batch does not yet support cancellation of dependent
+   * tasks. Possible values include: 'satisfy', 'block'
    */
   dependencyAction?: string;
 }
@@ -850,7 +853,11 @@ export interface ExitConditions {
 export interface AutoUserSpecification {
   /**
    * @summary The scope for the auto user
-   * @description The default value is Task. Possible values include: 'task', 'pool'
+   * @description The default value is pool. If the pool is running Windows a value of Task should
+   * be specified if stricter isolation between tasks is required. For example, if the task mutates
+   * the registry in a way which could impact other tasks, or if certificates have been specified
+   * on the pool which should not be accessible by normal tasks but should be accessible by
+   * StartTasks. Possible values include: 'task', 'pool'
    */
   scope?: string;
   /**
@@ -1170,13 +1177,13 @@ export interface JobManagerTask {
    */
   runExclusive?: boolean;
   /**
-   * @summary A list of Application Packages that the Batch service will deploy to the Compute
-   * Compute Node before running the command line.
+   * @summary A list of Application Packages that the Batch service will deploy to the Compute Node
+   * before running the command line.
    * @description Application Packages are downloaded and deployed to a shared directory, not the
    * Task working directory. Therefore, if a referenced Application Package is already on the
    * Compute Node, and is up to date, then it is not re-downloaded; the existing copy on the
-   * Compute Compute Node is used. If a referenced Application Package cannot be installed, for
-   * example because the package has been deleted or because download failed, the Task fails.
+   * Compute Node is used. If a referenced Application Package cannot be installed, for example
+   * because the package has been deleted or because download failed, the Task fails.
    */
   applicationPackageReferences?: ApplicationPackageReference[];
   /**
@@ -1388,7 +1395,7 @@ export interface JobReleaseTask {
  */
 export interface TaskSchedulingPolicy {
   /**
-   * @summary How Tasks are distributed across Compute Compute Nodes in a Pool.
+   * @summary How Tasks are distributed across Compute Nodes in a Pool.
    * @description If not specified, the default is spread. Possible values include: 'spread',
    * 'pack'
    */
@@ -1405,14 +1412,14 @@ export interface TaskSchedulingPolicy {
  * internal retry due to a recovery operation may occur. Because of this, all Tasks should be
  * idempotent. This means Tasks need to tolerate being interrupted and restarted without causing
  * any corruption or duplicate data. The best practice for long running Tasks is to use some form
- * of checkpointing. In some cases the start Task may be re-run even though the Compute Node was
- * not rebooted. Special care should be taken to avoid start Tasks which create breakaway process
- * or install/launch services from the start Task working directory, as this will block Batch from
- * being able to re-run the start Task.
+ * of checkpointing. In some cases the StartTask may be re-run even though the Compute Node was not
+ * rebooted. Special care should be taken to avoid StartTasks which create breakaway process or
+ * install/launch services from the StartTask working directory, as this will block Batch from
+ * being able to re-run the StartTask.
  */
 export interface StartTask {
   /**
-   * @summary The command line of the start Task.
+   * @summary The command line of the StartTask.
    * @description The command line does not run under a shell, and therefore cannot take advantage
    * of shell features such as environment variable expansion. If you want to take advantage of
    * such features, you should invoke the shell in the command line, for example using "cmd /c
@@ -1423,7 +1430,7 @@ export interface StartTask {
    */
   commandLine: string;
   /**
-   * @summary The settings for the container under which the start Task runs.
+   * @summary The settings for the container under which the StartTask runs.
    * @description When this is specified, all directories recursively below the
    * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the
    * container, all Task environment variables are mapped into the container, and the Task command
@@ -1442,11 +1449,11 @@ export interface StartTask {
    */
   resourceFiles?: ResourceFile[];
   /**
-   * @summary A list of environment variable settings for the start Task.
+   * @summary A list of environment variable settings for the StartTask.
    */
   environmentSettings?: EnvironmentSetting[];
   /**
-   * @summary The user identity under which the start Task runs.
+   * @summary The user identity under which the StartTask runs.
    * @description If omitted, the Task runs as a non-administrative user unique to the Task.
    */
   userIdentity?: UserIdentity;
@@ -1461,16 +1468,16 @@ export interface StartTask {
    */
   maxTaskRetryCount?: number;
   /**
-   * @summary Whether the Batch service should wait for the start Task to complete successfully
+   * @summary Whether the Batch service should wait for the StartTask to complete successfully
    * (that is, to exit with exit code 0) before scheduling any Tasks on the Compute Node.
-   * @description If true and the start Task fails on a Node, the Batch service retries the start
-   * Task up to its maximum retry count (maxTaskRetryCount). If the Task has still not completed
-   * successfully after all retries, then the Batch service marks the Node unusable, and will not
-   * schedule Tasks to it. This condition can be detected via the Compute Node state and failure
-   * info details. If false, the Batch service will not wait for the start Task to complete. In
-   * this case, other Tasks can start executing on the Compute Node while the start Task is still
-   * running; and even if the start Task fails, new Tasks will continue to be scheduled on the
-   * Compute Node. The default is false.
+   * @description If true and the StartTask fails on a Node, the Batch service retries the
+   * StartTask up to its maximum retry count (maxTaskRetryCount). If the Task has still not
+   * completed successfully after all retries, then the Batch service marks the Node unusable, and
+   * will not schedule Tasks to it. This condition can be detected via the Compute Node state and
+   * failure info details. If false, the Batch service will not wait for the StartTask to complete.
+   * In this case, other Tasks can start executing on the Compute Node while the StartTask is still
+   * running; and even if the StartTask fails, new Tasks will continue to be scheduled on the
+   * Compute Node. The default is true.
    */
   waitForSuccess?: boolean;
 }
@@ -1573,6 +1580,8 @@ export interface WindowsConfiguration {
 
 /**
  * @summary Settings which will be used by the data disks associated to Compute Nodes in the Pool.
+ * When using attached data disks, you need to mount and format the disks from within a VM to use
+ * them.
  */
 export interface DataDisk {
   /**
@@ -1823,6 +1832,157 @@ export interface NetworkConfiguration {
    * virtualMachineConfiguration property.
    */
   endpointConfiguration?: PoolEndpointConfiguration;
+  /**
+   * @summary The list of public IPs which the Batch service will use when provisioning Compute
+   * Nodes.
+   * @description The number of IPs specified here limits the maximum size of the Pool - 50
+   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
+   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
+   * this collection is of the form:
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+   */
+  publicIPs?: string[];
+}
+
+/**
+ * @summary Information used to connect to an Azure Storage Container using Blobfuse.
+ */
+export interface AzureBlobFileSystemConfiguration {
+  /**
+   * @summary The Azure Storage Account name.
+   */
+  accountName: string;
+  /**
+   * @summary The Azure Blob Storage Container name.
+   */
+  containerName: string;
+  /**
+   * @summary The Azure Storage Account key.
+   * @description This property is mutually exclusive with sasKey and one must be specified.
+   */
+  accountKey?: string;
+  /**
+   * @summary The Azure Storage SAS token.
+   * @description This property is mutually exclusive with accountKey and one must be specified.
+   */
+  sasKey?: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+   */
+  blobfuseOptions?: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+   */
+  relativeMountPath: string;
+}
+
+/**
+ * @summary Information used to connect to an NFS file system.
+ */
+export interface NFSMountConfiguration {
+  /**
+   * @summary The URI of the file system to mount.
+   */
+  source: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+   */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+   */
+  mountOptions?: string;
+}
+
+/**
+ * @summary Information used to connect to a CIFS file system.
+ */
+export interface CIFSMountConfiguration {
+  /**
+   * @summary The user to use for authentication against the CIFS file system.
+   */
+  username: string;
+  /**
+   * @summary The URI of the file system to mount.
+   */
+  source: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+   */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+   */
+  mountOptions?: string;
+  /**
+   * @summary The password to use for authentication against the CIFS file system.
+   */
+  password: string;
+}
+
+/**
+ * @summary Information used to connect to an Azure Fileshare.
+ */
+export interface AzureFileShareConfiguration {
+  /**
+   * @summary The Azure Storage account name.
+   */
+  accountName: string;
+  /**
+   * @summary The Azure Files URL.
+   * @description This is of the form 'https://{account}.file.core.windows.net/'.
+   */
+  azureFileUrl: string;
+  /**
+   * @summary The Azure Storage account key.
+   */
+  accountKey: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+   */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+   */
+  mountOptions?: string;
+}
+
+/**
+ * @summary The file system to mount on each node.
+ */
+export interface MountConfiguration {
+  /**
+   * @summary The Azure Storage Container to mount using blob FUSE on each node.
+   * @description This property is mutually exclusive with all other properties.
+   */
+  azureBlobFileSystemConfiguration?: AzureBlobFileSystemConfiguration;
+  /**
+   * @summary The NFS file system to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+   */
+  nfsMountConfiguration?: NFSMountConfiguration;
+  /**
+   * @summary The CIFS/SMB file system to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+   */
+  cifsMountConfiguration?: CIFSMountConfiguration;
+  /**
+   * @summary The Azure File Share to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+   */
+  azureFileShareConfiguration?: AzureFileShareConfiguration;
 }
 
 /**
@@ -1869,7 +2029,7 @@ export interface PoolSpecification {
    */
   maxTasksPerNode?: number;
   /**
-   * @summary How Tasks are distributed across Compute Compute Nodes in a Pool.
+   * @summary How Tasks are distributed across Compute Nodes in a Pool.
    * @description If not specified, the default is spread.
    */
   taskSchedulingPolicy?: TaskSchedulingPolicy;
@@ -1972,6 +2132,11 @@ export interface PoolSpecification {
    * use of user code.
    */
   metadata?: MetadataItem[];
+  /**
+   * @summary A list of file systems to mount on each node in the pool.
+   * @description This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
+   */
+  mountConfiguration?: MountConfiguration[];
 }
 
 /**
@@ -3174,6 +3339,11 @@ export interface CloudPool {
    * delay is about 30 minutes.
    */
   stats?: PoolStatistics;
+  /**
+   * @summary A list of file systems to mount on each node in the pool.
+   * @description This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
+   */
+  mountConfiguration?: MountConfiguration[];
 }
 
 /**
@@ -3335,6 +3505,11 @@ export interface PoolAddParameter {
    * use of user code.
    */
   metadata?: MetadataItem[];
+  /**
+   * @summary Mount storage using specified file system for the entire lifetime of the pool.
+   * @description Mount the storage using Azure fileshare, NFS, CIFS or Blobfuse based file system.
+   */
+  mountConfiguration?: MountConfiguration[];
 }
 
 /**
@@ -4135,35 +4310,35 @@ export interface TaskInformation {
 }
 
 /**
- * @summary Information about a start Task running on a Compute Node.
+ * @summary Information about a StartTask running on a Compute Node.
  */
 export interface StartTaskInformation {
   /**
-   * @summary The state of the start Task on the Compute Node.
+   * @summary The state of the StartTask on the Compute Node.
    * @description Possible values include: 'running', 'completed'
    */
   state: string;
   /**
-   * @summary The time at which the start Task started running.
+   * @summary The time at which the StartTask started running.
    * @description This value is reset every time the Task is restarted or retried (that is, this is
-   * the most recent time at which the start Task started running).
+   * the most recent time at which the StartTask started running).
    */
   startTime: Date;
   /**
-   * @summary The time at which the start Task stopped running.
-   * @description This is the end time of the most recent run of the start Task, if that run has
+   * @summary The time at which the StartTask stopped running.
+   * @description This is the end time of the most recent run of the StartTask, if that run has
    * completed (even if that run failed and a retry is pending). This element is not present if the
-   * start Task is currently running.
+   * StartTask is currently running.
    */
   endTime?: Date;
   /**
-   * @summary The exit code of the program specified on the start Task command line.
-   * @description This property is set only if the start Task is in the completed state. In
-   * general, the exit code for a process reflects the specific convention implemented by the
-   * application developer for that process. If you use the exit code value to make decisions in
-   * your code, be sure that you know the exit code convention used by the application process.
-   * However, if the Batch service terminates the start Task (due to timeout, or user termination
-   * via the API) you may see an operating system-defined exit code.
+   * @summary The exit code of the program specified on the StartTask command line.
+   * @description This property is set only if the StartTask is in the completed state. In general,
+   * the exit code for a process reflects the specific convention implemented by the application
+   * developer for that process. If you use the exit code value to make decisions in your code, be
+   * sure that you know the exit code convention used by the application process. However, if the
+   * Batch service terminates the StartTask (due to timeout, or user termination via the API) you
+   * may see an operating system-defined exit code.
    */
   exitCode?: number;
   /**
@@ -4353,7 +4528,7 @@ export interface ComputeNode {
    */
   startTask?: StartTask;
   /**
-   * @summary Runtime information about the execution of the start Task on the Compute Node.
+   * @summary Runtime information about the execution of the StartTask on the Compute Node.
    */
   startTaskInfo?: StartTaskInformation;
   /**
@@ -4535,8 +4710,9 @@ export interface JobPatchParameter {
    * @summary The Pool on which the Batch service runs the Job's Tasks.
    * @description You may change the Pool for a Job only when the Job is disabled. The Patch Job
    * call will fail if you include the poolInfo element and the Job is not disabled. If you specify
-   * an autoPoolSpecification specification in the poolInfo, only the keepAlive property can be
-   * updated, and then only if the auto Pool has a poolLifetimeOption of Job. If omitted, the Job
+   * an autoPoolSpecification in the poolInfo, only the keepAlive property of the
+   * autoPoolSpecification can be updated, and then only if the autoPoolSpecification has a
+   * poolLifetimeOption of Job (other job properties can be updated as normal). If omitted, the Job
    * continues to run on its current Pool.
    */
   poolInfo?: PoolInformation;
@@ -4566,8 +4742,9 @@ export interface JobUpdateParameter {
    * @summary The Pool on which the Batch service runs the Job's Tasks.
    * @description You may change the Pool for a Job only when the Job is disabled. The Update Job
    * call will fail if you include the poolInfo element and the Job is not disabled. If you specify
-   * an autoPoolSpecification specification in the poolInfo, only the keepAlive property can be
-   * updated, and then only if the auto Pool has a poolLifetimeOption of Job.
+   * an autoPoolSpecification in the poolInfo, only the keepAlive property of the
+   * autoPoolSpecification can be updated, and then only if the autoPoolSpecification has a
+   * poolLifetimeOption of Job (other job properties can be updated as normal).
    */
   poolInfo: PoolInformation;
   /**
@@ -4668,8 +4845,8 @@ export interface PoolUpdatePropertiesParameter {
   /**
    * @summary A Task to run on each Compute Node as it joins the Pool. The Task runs when the
    * Compute Node is added to the Pool or when the Compute Node is restarted.
-   * @description If this element is present, it overwrites any existing start Task. If omitted,
-   * any existing start Task is removed from the Pool.
+   * @description If this element is present, it overwrites any existing StartTask. If omitted, any
+   * existing StartTask is removed from the Pool.
    */
   startTask?: StartTask;
   /**
@@ -4685,14 +4862,13 @@ export interface PoolUpdatePropertiesParameter {
    */
   certificateReferences: CertificateReference[];
   /**
-   * @summary The list of Application Packages to be installed on each Compute Compute Node in the
-   * Pool.
+   * @summary The list of Application Packages to be installed on each Compute Node in the Pool.
    * @description The list replaces any existing Application Package references on the Pool.
    * Changes to Application Package references affect all new Compute Nodes joining the Pool, but
-   * do not affect Compute Compute Nodes that are already in the Pool until they are rebooted or
-   * reimaged. There is a maximum of 10 Application Package references on any given Pool. If
-   * omitted, or if you specify an empty collection, any existing Application Packages references
-   * are removed from the Pool. A maximum of 10 references may be specified on a given Pool.
+   * do not affect Compute Nodes that are already in the Pool until they are rebooted or reimaged.
+   * There is a maximum of 10 Application Package references on any given Pool. If omitted, or if
+   * you specify an empty collection, any existing Application Packages references are removed from
+   * the Pool. A maximum of 10 references may be specified on a given Pool.
    */
   applicationPackageReferences: ApplicationPackageReference[];
   /**
@@ -4710,8 +4886,8 @@ export interface PoolPatchParameter {
   /**
    * @summary A Task to run on each Compute Node as it joins the Pool. The Task runs when the
    * Compute Node is added to the Pool or when the Compute Node is restarted.
-   * @description If this element is present, it overwrites any existing start Task. If omitted,
-   * any existing start Task is left unchanged.
+   * @description If this element is present, it overwrites any existing StartTask. If omitted, any
+   * existing StartTask is left unchanged.
    */
   startTask?: StartTask;
   /**

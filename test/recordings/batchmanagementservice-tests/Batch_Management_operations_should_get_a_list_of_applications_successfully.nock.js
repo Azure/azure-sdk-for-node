@@ -9,20 +9,20 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications?api-version=2018-12-01')
-  .reply(200, "{\"value\":[{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D67759EF532BBA\\\"\",\"properties\":{\"displayName\":\"my_application_name\",\"allowUpdates\":true}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications?api-version=2019-08-01')
+  .reply(200, "{\"value\":[{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D719D74DFD6121\\\"\",\"properties\":{\"displayName\":\"my_application_name\",\"allowUpdates\":true}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '36baab01-d567-4818-8366-efd757ec050d',
-  'x-ms-request-id': 'cdc7a8c1-12c7-4907-a295-da7211d84124',
+  'x-ms-correlation-request-id': '5121b12f-6cb8-4dfb-a616-1d0b2f66ba11',
+  'x-ms-request-id': 'dfd870c2-6e58-45bf-a0df-8b71ea7c50a0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-reads': '11999',
+  'x-ms-ratelimit-remaining-subscription-reads': '11998',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001548Z:36baab01-d567-4818-8366-efd757ec050d',
-  date: 'Fri, 11 Jan 2019 00:15:47 GMT',
+   'WESTUS:20190805T190123Z:5121b12f-6cb8-4dfb-a616-1d0b2f66ba11',
+  date: 'Mon, 05 Aug 2019 19:01:22 GMT',
   connection: 'close' });
  return result; }]];
