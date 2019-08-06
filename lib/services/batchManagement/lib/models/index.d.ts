@@ -80,6 +80,20 @@ export interface AutoStorageProperties extends AutoStorageBaseProperties {
 }
 
 /**
+ * A VM Family and its associated core quota for the Batch account.
+ */
+export interface VirtualMachineFamilyCoreQuota {
+  /**
+   * The Virtual Machine family name.
+   */
+  readonly name?: string;
+  /**
+   * The core quota for the VM family for the Batch account.
+   */
+  readonly coreQuota?: number;
+}
+
+/**
  * A definition of an Azure resource.
  */
 export interface Resource extends BaseResource {
@@ -133,19 +147,41 @@ export interface BatchAccount extends Resource {
    */
   readonly autoStorage?: AutoStorageProperties;
   /**
-   * @summary The dedicated core quota for this Batch account.
+   * @summary The dedicated core quota for the Batch account.
+   * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
+   * the subscription so this value is not returned.
    */
   readonly dedicatedCoreQuota?: number;
   /**
-   * @summary The low-priority core quota for this Batch account.
+   * @summary The low-priority core quota for the Batch account.
+   * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
+   * the subscription so this value is not returned.
    */
   readonly lowPriorityCoreQuota?: number;
   /**
-   * @summary The pool quota for this Batch account.
+   * A list of the dedicated core quota per Virtual Machine family for the Batch account. For
+   * accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription
+   * so this value is not returned.
+   */
+  readonly dedicatedCoreQuotaPerVMFamily?: VirtualMachineFamilyCoreQuota[];
+  /**
+   * @summary A value indicating whether the core quota for the Batch Account is enforced per
+   * Virtual Machine family or not.
+   * @description Batch is transitioning its core quota system for dedicated cores to be enforced
+   * per Virtual Machine family. During this transitional phase, the dedicated core quota per
+   * Virtual Machine family may not yet be enforced. If this flag is false, dedicated core quota is
+   * enforced via the old dedicatedCoreQuota property on the account and does not consider Virtual
+   * Machine family. If this flag is true, dedicated core quota is enforced via the
+   * dedicatedCoreQuotaPerVMFamily property on the account, and the old dedicatedCoreQuota does not
+   * apply.
+   */
+  readonly dedicatedCoreQuotaPerVMFamilyEnforced?: boolean;
+  /**
+   * @summary The pool quota for the Batch account.
    */
   readonly poolQuota?: number;
   /**
-   * @summary The active job and job schedule quota for this Batch account.
+   * @summary The active job and job schedule quota for the Batch account.
    */
   readonly activeJobAndJobScheduleQuota?: number;
 }
@@ -413,8 +449,8 @@ export interface CloudServiceConfiguration {
    * @summary The Azure Guest OS family to be installed on the virtual machines in the pool.
    * @description Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3
    * - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
-   * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more information, see
-   * Azure Guest OS Releases
+   * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6,
+   * equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases
    * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
   */
   osFamily: string;
@@ -444,7 +480,7 @@ export interface ImageReference {
   offer?: string;
   /**
    * @summary The SKU of the Azure Virtual Machines Marketplace image.
-   * @description For example, 14.04.0-LTS or 2012-R2-Datacenter.
+   * @description For example, 18.04-LTS or 2019-Datacenter.
   */
   sku?: string;
   /**
@@ -454,14 +490,18 @@ export interface ImageReference {
   */
   version?: string;
   /**
-   * @summary The ARM resource identifier of the virtual machine image. Computes nodes of the pool
-   * will be created using this custom image. This is of the form
+   * @summary The ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
+   * Image. Compute Nodes of the Pool will be created using this Image Id. This is of either the
+   * form
    * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-   * @description This property is mutually exclusive with other properties. The virtual machine
-   * image must be in the same region and subscription as the Azure Batch account. For information
-   * about the firewall settings for Batch node agent to communicate with Batch service see
-   * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-   * .
+   * for Virtual Machine Image or
+   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+   * for SIG image.
+   * @description This property is mutually exclusive with other properties. For Virtual Machine
+   * Image it must be in the same region and subscription as the Azure Batch account. For SIG image
+   * it must have replicas in the same region as the Azure Batch account. For information about the
+   * firewall settings for the Batch node agent to communicate with the Batch service see
+   * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
   */
   id?: string;
 }
@@ -478,7 +518,8 @@ export interface WindowsConfiguration {
 }
 
 /**
- * Data Disk settings which will be used by the data disks associated to Compute Nodes in the pool.
+ * Settings which will be used by the data disks associated to Compute Nodes in the Pool. When
+ * using attached data disks, you need to mount and format the disks from within a VM to use them.
 */
 export interface DataDisk {
   /**
@@ -758,6 +799,14 @@ export interface NetworkSecurityGroupRule {
    * request fails with HTTP status code 400.
   */
   sourceAddressPrefix: string;
+  /**
+   * @summary The source port ranges to match for the rule.
+   * @description Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges
+   * (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't
+   * overlap. If any other values are provided the request fails with HTTP status code 400. Default
+   * value will be *.
+  */
+  sourcePortRanges?: string[];
 }
 
 /**
@@ -859,6 +908,16 @@ export interface NetworkConfiguration {
    * virtualMachineConfiguration property.
   */
   endpointConfiguration?: PoolEndpointConfiguration;
+  /**
+   * @summary The list of public IPs which the Batch service will use when provisioning Compute
+   * Nodes.
+   * @description The number of IPs specified here limits the maximum size of the Pool - 50
+   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
+   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
+   * this collection is of the form:
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+  */
+  publicIPs?: string[];
 }
 
 /**
@@ -1042,14 +1101,16 @@ export interface EnvironmentSetting {
 export interface AutoUserSpecification {
   /**
    * @summary The scope for the auto user
-   * @description The default value is task. Possible values include: 'Task', 'Pool'
+   * @description The default value is Pool. If the pool is running Windows a value of Task should
+   * be specified if stricter isolation between tasks is required. For example, if the task mutates
+   * the registry in a way which could impact other tasks, or if certificates have been specified
+   * on the pool which should not be accessible by normal tasks but should be accessible by start
+   * tasks. Possible values include: 'Task', 'Pool'
   */
   scope?: string;
   /**
    * @summary The elevation level of the auto user.
-   * @description nonAdmin - The auto user is a standard user without elevated access. admin - The
-   * auto user is a user with elevated access and operates with full Administrator permissions. The
-   * default value is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+   * @description The default value is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
   */
   elevationLevel?: string;
 }
@@ -1094,11 +1155,22 @@ export interface TaskContainerSettings {
    * @description This setting can be omitted if was already provided at pool creation.
   */
   registry?: ContainerRegistry;
+  /**
+   * @summary A flag to indicate where the container task working directory is. The default is
+   * 'taskWorkingDirectory'.
+   * @description Possible values include: 'TaskWorkingDirectory', 'ContainerImageDefault'
+  */
+  workingDirectory?: string;
 }
 
 /**
  * @summary A task which is run when a compute node joins a pool in the Azure Batch service, or
  * when the compute node is rebooted or reimaged.
+ * @description In some cases the start task may be re-run even though the node was not rebooted.
+ * Due to this, start tasks should be idempotent and exit gracefully if the setup they're
+ * performing has already been done. Special care should be taken to avoid start tasks which create
+ * breakaway process or install/launch services from the start task working directory, as this will
+ * block Batch from being able to re-run the start task.
 */
 export interface StartTask {
   /**
@@ -1144,7 +1216,7 @@ export interface StartTask {
    * and scheduling error detail. If false, the Batch service will not wait for the start task to
    * complete. In this case, other tasks can start executing on the compute node while the start
    * task is still running; and even if the start task fails, new tasks will continue to be
-   * scheduled on the node. The default is false.
+   * scheduled on the node. The default is true.
   */
   waitForSuccess?: boolean;
   /**
@@ -1278,6 +1350,147 @@ export interface ResizeOperationStatus {
 }
 
 /**
+ * @summary Information used to connect to an Azure Storage Container using Blobfuse.
+*/
+export interface AzureBlobFileSystemConfiguration {
+  /**
+   * @summary The Azure Storage Account name.
+  */
+  accountName: string;
+  /**
+   * @summary The Azure Blob Storage Container name.
+  */
+  containerName: string;
+  /**
+   * @summary The Azure Storage Account key.
+   * @description This property is mutually exclusive with sasKey and one must be specified.
+  */
+  accountKey?: string;
+  /**
+   * @summary The Azure Storage SAS token.
+   * @description This property is mutually exclusive with accountKey and one must be specified.
+  */
+  sasKey?: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+  */
+  blobfuseOptions?: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+  */
+  relativeMountPath: string;
+}
+
+/**
+ * @summary Information used to connect to an NFS file system.
+*/
+export interface NFSMountConfiguration {
+  /**
+   * @summary The URI of the file system to mount.
+  */
+  source: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+  */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+  */
+  mountOptions?: string;
+}
+
+/**
+ * @summary Information used to connect to a CIFS file system.
+*/
+export interface CIFSMountConfiguration {
+  /**
+   * @summary The user to use for authentication against the CIFS file system.
+  */
+  username: string;
+  /**
+   * @summary The URI of the file system to mount.
+  */
+  source: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+  */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+  */
+  mountOptions?: string;
+  /**
+   * @summary The password to use for authentication against the CIFS file system.
+  */
+  password: string;
+}
+
+/**
+ * @summary Information used to connect to an Azure Fileshare.
+*/
+export interface AzureFileShareConfiguration {
+  /**
+   * @summary The Azure Storage account name.
+  */
+  accountName: string;
+  /**
+   * @summary The Azure Files URL.
+   * @description This is of the form 'https://{account}.file.core.windows.net/'.
+  */
+  azureFileUrl: string;
+  /**
+   * @summary The Azure Storage account key.
+  */
+  accountKey: string;
+  /**
+   * @summary The relative path on the compute node where the file system will be mounted
+   * @description All file systems are mounted relative to the Batch mounts directory, accessible
+   * via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
+  */
+  relativeMountPath: string;
+  /**
+   * @summary Additional command line options to pass to the mount command.
+   * @description These are 'net use' options in Windows and 'mount' options in Linux.
+  */
+  mountOptions?: string;
+}
+
+/**
+ * @summary The file system to mount on each node.
+*/
+export interface MountConfiguration {
+  /**
+   * @summary The Azure Storage Container to mount using blob FUSE on each node.
+   * @description This property is mutually exclusive with all other properties.
+  */
+  azureBlobFileSystemConfiguration?: AzureBlobFileSystemConfiguration;
+  /**
+   * @summary The NFS file system to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+  */
+  nfsMountConfiguration?: NFSMountConfiguration;
+  /**
+   * @summary The CIFS/SMB file system to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+  */
+  cifsMountConfiguration?: CIFSMountConfiguration;
+  /**
+   * @summary The Azure File Share to mount on each node.
+   * @description This property is mutually exclusive with all other properties.
+  */
+  azureFileShareConfiguration?: AzureFileShareConfiguration;
+}
+
+/**
  * Contains information about a pool.
 */
 export interface Pool extends ProxyResource {
@@ -1372,10 +1585,13 @@ export interface Pool extends ProxyResource {
   /**
    * @summary The maximum number of tasks that can run concurrently on a single compute node in the
    * pool.
+   * @description The default value is 1. The maximum value is the smaller of 4 times the number of
+   * cores of the vmSize of the pool or 256.
   */
   maxTasksPerNode?: number;
   /**
    * @summary How tasks are distributed across compute nodes in a pool.
+   * @description If not specified, the default is spread.
   */
   taskSchedulingPolicy?: TaskSchedulingPolicy;
   /**
@@ -1406,9 +1622,9 @@ export interface Pool extends ProxyResource {
   certificates?: CertificateReference[];
   /**
    * @summary The list of application packages to be installed on each compute node in the pool.
-   * @description Changes to application packages affect all new compute nodes joining the pool,
-   * but do not affect compute nodes that are already in the pool until they are rebooted or
-   * reimaged.
+   * @description Changes to application package references affect all new compute nodes joining
+   * the pool, but do not affect compute nodes that are already in the pool until they are rebooted
+   * or reimaged. There is a maximum of 10 application package references on any given pool.
   */
   applicationPackages?: ApplicationPackageReference[];
   /**
@@ -1423,6 +1639,11 @@ export interface Pool extends ProxyResource {
    * @summary Contains details about the current or last completed resize operation.
   */
   readonly resizeOperationStatus?: ResizeOperationStatus;
+  /**
+   * @summary A list of file systems to mount on each node in the pool.
+   * @description This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
+  */
+  mountConfiguration?: MountConfiguration[];
 }
 
 /**

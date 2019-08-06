@@ -9,22 +9,22 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0?api-version=2018-12-01')
-  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0\",\"name\":\"v2.0\",\"etag\":\"W/\\\"0x8D67759F1C0A446\\\"\",\"properties\":{\"storageUrl\":\"https://nodesdkteststorage.blob.core.windows.net/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v2.0-b97f24f8-ba8e-47fa-abc8-8774b6e65564?sv=2018-03-28&sr=b&sig=rv7nzODdnmTJEk4NsdED1%2F18%2Bk33IV8URFPypHtPgJ8%3D&st=2019-01-11T00%3A10%3A51Z&se=2019-01-11T04%3A15%3A51Z&sp=rw\",\"storageUrlExpiry\":\"2019-01-11T04:15:51.1221382Z\",\"state\":\"Pending\"}}", { 'cache-control': 'no-cache',
+  .put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0?api-version=2019-08-01')
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0\",\"name\":\"v2.0\",\"etag\":\"W/\\\"0x8D719D75081FE65\\\"\",\"properties\":{\"storageUrl\":\"https://nodesdkteststorage.blob.core.windows.net/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v2.0-036bc5b1-1114-43b9-807a-f95a834ac2f0?sv=2018-03-28&sr=b&sig=jpcuQJ9gynlmSF2OieRej8zeuexvR7zTn%2FZtl%2BkOvY4%3D&st=2019-08-05T18%3A56%3A25Z&se=2019-08-05T23%3A01%3A25Z&sp=rw\",\"storageUrlExpiry\":\"2019-08-05T23:01:25.5925363Z\",\"state\":\"Pending\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '720',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Fri, 11 Jan 2019 00:15:51 GMT',
-  etag: 'W/"0x8D67759F1C0A446"',
-  'x-ms-correlation-request-id': 'fe346565-c180-4f34-aafb-becce803cd7e',
-  'x-ms-request-id': '4ce0d67a-397f-430c-856c-f0c40557a5cb',
+  'last-modified': 'Mon, 05 Aug 2019 19:01:25 GMT',
+  etag: 'W/"0x8D719D75081FE65"',
+  'x-ms-correlation-request-id': 'f309ab32-0273-45ae-9c08-a5aec0ee9910',
+  'x-ms-request-id': 'b22df000-5e99-40d2-82f2-4715e735437a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001551Z:fe346565-c180-4f34-aafb-becce803cd7e',
-  date: 'Fri, 11 Jan 2019 00:15:50 GMT',
+   'WESTUS:20190805T190126Z:f309ab32-0273-45ae-9c08-a5aec0ee9910',
+  date: 'Mon, 05 Aug 2019 19:01:25 GMT',
   connection: 'close' });
  return result; }]];

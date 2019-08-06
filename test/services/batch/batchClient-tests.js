@@ -432,7 +432,7 @@ describe('Batch Service', function () {
       client.account.listPoolNodeCounts( function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(3);
+        result.length.should.equal(2);
         result[0].poolId.should.equal('nodesdkinboundendpointpool');
         result[0].dedicated.idle.should.equal(1);
         result[0].lowPriority.total.should.equal(0);
