@@ -166,6 +166,8 @@ jobs:
           command: 'install'
         displayName: 'npm install'
 
+      - script: 'npm run test-client -- -- --reporter mocha-junit-reporter || cat ./npm-debug.log'
+
       - task: Npm@1
         inputs:
           command: 'custom'
