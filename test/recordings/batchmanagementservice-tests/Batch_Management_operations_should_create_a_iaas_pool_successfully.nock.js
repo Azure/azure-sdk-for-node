@@ -10,22 +10,22 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_iaas_pool?api-version=2018-12-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_iaas_pool\",\"name\":\"test_iaas_pool\",\"type\":\"Microsoft.Batch/batchAccounts/pools\",\"etag\":\"W/\\\"0x8D6775C8882A481\\\"\",\"properties\":{\"lastModified\":\"2019-01-11T00:34:23.0463617Z\",\"creationTime\":\"2019-01-11T00:34:23.0463617Z\",\"provisioningState\":\"Succeeded\",\"provisioningStateTransitionTime\":\"2019-01-11T00:34:23.0463617Z\",\"allocationState\":\"Resizing\",\"allocationStateTransitionTime\":\"2019-01-11T00:34:23.0463617Z\",\"vmSize\":\"STANDARD_A1\",\"interNodeCommunication\":\"Disabled\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\"nodeFillType\":\"Spread\"},\"deploymentConfiguration\":{\"virtualMachineConfiguration\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2016-Datacenter-smalldisk\",\"version\":\"latest\"},\"nodeAgentSkuId\":\"batch.node.windows amd64\",\"windowsConfiguration\":{\"enableAutomaticUpdates\":true}}},\"scaleSettings\":{\"fixedScale\":{\"targetDedicatedNodes\":0,\"targetLowPriorityNodes\":0,\"resizeTimeout\":\"PT15M\"}},\"resizeOperationStatus\":{\"targetDedicatedNodes\":0,\"nodeDeallocationOption\":\"Requeue\",\"resizeTimeout\":\"PT15M\",\"startTime\":\"2019-01-11T00:34:23.0463617Z\"},\"currentDedicatedNodes\":0,\"currentLowPriorityNodes\":0}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_iaas_pool?api-version=2019-08-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_iaas_pool\",\"name\":\"test_iaas_pool\",\"type\":\"Microsoft.Batch/batchAccounts/pools\",\"etag\":\"W/\\\"0x8D719D8300E5DF1\\\"\",\"properties\":{\"lastModified\":\"2019-08-05T19:07:40.6092785Z\",\"creationTime\":\"2019-08-05T19:07:40.6092785Z\",\"provisioningState\":\"Succeeded\",\"provisioningStateTransitionTime\":\"2019-08-05T19:07:40.6092785Z\",\"allocationState\":\"Resizing\",\"allocationStateTransitionTime\":\"2019-08-05T19:07:40.6092785Z\",\"vmSize\":\"STANDARD_A1\",\"interNodeCommunication\":\"Disabled\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\"nodeFillType\":\"Spread\"},\"deploymentConfiguration\":{\"virtualMachineConfiguration\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2016-Datacenter-smalldisk\",\"version\":\"latest\"},\"nodeAgentSkuId\":\"batch.node.windows amd64\",\"windowsConfiguration\":{\"enableAutomaticUpdates\":true}}},\"scaleSettings\":{\"fixedScale\":{\"targetDedicatedNodes\":0,\"targetLowPriorityNodes\":0,\"resizeTimeout\":\"PT15M\"}},\"resizeOperationStatus\":{\"targetDedicatedNodes\":0,\"nodeDeallocationOption\":\"Requeue\",\"resizeTimeout\":\"PT15M\",\"startTime\":\"2019-08-05T19:07:40.6092785Z\"},\"currentDedicatedNodes\":0,\"currentLowPriorityNodes\":0}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1316',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Fri, 11 Jan 2019 00:34:23 GMT',
-  etag: 'W/"0x8D6775C8882A481"',
-  'x-ms-correlation-request-id': '98fa852d-4715-4ee1-9f8d-070d347b26f5',
-  'x-ms-request-id': '18e176bd-78b7-4e01-a179-286534f2cb3c',
+  'last-modified': 'Mon, 05 Aug 2019 19:07:40 GMT',
+  etag: 'W/"0x8D719D8300E5DF1"',
+  'x-ms-correlation-request-id': '08ff553e-49bb-4331-b9d9-dc060c28f42f',
+  'x-ms-request-id': '5c3fd978-dc46-48f9-a46e-25b8bc29014b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T003423Z:98fa852d-4715-4ee1-9f8d-070d347b26f5',
-  date: 'Fri, 11 Jan 2019 00:34:22 GMT',
+   'WESTUS:20190805T190741Z:08ff553e-49bb-4331-b9d9-dc060c28f42f',
+  date: 'Mon, 05 Aug 2019 19:07:40 GMT',
   connection: 'close' });
  return result; }]];

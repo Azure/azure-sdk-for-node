@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2018-12-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:6171b189-56d0-4f67-98b7-30fe219f950c\\nTime:2019-01-11T00:15:53.3740656Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2019-08-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:d4fd620f-2bc2-48aa-a1de-1f1fe957031f\\nTime:2019-08-05T19:01:28.2476000Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '232',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '55063050-0f34-4607-a8d5-631790dac51f',
-  'x-ms-request-id': '6171b189-56d0-4f67-98b7-30fe219f950c',
+  'x-ms-correlation-request-id': 'cf4956f8-1867-47b6-9925-f1bd2f931f36',
+  'x-ms-request-id': 'd4fd620f-2bc2-48aa-a1de-1f1fe957031f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001553Z:55063050-0f34-4607-a8d5-631790dac51f',
-  date: 'Fri, 11 Jan 2019 00:15:53 GMT',
+   'WESTUS:20190805T190128Z:cf4956f8-1867-47b6-9925-f1bd2f931f36',
+  date: 'Mon, 05 Aug 2019 19:01:27 GMT',
   connection: 'close' });
  return result; }]];

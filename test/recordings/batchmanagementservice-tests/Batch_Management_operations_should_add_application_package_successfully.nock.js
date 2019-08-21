@@ -9,38 +9,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0?api-version=2018-12-01')
-  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D67759F0AF3FCA\\\"\",\"properties\":{\"storageUrl\":\"https://nodesdkteststorage.blob.core.windows.net/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v1.0-7bcd0797-a896-4626-9e7e-57f5fda3d58f?sv=2018-03-28&sr=b&sig=a1Lpo3Ee85E8VFbD4ZDeQVkDFZS%2B1SkzZrSjWXD%2FEsE%3D&st=2019-01-11T00%3A10%3A49Z&se=2019-01-11T04%3A15%3A49Z&sp=rw\",\"storageUrlExpiry\":\"2019-01-11T04:15:49.3247575Z\",\"state\":\"Pending\"}}", { 'cache-control': 'no-cache',
+  .put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0?api-version=2019-08-01')
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D719D74F81BAF6\\\"\",\"properties\":{\"storageUrl\":\"https://nodesdkteststorage.blob.core.windows.net/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v1.0-cdbdde7c-9ab2-4861-9077-ca26ff1d3b3f?sv=2018-03-28&sr=b&sig=Fk5B1YadIv4KhG%2Boh6mYS9cPXUsjEP2L6yE5wpxNMJI%3D&st=2019-08-05T18%3A56%3A23Z&se=2019-08-05T23%3A01%3A23Z&sp=rw\",\"storageUrlExpiry\":\"2019-08-05T23:01:23.9167692Z\",\"state\":\"Pending\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '720',
+  'content-length': '718',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Fri, 11 Jan 2019 00:15:49 GMT',
-  etag: 'W/"0x8D67759F0AF3FCA"',
-  'x-ms-correlation-request-id': '61513b50-37b5-41df-90bc-26f8ac7d333a',
-  'x-ms-request-id': 'a8381c93-a6ee-40d1-8bbd-e14b9c034d96',
+  'last-modified': 'Mon, 05 Aug 2019 19:01:23 GMT',
+  etag: 'W/"0x8D719D74F81BAF6"',
+  'x-ms-correlation-request-id': '46ba7cd8-5855-41b3-a670-743c4aee87e5',
+  'x-ms-request-id': '65f63150-865a-482a-927b-ef4ce4faab87',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001549Z:61513b50-37b5-41df-90bc-26f8ac7d333a',
-  date: 'Fri, 11 Jan 2019 00:15:48 GMT',
+   'WESTUS:20190805T190124Z:46ba7cd8-5855-41b3-a670-743c4aee87e5',
+  date: 'Mon, 05 Aug 2019 19:01:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodesdkteststorage.blob.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v1.0-7bcd0797-a896-4626-9e7e-57f5fda3d58f?sv=2018-03-28&sr=b&sig=a1Lpo3Ee85E8VFbD4ZDeQVkDFZS%2B1SkzZrSjWXD%2FEsE%3D&st=2019-01-11T00%3A10%3A49Z&se=2019-01-11T04%3A15%3A49Z&sp=rw', '*')
-  .reply(201, "", { 'transfer-encoding': 'chunked',
+.put('/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v1.0-cdbdde7c-9ab2-4861-9077-ca26ff1d3b3f?sv=2018-03-28&sr=b&sig=Fk5B1YadIv4KhG%2Boh6mYS9cPXUsjEP2L6yE5wpxNMJI%3D&st=2019-08-05T18%3A56%3A23Z&se=2019-08-05T23%3A01%3A23Z&sp=rw', '*')
+  .reply(201, "", { 'content-length': '0',
   'content-md5': 'Evetq3j5z4ehYa3l4kFC1w==',
-  'last-modified': 'Fri, 11 Jan 2019 00:15:49 GMT',
-  etag: '"0x8D67759F1045FA8"',
+  'last-modified': 'Mon, 05 Aug 2019 19:01:24 GMT',
+  etag: '"0x8D719D75008857E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '133e22e3-b01e-001a-7842-a936f4000000',
+  'x-ms-request-id': '5b1e53aa-301e-0022-11c0-4b77ad000000',
   'x-ms-version': '2018-03-28',
   'x-ms-request-server-encrypted': 'true',
-  date: 'Fri, 11 Jan 2019 00:15:49 GMT',
+  date: 'Mon, 05 Aug 2019 19:01:24 GMT',
   connection: 'close' });
  return result; }]];

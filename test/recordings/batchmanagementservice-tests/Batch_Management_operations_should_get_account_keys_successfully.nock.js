@@ -9,20 +9,20 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2018-12-01')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"Uua0w+y4SdJ7kynRgdUiKZ7bYamFQZgERX+4Ka0FX85k0Mvv7biYo34DU94gpj0yQ4JJs8dnKsFvP1fUEtDktA==\",\"secondary\":\"6f1isFP51ib8My8xOBimiDuLXbgxF3lhW7vDh67d8LdNfHvlk52BzvXFwwqdTCnwkhRgzm6KgVohNW0mE/3Gpg==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2019-08-01')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"AxmYwCR+pyRYtBDWSypM1sufwKaG1r5Q3Lf5pCTb5zGVOmzApJswFqwgxdPSciULNWalBWPzPVi3lN/VssLrSA==\",\"secondary\":\"BainmrSlDABbXtvpHhb95tdiPh8V7IE97KzC57R7nZyeslFetuaTGb2XawFA0e2tpb/uTyqWMr1TRdvSv/3poQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '52cca533-d021-478e-857b-a65ab38d02df',
-  'x-ms-request-id': '50442031-378d-4d6c-a67a-bf505df6042a',
+  'x-ms-correlation-request-id': 'dbe2165d-d68a-4864-b7c8-f505ae65455d',
+  'x-ms-request-id': 'fa3ac65a-8e97-42d7-acc6-61f5fabae709',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001637Z:52cca533-d021-478e-857b-a65ab38d02df',
-  date: 'Fri, 11 Jan 2019 00:16:36 GMT',
+   'WESTUS:20190805T190210Z:dbe2165d-d68a-4864-b7c8-f505ae65455d',
+  date: 'Mon, 05 Aug 2019 19:02:09 GMT',
   connection: 'close' });
  return result; }]];

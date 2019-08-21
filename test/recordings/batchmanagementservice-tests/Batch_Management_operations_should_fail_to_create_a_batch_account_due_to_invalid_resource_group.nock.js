@@ -10,19 +10,19 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/does-not-exist/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2018-12-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/does-not-exist/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2019-08-01', '*')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'does-not-exist' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '2574495e-5510-4869-8b5b-7048a3af0551',
-  'x-ms-correlation-request-id': '2574495e-5510-4869-8b5b-7048a3af0551',
+  'x-ms-request-id': 'f3b11a38-25f8-4711-ba5c-3962a7eef7ed',
+  'x-ms-correlation-request-id': 'f3b11a38-25f8-4711-ba5c-3962a7eef7ed',
   'x-ms-routing-request-id':
-   'WESTUS2:20190111T001635Z:2574495e-5510-4869-8b5b-7048a3af0551',
+   'WESTUS:20190805T190208Z:f3b11a38-25f8-4711-ba5c-3962a7eef7ed',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  date: 'Fri, 11 Jan 2019 00:16:34 GMT',
+  date: 'Mon, 05 Aug 2019 19:02:07 GMT',
   connection: 'close',
   'content-length': '106' });
  return result; }]];

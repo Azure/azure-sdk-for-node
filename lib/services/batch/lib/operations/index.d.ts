@@ -136,8 +136,8 @@ export interface Application {
      * This operation returns only Applications and versions that are available for
      * use on Compute Nodes; that is, that can be used in an Package reference. For
      * administrator information about Applications and versions that are not yet
-     * available to Compute Compute Nodes, use the Azure portal or the Azure
-     * Resource Manager API.
+     * available to Compute Nodes, use the Azure portal or the Azure Resource
+     * Manager API.
      *
      * @param {string} applicationId The ID of the Application.
      *
@@ -178,8 +178,8 @@ export interface Application {
      * This operation returns only Applications and versions that are available for
      * use on Compute Nodes; that is, that can be used in an Package reference. For
      * administrator information about Applications and versions that are not yet
-     * available to Compute Compute Nodes, use the Azure portal or the Azure
-     * Resource Manager API.
+     * available to Compute Nodes, use the Azure portal or the Azure Resource
+     * Manager API.
      *
      * @param {string} applicationId The ID of the Application.
      *
@@ -659,8 +659,8 @@ export interface Pool {
      * UbuntuServer or WindowsServer.
      *
      * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] The
-     * SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * SKU of the Azure Virtual Machines Marketplace Image. For example, 18.04-LTS
+     * or 2019-Datacenter.
      *
      * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
      * The version of the Azure Virtual Machines Marketplace Image. A value of
@@ -669,13 +669,18 @@ export interface Pool {
      *
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
-     * ARM resource identifier of the Virtual Machine Image. Computes Compute Nodes
-     * of the Pool will be created using this custom Image. This is of the form
+     * ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
+     * Image. Computes Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
@@ -833,22 +838,30 @@ export interface Pool {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [pool.networkConfiguration.publicIPs] The list of public IPs
+     * which the Batch service will use when provisioning Compute Nodes. The number
+     * of IPs specified here limits the maximum size of the Pool - 50 dedicated
+     * nodes or 20 low-priority nodes can be allocated for each public IP. For
+     * example, a pool needing 150 dedicated VMs would need at least 3 public IPs
+     * specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object} [pool.startTask] A Task specified to run on each Compute
      * Node as it joins the Pool. The Task runs when the Compute Node is added to
      * the Pool or when the Compute Node is restarted.
      *
-     * @param {string} pool.startTask.commandLine The command line of the start
-     * Task. The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. If the command line refers to file paths, it should use
-     * a relative path (relative to the Task working directory), or use the Batch
-     * provided environment variable
+     * @param {string} pool.startTask.commandLine The command line of the
+     * StartTask. The command line does not run under a shell, and therefore cannot
+     * take advantage of shell features such as environment variable expansion. If
+     * you want to take advantage of such features, you should invoke the shell in
+     * the command line, for example using "cmd /c MyCommand" in Windows or
+     * "/bin/sh -c MyCommand" in Linux. If the command line refers to file paths,
+     * it should use a relative path (relative to the Task working directory), or
+     * use the Batch provided environment variable
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
-     * container under which the start Task runs. When this is specified, all
+     * container under which the StartTask runs. When this is specified, all
      * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
      * Batch directories on the node) are mapped into the container, all Task
      * environment variables are mapped into the container, and the Task command
@@ -894,10 +907,10 @@ export interface Pool {
      * in the Task's working directory.
      *
      * @param {array} [pool.startTask.environmentSettings] A list of environment
-     * variable settings for the start Task.
+     * variable settings for the StartTask.
      *
      * @param {object} [pool.startTask.userIdentity] The user identity under which
-     * the start Task runs. If omitted, the Task runs as a non-administrative user
+     * the StartTask runs. If omitted, the Task runs as a non-administrative user
      * unique to the Task.
      *
      * @param {string} [pool.startTask.userIdentity.userName] The name of the user
@@ -909,8 +922,12 @@ export interface Pool {
      * exclusive; you must specify one but not both.
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.scope] The scope for
-     * the auto user The default value is Task. Possible values include: 'task',
-     * 'pool'
+     * the auto user The default value is pool. If the pool is running Windows a
+     * value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by
+     * StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
      * elevation level of the auto user. The default value is nonAdmin. Possible
@@ -926,17 +943,17 @@ export interface Pool {
      * count is -1, the Batch service retries the Task without limit.
      *
      * @param {boolean} [pool.startTask.waitForSuccess] Whether the Batch service
-     * should wait for the start Task to complete successfully (that is, to exit
+     * should wait for the StartTask to complete successfully (that is, to exit
      * with exit code 0) before scheduling any Tasks on the Compute Node. If true
-     * and the start Task fails on a Node, the Batch service retries the start Task
+     * and the StartTask fails on a Node, the Batch service retries the StartTask
      * up to its maximum retry count (maxTaskRetryCount). If the Task has still not
      * completed successfully after all retries, then the Batch service marks the
      * Node unusable, and will not schedule Tasks to it. This condition can be
      * detected via the Compute Node state and failure info details. If false, the
-     * Batch service will not wait for the start Task to complete. In this case,
-     * other Tasks can start executing on the Compute Node while the start Task is
-     * still running; and even if the start Task fails, new Tasks will continue to
-     * be scheduled on the Compute Node. The default is false.
+     * Batch service will not wait for the StartTask to complete. In this case,
+     * other Tasks can start executing on the Compute Node while the StartTask is
+     * still running; and even if the StartTask fails, new Tasks will continue to
+     * be scheduled on the Compute Node. The default is true.
      *
      * @param {array} [pool.certificateReferences] The list of Certificates to be
      * installed on each Compute Node in the Pool. For Windows Nodes, the Batch
@@ -969,8 +986,8 @@ export interface Pool {
      * Compute Nodes in a Pool. If not specified, the default is spread.
      *
      * @param {string} pool.taskSchedulingPolicy.nodeFillType How Tasks are
-     * distributed across Compute Compute Nodes in a Pool. If not specified, the
-     * default is spread. Possible values include: 'spread', 'pack'
+     * distributed across Compute Nodes in a Pool. If not specified, the default is
+     * spread. Possible values include: 'spread', 'pack'
      *
      * @param {array} [pool.userAccounts] The list of user Accounts to be created
      * on each Compute Node in the Pool.
@@ -978,6 +995,10 @@ export interface Pool {
      * @param {array} [pool.metadata] A list of name-value pairs associated with
      * the Pool as metadata. The Batch service does not assign any meaning to
      * metadata; it is solely for the use of user code.
+     *
+     * @param {array} [pool.mountConfiguration] Mount storage using specified file
+     * system for the entire lifetime of the pool. Mount the storage using Azure
+     * fileshare, NFS, CIFS or Blobfuse based file system.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1083,8 +1104,8 @@ export interface Pool {
      * UbuntuServer or WindowsServer.
      *
      * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] The
-     * SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * SKU of the Azure Virtual Machines Marketplace Image. For example, 18.04-LTS
+     * or 2019-Datacenter.
      *
      * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
      * The version of the Azure Virtual Machines Marketplace Image. A value of
@@ -1093,13 +1114,18 @@ export interface Pool {
      *
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
-     * ARM resource identifier of the Virtual Machine Image. Computes Compute Nodes
-     * of the Pool will be created using this custom Image. This is of the form
+     * ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
+     * Image. Computes Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
@@ -1257,22 +1283,30 @@ export interface Pool {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [pool.networkConfiguration.publicIPs] The list of public IPs
+     * which the Batch service will use when provisioning Compute Nodes. The number
+     * of IPs specified here limits the maximum size of the Pool - 50 dedicated
+     * nodes or 20 low-priority nodes can be allocated for each public IP. For
+     * example, a pool needing 150 dedicated VMs would need at least 3 public IPs
+     * specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object} [pool.startTask] A Task specified to run on each Compute
      * Node as it joins the Pool. The Task runs when the Compute Node is added to
      * the Pool or when the Compute Node is restarted.
      *
-     * @param {string} pool.startTask.commandLine The command line of the start
-     * Task. The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. If the command line refers to file paths, it should use
-     * a relative path (relative to the Task working directory), or use the Batch
-     * provided environment variable
+     * @param {string} pool.startTask.commandLine The command line of the
+     * StartTask. The command line does not run under a shell, and therefore cannot
+     * take advantage of shell features such as environment variable expansion. If
+     * you want to take advantage of such features, you should invoke the shell in
+     * the command line, for example using "cmd /c MyCommand" in Windows or
+     * "/bin/sh -c MyCommand" in Linux. If the command line refers to file paths,
+     * it should use a relative path (relative to the Task working directory), or
+     * use the Batch provided environment variable
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
-     * container under which the start Task runs. When this is specified, all
+     * container under which the StartTask runs. When this is specified, all
      * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
      * Batch directories on the node) are mapped into the container, all Task
      * environment variables are mapped into the container, and the Task command
@@ -1318,10 +1352,10 @@ export interface Pool {
      * in the Task's working directory.
      *
      * @param {array} [pool.startTask.environmentSettings] A list of environment
-     * variable settings for the start Task.
+     * variable settings for the StartTask.
      *
      * @param {object} [pool.startTask.userIdentity] The user identity under which
-     * the start Task runs. If omitted, the Task runs as a non-administrative user
+     * the StartTask runs. If omitted, the Task runs as a non-administrative user
      * unique to the Task.
      *
      * @param {string} [pool.startTask.userIdentity.userName] The name of the user
@@ -1333,8 +1367,12 @@ export interface Pool {
      * exclusive; you must specify one but not both.
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.scope] The scope for
-     * the auto user The default value is Task. Possible values include: 'task',
-     * 'pool'
+     * the auto user The default value is pool. If the pool is running Windows a
+     * value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by
+     * StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
      * elevation level of the auto user. The default value is nonAdmin. Possible
@@ -1350,17 +1388,17 @@ export interface Pool {
      * count is -1, the Batch service retries the Task without limit.
      *
      * @param {boolean} [pool.startTask.waitForSuccess] Whether the Batch service
-     * should wait for the start Task to complete successfully (that is, to exit
+     * should wait for the StartTask to complete successfully (that is, to exit
      * with exit code 0) before scheduling any Tasks on the Compute Node. If true
-     * and the start Task fails on a Node, the Batch service retries the start Task
+     * and the StartTask fails on a Node, the Batch service retries the StartTask
      * up to its maximum retry count (maxTaskRetryCount). If the Task has still not
      * completed successfully after all retries, then the Batch service marks the
      * Node unusable, and will not schedule Tasks to it. This condition can be
      * detected via the Compute Node state and failure info details. If false, the
-     * Batch service will not wait for the start Task to complete. In this case,
-     * other Tasks can start executing on the Compute Node while the start Task is
-     * still running; and even if the start Task fails, new Tasks will continue to
-     * be scheduled on the Compute Node. The default is false.
+     * Batch service will not wait for the StartTask to complete. In this case,
+     * other Tasks can start executing on the Compute Node while the StartTask is
+     * still running; and even if the StartTask fails, new Tasks will continue to
+     * be scheduled on the Compute Node. The default is true.
      *
      * @param {array} [pool.certificateReferences] The list of Certificates to be
      * installed on each Compute Node in the Pool. For Windows Nodes, the Batch
@@ -1393,8 +1431,8 @@ export interface Pool {
      * Compute Nodes in a Pool. If not specified, the default is spread.
      *
      * @param {string} pool.taskSchedulingPolicy.nodeFillType How Tasks are
-     * distributed across Compute Compute Nodes in a Pool. If not specified, the
-     * default is spread. Possible values include: 'spread', 'pack'
+     * distributed across Compute Nodes in a Pool. If not specified, the default is
+     * spread. Possible values include: 'spread', 'pack'
      *
      * @param {array} [pool.userAccounts] The list of user Accounts to be created
      * on each Compute Node in the Pool.
@@ -1402,6 +1440,10 @@ export interface Pool {
      * @param {array} [pool.metadata] A list of name-value pairs associated with
      * the Pool as metadata. The Batch service does not assign any meaning to
      * metadata; it is solely for the use of user code.
+     *
+     * @param {array} [pool.mountConfiguration] Mount storage using specified file
+     * system for the entire lifetime of the pool. Mount the storage using Azure
+     * fileshare, NFS, CIFS or Blobfuse based file system.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1990,9 +2032,8 @@ export interface Pool {
      * @summary Updates the properties of the specified Pool.
      *
      * This only replaces the Pool properties specified in the request. For
-     * example, if the Pool has a start Task associated with it, and a request does
-     * not specify a start Task element, then the Pool keeps the existing start
-     * Task.
+     * example, if the Pool has a StartTask associated with it, and a request does
+     * not specify a StartTask element, then the Pool keeps the existing StartTask.
      *
      * @param {string} poolId The ID of the Pool to update.
      *
@@ -2001,11 +2042,11 @@ export interface Pool {
      * @param {object} [poolPatchParameter.startTask] A Task to run on each Compute
      * Node as it joins the Pool. The Task runs when the Compute Node is added to
      * the Pool or when the Compute Node is restarted. If this element is present,
-     * it overwrites any existing start Task. If omitted, any existing start Task
-     * is left unchanged.
+     * it overwrites any existing StartTask. If omitted, any existing StartTask is
+     * left unchanged.
      *
      * @param {string} poolPatchParameter.startTask.commandLine The command line of
-     * the start Task. The command line does not run under a shell, and therefore
+     * the StartTask. The command line does not run under a shell, and therefore
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
@@ -2015,7 +2056,7 @@ export interface Pool {
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
-     * settings for the container under which the start Task runs. When this is
+     * settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -2066,10 +2107,10 @@ export interface Pool {
      * element are located in the Task's working directory.
      *
      * @param {array} [poolPatchParameter.startTask.environmentSettings] A list of
-     * environment variable settings for the start Task.
+     * environment variable settings for the StartTask.
      *
      * @param {object} [poolPatchParameter.startTask.userIdentity] The user
-     * identity under which the start Task runs. If omitted, the Task runs as a
+     * identity under which the StartTask runs. If omitted, the Task runs as a
      * non-administrative user unique to the Task.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.userName] The
@@ -2082,8 +2123,12 @@ export interface Pool {
      * are mutually exclusive; you must specify one but not both.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [poolPatchParameter.startTask.userIdentity.autoUser.elevationLevel] The
@@ -2100,18 +2145,18 @@ export interface Pool {
      * retry count is -1, the Batch service retries the Task without limit.
      *
      * @param {boolean} [poolPatchParameter.startTask.waitForSuccess] Whether the
-     * Batch service should wait for the start Task to complete successfully (that
+     * Batch service should wait for the StartTask to complete successfully (that
      * is, to exit with exit code 0) before scheduling any Tasks on the Compute
-     * Node. If true and the start Task fails on a Node, the Batch service retries
-     * the start Task up to its maximum retry count (maxTaskRetryCount). If the
-     * Task has still not completed successfully after all retries, then the Batch
+     * Node. If true and the StartTask fails on a Node, the Batch service retries
+     * the StartTask up to its maximum retry count (maxTaskRetryCount). If the Task
+     * has still not completed successfully after all retries, then the Batch
      * service marks the Node unusable, and will not schedule Tasks to it. This
      * condition can be detected via the Compute Node state and failure info
-     * details. If false, the Batch service will not wait for the start Task to
+     * details. If false, the Batch service will not wait for the StartTask to
      * complete. In this case, other Tasks can start executing on the Compute Node
-     * while the start Task is still running; and even if the start Task fails, new
+     * while the StartTask is still running; and even if the StartTask fails, new
      * Tasks will continue to be scheduled on the Compute Node. The default is
-     * false.
+     * true.
      *
      * @param {array} [poolPatchParameter.certificateReferences] A list of
      * Certificates to be installed on each Compute Node in the Pool. If this
@@ -2196,9 +2241,8 @@ export interface Pool {
      * @summary Updates the properties of the specified Pool.
      *
      * This only replaces the Pool properties specified in the request. For
-     * example, if the Pool has a start Task associated with it, and a request does
-     * not specify a start Task element, then the Pool keeps the existing start
-     * Task.
+     * example, if the Pool has a StartTask associated with it, and a request does
+     * not specify a StartTask element, then the Pool keeps the existing StartTask.
      *
      * @param {string} poolId The ID of the Pool to update.
      *
@@ -2207,11 +2251,11 @@ export interface Pool {
      * @param {object} [poolPatchParameter.startTask] A Task to run on each Compute
      * Node as it joins the Pool. The Task runs when the Compute Node is added to
      * the Pool or when the Compute Node is restarted. If this element is present,
-     * it overwrites any existing start Task. If omitted, any existing start Task
-     * is left unchanged.
+     * it overwrites any existing StartTask. If omitted, any existing StartTask is
+     * left unchanged.
      *
      * @param {string} poolPatchParameter.startTask.commandLine The command line of
-     * the start Task. The command line does not run under a shell, and therefore
+     * the StartTask. The command line does not run under a shell, and therefore
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
@@ -2221,7 +2265,7 @@ export interface Pool {
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
-     * settings for the container under which the start Task runs. When this is
+     * settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -2272,10 +2316,10 @@ export interface Pool {
      * element are located in the Task's working directory.
      *
      * @param {array} [poolPatchParameter.startTask.environmentSettings] A list of
-     * environment variable settings for the start Task.
+     * environment variable settings for the StartTask.
      *
      * @param {object} [poolPatchParameter.startTask.userIdentity] The user
-     * identity under which the start Task runs. If omitted, the Task runs as a
+     * identity under which the StartTask runs. If omitted, the Task runs as a
      * non-administrative user unique to the Task.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.userName] The
@@ -2288,8 +2332,12 @@ export interface Pool {
      * are mutually exclusive; you must specify one but not both.
      *
      * @param {string} [poolPatchParameter.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [poolPatchParameter.startTask.userIdentity.autoUser.elevationLevel] The
@@ -2306,18 +2354,18 @@ export interface Pool {
      * retry count is -1, the Batch service retries the Task without limit.
      *
      * @param {boolean} [poolPatchParameter.startTask.waitForSuccess] Whether the
-     * Batch service should wait for the start Task to complete successfully (that
+     * Batch service should wait for the StartTask to complete successfully (that
      * is, to exit with exit code 0) before scheduling any Tasks on the Compute
-     * Node. If true and the start Task fails on a Node, the Batch service retries
-     * the start Task up to its maximum retry count (maxTaskRetryCount). If the
-     * Task has still not completed successfully after all retries, then the Batch
+     * Node. If true and the StartTask fails on a Node, the Batch service retries
+     * the StartTask up to its maximum retry count (maxTaskRetryCount). If the Task
+     * has still not completed successfully after all retries, then the Batch
      * service marks the Node unusable, and will not schedule Tasks to it. This
      * condition can be detected via the Compute Node state and failure info
-     * details. If false, the Batch service will not wait for the start Task to
+     * details. If false, the Batch service will not wait for the StartTask to
      * complete. In this case, other Tasks can start executing on the Compute Node
-     * while the start Task is still running; and even if the start Task fails, new
+     * while the StartTask is still running; and even if the StartTask fails, new
      * Tasks will continue to be scheduled on the Compute Node. The default is
-     * false.
+     * true.
      *
      * @param {array} [poolPatchParameter.certificateReferences] A list of
      * Certificates to be installed on each Compute Node in the Pool. If this
@@ -3165,9 +3213,9 @@ export interface Pool {
      * @summary Updates the properties of the specified Pool.
      *
      * This fully replaces all the updatable properties of the Pool. For example,
-     * if the Pool has a start Task associated with it and if start Task is not
+     * if the Pool has a StartTask associated with it and if StartTask is not
      * specified with this request, then the Batch service will remove the existing
-     * start Task.
+     * StartTask.
      *
      * @param {string} poolId The ID of the Pool to update.
      *
@@ -3177,11 +3225,11 @@ export interface Pool {
      * @param {object} [poolUpdatePropertiesParameter.startTask] A Task to run on
      * each Compute Node as it joins the Pool. The Task runs when the Compute Node
      * is added to the Pool or when the Compute Node is restarted. If this element
-     * is present, it overwrites any existing start Task. If omitted, any existing
-     * start Task is removed from the Pool.
+     * is present, it overwrites any existing StartTask. If omitted, any existing
+     * StartTask is removed from the Pool.
      *
      * @param {string} poolUpdatePropertiesParameter.startTask.commandLine The
-     * command line of the start Task. The command line does not run under a shell,
+     * command line of the StartTask. The command line does not run under a shell,
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
@@ -3191,7 +3239,7 @@ export interface Pool {
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -3244,11 +3292,11 @@ export interface Pool {
      * under this element are located in the Task's working directory.
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.userIdentity] The
-     * user identity under which the start Task runs. If omitted, the Task runs as
-     * a non-administrative user unique to the Task.
+     * user identity under which the StartTask runs. If omitted, the Task runs as a
+     * non-administrative user unique to the Task.
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.userName] The name of
@@ -3262,8 +3310,12 @@ export interface Pool {
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.scope] The
-     * scope for the auto user The default value is Task. Possible values include:
-     * 'task', 'pool'
+     * scope for the auto user The default value is pool. If the pool is running
+     * Windows a value of Task should be specified if stricter isolation between
+     * tasks is required. For example, if the task mutates the registry in a way
+     * which could impact other tasks, or if certificates have been specified on
+     * the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.elevationLevel]
@@ -3281,18 +3333,18 @@ export interface Pool {
      * Task without limit.
      *
      * @param {boolean} [poolUpdatePropertiesParameter.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array} poolUpdatePropertiesParameter.certificateReferences A list of
      * Certificates to be installed on each Compute Node in the Pool. This list
@@ -3308,15 +3360,15 @@ export interface Pool {
      * in that directory.
      *
      * @param {array} poolUpdatePropertiesParameter.applicationPackageReferences
-     * The list of Application Packages to be installed on each Compute Compute
-     * Node in the Pool. The list replaces any existing Application Package
-     * references on the Pool. Changes to Application Package references affect all
-     * new Compute Nodes joining the Pool, but do not affect Compute Compute Nodes
-     * that are already in the Pool until they are rebooted or reimaged. There is a
-     * maximum of 10 Application Package references on any given Pool. If omitted,
-     * or if you specify an empty collection, any existing Application Packages
-     * references are removed from the Pool. A maximum of 10 references may be
-     * specified on a given Pool.
+     * The list of Application Packages to be installed on each Compute Node in the
+     * Pool. The list replaces any existing Application Package references on the
+     * Pool. Changes to Application Package references affect all new Compute Nodes
+     * joining the Pool, but do not affect Compute Nodes that are already in the
+     * Pool until they are rebooted or reimaged. There is a maximum of 10
+     * Application Package references on any given Pool. If omitted, or if you
+     * specify an empty collection, any existing Application Packages references
+     * are removed from the Pool. A maximum of 10 references may be specified on a
+     * given Pool.
      *
      * @param {array} poolUpdatePropertiesParameter.metadata A list of name-value
      * pairs associated with the Pool as metadata. This list replaces any existing
@@ -3359,9 +3411,9 @@ export interface Pool {
      * @summary Updates the properties of the specified Pool.
      *
      * This fully replaces all the updatable properties of the Pool. For example,
-     * if the Pool has a start Task associated with it and if start Task is not
+     * if the Pool has a StartTask associated with it and if StartTask is not
      * specified with this request, then the Batch service will remove the existing
-     * start Task.
+     * StartTask.
      *
      * @param {string} poolId The ID of the Pool to update.
      *
@@ -3371,11 +3423,11 @@ export interface Pool {
      * @param {object} [poolUpdatePropertiesParameter.startTask] A Task to run on
      * each Compute Node as it joins the Pool. The Task runs when the Compute Node
      * is added to the Pool or when the Compute Node is restarted. If this element
-     * is present, it overwrites any existing start Task. If omitted, any existing
-     * start Task is removed from the Pool.
+     * is present, it overwrites any existing StartTask. If omitted, any existing
+     * StartTask is removed from the Pool.
      *
      * @param {string} poolUpdatePropertiesParameter.startTask.commandLine The
-     * command line of the start Task. The command line does not run under a shell,
+     * command line of the StartTask. The command line does not run under a shell,
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
@@ -3385,7 +3437,7 @@ export interface Pool {
      * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -3438,11 +3490,11 @@ export interface Pool {
      * under this element are located in the Task's working directory.
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.userIdentity] The
-     * user identity under which the start Task runs. If omitted, the Task runs as
-     * a non-administrative user unique to the Task.
+     * user identity under which the StartTask runs. If omitted, the Task runs as a
+     * non-administrative user unique to the Task.
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.userName] The name of
@@ -3456,8 +3508,12 @@ export interface Pool {
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.scope] The
-     * scope for the auto user The default value is Task. Possible values include:
-     * 'task', 'pool'
+     * scope for the auto user The default value is pool. If the pool is running
+     * Windows a value of Task should be specified if stricter isolation between
+     * tasks is required. For example, if the task mutates the registry in a way
+     * which could impact other tasks, or if certificates have been specified on
+     * the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.elevationLevel]
@@ -3475,18 +3531,18 @@ export interface Pool {
      * Task without limit.
      *
      * @param {boolean} [poolUpdatePropertiesParameter.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array} poolUpdatePropertiesParameter.certificateReferences A list of
      * Certificates to be installed on each Compute Node in the Pool. This list
@@ -3502,15 +3558,15 @@ export interface Pool {
      * in that directory.
      *
      * @param {array} poolUpdatePropertiesParameter.applicationPackageReferences
-     * The list of Application Packages to be installed on each Compute Compute
-     * Node in the Pool. The list replaces any existing Application Package
-     * references on the Pool. Changes to Application Package references affect all
-     * new Compute Nodes joining the Pool, but do not affect Compute Compute Nodes
-     * that are already in the Pool until they are rebooted or reimaged. There is a
-     * maximum of 10 Application Package references on any given Pool. If omitted,
-     * or if you specify an empty collection, any existing Application Packages
-     * references are removed from the Pool. A maximum of 10 references may be
-     * specified on a given Pool.
+     * The list of Application Packages to be installed on each Compute Node in the
+     * Pool. The list replaces any existing Application Package references on the
+     * Pool. Changes to Application Package references affect all new Compute Nodes
+     * joining the Pool, but do not affect Compute Nodes that are already in the
+     * Pool until they are rebooted or reimaged. There is a maximum of 10
+     * Application Package references on any given Pool. If omitted, or if you
+     * specify an empty collection, any existing Application Packages references
+     * are removed from the Pool. A maximum of 10 references may be specified on a
+     * given Pool.
      *
      * @param {array} poolUpdatePropertiesParameter.metadata A list of name-value
      * pairs associated with the Pool as metadata. This list replaces any existing
@@ -4789,9 +4845,10 @@ export interface Job {
      * service runs the Job's Tasks. You may change the Pool for a Job only when
      * the Job is disabled. The Patch Job call will fail if you include the
      * poolInfo element and the Job is not disabled. If you specify an
-     * autoPoolSpecification specification in the poolInfo, only the keepAlive
-     * property can be updated, and then only if the auto Pool has a
-     * poolLifetimeOption of Job. If omitted, the Job continues to run on its
+     * autoPoolSpecification in the poolInfo, only the keepAlive property of the
+     * autoPoolSpecification can be updated, and then only if the
+     * autoPoolSpecification has a poolLifetimeOption of Job (other job properties
+     * can be updated as normal). If omitted, the Job continues to run on its
      * current Pool.
      *
      * @param {string} [jobPatchParameter.poolInfo.poolId] The ID of an existing
@@ -4905,7 +4962,7 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -4915,14 +4972,18 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5001,13 +5062,13 @@ export interface Job {
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -5113,6 +5174,16 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask] A Task to
      * run on each Compute Node as it joins the Pool. The Task runs when the
@@ -5120,7 +5191,7 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -5132,7 +5203,7 @@ export interface Job {
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -5188,11 +5259,11 @@ export interface Job {
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -5208,8 +5279,12 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -5229,18 +5304,18 @@ export interface Job {
      *
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -5279,6 +5354,11 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.mountConfiguration] A
+     * list of file systems to mount on each node in the pool. This supports Azure
+     * Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobPatchParameter.metadata] A list of name-value pairs
      * associated with the Job as metadata. If omitted, the existing Job metadata
@@ -5386,9 +5466,10 @@ export interface Job {
      * service runs the Job's Tasks. You may change the Pool for a Job only when
      * the Job is disabled. The Patch Job call will fail if you include the
      * poolInfo element and the Job is not disabled. If you specify an
-     * autoPoolSpecification specification in the poolInfo, only the keepAlive
-     * property can be updated, and then only if the auto Pool has a
-     * poolLifetimeOption of Job. If omitted, the Job continues to run on its
+     * autoPoolSpecification in the poolInfo, only the keepAlive property of the
+     * autoPoolSpecification can be updated, and then only if the
+     * autoPoolSpecification has a poolLifetimeOption of Job (other job properties
+     * can be updated as normal). If omitted, the Job continues to run on its
      * current Pool.
      *
      * @param {string} [jobPatchParameter.poolInfo.poolId] The ID of an existing
@@ -5502,7 +5583,7 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -5512,14 +5593,18 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5598,13 +5683,13 @@ export interface Job {
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -5710,6 +5795,16 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask] A Task to
      * run on each Compute Node as it joins the Pool. The Task runs when the
@@ -5717,7 +5812,7 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -5729,7 +5824,7 @@ export interface Job {
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -5785,11 +5880,11 @@ export interface Job {
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -5805,8 +5900,12 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -5826,18 +5925,18 @@ export interface Job {
      *
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -5876,6 +5975,11 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.mountConfiguration] A
+     * list of file systems to mount on each node in the pool. This supports Azure
+     * Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobPatchParameter.metadata] A list of name-value pairs
      * associated with the Job as metadata. If omitted, the existing Job metadata
@@ -5992,9 +6096,10 @@ export interface Job {
      * service runs the Job's Tasks. You may change the Pool for a Job only when
      * the Job is disabled. The Update Job call will fail if you include the
      * poolInfo element and the Job is not disabled. If you specify an
-     * autoPoolSpecification specification in the poolInfo, only the keepAlive
-     * property can be updated, and then only if the auto Pool has a
-     * poolLifetimeOption of Job.
+     * autoPoolSpecification in the poolInfo, only the keepAlive property of the
+     * autoPoolSpecification can be updated, and then only if the
+     * autoPoolSpecification has a poolLifetimeOption of Job (other job properties
+     * can be updated as normal).
      *
      * @param {string} [jobUpdateParameter.poolInfo.poolId] The ID of an existing
      * Pool. All the Tasks of the Job will run on the specified Pool. You must
@@ -6109,7 +6214,7 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -6119,14 +6224,18 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -6205,13 +6314,13 @@ export interface Job {
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -6317,6 +6426,16 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask] A Task to
      * run on each Compute Node as it joins the Pool. The Task runs when the
@@ -6324,7 +6443,7 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -6336,7 +6455,7 @@ export interface Job {
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -6392,11 +6511,11 @@ export interface Job {
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -6412,8 +6531,12 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -6433,18 +6556,18 @@ export interface Job {
      *
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -6483,6 +6606,11 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobUpdateParameter.metadata] A list of name-value pairs
      * associated with the Job as metadata. If omitted, it takes the default value
@@ -6594,9 +6722,10 @@ export interface Job {
      * service runs the Job's Tasks. You may change the Pool for a Job only when
      * the Job is disabled. The Update Job call will fail if you include the
      * poolInfo element and the Job is not disabled. If you specify an
-     * autoPoolSpecification specification in the poolInfo, only the keepAlive
-     * property can be updated, and then only if the auto Pool has a
-     * poolLifetimeOption of Job.
+     * autoPoolSpecification in the poolInfo, only the keepAlive property of the
+     * autoPoolSpecification can be updated, and then only if the
+     * autoPoolSpecification has a poolLifetimeOption of Job (other job properties
+     * can be updated as normal).
      *
      * @param {string} [jobUpdateParameter.poolInfo.poolId] The ID of an existing
      * Pool. All the Tasks of the Job will run on the specified Pool. You must
@@ -6711,7 +6840,7 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -6721,14 +6850,18 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -6807,13 +6940,13 @@ export interface Job {
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
@@ -6919,6 +7052,16 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask] A Task to
      * run on each Compute Node as it joins the Pool. The Task runs when the
@@ -6926,7 +7069,7 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -6938,7 +7081,7 @@ export interface Job {
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -6994,11 +7137,11 @@ export interface Job {
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -7014,8 +7157,12 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -7035,18 +7182,18 @@ export interface Job {
      *
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -7085,6 +7232,11 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobUpdateParameter.metadata] A list of name-value pairs
      * associated with the Job as metadata. If omitted, it takes the default value
@@ -7762,14 +7914,14 @@ export interface Job {
      * allows multiple concurrent Tasks. The default value is true.
      *
      * @param {array} [job.jobManagerTask.applicationPackageReferences] A list of
-     * Application Packages that the Batch service will deploy to the Compute
-     * Compute Node before running the command line. Application Packages are
-     * downloaded and deployed to a shared directory, not the Task working
-     * directory. Therefore, if a referenced Application Package is already on the
-     * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * Application Packages that the Batch service will deploy to the Compute Node
+     * before running the command line. Application Packages are downloaded and
+     * deployed to a shared directory, not the Task working directory. Therefore,
+     * if a referenced Application Package is already on the Compute Node, and is
+     * up to date, then it is not re-downloaded; the existing copy on the Compute
+     * Node is used. If a referenced Application Package cannot be installed, for
+     * example because the package has been deleted or because download failed, the
+     * Task fails.
      *
      * @param {object} [job.jobManagerTask.authenticationTokenSettings] The
      * settings for an authentication token that the Task can use to perform Batch
@@ -8074,7 +8226,7 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -8084,14 +8236,18 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -8169,13 +8325,13 @@ export interface Job {
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] How Tasks are
-     * distributed across Compute Compute Nodes in a Pool. If not specified, the
-     * default is spread.
+     * distributed across Compute Nodes in a Pool. If not specified, the default is
+     * spread.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] The timeout for
@@ -8279,13 +8435,23 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs] The
+     * list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object} [job.poolInfo.autoPoolSpecification.pool.startTask] A Task
      * to run on each Compute Node as it joins the Pool. The Task runs when the
      * Compute Node is added to the Pool or when the Compute Node is restarted.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.startTask.commandLine The command
-     * line of the start Task. The command line does not run under a shell, and
+     * line of the StartTask. The command line does not run under a shell, and
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
@@ -8296,7 +8462,7 @@ export interface Job {
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
-     * settings for the container under which the start Task runs. When this is
+     * settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -8352,11 +8518,11 @@ export interface Job {
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings] A
-     * list of environment variable settings for the start Task.
+     * list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity] The user
-     * identity under which the start Task runs. If omitted, the Task runs as a
+     * identity under which the StartTask runs. If omitted, the Task runs as a
      * non-administrative user unique to the Task.
      *
      * @param {string}
@@ -8372,8 +8538,12 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -8392,18 +8562,18 @@ export interface Job {
      *
      * @param {boolean}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] Whether
-     * the Batch service should wait for the start Task to complete successfully
+     * the Batch service should wait for the StartTask to complete successfully
      * (that is, to exit with exit code 0) before scheduling any Tasks on the
-     * Compute Node. If true and the start Task fails on a Node, the Batch service
-     * retries the start Task up to its maximum retry count (maxTaskRetryCount). If
+     * Compute Node. If true and the StartTask fails on a Node, the Batch service
+     * retries the StartTask up to its maximum retry count (maxTaskRetryCount). If
      * the Task has still not completed successfully after all retries, then the
      * Batch service marks the Node unusable, and will not schedule Tasks to it.
      * This condition can be detected via the Compute Node state and failure info
-     * details. If false, the Batch service will not wait for the start Task to
+     * details. If false, the Batch service will not wait for the StartTask to
      * complete. In this case, other Tasks can start executing on the Compute Node
-     * while the start Task is still running; and even if the start Task fails, new
+     * while the StartTask is still running; and even if the StartTask fails, new
      * Tasks will continue to be scheduled on the Compute Node. The default is
-     * false.
+     * true.
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.certificateReferences] A list of
@@ -8438,6 +8608,10 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array} [job.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {string} [job.onAllTasksComplete] The action the Batch service should
      * take when all Tasks in the Job are in the completed state. Note that if a
@@ -8660,14 +8834,14 @@ export interface Job {
      * allows multiple concurrent Tasks. The default value is true.
      *
      * @param {array} [job.jobManagerTask.applicationPackageReferences] A list of
-     * Application Packages that the Batch service will deploy to the Compute
-     * Compute Node before running the command line. Application Packages are
-     * downloaded and deployed to a shared directory, not the Task working
-     * directory. Therefore, if a referenced Application Package is already on the
-     * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * Application Packages that the Batch service will deploy to the Compute Node
+     * before running the command line. Application Packages are downloaded and
+     * deployed to a shared directory, not the Task working directory. Therefore,
+     * if a referenced Application Package is already on the Compute Node, and is
+     * up to date, then it is not re-downloaded; the existing copy on the Compute
+     * Node is used. If a referenced Application Package cannot be installed, for
+     * example because the package has been deleted or because download failed, the
+     * Task fails.
      *
      * @param {object} [job.jobManagerTask.authenticationTokenSettings] The
      * settings for an authentication token that the Task can use to perform Batch
@@ -8972,7 +9146,7 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -8982,14 +9156,18 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -9067,13 +9245,13 @@ export interface Job {
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] How Tasks are
-     * distributed across Compute Compute Nodes in a Pool. If not specified, the
-     * default is spread.
+     * distributed across Compute Nodes in a Pool. If not specified, the default is
+     * spread.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] The timeout for
@@ -9177,13 +9355,23 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs] The
+     * list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object} [job.poolInfo.autoPoolSpecification.pool.startTask] A Task
      * to run on each Compute Node as it joins the Pool. The Task runs when the
      * Compute Node is added to the Pool or when the Compute Node is restarted.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.startTask.commandLine The command
-     * line of the start Task. The command line does not run under a shell, and
+     * line of the StartTask. The command line does not run under a shell, and
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
@@ -9194,7 +9382,7 @@ export interface Job {
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
-     * settings for the container under which the start Task runs. When this is
+     * settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -9250,11 +9438,11 @@ export interface Job {
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings] A
-     * list of environment variable settings for the start Task.
+     * list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity] The user
-     * identity under which the start Task runs. If omitted, the Task runs as a
+     * identity under which the StartTask runs. If omitted, the Task runs as a
      * non-administrative user unique to the Task.
      *
      * @param {string}
@@ -9270,8 +9458,12 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -9290,18 +9482,18 @@ export interface Job {
      *
      * @param {boolean}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] Whether
-     * the Batch service should wait for the start Task to complete successfully
+     * the Batch service should wait for the StartTask to complete successfully
      * (that is, to exit with exit code 0) before scheduling any Tasks on the
-     * Compute Node. If true and the start Task fails on a Node, the Batch service
-     * retries the start Task up to its maximum retry count (maxTaskRetryCount). If
+     * Compute Node. If true and the StartTask fails on a Node, the Batch service
+     * retries the StartTask up to its maximum retry count (maxTaskRetryCount). If
      * the Task has still not completed successfully after all retries, then the
      * Batch service marks the Node unusable, and will not schedule Tasks to it.
      * This condition can be detected via the Compute Node state and failure info
-     * details. If false, the Batch service will not wait for the start Task to
+     * details. If false, the Batch service will not wait for the StartTask to
      * complete. In this case, other Tasks can start executing on the Compute Node
-     * while the start Task is still running; and even if the start Task fails, new
+     * while the StartTask is still running; and even if the StartTask fails, new
      * Tasks will continue to be scheduled on the Compute Node. The default is
-     * false.
+     * true.
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.certificateReferences] A list of
@@ -9336,6 +9528,10 @@ export interface Job {
      * name-value pairs associated with the Pool as metadata. The Batch service
      * does not assign any meaning to metadata; it is solely for the use of user
      * code.
+     *
+     * @param {array} [job.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {string} [job.onAllTasksComplete] The action the Batch service should
      * take when all Tasks in the Job are in the completed state. Note that if a
@@ -12752,13 +12948,13 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -13109,7 +13305,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -13119,14 +13315,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -13205,13 +13405,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -13317,6 +13517,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -13324,7 +13534,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -13336,7 +13546,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -13392,11 +13602,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -13412,8 +13622,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -13433,18 +13647,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -13483,6 +13697,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobSchedulePatchParameter.jobSpecification.metadata] A list
      * of name-value pairs associated with each Job created under this schedule as
@@ -13800,13 +14019,13 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -14157,7 +14376,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -14167,14 +14386,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -14253,13 +14476,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -14365,6 +14588,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -14372,7 +14605,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -14384,7 +14617,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -14440,11 +14673,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -14460,8 +14693,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -14481,18 +14718,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -14531,6 +14768,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobSchedulePatchParameter.jobSpecification.metadata] A list
      * of name-value pairs associated with each Job created under this schedule as
@@ -14868,13 +15110,13 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -15227,7 +15469,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -15237,14 +15479,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -15323,13 +15569,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -15435,6 +15681,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -15442,7 +15698,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -15454,7 +15710,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -15510,11 +15766,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -15530,8 +15786,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -15551,18 +15811,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -15601,6 +15861,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobScheduleUpdateParameter.jobSpecification.metadata] A list
      * of name-value pairs associated with each Job created under this schedule as
@@ -15922,13 +16187,13 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -16281,7 +16546,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -16291,14 +16556,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -16377,13 +16646,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -16489,6 +16758,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -16496,7 +16775,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -16508,7 +16787,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -16564,11 +16843,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -16584,8 +16863,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -16605,18 +16888,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -16655,6 +16938,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [jobScheduleUpdateParameter.jobSpecification.metadata] A list
      * of name-value pairs associated with each Job created under this schedule as
@@ -17383,13 +17671,13 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -17735,7 +18023,7 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -17745,14 +18033,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -17831,13 +18123,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -17943,6 +18235,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -17950,7 +18252,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -17962,7 +18264,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -18018,11 +18320,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -18038,8 +18340,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -18059,18 +18365,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -18109,6 +18415,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [cloudJobSchedule.jobSpecification.metadata] A list of
      * name-value pairs associated with each Job created under this schedule as
@@ -18397,13 +18708,13 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.applicationPackageReferences]
      * A list of Application Packages that the Batch service will deploy to the
-     * Compute Compute Node before running the command line. Application Packages
-     * are downloaded and deployed to a shared directory, not the Task working
+     * Compute Node before running the command line. Application Packages are
+     * downloaded and deployed to a shared directory, not the Task working
      * directory. Therefore, if a referenced Application Package is already on the
      * Compute Node, and is up to date, then it is not re-downloaded; the existing
-     * copy on the Compute Compute Node is used. If a referenced Application
-     * Package cannot be installed, for example because the package has been
-     * deleted or because download failed, the Task fails.
+     * copy on the Compute Node is used. If a referenced Application Package cannot
+     * be installed, for example because the package has been deleted or because
+     * download failed, the Task fails.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.authenticationTokenSettings]
@@ -18749,7 +19060,7 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace Image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
@@ -18759,14 +19070,18 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image. Computes Compute
-     * Nodes of the Pool will be created using this custom Image. This is of the
-     * form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
+     * Image Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other ImageReference properties.
-     * The Virtual Machine Image must be in the same region and subscription as the
-     * Azure Batch Account. For information about the firewall settings for the
-     * Batch Compute Node agent to communicate with the Batch service see
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other ImageReference
+     * properties. For Virtual Machine Image it must be in the same region and
+     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * in the same region as the Azure Batch account. For information about the
+     * firewall settings for the Batch Compute Node agent to communicate with the
+     * Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -18845,13 +19160,13 @@ export interface JobSchedule {
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread.
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread.
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
-     * How Tasks are distributed across Compute Compute Nodes in a Pool. If not
-     * specified, the default is spread. Possible values include: 'spread', 'pack'
+     * How Tasks are distributed across Compute Nodes in a Pool. If not specified,
+     * the default is spread. Possible values include: 'spread', 'pack'
      *
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
@@ -18957,6 +19272,16 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A Task to run on each Compute Node as it joins the Pool. The Task runs when
@@ -18964,7 +19289,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start Task. The command line does not run under a
+     * The command line of the StartTask. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
@@ -18976,7 +19301,7 @@ export interface JobSchedule {
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
-     * The settings for the container under which the start Task runs. When this is
+     * The settings for the container under which the StartTask runs. When this is
      * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
      * root of Azure Batch directories on the node) are mapped into the container,
      * all Task environment variables are mapped into the container, and the Task
@@ -19032,11 +19357,11 @@ export interface JobSchedule {
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * A list of environment variable settings for the start Task.
+     * A list of environment variable settings for the StartTask.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity]
-     * The user identity under which the start Task runs. If omitted, the Task runs
+     * The user identity under which the StartTask runs. If omitted, the Task runs
      * as a non-administrative user unique to the Task.
      *
      * @param {string}
@@ -19052,8 +19377,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
-     * The scope for the auto user The default value is Task. Possible values
-     * include: 'task', 'pool'
+     * The scope for the auto user The default value is pool. If the pool is
+     * running Windows a value of Task should be specified if stricter isolation
+     * between tasks is required. For example, if the task mutates the registry in
+     * a way which could impact other tasks, or if certificates have been specified
+     * on the pool which should not be accessible by normal tasks but should be
+     * accessible by StartTasks. Possible values include: 'task', 'pool'
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
@@ -19073,18 +19402,18 @@ export interface JobSchedule {
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Whether the Batch service should wait for the start Task to complete
+     * Whether the Batch service should wait for the StartTask to complete
      * successfully (that is, to exit with exit code 0) before scheduling any Tasks
-     * on the Compute Node. If true and the start Task fails on a Node, the Batch
-     * service retries the start Task up to its maximum retry count
+     * on the Compute Node. If true and the StartTask fails on a Node, the Batch
+     * service retries the StartTask up to its maximum retry count
      * (maxTaskRetryCount). If the Task has still not completed successfully after
      * all retries, then the Batch service marks the Node unusable, and will not
      * schedule Tasks to it. This condition can be detected via the Compute Node
      * state and failure info details. If false, the Batch service will not wait
-     * for the start Task to complete. In this case, other Tasks can start
-     * executing on the Compute Node while the start Task is still running; and
-     * even if the start Task fails, new Tasks will continue to be scheduled on the
-     * Compute Node. The default is false.
+     * for the StartTask to complete. In this case, other Tasks can start executing
+     * on the Compute Node while the StartTask is still running; and even if the
+     * StartTask fails, new Tasks will continue to be scheduled on the Compute
+     * Node. The default is true.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
@@ -19123,6 +19452,11 @@ export interface JobSchedule {
      * A list of name-value pairs associated with the Pool as metadata. The Batch
      * service does not assign any meaning to metadata; it is solely for the use of
      * user code.
+     *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.mountConfiguration]
+     * A list of file systems to mount on each node in the pool. This supports
+     * Azure Files, NFS, CIFS/SMB, and Blobfuse.
      *
      * @param {array} [cloudJobSchedule.jobSpecification.metadata] A list of
      * name-value pairs associated with each Job created under this schedule as
@@ -19505,13 +19839,10 @@ export interface Task {
      * values include: 'none', 'disable', 'terminate'
      *
      * @param {string} [task.exitConditions.default.dependencyAction] An action
-     * that the Batch service performs on Tasks that depend on this Task. The
-     * default is 'satisfy' for exit code 0, and 'block' for all other exit
-     * conditions. If the Job's usesTaskDependencies property is set to false, then
-     * specifying the dependencyAction property returns an error and the add Task
-     * request fails with an invalid property value error; if you are calling the
-     * REST API directly, the HTTP status code is 400  (Bad Request). Possible
-     * values include: 'satisfy', 'block'
+     * that the Batch service performs on Tasks that depend on this Task. Possible
+     * values are 'satisfy' (allowing dependent tasks to progress) and 'block'
+     * (dependent tasks continue to wait). Batch does not yet support cancellation
+     * of dependent tasks. Possible values include: 'satisfy', 'block'
      *
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the Compute Node before running the command line. For
@@ -19581,7 +19912,12 @@ export interface Task {
      * you must specify one but not both.
      *
      * @param {string} [task.userIdentity.autoUser.scope] The scope for the auto
-     * user The default value is Task. Possible values include: 'task', 'pool'
+     * user The default value is pool. If the pool is running Windows a value of
+     * Task should be specified if stricter isolation between tasks is required.
+     * For example, if the task mutates the registry in a way which could impact
+     * other tasks, or if certificates have been specified on the pool which should
+     * not be accessible by normal tasks but should be accessible by StartTasks.
+     * Possible values include: 'task', 'pool'
      *
      * @param {string} [task.userIdentity.autoUser.elevationLevel] The elevation
      * level of the auto user. The default value is nonAdmin. Possible values
@@ -19799,13 +20135,10 @@ export interface Task {
      * values include: 'none', 'disable', 'terminate'
      *
      * @param {string} [task.exitConditions.default.dependencyAction] An action
-     * that the Batch service performs on Tasks that depend on this Task. The
-     * default is 'satisfy' for exit code 0, and 'block' for all other exit
-     * conditions. If the Job's usesTaskDependencies property is set to false, then
-     * specifying the dependencyAction property returns an error and the add Task
-     * request fails with an invalid property value error; if you are calling the
-     * REST API directly, the HTTP status code is 400  (Bad Request). Possible
-     * values include: 'satisfy', 'block'
+     * that the Batch service performs on Tasks that depend on this Task. Possible
+     * values are 'satisfy' (allowing dependent tasks to progress) and 'block'
+     * (dependent tasks continue to wait). Batch does not yet support cancellation
+     * of dependent tasks. Possible values include: 'satisfy', 'block'
      *
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the Compute Node before running the command line. For
@@ -19875,7 +20208,12 @@ export interface Task {
      * you must specify one but not both.
      *
      * @param {string} [task.userIdentity.autoUser.scope] The scope for the auto
-     * user The default value is Task. Possible values include: 'task', 'pool'
+     * user The default value is pool. If the pool is running Windows a value of
+     * Task should be specified if stricter isolation between tasks is required.
+     * For example, if the task mutates the registry in a way which could impact
+     * other tasks, or if certificates have been specified on the pool which should
+     * not be accessible by normal tasks but should be accessible by StartTasks.
+     * Possible values include: 'task', 'pool'
      *
      * @param {string} [task.userIdentity.autoUser.elevationLevel] The elevation
      * level of the auto user. The default value is nonAdmin. Possible values

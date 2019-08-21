@@ -3097,7 +3097,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -3130,7 +3131,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -3140,15 +3141,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -3298,11 +3302,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -3348,14 +3362,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -3377,7 +3393,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -3410,6 +3426,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -3422,15 +3443,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3504,7 +3530,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -3537,7 +3564,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -3547,15 +3574,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -3705,11 +3735,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -3755,14 +3795,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -3784,7 +3826,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -3817,6 +3859,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -3829,15 +3876,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3932,7 +3984,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -3965,7 +4018,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -3975,15 +4028,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -4133,11 +4189,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -4183,14 +4249,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -4212,7 +4280,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -4245,6 +4313,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -4257,15 +4330,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4337,7 +4415,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -4370,7 +4449,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -4380,15 +4459,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -4538,11 +4620,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -4588,14 +4680,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -4617,7 +4711,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -4650,6 +4744,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -4662,15 +4761,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5044,7 +5148,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -5077,7 +5182,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -5087,15 +5192,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -5245,11 +5353,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -5295,14 +5413,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -5324,7 +5444,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -5357,6 +5477,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -5369,15 +5494,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5451,7 +5581,8 @@ export interface PoolOperations {
      * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
      * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
      * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
-     * Server 2016. For more information, see Azure Guest OS Releases
+     * Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more
+     * information, see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -5484,7 +5615,7 @@ export interface PoolOperations {
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.sku]
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * 18.04-LTS or 2019-Datacenter.
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.version]
@@ -5494,15 +5625,18 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the pool will be created using this custom image. This is of the form
+     * The ARM resource identifier of the Virtual Machine Image or Shared Image
+     * Gallery Image. Compute Nodes of the Pool will be created using this Image
+     * Id. This is of either the form
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * This property is mutually exclusive with other properties. The virtual
-     * machine image must be in the same region and subscription as the Azure Batch
-     * account. For information about the firewall settings for Batch node agent to
-     * communicate with Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-     * .
+     * for Virtual Machine Image or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
+     * for SIG image. This property is mutually exclusive with other properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. For SIG image it must have replicas in the same
+     * region as the Azure Batch account. For information about the firewall
+     * settings for the Batch node agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
      * parameters.deploymentConfiguration.virtualMachineConfiguration.nodeAgentSkuId
@@ -5652,11 +5786,21 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
+     * public IPs which the Batch service will use when provisioning Compute Nodes.
+     * The number of IPs specified here limits the maximum size of the Pool - 50
+     * dedicated nodes or 20 low-priority nodes can be allocated for each public
+     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
+     * public IPs specified. Each element of this collection is of the form:
+     * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+     *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool.
+     * that can run concurrently on a single compute node in the pool. The default
+     * value is 1. The maximum value is the smaller of 4 times the number of cores
+     * of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
-     * across compute nodes in a pool.
+     * across compute nodes in a pool. If not specified, the default is spread.
      *
      * @param {string} parameters.taskSchedulingPolicy.nodeFillType How tasks
      * should be distributed across compute nodes. Possible values include:
@@ -5702,14 +5846,16 @@ export interface PoolOperations {
      * mutually exclusive; you must specify one but not both.
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.scope] The scope
-     * for the auto user The default value is task. Possible values include:
-     * 'Task', 'Pool'
+     * for the auto user The default value is Pool. If the pool is running Windows
+     * a value of Task should be specified if stricter isolation between tasks is
+     * required. For example, if the task mutates the registry in a way which could
+     * impact other tasks, or if certificates have been specified on the pool which
+     * should not be accessible by normal tasks but should be accessible by start
+     * tasks. Possible values include: 'Task', 'Pool'
      *
      * @param {string} [parameters.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user. nonAdmin - The auto user is a standard
-     * user without elevated access. admin - The auto user is a user with elevated
-     * access and operates with full Administrator permissions. The default value
-     * is nonAdmin. Possible values include: 'NonAdmin', 'Admin'
+     * The elevation level of the auto user. The default value is nonAdmin.
+     * Possible values include: 'NonAdmin', 'Admin'
      *
      * @param {number} [parameters.startTask.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
@@ -5731,7 +5877,7 @@ export interface PoolOperations {
      * detail. If false, the Batch service will not wait for the start task to
      * complete. In this case, other tasks can start executing on the compute node
      * while the start task is still running; and even if the start task fails, new
-     * tasks will continue to be scheduled on the node. The default is false.
+     * tasks will continue to be scheduled on the node. The default is true.
      *
      * @param {object} [parameters.startTask.containerSettings] The settings for
      * the container under which the start task runs. When this is specified, all
@@ -5764,6 +5910,11 @@ export interface PoolOperations {
      * @param {string} parameters.startTask.containerSettings.registry.password The
      * password to log into the registry server.
      *
+     * @param {string} [parameters.startTask.containerSettings.workingDirectory] A
+     * flag to indicate where the container task working directory is. The default
+     * is 'taskWorkingDirectory'. Possible values include: 'TaskWorkingDirectory',
+     * 'ContainerImageDefault'
+     *
      * @param {array} [parameters.certificates] The list of certificates to be
      * installed on each compute node in the pool. For Windows compute nodes, the
      * Batch service installs the certificates to the specified certificate store
@@ -5776,15 +5927,20 @@ export interface PoolOperations {
      *
      * @param {array} [parameters.applicationPackages] The list of application
      * packages to be installed on each compute node in the pool. Changes to
-     * application packages affect all new compute nodes joining the pool, but do
-     * not affect compute nodes that are already in the pool until they are
-     * rebooted or reimaged.
+     * application package references affect all new compute nodes joining the
+     * pool, but do not affect compute nodes that are already in the pool until
+     * they are rebooted or reimaged. There is a maximum of 10 application package
+     * references on any given pool.
      *
      * @param {array} [parameters.applicationLicenses] The list of application
      * licenses the Batch service will make available on each compute node in the
      * pool. The list of application licenses must be a subset of available Batch
      * service application licenses. If a license is requested which is not
      * supported, pool creation will fail.
+     *
+     * @param {array} [parameters.mountConfiguration] A list of file systems to
+     * mount on each node in the pool. This supports Azure Files, NFS, CIFS/SMB,
+     * and Blobfuse.
      *
      * @param {object} [options] Optional Parameters.
      *
