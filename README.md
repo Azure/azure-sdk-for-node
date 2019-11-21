@@ -1,20 +1,18 @@
 # Announcing the new Azure SDK for JavaScript
 
-We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js), which includes both Node.js and Browser support! 
+We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) in a new GitHub repo located here: https://github.com/azure/azure-sdk-for-js, which includes both Node.js and Browser support! 
 
 The following will help you update your application to the new SDK and related packages.
 
 - **Packages**: 
     - All of the management plane SDKs (`azure-arm-*`) and most of the data plane SDKs (`azure-*`), along with the rollup package [azure](https://www.npmjs.com/package/azure) in this repository, are deprecated as of **July, 2019**. They have been replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) packages.
-    - The new actively managed packages in [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) support both Node.js and the Browser and ship with TypeScript type definitions.
-    - You will find all equivalent JavaScript packages in `@azure` org on npm for the existing Node.js SDK package. For example, [azure-arm-compute](https://www.npmjs.com/package/azure-arm-compute) Node.js SDK's equivalent JavaScript SDK is [@azure/arm-compute](https://www.npmjs.com/package/@azure/arm-compute). 
+    - The new actively managed packages in [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) support both Node.js and Browser. They also ship with TypeScript type definitions.
     - All of the management plane SDKs for the V1 Azure API (Azure Service Management) `azure-asm-*` will continue to be maintained from the Azure SDK for Node.js repository. We expect customers using these packages to move to Azure Resource Manager API packages at their earliest convenience.
-- **Breaking Changes**: Apart from the noticable changes in **require/import** statements, we have tried our best to make minimal breaking changes in the API calls.
-- **Migration**: You can find more information on migrating your code from **Azure SDK for Node.js** to the new **Azure SDK for JavaScript** [here](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md).
+- **Migration**: You can find more information on migrating your code from **Azure SDK for Node.js** to the new **Azure SDK for JavaScript** in our [Migration from Node.js packages (azure-sdk-for-node) to JavaScript packages (azure-sdk-for-js)](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md) article.
 
 ## Azure SDK for Node.js
 
-> NOTE: As of July, 2019, this repository applies to the V1 Azure API (Azure Service Management) only. All other packages will be replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js). Please see the note above for more information.
+> NOTE: This repo is being deprecated. All future JavaScript SDKs are moving to [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js). Please see the note above for more information.
 
 This project provides Node.js packages that makes it easy to consume and manage Microsoft Azure Services.
 
