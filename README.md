@@ -1,14 +1,13 @@
 # Announcing the new Azure SDK for JavaScript
 
-We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) in a new GitHub repo located here: https://github.com/azure/azure-sdk-for-js, which includes both Node.js and Browser support! 
+We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) in a new GitHub repo located here: https://github.com/azure/azure-sdk-for-js.
+These packages ship with TypeScript type definitions and have both Node.js and Browser support.
 
-The following will help you update your application to the new SDK and related packages.
+Below are key points regarding deprecation of the packages in this repo and migration to the new packages
 
-- **Packages**: 
-    - All of the management plane SDKs (`azure-arm-*`) and most of the data plane SDKs (`azure-*`), along with the rollup package [azure](https://www.npmjs.com/package/azure) in this repository, are deprecated as of **July, 2019**. They have been replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) packages.
-    - The new actively managed packages in [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) support both Node.js and Browser. They also ship with TypeScript type definitions.
-    - All of the management plane SDKs for the V1 Azure API (Azure Service Management) `azure-asm-*` will continue to be maintained from the Azure SDK for Node.js repository. We expect customers using these packages to move to Azure Resource Manager API packages at their earliest convenience.
-- **Migration**: You can find more information on migrating your code from **Azure SDK for Node.js** to the new **Azure SDK for JavaScript** in our [Migration from Node.js packages (azure-sdk-for-node) to JavaScript packages (azure-sdk-for-js)](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md) article.
+- All of the management plane SDKs (`azure-arm-*`) and most of the data plane SDKs (`azure-*`), along with the rollup package `azure` in this repository, are deprecated as of **July, 2019**. They have been replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) packages.
+- All of the management plane SDKs for the V1 Azure API (Azure Service Management) `azure-asm-*` will continue to be maintained from the Azure SDK for Node.js repository. We expect customers using these packages to move to Azure Resource Manager API packages at their earliest convenience.
+- To migrate your code from **Azure SDK for Node.js** to the new **Azure SDK for JavaScript**, first identify the counterparts in the new SDK and then read our [Migration from Node.js packages (azure-sdk-for-node) to JavaScript packages (azure-sdk-for-js)](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md) article.
 
 ## Azure SDK for Node.js
 
@@ -35,15 +34,23 @@ For example to install the Storage package, you would run:
 $ npm install azure-storage
 ```
 
-Note: You can install all the packages in this SDK by using `npm install azure`. This will include [helper](#base-libraries) modules (`ms-rest-azure`) as well as all of the individual modules. This organization method also allows for submodules (and peer dependent modules) to always be in sync with each other.
-
 ## Supported services
 
 This SDK has support for:
 
-- Azure services (packages with the naming convention of `azure-<servicename>`).
-- [ARM services](#azure-resource-management-arm) (packages with the naming convention of `azure-arm-*`)
-- Legacy [ASM services](#azure-service-management-asm) (packages with the naming convention of `azure-asm-*`)
+- Azure services 
+    - These are packages with the naming convention of `azure-<servicename>`.
+    - In the new Azure SDK for JS, the counterparts will have the naming convention of `@azure/<servicename>`
+- [ARM services](#azure-resource-management-arm) 
+    - These are packages with the naming convention of `azure-arm-*`
+    - In the new Azure SDK for JS, the counterparts will have the naming convention of `@azure/arm-*`
+- Legacy [ASM services](#azure-service-management-asm) 
+    - These are packages with the naming convention of `azure-asm-*`
+    - In the new Azure SDK for JS, there are no counterparts to these packages. Please use the ARM services via packages
+    with the naming convention of `@azure/arm-*`
+- The roll up package [azure](https://www.npmjs.com/package/azure) 
+    - Installing this package will result in installing all the packages in this SDK including the [helper](#base-libraries) modules like `ms-rest-azure`.
+    - In the new Azure SDK for JS, there is no counterpart to this. You are encouraged to install only the packages you need.
 
 ## Documentation
 
