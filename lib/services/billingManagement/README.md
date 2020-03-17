@@ -19,7 +19,7 @@ npm install azure-arm-billing
 
  ```javascript
  const msRestAzure = require('ms-rest-azure');
- const BillingManagement = require("azure-arm-billing");
+ const BillingManagementClient = require("azure-arm-billing");
  
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
