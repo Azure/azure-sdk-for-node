@@ -2,8 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 var assert = require('assert');
-var webResource =require('../lib/webResource')
-
+var webResource = require('../lib/webResource')
 
 describe('web resoure', function () {
 
