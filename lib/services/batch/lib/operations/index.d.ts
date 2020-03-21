@@ -669,15 +669,12 @@ export interface Pool {
      *
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
-     * ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
-     * Image. Computes Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in
+     * the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -746,6 +743,18 @@ export interface Pool {
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [pool.virtualMachineConfiguration.diskEncryptionConfiguration] The disk
+     * encryption configuration for the pool. If specified, encryption is performed
+     * on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets] The
+     * list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {moment.duration} [pool.resizeTimeout] The timeout for allocation of
      * Compute Nodes to the Pool. This timeout applies only to manual scaling; it
      * has no effect when enableAutoScale is set to true. The default value is 15
@@ -802,7 +811,7 @@ export interface Pool {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -838,12 +847,25 @@ export interface Pool {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [pool.networkConfiguration.publicIPs] The list of public IPs
-     * which the Batch service will use when provisioning Compute Nodes. The number
-     * of IPs specified here limits the maximum size of the Pool - 50 dedicated
-     * nodes or 20 low-priority nodes can be allocated for each public IP. For
-     * example, a pool needing 150 dedicated VMs would need at least 3 public IPs
-     * specified. Each element of this collection is of the form:
+     * @param {object} [pool.networkConfiguration.publicIPAddressConfiguration] The
+     * Public IPAddress configuration for Compute Nodes in the Batch Pool. Public
+     * IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [pool.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the Pool. The default value is
+     * BatchManaged. Possible values include: 'batchManaged', 'userManaged',
+     * 'noPublicIPAddresses'
+     *
+     * @param {array}
+     * [pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds] The
+     * list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {object} [pool.startTask] A Task specified to run on each Compute
@@ -1114,15 +1136,12 @@ export interface Pool {
      *
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
-     * ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
-     * Image. Computes Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in
+     * the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -1191,6 +1210,18 @@ export interface Pool {
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [pool.virtualMachineConfiguration.diskEncryptionConfiguration] The disk
+     * encryption configuration for the pool. If specified, encryption is performed
+     * on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets] The
+     * list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {moment.duration} [pool.resizeTimeout] The timeout for allocation of
      * Compute Nodes to the Pool. This timeout applies only to manual scaling; it
      * has no effect when enableAutoScale is set to true. The default value is 15
@@ -1247,7 +1278,7 @@ export interface Pool {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -1283,12 +1314,25 @@ export interface Pool {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [pool.networkConfiguration.publicIPs] The list of public IPs
-     * which the Batch service will use when provisioning Compute Nodes. The number
-     * of IPs specified here limits the maximum size of the Pool - 50 dedicated
-     * nodes or 20 low-priority nodes can be allocated for each public IP. For
-     * example, a pool needing 150 dedicated VMs would need at least 3 public IPs
-     * specified. Each element of this collection is of the form:
+     * @param {object} [pool.networkConfiguration.publicIPAddressConfiguration] The
+     * Public IPAddress configuration for Compute Nodes in the Batch Pool. Public
+     * IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [pool.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the Pool. The default value is
+     * BatchManaged. Possible values include: 'batchManaged', 'userManaged',
+     * 'noPublicIPAddresses'
+     *
+     * @param {array}
+     * [pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds] The
+     * list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {object} [pool.startTask] A Task specified to run on each Compute
@@ -4972,15 +5016,12 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -5053,6 +5094,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
@@ -5136,7 +5189,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -5174,8 +5227,20 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -5593,15 +5658,12 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -5674,6 +5736,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
@@ -5757,7 +5831,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -5795,8 +5869,20 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -6224,15 +6310,12 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -6305,6 +6388,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
@@ -6388,7 +6483,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -6426,8 +6521,20 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -6850,15 +6957,12 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -6931,6 +7035,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
@@ -7014,7 +7130,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -7052,8 +7168,20 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -8236,15 +8364,12 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -8317,6 +8442,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
      * The maximum number of Tasks that can run concurrently on a single Compute
@@ -8397,7 +8534,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -8435,9 +8572,21 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs] The
-     * list of public IPs which the Batch service will use when provisioning
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
      * each public IP. For example, a pool needing 150 dedicated VMs would need at
@@ -9156,15 +9305,12 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -9237,6 +9383,18 @@ export interface Job {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
      * The maximum number of Tasks that can run concurrently on a single Compute
@@ -9317,7 +9475,7 @@ export interface Job {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -9355,9 +9513,21 @@ export interface Job {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs] The
-     * list of public IPs which the Batch service will use when provisioning
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
      * each public IP. For example, a pool needing 150 dedicated VMs would need at
@@ -10429,8 +10599,8 @@ export interface CertificateOperations {
      * Certificate data. Possible values include: 'pfx', 'cer'
      *
      * @param {string} [certificate.password] The password to access the
-     * Certificate's private key. This is required if the Certificate format is
-     * pfx. It should be omitted if the Certificate format is cer.
+     * Certificate's private key. This must be omitted if the Certificate format is
+     * cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10482,8 +10652,8 @@ export interface CertificateOperations {
      * Certificate data. Possible values include: 'pfx', 'cer'
      *
      * @param {string} [certificate.password] The password to access the
-     * Certificate's private key. This is required if the Certificate format is
-     * pfx. It should be omitted if the Certificate format is cer.
+     * Certificate's private key. This must be omitted if the Certificate format is
+     * cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13315,15 +13485,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -13396,6 +13563,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -13479,7 +13658,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -13517,8 +13696,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -14386,15 +14577,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -14467,6 +14655,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -14550,7 +14750,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -14588,8 +14788,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -15479,15 +15691,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -15560,6 +15769,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -15643,7 +15864,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -15681,8 +15902,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -16556,15 +16789,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -16637,6 +16867,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -16720,7 +16962,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -16758,8 +17000,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -18033,15 +18287,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -18114,6 +18365,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -18197,7 +18460,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -18235,8 +18498,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
@@ -19070,15 +19345,12 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Computes Compute Nodes of the Pool will be created using this
-     * Image Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other ImageReference
-     * properties. For Virtual Machine Image it must be in the same region and
-     * subscription as the Azure Batch account. For SIG image it must have replicas
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the
+     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other ImageReference properties.
+     * For Virtual Machine Image it must be in the same region and subscription as
+     * the Azure Batch account. The Shared Image Gallery Image must have replicas
      * in the same region as the Azure Batch account. For information about the
      * firewall settings for the Batch Compute Node agent to communicate with the
      * Batch service see
@@ -19151,6 +19423,18 @@ export interface JobSchedule {
      * Additional private registries from which containers can be pulled. If any
      * Images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
+     *
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node. If
+     * omitted, no disks on the compute nodes in the pool will be encrypted. On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
      *
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -19234,7 +19518,7 @@ export interface JobSchedule {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch Account. The specified subnet should have enough free IP addresses to
      * accommodate the number of Compute Nodes in the Pool. If the subnet doesn't
-     * have enough free IP addresses, the Pool will partially allocate Nodes, and a
+     * have enough free IP addresses, the Pool will partially allocate Nodes and a
      * resize error will occur. The 'MicrosoftAzureBatch' service principal must
      * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
      * (RBAC) role for the specified VNet. The specified subnet must allow
@@ -19272,8 +19556,20 @@ export interface JobSchedule {
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
      * the request fails with HTTP status code 400.
      *
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
+     * The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+     * Public IP configuration property is only supported on Pools with the
+     * virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.provision]
+     * The provisioning type for Public IP Addresses for the Pool. The default
+     * value is BatchManaged. Possible values include: 'batchManaged',
+     * 'userManaged', 'noPublicIPAddresses'
+     *
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPs]
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
      * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for

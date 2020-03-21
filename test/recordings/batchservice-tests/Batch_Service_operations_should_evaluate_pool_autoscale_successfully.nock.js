@@ -10,16 +10,16 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2019-08-01.10.0', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2019-08-05T19:39:48.7297659Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2020-03-01.11.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2020-03-21T02:12:09.6139812Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '248c4465-1bee-45d6-a1dc-350f7d24c1b1',
+  'request-id': 'e5d08c1b-b8b0-4345-81b3-ff9a9c4160dd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/evaluateautoscale',
-  date: 'Mon, 05 Aug 2019 19:39:48 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:09 GMT',
   connection: 'close' });
  return result; }]];

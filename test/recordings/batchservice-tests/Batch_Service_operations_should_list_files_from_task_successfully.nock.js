@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"stderr.txt\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt\",\"isDirectory\":false,\"properties\":{\r\n        \"creationTime\":\"2019-08-05T19:41:20.927791Z\",\"lastModified\":\"2019-08-05T19:41:20.927791Z\",\"contentLength\":\"0\",\"contentType\":\"text/plain\"\r\n      }\r\n    },{\r\n      \"name\":\"stdout.txt\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt\",\"isDirectory\":false,\"properties\":{\r\n        \"creationTime\":\"2019-08-05T19:41:20.927791Z\",\"lastModified\":\"2019-08-05T19:41:21.094432Z\",\"contentLength\":\"13\",\"contentType\":\"text/plain\"\r\n      }\r\n    },{\r\n      \"name\":\"wd\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/wd\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"stderr.txt\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt\",\"isDirectory\":false,\"properties\":{\r\n        \"creationTime\":\"2020-03-21T02:12:24.199234Z\",\"lastModified\":\"2020-03-21T02:12:24.199234Z\",\"contentLength\":\"0\",\"contentType\":\"text/plain\"\r\n      }\r\n    },{\r\n      \"name\":\"stdout.txt\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt\",\"isDirectory\":false,\"properties\":{\r\n        \"creationTime\":\"2020-03-21T02:12:24.199234Z\",\"lastModified\":\"2020-03-21T02:12:24.3242Z\",\"contentLength\":\"13\",\"contentType\":\"text/plain\"\r\n      }\r\n    },{\r\n      \"name\":\"wd\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/wd\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a6a11acd-fbb6-4a7e-8a28-7aae46e58833',
+  'request-id': '9e8a9c86-d925-44fd-98a5-d3adb87ed26b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:42:02 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:22 GMT',
   connection: 'close' });
  return result; }]];

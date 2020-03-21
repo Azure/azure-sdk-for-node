@@ -9,15 +9,15 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvmps_49be53cdd37b460f80b4e2accda66708628825cfcc549711d89a95846d3fc8d7_d/enablescheduling?api-version=2019-08-01.10.0')
+  .post('/pools/nodesdktestpool1/nodes/tvmps_7d4e0eeba568021acceb5746273ea1f7f625cefc125b098a2e6a641f3fc8fa57_d/enablescheduling?api-version=2020-03-01.11.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b837963b-c6a2-482d-ba6c-88a9c0f20bce',
+  'request-id': 'b8c02599-197f-4678-b4ac-90187b5dfadd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
-   'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_49be53cdd37b460f80b4e2accda66708628825cfcc549711d89a95846d3fc8d7_d/enablescheduling',
-  date: 'Mon, 05 Aug 2019 19:39:45 GMT',
+   'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_7d4e0eeba568021acceb5746273ea1f7f625cefc125b098a2e6a641f3fc8fa57_d/enablescheduling',
+  date: 'Sat, 21 Mar 2020 02:12:05 GMT',
   connection: 'close' });
  return result; }]];

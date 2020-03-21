@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2019-08-01.10.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:41:44 GMT',
-  etag: '0x8D719DCF2432D3E',
+  'last-modified': 'Sat, 21 Mar 2020 02:14:04 GMT',
+  etag: '0x8D7CD3D87A0E953',
   location:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8500fd68-37d0-4eb1-a92c-ef479da12ca6',
+  'request-id': '4e7b20f0-b103-43aa-a1b7-46882ffcee1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
-  date: 'Mon, 05 Aug 2019 19:41:44 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D719DCF2432D3E\",\"creationTime\":\"2019-08-05T19:41:44.4202814Z\",\"lastModified\":\"2019-08-05T19:41:44.4202814Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:41:44.4202814Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D7CD3D87A0E953\",\"creationTime\":\"2020-03-21T02:14:04.8383315Z\",\"lastModified\":\"2020-03-21T02:14:04.8383315Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T02:14:04.8383315Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:41:44 GMT',
-  etag: '0x8D719DCF2432D3E',
+  'last-modified': 'Sat, 21 Mar 2020 02:14:04 GMT',
+  etag: '0x8D7CD3D87A0E953',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '21e5b8d4-a94e-4235-8b1a-6de9e8069597',
+  'request-id': 'b996cfc2-7220-4691-850d-8c1cddba5534',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:41:45 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:05 GMT',
   connection: 'close' });
  return result; }]];

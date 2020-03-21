@@ -9,13 +9,13 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d/users/NodeSDKTestUser?api-version=2019-08-01.10.0')
+  .delete('/pools/nodesdktestpool1/nodes/tvmps_629912ea6ac7432abe90f0dde1dd3071b1141a76f5de918abc24ffb884842d38_d/users/NodeSDKTestUser?api-version=2020-03-01.11.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3d4758a4-37a6-4215-b666-a4eab8d76aad',
+  'request-id': '88476a9e-2670-4dab-8f98-15c9c4d3e09b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:43 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:05 GMT',
   connection: 'close' });
  return result; }]];

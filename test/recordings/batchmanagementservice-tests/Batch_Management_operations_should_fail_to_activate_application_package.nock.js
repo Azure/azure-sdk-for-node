@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2019-08-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:d4fd620f-2bc2-48aa-a1de-1f1fe957031f\\nTime:2019-08-05T19:01:28.2476000Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2020-03-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:4200cb28-92c6-4f2e-9704-0975c05173c2\\nTime:2020-03-21T01:28:01.4300505Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '232',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'cf4956f8-1867-47b6-9925-f1bd2f931f36',
-  'x-ms-request-id': 'd4fd620f-2bc2-48aa-a1de-1f1fe957031f',
+  'x-ms-correlation-request-id': 'bd847529-44dd-4d8d-b3d9-27a0ac1287b3',
+  'x-ms-request-id': '4200cb28-92c6-4f2e-9704-0975c05173c2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T190128Z:cf4956f8-1867-47b6-9925-f1bd2f931f36',
-  date: 'Mon, 05 Aug 2019 19:01:27 GMT',
+   'WESTUS:20200321T012801Z:bd847529-44dd-4d8d-b3d9-27a0ac1287b3',
+  date: 'Sat, 21 Mar 2020 01:28:01 GMT',
   connection: 'close' });
  return result; }]];

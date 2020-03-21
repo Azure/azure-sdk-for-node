@@ -10,15 +10,15 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/pools/nodesdktestpool1/nodes/tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d/users/NodeSDKTestUser?api-version=2019-08-01.10.0', '*')
+.put('/pools/nodesdktestpool1/nodes/tvmps_629912ea6ac7432abe90f0dde1dd3071b1141a76f5de918abc24ffb884842d38_d/users/NodeSDKTestUser?api-version=2020-03-01.11.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7e62a4e5-41b6-4483-b988-cabe8b344847',
+  'request-id': '8e5eed34-b02a-475d-a620-e5e634a015eb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
-   'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d/users/NodeSDKTestUser',
-  date: 'Mon, 05 Aug 2019 19:39:42 GMT',
+   'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_629912ea6ac7432abe90f0dde1dd3071b1141a76f5de918abc24ffb884842d38_d/users/NodeSDKTestUser',
+  date: 'Sat, 21 Mar 2020 02:12:04 GMT',
   connection: 'close' });
  return result; }]];

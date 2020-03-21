@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2019-08-06T03:30:00Z\",\"endTime\":\"2019-08-06T04:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999997222216\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/poolusagemetrics?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2019-08-06T03:30:00Z\",\"endTime\":\"2019-08-06T04:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999997222216\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',  
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1fd53da8-92e7-4c2c-9bfa-6bbc4da36fff',
+  'request-id': '2b1560eb-756b-458e-a2f8-96f533f467ec',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:55 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:14 GMT',
   connection: 'close' });
  return result; }]];

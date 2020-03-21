@@ -62,6 +62,8 @@ export default class BatchManagementClient extends AzureServiceClient {
   location: operations.Location;
   operations: operations.Operations;
   certificateOperations: operations.CertificateOperations;
+  privateLinkResourceOperations: operations.PrivateLinkResourceOperations;
+  privateEndpointConnectionOperations: operations.PrivateEndpointConnectionOperations;
   poolOperations: operations.PoolOperations;
 }
 

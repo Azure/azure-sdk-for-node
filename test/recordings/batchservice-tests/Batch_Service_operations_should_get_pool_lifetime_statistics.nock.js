@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://test4.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2019-08-05T19:19:45.488288Z\",\"lastUpdateTime\":\"2019-08-05T19:19:45.488288Z\",\"dedicatedCoreTime\":\"PT0S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2019-08-05T19:19:45.488288Z\",\"diskReadIOps\":\"0\",\"diskWriteIOps\":\"0\",\"lastUpdateTime\":\"2019-08-05T19:19:45.488288Z\",\"avgCPUPercentage\":0.0,\"avgMemoryGiB\":0.0,\"peakMemoryGiB\":0.0,\"avgDiskGiB\":0.0,\"peakDiskGiB\":0.0,\"diskReadGiB\":0.0,\"diskWriteGiB\":0.0,\"networkReadGiB\":0.0,\"networkWriteGiB\":0.0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimepoolstats?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://test4.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2020-03-21T01:43:29.1486839Z\",\"lastUpdateTime\":\"2020-03-21T01:43:29.1486839Z\",\"dedicatedCoreTime\":\"PT0S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2020-03-21T01:43:29.1486839Z\",\"diskReadIOps\":\"0\",\"diskWriteIOps\":\"0\",\"lastUpdateTime\":\"2020-03-21T01:43:29.1486839Z\",\"avgCPUPercentage\":0.0,\"avgMemoryGiB\":0.0,\"peakMemoryGiB\":0.0,\"avgDiskGiB\":0.0,\"peakDiskGiB\":0.0,\"diskReadGiB\":0.0,\"diskWriteGiB\":0.0,\"networkReadGiB\":0.0,\"networkWriteGiB\":0.0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c1005049-6cb6-484c-b8bb-9f1c37029037',
+  'request-id': '9211f390-cfcd-464b-a096-6e66fc3401ec',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:54 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:15 GMT',
   connection: 'close' });
  return result; }]];

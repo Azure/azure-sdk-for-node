@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2019-08-01.10.0')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"CertificateBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified certificate has been marked for deletion and is being deleted.\\nRequestId:c956c979-727a-421d-9f91-b1d4555d19c9\\nTime:2019-08-05T19:44:00.2807743Z\"\r\n  }\r\n}", { 'content-length': '382',
+  .post('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)/canceldelete?api-version=2020-03-01.11.0')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"CertificateBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified certificate has been marked for deletion and is being deleted.\\nRequestId:def9f3bf-a4e4-4563-8cb3-0802d1647ddd\\nTime:2020-03-21T02:16:20.9144074Z\"\r\n  }\r\n}", { 'content-length': '382',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c956c979-727a-421d-9f91-b1d4555d19c9',
+  'request-id': 'def9f3bf-a4e4-4563-8cb3-0802d1647ddd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:44:00 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:20 GMT',
   connection: 'close' });
  return result; }]];

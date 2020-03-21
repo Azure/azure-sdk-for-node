@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    {\r\n      \"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D719DCB2146140\",\"lastModified\":\"2019-08-05T19:39:56.7394112Z\",\"creationTime\":\"2019-08-05T19:39:55.7755964Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:39:55.8081097Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n      },\"poolInfo\":{\r\n        \"poolId\":\"nodesdktestpool1\"\r\n      },\"executionInfo\":{\r\n        \"startTime\":\"2019-08-05T19:39:55.8081097Z\",\"poolId\":\"nodesdktestpool1\"\r\n      },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    {\r\n      \"id\":\"HelloWorldJobNodeSDKTest\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest\",\"eTag\":\"0x8D7CD3D476E0A2C\",\"lastModified\":\"2020-03-21T02:12:17.1307564Z\",\"creationTime\":\"2020-03-21T02:12:16.2128928Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T02:12:16.2398962Z\",\"priority\":500,\"usesTaskDependencies\":false,\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n      },\"poolInfo\":{\r\n        \"poolId\":\"nodesdktestpool1\"\r\n      },\"executionInfo\":{\r\n        \"startTime\":\"2020-03-21T02:12:16.2398962Z\",\"poolId\":\"nodesdktestpool1\"\r\n      },\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '412fe499-0213-4ced-8745-7533d3fd645d',
+  'request-id': 'b997bb87-5db5-42fb-afb4-066669f616bf',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:48 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:09 GMT',
   connection: 'close' });
  return result; }]];

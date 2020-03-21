@@ -77,7 +77,7 @@ describe('Batch Management', function () {
       client.operations.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(41);
+        result.length.should.equal(48);
         result[0].name.should.equal('Microsoft.Batch/batchAccounts/providers/Microsoft.Insights/diagnosticSettings/read');
         result[0].origin.should.equal('system');
         result[0].display.provider.should.equal('Microsoft Batch');

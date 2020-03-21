@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2019-08-01.10.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:43:47 GMT',
-  etag: '0x8D719DD3B63608F',
+  'last-modified': 'Sat, 21 Mar 2020 02:16:08 GMT',
+  etag: '0x8D7CD3DD15B43C3',
   location:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '90c51db8-f870-4501-8628-d74443a39ac4',
+  'request-id': '618b0d4e-3448-4fc3-9526-016693a7e1f7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
-  date: 'Mon, 05 Aug 2019 19:43:47 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D719DD3B63608F\",\"creationTime\":\"2019-08-05T19:43:47.1049871Z\",\"lastModified\":\"2019-08-05T19:43:47.1049871Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:43:47.1049871Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D7CD3DD15B43C3\",\"creationTime\":\"2020-03-21T02:16:08.5332931Z\",\"lastModified\":\"2020-03-21T02:16:08.5332931Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T02:16:08.5332931Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:43:47 GMT',
-  etag: '0x8D719DD3B63608F',
+  'last-modified': 'Sat, 21 Mar 2020 02:16:08 GMT',
+  etag: '0x8D7CD3DD15B43C3',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f28f4af4-bd57-47b9-8cc9-28cfe8476725',
+  'request-id': 'b7323d6a-2535-4787-b356-19e7e1d2b2e7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:47 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:08 GMT',
   connection: 'close' });
  return result; }]];

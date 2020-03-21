@@ -25,35 +25,54 @@ export interface AutoStorageBaseProperties {
   storageAccountId: string;
 }
 
+export interface KeyVaultProperties {
+  /**
+   * Full path to the versioned secret. Example
+   * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+  */
+  keyIdentifier?: string;
+}
+
+export interface EncryptionProperties {
+  /**
+   * Type of the key source. Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+  */
+  keySource?: string;
+  /**
+   * Additional details when using Microsoft.KeyVault
+  */
+  keyVaultProperties?: KeyVaultProperties;
+}
+
 /**
  * Identifies the Azure key vault associated with a Batch account.
- */
+*/
 export interface KeyVaultReference {
   /**
    * The resource ID of the Azure key vault associated with the Batch account.
-   */
+  */
   id: string;
   /**
    * The URL of the Azure key vault associated with the Batch account.
-   */
+  */
   url: string;
 }
 
 /**
  * Parameters supplied to the Create operation.
- */
+*/
 export interface BatchAccountCreateParameters {
   /**
    * The region in which to create the account.
-   */
+  */
   location: string;
   /**
    * The user-specified tags associated with the account.
-   */
+  */
   tags?: { [propertyName: string]: string };
   /**
    * The properties related to the auto-storage account.
-   */
+  */
   autoStorage?: AutoStorageBaseProperties;
   /**
    * @summary The allocation mode to use for creating pools in the Batch account.
@@ -61,108 +80,128 @@ export interface BatchAccountCreateParameters {
    * Service API. If the mode is BatchService, clients may authenticate using access keys or Azure
    * Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory.
    * The default is BatchService. Possible values include: 'BatchService', 'UserSubscription'
-   */
+  */
   poolAllocationMode?: string;
   /**
    * A reference to the Azure key vault associated with the Batch account.
-   */
+  */
   keyVaultReference?: KeyVaultReference;
+  /**
+   * @summary The network access type for accessing Azure Batch account.
+   * @description Possible values include: 'Enabled', 'Disabled'
+  */
+  publicNetworkAccess?: string;
+  /**
+   * @summary The encryption configuration for the Batch account.
+  */
+  encryption?: EncryptionProperties;
 }
 
 /**
  * Contains information about the auto-storage account associated with a Batch account.
- */
+*/
 export interface AutoStorageProperties extends AutoStorageBaseProperties {
   /**
    * The UTC time at which storage keys were last synchronized with the Batch account.
-   */
+  */
   lastKeySync: Date;
 }
 
 /**
  * A VM Family and its associated core quota for the Batch account.
- */
+*/
 export interface VirtualMachineFamilyCoreQuota {
   /**
    * The Virtual Machine family name.
-   */
+  */
   readonly name?: string;
   /**
    * The core quota for the VM family for the Batch account.
-   */
+  */
   readonly coreQuota?: number;
 }
 
 /**
  * A definition of an Azure resource.
- */
+*/
 export interface Resource extends BaseResource {
   /**
    * The ID of the resource.
-   */
+  */
   readonly id?: string;
   /**
    * The name of the resource.
-   */
+  */
   readonly name?: string;
   /**
    * The type of the resource.
-   */
+  */
   readonly type?: string;
   /**
    * The location of the resource.
-   */
+  */
   readonly location?: string;
   /**
    * The tags of the resource.
-   */
+  */
   readonly tags?: { [propertyName: string]: string };
 }
 
 /**
  * Contains information about an Azure Batch account.
- */
+*/
 export interface BatchAccount extends Resource {
   /**
    * The account endpoint used to interact with the Batch service.
-   */
+  */
   readonly accountEndpoint?: string;
   /**
    * The provisioned state of the resource. Possible values include: 'Invalid', 'Creating',
    * 'Deleting', 'Succeeded', 'Failed', 'Cancelled'
-   */
+  */
   readonly provisioningState?: string;
   /**
    * @summary The allocation mode to use for creating pools in the Batch account.
    * @description Possible values include: 'BatchService', 'UserSubscription'
-   */
+  */
   readonly poolAllocationMode?: string;
   /**
    * @summary A reference to the Azure key vault associated with the Batch account.
-   */
+  */
   readonly keyVaultReference?: KeyVaultReference;
+  /**
+   * @summary The network interface type for accessing Azure Batch service and Batch account
+   * operations.
+   * @description If not specified, the default value is 'enabled'. Possible values include:
+   * 'Enabled', 'Disabled'
+  */
+  readonly publicNetworkAccess?: string;
   /**
    * @summary The properties and status of any auto-storage account associated with the Batch
    * account.
-   */
+  */
   readonly autoStorage?: AutoStorageProperties;
+  /**
+   * @summary The encryption configuration for the Batch account.
+  */
+  readonly encryption?: EncryptionProperties;
   /**
    * @summary The dedicated core quota for the Batch account.
    * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
    * the subscription so this value is not returned.
-   */
+  */
   readonly dedicatedCoreQuota?: number;
   /**
    * @summary The low-priority core quota for the Batch account.
    * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
    * the subscription so this value is not returned.
-   */
+  */
   readonly lowPriorityCoreQuota?: number;
   /**
    * A list of the dedicated core quota per Virtual Machine family for the Batch account. For
    * accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription
    * so this value is not returned.
-   */
+  */
   readonly dedicatedCoreQuotaPerVMFamily?: VirtualMachineFamilyCoreQuota[];
   /**
    * @summary A value indicating whether the core quota for the Batch Account is enforced per
@@ -174,158 +213,162 @@ export interface BatchAccount extends Resource {
    * Machine family. If this flag is true, dedicated core quota is enforced via the
    * dedicatedCoreQuotaPerVMFamily property on the account, and the old dedicatedCoreQuota does not
    * apply.
-   */
+  */
   readonly dedicatedCoreQuotaPerVMFamilyEnforced?: boolean;
   /**
    * @summary The pool quota for the Batch account.
-   */
+  */
   readonly poolQuota?: number;
   /**
    * @summary The active job and job schedule quota for the Batch account.
-   */
+  */
   readonly activeJobAndJobScheduleQuota?: number;
 }
 
 /**
  * Parameters for updating an Azure Batch account.
- */
+*/
 export interface BatchAccountUpdateParameters {
   /**
    * The user-specified tags associated with the account.
-   */
+  */
   tags?: { [propertyName: string]: string };
   /**
    * The properties related to the auto-storage account.
-   */
+  */
   autoStorage?: AutoStorageBaseProperties;
+  /**
+   * @summary The encryption configuration for the Batch account.
+  */
+  encryption?: EncryptionProperties;
 }
 
 /**
  * Parameters supplied to the RegenerateKey operation.
- */
+*/
 export interface BatchAccountRegenerateKeyParameters {
   /**
    * The type of account key to regenerate. Possible values include: 'Primary', 'Secondary'
-   */
+  */
   keyName: string;
 }
 
 /**
  * A set of Azure Batch account keys.
- */
+*/
 export interface BatchAccountKeys {
   /**
    * The Batch account name.
-   */
+  */
   readonly accountName?: string;
   /**
    * The primary key associated with the account.
-   */
+  */
   readonly primary?: string;
   /**
    * The secondary key associated with the account.
-   */
+  */
   readonly secondary?: string;
 }
 
 /**
  * Parameters for an activating an application package.
- */
+*/
 export interface ActivateApplicationPackageParameters {
   /**
    * The format of the application package binary file.
-   */
+  */
   format: string;
 }
 
 /**
  * A definition of an Azure resource.
- */
+*/
 export interface ProxyResource extends BaseResource {
   /**
    * The ID of the resource.
-   */
+  */
   readonly id?: string;
   /**
    * The name of the resource.
-   */
+  */
   readonly name?: string;
   /**
    * The type of the resource.
-   */
+  */
   readonly type?: string;
   /**
    * The ETag of the resource, used for concurrency statements.
-   */
+  */
   readonly etag?: string;
 }
 
 /**
  * Contains information about an application in a Batch account.
- */
+*/
 export interface Application extends ProxyResource {
   /**
    * The display name for the application.
-   */
+  */
   displayName?: string;
   /**
    * A value indicating whether packages within the application may be overwritten using the same
    * version string.
-   */
+  */
   allowUpdates?: boolean;
   /**
    * The package to use if a client requests the application but does not specify a version. This
    * property can only be set to the name of an existing package.
-   */
+  */
   defaultVersion?: string;
 }
 
 /**
  * An application package which represents a particular version of an application.
- */
+*/
 export interface ApplicationPackage extends ProxyResource {
   /**
    * The current state of the application package. Possible values include: 'Pending', 'Active'
-   */
+  */
   readonly state?: string;
   /**
    * The format of the application package, if the package is active.
-   */
+  */
   readonly format?: string;
   /**
    * The URL for the application package in Azure Storage.
-   */
+  */
   readonly storageUrl?: string;
   /**
    * The UTC time at which the Azure Storage URL will expire.
-   */
+  */
   readonly storageUrlExpiry?: Date;
   /**
    * The time at which the package was last activated, if the package is active.
-   */
+  */
   readonly lastActivationTime?: Date;
 }
 
 /**
  * Quotas associated with a Batch region for a particular subscription.
- */
+*/
 export interface BatchLocationQuota {
   /**
    * The number of Batch accounts that may be created under the subscription in the specified
    * region.
-   */
+  */
   readonly accountQuota?: number;
 }
 
 export interface CertificateBaseProperties {
   /**
-   * @summary The algorithm of the certificate thumbprint
+   * @summary The algorithm of the certificate thumbprint.
    * @description This must match the first portion of the certificate name. Currently required to
    * be 'SHA1'.
   */
   thumbprintAlgorithm?: string;
   /**
-   * @summary The thumbprint of the certificate
+   * @summary The thumbprint of the certificate.
    * @description This must match the thumbprint from the name.
   */
   thumbprint?: string;
@@ -364,13 +407,13 @@ export interface DeleteCertificateError {
 */
 export interface Certificate extends ProxyResource {
   /**
-   * @summary The algorithm of the certificate thumbprint
+   * @summary The algorithm of the certificate thumbprint.
    * @description This must match the first portion of the certificate name. Currently required to
    * be 'SHA1'.
   */
   thumbprintAlgorithm?: string;
   /**
-   * @summary The thumbprint of the certificate
+   * @summary The thumbprint of the certificate.
    * @description This must match the thumbprint from the name.
   */
   thumbprint?: string;
@@ -413,13 +456,13 @@ export interface Certificate extends ProxyResource {
 */
 export interface CertificateCreateOrUpdateParameters extends ProxyResource {
   /**
-   * @summary The algorithm of the certificate thumbprint
+   * @summary The algorithm of the certificate thumbprint.
    * @description This must match the first portion of the certificate name. Currently required to
    * be 'SHA1'.
   */
   thumbprintAlgorithm?: string;
   /**
-   * @summary The thumbprint of the certificate
+   * @summary The thumbprint of the certificate.
    * @description This must match the thumbprint from the name.
   */
   thumbprint?: string;
@@ -435,10 +478,73 @@ export interface CertificateCreateOrUpdateParameters extends ProxyResource {
   data: string;
   /**
    * @summary The password to access the certificate's private key.
-   * @description This is required if the certificate format is pfx and must be omitted if the
-   * certificate format is cer.
+   * @description This must not be specified if the certificate format is Cer.
   */
   password?: string;
+}
+
+/**
+ * Contains information about a private link resource.
+*/
+export interface PrivateLinkResource extends ProxyResource {
+  /**
+   * @summary The group id of the private link resource.
+   * @description The group id is used to establish the private link connection.
+  */
+  readonly groupId?: string;
+  /**
+   * @summary The list of required members that are used to establish the private link connection.
+  */
+  readonly requiredMembers?: string[];
+}
+
+/**
+ * The private endpoint of the private endpoint connection.
+*/
+export interface PrivateEndpoint {
+  /**
+   * @summary The ARM resource identifier of the private endpoint. This is of the form
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+  */
+  readonly id?: string;
+}
+
+/**
+ * The private link service connection state of the private endpoint connection
+*/
+export interface PrivateLinkServiceConnectionState {
+  /**
+   * @summary The status for the private endpoint connection of Batch account
+   * @description Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+  */
+  status?: string;
+  /**
+   * @summary Description of the private Connection state
+  */
+  description?: string;
+  /**
+   * @summary Action required on the private connection state
+  */
+  readonly actionRequired?: string;
+}
+
+/**
+ * Contains information about a private link resource.
+*/
+export interface PrivateEndpointConnection extends ProxyResource {
+  /**
+   * @summary The provisioning state of the private endpoint connection.
+   * @description Possible values include: 'Succeeded', 'Updating', 'Failed'
+  */
+  readonly provisioningState?: string;
+  /**
+   * @summary The ARM resource identifier of the private endpoint.
+  */
+  privateEndpoint?: PrivateEndpoint;
+  /**
+   * @summary The private link service connection state of the private endpoint connection.
+  */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
 
 /**
@@ -490,17 +596,13 @@ export interface ImageReference {
   */
   version?: string;
   /**
-   * @summary The ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
-   * Image. Compute Nodes of the Pool will be created using this Image Id. This is of either the
-   * form
-   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-   * for Virtual Machine Image or
-   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-   * for SIG image.
-   * @description This property is mutually exclusive with other properties. For Virtual Machine
-   * Image it must be in the same region and subscription as the Azure Batch account. For SIG image
-   * it must have replicas in the same region as the Azure Batch account. For information about the
-   * firewall settings for the Batch node agent to communicate with the Batch service see
+   * @summary The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in the
+   * Pool will be created using this Image Id. This is of the form
+   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+   * @description This property is mutually exclusive with other properties. The Shared Image
+   * Gallery image must have replicas in the same region as the Azure Batch account. For
+   * information about the firewall settings for the Batch node agent to communicate with the Batch
+   * service see
    * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
   */
   id?: string;
@@ -595,6 +697,20 @@ export interface ContainerConfiguration {
 }
 
 /**
+ * The disk encryption configuration applied on compute nodes in the pool. Disk encryption
+ * configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image
+ * Gallery Image.
+*/
+export interface DiskEncryptionConfiguration {
+  /**
+   * @summary The list of disk targets Batch Service will encrypt on the compute node
+   * @description On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+   * "TemporaryDisk" must be specified.
+  */
+  targets?: string[];
+}
+
+/**
  * @summary The configuration for compute nodes in a pool based on the Azure Virtual Machines
  * infrastructure.
 */
@@ -644,6 +760,12 @@ export interface VirtualMachineConfiguration {
    * containerSettings property, and all other tasks may specify it.
   */
   containerConfiguration?: ContainerConfiguration;
+  /**
+   * @summary The disk encryption configuration for the pool.
+   * @description If specified, encryption is performed on each node in the pool during node
+   * provisioning.
+  */
+  diskEncryptionConfiguration?: DiskEncryptionConfiguration;
 }
 
 /**
@@ -783,7 +905,7 @@ export interface NetworkSecurityGroupRule {
    * @description Priorities within a pool must be unique and are evaluated in order of priority.
    * The lower the number the higher the priority. For example, rules could be specified with order
    * numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the
-   * rule that has an order of 250. Allowed priorities are 150 to 3500. If any reserved or
+   * rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or
    * duplicate values are provided the request fails with HTTP status code 400.
   */
   priority: number;
@@ -875,6 +997,28 @@ export interface PoolEndpointConfiguration {
 }
 
 /**
+ * The public IP Address configuration of the networking configuration of a Pool.
+*/
+export interface PublicIPAddressConfiguration {
+  /**
+   * @summary The provisioning type for Public IP Addresses for the pool
+   * @description The default value is BatchManaged. Possible values include: 'BatchManaged',
+   * 'UserManaged', 'NoPublicIPAddresses'
+  */
+  provision?: string;
+  /**
+   * @summary The list of public IPs which the Batch service will use when provisioning Compute
+   * Nodes.
+   * @description The number of IPs specified here limits the maximum size of the Pool - 50
+   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
+   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
+   * this collection is of the form:
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+  */
+  ipAddressIds?: string[];
+}
+
+/**
  * The network configuration for a pool.
 */
 export interface NetworkConfiguration {
@@ -885,20 +1029,19 @@ export interface NetworkConfiguration {
    * @description The virtual network must be in the same region and subscription as the Azure
    * Batch account. The specified subnet should have enough free IP addresses to accommodate the
    * number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool
-   * will partially allocate compute nodes, and a resize error will occur. The
-   * 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor'
-   * Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow
-   * communication from the Azure Batch service to be able to schedule tasks on the compute nodes.
-   * This can be verified by checking if the specified VNet has any associated Network Security
-   * Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an
-   * NSG, then the Batch service will set the state of the compute nodes to unusable. For pools
-   * created via virtualMachineConfiguration the Batch account must have poolAllocationMode
-   * userSubscription in order to use a VNet. If the specified VNet has any associated Network
-   * Security Groups (NSG), then a few reserved system ports must be enabled for inbound
-   * communication. For pools created with a virtual machine configuration, enable ports 29876 and
-   * 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud
-   * service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections
-   * to Azure Storage on port 443. For more details see:
+   * will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch'
+   * service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access
+   * Control (RBAC) role for the specified VNet. The specified subnet must allow communication from
+   * the Azure Batch service to be able to schedule tasks on the compute nodes. This can be
+   * verified by checking if the specified VNet has any associated Network Security Groups (NSG).
+   * If communication to the compute nodes in the specified subnet is denied by an NSG, then the
+   * Batch service will set the state of the compute nodes to unusable. If the specified VNet has
+   * any associated Network Security Groups (NSG), then a few reserved system ports must be enabled
+   * for inbound communication. For pools created with a virtual machine configuration, enable
+   * ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools
+   * created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable
+   * outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only
+   * 'classic' VNETs are supported. For more details see:
    * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
   */
   subnetId?: string;
@@ -909,15 +1052,11 @@ export interface NetworkConfiguration {
   */
   endpointConfiguration?: PoolEndpointConfiguration;
   /**
-   * @summary The list of public IPs which the Batch service will use when provisioning Compute
-   * Nodes.
-   * @description The number of IPs specified here limits the maximum size of the Pool - 50
-   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
-   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
-   * this collection is of the form:
-   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+   * @summary The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+   * @description This property is only supported on Pools with the virtualMachineConfiguration
+   * property.
   */
-  publicIPs?: string[];
+  publicIPAddressConfiguration?: PublicIPAddressConfiguration;
 }
 
 /**
@@ -1533,7 +1672,7 @@ export interface Pool extends ProxyResource {
    * @summary The size of virtual machines in the pool. All VMs in a pool are the same size.
    * @description For information about available sizes of virtual machines for Cloud Services
    * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud Services
-   * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch
+   * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch
    * supports all Cloud Services VM sizes except ExtraSmall. For information about available VM
    * sizes for pools using images from the Virtual Machines Marketplace (pools created with
    * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
@@ -1767,6 +1906,26 @@ export interface OperationListResult extends Array<Operation> {
  * Values returned by the List operation.
 */
 export interface ListCertificatesResult extends Array<Certificate> {
+  /**
+   * The continuation token.
+  */
+  nextLink?: string;
+}
+
+/**
+ * Values returned by the List operation.
+*/
+export interface ListPrivateLinkResourcesResult extends Array<PrivateLinkResource> {
+  /**
+   * The continuation token.
+  */
+  nextLink?: string;
+}
+
+/**
+ * Values returned by the List operation.
+*/
+export interface ListPrivateEndpointConnectionsResult extends Array<PrivateEndpointConnection> {
   /**
    * The continuation token.
   */

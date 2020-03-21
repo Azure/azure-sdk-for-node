@@ -10,48 +10,48 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2019-08-01.10.0', '*')
+.post('/pools?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:32:56 GMT',
-  etag: '0x8D719DBB770C8D8',
+  'last-modified': 'Sat, 21 Mar 2020 02:05:18 GMT',
+  etag: '0x8D7CD3C4DCF7680',
   location:
    'https://test4.japaneast.batch.azure.com/pools/nodesdkdatadiskpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f95373d1-6c5d-4a8b-bc5f-5fbe6dd2c9e1',
+  'request-id': '7155a7b3-4111-4d54-9958-650bbacf2854',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/pools/nodesdkdatadiskpool',
-  date: 'Mon, 05 Aug 2019 19:32:56 GMT',
+  date: 'Sat, 21 Mar 2020 02:05:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdkdatadiskpool?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkdatadiskpool\",\"url\":\"https://test4.japaneast.batch.azure.com/pools/nodesdkdatadiskpool\",\"eTag\":\"0x8D719DBB770C8D8\",\"lastModified\":\"2019-08-05T19:32:56.2368728Z\",\"creationTime\":\"2019-08-05T19:32:56.2368728Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:32:56.2368728Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2019-08-05T19:32:56.6500805Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\",\"dataDisks\":[\r\n      {\r\n        \"lun\":1,\"caching\":\"none\",\"diskSizeGB\":50,\"storageAccountType\":\"standard_lrs\"\r\n      }\r\n    ]\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdkdatadiskpool?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkdatadiskpool\",\"url\":\"https://test4.japaneast.batch.azure.com/pools/nodesdkdatadiskpool\",\"eTag\":\"0x8D7CD3C4DCF7680\",\"lastModified\":\"2020-03-21T02:05:18.3388288Z\",\"creationTime\":\"2020-03-21T02:05:18.3388288Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T02:05:18.3388288Z\",\"allocationState\":\"resizing\",\"allocationStateTransitionTime\":\"2020-03-21T02:05:18.3388288Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\",\"dataDisks\":[\r\n      {\r\n        \"lun\":1,\"caching\":\"none\",\"diskSizeGB\":50,\"storageAccountType\":\"standard_lrs\"\r\n      }\r\n    ]\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:32:56 GMT',
-  etag: '0x8D719DBB770C8D8',
+  'last-modified': 'Sat, 21 Mar 2020 02:05:18 GMT',
+  etag: '0x8D7CD3C4DCF7680',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '61e17125-6b5d-4180-88f3-9c883a312455',
+  'request-id': 'f96cec50-2478-4841-8c82-2966b1a3686c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:32:56 GMT',
+  date: 'Sat, 21 Mar 2020 02:05:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdkdatadiskpool?api-version=2019-08-01.10.0')
+  .delete('/pools/nodesdkdatadiskpool?api-version=2020-03-01.11.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '929be0e9-3e23-4452-afc6-ef8610a083b8',
+  'request-id': '83859375-6854-4da4-a14e-b061f9629b7a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:32:56 GMT',
+  date: 'Sat, 21 Mar 2020 02:05:19 GMT',
   connection: 'close' });
  return result; }]];

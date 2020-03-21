@@ -9,16 +9,16 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D719DAC70A440F\",\"lastModified\":\"2019-08-05T19:26:12.9118223Z\",\"creationTime\":\"2019-08-05T19:24:30.854091Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:24:30.854091Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2019-08-05T19:26:57.1355776Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":true\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\",\"windowsUserConfiguration\":{\r\n        \"loginMode\":\"interactive\"\r\n      }\r\n    }\r\n  ],\"certificateReferences\":[\r\n    \r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"osVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D7CD3B5D56803A\",\"lastModified\":\"2020-03-21T01:58:34.8929082Z\",\"creationTime\":\"2020-03-21T01:56:52.8209327Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T01:56:52.8209327Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2020-03-21T01:58:19.7848106Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":true\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\",\"windowsUserConfiguration\":{\r\n        \"loginMode\":\"interactive\"\r\n      }\r\n    }\r\n  ],\"certificateReferences\":[\r\n    \r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"osVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:26:12 GMT',
-  etag: '0x8D719DAC70A440F',
+  'last-modified': 'Sat, 21 Mar 2020 01:58:34 GMT',
+  etag: '0x8D7CD3B5D56803A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b1fc0439-273a-4ca9-9118-d0308cfed711',
+  'request-id': '8b3116be-e99b-4bb7-b70c-a009bf6e21ca',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:32:53 GMT',
+  date: 'Sat, 21 Mar 2020 02:05:15 GMT',
   connection: 'close' });
  return result; }]];

@@ -1243,7 +1243,7 @@ describe('Batch Service', function () {
     it('should create a job schdule successfully', function (done) {
       var options = {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
-        schedule: { doNotRunUntil: "2019-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
+        schedule: { doNotRunUntil: "2020-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
       };
 
       var requestModelMapper = new client.models['JobScheduleAddParameter']().mapper();

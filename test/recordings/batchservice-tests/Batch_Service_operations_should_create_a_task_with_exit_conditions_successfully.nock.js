@@ -10,66 +10,66 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2019-08-01.10.0', '*')
+.post('/jobs?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:39:59 GMT',
-  etag: '0x8D719DCB383DAC9',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:19 GMT',
+  etag: '0x8D7CD3D48C0ED61',
   location: 'https://test4.japaneast.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b4d5b28c-2270-42d0-9e99-79afaf2c29c0',
+  'request-id': '17953db4-ae3e-4137-a523-ff495364a693',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://test4.japaneast.batch.azure.com/jobs/job-1',
-  date: 'Mon, 05 Aug 2019 19:39:59 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/JobWithAutoComplete/tasks?api-version=2019-08-01.10.0', '*')
+.post('/jobs/JobWithAutoComplete/tasks?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:39:59 GMT',
-  etag: '0x8D719DCB3CADE83',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:19 GMT',
+  etag: '0x8D7CD3D490D9AED',
   location:
    'https://test4.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '22810eb9-58ed-4741-869a-1fc20481f050',
+  'request-id': 'a85b96c5-0894-4b32-94e8-f7a86081028a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete',
-  date: 'Mon, 05 Aug 2019 19:39:59 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D719DCB3CADE83\",\"creationTime\":\"2019-08-05T19:39:59.6130947Z\",\"lastModified\":\"2019-08-05T19:39:59.6130947Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:39:59.6130947Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAutoComplete\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/JobWithAutoComplete/tasks/TaskWithAutoComplete\",\"eTag\":\"0x8D7CD3D490D9AED\",\"creationTime\":\"2020-03-21T02:12:19.8542061Z\",\"lastModified\":\"2020-03-21T02:12:19.8542061Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T02:12:19.8542061Z\",\"commandLine\":\"echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"scope\":\"pool\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"exitConditions\":{\r\n    \"exitCodes\":[\r\n      {\r\n        \"code\":1,\"exitOptions\":{\r\n          \"jobAction\":\"none\",\"dependencyAction\":\"block\"\r\n        }\r\n      }\r\n    ],\"default\":{\r\n      \"jobAction\":\"terminate\",\"dependencyAction\":\"satisfy\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":0\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:39:59 GMT',
-  etag: '0x8D719DCB3CADE83',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:19 GMT',
+  etag: '0x8D7CD3D490D9AED',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'eae229f9-ac7c-4cf9-842c-7a3f2398154d',
+  'request-id': '809c0394-a080-483a-997e-b72035a77daa',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:40:00 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .delete('/jobs/JobWithAutoComplete?api-version=2019-08-01.10.0')
+  .delete('/jobs/JobWithAutoComplete?api-version=2020-03-01.11.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '0f3758aa-9574-48f1-84a1-fb0b827b99bb',
+  'request-id': '328f8347-2c5f-4351-bf54-977de370af89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:40:00 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:20 GMT',
   connection: 'close' });
  return result; }]];
