@@ -169,7 +169,7 @@ class WebResource {
       }
       let baseUrl = options.baseUrl;
       let url = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + (options.pathTemplate.startsWith('/') ? options.pathTemplate.slice(1) : options.pathTemplate);
-      let segments = url.match(/({\w*\s*\w*})/ig);
+      let segments = url.match(/({[\w\-]*\s*[\w\-]*})/ig);
       if (segments && segments.length) {
         if (options.pathParameters === null || options.pathParameters === undefined || typeof options.pathParameters !== 'object') {
           throw new Error(`pathTemplate: ${options.pathTemplate} has been provided. Hence, options.pathParameters ` +
