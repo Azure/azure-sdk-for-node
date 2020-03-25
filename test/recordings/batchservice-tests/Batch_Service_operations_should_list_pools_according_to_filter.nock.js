@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2019-08-01.10.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2020-03-01.11.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '16046048-0b70-4200-8e7e-bf992d1978b0',
+  'request-id': '3c152355-fb40-473c-ae91-0ef7d5745594',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:52 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:13 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,15 +9,15 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2019-08-01.10.0')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2020-03-01.11.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Mon, 05 Aug 2019 19:40:01 GMT',
-  etag: '0x8D719DCB51DF5FB',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:22 GMT',
+  etag: '0x8D7CD3D4A944142',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '26938eee-1ea5-42fc-a061-b15ed4ce7a2a',
+  'request-id': 'a3c4925f-3605-4ee2-a09b-071f17e85917',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:40:01 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:22 GMT',
   connection: 'close' });
  return result; }]];

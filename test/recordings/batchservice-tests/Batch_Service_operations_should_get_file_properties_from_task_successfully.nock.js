@@ -9,19 +9,19 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2019-08-01.10.0')
+  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2020-03-01.11.0')
   .reply(200, "", { 'content-length': '0',
   'content-type': 'text/plain',
-  'last-modified': 'Mon, 05 Aug 2019 19:41:20 GMT',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:24 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '215421f6-7844-47f7-a88c-9e4110d5e016',
+  'request-id': '61d71398-03ac-4231-bd2d-607b21eba4dd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Mon, 05 Aug 2019 19:41:20 GMT',
+  'ocp-creation-time': 'Sat, 21 Mar 2020 02:12:24 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url':
    'https%3A%2F%2Ftest4.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstderr.txt',
-  date: 'Mon, 05 Aug 2019 19:42:02 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:22 GMT',
   connection: 'close' });
  return result; }]];

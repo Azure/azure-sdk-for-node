@@ -10,40 +10,40 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2019-08-01', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:a77785c2-1fad-449e-84e5-8d764e145c7f\\nTime:2019-08-05T19:13:55.4206144Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-03-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:1b5b8365-f3d7-45a6-b409-8e9b7a551fe4\\nTime:2020-03-21T01:36:15.0635173Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '359',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'f3f0d936-6bae-4e10-a9c1-920ee9388fd2',
-  'x-ms-request-id': 'a77785c2-1fad-449e-84e5-8d764e145c7f',
+  'x-ms-correlation-request-id': 'c1776b99-eeba-4d2a-bc9b-21f10b9df4a2',
+  'x-ms-request-id': '1b5b8365-f3d7-45a6-b409-8e9b7a551fe4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T191355Z:f3f0d936-6bae-4e10-a9c1-920ee9388fd2',
-  date: 'Mon, 05 Aug 2019 19:13:55 GMT',
+   'WESTUS:20200321T013616Z:c1776b99-eeba-4d2a-bc9b-21f10b9df4a2',
+  date: 'Sat, 21 Mar 2020 01:36:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2019-08-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-03-01', '*')
   .reply(400, "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id 'abc' at path 'properties.keyVaultReference.id' is invalid. Expect fully qualified resource Id that start with '/subscriptions/{subscriptionId}' or '/providers/{resourceProviderNamespace}/'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '8ca413ed-bad7-440b-a11c-6f925e3ca420',
-  'x-ms-correlation-request-id': '8ca413ed-bad7-440b-a11c-6f925e3ca420',
+  'x-ms-request-id': 'de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
+  'x-ms-correlation-request-id': 'de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T191356Z:8ca413ed-bad7-440b-a11c-6f925e3ca420',
+   'WESTUS:20200321T013616Z:de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  date: 'Mon, 05 Aug 2019 19:13:55 GMT',
+  date: 'Sat, 21 Mar 2020 01:36:16 GMT',
   connection: 'close',
   'content-length': '259' });
  return result; }]];

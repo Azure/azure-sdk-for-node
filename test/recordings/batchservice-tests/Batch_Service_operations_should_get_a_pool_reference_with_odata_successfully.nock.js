@@ -9,16 +9,16 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2019-08-01.10.0&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2020-03-01.11.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:26:12 GMT',
-  etag: '0x8D719DAC70A440F',
+  'last-modified': 'Sat, 21 Mar 2020 01:58:34 GMT',
+  etag: '0x8D7CD3B5D56803A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3b25f500-65f7-4c66-9f19-5e724c2d421a',
+  'request-id': '7b148abd-de6d-41c2-805f-36ba2b5675bd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:32:53 GMT',
+  date: 'Sat, 21 Mar 2020 02:05:15 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,16 +9,16 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://test4.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D719DD3EA6C5E9\",\"lastModified\":\"2019-08-05T19:43:52.5798377Z\",\"creationTime\":\"2019-08-05T19:43:52.5798377Z\",\"state\":\"active\",\"stateTransitionTime\":\"2019-08-05T19:43:52.5798377Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2019-12-25T08:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2019-12-25T08:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobschedules/NodeSDKTestSchedule?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://test4.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D7CD51695E1909\",\"lastModified\":\"2020-03-21T04:36:24.0034057Z\",\"creationTime\":\"2020-03-21T04:36:24.0034057Z\",\"state\":\"active\",\"stateTransitionTime\":\"2020-03-21T04:36:24.0034057Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2020-12-25T08:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2020-12-25T08:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:43:52 GMT',
-  etag: '0x8D719DD3EA6C5E9',
+  'last-modified': 'Sat, 21 Mar 2020 04:36:24 GMT',
+  etag: '0x8D7CD51695E1909',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a98832d0-612f-405e-becd-3572bb97f40a',
+  'request-id': '6afd91cb-3289-4efc-aef9-4f4c2dc69770',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:54 GMT',
+  date: 'Sat, 21 Mar 2020 04:36:25 GMT',
   connection: 'close' });
  return result; }]];

@@ -10,22 +10,22 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_paas_pool?api-version=2019-08-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_paas_pool\",\"name\":\"test_paas_pool\",\"type\":\"Microsoft.Batch/batchAccounts/pools\",\"etag\":\"W/\\\"0x8D719D82F3BF68A\\\"\",\"properties\":{\"lastModified\":\"2019-08-05T19:07:39.2303754Z\",\"creationTime\":\"2019-08-05T19:07:39.2303754Z\",\"provisioningState\":\"Succeeded\",\"provisioningStateTransitionTime\":\"2019-08-05T19:07:39.2303754Z\",\"allocationState\":\"Resizing\",\"allocationStateTransitionTime\":\"2019-08-05T19:07:39.2303754Z\",\"vmSize\":\"Small\",\"interNodeCommunication\":\"Disabled\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\"nodeFillType\":\"Spread\"},\"deploymentConfiguration\":{\"cloudServiceConfiguration\":{\"osFamily\":\"5\",\"osVersion\":\"*\"}},\"scaleSettings\":{\"fixedScale\":{\"targetDedicatedNodes\":0,\"targetLowPriorityNodes\":0,\"resizeTimeout\":\"PT15M\"}},\"startTask\":{\"commandLine\":\"cmd.exe /c \\\"echo hello world\\\"\",\"resourceFiles\":[{\"filePath\":\"filename.txt\",\"httpUrl\":\"https://blobsource.com\"}],\"environmentSettings\":[{\"name\":\"ENV_VAR\",\"value\":\"foo\"}],\"userIdentity\":{\"autoUser\":{\"scope\":\"Pool\",\"elevationLevel\":\"Admin\"}},\"maxTaskRetryCount\":0,\"waitForSuccess\":true},\"userAccounts\":[{\"name\":\"UserName\",\"elevationLevel\":\"NonAdmin\",\"windowsUserConfiguration\":{\"loginMode\":\"Interactive\"}}],\"resizeOperationStatus\":{\"targetDedicatedNodes\":0,\"nodeDeallocationOption\":\"Requeue\",\"resizeTimeout\":\"PT15M\",\"startTime\":\"2019-08-05T19:07:39.2303754Z\"},\"currentDedicatedNodes\":0,\"currentLowPriorityNodes\":0}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_paas_pool?api-version=2020-03-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/pools/test_paas_pool\",\"name\":\"test_paas_pool\",\"type\":\"Microsoft.Batch/batchAccounts/pools\",\"etag\":\"W/\\\"0x8D7CD375DD4F560\\\"\",\"properties\":{\"lastModified\":\"2020-03-21T01:29:57.7347424Z\",\"creationTime\":\"2020-03-21T01:29:57.7347424Z\",\"provisioningState\":\"Succeeded\",\"provisioningStateTransitionTime\":\"2020-03-21T01:29:57.7347424Z\",\"allocationState\":\"Resizing\",\"allocationStateTransitionTime\":\"2020-03-21T01:29:57.7347424Z\",\"vmSize\":\"Small\",\"interNodeCommunication\":\"Disabled\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\"nodeFillType\":\"Spread\"},\"deploymentConfiguration\":{\"cloudServiceConfiguration\":{\"osFamily\":\"5\",\"osVersion\":\"*\"}},\"scaleSettings\":{\"fixedScale\":{\"targetDedicatedNodes\":0,\"targetLowPriorityNodes\":0,\"resizeTimeout\":\"PT15M\"}},\"startTask\":{\"commandLine\":\"cmd.exe /c \\\"echo hello world\\\"\",\"resourceFiles\":[{\"filePath\":\"filename.txt\",\"httpUrl\":\"https://blobsource.com\"}],\"environmentSettings\":[{\"name\":\"ENV_VAR\",\"value\":\"foo\"}],\"userIdentity\":{\"autoUser\":{\"scope\":\"Pool\",\"elevationLevel\":\"Admin\"}},\"maxTaskRetryCount\":0,\"waitForSuccess\":true},\"userAccounts\":[{\"name\":\"UserName\",\"elevationLevel\":\"NonAdmin\",\"windowsUserConfiguration\":{\"loginMode\":\"Interactive\"}}],\"resizeOperationStatus\":{\"targetDedicatedNodes\":0,\"nodeDeallocationOption\":\"Requeue\",\"resizeTimeout\":\"PT15M\",\"startTime\":\"2020-03-21T01:29:57.7347424Z\"},\"currentDedicatedNodes\":0,\"currentLowPriorityNodes\":0}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1541',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Mon, 05 Aug 2019 19:07:39 GMT',
-  etag: 'W/"0x8D719D82F3BF68A"',
-  'x-ms-correlation-request-id': '0da0b487-5008-4fc4-8d26-1714ba87d3bf',
-  'x-ms-request-id': 'f5af38bb-d991-413c-b74d-476266b690c8',
+  'last-modified': 'Sat, 21 Mar 2020 01:29:57 GMT',
+  etag: 'W/"0x8D7CD375DD4F560"',
+  'x-ms-correlation-request-id': '38dc52da-4ba4-4149-b7d7-63326e1f55b9',
+  'x-ms-request-id': '11ce7c92-b538-4208-ba1f-faceb12dc1da',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T190739Z:0da0b487-5008-4fc4-8d26-1714ba87d3bf',
-  date: 'Mon, 05 Aug 2019 19:07:39 GMT',
+   'WESTUS:20200321T012957Z:38dc52da-4ba4-4149-b7d7-63326e1f55b9',
+  date: 'Sat, 21 Mar 2020 01:29:57 GMT',
   connection: 'close' });
  return result; }]];

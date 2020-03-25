@@ -10,14 +10,14 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvmps_df2856522929bc459890886631f242aba80c6c378ef3b3609e878d7e94bdc150_d/uploadbatchservicelogs?api-version=2019-08-01.10.0', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.UploadBatchServiceLogsResult\",\"virtualDirectoryName\":\"test4-22F30E9C13DE937A/nodesdktestpool1/tvmps_df2856522929bc459890886631f242aba80c6c378ef3b3609e878d7e94bdc150_d/a0cba762-e503-4eab-adfc-4a072567b90d\",\"numberOfFilesUploaded\":4\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/nodes/tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d/uploadbatchservicelogs?api-version=2020-03-01.11.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.UploadBatchServiceLogsResult\",\"virtualDirectoryName\":\"test4-22F25B3CB2716388/nodesdktestpool1/tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d/ed012ed3-11b6-45ef-b4a8-17d53f50b251\",\"numberOfFilesUploaded\":4\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a0cba762-e503-4eab-adfc-4a072567b90d',
+  'request-id': 'ed012ed3-11b6-45ef-b4a8-17d53f50b251',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:47 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:07 GMT',
   connection: 'close' });
  return result; }]];

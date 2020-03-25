@@ -67,6 +67,23 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.url The URL of the Azure key
      * vault associated with the Batch account.
      *
+     * @param {string} [parameters.publicNetworkAccess] The network access type for
+     * accessing Azure Batch account. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -126,6 +143,23 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.url The URL of the Azure key
      * vault associated with the Batch account.
      *
+     * @param {string} [parameters.publicNetworkAccess] The network access type for
+     * accessing Azure Batch account. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -177,6 +211,19 @@ export interface BatchAccountOperations {
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
      * the storage account to be used for auto-storage account.
      *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -208,6 +255,19 @@ export interface BatchAccountOperations {
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
      * the storage account to be used for auto-storage account.
+     *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -722,6 +782,23 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.url The URL of the Azure key
      * vault associated with the Batch account.
      *
+     * @param {string} [parameters.publicNetworkAccess] The network access type for
+     * accessing Azure Batch account. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -780,6 +857,23 @@ export interface BatchAccountOperations {
      *
      * @param {string} parameters.keyVaultReference.url The URL of the Azure key
      * vault associated with the Batch account.
+     *
+     * @param {string} [parameters.publicNetworkAccess] The network access type for
+     * accessing Azure Batch account. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {object} [parameters.encryption] The encryption configuration for the
+     * Batch account.
+     *
+     * @param {string} [parameters.encryption.keySource] Type of the key source.
+     * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Additional
+     * details when using Microsoft.KeyVault
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
+     * Full path to the versioned secret. Example
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1001,7 +1095,9 @@ export interface ApplicationPackageOperations {
 
 
     /**
-     * Activates the specified application package.
+     * Activates the specified application package. This should be done after the
+     * `ApplicationPackage` was created and uploaded. This needs to be done before
+     * an `ApplicationPackage` can be used on Pools or Tasks.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -1029,7 +1125,9 @@ export interface ApplicationPackageOperations {
     activateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, format: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
 
     /**
-     * Activates the specified application package.
+     * Activates the specified application package. This should be done after the
+     * `ApplicationPackage` was created and uploaded. This needs to be done before
+     * an `ApplicationPackage` can be used on Pools or Tasks.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -1076,7 +1174,10 @@ export interface ApplicationPackageOperations {
 
 
     /**
-     * Creates an application package record.
+     * Creates an application package record. The record contains the SAS where the
+     * package should be uploaded to.  Once it is uploaded the `ApplicationPackage`
+     * needs to be activated using `ApplicationPackageActive` before it can be
+     * used.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -1102,7 +1203,10 @@ export interface ApplicationPackageOperations {
     createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationName: string, versionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationPackage>>;
 
     /**
-     * Creates an application package record.
+     * Creates an application package record. The record contains the SAS where the
+     * package should be uploaded to.  Once it is uploaded the `ApplicationPackage`
+     * needs to be activated using `ApplicationPackageActive` before it can be
+     * used.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -2226,10 +2330,10 @@ export interface CertificateOperations {
      * @param {object} parameters Additional parameters for certificate creation.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2240,8 +2344,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2280,10 +2384,10 @@ export interface CertificateOperations {
      * @param {object} parameters Additional parameters for certificate creation.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2294,8 +2398,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2353,10 +2457,10 @@ export interface CertificateOperations {
      * @param {object} parameters Certificate entity to update.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2367,8 +2471,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2402,10 +2506,10 @@ export interface CertificateOperations {
      * @param {object} parameters Certificate entity to update.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2416,8 +2520,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2694,10 +2798,10 @@ export interface CertificateOperations {
      * @param {object} parameters Additional parameters for certificate creation.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2708,8 +2812,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2748,10 +2852,10 @@ export interface CertificateOperations {
      * @param {object} parameters Additional parameters for certificate creation.
      *
      * @param {string} [parameters.thumbprintAlgorithm] The algorithm of the
-     * certificate thumbprint This must match the first portion of the certificate
+     * certificate thumbprint. This must match the first portion of the certificate
      * name. Currently required to be 'SHA1'.
      *
-     * @param {string} [parameters.thumbprint] The thumbprint of the certificate
+     * @param {string} [parameters.thumbprint] The thumbprint of the certificate.
      * This must match the thumbprint from the name.
      *
      * @param {string} [parameters.format] The format of the certificate - either
@@ -2762,8 +2866,8 @@ export interface CertificateOperations {
      * certificate. The maximum size is 10KB.
      *
      * @param {string} [parameters.password] The password to access the
-     * certificate's private key. This is required if the certificate format is pfx
-     * and must be omitted if the certificate format is cer.
+     * certificate's private key. This must not be specified if the certificate
+     * format is Cer.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2934,6 +3038,521 @@ export interface CertificateOperations {
 
 /**
  * @class
+ * PrivateLinkResourceOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchManagementClient.
+ */
+export interface PrivateLinkResourceOperations {
+
+
+    /**
+     * Lists all of the private link resources in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPrivateLinkResourcesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPrivateLinkResourcesResult>>;
+
+    /**
+     * Lists all of the private link resources in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPrivateLinkResourcesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPrivateLinkResourcesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPrivateLinkResourcesResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccount(resourceGroupName: string, accountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPrivateLinkResourcesResult>;
+    listByBatchAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ListPrivateLinkResourcesResult>): void;
+    listByBatchAccount(resourceGroupName: string, accountName: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPrivateLinkResourcesResult>): void;
+
+
+    /**
+     * Gets information about the specified private link resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateLinkResourceName The private link resource name. This
+     * must be unique within the account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateLinkResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, privateLinkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateLinkResource>>;
+
+    /**
+     * Gets information about the specified private link resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateLinkResourceName The private link resource name. This
+     * must be unique within the account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateLinkResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateLinkResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateLinkResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, privateLinkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateLinkResource>;
+    get(resourceGroupName: string, accountName: string, privateLinkResourceName: string, callback: ServiceCallback<models.PrivateLinkResource>): void;
+    get(resourceGroupName: string, accountName: string, privateLinkResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateLinkResource>): void;
+
+
+    /**
+     * Lists all of the private link resources in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPrivateLinkResourcesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPrivateLinkResourcesResult>>;
+
+    /**
+     * Lists all of the private link resources in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPrivateLinkResourcesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPrivateLinkResourcesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPrivateLinkResourcesResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPrivateLinkResourcesResult>;
+    listByBatchAccountNext(nextPageLink: string, callback: ServiceCallback<models.ListPrivateLinkResourcesResult>): void;
+    listByBatchAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPrivateLinkResourcesResult>): void;
+}
+
+/**
+ * @class
+ * PrivateEndpointConnectionOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchManagementClient.
+ */
+export interface PrivateEndpointConnectionOperations {
+
+
+    /**
+     * Lists all of the private endpoint connections in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPrivateEndpointConnectionsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPrivateEndpointConnectionsResult>>;
+
+    /**
+     * Lists all of the private endpoint connections in the specified account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.maxresults] The maximum number of items to return
+     * in the response.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPrivateEndpointConnectionsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPrivateEndpointConnectionsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPrivateEndpointConnectionsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccount(resourceGroupName: string, accountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPrivateEndpointConnectionsResult>;
+    listByBatchAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ListPrivateEndpointConnectionsResult>): void;
+    listByBatchAccount(resourceGroupName: string, accountName: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPrivateEndpointConnectionsResult>): void;
+
+
+    /**
+     * Gets information about the specified private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateEndpointConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateEndpointConnection>>;
+
+    /**
+     * Gets information about the specified private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateEndpointConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateEndpointConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateEndpointConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateEndpointConnection>;
+    get(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+    get(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+
+
+    /**
+     * Updates the properties of an existing private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} parameters PrivateEndpointConnection properties that should
+     * be updated. Properties that are supplied will be updated, any property not
+     * supplied will be unchanged.
+     *
+     * @param {object} [parameters.privateEndpoint] The ARM resource identifier of
+     * the private endpoint.
+     *
+     * @param {object} [parameters.privateLinkServiceConnectionState] The private
+     * link service connection state of the private endpoint connection.
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.status] The
+     * status for the private endpoint connection of Batch account Possible values
+     * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.description]
+     * Description of the private Connection state
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The state (ETag) version of the private
+     * endpoint connection to update. This value can be omitted or set to "*" to
+     * apply the operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateEndpointConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateEndpointConnection>>;
+
+    /**
+     * Updates the properties of an existing private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} parameters PrivateEndpointConnection properties that should
+     * be updated. Properties that are supplied will be updated, any property not
+     * supplied will be unchanged.
+     *
+     * @param {object} [parameters.privateEndpoint] The ARM resource identifier of
+     * the private endpoint.
+     *
+     * @param {object} [parameters.privateLinkServiceConnectionState] The private
+     * link service connection state of the private endpoint connection.
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.status] The
+     * status for the private endpoint connection of Batch account Possible values
+     * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.description]
+     * Description of the private Connection state
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The state (ETag) version of the private
+     * endpoint connection to update. This value can be omitted or set to "*" to
+     * apply the operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateEndpointConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateEndpointConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateEndpointConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateEndpointConnection>;
+    update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+    update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+
+
+    /**
+     * Lists all of the private endpoint connections in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListPrivateEndpointConnectionsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBatchAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListPrivateEndpointConnectionsResult>>;
+
+    /**
+     * Lists all of the private endpoint connections in the specified account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListPrivateEndpointConnectionsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListPrivateEndpointConnectionsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListPrivateEndpointConnectionsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBatchAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListPrivateEndpointConnectionsResult>;
+    listByBatchAccountNext(nextPageLink: string, callback: ServiceCallback<models.ListPrivateEndpointConnectionsResult>): void;
+    listByBatchAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListPrivateEndpointConnectionsResult>): void;
+}
+
+/**
+ * @class
  * PoolOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchManagementClient.
@@ -3067,7 +3686,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -3141,17 +3760,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -3213,6 +3828,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -3270,24 +3896,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -3302,12 +3927,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
@@ -3500,7 +4138,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -3574,17 +4212,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -3646,6 +4280,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -3703,24 +4348,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -3735,12 +4379,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
@@ -3954,7 +4611,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -4028,17 +4685,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -4100,6 +4753,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -4157,24 +4821,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -4189,12 +4852,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
@@ -4385,7 +5061,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -4459,17 +5135,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -4531,6 +5203,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -4588,24 +5271,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -4620,12 +5302,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
@@ -5118,7 +5813,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -5192,17 +5887,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5264,6 +5955,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -5321,24 +6023,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -5353,12 +6054,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
@@ -5551,7 +6265,7 @@ export interface PoolOperations {
      * pool. All VMs in a pool are the same size. For information about available
      * sizes of virtual machines for Cloud Services pools (pools created with
      * cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall. For
      * information about available VM sizes for pools using images from the Virtual
      * Machines Marketplace (pools created with virtualMachineConfiguration) see
@@ -5625,17 +6339,13 @@ export interface PoolOperations {
      *
      * @param {string}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.imageReference.id]
-     * The ARM resource identifier of the Virtual Machine Image or Shared Image
-     * Gallery Image. Compute Nodes of the Pool will be created using this Image
-     * Id. This is of either the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * for Virtual Machine Image or
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-     * for SIG image. This property is mutually exclusive with other properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. For SIG image it must have replicas in the same
-     * region as the Azure Batch account. For information about the firewall
-     * settings for the Batch node agent to communicate with the Batch service see
+     * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
+     * This property is mutually exclusive with other properties. The Shared Image
+     * Gallery image must have replicas in the same region as the Azure Batch
+     * account. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5697,6 +6407,17 @@ export interface PoolOperations {
      * images must be downloaded from a private registry which requires
      * credentials, then those credentials must be provided here.
      *
+     * @param {object}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration]
+     * The disk encryption configuration for the pool. If specified, encryption is
+     * performed on each node in the pool during node provisioning.
+     *
+     * @param {array}
+     * [parameters.deploymentConfiguration.virtualMachineConfiguration.diskEncryptionConfiguration.targets]
+     * The list of disk targets Batch Service will encrypt on the compute node On
+     * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
+     * "TemporaryDisk" must be specified.
+     *
      * @param {object} [parameters.scaleSettings] Settings which configure the
      * number of nodes in the pool.
      *
@@ -5754,24 +6475,23 @@ export interface PoolOperations {
      * The virtual network must be in the same region and subscription as the Azure
      * Batch account. The specified subnet should have enough free IP addresses to
      * accommodate the number of nodes in the pool. If the subnet doesn't have
-     * enough free IP addresses, the pool will partially allocate compute nodes,
-     * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
-     * must have the 'Classic Virtual Machine Contributor' Role-Based Access
-     * Control (RBAC) role for the specified VNet. The specified subnet must allow
+     * enough free IP addresses, the pool will partially allocate compute nodes and
+     * a resize error will occur. The 'MicrosoftAzureBatch' service principal must
+     * have the 'Classic Virtual Machine Contributor' Role-Based Access Control
+     * (RBAC) role for the specified VNet. The specified subnet must allow
      * communication from the Azure Batch service to be able to schedule tasks on
      * the compute nodes. This can be verified by checking if the specified VNet
      * has any associated Network Security Groups (NSG). If communication to the
      * compute nodes in the specified subnet is denied by an NSG, then the Batch
-     * service will set the state of the compute nodes to unusable. For pools
-     * created via virtualMachineConfiguration the Batch account must have
-     * poolAllocationMode userSubscription in order to use a VNet. If the specified
-     * VNet has any associated Network Security Groups (NSG), then a few reserved
-     * system ports must be enabled for inbound communication. For pools created
-     * with a virtual machine configuration, enable ports 29876 and 29877, as well
-     * as port 22 for Linux and port 3389 for Windows. For pools created with a
-     * cloud service configuration, enable ports 10100, 20100, and 30100. Also
-     * enable outbound connections to Azure Storage on port 443. For more details
-     * see:
+     * service will set the state of the compute nodes to unusable. If the
+     * specified VNet has any associated Network Security Groups (NSG), then a few
+     * reserved system ports must be enabled for inbound communication. For pools
+     * created with a virtual machine configuration, enable ports 29876 and 29877,
+     * as well as port 22 for Linux and port 3389 for Windows. For pools created
+     * with a cloud service configuration, enable ports 10100, 20100, and 30100.
+     * Also enable outbound connections to Azure Storage on port 443. For
+     * cloudServiceConfiguration pools, only 'classic' VNETs are supported. For
+     * more details see:
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
      *
      * @param {object} [parameters.networkConfiguration.endpointConfiguration] The
@@ -5786,12 +6506,25 @@ export interface PoolOperations {
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
      * the request fails with HTTP status code 400.
      *
-     * @param {array} [parameters.networkConfiguration.publicIPs] The list of
-     * public IPs which the Batch service will use when provisioning Compute Nodes.
-     * The number of IPs specified here limits the maximum size of the Pool - 50
-     * dedicated nodes or 20 low-priority nodes can be allocated for each public
-     * IP. For example, a pool needing 150 dedicated VMs would need at least 3
-     * public IPs specified. Each element of this collection is of the form:
+     * @param {object}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
+     * IPAddress configuration for Compute Nodes in the Batch Pool. This property
+     * is only supported on Pools with the virtualMachineConfiguration property.
+     *
+     * @param {string}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.provision] The
+     * provisioning type for Public IP Addresses for the pool The default value is
+     * BatchManaged. Possible values include: 'BatchManaged', 'UserManaged',
+     * 'NoPublicIPAddresses'
+     *
+     * @param {array}
+     * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
+     * The list of public IPs which the Batch service will use when provisioning
+     * Compute Nodes. The number of IPs specified here limits the maximum size of
+     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
+     * each public IP. For example, a pool needing 150 dedicated VMs would need at
+     * least 3 public IPs specified. Each element of this collection is of the
+     * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
      * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks

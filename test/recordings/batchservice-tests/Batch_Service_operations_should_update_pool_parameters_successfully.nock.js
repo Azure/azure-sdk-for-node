@@ -10,17 +10,17 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/updateproperties?api-version=2019-08-01.10.0', '*')
+.post('/pools/nodesdktestpool1/updateproperties?api-version=2020-03-01.11.0', '*')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Mon, 05 Aug 2019 19:26:12 GMT',
-  etag: '0x8D719DAC6C1949A',
+  'last-modified': 'Sat, 21 Mar 2020 01:58:34 GMT',
+  etag: '0x8D7CD3B5D113EC4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'adbeabe8-6921-4ffa-83ec-8dcc1827191a',
+  'request-id': '0b965a23-7eb8-446b-8b21-2a0ce6a657c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/updateproperties',
-  date: 'Mon, 05 Aug 2019 19:26:12 GMT',
+  date: 'Sat, 21 Mar 2020 01:58:34 GMT',
   connection: 'close' });
  return result; }]];

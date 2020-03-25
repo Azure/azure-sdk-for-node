@@ -9,20 +9,20 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2019-08-01')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"AxmYwCR+pyRYtBDWSypM1sufwKaG1r5Q3Lf5pCTb5zGVOmzApJswFqwgxdPSciULNWalBWPzPVi3lN/VssLrSA==\",\"secondary\":\"BainmrSlDABbXtvpHhb95tdiPh8V7IE97KzC57R7nZyeslFetuaTGb2XawFA0e2tpb/uTyqWMr1TRdvSv/3poQ==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2020-03-01')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"G6pxmT5jJvzINjLgzgm+vwVoEKmuFvuYjHDHtRSGJU7YikC/C7W+SHlyL6cqfVZq61Kq8EyaCByWw8P2IAEA3A==\",\"secondary\":\"dNqPdm5FDOoBUPQWcU5MycxrVVObZah02pbYFrBRNufPRWQAj5ayvW9pDyp8wgJANJ+QHayEV1hfsOcRqSlY4Q==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'dbe2165d-d68a-4864-b7c8-f505ae65455d',
-  'x-ms-request-id': 'fa3ac65a-8e97-42d7-acc6-61f5fabae709',
+  'x-ms-correlation-request-id': '7b9fba24-86d5-4d40-9ff7-2e1f5967ea93',
+  'x-ms-request-id': '9a2e4491-c8a0-46e0-a057-ed7fbb73cdcf',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T190210Z:dbe2165d-d68a-4864-b7c8-f505ae65455d',
-  date: 'Mon, 05 Aug 2019 19:02:09 GMT',
+   'WESTUS:20200321T012844Z:7b9fba24-86d5-4d40-9ff7-2e1f5967ea93',
+  date: 'Sat, 21 Mar 2020 01:28:44 GMT',
   connection: 'close' });
  return result; }]];

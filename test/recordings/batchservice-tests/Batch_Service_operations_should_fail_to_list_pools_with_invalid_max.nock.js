@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2019-08-01.10.0&maxresults=-5')
-  .reply(400, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:457d273e-a0f6-47d5-ad6e-6b0bb226d5ac\\nTime:2019-08-05T19:39:52.0932511Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '603',
+  .get('/pools?api-version=2020-03-01.11.0&maxresults=-5')
+  .reply(400, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:30426591-9fbc-4880-ba2f-adb551a99cd9\\nTime:2020-03-21T02:12:12.7490266Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '603',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '457d273e-a0f6-47d5-ad6e-6b0bb226d5ac',
+  'request-id': '30426591-9fbc-4880-ba2f-adb551a99cd9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:52 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:12 GMT',
   connection: 'close' });
  return result; }]];

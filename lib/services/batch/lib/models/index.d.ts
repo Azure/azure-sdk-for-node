@@ -72,18 +72,14 @@ export interface ImageReference {
    */
   version?: string;
   /**
-   * @summary The ARM resource identifier of the Virtual Machine Image or Shared Image Gallery
-   * Image. Computes Compute Nodes of the Pool will be created using this Image Id. This is of
-   * either the form
-   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-   * for Virtual Machine Image or
-   * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}
-   * for SIG image.
+   * @summary The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in the
+   * Pool will be created using this Image Id. This is of the
+   * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
    * @description This property is mutually exclusive with other ImageReference properties. For
    * Virtual Machine Image it must be in the same region and subscription as the Azure Batch
-   * account. For SIG image it must have replicas in the same region as the Azure Batch account.
-   * For information about the firewall settings for the Batch Compute Node agent to communicate
-   * with the Batch service see
+   * account. The Shared Image Gallery Image must have replicas in the same region as the Azure
+   * Batch account. For information about the firewall settings for the Batch Compute Node agent to
+   * communicate with the Batch service see
    * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
    */
   virtualMachineImageId?: string;
@@ -473,8 +469,7 @@ export interface CertificateAddParameter {
   certificateFormat?: string;
   /**
    * @summary The password to access the Certificate's private key.
-   * @description This is required if the Certificate format is pfx. It should be omitted if the
-   * Certificate format is cer.
+   * @description This must be omitted if the Certificate format is cer.
    */
   password?: string;
 }
@@ -1630,6 +1625,20 @@ export interface ContainerConfiguration {
 }
 
 /**
+ * The disk encryption configuration applied on compute nodes in the pool. Disk encryption
+ * configuration is not supported on Linux pool created with Shared Image Gallery Image.
+ */
+export interface DiskEncryptionConfiguration {
+  /**
+   * @summary The list of disk targets Batch Service will encrypt on the compute node.
+   * @description If omitted, no disks on the compute nodes in the pool will be encrypted. On Linux
+   * pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be
+   * specified.
+   */
+  targets?: string[];
+}
+
+/**
  * @summary The configuration for Compute Nodes in a Pool based on the Azure Virtual Machines
  * infrastructure.
  */
@@ -1688,6 +1697,12 @@ export interface VirtualMachineConfiguration {
    * the containerSettings property, and all other Tasks may specify it.
    */
   containerConfiguration?: ContainerConfiguration;
+  /**
+   * @summary The disk encryption configuration for the pool.
+   * @description If specified, encryption is performed on each node in the pool during node
+   * provisioning.
+   */
+  diskEncryptionConfiguration?: DiskEncryptionConfiguration;
 }
 
 /**
@@ -1699,7 +1714,7 @@ export interface NetworkSecurityGroupRule {
    * @description Priorities within a Pool must be unique and are evaluated in order of priority.
    * The lower the number the higher the priority. For example, rules could be specified with order
    * numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the
-   * rule that has an order of 250. Allowed priorities are 150 to 3500. If any reserved or
+   * rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or
    * duplicate values are provided the request fails with HTTP status code 400.
    */
   priority: number;
@@ -1793,6 +1808,28 @@ export interface PoolEndpointConfiguration {
 }
 
 /**
+ * The public IP Address configuration of the networking configuration of a Pool.
+ */
+export interface PublicIPAddressConfiguration {
+  /**
+   * @summary The provisioning type for Public IP Addresses for the Pool.
+   * @description The default value is BatchManaged. Possible values include: 'batchManaged',
+   * 'userManaged', 'noPublicIPAddresses'
+   */
+  provision?: string;
+  /**
+   * @summary The list of public IPs which the Batch service will use when provisioning Compute
+   * Nodes.
+   * @description The number of IPs specified here limits the maximum size of the Pool - 50
+   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
+   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
+   * this collection is of the form:
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+   */
+  ipAddressIds?: string[];
+}
+
+/**
  * The network configuration for a Pool.
  */
 export interface NetworkConfiguration {
@@ -1803,7 +1840,7 @@ export interface NetworkConfiguration {
    * @description The virtual network must be in the same region and subscription as the Azure
    * Batch Account. The specified subnet should have enough free IP addresses to accommodate the
    * number of Compute Nodes in the Pool. If the subnet doesn't have enough free IP addresses, the
-   * Pool will partially allocate Nodes, and a resize error will occur. The 'MicrosoftAzureBatch'
+   * Pool will partially allocate Nodes and a resize error will occur. The 'MicrosoftAzureBatch'
    * service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access
    * Control (RBAC) role for the specified VNet. The specified subnet must allow communication from
    * the Azure Batch service to be able to schedule Tasks on the Nodes. This can be verified by
@@ -1833,15 +1870,11 @@ export interface NetworkConfiguration {
    */
   endpointConfiguration?: PoolEndpointConfiguration;
   /**
-   * @summary The list of public IPs which the Batch service will use when provisioning Compute
-   * Nodes.
-   * @description The number of IPs specified here limits the maximum size of the Pool - 50
-   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
-   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
-   * this collection is of the form:
-   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
+   * @summary The Public IPAddress configuration for Compute Nodes in the Batch Pool.
+   * @description Public IP configuration property is only supported on Pools with the
+   * virtualMachineConfiguration property.
    */
-  publicIPs?: string[];
+  publicIPAddressConfiguration?: PublicIPAddressConfiguration;
 }
 
 /**

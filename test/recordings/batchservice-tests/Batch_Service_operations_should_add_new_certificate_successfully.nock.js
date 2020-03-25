@@ -10,17 +10,17 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/certificates?api-version=2019-08-01.10.0', '*')
+.post('/certificates?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location:
    'https://test4.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '607ae222-57ed-490f-b506-f97b65ce46df',
+  'request-id': 'c6dafc13-ea15-45e3-9cd7-480252d67b42',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
-  date: 'Mon, 05 Aug 2019 19:24:28 GMT',
+  date: 'Sat, 21 Mar 2020 01:56:51 GMT',
   connection: 'close' });
  return result; }]];

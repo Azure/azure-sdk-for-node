@@ -9,22 +9,22 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2019-08-01')
-  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D719D74DFD6121\\\"\",\"properties\":{\"displayName\":\"my_application_name\",\"allowUpdates\":true}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-03-01')
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D7CD3714252348\\\"\",\"properties\":{\"displayName\":\"my_application_name\",\"allowUpdates\":true}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '375',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Mon, 05 Aug 2019 19:01:21 GMT',
-  etag: 'W/"0x8D719D74DFD6121"',
-  'x-ms-correlation-request-id': '3e825c4e-a7e4-4d13-a72d-3ce2212d30e1',
-  'x-ms-request-id': '3e2b0915-0a45-4933-a9c7-2e4af74d8654',
+  'last-modified': 'Sat, 21 Mar 2020 01:27:54 GMT',
+  etag: 'W/"0x8D7CD3714252348"',
+  'x-ms-correlation-request-id': 'b318404c-01fa-4537-9392-d12f98c1f6e1',
+  'x-ms-request-id': 'd32beb1c-42f9-4ab8-aacd-456647fbe4f3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-reads': '11998',
+  'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20190805T190122Z:3e825c4e-a7e4-4d13-a72d-3ce2212d30e1',
-  date: 'Mon, 05 Aug 2019 19:01:21 GMT',
+   'WESTUS:20200321T012754Z:b318404c-01fa-4537-9392-d12f98c1f6e1',
+  date: 'Sat, 21 Mar 2020 01:27:54 GMT',
   connection: 'close' });
  return result; }]];

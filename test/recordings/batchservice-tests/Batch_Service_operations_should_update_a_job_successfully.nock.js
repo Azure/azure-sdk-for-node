@@ -10,17 +10,17 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2019-08-01.10.0', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2020-03-01.11.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:39:56 GMT',
-  etag: '0x8D719DCB1CBAC05',
+  'last-modified': 'Sat, 21 Mar 2020 02:12:16 GMT',
+  etag: '0x8D7CD3D47284753',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c27ac551-57d8-4015-b165-5311af1b8d08',
+  'request-id': 'e6d35c5c-f9de-4e98-8b09-b00e52daa723',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest',
-  date: 'Mon, 05 Aug 2019 19:39:56 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:16 GMT',
   connection: 'close' });
  return result; }]];

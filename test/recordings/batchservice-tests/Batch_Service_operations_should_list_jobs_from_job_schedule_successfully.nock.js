@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2019-08-01.10.0')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2020-03-01.11.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '28b20c19-4a43-41a2-ac9b-5b1a99eebb09',
+  'request-id': 'ab1f487c-5753-41ee-a2a2-77be3be75a2c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:53 GMT',
+  date: 'Sat, 21 Mar 2020 04:36:24 GMT',
   connection: 'close' });
  return result; }]];

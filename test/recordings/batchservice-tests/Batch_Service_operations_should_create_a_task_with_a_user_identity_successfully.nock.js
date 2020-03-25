@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2019-08-01.10.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:41:45 GMT',
-  etag: '0x8D719DCF2EDE78F',
+  'last-modified': 'Sat, 21 Mar 2020 02:14:05 GMT',
+  etag: '0x8D7CD3D88303F01',
   location:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '41b445c7-6f16-4303-8a15-97686c0d0210',
+  'request-id': '5cc6a65a-55d0-42e5-8f73-256f9ff2e2e1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
-  date: 'Mon, 05 Aug 2019 19:41:45 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D719DCF2EDE78F\",\"creationTime\":\"2019-08-05T19:41:45.5391631Z\",\"lastModified\":\"2019-08-05T19:41:45.5391631Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2019-08-05T19:41:49.478547Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2019-08-05T19:41:47.774462Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2019-08-05T19:41:49.291017Z\",\"endTime\":\"2019-08-05T19:41:49.478547Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"failure\",\"retryCount\":3,\"lastRetryTime\":\"2019-08-05T19:41:48.964211Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d\",\"nodeUrl\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d\",\"taskRootDirectory\":\"workitems\\\\HelloWorldJobNodeSDKTest\\\\job-1\\\\TaskWithUserIdentity\",\"taskRootDirectoryUrl\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_10f9181a75370a97571a6a66c20e0031baadb1ea8ccafc5d1fc5e199a7e11251_d/files/workitems/HelloWorldJobNodeSDKTest/job-1/TaskWithUserIdentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://test4.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D7CD3D88303F01\",\"creationTime\":\"2020-03-21T02:14:05.7776897Z\",\"lastModified\":\"2020-03-21T02:14:05.7776897Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2020-03-21T02:14:17.451012Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2020-03-21T02:14:15.984476Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P7D\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2020-03-21T02:14:17.263515Z\",\"endTime\":\"2020-03-21T02:14:17.451012Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task process exited with an unexpected exit code\"\r\n        },{\r\n          \"name\":\"AdditionalErrorCode\",\"value\":\"FailureExitCode\"\r\n        }\r\n      ]\r\n    },\"result\":\"failure\",\"retryCount\":3,\"lastRetryTime\":\"2020-03-21T02:14:17.122931Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d\",\"nodeUrl\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d\",\"taskRootDirectory\":\"workitems\\\\HelloWorldJobNodeSDKTest\\\\job-1\\\\TaskWithUserIdentity\",\"taskRootDirectoryUrl\":\"https://test4.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvmps_f1f2d9fd6122cca390bf70990d68bfe0d2d5e8b8b6acf2b4350faa9da9693ce1_d/files/workitems/HelloWorldJobNodeSDKTest/job-1/TaskWithUserIdentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 05 Aug 2019 19:41:45 GMT',
-  etag: '0x8D719DCF2EDE78F',
+  'last-modified': 'Sat, 21 Mar 2020 02:14:05 GMT',
+  etag: '0x8D7CD3D88303F01',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f71b7464-de40-4192-b201-907674c86f97',
+  'request-id': 'fbbb511c-ab23-4bab-bece-b7427e4d970f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:42:00 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:21 GMT',
   connection: 'close' });
  return result; }]];

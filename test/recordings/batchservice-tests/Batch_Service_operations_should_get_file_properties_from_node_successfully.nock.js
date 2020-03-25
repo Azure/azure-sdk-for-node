@@ -9,19 +9,19 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .head('/pools/nodesdktestpool1/nodes/tvmps_df2856522929bc459890886631f242aba80c6c378ef3b3609e878d7e94bdc150_d/files/startup%2Fwd%2Fhello.txt?api-version=2019-08-01.10.0')
+  .head('/pools/nodesdktestpool1/nodes/tvmps_b4dfe133c1801748d727159c89c5e9050cea5f835b329da83049f10f6d415a0e_d/files/startup%2Fwd%2Fhello.txt?api-version=2020-03-01.11.0')
   .reply(200, "", { 'content-length': '8',
   'content-type': 'text/plain',
-  'last-modified': 'Mon, 05 Aug 2019 21:20:53 GMT',
+  'last-modified': 'Sat, 21 Mar 2020 04:41:12 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b358c135-9f20-46b0-b7b8-2d0b89df8673',
+  'request-id': 'dd1e2fe8-e7d8-4df2-a1a3-e6f0c9fedef7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Mon, 05 Aug 2019 21:20:53 GMT',
+  'ocp-creation-time': 'Sat, 21 Mar 2020 04:41:12 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url':
-   'https%3A%2F%2Ftest4.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvmps_df2856522929bc459890886631f242aba80c6c378ef3b3609e878d7e94bdc150_d%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
-  date: 'Mon, 05 Aug 2019 21:34:44 GMT',
+   'https%3A%2F%2Ftest4.japaneast.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvmps_b4dfe133c1801748d727159c89c5e9050cea5f835b329da83049f10f6d415a0e_d%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
+  date: 'Sat, 21 Mar 2020 04:41:44 GMT',
   connection: 'close' });
  return result; }]];

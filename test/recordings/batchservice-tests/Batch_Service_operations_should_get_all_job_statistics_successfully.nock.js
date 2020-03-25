@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/lifetimejobstats?api-version=2019-08-01.10.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://test4.japaneast.batch.azure.com/lifetimejobstats\",\"startTime\":\"2019-08-05T19:19:45.488288Z\",\"lastUpdateTime\":\"2019-08-05T19:19:45.488288Z\",\"userCPUTime\":\"PT0S\",\"kernelCPUTime\":\"PT0S\",\"wallClockTime\":\"PT0S\",\"readIOps\":\"0\",\"writeIOps\":\"0\",\"readIOGiB\":0.0,\"writeIOGiB\":0.0,\"numTaskRetries\":\"0\",\"numSucceededTasks\":\"0\",\"numFailedTasks\":\"0\",\"waitTime\":\"PT0S\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimejobstats?api-version=2020-03-01.11.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://test4.japaneast.batch.azure.com/lifetimejobstats\",\"startTime\":\"2020-03-21T01:43:29.1486839Z\",\"lastUpdateTime\":\"2020-03-21T01:43:29.1486839Z\",\"userCPUTime\":\"PT0S\",\"kernelCPUTime\":\"PT0S\",\"wallClockTime\":\"PT0S\",\"readIOps\":\"0\",\"writeIOps\":\"0\",\"readIOGiB\":0.0,\"writeIOGiB\":0.0,\"numTaskRetries\":\"0\",\"numSucceededTasks\":\"0\",\"numFailedTasks\":\"0\",\"waitTime\":\"PT0S\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9116167f-77b7-41ca-a777-88c212e7f419',
+  'request-id': '2be6bc92-4e67-401d-bbf4-424d70428149',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:52 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:13 GMT',
   connection: 'close' });
  return result; }]];

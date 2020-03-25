@@ -9,13 +9,13 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2019-08-01.10.0')
+  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2020-03-01.11.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd5c1cefe-5a86-41a6-9781-a1e39eaa3846',
+  'request-id': '1da6aecd-e0ce-48dc-90f5-c93afff44443',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:43:47 GMT',
+  date: 'Sat, 21 Mar 2020 02:16:09 GMT',
   connection: 'close' });
  return result; }]];

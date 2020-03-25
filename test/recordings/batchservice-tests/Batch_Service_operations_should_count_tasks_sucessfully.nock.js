@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2019-08-01.10.0')
+  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2020-03-01.11.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b33362b7-8af6-496c-a1ba-5465b567645c',
+  'request-id': 'd2ebed29-3bd5-4892-b6c7-28ca43d6d5dd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:42:01 GMT',
+  date: 'Sat, 21 Mar 2020 02:14:21 GMT',
   connection: 'close' });
  return result; }]];

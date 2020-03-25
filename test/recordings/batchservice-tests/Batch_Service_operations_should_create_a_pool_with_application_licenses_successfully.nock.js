@@ -10,32 +10,32 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2019-08-01.10.0', '*')
+.post('/pools?api-version=2020-03-01.11.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:26:11 GMT',
-  etag: '0x8D719DAC62F6846',
+  'last-modified': 'Sat, 21 Mar 2020 01:58:33 GMT',
+  etag: '0x8D7CD3B5C795B6D',
   location:
    'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool_licenses',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ed2cc232-e90f-4d5d-b8da-2d95a1a51b45',
+  'request-id': 'e76a447f-fe31-4e9f-8985-2b2e4280c9f8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/pools/nodesdktestpool_licenses',
-  date: 'Mon, 05 Aug 2019 19:26:11 GMT',
+  date: 'Sat, 21 Mar 2020 01:58:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool_licenses?api-version=2019-08-01.10.0')
+  .delete('/pools/nodesdktestpool_licenses?api-version=2020-03-01.11.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6e878a36-6701-4954-8959-73043e13dc5f',
+  'request-id': 'f0414a3a-b979-4ad0-aa06-fd47d6840b6c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:26:11 GMT',
+  date: 'Sat, 21 Mar 2020 01:58:33 GMT',
   connection: 'close' });
  return result; }]];

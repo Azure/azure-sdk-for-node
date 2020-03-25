@@ -10,17 +10,17 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/jobschedules/NodeSDKTestSchedule?api-version=2019-08-01.10.0', '*')
+.patch('/jobschedules/NodeSDKTestSchedule?api-version=2020-03-01.11.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 05 Aug 2019 19:43:55 GMT',
-  etag: '0x8D719DD40622A9A',
+  'last-modified': 'Sat, 21 Mar 2020 04:36:27 GMT',
+  etag: '0x8D7CD516B2C3D3F',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '633feb2c-5a2a-4846-8bd0-1e25a66f3a94',
+  'request-id': 'f368dc88-27f1-455b-90a7-4756d8686994',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid:
    'https://test4.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Mon, 05 Aug 2019 19:43:55 GMT',
+  date: 'Sat, 21 Mar 2020 04:36:27 GMT',
   connection: 'close' });
  return result; }]];

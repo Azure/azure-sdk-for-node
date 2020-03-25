@@ -9,14 +9,14 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://test4.japaneast.batch.azure.com:443')
-  .get('/nodecounts?api-version=2019-08-01.10.0')
+  .get('/nodecounts?api-version=2020-03-01.11.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://test4.japaneast.batch.azure.com/$metadata#poolnodecounts\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"dedicated\":{\r\n        \"creating\":0,\"idle\":1,\"leavingPool\":0,\"offline\":0,\"preempted\":0,\"rebooting\":0,\"reimaging\":0,\"running\":0,\"starting\":0,\"startTaskFailed\":0,\"unusable\":0,\"unknown\":0,\"waitingForStartTask\":0,\"total\":1\r\n      },\"lowPriority\":{\r\n        \"creating\":0,\"idle\":0,\"leavingPool\":0,\"offline\":0,\"preempted\":0,\"rebooting\":0,\"reimaging\":0,\"running\":0,\"starting\":0,\"startTaskFailed\":0,\"unusable\":0,\"unknown\":0,\"waitingForStartTask\":0,\"total\":0\r\n      }\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"dedicated\":{\r\n        \"creating\":0,\"idle\":3,\"leavingPool\":0,\"offline\":0,\"preempted\":0,\"rebooting\":0,\"reimaging\":0,\"running\":0,\"starting\":0,\"startTaskFailed\":0,\"unusable\":0,\"unknown\":0,\"waitingForStartTask\":0,\"total\":3\r\n      },\"lowPriority\":{\r\n        \"creating\":0,\"idle\":0,\"leavingPool\":0,\"offline\":0,\"preempted\":0,\"rebooting\":0,\"reimaging\":0,\"running\":0,\"starting\":0,\"startTaskFailed\":0,\"unusable\":0,\"unknown\":0,\"waitingForStartTask\":0,\"total\":0\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'afef8ab8-58d4-4d39-9d65-748be1078a73',
+  'request-id': 'ef0b2364-202a-41e6-8a09-f758e888c3df',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Mon, 05 Aug 2019 19:39:39 GMT',
+  date: 'Sat, 21 Mar 2020 02:12:01 GMT',
   connection: 'close' });
  return result; }]];
