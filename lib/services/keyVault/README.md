@@ -2,7 +2,7 @@
 
 This project provides a Node.js package for accessing keys, secrets and certificates on Azure Key Vault. Right now it supports:
 - **Node.js version: 6.x.x or higher**
-- **REST API version: 2016-10-01**
+- **REST API version: 7.0**
 
 ## Features
 
