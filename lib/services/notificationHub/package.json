@@ -3,7 +3,7 @@
   "author": "Microsoft Corporation",
   "contributors": [],
   "version": "0.1.0",
-  "description": "Microsoft Azure Notification Hubs Service Library for node",
+  "description": "Microsoft Azure Notification Hub Library for node",
   "tags": [
     "azure",
     "sdk"
