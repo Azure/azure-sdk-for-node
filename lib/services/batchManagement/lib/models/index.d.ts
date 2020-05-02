@@ -88,7 +88,8 @@ export interface BatchAccountCreateParameters {
   keyVaultReference?: KeyVaultReference;
   /**
    * @summary The network access type for accessing Azure Batch account.
-   * @description Possible values include: 'Enabled', 'Disabled'
+   * @description If not specified, the default value is 'enabled'. Possible values include:
+   * 'Enabled', 'Disabled'
   */
   publicNetworkAccess?: string;
   /**
@@ -119,6 +120,77 @@ export interface VirtualMachineFamilyCoreQuota {
    * The core quota for the VM family for the Batch account.
   */
   readonly coreQuota?: number;
+}
+
+/**
+ * The private endpoint of the private endpoint connection.
+*/
+export interface PrivateEndpoint {
+  /**
+   * @summary The ARM resource identifier of the private endpoint. This is of the form
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+  */
+  readonly id?: string;
+}
+
+/**
+ * The private link service connection state of the private endpoint connection
+*/
+export interface PrivateLinkServiceConnectionState {
+  /**
+   * @summary The status for the private endpoint connection of Batch account
+   * @description Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+  */
+  status: string;
+  /**
+   * @summary Description of the private Connection state
+  */
+  description?: string;
+  /**
+   * @summary Action required on the private connection state
+  */
+  readonly actionRequired?: string;
+}
+
+/**
+ * A definition of an Azure resource.
+*/
+export interface ProxyResource extends BaseResource {
+  /**
+   * The ID of the resource.
+  */
+  readonly id?: string;
+  /**
+   * The name of the resource.
+  */
+  readonly name?: string;
+  /**
+   * The type of the resource.
+  */
+  readonly type?: string;
+  /**
+   * The ETag of the resource, used for concurrency statements.
+  */
+  readonly etag?: string;
+}
+
+/**
+ * Contains information about a private link resource.
+*/
+export interface PrivateEndpointConnection extends ProxyResource {
+  /**
+   * @summary The provisioning state of the private endpoint connection.
+   * @description Possible values include: 'Succeeded', 'Updating', 'Failed'
+  */
+  readonly provisioningState?: string;
+  /**
+   * @summary The ARM resource identifier of the private endpoint.
+  */
+  privateEndpoint?: PrivateEndpoint;
+  /**
+   * @summary The private link service connection state of the private endpoint connection.
+  */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
 
 /**
@@ -176,6 +248,10 @@ export interface BatchAccount extends Resource {
    * 'Enabled', 'Disabled'
   */
   readonly publicNetworkAccess?: string;
+  /**
+   * List of private endpoint connections associated with the Batch account
+  */
+  readonly privateEndpointConnections?: PrivateEndpointConnection[];
   /**
    * @summary The properties and status of any auto-storage account associated with the Batch
    * account.
@@ -279,28 +355,6 @@ export interface ActivateApplicationPackageParameters {
    * The format of the application package binary file.
   */
   format: string;
-}
-
-/**
- * A definition of an Azure resource.
-*/
-export interface ProxyResource extends BaseResource {
-  /**
-   * The ID of the resource.
-  */
-  readonly id?: string;
-  /**
-   * The name of the resource.
-  */
-  readonly name?: string;
-  /**
-   * The type of the resource.
-  */
-  readonly type?: string;
-  /**
-   * The ETag of the resource, used for concurrency statements.
-  */
-  readonly etag?: string;
 }
 
 /**
@@ -496,55 +550,10 @@ export interface PrivateLinkResource extends ProxyResource {
    * @summary The list of required members that are used to establish the private link connection.
   */
   readonly requiredMembers?: string[];
-}
-
-/**
- * The private endpoint of the private endpoint connection.
-*/
-export interface PrivateEndpoint {
   /**
-   * @summary The ARM resource identifier of the private endpoint. This is of the form
-   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+   * @summary The list of required zone names for the private DNS resource name
   */
-  readonly id?: string;
-}
-
-/**
- * The private link service connection state of the private endpoint connection
-*/
-export interface PrivateLinkServiceConnectionState {
-  /**
-   * @summary The status for the private endpoint connection of Batch account
-   * @description Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
-  */
-  status?: string;
-  /**
-   * @summary Description of the private Connection state
-  */
-  description?: string;
-  /**
-   * @summary Action required on the private connection state
-  */
-  readonly actionRequired?: string;
-}
-
-/**
- * Contains information about a private link resource.
-*/
-export interface PrivateEndpointConnection extends ProxyResource {
-  /**
-   * @summary The provisioning state of the private endpoint connection.
-   * @description Possible values include: 'Succeeded', 'Updating', 'Failed'
-  */
-  readonly provisioningState?: string;
-  /**
-   * @summary The ARM resource identifier of the private endpoint.
-  */
-  privateEndpoint?: PrivateEndpoint;
-  /**
-   * @summary The private link service connection state of the private endpoint connection.
-  */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
+  readonly requiredZoneNames?: string[];
 }
 
 /**
@@ -801,12 +810,12 @@ export interface FixedScaleSettings {
   resizeTimeout?: moment.Duration;
   /**
    * @summary The desired number of dedicated compute nodes in the pool.
-   * @description At least one of targetDedicatedNodes, targetLowPriority nodes must be set.
+   * @description At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
   */
   targetDedicatedNodes?: number;
   /**
    * @summary The desired number of low-priority compute nodes in the pool.
-   * @description At least one of targetDedicatedNodes, targetLowPriority nodes must be set.
+   * @description At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
   */
   targetLowPriorityNodes?: number;
   /**

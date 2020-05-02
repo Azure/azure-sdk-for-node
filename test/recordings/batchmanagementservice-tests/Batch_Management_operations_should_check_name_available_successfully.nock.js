@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -16,14 +16,14 @@ nock('https://management.azure.com:443')
   'content-length': '22',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '0873348b-3577-4a7e-aa91-df787226a7bc',
-  'x-ms-request-id': 'd8f26e51-6be0-44f8-860c-1c0b3e7261c8',
+  'x-ms-correlation-request-id': 'fb978d0b-8fbd-4148-9308-3c656954c1b6',
+  'x-ms-request-id': '393d2c4c-0e53-4e07-91c8-957eb0873497',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012716Z:0873348b-3577-4a7e-aa91-df787226a7bc',
-  date: 'Sat, 21 Mar 2020 01:27:16 GMT',
+   'WESTUS:20200502T072127Z:fb978d0b-8fbd-4148-9308-3c656954c1b6',
+  date: 'Sat, 02 May 2020 07:21:26 GMT',
   connection: 'close' });
  return result; }]];

@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -11,19 +11,19 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2020-03-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:4200cb28-92c6-4f2e-9704-0975c05173c2\\nTime:2020-03-21T01:28:01.4300505Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:2ea6dd7a-4f48-4793-8df2-18b773b172fc\\nTime:2020-05-02T07:22:11.7434109Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '232',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'bd847529-44dd-4d8d-b3d9-27a0ac1287b3',
-  'x-ms-request-id': '4200cb28-92c6-4f2e-9704-0975c05173c2',
+  'x-ms-correlation-request-id': 'c68ad63a-df99-4f79-b35f-8611bd895450',
+  'x-ms-request-id': '2ea6dd7a-4f48-4793-8df2-18b773b172fc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012801Z:bd847529-44dd-4d8d-b3d9-27a0ac1287b3',
-  date: 'Sat, 21 Mar 2020 01:28:01 GMT',
+   'WESTUS:20200502T072211Z:c68ad63a-df99-4f79-b35f-8611bd895450',
+  date: 'Sat, 02 May 2020 07:22:11 GMT',
   connection: 'close' });
  return result; }]];

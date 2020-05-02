@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -11,19 +11,19 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/regenerateKeys?api-version=2020-03-01', '*')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"IX48QpQkjmFEyEIp6JXP6h2vkTntMNN0T8X9gS/qMX3qlKOpHQguuc3C7mjrNEwmtg+rOg7bK2KCRNjJk7dZJg==\",\"secondary\":\"dNqPdm5FDOoBUPQWcU5MycxrVVObZah02pbYFrBRNufPRWQAj5ayvW9pDyp8wgJANJ+QHayEV1hfsOcRqSlY4Q==\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"oAhp8FDJrkcZJ9bp8oYFRCN/UXAe80lDi2N7SdwQRdoEBWvJgQQ3avB2FctrxVae2WhWw4Ntr30JheGGCWGX2g==\",\"secondary\":\"2z4SHXHtLUY+lGYa0yw23A1mxtDMqRY1QD9ZPW3OK2jMh8MIVJDS0cEpYgxAGWY3MaBOF8O4kFUaLYn9HpWQzw==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'd80e0891-c9a0-4b70-a66a-0fb5ed9c2488',
-  'x-ms-request-id': '578eb0ad-7d5e-440b-9e37-41146cb56428',
+  'x-ms-correlation-request-id': '3918ac6b-9c04-4215-9e2f-22c7065d8e5a',
+  'x-ms-request-id': '3da2cd0d-fc9a-4353-afa2-655e44eadaa1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012845Z:d80e0891-c9a0-4b70-a66a-0fb5ed9c2488',
-  date: 'Sat, 21 Mar 2020 01:28:45 GMT',
+   'WESTUS:20200502T072257Z:3918ac6b-9c04-4215-9e2f-22c7065d8e5a',
+  date: 'Sat, 02 May 2020 07:22:57 GMT',
   connection: 'close' });
  return result; }]];

@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -10,19 +10,19 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions?api-version=2020-03-01')
-  .reply(200, "{\"value\":[{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D7CD371572D248\\\"\",\"properties\":{\"state\":\"Pending\"}},{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0\",\"name\":\"v2.0\",\"etag\":\"W/\\\"0x8D7CD3717117178\\\"\",\"properties\":{\"state\":\"Pending\"}}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D7EE6984F39F75\\\"\",\"properties\":{\"state\":\"Pending\"}},{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0\",\"name\":\"v2.0\",\"etag\":\"W/\\\"0x8D7EE6986B6224A\\\"\",\"properties\":{\"state\":\"Pending\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '707',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '4beb549c-46e2-4177-b123-c32e0145aab8',
-  'x-ms-request-id': '48c3f396-87bf-40cb-b95c-925ea24a02e7',
+  'x-ms-correlation-request-id': '6dbdbbc1-1bc7-44de-b8db-1e95d5145903',
+  'x-ms-request-id': 'ecad6274-9d3f-48ce-995f-b7d4410ce63b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-reads': '11998',
+  'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012759Z:4beb549c-46e2-4177-b123-c32e0145aab8',
-  date: 'Sat, 21 Mar 2020 01:27:59 GMT',
+   'WESTUS:20200502T072210Z:6dbdbbc1-1bc7-44de-b8db-1e95d5145903',
+  date: 'Sat, 02 May 2020 07:22:09 GMT',
   connection: 'close' });
  return result; }]];

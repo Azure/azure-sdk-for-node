@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -10,19 +10,19 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .delete('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-03-01')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"All application packages must be deleted before the application can be deleted.\\nRequestId:a711ce96-3b08-4fec-810e-b2ba8e676cce\\nTime:2020-03-21T01:28:04.8919166Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackagesNotEmpty\",\"message\":\"All application packages must be deleted before the application can be deleted.\\nRequestId:06fe7859-2f55-486b-a28b-c0e311112e29\\nTime:2020-05-02T07:22:15.8324111Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '247',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '8d77e277-9e3c-47c1-b242-483f016a2e1a',
-  'x-ms-request-id': 'a711ce96-3b08-4fec-810e-b2ba8e676cce',
+  'x-ms-correlation-request-id': 'd418f1f0-25f2-4d5e-b2c1-10a969da5ed0',
+  'x-ms-request-id': '06fe7859-2f55-486b-a28b-c0e311112e29',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-deletes': '14999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012804Z:8d77e277-9e3c-47c1-b242-483f016a2e1a',
-  date: 'Sat, 21 Mar 2020 01:28:04 GMT',
+   'WESTUS:20200502T072215Z:d418f1f0-25f2-4d5e-b2c1-10a969da5ed0',
+  date: 'Sat, 02 May 2020 07:22:14 GMT',
   connection: 'close' });
  return result; }]];

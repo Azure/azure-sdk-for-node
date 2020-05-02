@@ -68,8 +68,8 @@ export interface BatchAccountOperations {
      * vault associated with the Batch account.
      *
      * @param {string} [parameters.publicNetworkAccess] The network access type for
-     * accessing Azure Batch account. Possible values include: 'Enabled',
-     * 'Disabled'
+     * accessing Azure Batch account. If not specified, the default value is
+     * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
      * Batch account.
@@ -144,8 +144,8 @@ export interface BatchAccountOperations {
      * vault associated with the Batch account.
      *
      * @param {string} [parameters.publicNetworkAccess] The network access type for
-     * accessing Azure Batch account. Possible values include: 'Enabled',
-     * 'Disabled'
+     * accessing Azure Batch account. If not specified, the default value is
+     * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
      * Batch account.
@@ -783,8 +783,8 @@ export interface BatchAccountOperations {
      * vault associated with the Batch account.
      *
      * @param {string} [parameters.publicNetworkAccess] The network access type for
-     * accessing Azure Batch account. Possible values include: 'Enabled',
-     * 'Disabled'
+     * accessing Azure Batch account. If not specified, the default value is
+     * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
      * Batch account.
@@ -859,8 +859,8 @@ export interface BatchAccountOperations {
      * vault associated with the Batch account.
      *
      * @param {string} [parameters.publicNetworkAccess] The network access type for
-     * accessing Azure Batch account. Possible values include: 'Enabled',
-     * 'Disabled'
+     * accessing Azure Batch account. If not specified, the default value is
+     * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
      * Batch account.
@@ -3404,7 +3404,7 @@ export interface PrivateEndpointConnectionOperations {
      * @param {object} [parameters.privateLinkServiceConnectionState] The private
      * link service connection state of the private endpoint connection.
      *
-     * @param {string} [parameters.privateLinkServiceConnectionState.status] The
+     * @param {string} parameters.privateLinkServiceConnectionState.status The
      * status for the private endpoint connection of Batch account Possible values
      * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
      *
@@ -3449,7 +3449,7 @@ export interface PrivateEndpointConnectionOperations {
      * @param {object} [parameters.privateLinkServiceConnectionState] The private
      * link service connection state of the private endpoint connection.
      *
-     * @param {string} [parameters.privateLinkServiceConnectionState.status] The
+     * @param {string} parameters.privateLinkServiceConnectionState.status The
      * status for the private endpoint connection of Batch account Possible values
      * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
      *
@@ -3856,11 +3856,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size
@@ -4308,11 +4308,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size
@@ -4781,11 +4781,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size
@@ -5231,11 +5231,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size
@@ -5983,11 +5983,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size
@@ -6435,11 +6435,11 @@ export interface PoolOperations {
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetDedicatedNodes]
      * The desired number of dedicated compute nodes in the pool. At least one of
-     * targetDedicatedNodes, targetLowPriority nodes must be set.
+     * targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {number} [parameters.scaleSettings.fixedScale.targetLowPriorityNodes]
      * The desired number of low-priority compute nodes in the pool. At least one
-     * of targetDedicatedNodes, targetLowPriority nodes must be set.
+     * of targetDedicatedNodes, targetLowPriorityNodes must be set.
      *
      * @param {string} [parameters.scaleSettings.fixedScale.nodeDeallocationOption]
      * Determines what to do with a node and its running task(s) if the pool size

@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -16,15 +16,15 @@ nock('https://management.azure.com:443')
   location:
    'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/poolOperationResults/delete-test_iaas_pool?api-version=2020-03-01',
   'retry-after': '15',
-  'x-ms-request-id': 'bcd4d27d-99a9-418d-be92-c65d2cc20b66',
+  'x-ms-request-id': '281b22d3-50c5-430a-86c8-80714707105f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-deletes': '14999',
+  'x-ms-ratelimit-remaining-subscription-deletes': '14998',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'dc47ec0f-298e-4220-92c3-b9d46eece3aa',
+  'x-ms-correlation-request-id': '02df4715-ebf2-4116-9f31-f05553532dba',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T013001Z:dc47ec0f-298e-4220-92c3-b9d46eece3aa',
-  date: 'Sat, 21 Mar 2020 01:30:01 GMT',
+   'WESTUS:20200502T072420Z:02df4715-ebf2-4116-9f31-f05553532dba',
+  date: 'Sat, 02 May 2020 07:24:20 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
@@ -35,15 +35,15 @@ nock('https://management.azure.com:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': 'f44b8976-ba69-4b97-8e95-e612beefe507',
+  'x-ms-request-id': '0104798a-c997-41b0-9777-e23b1b819d38',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'b8c647d0-266c-4504-9af4-46755aa445af',
+  'x-ms-correlation-request-id': 'a2c11ec4-d62d-4c42-bfaa-dbcb3ce79313',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T013032Z:b8c647d0-266c-4504-9af4-46755aa445af',
-  date: 'Sat, 21 Mar 2020 01:30:32 GMT',
+   'WESTUS:20200502T072451Z:a2c11ec4-d62d-4c42-bfaa-dbcb3ce79313',
+  date: 'Sat, 02 May 2020 07:24:50 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; }]];

@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -14,58 +14,58 @@ nock('https://management.azure.com:443')
   pragma: 'no-cache',
   expires: '-1',
   location:
-   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8D7CD3738B0FB2A?api-version=2020-03-01',
+   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8D7EE69A9ACA8D1?api-version=2020-03-01',
   'retry-after': '15',
-  'x-ms-request-id': 'a28e81d4-062a-44f7-b82b-92ecd3ee2597',
+  'x-ms-request-id': 'bd92e69e-fa1e-49fe-9846-eada82005d86',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-deletes': '14999',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'ee3d56bf-0ae6-464d-8d37-de9211c491a5',
+  'x-ms-correlation-request-id': 'a699437f-5e2b-4a3a-8bc5-00c00c6f0f06',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012855Z:ee3d56bf-0ae6-464d-8d37-de9211c491a5',
-  date: 'Sat, 21 Mar 2020 01:28:55 GMT',
+   'WESTUS:20200502T072308Z:a699437f-5e2b-4a3a-8bc5-00c00c6f0f06',
+  date: 'Sat, 02 May 2020 07:23:07 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8D7CD3738B0FB2A?api-version=2020-03-01')
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8D7EE69A9ACA8D1?api-version=2020-03-01')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   location:
-   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8d7cd3738b0fb2a?api-version=2020-03-01',
+   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8d7ee69a9aca8d1?api-version=2020-03-01',
   'retry-after': '15',
-  'x-ms-request-id': '884d260c-10c6-43a2-b510-3e6c5910e049',
+  'x-ms-request-id': '0ef6a133-aadb-4c26-9a8a-f63d942031ba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-reads': '11998',
+  'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'e177c204-85db-4512-8afc-77b9165514f0',
+  'x-ms-correlation-request-id': 'd8858a6c-63aa-41c4-9267-1b307eed79be',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012926Z:e177c204-85db-4512-8afc-77b9165514f0',
-  date: 'Sat, 21 Mar 2020 01:29:25 GMT',
+   'WESTUS:20200502T072339Z:d8858a6c-63aa-41c4-9267-1b307eed79be',
+  date: 'Sat, 02 May 2020 07:23:38 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8d7cd3738b0fb2a?api-version=2020-03-01')
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/certificateOperationResults/sha1-cff2ab63c8c955aaf71989efa641b906558d9fb7-8d7ee69a9aca8d1?api-version=2020-03-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': '6a7d4d68-521f-4b2d-b5e2-ed3c2f65bfa5',
+  'x-ms-request-id': 'dce8dc8f-f581-4153-9b96-788b973291a4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'd047f1b0-edb5-48b1-a1b6-19cbc13b8197',
+  'x-ms-correlation-request-id': '1e541c30-8729-499d-acd3-7cd8a4da4b07',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012956Z:d047f1b0-edb5-48b1-a1b6-19cbc13b8197',
-  date: 'Sat, 21 Mar 2020 01:29:56 GMT',
+   'WESTUS:20200502T072409Z:1e541c30-8729-499d-acd3-7cd8a4da4b07',
+  date: 'Sat, 02 May 2020 07:24:09 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; }]];

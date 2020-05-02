@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -11,21 +11,21 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-03-01', '*')
-  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D7CD371961AC83\\\"\",\"properties\":{\"displayName\":\"my_updated_name\",\"allowUpdates\":false,\"defaultVersion\":\"v1.0\"}}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D7EE69891C0CCC\\\"\",\"properties\":{\"displayName\":\"my_updated_name\",\"allowUpdates\":false,\"defaultVersion\":\"v1.0\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '396',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Sat, 21 Mar 2020 01:28:02 GMT',
-  etag: 'W/"0x8D7CD371961AC83"',
-  'x-ms-correlation-request-id': '58359f8a-b008-405f-9ac0-aeaccc8f2b97',
-  'x-ms-request-id': '44e6f8be-d06a-4fb4-85bd-a0f40674d933',
+  'last-modified': 'Sat, 02 May 2020 07:22:13 GMT',
+  etag: 'W/"0x8D7EE69891C0CCC"',
+  'x-ms-correlation-request-id': 'd23ef25b-ba89-4303-8e7e-efcc044823c9',
+  'x-ms-request-id': 'd51caf57-a013-4bdc-b55b-022131f82657',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012803Z:58359f8a-b008-405f-9ac0-aeaccc8f2b97',
-  date: 'Sat, 21 Mar 2020 01:28:02 GMT',
+   'WESTUS:20200502T072213Z:d23ef25b-ba89-4303-8e7e-efcc044823c9',
+  date: 'Sat, 02 May 2020 07:22:13 GMT',
   connection: 'close' });
  return result; }]];
