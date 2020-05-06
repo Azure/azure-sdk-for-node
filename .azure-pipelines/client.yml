@@ -108,19 +108,19 @@ jobs:
           NodeVersion: '11.x'
         macOS_Node6:
           OSName: 'macOS'
-          OSVmImage: 'macOS-10.13'
+          OSVmImage: 'macOS-10.14'
           NodeVersion: '6.x'
         macOS_Node8:
           OSName: 'macOS'
-          OSVmImage: 'macOS-10.13'
+          OSVmImage: 'macOS-10.14'
           NodeVersion: '8.x'
         macOS_Node10:
           OSName: 'macOS'
-          OSVmImage: 'macOS-10.13'
+          OSVmImage: 'macOS-10.14'
           NodeVersion: '10.x'
         macOS_Node11:
           OSName: 'macOS'
-          OSVmImage: 'macOS-10.13'
+          OSVmImage: 'macOS-10.14'
           NodeVersion: '11.x'
         Windows_Node6:
           OSName: 'Windows'
