@@ -596,7 +596,7 @@ export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
   createSigningFilter(): (resource: msRest.WebResource, next: Function, callback: msRest.ServiceCallback<any>) => any;
   getCachedChallenge(webResource: msRest.WebResource) : object;
-  addChallengeToCache(webResource: msRest.WebResource, chalenge: object) : void;
+  addChallengeToCache(webResource: msRest.WebResource, challenge: object) : void;
   handleUnauthorized(webResource: msRest.WebResource, next: Function, err: Error, response: object, body: any, callback: msRest.ServiceCallback<any>) : any;
 }
 
