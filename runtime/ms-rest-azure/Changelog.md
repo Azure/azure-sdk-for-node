@@ -1,3 +1,9 @@
+### 3.0.0 (07/11/2019)
+- Remove leading dot from azure environment settings. This fixes [issue #4706](https://github.com/Azure/azure-sdk-for-node/issues/4706) via the [PR 5101](https://github.com/Azure/azure-sdk-for-node/pull/5101)
+
+### 2.6.0 (01/09/2019)
+- Add support for custom MSI endpoint & api version when creating `MSIVmTokenCredentials`. This fixes [issue #2836](https://github.com/Azure/azure-sdk-for-node/issues/2836) via the [PR 4528](https://github.com/Azure/azure-sdk-for-node/pull/4528)
+
 ### 2.5.9 (09/26/2018)
 - Add `request` as a dependency since `MSIVmTokenCredentials` and `MSIAppServiceTokenCredentials` use it directly.
 - Update `ms-rest` version dependency to 2.3.7
