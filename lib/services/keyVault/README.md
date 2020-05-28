@@ -34,7 +34,7 @@ For a complete sample, please check one of the above links.
 
 ```javascript
 var KeyVault = require('azure-keyvault');
-var msRestAzure = require('ms-rest-azure');
+var msRestAzure = require('ms-rest-nodeauth');
 
 async function main(): Promise<void> {
   const credentials = await msRestAzure.interactiveLogin();
