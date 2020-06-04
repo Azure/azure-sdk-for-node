@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/regenerateKeys?api-version=2020-03-01', '*')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"oAhp8FDJrkcZJ9bp8oYFRCN/UXAe80lDi2N7SdwQRdoEBWvJgQQ3avB2FctrxVae2WhWw4Ntr30JheGGCWGX2g==\",\"secondary\":\"2z4SHXHtLUY+lGYa0yw23A1mxtDMqRY1QD9ZPW3OK2jMh8MIVJDS0cEpYgxAGWY3MaBOF8O4kFUaLYn9HpWQzw==\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/regenerateKeys?api-version=2020-05-01', '*')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"Mk0UsGb5N8ZEJqBrPtL0mGyAyUfns/S5b6SvLCJfPXZ5FhVm1QpoEBLGAVVCCq6DTOsvdpuZqdnLeOUlACT8Ag==\",\"secondary\":\"vzNKn1rGuS/YbBn9UYbkmIsB6ucp8v2OoJGSW4zdYTW09LJfBX9m4jtBozU8lWTU/tMSmL85YgEgjS2bXWnEQQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '3918ac6b-9c04-4215-9e2f-22c7065d8e5a',
-  'x-ms-request-id': '3da2cd0d-fc9a-4353-afa2-655e44eadaa1',
+  'x-ms-correlation-request-id': '93475bcb-1c88-4781-974c-46a178cd20ca',
+  'x-ms-request-id': '81223935-d252-4e4a-b323-3265d5e87641',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072257Z:3918ac6b-9c04-4215-9e2f-22c7065d8e5a',
-  date: 'Sat, 02 May 2020 07:22:57 GMT',
+   'WESTUS:20200604T062335Z:93475bcb-1c88-4781-974c-46a178cd20ca',
+  date: 'Thu, 04 Jun 2020 06:23:34 GMT',
   connection: 'close' });
  return result; }]];

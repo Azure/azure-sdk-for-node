@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-03-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:cd12df7e-0a71-4c04-ac4c-db0def5855ae\\nTime:2020-05-02T07:22:12.5414546Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-05-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:d9f13ded-18d4-4656-9129-5ec1a922bf0e\\nTime:2020-06-04T06:22:47.3833328Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'ab5748d4-eeb1-4452-9ed4-b13566751859',
-  'x-ms-request-id': 'cd12df7e-0a71-4c04-ac4c-db0def5855ae',
+  'x-ms-correlation-request-id': '96b909ac-06f6-425b-b684-707f0701c606',
+  'x-ms-request-id': 'd9f13ded-18d4-4656-9129-5ec1a922bf0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072212Z:ab5748d4-eeb1-4452-9ed4-b13566751859',
-  date: 'Sat, 02 May 2020 07:22:11 GMT',
+   'WESTUS:20200604T062247Z:96b909ac-06f6-425b-b684-707f0701c606',
+  date: 'Thu, 04 Jun 2020 06:22:46 GMT',
   connection: 'close' });
  return result; }]];

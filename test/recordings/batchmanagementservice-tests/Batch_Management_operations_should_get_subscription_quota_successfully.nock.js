@@ -9,20 +9,20 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/providers/Microsoft.Batch/locations/japaneast/quotas?api-version=2020-03-01')
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/providers/Microsoft.Batch/locations/japaneast/quotas?api-version=2020-05-01')
   .reply(200, "{\"accountQuota\":1}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '18',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'cfa30a1e-e594-414d-becc-98ed5c276d58',
-  'x-ms-request-id': 'e0979f1b-b47c-4809-9b46-142d37de1860',
+  'x-ms-correlation-request-id': '3a5d7aec-6e59-483d-a388-250f6ca735c1',
+  'x-ms-request-id': 'ba2693d3-b16a-4fbe-971d-e559d811c0a2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072126Z:cfa30a1e-e594-414d-becc-98ed5c276d58',
-  date: 'Sat, 02 May 2020 07:21:26 GMT',
+   'WESTUS:20200604T062201Z:3a5d7aec-6e59-483d-a388-250f6ca735c1',
+  date: 'Thu, 04 Jun 2020 06:22:00 GMT',
   connection: 'close' });
  return result; }]];

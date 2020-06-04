@@ -72,7 +72,9 @@ export interface BatchAccountOperations {
      * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -82,7 +84,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -148,7 +161,9 @@ export interface BatchAccountOperations {
      * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -158,7 +173,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -212,7 +238,9 @@ export interface BatchAccountOperations {
      * the storage account to be used for auto-storage account.
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -222,7 +250,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -257,7 +296,9 @@ export interface BatchAccountOperations {
      * the storage account to be used for auto-storage account.
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -267,7 +308,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -787,7 +839,9 @@ export interface BatchAccountOperations {
      * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -797,7 +851,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -863,7 +928,9 @@ export interface BatchAccountOperations {
      * 'enabled'. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.encryption] The encryption configuration for the
-     * Batch account.
+     * Batch account. Configures how customer data is encrypted inside the Batch
+     * account. By default, accounts are encrypted using a Microsoft managed key.
+     * For additional control, a customer-managed key can be used instead.
      *
      * @param {string} [parameters.encryption.keySource] Type of the key source.
      * Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
@@ -873,7 +940,18 @@ export interface BatchAccountOperations {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyIdentifier]
      * Full path to the versioned secret. Example
-     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
+     * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053.
+     * To be usable the following prerequisites must be met:
+     *
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap
+     * permissions
+     * The KeyVault has soft-delete and purge protection enabled
+     *
+     * @param {object} [parameters.identity] The identity of the Batch account.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * Batch account. Possible values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3491,6 +3569,116 @@ export interface PrivateEndpointConnectionOperations {
     update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateEndpointConnection>;
     update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
     update(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+
+
+    /**
+     * Updates the properties of an existing private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} parameters PrivateEndpointConnection properties that should
+     * be updated. Properties that are supplied will be updated, any property not
+     * supplied will be unchanged.
+     *
+     * @param {object} [parameters.privateEndpoint] The ARM resource identifier of
+     * the private endpoint.
+     *
+     * @param {object} [parameters.privateLinkServiceConnectionState] The private
+     * link service connection state of the private endpoint connection.
+     *
+     * @param {string} parameters.privateLinkServiceConnectionState.status The
+     * status for the private endpoint connection of Batch account Possible values
+     * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.description]
+     * Description of the private Connection state
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The state (ETag) version of the private
+     * endpoint connection to update. This value can be omitted or set to "*" to
+     * apply the operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateEndpointConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateEndpointConnection>>;
+
+    /**
+     * Updates the properties of an existing private endpoint connection.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     *
+     * @param {string} accountName The name of the Batch account.
+     *
+     * @param {string} privateEndpointConnectionName The private endpoint
+     * connection name. This must be unique within the account.
+     *
+     * @param {object} parameters PrivateEndpointConnection properties that should
+     * be updated. Properties that are supplied will be updated, any property not
+     * supplied will be unchanged.
+     *
+     * @param {object} [parameters.privateEndpoint] The ARM resource identifier of
+     * the private endpoint.
+     *
+     * @param {object} [parameters.privateLinkServiceConnectionState] The private
+     * link service connection state of the private endpoint connection.
+     *
+     * @param {string} parameters.privateLinkServiceConnectionState.status The
+     * status for the private endpoint connection of Batch account Possible values
+     * include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+     *
+     * @param {string} [parameters.privateLinkServiceConnectionState.description]
+     * Description of the private Connection state
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] The state (ETag) version of the private
+     * endpoint connection to update. This value can be omitted or set to "*" to
+     * apply the operation unconditionally.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateEndpointConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateEndpointConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateEndpointConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateEndpointConnection>;
+    beginUpdate(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
+    beginUpdate(resourceGroupName: string, accountName: string, privateEndpointConnectionName: string, parameters: models.PrivateEndpointConnection, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateEndpointConnection>): void;
 
 
     /**

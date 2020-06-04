@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2020-03-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:2ea6dd7a-4f48-4793-8df2-18b773b172fc\\nTime:2020-05-02T07:22:11.7434109Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v2.0/activate?api-version=2020-05-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"ApplicationPackageBlobNotFound\",\"message\":\"No blob could be found for the specified application package.\\nRequestId:a8a08f8a-b792-4fe0-a74d-f63266dd9033\\nTime:2020-06-04T06:22:46.3905677Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '232',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'c68ad63a-df99-4f79-b35f-8611bd895450',
-  'x-ms-request-id': '2ea6dd7a-4f48-4793-8df2-18b773b172fc',
+  'x-ms-correlation-request-id': 'f6864195-896b-44de-8284-45839a14cb91',
+  'x-ms-request-id': 'a8a08f8a-b792-4fe0-a74d-f63266dd9033',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072211Z:c68ad63a-df99-4f79-b35f-8611bd895450',
-  date: 'Sat, 02 May 2020 07:22:11 GMT',
+   'WESTUS:20200604T062246Z:f6864195-896b-44de-8284-45839a14cb91',
+  date: 'Thu, 04 Jun 2020 06:22:45 GMT',
   connection: 'close' });
  return result; }]];
