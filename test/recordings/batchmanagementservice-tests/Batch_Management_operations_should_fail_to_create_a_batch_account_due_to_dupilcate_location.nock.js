@@ -10,42 +10,42 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2020-03-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2020-05-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   location:
-   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/0b5d32ce-d82e-416c-ae62-f1d870626f1f?api-version=2020-03-01',
+   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/3ec52365-5963-4884-97e4-574bbb25d422?api-version=2020-05-01',
   'retry-after': '15',
-  'x-ms-request-id': '0b5d32ce-d82e-416c-ae62-f1d870626f1f',
+  'x-ms-request-id': '3ec52365-5963-4884-97e4-574bbb25d422',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'e4854b55-562c-44e1-8b9e-1f535930b02a',
+  'x-ms-correlation-request-id': 'c5c7adaf-7eae-4c5c-9d3b-b444ed4755ee',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072223Z:e4854b55-562c-44e1-8b9e-1f535930b02a',
-  date: 'Sat, 02 May 2020 07:22:23 GMT',
+   'WESTUS:20200604T062300Z:c5c7adaf-7eae-4c5c-9d3b-b444ed4755ee',
+  date: 'Thu, 04 Jun 2020 06:23:00 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/0b5d32ce-d82e-416c-ae62-f1d870626f1f?api-version=2020-03-01')
-  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional Batch account quota for the specified subscription has been reached.\\nRequestId:bb06fe54-4c68-44dd-a20d-ba4f211b8615\\nTime:2020-05-02T07:22:54.0265956Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/3ec52365-5963-4884-97e4-574bbb25d422?api-version=2020-05-01')
+  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional Batch account quota for the specified subscription has been reached.\\nRequestId:5b13ae84-fce6-44ae-903b-6c5de049a77e\\nTime:2020-06-04T06:23:31.3963177Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '247',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '5c79cd15-084b-4792-a718-2e11e27ae5fc',
-  'x-ms-request-id': 'bb06fe54-4c68-44dd-a20d-ba4f211b8615',
+  'x-ms-correlation-request-id': '70bb5e90-3c9d-4035-b710-00839ffa742c',
+  'x-ms-request-id': '5b13ae84-fce6-44ae-903b-6c5de049a77e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072254Z:5c79cd15-084b-4792-a718-2e11e27ae5fc',
-  date: 'Sat, 02 May 2020 07:22:53 GMT',
+   'WESTUS:20200604T062331Z:70bb5e90-3c9d-4035-b710-00839ffa742c',
+  date: 'Thu, 04 Jun 2020 06:23:31 GMT',
   connection: 'close' });
  return result; }]];

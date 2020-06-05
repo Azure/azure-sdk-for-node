@@ -9,22 +9,22 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0?api-version=2020-03-01')
-  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D7EE6987931CFA\\\"\",\"properties\":{\"storageUrl\":\"https://testaccountfornode.blob.core.windows.net/app-my-application-id-36d75d44174f483689980a93991e429c/v1.0?sv=2018-03-28&sr=b&sig=%2FS0UapIx1jaNfxhPjPtHN0x08oV5j4Kz3ef6RV3L85g%3D&st=2020-05-02T07%3A17%3A14Z&se=2020-05-02T11%3A22%3A14Z&sp=r\",\"storageUrlExpiry\":\"2020-05-02T11:22:14.2798006Z\",\"state\":\"Active\",\"format\":\"zip\",\"lastActivationTime\":\"2020-05-02T07:22:10.9680074Z\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0?api-version=2020-05-01')
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0\",\"name\":\"v1.0\",\"etag\":\"W/\\\"0x8D8084FB2201FDE\\\"\",\"properties\":{\"storageUrl\":\"https://testaccountfornode.blob.core.windows.net/app-my-application-id-2fcd58b6321f40e585544ae66c5ac76e/v1.0?sv=2018-03-28&sr=b&sig=TKyNk%2FYB9NZNmw74CON8auR5s%2BziJ2xeHcYpBHGvmyI%3D&st=2020-06-04T06%3A17%3A49Z&se=2020-06-04T10%3A22%3A49Z&sp=r\",\"storageUrlExpiry\":\"2020-06-04T10:22:49.1477454Z\",\"state\":\"Active\",\"format\":\"zip\",\"lastActivationTime\":\"2020-06-04T06:22:45.6689553Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '720',
+  'content-length': '722',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Sat, 02 May 2020 07:22:10 GMT',
-  etag: 'W/"0x8D7EE6987931CFA"',
-  'x-ms-correlation-request-id': 'f43b050f-b401-4082-a63d-b6ce84ca7d33',
-  'x-ms-request-id': '92a05669-664d-4601-ad6a-e6563fa78cca',
+  'last-modified': 'Thu, 04 Jun 2020 06:22:45 GMT',
+  etag: 'W/"0x8D8084FB2201FDE"',
+  'x-ms-correlation-request-id': '05505da0-f11b-4a58-a2fc-2f6bcdb36ed2',
+  'x-ms-request-id': 'e6de6a15-8184-4c40-b525-9aa2f2542cc5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200502T072214Z:f43b050f-b401-4082-a63d-b6ce84ca7d33',
-  date: 'Sat, 02 May 2020 07:22:14 GMT',
+   'WESTUS:20200604T062249Z:05505da0-f11b-4a58-a2fc-2f6bcdb36ed2',
+  date: 'Thu, 04 Jun 2020 06:22:49 GMT',
   connection: 'close' });
  return result; }]];
