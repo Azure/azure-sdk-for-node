@@ -12,7 +12,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/notificationhubservice.js",
+  "main": "./lib/notificationhub.js",
   "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.19",
