@@ -662,7 +662,6 @@
     <Compile Include="lib\common\lib\util\js2xml.js" />
     <Compile Include="lib\common\lib\util\keyFiles.js" />
     <Compile Include="lib\common\lib\util\odatahandler.js" />
-    <Compile Include="lib\common\lib\util\patch-xmlbuilder.js" />
     <Compile Include="lib\common\lib\util\rfc1123date.js" />
     <Compile Include="lib\common\lib\util\sdkconfig.js" />
     <Compile Include="lib\common\lib\util\util.js" />
