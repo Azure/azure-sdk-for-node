@@ -45,13 +45,13 @@ MsRest.interactiveLogin((err, credentials) => {
 
 ### For azure-graph sdk
 
-One needs to set the tokenAudience to 'graph' and provide the tenantId in the options object.
+One needs to set the tokenAudience to 'https://graph.windows.net' and provide the tenantId in the options object.
 ```javascript
 const AzureGraphClient = require('azure-graph');
 const MsRestAzure = require('ms-rest-azure');
 
 const options = {
-  tokenAudience: 'graph',
+  tokenAudience: 'https://graph.windows.net',
   domain: '<tenantId>' 
 };
 
@@ -191,13 +191,13 @@ MsRest.loginWithServicePrincipalSecret(
 
 ### For azure-graph sdk
 
-One needs to set the tokenAudience to 'graph' and provide the tenantId in the options object.
+One needs to set the tokenAudience to 'https://graph.windows.net' and provide the tenantId in the options object.
 ```javascript
 const AzureGraphClient = require('azure-graph');
 const MsRestAzure = require('ms-rest-azure');
 
 const options = {
-  tokenAudience: 'graph',
+  tokenAudience: 'https://graph.windows.net',
   domain: '<tenantId>' 
 };
 

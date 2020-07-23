@@ -21,13 +21,13 @@ npm install azure-graph
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
 
- //Note: You need to explicitly specify the tokenAudience as graph and the your domain (tenantId) in which the AD Graph exists. 
+ //Note: You need to explicitly specify the tokenAudience as https://graph.windows.net and the your domain (tenantId) in which the AD Graph exists. 
  //      This needs to be done only for working graph clients. For other ARM clients specifying this information is not required.
  var tenantId='abcd-efgh-ijk-lmno-12345';
  // Enter your tenant ID here which can be found from your Azure AD URL
  // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
  
- msRestAzure.interactiveLogin({ tokenAudience: 'graph', domain: tenantId }, function (err, credentials, subscriptions) {
+ msRestAzure.interactiveLogin({ tokenAudience: 'https://graph.windows.net', domain: tenantId }, function (err, credentials, subscriptions) {
   if (err) console.log(err);
   var client = new graphRbacManagementClient(credentials, tenantId);
   var userParams = {
@@ -64,7 +64,7 @@ npm install azure-graph
  // Enter your tenant ID here which can be found from your Azure AD URL
  // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
  
- msRestAzure.loginWithUsernamePassword('username@contosocorp.onmicrosoft.com', 'your-password', { tokenAudience: 'graph', domain: tenantId }, function (err, credentials, subscriptions) {
+ msRestAzure.loginWithUsernamePassword('username@contosocorp.onmicrosoft.com', 'your-password', { tokenAudience: 'https://graph.windows.net', domain: tenantId }, function (err, credentials, subscriptions) {
   if (err) console.log(err);
   var client = new graphRbacManagementClient(credentials, tenantId);
   var userParams = {
@@ -101,7 +101,7 @@ npm install azure-graph
  // Enter your tenant ID here which can be found from your Azure AD URL
  // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
  
- msRestAzure.loginWithServicePrincipalSecret('clientId', 'application-secret', tenantId, { tokenAudience: 'graph' }, function (err, credentials, subscriptions) {
+ msRestAzure.loginWithServicePrincipalSecret('clientId', 'application-secret', tenantId, { tokenAudience: 'https://graph.windows.net' }, function (err, credentials, subscriptions) {
   if (err) console.log(err);
   var client = new graphRbacManagementClient(credentials, tenantId);
   var userParams = {
