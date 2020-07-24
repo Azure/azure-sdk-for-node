@@ -294,11 +294,6 @@ export interface Api {
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
      *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
-     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -376,7 +371,7 @@ export interface Api {
      * @param {string} [parameters.format] Format of the Content in which the API
      * is getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
      * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link', 'openapi',
-     * 'openapi+json', 'openapi-link'
+     * 'openapi+json', 'openapi-link', 'openapi+json-link'
      *
      * @param {object} [parameters.wsdlSelector] Criteria to limit import of WSDL
      * to a subset of the document.
@@ -448,11 +443,6 @@ export interface Api {
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
      *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
-     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -530,7 +520,7 @@ export interface Api {
      * @param {string} [parameters.format] Format of the Content in which the API
      * is getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
      * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link', 'openapi',
-     * 'openapi+json', 'openapi-link'
+     * 'openapi+json', 'openapi-link', 'openapi+json-link'
      *
      * @param {object} [parameters.wsdlSelector] Criteria to limit import of WSDL
      * to a subset of the document.
@@ -619,11 +609,6 @@ export interface Api {
      * @param {array}
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
-     *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
      *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
@@ -726,11 +711,6 @@ export interface Api {
      * @param {array}
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
-     *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
      *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
@@ -1040,11 +1020,6 @@ export interface Api {
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
      *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
-     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -1122,7 +1097,7 @@ export interface Api {
      * @param {string} [parameters.format] Format of the Content in which the API
      * is getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
      * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link', 'openapi',
-     * 'openapi+json', 'openapi-link'
+     * 'openapi+json', 'openapi-link', 'openapi+json-link'
      *
      * @param {object} [parameters.wsdlSelector] Criteria to limit import of WSDL
      * to a subset of the document.
@@ -1194,11 +1169,6 @@ export interface Api {
      * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
      * send token to the server.
      *
-     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
-     * Specifies whether subscription key is required during call to this API, true
-     * - API is included into closed products only, false - API is included into
-     * open products alone, null - there is a mix of products.
-     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -1276,7 +1246,7 @@ export interface Api {
      * @param {string} [parameters.format] Format of the Content in which the API
      * is getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
      * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link', 'openapi',
-     * 'openapi+json', 'openapi-link'
+     * 'openapi+json', 'openapi-link', 'openapi+json-link'
      *
      * @param {object} [parameters.wsdlSelector] Criteria to limit import of WSDL
      * to a subset of the document.
@@ -5900,7 +5870,10 @@ export interface ApiSchema {
      * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
      *
      * @param {string} [parameters.value] Json escaped string defining the document
-     * representing the Schema.
+     * representing the Schema. Used for schemas other than Swagger/OpenAPI.
+     *
+     * @param {object} [parameters.definitions] Types definitions. Used for
+     * Swagger/OpenAPI schemas only, null otherwise.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5916,7 +5889,7 @@ export interface ApiSchema {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SchemaContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SchemaContract>>;
 
     /**
      * Creates or updates schema configuration for the API.
@@ -5943,7 +5916,10 @@ export interface ApiSchema {
      * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
      *
      * @param {string} [parameters.value] Json escaped string defining the document
-     * representing the Schema.
+     * representing the Schema. Used for schemas other than Swagger/OpenAPI.
+     *
+     * @param {object} [parameters.definitions] Types definitions. Used for
+     * Swagger/OpenAPI schemas only, null otherwise.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5975,9 +5951,9 @@ export interface ApiSchema {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SchemaContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, callback: ServiceCallback<models.SchemaContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaCreateOrUpdateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SchemaContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SchemaContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, callback: ServiceCallback<models.SchemaContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SchemaContract>): void;
 
 
     /**
@@ -6064,6 +6040,117 @@ export interface ApiSchema {
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, ifMatch: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, ifMatch: string, options: { force? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates schema configuration for the API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
+     *
+     * @param {string} schemaId Schema identifier within an API. Must be unique in
+     * the current API Management service instance.
+     *
+     * @param {object} parameters The schema contents to apply.
+     *
+     * @param {string} parameters.contentType Must be a valid a media type used in
+     * a Content-Type header as defined in the RFC 2616. Media type of the schema
+     * document (e.g. application/json, application/xml). </br> - `Swagger` Schema
+     * use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL`
+     * Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema
+     * use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use
+     * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+     *
+     * @param {string} [parameters.value] Json escaped string defining the document
+     * representing the Schema. Used for schemas other than Swagger/OpenAPI.
+     *
+     * @param {object} [parameters.definitions] Types definitions. Used for
+     * Swagger/OpenAPI schemas only, null otherwise.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SchemaContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SchemaContract>>;
+
+    /**
+     * Creates or updates schema configuration for the API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
+     *
+     * @param {string} schemaId Schema identifier within an API. Must be unique in
+     * the current API Management service instance.
+     *
+     * @param {object} parameters The schema contents to apply.
+     *
+     * @param {string} parameters.contentType Must be a valid a media type used in
+     * a Content-Type header as defined in the RFC 2616. Media type of the schema
+     * document (e.g. application/json, application/xml). </br> - `Swagger` Schema
+     * use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL`
+     * Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema
+     * use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use
+     * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
+     *
+     * @param {string} [parameters.value] Json escaped string defining the document
+     * representing the Schema. Used for schemas other than Swagger/OpenAPI.
+     *
+     * @param {object} [parameters.definitions] Types definitions. Used for
+     * Swagger/OpenAPI schemas only, null otherwise.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SchemaContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SchemaContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SchemaContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SchemaContract>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, callback: ServiceCallback<models.SchemaContract>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, schemaId: string, parameters: models.SchemaContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SchemaContract>): void;
 
 
     /**
@@ -6408,9 +6495,16 @@ export interface ApiDiagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6476,9 +6570,16 @@ export interface ApiDiagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6564,9 +6665,16 @@ export interface ApiDiagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -6634,9 +6742,16 @@ export interface ApiDiagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -8551,8 +8666,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8565,7 +8680,7 @@ export interface ApiTagDescription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gets the entity state version of the tag specified by its identifier.
@@ -8578,8 +8693,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8607,9 +8722,9 @@ export interface ApiTagDescription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, callback: ServiceCallback<void>): void;
-    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8623,8 +8738,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8637,7 +8752,7 @@ export interface ApiTagDescription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagDescriptionContract>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagDescriptionContract>>;
 
     /**
      * Get Tag description in scope of API
@@ -8650,8 +8765,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8681,9 +8796,9 @@ export interface ApiTagDescription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TagDescriptionContract>;
-    get(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, callback: ServiceCallback<models.TagDescriptionContract>): void;
-    get(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagDescriptionContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TagDescriptionContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, callback: ServiceCallback<models.TagDescriptionContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagDescriptionContract>): void;
 
 
     /**
@@ -8697,8 +8812,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} parameters Create parameters.
      *
@@ -8724,7 +8839,7 @@ export interface ApiTagDescription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, parameters: models.TagDescriptionCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagDescriptionContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, parameters: models.TagDescriptionCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagDescriptionContract>>;
 
     /**
      * Create/Update tag description in scope of the Api.
@@ -8737,8 +8852,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {object} parameters Create parameters.
      *
@@ -8781,9 +8896,9 @@ export interface ApiTagDescription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, parameters: models.TagDescriptionCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagDescriptionContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, parameters: models.TagDescriptionCreateParameters, callback: ServiceCallback<models.TagDescriptionContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, parameters: models.TagDescriptionCreateParameters, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagDescriptionContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, parameters: models.TagDescriptionCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TagDescriptionContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, parameters: models.TagDescriptionCreateParameters, callback: ServiceCallback<models.TagDescriptionContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, parameters: models.TagDescriptionCreateParameters, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagDescriptionContract>): void;
 
 
     /**
@@ -8797,8 +8912,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -8815,7 +8930,7 @@ export interface ApiTagDescription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete tag description for the Api.
@@ -8828,8 +8943,8 @@ export interface ApiTagDescription {
      * API Management service instance. Non-current revision has ;rev=n as a suffix
      * where n is the revision number.
      *
-     * @param {string} tagId Tag identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} tagDescriptionId Tag description identifier. Used when
+     * creating tagDescription for API/Tag association. Based on API and Tag names.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -8861,9 +8976,9 @@ export interface ApiTagDescription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, ifMatch: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, tagDescriptionId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -9916,9 +10031,6 @@ export interface AuthorizationServer {
      * @param {array} [parameters.bearerTokenSendingMethods] Specifies the
      * mechanism by which access token is passed to the API.
      *
-     * @param {string} [parameters.clientSecret] Client or app secret registered
-     * with this authorization server.
-     *
      * @param {string} [parameters.resourceOwnerUsername] Can be optionally
      * specified when resource owner password grant type is supported by this
      * authorization server. Default resource owner username.
@@ -9942,6 +10054,10 @@ export interface AuthorizationServer {
      *
      * @param {string} parameters.clientId Client or app id registered with this
      * authorization server.
+     *
+     * @param {string} [parameters.clientSecret] Client or app secret registered
+     * with this authorization server. This property will not be filled on 'GET'
+     * operations! Use '/listSecrets' POST request to get the value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10002,9 +10118,6 @@ export interface AuthorizationServer {
      * @param {array} [parameters.bearerTokenSendingMethods] Specifies the
      * mechanism by which access token is passed to the API.
      *
-     * @param {string} [parameters.clientSecret] Client or app secret registered
-     * with this authorization server.
-     *
      * @param {string} [parameters.resourceOwnerUsername] Can be optionally
      * specified when resource owner password grant type is supported by this
      * authorization server. Default resource owner username.
@@ -10028,6 +10141,10 @@ export interface AuthorizationServer {
      *
      * @param {string} parameters.clientId Client or app id registered with this
      * authorization server.
+     *
+     * @param {string} [parameters.clientSecret] Client or app secret registered
+     * with this authorization server. This property will not be filled on 'GET'
+     * operations! Use '/listSecrets' POST request to get the value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10107,9 +10224,6 @@ export interface AuthorizationServer {
      * @param {array} [parameters.bearerTokenSendingMethods] Specifies the
      * mechanism by which access token is passed to the API.
      *
-     * @param {string} [parameters.clientSecret] Client or app secret registered
-     * with this authorization server.
-     *
      * @param {string} [parameters.resourceOwnerUsername] Can be optionally
      * specified when resource owner password grant type is supported by this
      * authorization server. Default resource owner username.
@@ -10133,6 +10247,10 @@ export interface AuthorizationServer {
      *
      * @param {string} [parameters.clientId] Client or app id registered with this
      * authorization server.
+     *
+     * @param {string} [parameters.clientSecret] Client or app secret registered
+     * with this authorization server. This property will not be filled on 'GET'
+     * operations! Use '/listSecrets' POST request to get the value.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -10193,9 +10311,6 @@ export interface AuthorizationServer {
      * @param {array} [parameters.bearerTokenSendingMethods] Specifies the
      * mechanism by which access token is passed to the API.
      *
-     * @param {string} [parameters.clientSecret] Client or app secret registered
-     * with this authorization server.
-     *
      * @param {string} [parameters.resourceOwnerUsername] Can be optionally
      * specified when resource owner password grant type is supported by this
      * authorization server. Default resource owner username.
@@ -10219,6 +10334,10 @@ export interface AuthorizationServer {
      *
      * @param {string} [parameters.clientId] Client or app id registered with this
      * authorization server.
+     *
+     * @param {string} [parameters.clientSecret] Client or app secret registered
+     * with this authorization server. This property will not be filled on 'GET'
+     * operations! Use '/listSecrets' POST request to get the value.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -10323,6 +10442,69 @@ export interface AuthorizationServer {
     deleteMethod(resourceGroupName: string, serviceName: string, authsid: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, authsid: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, authsid: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the client secret details of the authorization server.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} authsid Identifier of the authorization server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClientSecretContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, authsid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClientSecretContract>>;
+
+    /**
+     * Gets the client secret details of the authorization server.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} authsid Identifier of the authorization server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClientSecretContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClientSecretContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClientSecretContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, authsid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClientSecretContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, authsid: string, callback: ServiceCallback<models.ClientSecretContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, authsid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClientSecretContract>): void;
 
 
     /**
@@ -12723,14 +12905,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -12741,6 +12945,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -12748,6 +12956,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} parameters.publisherEmail Publisher email.
      *
@@ -12758,11 +12973,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -12809,14 +13037,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -12827,6 +13077,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -12834,6 +13088,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} parameters.publisherEmail Publisher email.
      *
@@ -12844,11 +13105,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -12914,14 +13188,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -12932,6 +13228,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -12939,6 +13239,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} [parameters.publisherEmail] Publisher email.
      *
@@ -12950,11 +13257,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -12998,14 +13318,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -13016,6 +13358,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -13023,6 +13369,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} [parameters.publisherEmail] Publisher email.
      *
@@ -13034,11 +13387,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -13719,14 +14085,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -13737,6 +14125,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -13744,6 +14136,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} parameters.publisherEmail Publisher email.
      *
@@ -13754,11 +14153,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -13805,14 +14217,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -13823,6 +14257,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -13830,6 +14268,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} parameters.publisherEmail Publisher email.
      *
@@ -13840,11 +14285,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -13910,14 +14368,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -13928,6 +14408,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -13935,6 +14419,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} [parameters.publisherEmail] Publisher email.
      *
@@ -13946,11 +14437,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -13994,14 +14498,36 @@ export interface ApiManagementService {
      * locations of the API Management service.
      *
      * @param {object} [parameters.customProperties] Custom properties of the API
-     * Management service. Setting
+     * Management service.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
      * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
-     * and 1.2). Setting
+     * and 1.2).</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can
-     * be used to disable just TLS 1.1 and setting
+     * be used to disable just TLS 1.1.</br>Setting
      * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
-     * be used to disable TLS 1.0 on an API Management service.
+     * be used to disable TLS 1.0 on an API Management service.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11`
+     * can be used to disable just TLS 1.1 for communications with
+     * backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10`
+     * can be used to disable TLS 1.0 for communications with backends.</br>Setting
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be
+     * used to enable HTTP2 protocol on an API Management service.</br>Not
+     * specifying any of these properties on PATCH operation will reset omitted
+     * properties' values to their defaults. For all the settings except Http2 the
+     * default value is `True` if the service was created on or before April 1st
+     * 2018 and `False` otherwise. Http2 setting's default value is
+     * `False`.</br></br>You can disable any of next ciphers by using settings
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+     * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+     * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
+     * TLS_RSA_WITH_AES_128_CBC_SHA. For example,
+     * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+     * The default value is `true` for them.  Note: next ciphers can't be disabled
+     * since they are required by Azure CloudService internal components:
+     * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
      *
      * @param {array} [parameters.certificates] List of Certificates that need to
      * be installed in the API Management service. Max supported certificates that
@@ -14012,6 +14538,10 @@ export interface ApiManagementService {
      * be presented on each request to the gateway. This also enables the ability
      * to authenticate the certificate in the policy on the gateway.
      *
+     * @param {boolean} [parameters.disableGateway] Property only valid for an Api
+     * Management service deployed in multiple locations. This can be used to
+     * disable the gateway in master region.
+     *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
      * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
@@ -14019,6 +14549,13 @@ export interface ApiManagementService {
      * Internet Facing Endpoint, and Internal means that API Management deployment
      * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      * Possible values include: 'None', 'External', 'Internal'
+     *
+     * @param {object} [parameters.apiVersionConstraint] Control Plane Apis version
+     * constraint for the API Management service.
+     *
+     * @param {string} [parameters.apiVersionConstraint.minApiVersion] Limit
+     * control plane API calls to API Management service with version equal to or
+     * newer than this value.
      *
      * @param {string} [parameters.publisherEmail] Publisher email.
      *
@@ -14030,11 +14567,24 @@ export interface ApiManagementService {
      * @param {string} parameters.sku.name Name of the Sku. Possible values
      * include: 'Developer', 'Standard', 'Premium', 'Basic', 'Consumption'
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the SKU (number of
-     * deployed units of the SKU).
+     * @param {number} parameters.sku.capacity Capacity of the SKU (number of
+     * deployed units of the SKU). For Consumption SKU capacity must be specified
+     * as 0.
      *
      * @param {object} [parameters.identity] Managed service identity of the Api
      * Management service.
+     *
+     * @param {string} parameters.identity.type The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the service. Possible values include:
+     * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+     * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -14591,9 +15141,16 @@ export interface Diagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14656,9 +15213,16 @@ export interface Diagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14740,9 +15304,16 @@ export interface Diagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -14806,9 +15377,16 @@ export interface Diagnostic {
      * @param {number} [parameters.backend.response.body.bytes] Number of request
      * body bytes to log.
      *
-     * @param {boolean} [parameters.enableHttpCorrelationHeaders] Whether to
-     * process Correlation Headers coming to Api Management Service. Only
-     * applicable to Application Insights diagnostics. Default is true.
+     * @param {boolean} [parameters.logClientIp] Log the ClientIP. Default is
+     * false.
+     *
+     * @param {string} [parameters.httpCorrelationProtocol] Sets correlation
+     * protocol to use for Application Insights diagnostics. Possible values
+     * include: 'None', 'Legacy', 'W3C'
+     *
+     * @param {string} [parameters.verbosity] The verbosity level applied to traces
+     * emitted by trace policies. Possible values include: 'verbose',
+     * 'information', 'error'
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -15589,6 +16167,1594 @@ export interface EmailTemplate {
     listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EmailTemplateCollection>;
     listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.EmailTemplateCollection>): void;
     listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EmailTemplateCollection>): void;
+}
+
+/**
+ * @class
+ * Gateway
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface Gateway {
+
+
+    /**
+     * Lists a collection of gateways registered with service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayCollection>>;
+
+    /**
+     * Lists a collection of gateways registered with service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayCollection>;
+    listByService(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.GatewayCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, options: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayCollection>): void;
+
+
+    /**
+     * Gets the entity state (Etag) version of the Gateway specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Gets the entity state (Etag) version of the Gateway specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the details of the Gateway specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayContract>>;
+
+    /**
+     * Gets the details of the Gateway specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayContract>;
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, callback: ServiceCallback<models.GatewayContract>): void;
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayContract>): void;
+
+
+    /**
+     * Creates or updates a Gateway to be used in Api Management instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {object} [parameters.locationData] Gateway location.
+     *
+     * @param {string} parameters.locationData.name A canonical name for the
+     * geographic or physical location.
+     *
+     * @param {string} [parameters.locationData.city] The city or locality where
+     * the resource is located.
+     *
+     * @param {string} [parameters.locationData.district] The district, state, or
+     * province where the resource is located.
+     *
+     * @param {string} [parameters.locationData.countryOrRegion] The country or
+     * region where the resource is located.
+     *
+     * @param {string} [parameters.description] Gateway description
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayContract>>;
+
+    /**
+     * Creates or updates a Gateway to be used in Api Management instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {object} [parameters.locationData] Gateway location.
+     *
+     * @param {string} parameters.locationData.name A canonical name for the
+     * geographic or physical location.
+     *
+     * @param {string} [parameters.locationData.city] The city or locality where
+     * the resource is located.
+     *
+     * @param {string} [parameters.locationData.district] The district, state, or
+     * province where the resource is located.
+     *
+     * @param {string} [parameters.locationData.countryOrRegion] The country or
+     * region where the resource is located.
+     *
+     * @param {string} [parameters.description] Gateway description
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, callback: ServiceCallback<models.GatewayContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayContract>): void;
+
+
+    /**
+     * Updates the details of the gateway specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {object} [parameters.locationData] Gateway location.
+     *
+     * @param {string} parameters.locationData.name A canonical name for the
+     * geographic or physical location.
+     *
+     * @param {string} [parameters.locationData.city] The city or locality where
+     * the resource is located.
+     *
+     * @param {string} [parameters.locationData.district] The district, state, or
+     * province where the resource is located.
+     *
+     * @param {string} [parameters.locationData.countryOrRegion] The country or
+     * region where the resource is located.
+     *
+     * @param {string} [parameters.description] Gateway description
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the details of the gateway specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {object} [parameters.locationData] Gateway location.
+     *
+     * @param {string} parameters.locationData.name A canonical name for the
+     * geographic or physical location.
+     *
+     * @param {string} [parameters.locationData.city] The city or locality where
+     * the resource is located.
+     *
+     * @param {string} [parameters.locationData.district] The district, state, or
+     * province where the resource is located.
+     *
+     * @param {string} [parameters.locationData.countryOrRegion] The country or
+     * region where the resource is located.
+     *
+     * @param {string} [parameters.description] Gateway description
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, ifMatch: string, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayContract, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Deletes specific Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes specific Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves gateway keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayKeysContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listKeysWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayKeysContract>>;
+
+    /**
+     * Retrieves gateway keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayKeysContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayKeysContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayKeysContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listKeys(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayKeysContract>;
+    listKeys(resourceGroupName: string, serviceName: string, gatewayId: string, callback: ServiceCallback<models.GatewayKeysContract>): void;
+    listKeys(resourceGroupName: string, serviceName: string, gatewayId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayKeysContract>): void;
+
+
+    /**
+     * Regenerates specified gateway key invalidating any tokens created with it.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.keyType The Key being regenerated. Possible
+     * values include: 'primary', 'secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayKeyRegenerationRequestContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Regenerates specified gateway key invalidating any tokens created with it.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.keyType The Key being regenerated. Possible
+     * values include: 'primary', 'secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    regenerateKey(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayKeyRegenerationRequestContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    regenerateKey(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayKeyRegenerationRequestContract, callback: ServiceCallback<void>): void;
+    regenerateKey(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayKeyRegenerationRequestContract, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the Shared Access Authorization Token for the gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.keyType The Key to be used to generate gateway
+     * token. Possible values include: 'primary', 'secondary'
+     *
+     * @param {date} parameters.expiry The Expiry time of the Token. Maximum token
+     * expiry time is set to 30 days. The date conforms to the following format:
+     * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+     *
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayTokenContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generateTokenWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayTokenRequestContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayTokenContract>>;
+
+    /**
+     * Gets the Shared Access Authorization Token for the gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.keyType The Key to be used to generate gateway
+     * token. Possible values include: 'primary', 'secondary'
+     *
+     * @param {date} parameters.expiry The Expiry time of the Token. Maximum token
+     * expiry time is set to 30 days. The date conforms to the following format:
+     * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+     *
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayTokenContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayTokenContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayTokenContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateToken(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayTokenRequestContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayTokenContract>;
+    generateToken(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayTokenRequestContract, callback: ServiceCallback<models.GatewayTokenContract>): void;
+    generateToken(resourceGroupName: string, serviceName: string, gatewayId: string, parameters: models.GatewayTokenRequestContract, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayTokenContract>): void;
+
+
+    /**
+     * Lists a collection of gateways registered with service instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayCollection>>;
+
+    /**
+     * Lists a collection of gateways registered with service instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.GatewayCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayCollection>): void;
+}
+
+/**
+ * @class
+ * GatewayHostnameConfiguration
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface GatewayHostnameConfiguration {
+
+
+    /**
+     * Lists the collection of hostname configurations for the specified gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayHostnameConfigurationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayHostnameConfigurationCollection>>;
+
+    /**
+     * Lists the collection of hostname configurations for the specified gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayHostnameConfigurationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayHostnameConfigurationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayHostnameConfigurationCollection} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayHostnameConfigurationCollection>;
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, callback: ServiceCallback<models.GatewayHostnameConfigurationCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, options: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayHostnameConfigurationCollection>): void;
+
+
+    /**
+     * Checks that hostname configuration entity specified by identifier exists for
+     * specified Gateway entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Checks that hostname configuration entity specified by identifier exists for
+     * specified Gateway entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the details of the Gateway hostname configuration specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayHostnameConfigurationContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayHostnameConfigurationContract>>;
+
+    /**
+     * Gets the details of the Gateway hostname configuration specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayHostnameConfigurationContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayHostnameConfigurationContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayHostnameConfigurationContract} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayHostnameConfigurationContract>;
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, callback: ServiceCallback<models.GatewayHostnameConfigurationContract>): void;
+    get(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayHostnameConfigurationContract>): void;
+
+
+    /**
+     * Creates of updates hostname configuration for a Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} parameters
+     *
+     * @param {string} [parameters.hostname] Hostname value. Supports valid domain
+     * name, partial or full wildcard
+     *
+     * @param {string} [parameters.certificateId] Identifier of Certificate entity
+     * that will be used for TLS connection establishment
+     *
+     * @param {boolean} [parameters.negotiateClientCertificate] Determines whether
+     * gateway requests client certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayHostnameConfigurationContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, parameters: models.GatewayHostnameConfigurationContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayHostnameConfigurationContract>>;
+
+    /**
+     * Creates of updates hostname configuration for a Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} parameters
+     *
+     * @param {string} [parameters.hostname] Hostname value. Supports valid domain
+     * name, partial or full wildcard
+     *
+     * @param {string} [parameters.certificateId] Identifier of Certificate entity
+     * that will be used for TLS connection establishment
+     *
+     * @param {boolean} [parameters.negotiateClientCertificate] Determines whether
+     * gateway requests client certificate
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayHostnameConfigurationContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayHostnameConfigurationContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayHostnameConfigurationContract} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, parameters: models.GatewayHostnameConfigurationContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayHostnameConfigurationContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, parameters: models.GatewayHostnameConfigurationContract, callback: ServiceCallback<models.GatewayHostnameConfigurationContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, parameters: models.GatewayHostnameConfigurationContract, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayHostnameConfigurationContract>): void;
+
+
+    /**
+     * Deletes the specified hostname configuration from the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified hostname configuration from the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} hcId Gateway hostname configuration identifier. Must be
+     * unique in the scope of parent Gateway entity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, hcId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the collection of hostname configurations for the specified gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayHostnameConfigurationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayHostnameConfigurationCollection>>;
+
+    /**
+     * Lists the collection of hostname configurations for the specified gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayHostnameConfigurationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayHostnameConfigurationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayHostnameConfigurationCollection} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayHostnameConfigurationCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.GatewayHostnameConfigurationCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayHostnameConfigurationCollection>): void;
+}
+
+/**
+ * @class
+ * GatewayApi
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface GatewayApi {
+
+
+    /**
+     * Lists a collection of the APIs associated with a gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApiCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApiCollection>>;
+
+    /**
+     * Lists a collection of the APIs associated with a gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApiCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApiCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApiCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, options?: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApiCollection>;
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, callback: ServiceCallback<models.ApiCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, gatewayId: string, options: { top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApiCollection>): void;
+
+
+    /**
+     * Checks that API entity specified by identifier is associated with the
+     * Gateway entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Checks that API entity specified by identifier is associated with the
+     * Gateway entity.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Adds an API to the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters]
+     *
+     * @param {string} [options.parameters.provisioningState] Provisioning state.
+     * Possible values include: 'created'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApiContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { parameters? : models.AssociationContract, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApiContract>>;
+
+    /**
+     * Adds an API to the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters]
+     *
+     * @param {string} [options.parameters.provisioningState] Provisioning state.
+     * Possible values include: 'created'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApiContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApiContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApiContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { parameters? : models.AssociationContract, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApiContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, callback: ServiceCallback<models.ApiContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options: { parameters? : models.AssociationContract, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApiContract>): void;
+
+
+    /**
+     * Deletes the specified API from the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified API from the specified Gateway.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} gatewayId Gateway entity identifier. Must be unique in the
+     * current API Management service instance. Must not have value 'managed'
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, gatewayId: string, apiId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists a collection of the APIs associated with a gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApiCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApiCollection>>;
+
+    /**
+     * Lists a collection of the APIs associated with a gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApiCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApiCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApiCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApiCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.ApiCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApiCollection>): void;
 }
 
 /**
@@ -16745,9 +18911,12 @@ export interface IdentityProvider {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {string} [parameters.identityProviderContractType] Identity Provider
-     * Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
-     * 'twitter', 'aad', 'aadB2C'
+     * @param {string} [parameters.identityProviderCreateContractType] Identity
+     * Provider Type identifier. Possible values include: 'facebook', 'google',
+     * 'microsoft', 'twitter', 'aad', 'aadB2C'
+     *
+     * @param {string} [parameters.signinTenant] The TenantId to use instead of
+     * Common when logging into Active Directory
      *
      * @param {array} [parameters.allowedTenants] List of Allowed Tenants when
      * configuring Azure Active Directory login.
@@ -16774,7 +18943,8 @@ export interface IdentityProvider {
      * @param {string} parameters.clientSecret Client secret of the Application in
      * external Identity Provider, used to authenticate login request. For example,
      * it is App Secret for Facebook login, API Key for Google login, Public Key
-     * for Microsoft.
+     * for Microsoft. This property will not be filled on 'GET' operations! Use
+     * '/listSecrets' POST request to get the value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16790,7 +18960,7 @@ export interface IdentityProvider {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentityProviderContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentityProviderContract>>;
 
     /**
      * Creates or Updates the IdentityProvider configuration.
@@ -16805,9 +18975,12 @@ export interface IdentityProvider {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {string} [parameters.identityProviderContractType] Identity Provider
-     * Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
-     * 'twitter', 'aad', 'aadB2C'
+     * @param {string} [parameters.identityProviderCreateContractType] Identity
+     * Provider Type identifier. Possible values include: 'facebook', 'google',
+     * 'microsoft', 'twitter', 'aad', 'aadB2C'
+     *
+     * @param {string} [parameters.signinTenant] The TenantId to use instead of
+     * Common when logging into Active Directory
      *
      * @param {array} [parameters.allowedTenants] List of Allowed Tenants when
      * configuring Azure Active Directory login.
@@ -16834,7 +19007,8 @@ export interface IdentityProvider {
      * @param {string} parameters.clientSecret Client secret of the Application in
      * external Identity Provider, used to authenticate login request. For example,
      * it is App Secret for Facebook login, API Key for Google login, Public Key
-     * for Microsoft.
+     * for Microsoft. This property will not be filled on 'GET' operations! Use
+     * '/listSecrets' POST request to get the value.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16867,9 +19041,9 @@ export interface IdentityProvider {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentityProviderContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderContract, callback: ServiceCallback<models.IdentityProviderContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentityProviderContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentityProviderContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderCreateContract, callback: ServiceCallback<models.IdentityProviderContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, identityProviderName: string, parameters: models.IdentityProviderCreateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentityProviderContract>): void;
 
 
     /**
@@ -16888,6 +19062,9 @@ export interface IdentityProvider {
      * @param {string} [parameters.type] Identity Provider Type identifier.
      * Possible values include: 'facebook', 'google', 'microsoft', 'twitter',
      * 'aad', 'aadB2C'
+     *
+     * @param {string} [parameters.signinTenant] The TenantId to use instead of
+     * Common when logging into Active Directory
      *
      * @param {array} [parameters.allowedTenants] List of Allowed Tenants when
      * configuring Azure Active Directory login.
@@ -16949,6 +19126,9 @@ export interface IdentityProvider {
      * @param {string} [parameters.type] Identity Provider Type identifier.
      * Possible values include: 'facebook', 'google', 'microsoft', 'twitter',
      * 'aad', 'aadB2C'
+     *
+     * @param {string} [parameters.signinTenant] The TenantId to use instead of
+     * Common when logging into Active Directory
      *
      * @param {array} [parameters.allowedTenants] List of Allowed Tenants when
      * configuring Azure Active Directory login.
@@ -17084,6 +19264,73 @@ export interface IdentityProvider {
     deleteMethod(resourceGroupName: string, serviceName: string, identityProviderName: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, identityProviderName: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, identityProviderName: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the client secret details of the Identity Provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} identityProviderName Identity Provider Type identifier.
+     * Possible values include: 'facebook', 'google', 'microsoft', 'twitter',
+     * 'aad', 'aadB2C'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClientSecretContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, identityProviderName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClientSecretContract>>;
+
+    /**
+     * Gets the client secret details of the Identity Provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} identityProviderName Identity Provider Type identifier.
+     * Possible values include: 'facebook', 'google', 'microsoft', 'twitter',
+     * 'aad', 'aadB2C'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClientSecretContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClientSecretContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClientSecretContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, identityProviderName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClientSecretContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, identityProviderName: string, callback: ServiceCallback<models.ClientSecretContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, identityProviderName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClientSecretContract>): void;
 
 
     /**
@@ -17926,6 +20173,813 @@ export interface Logger {
     listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerCollection>;
     listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.LoggerCollection>): void;
     listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerCollection>): void;
+}
+
+/**
+ * @class
+ * NamedValue
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface NamedValue {
+
+
+    /**
+     * Lists a collection of NamedValues defined within a service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] |   Field     |     Usage     |
+     * Supported operators     |     Supported functions
+     * |</br>|-------------|-------------|-------------|-------------|</br>| tags |
+     * filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+     * endswith, any, all | </br>| displayName | filter | ge, le, eq, ne, gt, lt |
+     * substringof, contains, startswith, endswith | </br>
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueCollection>>;
+
+    /**
+     * Lists a collection of NamedValues defined within a service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] |   Field     |     Usage     |
+     * Supported operators     |     Supported functions
+     * |</br>|-------------|-------------|-------------|-------------|</br>| tags |
+     * filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
+     * endswith, any, all | </br>| displayName | filter | ge, le, eq, ne, gt, lt |
+     * substringof, contains, startswith, endswith | </br>
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueCollection>;
+    listByService(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.NamedValueCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueCollection>): void;
+
+
+    /**
+     * Gets the entity state (Etag) version of the NamedValue specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Gets the entity state (Etag) version of the NamedValue specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, namedValueId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, namedValueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the details of the NamedValue specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueContract>>;
+
+    /**
+     * Gets the details of the NamedValue specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueContract>;
+    get(resourceGroupName: string, serviceName: string, namedValueId: string, callback: ServiceCallback<models.NamedValueContract>): void;
+    get(resourceGroupName: string, serviceName: string, namedValueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueContract>): void;
+
+
+    /**
+     * Creates or updates a NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} parameters.displayName Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} parameters.value Value of the NamedValue. Can contain policy
+     * expressions. It may not be empty or consist only of whitespace. This
+     * property will not be filled on 'GET' operations! Use '/listSecrets' POST
+     * request to get the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueContract>>;
+
+    /**
+     * Creates or updates a NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} parameters.displayName Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} parameters.value Value of the NamedValue. Can contain policy
+     * expressions. It may not be empty or consist only of whitespace. This
+     * property will not be filled on 'GET' operations! Use '/listSecrets' POST
+     * request to get the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, callback: ServiceCallback<models.NamedValueContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueContract>): void;
+
+
+    /**
+     * Updates the specific NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} [parameters.displayName] Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} [parameters.value] Value of the NamedValue. Can contain
+     * policy expressions. It may not be empty or consist only of whitespace.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueContract>>;
+
+    /**
+     * Updates the specific NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} [parameters.displayName] Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} [parameters.value] Value of the NamedValue. Can contain
+     * policy expressions. It may not be empty or consist only of whitespace.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueContract>;
+    update(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, callback: ServiceCallback<models.NamedValueContract>): void;
+    update(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueContract>): void;
+
+
+    /**
+     * Deletes specific NamedValue from the API Management service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes specific NamedValue from the API Management service instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, namedValueId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, namedValueId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, namedValueId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the secret value of the NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PropertyValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listValueWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyValueContract>>;
+
+    /**
+     * Gets the secret value of the NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PropertyValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PropertyValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PropertyValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listValue(resourceGroupName: string, serviceName: string, namedValueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyValueContract>;
+    listValue(resourceGroupName: string, serviceName: string, namedValueId: string, callback: ServiceCallback<models.PropertyValueContract>): void;
+    listValue(resourceGroupName: string, serviceName: string, namedValueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyValueContract>): void;
+
+
+    /**
+     * Creates or updates a NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} parameters.displayName Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} parameters.value Value of the NamedValue. Can contain policy
+     * expressions. It may not be empty or consist only of whitespace. This
+     * property will not be filled on 'GET' operations! Use '/listSecrets' POST
+     * request to get the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueContract>>;
+
+    /**
+     * Creates or updates a NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} parameters.displayName Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} parameters.value Value of the NamedValue. Can contain policy
+     * expressions. It may not be empty or consist only of whitespace. This
+     * property will not be filled on 'GET' operations! Use '/listSecrets' POST
+     * request to get the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
+     * creating an entity, but required when updating an entity.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueContract>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, callback: ServiceCallback<models.NamedValueContract>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueCreateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueContract>): void;
+
+
+    /**
+     * Updates the specific NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} [parameters.displayName] Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} [parameters.value] Value of the NamedValue. Can contain
+     * policy expressions. It may not be empty or consist only of whitespace.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueContract>>;
+
+    /**
+     * Updates the specific NamedValue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} namedValueId Identifier of the NamedValue.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {array} [parameters.tags] Optional tags that when provided can be
+     * used to filter the NamedValue list.
+     *
+     * @param {boolean} [parameters.secret] Determines whether the value is a
+     * secret and should be encrypted or not. Default value is false.
+     *
+     * @param {string} [parameters.displayName] Unique name of NamedValue. It may
+     * contain only letters, digits, period, dash, and underscore characters.
+     *
+     * @param {string} [parameters.value] Value of the NamedValue. Can contain
+     * policy expressions. It may not be empty or consist only of whitespace.
+     *
+     * @param {string} ifMatch ETag of the Entity. ETag should match the current
+     * entity state from the header response of the GET request or it should be *
+     * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueContract>;
+    beginUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, callback: ServiceCallback<models.NamedValueContract>): void;
+    beginUpdate(resourceGroupName: string, serviceName: string, namedValueId: string, parameters: models.NamedValueUpdateParameters, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueContract>): void;
+
+
+    /**
+     * Lists a collection of NamedValues defined within a service instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NamedValueCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NamedValueCollection>>;
+
+    /**
+     * Lists a collection of NamedValues defined within a service instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NamedValueCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NamedValueCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NamedValueCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NamedValueCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.NamedValueCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamedValueCollection>): void;
 }
 
 /**
@@ -19470,6 +22524,69 @@ export interface OpenIdConnectProvider {
 
 
     /**
+     * Gets the client secret details of the OpenID Connect Provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} opid Identifier of the OpenID Connect Provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClientSecretContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, opid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClientSecretContract>>;
+
+    /**
+     * Gets the client secret details of the OpenID Connect Provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} opid Identifier of the OpenID Connect Provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClientSecretContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClientSecretContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClientSecretContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, opid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClientSecretContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, opid: string, callback: ServiceCallback<models.ClientSecretContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, opid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClientSecretContract>): void;
+
+
+    /**
      * Lists of all the OpenId Connect Providers.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -19871,15 +22988,15 @@ export interface Policy {
 
 /**
  * @class
- * PolicySnippet
+ * PolicyDescription
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
  */
-export interface PolicySnippet {
+export interface PolicyDescription {
 
 
     /**
-     * Lists all policy snippets.
+     * Lists all policy descriptions.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -19895,14 +23012,14 @@ export interface PolicySnippet {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PolicySnippetsCollection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDescriptionCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { scope? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySnippetsCollection>>;
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { scope? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDescriptionCollection>>;
 
     /**
-     * Lists all policy snippets.
+     * Lists all policy descriptions.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -19923,7 +23040,7 @@ export interface PolicySnippet {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PolicySnippetsCollection} - The deserialized result object.
+     *                      @resolve {PolicyDescriptionCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19931,17 +23048,17 @@ export interface PolicySnippet {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PolicySnippetsCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PolicySnippetsCollection} for more
+     *                      {PolicyDescriptionCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDescriptionCollection} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByService(resourceGroupName: string, serviceName: string, options?: { scope? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySnippetsCollection>;
-    listByService(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.PolicySnippetsCollection>): void;
-    listByService(resourceGroupName: string, serviceName: string, options: { scope? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySnippetsCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, options?: { scope? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDescriptionCollection>;
+    listByService(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.PolicyDescriptionCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, options: { scope? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDescriptionCollection>): void;
 }
 
 /**
@@ -20875,6 +23992,66 @@ export interface DelegationSettings {
     createOrUpdate(resourceGroupName: string, serviceName: string, parameters: models.PortalDelegationSettings, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PortalDelegationSettings>;
     createOrUpdate(resourceGroupName: string, serviceName: string, parameters: models.PortalDelegationSettings, callback: ServiceCallback<models.PortalDelegationSettings>): void;
     createOrUpdate(resourceGroupName: string, serviceName: string, parameters: models.PortalDelegationSettings, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PortalDelegationSettings>): void;
+
+
+    /**
+     * Gets the secret validation key of the DelegationSettings.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PortalSettingValidationKeyContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PortalSettingValidationKeyContract>>;
+
+    /**
+     * Gets the secret validation key of the DelegationSettings.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PortalSettingValidationKeyContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PortalSettingValidationKeyContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PortalSettingValidationKeyContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PortalSettingValidationKeyContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.PortalSettingValidationKeyContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PortalSettingValidationKeyContract>): void;
 }
 
 /**
@@ -22987,545 +26164,6 @@ export interface ProductPolicy {
 
 /**
  * @class
- * Property
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface Property {
-
-
-    /**
-     * Lists a collection of properties defined within a service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] |   Field     |     Usage     |
-     * Supported operators     |     Supported functions
-     * |</br>|-------------|-------------|-------------|-------------|</br>| tags |
-     * filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-     * endswith, any, all | </br>| displayName | filter | ge, le, eq, ne, gt, lt |
-     * substringof, contains, startswith, endswith | </br>
-     *
-     * @param {number} [options.top] Number of records to return.
-     *
-     * @param {number} [options.skip] Number of records to skip.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PropertyCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyCollection>>;
-
-    /**
-     * Lists a collection of properties defined within a service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] |   Field     |     Usage     |
-     * Supported operators     |     Supported functions
-     * |</br>|-------------|-------------|-------------|-------------|</br>| tags |
-     * filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith,
-     * endswith, any, all | </br>| displayName | filter | ge, le, eq, ne, gt, lt |
-     * substringof, contains, startswith, endswith | </br>
-     *
-     * @param {number} [options.top] Number of records to return.
-     *
-     * @param {number} [options.skip] Number of records to skip.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PropertyCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PropertyCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PropertyCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByService(resourceGroupName: string, serviceName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyCollection>;
-    listByService(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.PropertyCollection>): void;
-    listByService(resourceGroupName: string, serviceName: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyCollection>): void;
-
-
-    /**
-     * Gets the entity state (Etag) version of the property specified by its
-     * identifier.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Gets the entity state (Etag) version of the property specified by its
-     * identifier.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getEntityTag(resourceGroupName: string, serviceName: string, propId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    getEntityTag(resourceGroupName: string, serviceName: string, propId: string, callback: ServiceCallback<void>): void;
-    getEntityTag(resourceGroupName: string, serviceName: string, propId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets the details of the property specified by its identifier.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PropertyContract>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyContract>>;
-
-    /**
-     * Gets the details of the property specified by its identifier.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PropertyContract} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PropertyContract} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PropertyContract} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serviceName: string, propId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyContract>;
-    get(resourceGroupName: string, serviceName: string, propId: string, callback: ServiceCallback<models.PropertyContract>): void;
-    get(resourceGroupName: string, serviceName: string, propId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyContract>): void;
-
-
-    /**
-     * Creates or updates a property.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} parameters Create parameters.
-     *
-     * @param {array} [parameters.tags] Optional tags that when provided can be
-     * used to filter the property list.
-     *
-     * @param {boolean} [parameters.secret] Determines whether the value is a
-     * secret and should be encrypted or not. Default value is false.
-     *
-     * @param {string} parameters.displayName Unique name of Property. It may
-     * contain only letters, digits, period, dash, and underscore characters.
-     *
-     * @param {string} parameters.value Value of the property. Can contain policy
-     * expressions. It may not be empty or consist only of whitespace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
-     * creating an entity, but required when updating an entity.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PropertyContract>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyContract>>;
-
-    /**
-     * Creates or updates a property.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} parameters Create parameters.
-     *
-     * @param {array} [parameters.tags] Optional tags that when provided can be
-     * used to filter the property list.
-     *
-     * @param {boolean} [parameters.secret] Determines whether the value is a
-     * secret and should be encrypted or not. Default value is false.
-     *
-     * @param {string} parameters.displayName Unique name of Property. It may
-     * contain only letters, digits, period, dash, and underscore characters.
-     *
-     * @param {string} parameters.value Value of the property. Can contain policy
-     * expressions. It may not be empty or consist only of whitespace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ifMatch] ETag of the Entity. Not required when
-     * creating an entity, but required when updating an entity.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PropertyContract} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PropertyContract} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PropertyContract} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyContract, callback: ServiceCallback<models.PropertyContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyContract>): void;
-
-
-    /**
-     * Updates the specific property.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} parameters Update parameters.
-     *
-     * @param {array} [parameters.tags] Optional tags that when provided can be
-     * used to filter the property list.
-     *
-     * @param {boolean} [parameters.secret] Determines whether the value is a
-     * secret and should be encrypted or not. Default value is false.
-     *
-     * @param {string} [parameters.displayName] Unique name of Property. It may
-     * contain only letters, digits, period, dash, and underscore characters.
-     *
-     * @param {string} [parameters.value] Value of the property. Can contain policy
-     * expressions. It may not be empty or consist only of whitespace.
-     *
-     * @param {string} ifMatch ETag of the Entity. ETag should match the current
-     * entity state from the header response of the GET request or it should be *
-     * for unconditional update.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Updates the specific property.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {object} parameters Update parameters.
-     *
-     * @param {array} [parameters.tags] Optional tags that when provided can be
-     * used to filter the property list.
-     *
-     * @param {boolean} [parameters.secret] Determines whether the value is a
-     * secret and should be encrypted or not. Default value is false.
-     *
-     * @param {string} [parameters.displayName] Unique name of Property. It may
-     * contain only letters, digits, period, dash, and underscore characters.
-     *
-     * @param {string} [parameters.value] Value of the property. Can contain policy
-     * expressions. It may not be empty or consist only of whitespace.
-     *
-     * @param {string} ifMatch ETag of the Entity. ETag should match the current
-     * entity state from the header response of the GET request or it should be *
-     * for unconditional update.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyUpdateParameters, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyUpdateParameters, ifMatch: string, callback: ServiceCallback<void>): void;
-    update(resourceGroupName: string, serviceName: string, propId: string, parameters: models.PropertyUpdateParameters, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Deletes specific property from the API Management service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {string} ifMatch ETag of the Entity. ETag should match the current
-     * entity state from the header response of the GET request or it should be *
-     * for unconditional update.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes specific property from the API Management service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} propId Identifier of the property.
-     *
-     * @param {string} ifMatch ETag of the Entity. ETag should match the current
-     * entity state from the header response of the GET request or it should be *
-     * for unconditional update.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serviceName: string, propId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceName: string, propId: string, ifMatch: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceName: string, propId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists a collection of properties defined within a service instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PropertyCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PropertyCollection>>;
-
-    /**
-     * Lists a collection of properties defined within a service instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PropertyCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PropertyCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PropertyCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PropertyCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.PropertyCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PropertyCollection>): void;
-}
-
-/**
- * @class
  * QuotaByCounterKeys
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
@@ -23642,7 +26280,7 @@ export interface QuotaByCounterKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueContractProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueUpdateContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates all the quota counter values specified with the existing quota
@@ -23692,9 +26330,9 @@ export interface QuotaByCounterKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueContractProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueContractProperties, callback: ServiceCallback<void>): void;
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueContractProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueUpdateContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueUpdateContract, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, parameters: models.QuotaCounterValueUpdateContract, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -23816,7 +26454,7 @@ export interface QuotaByPeriodKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueContractProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueUpdateContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates an existing quota counter value in the specified service instance.
@@ -23866,9 +26504,9 @@ export interface QuotaByPeriodKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueContractProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueContractProperties, callback: ServiceCallback<void>): void;
-    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueContractProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueUpdateContract, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueUpdateContract, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, quotaCounterKey: string, quotaPeriodKey: string, parameters: models.QuotaCounterValueUpdateContract, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -25492,6 +28130,10 @@ export interface Subscription {
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
      * creating an entity, but required when updating an entity.
      *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -25501,7 +28143,7 @@ export interface Subscription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options?: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options?: { notify? : boolean, ifMatch? : string, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionContract>>;
 
     /**
      * Creates or updates the subscription of specified user to the specified
@@ -25554,6 +28196,10 @@ export interface Subscription {
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
      * creating an entity, but required when updating an entity.
      *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -25579,9 +28225,9 @@ export interface Subscription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options?: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options?: { notify? : boolean, ifMatch? : string, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionContract>;
     createOrUpdate(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, callback: ServiceCallback<models.SubscriptionContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionCreateParameters, options: { notify? : boolean, ifMatch? : string, appType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionContract>): void;
 
 
     /**
@@ -25624,7 +28270,8 @@ export interface Subscription {
      * 'suspended', 'active', 'expired', 'submitted', 'rejected', 'cancelled'
      *
      * @param {string} [parameters.stateComment] Comments describing subscription
-     * state change by the administrator.
+     * state change by the administrator when the state is changed to the
+     * 'rejected'.
      *
      * @param {boolean} [parameters.allowTracing] Determines whether tracing can be
      * enabled
@@ -25639,6 +28286,10 @@ export interface Subscription {
      * - If false, do not send any email notification for change of state of
      * subscription
      * - If true, send email notification of change of state of subscription
+     *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -25649,7 +28300,7 @@ export interface Subscription {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options?: { notify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options?: { notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates the details of a subscription specified by its identifier.
@@ -25691,7 +28342,8 @@ export interface Subscription {
      * 'suspended', 'active', 'expired', 'submitted', 'rejected', 'cancelled'
      *
      * @param {string} [parameters.stateComment] Comments describing subscription
-     * state change by the administrator.
+     * state change by the administrator when the state is changed to the
+     * 'rejected'.
      *
      * @param {boolean} [parameters.allowTracing] Determines whether tracing can be
      * enabled
@@ -25706,6 +28358,10 @@ export interface Subscription {
      * - If false, do not send any email notification for change of state of
      * subscription
      * - If true, send email notification of change of state of subscription
+     *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -25731,9 +28387,9 @@ export interface Subscription {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options?: { notify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options?: { notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     update(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, callback: ServiceCallback<void>): void;
-    update(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options: { notify? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options: { notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -25938,6 +28594,72 @@ export interface Subscription {
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, sid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, sid: string, callback: ServiceCallback<void>): void;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, sid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the subscription keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} sid Subscription entity Identifier. The entity represents
+     * the association between a user and a product in API Management.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SubscriptionKeysContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionKeysContract>>;
+
+    /**
+     * Gets the subscription keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} sid Subscription entity Identifier. The entity represents
+     * the association between a user and a product in API Management.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SubscriptionKeysContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SubscriptionKeysContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SubscriptionKeysContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, sid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionKeysContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, sid: string, callback: ServiceCallback<models.SubscriptionKeysContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, sid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionKeysContract>): void;
 
 
     /**
@@ -26239,7 +28961,7 @@ export interface TenantAccess {
 
 
     /**
-     * Get tenant access information details
+     * Get tenant access information details without secrets.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -26259,7 +28981,7 @@ export interface TenantAccess {
     getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessInformationContract>>;
 
     /**
-     * Get tenant access information details
+     * Get tenant access information details without secrets.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -26490,6 +29212,66 @@ export interface TenantAccess {
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, callback: ServiceCallback<void>): void;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Get tenant access information details.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessInformationContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessInformationContract>>;
+
+    /**
+     * Get tenant access information details.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessInformationContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessInformationContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessInformationContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessInformationContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.AccessInformationContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessInformationContract>): void;
 }
 
 /**
@@ -26502,7 +29284,7 @@ export interface TenantAccessGit {
 
 
     /**
-     * Gets the Git access configuration for the tenant.
+     * Gets the Git access configuration for the tenant. Without secrets.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -26522,7 +29304,7 @@ export interface TenantAccessGit {
     getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessInformationContract>>;
 
     /**
-     * Gets the Git access configuration for the tenant.
+     * Gets the Git access configuration for the tenant. Without secrets.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -26675,6 +29457,66 @@ export interface TenantAccessGit {
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, callback: ServiceCallback<void>): void;
     regenerateSecondaryKey(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the Git access configuration for the tenant.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessInformationContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessInformationContract>>;
+
+    /**
+     * Gets the Git access configuration for the tenant.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessInformationContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessInformationContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessInformationContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessInformationContract>;
+    listSecrets(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.AccessInformationContract>): void;
+    listSecrets(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessInformationContract>): void;
 }
 
 /**
@@ -27497,11 +30339,17 @@ export interface User {
      * @param {string} [parameters.password] User Password. If no value is
      * provided, a default password is generated.
      *
+     * @param {string} [parameters.appType] Determines the type of application
+     * which send the create user request. Default is legacy portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {string} [parameters.confirmation] Determines the type of
      * confirmation e-mail that will be sent to the newly created user. Possible
      * values include: 'signup', 'invite'
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.notify] Send an Email notification to the User.
      *
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
      * creating an entity, but required when updating an entity.
@@ -27515,7 +30363,7 @@ export interface User {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserContract>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options?: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserContract>>;
 
     /**
      * Creates or Updates a user.
@@ -27549,11 +30397,17 @@ export interface User {
      * @param {string} [parameters.password] User Password. If no value is
      * provided, a default password is generated.
      *
+     * @param {string} [parameters.appType] Determines the type of application
+     * which send the create user request. Default is legacy portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {string} [parameters.confirmation] Determines the type of
      * confirmation e-mail that will be sent to the newly created user. Possible
      * values include: 'signup', 'invite'
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.notify] Send an Email notification to the User.
      *
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
      * creating an entity, but required when updating an entity.
@@ -27583,9 +30437,9 @@ export interface User {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UserContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options?: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UserContract>;
     createOrUpdate(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, callback: ServiceCallback<models.UserContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, userId: string, parameters: models.UserCreateParameters, options: { notify? : boolean, ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserContract>): void;
 
 
     /**
@@ -27724,6 +30578,10 @@ export interface User {
      * @param {boolean} [options.notify] Send an Account Closed Email notification
      * to the User.
      *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -27733,7 +30591,7 @@ export interface User {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options?: { deleteSubscriptions? : boolean, notify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options?: { deleteSubscriptions? : boolean, notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes specific user.
@@ -27756,6 +30614,10 @@ export interface User {
      *
      * @param {boolean} [options.notify] Send an Account Closed Email notification
      * to the User.
+     *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -27781,9 +30643,9 @@ export interface User {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options?: { deleteSubscriptions? : boolean, notify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options?: { deleteSubscriptions? : boolean, notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options: { deleteSubscriptions? : boolean, notify? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, userId: string, ifMatch: string, options: { deleteSubscriptions? : boolean, notify? : boolean, appType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -28473,6 +31335,10 @@ export interface UserConfirmationPassword {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -28482,7 +31348,7 @@ export interface UserConfirmationPassword {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    sendWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    sendWithHttpOperationResponse(resourceGroupName: string, serviceName: string, userId: string, options?: { appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Sends confirmation
@@ -28495,6 +31361,10 @@ export interface UserConfirmationPassword {
      * Management service instance.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.appType] Determines the type of application which
+     * send the create user request. Default is legacy publisher portal. Possible
+     * values include: 'portal', 'developerPortal'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -28520,9 +31390,9 @@ export interface UserConfirmationPassword {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    send(resourceGroupName: string, serviceName: string, userId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    send(resourceGroupName: string, serviceName: string, userId: string, options?: { appType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     send(resourceGroupName: string, serviceName: string, userId: string, callback: ServiceCallback<void>): void;
-    send(resourceGroupName: string, serviceName: string, userId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    send(resourceGroupName: string, serviceName: string, userId: string, options: { appType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -28548,7 +31418,7 @@ export interface ApiExport {
      *
      * @param {string} format Format in which to export the Api Details to the
      * Storage Blob with Sas Key valid for 5 minutes. Possible values include:
-     * 'Swagger', 'Wsdl', 'Wadl', 'Openapi'
+     * 'Swagger', 'Wsdl', 'Wadl', 'Openapi', 'OpenapiJson'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -28577,7 +31447,7 @@ export interface ApiExport {
      *
      * @param {string} format Format in which to export the Api Details to the
      * Storage Blob with Sas Key valid for 5 minutes. Possible values include:
-     * 'Swagger', 'Wsdl', 'Wadl', 'Openapi'
+     * 'Swagger', 'Wsdl', 'Wadl', 'Openapi', 'OpenapiJson'
      *
      * @param {object} [options] Optional Parameters.
      *
