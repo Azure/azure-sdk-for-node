@@ -21,7 +21,7 @@ var testutil = require('../../../util/util');
 
 // Lib includes
 var common = require('azure-common');
-var SharedKeyLiteTable = require('azure-storage-legacy').SharedKeyLiteTable;
+var SharedKeyLiteTable = testutil.libRequire('services/legacyStorage').SharedKeyLiteTable;
 var WebResource = common.WebResource;
 var ServiceClientConstants = common.ServiceClientConstants;
 var Constants = common.Constants;
