@@ -25,54 +25,89 @@ export interface AutoStorageBaseProperties {
   storageAccountId: string;
 }
 
+/**
+ * KeyVault configuration when using an encryption KeySource of Microsoft.KeyVault.
+ */
 export interface KeyVaultProperties {
   /**
    * Full path to the versioned secret. Example
-   * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053
-  */
+   * https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. To be usable
+   * the following prerequisites must be met:
+   *
+   * The Batch Account has a System Assigned identity
+   * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+   * The KeyVault has soft-delete and purge protection enabled
+   */
   keyIdentifier?: string;
 }
 
+/**
+ * Configures how customer data is encrypted inside the Batch account. By default, accounts are
+ * encrypted using a Microsoft managed key. For additional control, a customer-managed key can be
+ * used instead.
+ */
 export interface EncryptionProperties {
   /**
    * Type of the key source. Possible values include: 'Microsoft.Batch', 'Microsoft.KeyVault'
-  */
+   */
   keySource?: string;
   /**
    * Additional details when using Microsoft.KeyVault
-  */
+   */
   keyVaultProperties?: KeyVaultProperties;
 }
 
 /**
  * Identifies the Azure key vault associated with a Batch account.
-*/
+ */
 export interface KeyVaultReference {
   /**
    * The resource ID of the Azure key vault associated with the Batch account.
-  */
+   */
   id: string;
   /**
    * The URL of the Azure key vault associated with the Batch account.
-  */
+   */
   url: string;
 }
 
 /**
+ * The identity of the Batch account, if configured. This is only used when the user specifies
+ * 'Azure.KeyVault' as their Batch account encryption configuration.
+ */
+export interface BatchAccountIdentity {
+  /**
+   * The principal id of the Batch account. This property will only be provided for a system
+   * assigned identity.
+   */
+  readonly principalId?: string;
+  /**
+   * The tenant id associated with the Batch account. This property will only be provided for a
+   * system assigned identity.
+   */
+  readonly tenantId?: string;
+  /**
+   * The type of identity used for the Batch account. Possible values include: 'SystemAssigned',
+   * 'None'
+   */
+  type: string;
+}
+
+/**
  * Parameters supplied to the Create operation.
-*/
+ */
 export interface BatchAccountCreateParameters {
   /**
    * The region in which to create the account.
-  */
+   */
   location: string;
   /**
    * The user-specified tags associated with the account.
-  */
+   */
   tags?: { [propertyName: string]: string };
   /**
    * The properties related to the auto-storage account.
-  */
+   */
   autoStorage?: AutoStorageBaseProperties;
   /**
    * @summary The allocation mode to use for creating pools in the Batch account.
@@ -80,128 +115,214 @@ export interface BatchAccountCreateParameters {
    * Service API. If the mode is BatchService, clients may authenticate using access keys or Azure
    * Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory.
    * The default is BatchService. Possible values include: 'BatchService', 'UserSubscription'
-  */
+   */
   poolAllocationMode?: string;
   /**
    * A reference to the Azure key vault associated with the Batch account.
-  */
+   */
   keyVaultReference?: KeyVaultReference;
   /**
    * @summary The network access type for accessing Azure Batch account.
-   * @description Possible values include: 'Enabled', 'Disabled'
-  */
+   * @description If not specified, the default value is 'enabled'. Possible values include:
+   * 'Enabled', 'Disabled'
+   */
   publicNetworkAccess?: string;
   /**
    * @summary The encryption configuration for the Batch account.
-  */
+   * @description Configures how customer data is encrypted inside the Batch account. By default,
+   * accounts are encrypted using a Microsoft managed key. For additional control, a
+   * customer-managed key can be used instead.
+   */
   encryption?: EncryptionProperties;
+  /**
+   * The identity of the Batch account.
+   */
+  identity?: BatchAccountIdentity;
 }
 
 /**
  * Contains information about the auto-storage account associated with a Batch account.
-*/
+ */
 export interface AutoStorageProperties extends AutoStorageBaseProperties {
   /**
    * The UTC time at which storage keys were last synchronized with the Batch account.
-  */
+   */
   lastKeySync: Date;
 }
 
 /**
  * A VM Family and its associated core quota for the Batch account.
-*/
+ */
 export interface VirtualMachineFamilyCoreQuota {
   /**
    * The Virtual Machine family name.
-  */
+   */
   readonly name?: string;
   /**
    * The core quota for the VM family for the Batch account.
-  */
+   */
   readonly coreQuota?: number;
 }
 
 /**
+ * The private endpoint of the private endpoint connection.
+ */
+export interface PrivateEndpoint {
+  /**
+   * @summary The ARM resource identifier of the private endpoint. This is of the form
+   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+   */
+  readonly id?: string;
+}
+
+/**
+ * The private link service connection state of the private endpoint connection
+ */
+export interface PrivateLinkServiceConnectionState {
+  /**
+   * @summary The status for the private endpoint connection of Batch account
+   * @description Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+   */
+  status: string;
+  /**
+   * @summary Description of the private Connection state
+   */
+  description?: string;
+  /**
+   * @summary Action required on the private connection state
+   */
+  readonly actionRequired?: string;
+}
+
+/**
  * A definition of an Azure resource.
-*/
-export interface Resource extends BaseResource {
+ */
+export interface ProxyResource extends BaseResource {
   /**
    * The ID of the resource.
-  */
+   */
   readonly id?: string;
   /**
    * The name of the resource.
-  */
+   */
   readonly name?: string;
   /**
    * The type of the resource.
-  */
+   */
+  readonly type?: string;
+  /**
+   * The ETag of the resource, used for concurrency statements.
+   */
+  readonly etag?: string;
+}
+
+/**
+ * Contains information about a private link resource.
+ */
+export interface PrivateEndpointConnection extends ProxyResource {
+  /**
+   * @summary The provisioning state of the private endpoint connection.
+   * @description Possible values include: 'Succeeded', 'Updating', 'Failed'
+   */
+  readonly provisioningState?: string;
+  /**
+   * @summary The ARM resource identifier of the private endpoint.
+   */
+  privateEndpoint?: PrivateEndpoint;
+  /**
+   * @summary The private link service connection state of the private endpoint connection.
+   */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
+}
+
+/**
+ * A definition of an Azure resource.
+ */
+export interface Resource extends BaseResource {
+  /**
+   * The ID of the resource.
+   */
+  readonly id?: string;
+  /**
+   * The name of the resource.
+   */
+  readonly name?: string;
+  /**
+   * The type of the resource.
+   */
   readonly type?: string;
   /**
    * The location of the resource.
-  */
+   */
   readonly location?: string;
   /**
    * The tags of the resource.
-  */
+   */
   readonly tags?: { [propertyName: string]: string };
 }
 
 /**
  * Contains information about an Azure Batch account.
-*/
+ */
 export interface BatchAccount extends Resource {
   /**
    * The account endpoint used to interact with the Batch service.
-  */
+   */
   readonly accountEndpoint?: string;
   /**
    * The provisioned state of the resource. Possible values include: 'Invalid', 'Creating',
    * 'Deleting', 'Succeeded', 'Failed', 'Cancelled'
-  */
+   */
   readonly provisioningState?: string;
   /**
    * @summary The allocation mode to use for creating pools in the Batch account.
    * @description Possible values include: 'BatchService', 'UserSubscription'
-  */
+   */
   readonly poolAllocationMode?: string;
   /**
    * @summary A reference to the Azure key vault associated with the Batch account.
-  */
+   */
   readonly keyVaultReference?: KeyVaultReference;
   /**
    * @summary The network interface type for accessing Azure Batch service and Batch account
    * operations.
    * @description If not specified, the default value is 'enabled'. Possible values include:
    * 'Enabled', 'Disabled'
-  */
+   */
   readonly publicNetworkAccess?: string;
+  /**
+   * List of private endpoint connections associated with the Batch account
+   */
+  readonly privateEndpointConnections?: PrivateEndpointConnection[];
   /**
    * @summary The properties and status of any auto-storage account associated with the Batch
    * account.
-  */
+   */
   readonly autoStorage?: AutoStorageProperties;
   /**
    * @summary The encryption configuration for the Batch account.
-  */
+   * @description Configures how customer data is encrypted inside the Batch account. By default,
+   * accounts are encrypted using a Microsoft managed key. For additional control, a
+   * customer-managed key can be used instead.
+   */
   readonly encryption?: EncryptionProperties;
   /**
    * @summary The dedicated core quota for the Batch account.
    * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
    * the subscription so this value is not returned.
-  */
+   */
   readonly dedicatedCoreQuota?: number;
   /**
    * @summary The low-priority core quota for the Batch account.
    * @description For accounts with PoolAllocationMode set to UserSubscription, quota is managed on
    * the subscription so this value is not returned.
-  */
+   */
   readonly lowPriorityCoreQuota?: number;
   /**
    * A list of the dedicated core quota per Virtual Machine family for the Batch account. For
    * accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription
    * so this value is not returned.
-  */
+   */
   readonly dedicatedCoreQuotaPerVMFamily?: VirtualMachineFamilyCoreQuota[];
   /**
    * @summary A value indicating whether the core quota for the Batch Account is enforced per
@@ -213,150 +334,139 @@ export interface BatchAccount extends Resource {
    * Machine family. If this flag is true, dedicated core quota is enforced via the
    * dedicatedCoreQuotaPerVMFamily property on the account, and the old dedicatedCoreQuota does not
    * apply.
-  */
+   */
   readonly dedicatedCoreQuotaPerVMFamilyEnforced?: boolean;
   /**
    * @summary The pool quota for the Batch account.
-  */
+   */
   readonly poolQuota?: number;
   /**
    * @summary The active job and job schedule quota for the Batch account.
-  */
+   */
   readonly activeJobAndJobScheduleQuota?: number;
+  /**
+   * The identity of the Batch account.
+   */
+  identity?: BatchAccountIdentity;
 }
 
 /**
  * Parameters for updating an Azure Batch account.
-*/
+ */
 export interface BatchAccountUpdateParameters {
   /**
    * The user-specified tags associated with the account.
-  */
+   */
   tags?: { [propertyName: string]: string };
   /**
    * The properties related to the auto-storage account.
-  */
+   */
   autoStorage?: AutoStorageBaseProperties;
   /**
    * @summary The encryption configuration for the Batch account.
-  */
+   * @description Configures how customer data is encrypted inside the Batch account. By default,
+   * accounts are encrypted using a Microsoft managed key. For additional control, a
+   * customer-managed key can be used instead.
+   */
   encryption?: EncryptionProperties;
+  /**
+   * The identity of the Batch account.
+   */
+  identity?: BatchAccountIdentity;
 }
 
 /**
  * Parameters supplied to the RegenerateKey operation.
-*/
+ */
 export interface BatchAccountRegenerateKeyParameters {
   /**
    * The type of account key to regenerate. Possible values include: 'Primary', 'Secondary'
-  */
+   */
   keyName: string;
 }
 
 /**
  * A set of Azure Batch account keys.
-*/
+ */
 export interface BatchAccountKeys {
   /**
    * The Batch account name.
-  */
+   */
   readonly accountName?: string;
   /**
    * The primary key associated with the account.
-  */
+   */
   readonly primary?: string;
   /**
    * The secondary key associated with the account.
-  */
+   */
   readonly secondary?: string;
 }
 
 /**
  * Parameters for an activating an application package.
-*/
+ */
 export interface ActivateApplicationPackageParameters {
   /**
    * The format of the application package binary file.
-  */
+   */
   format: string;
 }
 
 /**
- * A definition of an Azure resource.
-*/
-export interface ProxyResource extends BaseResource {
-  /**
-   * The ID of the resource.
-  */
-  readonly id?: string;
-  /**
-   * The name of the resource.
-  */
-  readonly name?: string;
-  /**
-   * The type of the resource.
-  */
-  readonly type?: string;
-  /**
-   * The ETag of the resource, used for concurrency statements.
-  */
-  readonly etag?: string;
-}
-
-/**
  * Contains information about an application in a Batch account.
-*/
+ */
 export interface Application extends ProxyResource {
   /**
    * The display name for the application.
-  */
+   */
   displayName?: string;
   /**
    * A value indicating whether packages within the application may be overwritten using the same
    * version string.
-  */
+   */
   allowUpdates?: boolean;
   /**
    * The package to use if a client requests the application but does not specify a version. This
    * property can only be set to the name of an existing package.
-  */
+   */
   defaultVersion?: string;
 }
 
 /**
  * An application package which represents a particular version of an application.
-*/
+ */
 export interface ApplicationPackage extends ProxyResource {
   /**
    * The current state of the application package. Possible values include: 'Pending', 'Active'
-  */
+   */
   readonly state?: string;
   /**
    * The format of the application package, if the package is active.
-  */
+   */
   readonly format?: string;
   /**
    * The URL for the application package in Azure Storage.
-  */
+   */
   readonly storageUrl?: string;
   /**
    * The UTC time at which the Azure Storage URL will expire.
-  */
+   */
   readonly storageUrlExpiry?: Date;
   /**
    * The time at which the package was last activated, if the package is active.
-  */
+   */
   readonly lastActivationTime?: Date;
 }
 
 /**
  * Quotas associated with a Batch region for a particular subscription.
-*/
+ */
 export interface BatchLocationQuota {
   /**
    * The number of Batch accounts that may be created under the subscription in the specified
    * region.
-  */
+   */
   readonly accountQuota?: number;
 }
 
@@ -496,55 +606,10 @@ export interface PrivateLinkResource extends ProxyResource {
    * @summary The list of required members that are used to establish the private link connection.
   */
   readonly requiredMembers?: string[];
-}
-
-/**
- * The private endpoint of the private endpoint connection.
-*/
-export interface PrivateEndpoint {
   /**
-   * @summary The ARM resource identifier of the private endpoint. This is of the form
-   * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+   * @summary The list of required zone names for the private DNS resource name
   */
-  readonly id?: string;
-}
-
-/**
- * The private link service connection state of the private endpoint connection
-*/
-export interface PrivateLinkServiceConnectionState {
-  /**
-   * @summary The status for the private endpoint connection of Batch account
-   * @description Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
-  */
-  status?: string;
-  /**
-   * @summary Description of the private Connection state
-  */
-  description?: string;
-  /**
-   * @summary Action required on the private connection state
-  */
-  readonly actionRequired?: string;
-}
-
-/**
- * Contains information about a private link resource.
-*/
-export interface PrivateEndpointConnection extends ProxyResource {
-  /**
-   * @summary The provisioning state of the private endpoint connection.
-   * @description Possible values include: 'Succeeded', 'Updating', 'Failed'
-  */
-  readonly provisioningState?: string;
-  /**
-   * @summary The ARM resource identifier of the private endpoint.
-  */
-  privateEndpoint?: PrivateEndpoint;
-  /**
-   * @summary The private link service connection state of the private endpoint connection.
-  */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
+  readonly requiredZoneNames?: string[];
 }
 
 /**
@@ -801,12 +866,12 @@ export interface FixedScaleSettings {
   resizeTimeout?: moment.Duration;
   /**
    * @summary The desired number of dedicated compute nodes in the pool.
-   * @description At least one of targetDedicatedNodes, targetLowPriority nodes must be set.
+   * @description At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
   */
   targetDedicatedNodes?: number;
   /**
    * @summary The desired number of low-priority compute nodes in the pool.
-   * @description At least one of targetDedicatedNodes, targetLowPriority nodes must be set.
+   * @description At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
   */
   targetLowPriorityNodes?: number;
   /**

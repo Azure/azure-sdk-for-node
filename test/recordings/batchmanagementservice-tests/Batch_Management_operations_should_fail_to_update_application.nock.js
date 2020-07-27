@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -10,20 +10,20 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-03-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:25c2851b-1464-4195-aca8-58a30b6c23a3\\nTime:2020-03-21T01:28:02.1233138Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2020-05-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:d9f13ded-18d4-4656-9129-5ec1a922bf0e\\nTime:2020-06-04T06:22:47.3833328Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '657c520c-509a-4a9c-a374-cfff5cdde05b',
-  'x-ms-request-id': '25c2851b-1464-4195-aca8-58a30b6c23a3',
+  'x-ms-correlation-request-id': '96b909ac-06f6-425b-b684-707f0701c606',
+  'x-ms-request-id': 'd9f13ded-18d4-4656-9129-5ec1a922bf0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012802Z:657c520c-509a-4a9c-a374-cfff5cdde05b',
-  date: 'Sat, 21 Mar 2020 01:28:01 GMT',
+   'WESTUS:20200604T062247Z:96b909ac-06f6-425b-b684-707f0701c606',
+  date: 'Thu, 04 Jun 2020 06:22:46 GMT',
   connection: 'close' });
  return result; }]];

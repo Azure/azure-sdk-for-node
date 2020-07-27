@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -10,42 +10,42 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2020-03-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2?api-version=2020-05-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   location:
-   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/45e5d75c-d0a3-4d57-978c-b822fe8e0786?api-version=2020-03-01',
+   'https://management.azure.com/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/3ec52365-5963-4884-97e4-574bbb25d422?api-version=2020-05-01',
   'retry-after': '15',
-  'x-ms-request-id': '45e5d75c-d0a3-4d57-978c-b822fe8e0786',
+  'x-ms-request-id': '3ec52365-5963-4884-97e4-574bbb25d422',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '4c602e4d-d8a7-4dd9-a35e-a23953357f05',
+  'x-ms-correlation-request-id': 'c5c7adaf-7eae-4c5c-9d3b-b444ed4755ee',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012811Z:4c602e4d-d8a7-4dd9-a35e-a23953357f05',
-  date: 'Sat, 21 Mar 2020 01:28:11 GMT',
+   'WESTUS:20200604T062300Z:c5c7adaf-7eae-4c5c-9d3b-b444ed4755ee',
+  date: 'Thu, 04 Jun 2020 06:23:00 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/45e5d75c-d0a3-4d57-978c-b822fe8e0786?api-version=2020-03-01')
-  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional Batch account quota for the specified subscription has been reached.\\nRequestId:82d38a40-3380-4c9c-90c1-b2eaed987e56\\nTime:2020-03-21T01:28:42.1569410Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk2/operationResults/3ec52365-5963-4884-97e4-574bbb25d422?api-version=2020-05-01')
+  .reply(409, "{\"error\":{\"code\":\"SubscriptionQuotaExceeded\",\"message\":\"The regional Batch account quota for the specified subscription has been reached.\\nRequestId:5b13ae84-fce6-44ae-903b-6c5de049a77e\\nTime:2020-06-04T06:23:31.3963177Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '247',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '2e4337d1-358f-4fb2-a197-42d77170de0e',
-  'x-ms-request-id': '82d38a40-3380-4c9c-90c1-b2eaed987e56',
+  'x-ms-correlation-request-id': '70bb5e90-3c9d-4035-b710-00839ffa742c',
+  'x-ms-request-id': '5b13ae84-fce6-44ae-903b-6c5de049a77e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '11999',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012842Z:2e4337d1-358f-4fb2-a197-42d77170de0e',
-  date: 'Sat, 21 Mar 2020 01:28:41 GMT',
+   'WESTUS:20200604T062331Z:70bb5e90-3c9d-4035-b710-00839ffa742c',
+  date: 'Thu, 04 Jun 2020 06:23:31 GMT',
   connection: 'close' });
  return result; }]];

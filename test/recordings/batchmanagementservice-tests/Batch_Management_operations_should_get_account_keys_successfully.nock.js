@@ -2,27 +2,27 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2020-03-01')
-  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"G6pxmT5jJvzINjLgzgm+vwVoEKmuFvuYjHDHtRSGJU7YikC/C7W+SHlyL6cqfVZq61Kq8EyaCByWw8P2IAEA3A==\",\"secondary\":\"dNqPdm5FDOoBUPQWcU5MycxrVVObZah02pbYFrBRNufPRWQAj5ayvW9pDyp8wgJANJ+QHayEV1hfsOcRqSlY4Q==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/listKeys?api-version=2020-05-01')
+  .reply(200, "{\"accountName\":\"batchtestnodesdk\",\"primary\":\"wwVvI5db3ptexX8eAnI3w34EMYubY76WxtNz0IaZ/l6gD8Inwaxnnb5jO+qi2P7rbYGQt/U/MBt1p+mUqsHO+A==\",\"secondary\":\"vzNKn1rGuS/YbBn9UYbkmIsB6ucp8v2OoJGSW4zdYTW09LJfBX9m4jtBozU8lWTU/tMSmL85YgEgjS2bXWnEQQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '238',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': '7b9fba24-86d5-4d40-9ff7-2e1f5967ea93',
-  'x-ms-request-id': '9a2e4491-c8a0-46e0-a057-ed7fbb73cdcf',
+  'x-ms-correlation-request-id': '7b6fd31d-5dff-47ad-8a75-a944eda41233',
+  'x-ms-request-id': 'ca31545d-6a5d-4e25-aea0-123c2f68e096',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T012844Z:7b9fba24-86d5-4d40-9ff7-2e1f5967ea93',
-  date: 'Sat, 21 Mar 2020 01:28:44 GMT',
+   'WESTUS:20200604T062334Z:7b6fd31d-5dff-47ad-8a75-a944eda41233',
+  date: 'Thu, 04 Jun 2020 06:23:33 GMT',
   connection: 'close' });
  return result; }]];

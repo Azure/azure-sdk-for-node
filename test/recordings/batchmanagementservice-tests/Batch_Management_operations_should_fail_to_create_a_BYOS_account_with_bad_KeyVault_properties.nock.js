@@ -2,7 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_AUTOSTORAGE'] = 'testaccountfornode';
   process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
@@ -10,40 +10,40 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-03-01', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:1b5b8365-f3d7-45a6-b409-8e9b7a551fe4\\nTime:2020-03-21T01:36:15.0635173Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-05-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:a64f64d5-01a3-409d-bf35-0264d7315265\\nTime:2020-06-04T06:31:49.5984801Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '359',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-correlation-request-id': 'c1776b99-eeba-4d2a-bc9b-21f10b9df4a2',
-  'x-ms-request-id': '1b5b8365-f3d7-45a6-b409-8e9b7a551fe4',
+  'x-ms-correlation-request-id': 'e0b80306-c232-4eb4-aa31-07b67e3fdbc8',
+  'x-ms-request-id': 'a64f64d5-01a3-409d-bf35-0264d7315265',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T013616Z:c1776b99-eeba-4d2a-bc9b-21f10b9df4a2',
-  date: 'Sat, 21 Mar 2020 01:36:15 GMT',
+   'WESTUS:20200604T063150Z:e0b80306-c232-4eb4-aa31-07b67e3fdbc8',
+  date: 'Thu, 04 Jun 2020 06:31:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-03-01', '*')
+.put('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2020-05-01', '*')
   .reply(400, "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id 'abc' at path 'properties.keyVaultReference.id' is invalid. Expect fully qualified resource Id that start with '/subscriptions/{subscriptionId}' or '/providers/{resourceProviderNamespace}/'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
-  'x-ms-correlation-request-id': 'de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
+  'x-ms-request-id': '552b0767-cec7-497f-b2f8-5b3605afe7e9',
+  'x-ms-correlation-request-id': '552b0767-cec7-497f-b2f8-5b3605afe7e9',
   'x-ms-routing-request-id':
-   'WESTUS:20200321T013616Z:de3cc2a4-5ed4-47b3-9d5e-9cbe6b71f2bf',
+   'WESTUS:20200604T063150Z:552b0767-cec7-497f-b2f8-5b3605afe7e9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 21 Mar 2020 01:36:16 GMT',
+  date: 'Thu, 04 Jun 2020 06:31:50 GMT',
   connection: 'close',
   'content-length': '259' });
  return result; }]];
