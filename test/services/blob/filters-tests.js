@@ -21,7 +21,7 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 var testPrefix = 'filter-tests';
 
 var blobService;

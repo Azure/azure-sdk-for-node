@@ -22,7 +22,7 @@ var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var containerNames = [];
 var containerNamesPrefix = 'cont';

@@ -23,7 +23,7 @@ var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var tableNames = [];
 var tablePrefix = 'tableservice';
