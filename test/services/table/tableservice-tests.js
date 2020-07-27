@@ -26,7 +26,7 @@ var tabletestutil = require('../../framework/table-test-utils');
 var common = testutil.libRequire('azure');
 
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var azureutil = common.util;
 

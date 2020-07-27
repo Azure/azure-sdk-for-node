@@ -22,7 +22,7 @@ var testutil = require('../../util/util');
 
 // Lib includes
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');;
 
 var TableQuery = storage.TableQuery;
 var azureutil = common.util;

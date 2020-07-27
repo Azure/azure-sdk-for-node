@@ -25,7 +25,7 @@ var testutil = require('../../util/util');
 
 // Lib includes
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var SharedAccessSignature = storage.SharedAccessSignature;
 var BlobService = storage.BlobService;
