@@ -20,7 +20,7 @@ var assert = require('assert');
 var testutil = require('../../util/util');
 
 // Lib includes
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 var common = require('azure-common');
 var azureutil = common.util;
 

@@ -24,7 +24,7 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 var containerNamePrefix = 'upload-download-test';
 var blockIdPrefix = 'block';
 var containerCount = 0;

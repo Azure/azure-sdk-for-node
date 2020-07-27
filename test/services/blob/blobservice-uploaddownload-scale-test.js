@@ -18,7 +18,7 @@ var assert = require('assert');
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 var testPrefix = 'blobservice-uploaddownload-scale_test';
 
 var blobService = null;

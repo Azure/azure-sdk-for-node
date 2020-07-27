@@ -23,7 +23,7 @@ var queuetestutil = require('../../framework/queue-test-utils');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 var azureutil = common.util;
 
 var Constants = common.Constants;
