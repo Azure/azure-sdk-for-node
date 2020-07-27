@@ -288,12 +288,6 @@ export interface AuthenticationSettingsContract {
    * OpenID Connect Authentication Settings
    */
   openid?: OpenIdAuthenticationSettingsContract;
-  /**
-   * Specifies whether subscription key is required during call to this API, true - API is included
-   * into closed products only, false - API is included into open products alone, null - there is a
-   * mix of products.
-   */
-  subscriptionKeyRequired?: boolean;
 }
 
 /**
@@ -520,6 +514,10 @@ export interface TagDescriptionContract extends Resource {
    */
   externalDocsDescription?: string;
   /**
+   * Identifier of the tag in the form of /tags/{tagId}
+   */
+  tagId?: string;
+  /**
    * Tag name.
    */
   displayName?: string;
@@ -739,10 +737,19 @@ export interface DiagnosticContract extends Resource {
    */
   backend?: PipelineDiagnosticSettings;
   /**
-   * Whether to process Correlation Headers coming to Api Management Service. Only applicable to
-   * Application Insights diagnostics. Default is true.
+   * Log the ClientIP. Default is false.
    */
-  enableHttpCorrelationHeaders?: boolean;
+  logClientIp?: boolean;
+  /**
+   * Sets correlation protocol to use for Application Insights diagnostics. Possible values
+   * include: 'None', 'Legacy', 'W3C'
+   */
+  httpCorrelationProtocol?: string;
+  /**
+   * The verbosity level applied to traces emitted by trace policies. Possible values include:
+   * 'verbose', 'information', 'error'
+   */
+  verbosity?: string;
 }
 
 /**
@@ -759,28 +766,14 @@ export interface SchemaContract extends Resource {
    */
   contentType: string;
   /**
-   * Properties of the Schema Document.
-   */
-  document?: any;
-}
-
-/**
- * Schema Contract details.
- */
-export interface SchemaCreateOrUpdateContract extends Resource {
-  /**
-   * Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media
-   * type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema
-   * use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use
-   * `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use
-   * `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use
-   * `application/vnd.ms-azure-apim.wadl.grammars+xml`.
-   */
-  contentType: string;
-  /**
-   * Json escaped string defining the document representing the Schema.
+   * Json escaped string defining the document representing the Schema. Used for schemas other than
+   * Swagger/OpenAPI.
    */
   value?: string;
+  /**
+   * Types definitions. Used for Swagger/OpenAPI schemas only, null otherwise.
+   */
+  definitions?: any;
 }
 
 /**
@@ -1370,7 +1363,7 @@ export interface ApiCreateOrUpdateParameter {
   /**
    * Format of the Content in which the API is getting imported. Possible values include:
    * 'wadl-xml', 'wadl-link-json', 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link',
-   * 'openapi', 'openapi+json', 'openapi-link'
+   * 'openapi', 'openapi+json', 'openapi-link', 'openapi+json-link'
    */
   format?: string;
   /**
@@ -1462,6 +1455,16 @@ export interface ApiVersionSetContract extends Resource {
 }
 
 /**
+ * Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+ */
+export interface ClientSecretContract {
+  /**
+   * Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+   */
+  clientSecret?: string;
+}
+
+/**
  * OAuth acquire token request body parameter (www-url-form-encoded).
  */
 export interface TokenBodyParameterContract {
@@ -1519,10 +1522,6 @@ export interface AuthorizationServerContractBaseProperties {
    */
   bearerTokenSendingMethods?: string[];
   /**
-   * Client or app secret registered with this authorization server.
-   */
-  clientSecret?: string;
-  /**
    * Can be optionally specified when resource owner password grant type is supported by this
    * authorization server. Default resource owner username.
    */
@@ -1578,10 +1577,6 @@ export interface AuthorizationServerUpdateContract extends Resource {
    */
   bearerTokenSendingMethods?: string[];
   /**
-   * Client or app secret registered with this authorization server.
-   */
-  clientSecret?: string;
-  /**
    * Can be optionally specified when resource owner password grant type is supported by this
    * authorization server. Default resource owner username.
    */
@@ -1612,6 +1607,11 @@ export interface AuthorizationServerUpdateContract extends Resource {
    * Client or app id registered with this authorization server.
    */
   clientId?: string;
+  /**
+   * Client or app secret registered with this authorization server. This property will not be
+   * filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
+   */
+  clientSecret?: string;
 }
 
 /**
@@ -1658,10 +1658,6 @@ export interface AuthorizationServerContract extends Resource {
    */
   bearerTokenSendingMethods?: string[];
   /**
-   * Client or app secret registered with this authorization server.
-   */
-  clientSecret?: string;
-  /**
    * Can be optionally specified when resource owner password grant type is supported by this
    * authorization server. Default resource owner username.
    */
@@ -1692,6 +1688,11 @@ export interface AuthorizationServerContract extends Resource {
    * Client or app id registered with this authorization server.
    */
   clientId: string;
+  /**
+   * Client or app secret registered with this authorization server. This property will not be
+   * filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
+   */
+  clientSecret?: string;
 }
 
 /**
@@ -2184,9 +2185,10 @@ export interface ApiManagementServiceSkuProperties {
    */
   name: string;
   /**
-   * Capacity of the SKU (number of deployed units of the SKU).
+   * Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must
+   * be specified as 0.
    */
-  capacity?: number;
+  capacity: number;
 }
 
 /**
@@ -2220,6 +2222,11 @@ export interface AdditionalLocation {
    * Gateway URL of the API Management service in the Region.
    */
   readonly gatewayRegionalUrl?: string;
+  /**
+   * Property only valid for an Api Management service deployed in multiple locations. This can be
+   * used to disable the gateway in this additional location.
+   */
+  disableGateway?: boolean;
 }
 
 /**
@@ -2242,6 +2249,17 @@ export interface ApiManagementServiceBackupRestoreParameters {
    * The name of the backup file to create.
    */
   backupName: string;
+}
+
+/**
+ * Control Plane Apis version constraint for the API Management service.
+ */
+export interface ApiVersionConstraint {
+  /**
+   * Limit control plane API calls to API Management service with version equal to or newer than
+   * this value.
+   */
+  minApiVersion?: string;
 }
 
 /**
@@ -2289,6 +2307,10 @@ export interface ApiManagementServiceBaseProperties {
    */
   readonly scmUrl?: string;
   /**
+   * DEveloper Portal endpoint URL of the API Management service.
+   */
+  readonly developerPortalUrl?: string;
+  /**
    * Custom hostname configuration of the API Management service.
    */
   hostnameConfigurations?: HostnameConfiguration[];
@@ -2312,13 +2334,33 @@ export interface ApiManagementServiceBaseProperties {
    */
   additionalLocations?: AdditionalLocation[];
   /**
-   * Custom properties of the API Management service. Setting
+   * Custom properties of the API Management service.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the
-   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2). Setting
+   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable
-   * just TLS 1.1 and setting
+   * just TLS 1.1.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable
-   * TLS 1.0 on an API Management service.
+   * TLS 1.0 on an API Management service.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to
+   * disable just TLS 1.1 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to
+   * disable TLS 1.0 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable
+   * HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on
+   * PATCH operation will reset omitted properties' values to their defaults. For all the settings
+   * except Http2 the default value is `True` if the service was created on or before April 1st
+   * 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable
+   * any of next ciphers by using settings
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+   * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+   * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+   * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA.
+   * For example,
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+   * The default value is `true` for them.  Note: next ciphers can't be disabled since they are
+   * required by Azure CloudService internal components:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
    */
   customProperties?: { [propertyName: string]: string };
   /**
@@ -2333,6 +2375,11 @@ export interface ApiManagementServiceBaseProperties {
    */
   enableClientCertificate?: boolean;
   /**
+   * Property only valid for an Api Management service deployed in multiple locations. This can be
+   * used to disable the gateway in master region.
+   */
+  disableGateway?: boolean;
+  /**
    * The type of VPN in which API Management service needs to be configured in. None (Default
    * Value) means the API Management service is not part of any Virtual Network, External means the
    * API Management deployment is set up inside a Virtual Network having an Internet Facing
@@ -2341,132 +2388,190 @@ export interface ApiManagementServiceBaseProperties {
    * 'Internal'
    */
   virtualNetworkType?: string;
+  /**
+   * Control Plane Apis version constraint for the API Management service.
+   */
+  apiVersionConstraint?: ApiVersionConstraint;
+}
+
+export interface UserIdentityProperties {
+  /**
+   * The principal id of user assigned identity.
+  */
+  principalId?: string;
+  /**
+   * The client id of user assigned identity.
+  */
+  clientId?: string;
 }
 
 /**
  * Identity properties of the Api Management service resource.
- */
+*/
 export interface ApiManagementServiceIdentity {
   /**
+   * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes
+   * both an implicitly created identity and a set of user assigned identities. The type 'None'
+   * will remove any identities from the service. Possible values include: 'SystemAssigned',
+   * 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+  */
+  type: string;
+  /**
    * The principal id of the identity.
-   */
+  */
   readonly principalId?: string;
   /**
    * The client tenant id of the identity.
-   */
+  */
   readonly tenantId?: string;
+  /**
+   * The list of user identities associated with the resource. The user identity
+   * dictionary key references will be ARM resource ids in the form:
+   * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+   * providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+  */
+  userAssignedIdentities?: { [propertyName: string]: UserIdentityProperties };
 }
 
 /**
  * The Resource definition.
- */
+*/
 export interface ApimResource extends BaseResource {
   /**
    * Resource ID.
-   */
+  */
   readonly id?: string;
   /**
    * Resource name.
-   */
+  */
   readonly name?: string;
   /**
    * Resource type for API Management resource is set to Microsoft.ApiManagement.
-   */
+  */
   readonly type?: string;
   /**
    * Resource tags.
-   */
+  */
   tags?: { [propertyName: string]: string };
 }
 
 /**
  * A single API Management service resource in List or Get response.
- */
+*/
 export interface ApiManagementServiceResource extends ApimResource {
   /**
    * Email address from which the notification will be sent.
-   */
+  */
   notificationSenderEmail?: string;
   /**
    * The current provisioning state of the API Management service which can be one of the
    * following:
    * Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
-   */
+  */
   readonly provisioningState?: string;
   /**
    * The provisioning state of the API Management service, which is targeted by the long running
    * operation started on the service.
-   */
+  */
   readonly targetProvisioningState?: string;
   /**
    * Creation UTC date of the API Management service.The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-   */
+  */
   readonly createdAtUtc?: Date;
   /**
    * Gateway URL of the API Management service.
-   */
+  */
   readonly gatewayUrl?: string;
   /**
    * Gateway URL of the API Management service in the Default Region.
-   */
+  */
   readonly gatewayRegionalUrl?: string;
   /**
    * Publisher portal endpoint Url of the API Management service.
-   */
+  */
   readonly portalUrl?: string;
   /**
    * Management API endpoint URL of the API Management service.
-   */
+  */
   readonly managementApiUrl?: string;
   /**
    * SCM endpoint URL of the API Management service.
-   */
+  */
   readonly scmUrl?: string;
   /**
+   * DEveloper Portal endpoint URL of the API Management service.
+  */
+  readonly developerPortalUrl?: string;
+  /**
    * Custom hostname configuration of the API Management service.
-   */
+  */
   hostnameConfigurations?: HostnameConfiguration[];
   /**
    * Public Static Load Balanced IP addresses of the API Management service in Primary region.
    * Available only for Basic, Standard and Premium SKU.
-   */
+  */
   readonly publicIPAddresses?: string[];
   /**
    * Private Static Load Balanced IP addresses of the API Management service in Primary region
    * which is deployed in an Internal Virtual Network. Available only for Basic, Standard and
    * Premium SKU.
-   */
+  */
   readonly privateIPAddresses?: string[];
   /**
    * Virtual network configuration of the API Management service.
-   */
+  */
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   /**
    * Additional datacenter locations of the API Management service.
-   */
+  */
   additionalLocations?: AdditionalLocation[];
   /**
-   * Custom properties of the API Management service. Setting
+   * Custom properties of the API Management service.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the
-   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2). Setting
+   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable
-   * just TLS 1.1 and setting
+   * just TLS 1.1.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable
-   * TLS 1.0 on an API Management service.
-   */
+   * TLS 1.0 on an API Management service.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to
+   * disable just TLS 1.1 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to
+   * disable TLS 1.0 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable
+   * HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on
+   * PATCH operation will reset omitted properties' values to their defaults. For all the settings
+   * except Http2 the default value is `True` if the service was created on or before April 1st
+   * 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable
+   * any of next ciphers by using settings
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+   * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+   * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+   * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA.
+   * For example,
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+   * The default value is `true` for them.  Note: next ciphers can't be disabled since they are
+   * required by Azure CloudService internal components:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
+  */
   customProperties?: { [propertyName: string]: string };
   /**
    * List of Certificates that need to be installed in the API Management service. Max supported
    * certificates that can be installed is 10.
-   */
+  */
   certificates?: CertificateConfiguration[];
   /**
    * Property only meant to be used for Consumption SKU Service. This enforces a client certificate
    * to be presented on each request to the gateway. This also enables the ability to authenticate
    * the certificate in the policy on the gateway.
-   */
+  */
   enableClientCertificate?: boolean;
+  /**
+   * Property only valid for an Api Management service deployed in multiple locations. This can be
+   * used to disable the gateway in master region.
+  */
+  disableGateway?: boolean;
   /**
    * The type of VPN in which API Management service needs to be configured in. None (Default
    * Value) means the API Management service is not part of any Virtual Network, External means the
@@ -2474,122 +2579,155 @@ export interface ApiManagementServiceResource extends ApimResource {
    * Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network
    * having an Intranet Facing Endpoint only. Possible values include: 'None', 'External',
    * 'Internal'
-   */
+  */
   virtualNetworkType?: string;
   /**
+   * Control Plane Apis version constraint for the API Management service.
+  */
+  apiVersionConstraint?: ApiVersionConstraint;
+  /**
    * Publisher email.
-   */
+  */
   publisherEmail: string;
   /**
    * Publisher name.
-   */
+  */
   publisherName: string;
   /**
    * SKU properties of the API Management service.
-   */
+  */
   sku: ApiManagementServiceSkuProperties;
   /**
    * Managed service identity of the Api Management service.
-   */
+  */
   identity?: ApiManagementServiceIdentity;
   /**
    * Resource location.
-   */
+  */
   location: string;
   /**
    * ETag of the resource.
-   */
+  */
   readonly etag?: string;
 }
 
 /**
  * Parameter supplied to Update Api Management Service.
- */
+*/
 export interface ApiManagementServiceUpdateParameters extends ApimResource {
   /**
    * Email address from which the notification will be sent.
-   */
+  */
   notificationSenderEmail?: string;
   /**
    * The current provisioning state of the API Management service which can be one of the
    * following:
    * Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
-   */
+  */
   readonly provisioningState?: string;
   /**
    * The provisioning state of the API Management service, which is targeted by the long running
    * operation started on the service.
-   */
+  */
   readonly targetProvisioningState?: string;
   /**
    * Creation UTC date of the API Management service.The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-   */
+  */
   readonly createdAtUtc?: Date;
   /**
    * Gateway URL of the API Management service.
-   */
+  */
   readonly gatewayUrl?: string;
   /**
    * Gateway URL of the API Management service in the Default Region.
-   */
+  */
   readonly gatewayRegionalUrl?: string;
   /**
    * Publisher portal endpoint Url of the API Management service.
-   */
+  */
   readonly portalUrl?: string;
   /**
    * Management API endpoint URL of the API Management service.
-   */
+  */
   readonly managementApiUrl?: string;
   /**
    * SCM endpoint URL of the API Management service.
-   */
+  */
   readonly scmUrl?: string;
   /**
+   * DEveloper Portal endpoint URL of the API Management service.
+  */
+  readonly developerPortalUrl?: string;
+  /**
    * Custom hostname configuration of the API Management service.
-   */
+  */
   hostnameConfigurations?: HostnameConfiguration[];
   /**
    * Public Static Load Balanced IP addresses of the API Management service in Primary region.
    * Available only for Basic, Standard and Premium SKU.
-   */
+  */
   readonly publicIPAddresses?: string[];
   /**
    * Private Static Load Balanced IP addresses of the API Management service in Primary region
    * which is deployed in an Internal Virtual Network. Available only for Basic, Standard and
    * Premium SKU.
-   */
+  */
   readonly privateIPAddresses?: string[];
   /**
    * Virtual network configuration of the API Management service.
-   */
+  */
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   /**
    * Additional datacenter locations of the API Management service.
-   */
+  */
   additionalLocations?: AdditionalLocation[];
   /**
-   * Custom properties of the API Management service. Setting
+   * Custom properties of the API Management service.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the
-   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2). Setting
+   * cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable
-   * just TLS 1.1 and setting
+   * just TLS 1.1.</br>Setting
    * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable
-   * TLS 1.0 on an API Management service.
-   */
+   * TLS 1.0 on an API Management service.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to
+   * disable just TLS 1.1 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to
+   * disable TLS 1.0 for communications with backends.</br>Setting
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable
+   * HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on
+   * PATCH operation will reset omitted properties' values to their defaults. For all the settings
+   * except Http2 the default value is `True` if the service was created on or before April 1st
+   * 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable
+   * any of next ciphers by using settings
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+   * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+   * TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256,
+   * TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA.
+   * For example,
+   * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
+   * The default value is `true` for them.  Note: next ciphers can't be disabled since they are
+   * required by Azure CloudService internal components:
+   * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
+  */
   customProperties?: { [propertyName: string]: string };
   /**
    * List of Certificates that need to be installed in the API Management service. Max supported
    * certificates that can be installed is 10.
-   */
+  */
   certificates?: CertificateConfiguration[];
   /**
    * Property only meant to be used for Consumption SKU Service. This enforces a client certificate
    * to be presented on each request to the gateway. This also enables the ability to authenticate
    * the certificate in the policy on the gateway.
-   */
+  */
   enableClientCertificate?: boolean;
+  /**
+   * Property only valid for an Api Management service deployed in multiple locations. This can be
+   * used to disable the gateway in master region.
+  */
+  disableGateway?: boolean;
   /**
    * The type of VPN in which API Management service needs to be configured in. None (Default
    * Value) means the API Management service is not part of any Virtual Network, External means the
@@ -2597,580 +2735,864 @@ export interface ApiManagementServiceUpdateParameters extends ApimResource {
    * Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network
    * having an Intranet Facing Endpoint only. Possible values include: 'None', 'External',
    * 'Internal'
-   */
+  */
   virtualNetworkType?: string;
   /**
+   * Control Plane Apis version constraint for the API Management service.
+  */
+  apiVersionConstraint?: ApiVersionConstraint;
+  /**
    * Publisher email.
-   */
+  */
   publisherEmail?: string;
   /**
    * Publisher name.
-   */
+  */
   publisherName?: string;
   /**
    * SKU properties of the API Management service.
-   */
+  */
   sku?: ApiManagementServiceSkuProperties;
   /**
    * Managed service identity of the Api Management service.
-   */
+  */
   identity?: ApiManagementServiceIdentity;
   /**
    * ETag of the resource.
-   */
+  */
   readonly etag?: string;
 }
 
 /**
  * The response of the GetSsoToken operation.
- */
+*/
 export interface ApiManagementServiceGetSsoTokenResult {
   /**
    * Redirect URL to the Publisher Portal containing the SSO token.
-   */
+  */
   redirectUri?: string;
 }
 
 /**
  * Parameters supplied to the CheckNameAvailability operation.
- */
+*/
 export interface ApiManagementServiceCheckNameAvailabilityParameters {
   /**
    * The name to check for availability.
-   */
+  */
   name: string;
 }
 
 /**
  * Response of the CheckNameAvailability operation.
- */
+*/
 export interface ApiManagementServiceNameAvailabilityResult {
   /**
    * True if the name is available and can be used to create a new API Management service;
    * otherwise false.
-   */
+  */
   readonly nameAvailable?: boolean;
   /**
    * If reason == invalid, provide the user with the reason why the given name is invalid, and
    * provide the resource naming requirements so that the user can select a valid name. If reason
    * == AlreadyExists, explain that <resourceName> is already in use, and direct them to select a
    * different name.
-   */
+  */
   readonly message?: string;
   /**
    * Invalid indicates the name provided does not match the resource provider’s naming requirements
    * (incorrect length, unsupported characters, etc.)  AlreadyExists indicates that the name is
    * already in use and is therefore unavailable. Possible values include: 'Valid', 'Invalid',
    * 'AlreadyExists'
-   */
+  */
   reason?: string;
 }
 
 /**
  * Parameter supplied to the Apply Network configuration operation.
- */
+*/
 export interface ApiManagementServiceApplyNetworkConfigurationParameters {
   /**
    * Location of the Api Management service to update for a multi-region service. For a service
    * deployed in a single region, this parameter is not required.
-   */
+  */
   location?: string;
 }
 
 /**
  * The object that describes the operation.
- */
+*/
 export interface OperationDisplay {
   /**
    * Friendly name of the resource provider
-   */
+  */
   provider?: string;
   /**
    * Operation type: read, write, delete, listKeys/action, etc.
-   */
+  */
   operation?: string;
   /**
    * Resource type on which the operation is performed.
-   */
+  */
   resource?: string;
   /**
    * Friendly name of the operation
-   */
+  */
   description?: string;
 }
 
 /**
  * REST API operation
- */
+*/
 export interface Operation {
   /**
    * Operation name: {provider}/{resource}/{operation}
-   */
+  */
   name?: string;
   /**
    * The object that describes the operation.
-   */
+  */
   display?: OperationDisplay;
   /**
    * The operation origin.
-   */
+  */
   origin?: string;
   /**
    * The operation properties.
-   */
+  */
   properties?: any;
 }
 
 /**
  * Email Template Parameter contract.
- */
+*/
 export interface EmailTemplateParametersContractProperties {
   /**
    * Template parameter name.
-   */
+  */
   name?: string;
   /**
    * Template parameter title.
-   */
+  */
   title?: string;
   /**
    * Template parameter description.
-   */
+  */
   description?: string;
 }
 
 /**
  * Email Template update Parameters.
- */
+*/
 export interface EmailTemplateUpdateParameters {
   /**
    * Subject of the Template.
-   */
+  */
   subject?: string;
   /**
    * Title of the Template.
-   */
+  */
   title?: string;
   /**
    * Description of the Email Template.
-   */
+  */
   description?: string;
   /**
    * Email Template Body. This should be a valid XDocument
-   */
+  */
   body?: string;
   /**
    * Email Template Parameter values.
-   */
+  */
   parameters?: EmailTemplateParametersContractProperties[];
 }
 
 /**
  * Email Template details.
- */
+*/
 export interface EmailTemplateContract extends Resource {
   /**
    * Subject of the Template.
-   */
+  */
   subject: string;
   /**
    * Email Template Body. This should be a valid XDocument
-   */
+  */
   body: string;
   /**
    * Title of the Template.
-   */
+  */
   title?: string;
   /**
    * Description of the Email Template.
-   */
+  */
   description?: string;
   /**
    * Whether the template is the default template provided by Api Management or has been edited.
-   */
+  */
   readonly isDefault?: boolean;
   /**
    * Email Template Parameter values.
-   */
+  */
   parameters?: EmailTemplateParametersContractProperties[];
 }
 
 /**
+ * Association entity details.
+*/
+export interface AssociationContract extends Resource {
+  /**
+   * Provisioning state. Possible values include: 'created'
+  */
+  provisioningState?: string;
+}
+
+/**
+ * Gateway hostname configuration details.
+*/
+export interface GatewayHostnameConfigurationContract extends Resource {
+  /**
+   * Hostname value. Supports valid domain name, partial or full wildcard
+  */
+  hostname?: string;
+  /**
+   * Identifier of Certificate entity that will be used for TLS connection establishment
+  */
+  certificateId?: string;
+  /**
+   * Determines whether gateway requests client certificate
+  */
+  negotiateClientCertificate?: boolean;
+}
+
+/**
+ * Gateway access token.
+*/
+export interface GatewayTokenContract {
+  /**
+   * Shared Access Authentication token value for the Gateway.
+  */
+  value?: string;
+}
+
+/**
+ * Gateway token request contract properties.
+*/
+export interface GatewayTokenRequestContract {
+  /**
+   * The Key to be used to generate gateway token. Possible values include: 'primary', 'secondary'
+  */
+  keyType: string;
+  /**
+   * The Expiry time of the Token. Maximum token expiry time is set to 30 days. The date conforms
+   * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+
+  */
+  expiry: Date;
+}
+
+/**
+ * Gateway key regeneration request contract properties.
+*/
+export interface GatewayKeyRegenerationRequestContract {
+  /**
+   * The Key being regenerated. Possible values include: 'primary', 'secondary'
+  */
+  keyType: string;
+}
+
+/**
+ * Gateway authentication keys.
+*/
+export interface GatewayKeysContract {
+  /**
+   * Primary gateway key.
+  */
+  primary?: string;
+  /**
+   * Secondary gateway key.
+  */
+  secondary?: string;
+}
+
+/**
+ * Resource location data properties.
+*/
+export interface ResourceLocationDataContract {
+  /**
+   * A canonical name for the geographic or physical location.
+  */
+  name: string;
+  /**
+   * The city or locality where the resource is located.
+  */
+  city?: string;
+  /**
+   * The district, state, or province where the resource is located.
+  */
+  district?: string;
+  /**
+   * The country or region where the resource is located.
+  */
+  countryOrRegion?: string;
+}
+
+/**
+ * Gateway details.
+*/
+export interface GatewayContract extends Resource {
+  /**
+   * Gateway location.
+  */
+  locationData?: ResourceLocationDataContract;
+  /**
+   * Gateway description
+  */
+  description?: string;
+}
+
+/**
  * User identity details.
- */
+*/
 export interface UserIdentityContract {
   /**
    * Identity provider name.
-   */
+  */
   provider?: string;
   /**
    * Identifier value within provider.
-   */
+  */
   id?: string;
 }
 
 /**
  * User Entity Base Parameters set.
- */
+*/
 export interface UserEntityBaseParameters {
   /**
    * Account state. Specifies whether the user is active or not. Blocked users are unable to sign
    * into the developer portal or call any APIs of subscribed products. Default state is Active.
    * Possible values include: 'active', 'blocked', 'pending', 'deleted'
-   */
+  */
   state?: string;
   /**
    * Optional note about a user set by the administrator.
-   */
+  */
   note?: string;
   /**
    * Collection of user identities.
-   */
+  */
   identities?: UserIdentityContract[];
 }
 
 /**
  * Group contract Properties.
- */
+*/
 export interface GroupContractProperties {
   /**
    * Group name.
-   */
+  */
   displayName: string;
   /**
    * Group description. Can contain HTML formatting tags.
-   */
+  */
   description?: string;
   /**
    * true if the group is one of the three system groups (Administrators, Developers, or Guests);
    * otherwise false.
-   */
+  */
   readonly builtIn?: boolean;
   /**
    * Group type. Possible values include: 'custom', 'system', 'external'
-   */
+  */
   type?: string;
   /**
    * For external groups, this property contains the id of the group from the external identity
    * provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object
    * id>`; otherwise the value is null.
-   */
+  */
   externalId?: string;
 }
 
 /**
  * User details.
- */
+*/
 export interface UserContract extends Resource {
   /**
    * Account state. Specifies whether the user is active or not. Blocked users are unable to sign
    * into the developer portal or call any APIs of subscribed products. Default state is Active.
    * Possible values include: 'active', 'blocked', 'pending', 'deleted'
-   */
+  */
   state?: string;
   /**
    * Optional note about a user set by the administrator.
-   */
+  */
   note?: string;
   /**
    * Collection of user identities.
-   */
+  */
   identities?: UserIdentityContract[];
   /**
    * First name.
-   */
+  */
   firstName?: string;
   /**
    * Last name.
-   */
+  */
   lastName?: string;
   /**
    * Email address.
-   */
+  */
   email?: string;
   /**
    * Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
    * as specified by the ISO 8601 standard.
 
-   */
+  */
   registrationDate?: Date;
   /**
    * Collection of groups user is part of.
-   */
+  */
   readonly groups?: GroupContractProperties[];
 }
 
 /**
  * Parameters supplied to the Update Group operation.
- */
+*/
 export interface GroupUpdateParameters {
   /**
    * Group name.
-   */
+  */
   displayName?: string;
   /**
    * Group description.
-   */
+  */
   description?: string;
   /**
    * Group type. Possible values include: 'custom', 'system', 'external'
-   */
+  */
   type?: string;
   /**
    * Identifier of the external groups, this property contains the id of the group from the
    * external identity provider, e.g. for Azure Active Directory
    * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
-   */
+  */
   externalId?: string;
 }
 
 /**
  * Contract details.
- */
+*/
 export interface GroupContract extends Resource {
   /**
    * Group name.
-   */
+  */
   displayName: string;
   /**
    * Group description. Can contain HTML formatting tags.
-   */
+  */
   description?: string;
   /**
    * true if the group is one of the three system groups (Administrators, Developers, or Guests);
    * otherwise false.
-   */
+  */
   readonly builtIn?: boolean;
   /**
    * Group type. Possible values include: 'custom', 'system', 'external'
-   */
+  */
   groupContractType?: string;
   /**
    * For external groups, this property contains the id of the group from the external identity
    * provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object
    * id>`; otherwise the value is null.
-   */
+  */
   externalId?: string;
 }
 
 /**
  * Parameters supplied to the Create Group operation.
- */
+*/
 export interface GroupCreateParameters {
   /**
    * Group name.
-   */
+  */
   displayName: string;
   /**
    * Group description.
-   */
+  */
   description?: string;
   /**
    * Group type. Possible values include: 'custom', 'system', 'external'
-   */
+  */
   type?: string;
   /**
    * Identifier of the external groups, this property contains the id of the group from the
    * external identity provider, e.g. for Azure Active Directory
    * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
-   */
+  */
   externalId?: string;
 }
 
 /**
  * Identity Provider Base Parameter Properties.
- */
+*/
 export interface IdentityProviderBaseParameters {
   /**
    * Identity Provider Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
    * 'twitter', 'aad', 'aadB2C'
-   */
+  */
   type?: string;
   /**
+   * The TenantId to use instead of Common when logging into Active Directory
+  */
+  signinTenant?: string;
+  /**
    * List of Allowed Tenants when configuring Azure Active Directory login.
-   */
+  */
   allowedTenants?: string[];
   /**
    * OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
-   */
+  */
   authority?: string;
   /**
    * Signup Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signupPolicyName?: string;
   /**
    * Signin Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signinPolicyName?: string;
   /**
    * Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   profileEditingPolicyName?: string;
   /**
    * Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   passwordResetPolicyName?: string;
 }
 
 /**
  * Parameters supplied to update Identity Provider
- */
+*/
 export interface IdentityProviderUpdateParameters {
   /**
    * Identity Provider Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
    * 'twitter', 'aad', 'aadB2C'
-   */
+  */
   type?: string;
   /**
+   * The TenantId to use instead of Common when logging into Active Directory
+  */
+  signinTenant?: string;
+  /**
    * List of Allowed Tenants when configuring Azure Active Directory login.
-   */
+  */
   allowedTenants?: string[];
   /**
    * OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
-   */
+  */
   authority?: string;
   /**
    * Signup Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signupPolicyName?: string;
   /**
    * Signin Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signinPolicyName?: string;
   /**
    * Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   profileEditingPolicyName?: string;
   /**
    * Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   passwordResetPolicyName?: string;
   /**
    * Client Id of the Application in the external Identity Provider. It is App ID for Facebook
    * login, Client ID for Google login, App ID for Microsoft.
-   */
+  */
   clientId?: string;
   /**
    * Client secret of the Application in external Identity Provider, used to authenticate login
    * request. For example, it is App Secret for Facebook login, API Key for Google login, Public
    * Key for Microsoft.
-   */
+  */
   clientSecret?: string;
 }
 
 /**
  * Identity Provider details.
- */
+*/
 export interface IdentityProviderContract extends Resource {
   /**
    * Identity Provider Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
    * 'twitter', 'aad', 'aadB2C'
-   */
+  */
   identityProviderContractType?: string;
   /**
+   * The TenantId to use instead of Common when logging into Active Directory
+  */
+  signinTenant?: string;
+  /**
    * List of Allowed Tenants when configuring Azure Active Directory login.
-   */
+  */
   allowedTenants?: string[];
   /**
    * OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
-   */
+  */
   authority?: string;
   /**
    * Signup Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signupPolicyName?: string;
   /**
    * Signin Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   signinPolicyName?: string;
   /**
    * Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   profileEditingPolicyName?: string;
   /**
    * Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
-   */
+  */
   passwordResetPolicyName?: string;
   /**
    * Client Id of the Application in the external Identity Provider. It is App ID for Facebook
    * login, Client ID for Google login, App ID for Microsoft.
-   */
+  */
   clientId: string;
   /**
    * Client secret of the Application in external Identity Provider, used to authenticate login
    * request. For example, it is App Secret for Facebook login, API Key for Google login, Public
-   * Key for Microsoft.
-   */
+   * Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets'
+   * POST request to get the value.
+  */
+  clientSecret?: string;
+}
+
+/**
+ * Identity Provider details.
+*/
+export interface IdentityProviderCreateContract extends Resource {
+  /**
+   * Identity Provider Type identifier. Possible values include: 'facebook', 'google', 'microsoft',
+   * 'twitter', 'aad', 'aadB2C'
+  */
+  identityProviderCreateContractType?: string;
+  /**
+   * The TenantId to use instead of Common when logging into Active Directory
+  */
+  signinTenant?: string;
+  /**
+   * List of Allowed Tenants when configuring Azure Active Directory login.
+  */
+  allowedTenants?: string[];
+  /**
+   * OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
+  */
+  authority?: string;
+  /**
+   * Signup Policy Name. Only applies to AAD B2C Identity Provider.
+  */
+  signupPolicyName?: string;
+  /**
+   * Signin Policy Name. Only applies to AAD B2C Identity Provider.
+  */
+  signinPolicyName?: string;
+  /**
+   * Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
+  */
+  profileEditingPolicyName?: string;
+  /**
+   * Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
+  */
+  passwordResetPolicyName?: string;
+  /**
+   * Client Id of the Application in the external Identity Provider. It is App ID for Facebook
+   * login, Client ID for Google login, App ID for Microsoft.
+  */
+  clientId: string;
+  /**
+   * Client secret of the Application in external Identity Provider, used to authenticate login
+   * request. For example, it is App Secret for Facebook login, API Key for Google login, Public
+   * Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets'
+   * POST request to get the value.
+  */
   clientSecret: string;
 }
 
 /**
  * Logger update contract.
- */
+*/
 export interface LoggerUpdateContract {
   /**
    * Logger type. Possible values include: 'azureEventHub', 'applicationInsights'
-   */
+  */
   loggerType?: string;
   /**
    * Logger description.
-   */
+  */
   description?: string;
   /**
    * Logger credentials.
-   */
+  */
   credentials?: { [propertyName: string]: string };
   /**
    * Whether records are buffered in the logger before publishing. Default is assumed to be true.
-   */
+  */
   isBuffered?: boolean;
 }
 
 /**
  * Logger details.
- */
+*/
 export interface LoggerContract extends Resource {
   /**
    * Logger type. Possible values include: 'azureEventHub', 'applicationInsights'
-   */
+  */
   loggerType: string;
   /**
    * Logger description.
-   */
+  */
   description?: string;
   /**
    * The name and SendRule connection string of the event hub for azureEventHub logger.
    * Instrumentation key for applicationInsights logger.
-   */
+  */
   credentials: { [propertyName: string]: string };
   /**
    * Whether records are buffered in the logger before publishing. Default is assumed to be true.
-   */
+  */
   isBuffered?: boolean;
   /**
    * Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application
    * Insights resource).
-   */
+  */
   resourceId?: string;
 }
 
 /**
+ * Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+*/
+export interface PropertyValueContract {
+  /**
+   * This is secret value of the NamedValue entity.
+  */
+  value?: string;
+}
+
+/**
+ * NamedValue Entity Base Parameters set.
+*/
+export interface NamedValueEntityBaseParameters {
+  /**
+   * Optional tags that when provided can be used to filter the NamedValue list.
+  */
+  tags?: string[];
+  /**
+   * Determines whether the value is a secret and should be encrypted or not. Default value is
+   * false.
+  */
+  secret?: boolean;
+}
+
+/**
+ * NamedValue details.
+*/
+export interface NamedValueContract extends Resource {
+  /**
+   * Optional tags that when provided can be used to filter the NamedValue list.
+  */
+  tags?: string[];
+  /**
+   * Determines whether the value is a secret and should be encrypted or not. Default value is
+   * false.
+  */
+  secret?: boolean;
+  /**
+   * Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore
+   * characters.
+  */
+  displayName: string;
+  /**
+   * Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only
+   * of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST
+   * request to get the value.
+  */
+  value?: string;
+}
+
+/**
+ * NamedValue update Parameters.
+*/
+export interface NamedValueUpdateParameters {
+  /**
+   * Optional tags that when provided can be used to filter the NamedValue list.
+  */
+  tags?: string[];
+  /**
+   * Determines whether the value is a secret and should be encrypted or not. Default value is
+   * false.
+  */
+  secret?: boolean;
+  /**
+   * Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore
+   * characters.
+  */
+  displayName?: string;
+  /**
+   * Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only
+   * of whitespace.
+  */
+  value?: string;
+}
+
+/**
+ * NamedValue details.
+*/
+export interface NamedValueCreateContract extends Resource {
+  /**
+   * Optional tags that when provided can be used to filter the NamedValue list.
+  */
+  tags?: string[];
+  /**
+   * Determines whether the value is a secret and should be encrypted or not. Default value is
+   * false.
+  */
+  secret?: boolean;
+  /**
+   * Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore
+   * characters.
+  */
+  displayName: string;
+  /**
+   * Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only
+   * of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST
+   * request to get the value.
+  */
+  value: string;
+}
+
+/**
  * Details about connectivity to a resource.
- */
+*/
 export interface ConnectivityStatusContract {
   /**
    * The hostname of the resource which the service depends on. This can be the database, storage
    * or any other azure resource on which the service depends upon.
-   */
+  */
   name: string;
   /**
    * Resource Connectivity Status Type identifier. Possible values include: 'initializing',
    * 'success', 'failure'
-   */
+  */
   status: string;
   /**
    * Error details of the connectivity to the resource.
-   */
+  */
   error?: string;
   /**
    * The date when the resource connectivity status was last updated. This status should be updated
@@ -3178,310 +3600,316 @@ export interface ConnectivityStatusContract {
    * network connectivity to the resource, from inside the Virtual Network.The date conforms to the
    * following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   lastUpdated: Date;
   /**
    * The date when the resource connectivity status last Changed from success to failure or
    * vice-versa. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by
    * the ISO 8601 standard.
 
-   */
+  */
   lastStatusChange: Date;
 }
 
 /**
  * Network Status details.
- */
+*/
 export interface NetworkStatusContract {
   /**
    * Gets the list of DNS servers IPV4 addresses.
-   */
+  */
   dnsServers: string[];
   /**
    * Gets the list of Connectivity Status to the Resources on which the service depends upon.
-   */
+  */
   connectivityStatus: ConnectivityStatusContract[];
 }
 
 /**
  * Network Status in the Location
- */
+*/
 export interface NetworkStatusContractByLocation {
   /**
    * Location of service
-   */
+  */
   location?: string;
   /**
    * Network status in Location
-   */
+  */
   networkStatus?: NetworkStatusContract;
 }
 
 /**
  * Recipient Email details.
- */
+*/
 export interface RecipientEmailContract extends Resource {
   /**
    * User Email subscribed to notification.
-   */
+  */
   email?: string;
 }
 
 /**
  * Paged Recipient User list representation.
- */
+*/
 export interface RecipientEmailCollection {
   /**
    * Page values.
-   */
+  */
   value?: RecipientEmailContract[];
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Recipient User details.
- */
+*/
 export interface RecipientUserContract extends Resource {
   /**
    * API Management UserId subscribed to notification.
-   */
+  */
   userId?: string;
 }
 
 /**
  * Paged Recipient User list representation.
- */
+*/
 export interface RecipientUserCollection {
   /**
    * Page values.
-   */
+  */
   value?: RecipientUserContract[];
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Notification Parameter contract.
- */
+*/
 export interface RecipientsContractProperties {
   /**
    * List of Emails subscribed for the notification.
-   */
+  */
   emails?: string[];
   /**
    * List of Users subscribed for the notification.
-   */
+  */
   users?: string[];
 }
 
 /**
  * Notification details.
- */
+*/
 export interface NotificationContract extends Resource {
   /**
    * Title of the Notification.
-   */
+  */
   title: string;
   /**
    * Description of the Notification.
-   */
+  */
   description?: string;
   /**
    * Recipient Parameter values.
-   */
+  */
   recipients?: RecipientsContractProperties;
 }
 
 /**
  * Parameters supplied to the Update OpenID Connect Provider operation.
- */
+*/
 export interface OpenidConnectProviderUpdateContract {
   /**
    * User-friendly OpenID Connect Provider name.
-   */
+  */
   displayName?: string;
   /**
    * User-friendly description of OpenID Connect Provider.
-   */
+  */
   description?: string;
   /**
    * Metadata endpoint URI.
-   */
+  */
   metadataEndpoint?: string;
   /**
    * Client ID of developer console which is the client application.
-   */
+  */
   clientId?: string;
   /**
    * Client Secret of developer console which is the client application.
-   */
+  */
   clientSecret?: string;
 }
 
 /**
  * OpenId Connect Provider details.
- */
+*/
 export interface OpenidConnectProviderContract extends Resource {
   /**
    * User-friendly OpenID Connect Provider name.
-   */
+  */
   displayName: string;
   /**
    * User-friendly description of OpenID Connect Provider.
-   */
+  */
   description?: string;
   /**
    * Metadata endpoint URI.
-   */
+  */
   metadataEndpoint: string;
   /**
    * Client ID of developer console which is the client application.
-   */
+  */
   clientId: string;
   /**
    * Client Secret of developer console which is the client application.
-   */
+  */
   clientSecret?: string;
 }
 
 /**
- * Policy snippet.
- */
-export interface PolicySnippetContract {
+ * Policy description details.
+*/
+export interface PolicyDescriptionContract extends Resource {
   /**
-   * Snippet name.
-   */
-  readonly name?: string;
-  /**
-   * Snippet content.
-   */
-  readonly content?: string;
-  /**
-   * Snippet toolTip.
-   */
-  readonly toolTip?: string;
+   * Policy description.
+  */
+  readonly description?: string;
   /**
    * Binary OR value of the Snippet scope.
-   */
+  */
   readonly scope?: number;
 }
 
 /**
- * The response of the list policy snippets operation.
- */
-export interface PolicySnippetsCollection {
+ * Descriptions of APIM policies.
+*/
+export interface PolicyDescriptionCollection {
   /**
-   * Policy snippet value.
-   */
-  value?: PolicySnippetContract[];
+   * Descriptions of APIM policies.
+  */
+  value?: PolicyDescriptionContract[];
+  /**
+   * Total record count number.
+  */
+  count?: number;
+}
+
+/**
+ * Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
+*/
+export interface PortalSettingValidationKeyContract {
+  /**
+   * This is secret value of the validation key in portal settings.
+  */
+  validationKey?: string;
 }
 
 /**
  * User registration delegation settings properties.
- */
+*/
 export interface RegistrationDelegationSettingsProperties {
   /**
    * Enable or disable delegation for user registration.
-   */
+  */
   enabled?: boolean;
 }
 
 /**
  * Subscriptions delegation settings properties.
- */
+*/
 export interface SubscriptionsDelegationSettingsProperties {
   /**
    * Enable or disable delegation for subscriptions.
-   */
+  */
   enabled?: boolean;
 }
 
 /**
  * Delegation settings for a developer portal.
- */
+*/
 export interface PortalDelegationSettings extends Resource {
   /**
    * A delegation Url.
-   */
+  */
   url?: string;
   /**
    * A base64-encoded validation key to validate, that a request is coming from Azure API
    * Management.
-   */
+  */
   validationKey?: string;
   /**
    * Subscriptions delegation settings.
-   */
+  */
   subscriptions?: SubscriptionsDelegationSettingsProperties;
   /**
    * User registration delegation settings.
-   */
+  */
   userRegistration?: RegistrationDelegationSettingsProperties;
 }
 
 /**
  * Terms of service contract properties.
- */
+*/
 export interface TermsOfServiceProperties {
   /**
    * A terms of service text.
-   */
+  */
   text?: string;
   /**
    * Display terms of service during a sign-up process.
-   */
+  */
   enabled?: boolean;
   /**
    * Ask user for consent to the terms of service.
-   */
+  */
   consentRequired?: boolean;
 }
 
 /**
  * Sign-Up settings for a developer portal.
- */
+*/
 export interface PortalSignupSettings extends Resource {
   /**
    * Allow users to sign up on a developer portal.
-   */
+  */
   enabled?: boolean;
   /**
    * Terms of service contract properties.
-   */
+  */
   termsOfService?: TermsOfServiceProperties;
 }
 
 /**
  * Sign-In settings for the Developer Portal.
- */
+*/
 export interface PortalSigninSettings extends Resource {
   /**
    * Redirect Anonymous users to the Sign-In page.
-   */
+  */
   enabled?: boolean;
 }
 
 /**
  * Subscription details.
- */
+*/
 export interface SubscriptionContract extends Resource {
   /**
    * The user resource identifier of the subscription owner. The value is a valid relative URL in
    * the format of /users/{userId} where {userId} is a user identifier.
-   */
+  */
   ownerId?: string;
   /**
    * Scope like /products/{productId} or /apis or /apis/{apiId}.
-   */
+  */
   scope: string;
   /**
    * The name of the subscription, or null if the subscription has no name.
-   */
+  */
   displayName?: string;
   /**
    * Subscription state. Possible states are * active – the subscription is active, * suspended –
@@ -3492,13 +3920,13 @@ export interface SubscriptionContract extends Resource {
    * administrator, * expired – the subscription reached its expiration date and was deactivated.
    * Possible values include: 'suspended', 'active', 'expired', 'submitted', 'rejected',
    * 'cancelled'
-   */
+  */
   state: string;
   /**
    * Subscription creation date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
    * as specified by the ISO 8601 standard.
 
-   */
+  */
   readonly createdDate?: Date;
   /**
    * Subscription activation date. The setting is for audit purposes only and the subscription is
@@ -3506,7 +3934,7 @@ export interface SubscriptionContract extends Resource {
    * property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by
    * the ISO 8601 standard.
 
-   */
+  */
   startDate?: Date;
   /**
    * Subscription expiration date. The setting is for audit purposes only and the subscription is
@@ -3514,7 +3942,7 @@ export interface SubscriptionContract extends Resource {
    * property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by
    * the ISO 8601 standard.
 
-   */
+  */
   expirationDate?: Date;
   /**
    * Date when subscription was cancelled or expired. The setting is for audit purposes only and
@@ -3522,44 +3950,47 @@ export interface SubscriptionContract extends Resource {
    * using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
    * as specified by the ISO 8601 standard.
 
-   */
+  */
   endDate?: Date;
   /**
    * Upcoming subscription expiration notification date. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   notificationDate?: Date;
   /**
-   * Subscription primary key.
-   */
-  primaryKey: string;
+   * Subscription primary key. This property will not be filled on 'GET' operations! Use
+   * '/listSecrets' POST request to get the value.
+  */
+  primaryKey?: string;
   /**
-   * Subscription secondary key.
-   */
-  secondaryKey: string;
+   * Subscription secondary key. This property will not be filled on 'GET' operations! Use
+   * '/listSecrets' POST request to get the value.
+  */
+  secondaryKey?: string;
   /**
-   * Optional subscription comment added by an administrator.
-   */
+   * Optional subscription comment added by an administrator when the state is changed to the
+   * 'rejected'.
+  */
   stateComment?: string;
   /**
    * Determines whether tracing is enabled
-   */
+  */
   allowTracing?: boolean;
 }
 
 /**
  * Product Update parameters.
- */
+*/
 export interface ProductUpdateParameters {
   /**
    * Product description. May include HTML formatting tags.
-   */
+  */
   description?: string;
   /**
    * Product terms of use. Developers trying to subscribe to the product will be presented and
    * required to accept these terms before they can complete the subscription process.
-   */
+  */
   terms?: string;
   /**
    * Whether a product subscription is required for accessing APIs included in this product. If
@@ -3567,7 +3998,7 @@ export interface ProductUpdateParameters {
    * request to an API included in the product to succeed. If false, the product is referred to as
    * "open" and requests to an API included in the product can be made without a subscription key.
    * If property is omitted when creating a new product it's value is assumed to be true.
-   */
+  */
   subscriptionRequired?: boolean;
   /**
    * whether subscription approval is required. If false, new subscriptions will be approved
@@ -3575,381 +4006,344 @@ export interface ProductUpdateParameters {
    * true, administrators must manually approve the subscription before the developer can any of
    * the product’s APIs. Can be present only if subscriptionRequired property is present and has a
    * value of false.
-   */
+  */
   approvalRequired?: boolean;
   /**
    * Whether the number of subscriptions a user can have to this product at the same time. Set to
    * null or omit to allow unlimited per user subscriptions. Can be present only if
    * subscriptionRequired property is present and has a value of false.
-   */
+  */
   subscriptionsLimit?: number;
   /**
    * whether product is published or not. Published products are discoverable by users of developer
    * portal. Non published products are visible only to administrators. Default state of Product is
    * notPublished. Possible values include: 'notPublished', 'published'
-   */
+  */
   state?: string;
   /**
    * Product name.
-   */
+  */
   displayName?: string;
-}
-
-/**
- * Property Entity Base Parameters set.
- */
-export interface PropertyEntityBaseParameters {
-  /**
-   * Optional tags that when provided can be used to filter the property list.
-   */
-  tags?: string[];
-  /**
-   * Determines whether the value is a secret and should be encrypted or not. Default value is
-   * false.
-   */
-  secret?: boolean;
-}
-
-/**
- * Property update Parameters.
- */
-export interface PropertyUpdateParameters {
-  /**
-   * Optional tags that when provided can be used to filter the property list.
-   */
-  tags?: string[];
-  /**
-   * Determines whether the value is a secret and should be encrypted or not. Default value is
-   * false.
-   */
-  secret?: boolean;
-  /**
-   * Unique name of Property. It may contain only letters, digits, period, dash, and underscore
-   * characters.
-   */
-  displayName?: string;
-  /**
-   * Value of the property. Can contain policy expressions. It may not be empty or consist only of
-   * whitespace.
-   */
-  value?: string;
-}
-
-/**
- * Property details.
- */
-export interface PropertyContract extends Resource {
-  /**
-   * Optional tags that when provided can be used to filter the property list.
-   */
-  tags?: string[];
-  /**
-   * Determines whether the value is a secret and should be encrypted or not. Default value is
-   * false.
-   */
-  secret?: boolean;
-  /**
-   * Unique name of Property. It may contain only letters, digits, period, dash, and underscore
-   * characters.
-   */
-  displayName: string;
-  /**
-   * Value of the property. Can contain policy expressions. It may not be empty or consist only of
-   * whitespace.
-   */
-  value: string;
 }
 
 /**
  * Quota counter value details.
- */
+*/
 export interface QuotaCounterValueContractProperties {
   /**
    * Number of times Counter was called.
-   */
+  */
   callsCount?: number;
   /**
    * Data Transferred in KiloBytes.
-   */
+  */
+  kbTransferred?: number;
+}
+
+/**
+ * Quota counter value details.
+*/
+export interface QuotaCounterValueUpdateContract {
+  /**
+   * Number of times Counter was called.
+  */
+  callsCount?: number;
+  /**
+   * Data Transferred in KiloBytes.
+  */
   kbTransferred?: number;
 }
 
 /**
  * Quota counter details.
- */
+*/
 export interface QuotaCounterContract {
   /**
    * The Key value of the Counter. Must not be empty.
-   */
+  */
   counterKey: string;
   /**
    * Identifier of the Period for which the counter was collected. Must not be empty.
-   */
+  */
   periodKey: string;
   /**
    * The date of the start of Counter Period. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   periodStartTime: Date;
   /**
    * The date of the end of Counter Period. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   periodEndTime: Date;
   /**
    * Quota Value Properties
-   */
+  */
   value?: QuotaCounterValueContractProperties;
 }
 
 /**
  * Paged Quota Counter list representation.
- */
+*/
 export interface QuotaCounterCollection {
   /**
    * Quota counter values.
-   */
+  */
   value?: QuotaCounterContract[];
   /**
    * Total record count number across all pages.
-   */
+  */
   count?: number;
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Request Report data.
- */
+*/
 export interface RequestReportRecordContract {
   /**
    * API identifier path. /apis/{apiId}
-   */
+  */
   apiId?: string;
   /**
    * Operation identifier path. /apis/{apiId}/operations/{operationId}
-   */
+  */
   operationId?: string;
   /**
    * Product identifier path. /products/{productId}
-   */
+  */
   readonly productId?: string;
   /**
    * User identifier path. /users/{userId}
-   */
+  */
   readonly userId?: string;
   /**
    * The HTTP method associated with this request..
-   */
+  */
   method?: string;
   /**
    * The full URL associated with this request.
-   */
+  */
   url?: string;
   /**
    * The client IP address associated with this request.
-   */
+  */
   ipAddress?: string;
   /**
    * The HTTP status code received by the gateway as a result of forwarding this request to the
    * backend.
-   */
+  */
   backendResponseCode?: string;
   /**
    * The HTTP status code returned by the gateway.
-   */
+  */
   responseCode?: number;
   /**
    * The size of the response returned by the gateway.
-   */
+  */
   responseSize?: number;
   /**
    * The date and time when this request was received by the gateway in ISO 8601 format.
-   */
+  */
   timestamp?: Date;
   /**
    * Specifies if response cache was involved in generating the response. If the value is none, the
    * cache was not used. If the value is hit, cached response was returned. If the value is miss,
    * the cache was used but lookup resulted in a miss and request was fulfilled by the backend.
-   */
+  */
   cache?: string;
   /**
    * The total time it took to process this request.
-   */
+  */
   apiTime?: number;
   /**
    * he time it took to forward this request to the backend and get the response back.
-   */
+  */
   serviceTime?: number;
   /**
    * Azure region where the gateway that processed this request is located.
-   */
+  */
   apiRegion?: string;
   /**
    * Subscription identifier path. /subscriptions/{subscriptionId}
-   */
+  */
   subscriptionId?: string;
   /**
    * Request Identifier.
-   */
+  */
   requestId?: string;
   /**
    * The size of this request..
-   */
+  */
   requestSize?: number;
 }
 
 /**
  * Report data.
- */
+*/
 export interface ReportRecordContract {
   /**
    * Name depending on report endpoint specifies product, API, operation or developer name.
-   */
+  */
   name?: string;
   /**
    * Start of aggregation period. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
    * as specified by the ISO 8601 standard.
 
-   */
+  */
   timestamp?: Date;
   /**
    * Length of aggregation period.  Interval must be multiple of 15 minutes and may not be zero.
    * The value should be in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
-   */
+  */
   interval?: string;
   /**
    * Country to which this record data is related.
-   */
+  */
   country?: string;
   /**
    * Country region to which this record data is related.
-   */
+  */
   region?: string;
   /**
    * Zip code to which this record data is related.
-   */
+  */
   zip?: string;
   /**
    * User identifier path. /users/{userId}
-   */
+  */
   readonly userId?: string;
   /**
    * Product identifier path. /products/{productId}
-   */
+  */
   readonly productId?: string;
   /**
    * API identifier path. /apis/{apiId}
-   */
+  */
   apiId?: string;
   /**
    * Operation identifier path. /apis/{apiId}/operations/{operationId}
-   */
+  */
   operationId?: string;
   /**
    * API region identifier.
-   */
+  */
   apiRegion?: string;
   /**
    * Subscription identifier path. /subscriptions/{subscriptionId}
-   */
+  */
   subscriptionId?: string;
   /**
    * Number of successful calls. This includes calls returning HttpStatusCode <= 301 and
    * HttpStatusCode.NotModified and HttpStatusCode.TemporaryRedirect
-   */
+  */
   callCountSuccess?: number;
   /**
    * Number of calls blocked due to invalid credentials. This includes calls returning
    * HttpStatusCode.Unauthorized and HttpStatusCode.Forbidden and HttpStatusCode.TooManyRequests
-   */
+  */
   callCountBlocked?: number;
   /**
    * Number of calls failed due to proxy or backend errors. This includes calls returning
    * HttpStatusCode.BadRequest(400) and any Code between HttpStatusCode.InternalServerError (500)
    * and 600
-   */
+  */
   callCountFailed?: number;
   /**
    * Number of other calls.
-   */
+  */
   callCountOther?: number;
   /**
    * Total number of calls.
-   */
+  */
   callCountTotal?: number;
   /**
    * Bandwidth consumed.
-   */
+  */
   bandwidth?: number;
   /**
    * Number of times when content was served from cache policy.
-   */
+  */
   cacheHitCount?: number;
   /**
    * Number of times content was fetched from backend.
-   */
+  */
   cacheMissCount?: number;
   /**
    * Average time it took to process request.
-   */
+  */
   apiTimeAvg?: number;
   /**
    * Minimum time it took to process request.
-   */
+  */
   apiTimeMin?: number;
   /**
    * Maximum time it took to process request.
-   */
+  */
   apiTimeMax?: number;
   /**
    * Average time it took to process request on backend.
-   */
+  */
   serviceTimeAvg?: number;
   /**
    * Minimum time it took to process request on backend.
-   */
+  */
   serviceTimeMin?: number;
   /**
    * Maximum time it took to process request on backend.
-   */
+  */
   serviceTimeMax?: number;
 }
 
 /**
+ * Subscription keys.
+*/
+export interface SubscriptionKeysContract {
+  /**
+   * Subscription primary key.
+  */
+  primaryKey?: string;
+  /**
+   * Subscription secondary key.
+  */
+  secondaryKey?: string;
+}
+
+/**
  * Subscription update details.
- */
+*/
 export interface SubscriptionUpdateParameters {
   /**
    * User identifier path: /users/{userId}
-   */
+  */
   ownerId?: string;
   /**
    * Scope like /products/{productId} or /apis or /apis/{apiId}
-   */
+  */
   scope?: string;
   /**
    * Subscription expiration date. The setting is for audit purposes only and the subscription is
    * not automatically expired. The subscription lifecycle can be managed by using the `state`
    * property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by
    * the ISO 8601 standard.
-   */
+  */
   expirationDate?: Date;
   /**
    * Subscription name.
-   */
+  */
   displayName?: string;
   /**
    * Primary subscription key.
-   */
+  */
   primaryKey?: string;
   /**
    * Secondary subscription key.
-   */
+  */
   secondaryKey?: string;
   /**
    * Subscription state. Possible states are * active – the subscription is active, * suspended –
@@ -3960,42 +4354,43 @@ export interface SubscriptionUpdateParameters {
    * administrator, * expired – the subscription reached its expiration date and was deactivated.
    * Possible values include: 'suspended', 'active', 'expired', 'submitted', 'rejected',
    * 'cancelled'
-   */
+  */
   state?: string;
   /**
-   * Comments describing subscription state change by the administrator.
-   */
+   * Comments describing subscription state change by the administrator when the state is changed
+   * to the 'rejected'.
+  */
   stateComment?: string;
   /**
    * Determines whether tracing can be enabled
-   */
+  */
   allowTracing?: boolean;
 }
 
 /**
  * Subscription create details.
- */
+*/
 export interface SubscriptionCreateParameters {
   /**
    * User (user id path) for whom subscription is being created in form /users/{userId}
-   */
+  */
   ownerId?: string;
   /**
    * Scope like /products/{productId} or /apis or /apis/{apiId}.
-   */
+  */
   scope: string;
   /**
    * Subscription name.
-   */
+  */
   displayName: string;
   /**
    * Primary subscription key. If not specified during request key will be generated automatically.
-   */
+  */
   primaryKey?: string;
   /**
    * Secondary subscription key. If not specified during request key will be generated
    * automatically.
-   */
+  */
   secondaryKey?: string;
   /**
    * Initial subscription state. If no value is specified, subscription is created with Submitted
@@ -4006,666 +4401,758 @@ export interface SubscriptionCreateParameters {
    * cancelled – the subscription has been cancelled by the developer or administrator, * expired –
    * the subscription reached its expiration date and was deactivated. Possible values include:
    * 'suspended', 'active', 'expired', 'submitted', 'rejected', 'cancelled'
-   */
+  */
   state?: string;
   /**
    * Determines whether tracing can be enabled
-   */
+  */
   allowTracing?: boolean;
 }
 
 /**
  * Parameters supplied to Create/Update Tag operations.
- */
+*/
 export interface TagCreateUpdateParameters {
   /**
    * Tag name.
-   */
+  */
   displayName: string;
 }
 
 /**
  * Tenant Configuration Synchronization State.
- */
+*/
 export interface TenantConfigurationSyncStateContract {
   /**
    * The name of Git branch.
-   */
+  */
   branch?: string;
   /**
    * The latest commit Id.
-   */
+  */
   commitId?: string;
   /**
    * value indicating if last sync was save (true) or deploy (false) operation.
-   */
+  */
   isExport?: boolean;
   /**
    * value indicating if last synchronization was later than the configuration change.
-   */
+  */
   isSynced?: boolean;
   /**
    * value indicating whether Git configuration access is enabled.
-   */
+  */
   isGitEnabled?: boolean;
   /**
    * The date of the latest synchronization. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   syncDate?: Date;
   /**
    * The date of the latest configuration change. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   configurationChangeDate?: Date;
 }
 
 /**
  * Log of the entity being created, updated or deleted.
- */
+*/
 export interface OperationResultLogItemContract {
   /**
    * The type of entity contract.
-   */
+  */
   objectType?: string;
   /**
    * Action like create/update/delete.
-   */
+  */
   action?: string;
   /**
    * Identifier of the entity being created/updated/deleted.
-   */
+  */
   objectKey?: string;
 }
 
 /**
  * Operation Result.
- */
+*/
 export interface OperationResultContract {
   /**
    * Operation result identifier.
-   */
+  */
   id?: string;
   /**
    * Status of an async operation. Possible values include: 'Started', 'InProgress', 'Succeeded',
    * 'Failed'
-   */
+  */
   status?: string;
   /**
    * Start time of an async operation. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   started?: Date;
   /**
    * Last update time of an async operation. The date conforms to the following format:
    * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   updated?: Date;
   /**
    * Optional result info.
-   */
+  */
   resultInfo?: string;
   /**
    * Error Body Contract
-   */
+  */
   error?: ErrorResponseBody;
   /**
    * This property if only provided as part of the TenantConfiguration_Validate operation. It
    * contains the log the entities which will be updated/created/deleted as part of the
    * TenantConfiguration_Deploy operation.
-   */
+  */
   readonly actionLog?: OperationResultLogItemContract[];
 }
 
 /**
  * Deploy Tenant Configuration Contract.
- */
+*/
 export interface DeployConfigurationParameters {
   /**
    * The name of the Git branch from which the configuration is to be deployed to the configuration
    * database.
-   */
+  */
   branch: string;
   /**
    * The value enforcing deleting subscriptions to products that are deleted in this update.
-   */
+  */
   force?: boolean;
 }
 
 /**
  * Save Tenant Configuration Contract details.
- */
+*/
 export interface SaveConfigurationParameter {
   /**
    * The name of the Git branch in which to commit the current configuration snapshot.
-   */
+  */
   branch: string;
   /**
    * The value if true, the current configuration database is committed to the Git repository, even
    * if the Git repository has newer changes that would be overwritten.
-   */
+  */
   force?: boolean;
 }
 
 /**
  * Tenant access information contract of the API Management service.
- */
+*/
 export interface AccessInformationContract {
   /**
    * Identifier.
-   */
+  */
   id?: string;
   /**
-   * Primary access key.
-   */
+   * Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets'
+   * POST request to get the value.
+  */
   primaryKey?: string;
   /**
-   * Secondary access key.
-   */
+   * Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets'
+   * POST request to get the value.
+  */
   secondaryKey?: string;
   /**
    * Determines whether direct access is enabled.
-   */
+  */
   enabled?: boolean;
 }
 
 /**
  * Tenant access information update parameters.
- */
+*/
 export interface AccessInformationUpdateParameters {
   /**
    * Determines whether direct access is enabled.
-   */
+  */
   enabled?: boolean;
 }
 
 /**
  * Get User Token response details.
- */
+*/
 export interface UserTokenResult {
   /**
    * Shared Access Authorization token for the User.
-   */
+  */
   value?: string;
 }
 
 /**
  * Get User Token parameters.
- */
+*/
 export interface UserTokenParameters {
   /**
    * The Key to be used to generate token for user. Possible values include: 'primary', 'secondary'
-   */
+  */
   keyType: string;
   /**
    * The Expiry time of the Token. Maximum token expiry time is set to 30 days. The date conforms
    * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 
-   */
+  */
   expiry: Date;
 }
 
 /**
  * Generate SSO Url operations response details.
- */
+*/
 export interface GenerateSsoUrlResult {
   /**
    * Redirect Url containing the SSO URL value.
-   */
+  */
   value?: string;
 }
 
 /**
  * User update parameters.
- */
+*/
 export interface UserUpdateParameters {
   /**
    * Account state. Specifies whether the user is active or not. Blocked users are unable to sign
    * into the developer portal or call any APIs of subscribed products. Default state is Active.
    * Possible values include: 'active', 'blocked', 'pending', 'deleted'
-   */
+  */
   state?: string;
   /**
    * Optional note about a user set by the administrator.
-   */
+  */
   note?: string;
   /**
    * Collection of user identities.
-   */
+  */
   identities?: UserIdentityContract[];
   /**
    * Email address. Must not be empty and must be unique within the service instance.
-   */
+  */
   email?: string;
   /**
    * User Password.
-   */
+  */
   password?: string;
   /**
    * First name.
-   */
+  */
   firstName?: string;
   /**
    * Last name.
-   */
+  */
   lastName?: string;
 }
 
 /**
  * User create details.
- */
+*/
 export interface UserCreateParameters {
   /**
    * Account state. Specifies whether the user is active or not. Blocked users are unable to sign
    * into the developer portal or call any APIs of subscribed products. Default state is Active.
    * Possible values include: 'active', 'blocked', 'pending', 'deleted'
-   */
+  */
   state?: string;
   /**
    * Optional note about a user set by the administrator.
-   */
+  */
   note?: string;
   /**
    * Collection of user identities.
-   */
+  */
   identities?: UserIdentityContract[];
   /**
    * Email address. Must not be empty and must be unique within the service instance.
-   */
+  */
   email: string;
   /**
    * First name.
-   */
+  */
   firstName: string;
   /**
    * Last name.
-   */
+  */
   lastName: string;
   /**
    * User Password. If no value is provided, a default password is generated.
-   */
+  */
   password?: string;
+  /**
+   * Determines the type of application which send the create user request. Default is legacy
+   * portal. Possible values include: 'portal', 'developerPortal'
+  */
+  appType?: string;
   /**
    * Determines the type of confirmation e-mail that will be sent to the newly created user.
    * Possible values include: 'signup', 'invite'
-   */
+  */
   confirmation?: string;
 }
 
 /**
  * Object used to create an API Revision or Version based on an existing API Revision
- */
+*/
 export interface ApiRevisionInfoContract {
   /**
    * Resource identifier of API to be used to create the revision from.
-   */
+  */
   sourceApiId?: string;
   /**
    * Version identifier for the new API Version.
-   */
+  */
   apiVersionName?: string;
   /**
    * Description of new API Revision.
-   */
+  */
   apiRevisionDescription?: string;
   /**
    * Version set details
-   */
+  */
   apiVersionSet?: ApiVersionSetContractDetails;
 }
 
 /**
  * Quota counter value details.
- */
+*/
 export interface QuotaCounterValueContract {
   /**
    * Number of times Counter was called.
-   */
+  */
   callsCount?: number;
   /**
    * Data Transferred in KiloBytes.
-   */
+  */
   kbTransferred?: number;
 }
 
 /**
+ * Content type contract details.
+*/
+export interface ContentTypeContract extends Resource {
+  /**
+   * Content type identifier
+  */
+  contentTypeContractId?: string;
+  /**
+   * Content type name. Must be 1 to 250 characters long.
+  */
+  contentTypeContractName?: string;
+  /**
+   * Content type description.
+  */
+  description?: string;
+  /**
+   * Content type schema.
+  */
+  schema?: any;
+  /**
+   * Content type version.
+  */
+  version?: string;
+}
+
+/**
+ * Paged list of content types.
+*/
+export interface ContentTypeCollection {
+  /**
+   * Collection of content types.
+  */
+  readonly value?: ContentTypeContract[];
+  /**
+   * Next page link, if any.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * Content type contract details.
+*/
+export interface ContentItemContract extends Resource {
+  /**
+   * Properties of the content item.
+  */
+  properties?: { [propertyName: string]: any };
+}
+
+/**
+ * Paged list of content items.
+*/
+export interface ContentItemCollection {
+  /**
+   * Collection of content items.
+  */
+  readonly value?: ContentItemContract[];
+  /**
+   * Next page link, if any.
+  */
+  readonly nextLink?: string;
+}
+
+/**
  * Paged Api list representation.
- */
+*/
 export interface ApiCollection extends Array<ApiContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Tag list representation.
- */
+*/
 export interface TagResourceCollection extends Array<TagResourceContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Api Revision list representation.
- */
+*/
 export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged ApiRelease list representation.
- */
+*/
 export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Operation list representation.
- */
+*/
 export interface OperationCollection extends Array<OperationContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Tag list representation.
- */
+*/
 export interface TagCollection extends Array<TagContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Products list representation.
- */
+*/
 export interface ProductCollection extends Array<ProductContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * The response of the list schema operation.
- */
+*/
 export interface SchemaCollection extends Array<SchemaContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Diagnostic list representation.
- */
+*/
 export interface DiagnosticCollection extends Array<DiagnosticContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Issue list representation.
- */
+*/
 export interface IssueCollection extends Array<IssueContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Issue Comment list representation.
- */
+*/
 export interface IssueCommentCollection extends Array<IssueCommentContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged Issue Attachment list representation.
- */
+*/
 export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
   /**
    * Next page link if any.
-   */
+  */
   readonly nextLink?: string;
 }
 
 /**
  * Paged TagDescription list representation.
- */
+*/
 export interface TagDescriptionCollection extends Array<TagDescriptionContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Api Version Set list representation.
- */
+*/
 export interface ApiVersionSetCollection extends Array<ApiVersionSetContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged OAuth2 Authorization Servers list representation.
- */
+*/
 export interface AuthorizationServerCollection extends Array<AuthorizationServerContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Backend list representation.
- */
+*/
 export interface BackendCollection extends Array<BackendContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Caches list representation.
- */
+*/
 export interface CacheCollection extends Array<CacheContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Certificates list representation.
- */
+*/
 export interface CertificateCollection extends Array<CertificateContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Result of the request to list REST API operations. It contains a list of operations and a URL
  * nextLink to get the next set of results.
- */
+*/
 export interface OperationListResult extends Array<Operation> {
   /**
    * URL to get the next set of operation list results if there are any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * The API Management service SKUs operation response.
- */
+*/
 export interface ResourceSkuResults extends Array<ResourceSkuResult> {
   /**
    * The uri to fetch the next page of API Management service Skus.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * The response of the List API Management services operation.
- */
+*/
 export interface ApiManagementServiceListResult extends Array<ApiManagementServiceResource> {
   /**
    * Link to the next set of results. Not empty if Value contains incomplete list of API Management
    * services.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged email template list representation.
- */
+*/
 export interface EmailTemplateCollection extends Array<EmailTemplateContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
+ * Paged Gateway list representation.
+*/
+export interface GatewayCollection extends Array<GatewayContract> {
+  /**
+   * Next page link if any.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * Paged Gateway hostname configuration list representation.
+*/
+export interface GatewayHostnameConfigurationCollection extends
+Array<GatewayHostnameConfigurationContract> {
+  /**
+   * Next page link if any.
+  */
+  readonly nextLink?: string;
+}
+
+/**
  * Paged Group list representation.
- */
+*/
 export interface GroupCollection extends Array<GroupContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Users list representation.
- */
+*/
 export interface UserCollection extends Array<UserContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * List of all the Identity Providers configured on the service instance.
- */
+*/
 export interface IdentityProviderList extends Array<IdentityProviderContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Logger list representation.
- */
+*/
 export interface LoggerCollection extends Array<LoggerContract> {
   /**
    * Next page link if any.
-   */
+  */
+  nextLink?: string;
+}
+
+/**
+ * Paged NamedValue list representation.
+*/
+export interface NamedValueCollection extends Array<NamedValueContract> {
+  /**
+   * Next page link if any.
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Notification list representation.
- */
+*/
 export interface NotificationCollection extends Array<NotificationContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged OpenIdProviders list representation.
- */
+*/
 export interface OpenIdConnectProviderCollection extends Array<OpenidConnectProviderContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Subscriptions list representation.
- */
+*/
 export interface SubscriptionCollection extends Array<SubscriptionContract> {
   /**
    * Next page link if any.
-   */
-  nextLink?: string;
-}
-
-/**
- * Paged Property list representation.
- */
-export interface PropertyCollection extends Array<PropertyContract> {
-  /**
-   * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Lists Regions operation response details.
- */
+*/
 export interface RegionListResult extends Array<RegionContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Report records list representation.
- */
+*/
 export interface ReportCollection extends Array<ReportRecordContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
 
 /**
  * Paged Report records list representation.
- */
+*/
 export interface RequestReportCollection extends Array<RequestReportRecordContract> {
 }
 
 /**
  * List of Users Identity list representation.
- */
+*/
 export interface UserIdentityCollection extends Array<UserIdentityContract> {
   /**
    * Next page link if any.
-   */
+  */
   nextLink?: string;
 }
