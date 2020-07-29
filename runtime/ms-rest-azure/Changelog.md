@@ -1,3 +1,6 @@
+### 3.0.1 (Unreleased)
+- Remove unused dependency on `moment`. For issue [issue #5157](https://github.com/Azure/azure-sdk-for-node/issues/5157)
+
 ### 3.0.0 (07/11/2019)
 - Remove leading dot from azure environment settings. This fixes [issue #4706](https://github.com/Azure/azure-sdk-for-node/issues/4706) via the [PR 5101](https://github.com/Azure/azure-sdk-for-node/pull/5101)
 
