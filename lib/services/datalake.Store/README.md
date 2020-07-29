@@ -32,7 +32,7 @@ npm install azure-arm-datalake-store
   var accountName = 'testadlsacct';
   var pathToEnumerate = '/myfolder';
   var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
-  var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
+  var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials);
   filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, function(err, result, request, response) {
     if (err) console.log(err);
     console.log(result);
