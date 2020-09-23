@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@octokit/rest": "^15.17.0",
-    "@types/request": "^2.0.3",
+    "@types/request": "^2.48.5",
     "adal-node": "^0.1.22",
     "async": "^2.5.0",
     "azure-arm-hdinsight": "^0.12.0",
