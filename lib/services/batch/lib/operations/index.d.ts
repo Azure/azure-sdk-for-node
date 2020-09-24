@@ -670,14 +670,17 @@ export interface Pool {
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
      * ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in
-     * the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
@@ -845,7 +848,8 @@ export interface Pool {
      * inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object} [pool.networkConfiguration.publicIPAddressConfiguration] The
      * Public IPAddress configuration for Compute Nodes in the Batch Pool. Public
@@ -862,9 +866,9 @@ export interface Pool {
      * [pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds] The
      * list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -999,10 +1003,10 @@ export interface Pool {
      * application licenses. If a license is requested which is not supported, Pool
      * creation will fail.
      *
-     * @param {number} [pool.maxTasksPerNode] The maximum number of Tasks that can
-     * run concurrently on a single Compute Node in the Pool. The default value is
-     * 1. The maximum value is the smaller of 4 times the number of cores of the
-     * vmSize of the Pool or 256.
+     * @param {number} [pool.taskSlotsPerNode] The number of task slots that can be
+     * used to run concurrent tasks on a single compute node in the pool. The
+     * default value is 1. The maximum value is the smaller of 4 times the number
+     * of cores of the vmSize of the pool or 256.
      *
      * @param {object} [pool.taskSchedulingPolicy] How Tasks are distributed across
      * Compute Nodes in a Pool. If not specified, the default is spread.
@@ -1137,14 +1141,17 @@ export interface Pool {
      * @param {string}
      * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] The
      * ARM resource identifier of the Shared Image Gallery Image. Compute Nodes in
-     * the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
@@ -1312,7 +1319,8 @@ export interface Pool {
      * inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object} [pool.networkConfiguration.publicIPAddressConfiguration] The
      * Public IPAddress configuration for Compute Nodes in the Batch Pool. Public
@@ -1329,9 +1337,9 @@ export interface Pool {
      * [pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds] The
      * list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -1466,10 +1474,10 @@ export interface Pool {
      * application licenses. If a license is requested which is not supported, Pool
      * creation will fail.
      *
-     * @param {number} [pool.maxTasksPerNode] The maximum number of Tasks that can
-     * run concurrently on a single Compute Node in the Pool. The default value is
-     * 1. The maximum value is the smaller of 4 times the number of cores of the
-     * vmSize of the Pool or 256.
+     * @param {number} [pool.taskSlotsPerNode] The number of task slots that can be
+     * used to run concurrent tasks on a single compute node in the pool. The
+     * default value is 1. The maximum value is the smaller of 4 times the number
+     * of cores of the vmSize of the pool or 256.
      *
      * @param {object} [pool.taskSchedulingPolicy] How Tasks are distributed across
      * Compute Nodes in a Pool. If not specified, the default is spread.
@@ -4150,7 +4158,9 @@ export interface Account {
 
 
     /**
-     * Gets the number of Compute Nodes in each state, grouped by Pool.
+     * Gets the number of Compute Nodes in each state, grouped by Pool. Note that
+     * the numbers returned may not always be up to date. If you need exact node
+     * counts, use a list query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4193,7 +4203,9 @@ export interface Account {
     listPoolNodeCountsWithHttpOperationResponse(options?: { accountListPoolNodeCountsOptions? : models.AccountListPoolNodeCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PoolNodeCountsListResult>>;
 
     /**
-     * Gets the number of Compute Nodes in each state, grouped by Pool.
+     * Gets the number of Compute Nodes in each state, grouped by Pool. Note that
+     * the numbers returned may not always be up to date. If you need exact node
+     * counts, use a list query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4350,7 +4362,9 @@ export interface Account {
 
 
     /**
-     * Gets the number of Compute Nodes in each state, grouped by Pool.
+     * Gets the number of Compute Nodes in each state, grouped by Pool. Note that
+     * the numbers returned may not always be up to date. If you need exact node
+     * counts, use a list query.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4385,7 +4399,9 @@ export interface Account {
     listPoolNodeCountsNextWithHttpOperationResponse(nextPageLink: string, options?: { accountListPoolNodeCountsNextOptions? : models.AccountListPoolNodeCountsNextOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PoolNodeCountsListResult>>;
 
     /**
-     * Gets the number of Compute Nodes in each state, grouped by Pool.
+     * Gets the number of Compute Nodes in each state, grouped by Pool. Note that
+     * the numbers returned may not always be up to date. If you need exact node
+     * counts, use a list query.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5017,14 +5033,17 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5108,10 +5127,10 @@ export interface Job {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
-     * maximum number of Tasks that can run concurrently on a single Compute Node
-     * in the Pool. The default value is 1. The maximum value is the smaller of 4
-     * times the number of cores of the vmSize of the Pool or 256.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode] The
+     * number of task slots that can be used to run concurrent tasks on a single
+     * compute node in the pool. The default value is 1. The maximum value is the
+     * smaller of 4 times the number of cores of the vmSize of the pool or 256.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -5225,7 +5244,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -5243,9 +5263,9 @@ export interface Job {
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -5659,14 +5679,17 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -5750,10 +5773,10 @@ export interface Job {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
-     * maximum number of Tasks that can run concurrently on a single Compute Node
-     * in the Pool. The default value is 1. The maximum value is the smaller of 4
-     * times the number of cores of the vmSize of the Pool or 256.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode] The
+     * number of task slots that can be used to run concurrent tasks on a single
+     * compute node in the pool. The default value is 1. The maximum value is the
+     * smaller of 4 times the number of cores of the vmSize of the pool or 256.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -5867,7 +5890,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -5885,9 +5909,9 @@ export interface Job {
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -6311,14 +6335,17 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -6402,10 +6429,11 @@ export interface Job {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
-     * maximum number of Tasks that can run concurrently on a single Compute Node
-     * in the Pool. The default value is 1. The maximum value is the smaller of 4
-     * times the number of cores of the vmSize of the Pool or 256.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -6519,7 +6547,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -6537,9 +6566,9 @@ export interface Job {
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -6958,14 +6987,17 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -7049,10 +7081,11 @@ export interface Job {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
-     * maximum number of Tasks that can run concurrently on a single Compute Node
-     * in the Pool. The default value is 1. The maximum value is the smaller of 4
-     * times the number of cores of the vmSize of the Pool or 256.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -7166,7 +7199,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -7184,9 +7218,9 @@ export interface Job {
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -8015,6 +8049,11 @@ export interface Job {
      * @param {object} [job.jobManagerTask.constraints] Constraints that apply to
      * the Job Manager Task.
      *
+     * @param {number} [job.jobManagerTask.requiredSlots] The number of scheduling
+     * slots that the Task requires to run. The default is 1. A Task can only be
+     * scheduled to run on a compute node if the node has enough free scheduling
+     * slots available. For multi-instance Tasks, this must be 1.
+     *
      * @param {boolean} [job.jobManagerTask.killJobOnCompletion] Whether completion
      * of the Job Manager Task signifies completion of the entire Job. If true,
      * when the Job Manager Task completes, the Batch service marks the Job as
@@ -8365,14 +8404,17 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -8455,10 +8497,11 @@ export interface Job {
      * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
      * "TemporaryDisk" must be specified.
      *
-     * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * @param {number} [job.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] How Tasks are
@@ -8570,7 +8613,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -8588,9 +8632,9 @@ export interface Job {
      * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -8956,6 +9000,11 @@ export interface Job {
      * @param {object} [job.jobManagerTask.constraints] Constraints that apply to
      * the Job Manager Task.
      *
+     * @param {number} [job.jobManagerTask.requiredSlots] The number of scheduling
+     * slots that the Task requires to run. The default is 1. A Task can only be
+     * scheduled to run on a compute node if the node has enough free scheduling
+     * slots available. For multi-instance Tasks, this must be 1.
+     *
      * @param {boolean} [job.jobManagerTask.killJobOnCompletion] Whether completion
      * of the Job Manager Task signifies completion of the entire Job. If true,
      * when the Job Manager Task completes, the Batch service marks the Job as
@@ -9306,14 +9355,17 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -9396,10 +9448,11 @@ export interface Job {
      * Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and
      * "TemporaryDisk" must be specified.
      *
-     * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * @param {number} [job.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] How Tasks are
@@ -9511,7 +9564,8 @@ export interface Job {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -9529,9 +9583,9 @@ export interface Job {
      * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -10190,7 +10244,8 @@ export interface Job {
      *
      * Task counts provide a count of the Tasks by active, running or completed
      * Task state, and a count of Tasks which succeeded or failed. Tasks in the
-     * preparing state are counted as running.
+     * preparing state are counted as running. Note that the numbers returned may
+     * not always be up to date. If you need exact task counts, use a list query.
      *
      * @param {string} jobId The ID of the Job.
      *
@@ -10219,18 +10274,19 @@ export interface Job {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TaskCounts>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TaskCountsResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getTaskCountsWithHttpOperationResponse(jobId: string, options?: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskCounts>>;
+    getTaskCountsWithHttpOperationResponse(jobId: string, options?: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskCountsResult>>;
 
     /**
      * @summary Gets the Task counts for the specified Job.
      *
      * Task counts provide a count of the Tasks by active, running or completed
      * Task state, and a count of Tasks which succeeded or failed. Tasks in the
-     * preparing state are counted as running.
+     * preparing state are counted as running. Note that the numbers returned may
+     * not always be up to date. If you need exact task counts, use a list query.
      *
      * @param {string} jobId The ID of the Job.
      *
@@ -10264,7 +10320,7 @@ export interface Job {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TaskCounts} - The deserialized result object.
+     *                      @resolve {TaskCountsResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10272,16 +10328,16 @@ export interface Job {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TaskCounts} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TaskCounts} for more information.
+     *                      {TaskCountsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TaskCountsResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getTaskCounts(jobId: string, options?: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskCounts>;
-    getTaskCounts(jobId: string, callback: ServiceCallback<models.TaskCounts>): void;
-    getTaskCounts(jobId: string, options: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskCounts>): void;
+    getTaskCounts(jobId: string, options?: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskCountsResult>;
+    getTaskCounts(jobId: string, callback: ServiceCallback<models.TaskCountsResult>): void;
+    getTaskCounts(jobId: string, options: { jobGetTaskCountsOptions? : models.JobGetTaskCountsOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskCountsResult>): void;
 
 
     /**
@@ -13085,6 +13141,13 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.constraints]
      * Constraints that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.requiredSlots]
+     * The number of scheduling slots that the Task requires to run. The default is
+     * 1. A Task can only be scheduled to run on a compute node if the node has
+     * enough free scheduling slots available. For multi-instance Tasks, this must
+     * be 1.
+     *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -13486,14 +13549,17 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -13577,10 +13643,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -13694,7 +13761,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -13712,9 +13780,9 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -14177,6 +14245,13 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.constraints]
      * Constraints that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.requiredSlots]
+     * The number of scheduling slots that the Task requires to run. The default is
+     * 1. A Task can only be scheduled to run on a compute node if the node has
+     * enough free scheduling slots available. For multi-instance Tasks, this must
+     * be 1.
+     *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -14578,14 +14653,17 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -14669,10 +14747,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -14786,7 +14865,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -14804,9 +14884,9 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -15289,6 +15369,13 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.constraints]
      * Constraints that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.requiredSlots]
+     * The number of scheduling slots that the Task requires to run. The default is
+     * 1. A Task can only be scheduled to run on a compute node if the node has
+     * enough free scheduling slots available. For multi-instance Tasks, this must
+     * be 1.
+     *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -15692,14 +15779,17 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -15783,10 +15873,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -15900,7 +15991,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -15918,9 +16010,9 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -16387,6 +16479,13 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.constraints]
      * Constraints that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.requiredSlots]
+     * The number of scheduling slots that the Task requires to run. The default is
+     * 1. A Task can only be scheduled to run on a compute node if the node has
+     * enough free scheduling slots available. For multi-instance Tasks, this must
+     * be 1.
+     *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -16790,14 +16889,17 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -16881,10 +16983,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -16998,7 +17101,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -17016,9 +17120,9 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -17893,6 +17997,12 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.constraints] Constraints
      * that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.requiredSlots] The number
+     * of scheduling slots that the Task requires to run. The default is 1. A Task
+     * can only be scheduled to run on a compute node if the node has enough free
+     * scheduling slots available. For multi-instance Tasks, this must be 1.
+     *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -18288,14 +18398,17 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -18379,10 +18492,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -18496,7 +18610,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -18514,9 +18629,9 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -18951,6 +19066,12 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.constraints] Constraints
      * that apply to the Job Manager Task.
      *
+     * @param {number}
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.requiredSlots] The number
+     * of scheduling slots that the Task requires to run. The default is 1. A Task
+     * can only be scheduled to run on a compute node if the node has enough free
+     * scheduling slots available. For multi-instance Tasks, this must be 1.
+     *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.killJobOnCompletion]
      * Whether completion of the Job Manager Task signifies completion of the
@@ -19346,14 +19467,17 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
      * The ARM resource identifier of the Shared Image Gallery Image. Compute Nodes
-     * in the Pool will be created using this Image Id. This is of the
-     * form/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-     * This property is mutually exclusive with other ImageReference properties.
-     * For Virtual Machine Image it must be in the same region and subscription as
-     * the Azure Batch account. The Shared Image Gallery Image must have replicas
-     * in the same region as the Azure Batch account. For information about the
-     * firewall settings for the Batch Compute Node agent to communicate with the
-     * Batch service see
+     * in the Pool will be created using this Image Id. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{VersionId}
+     * or
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}
+     * for always defaulting to the latest image version. This property is mutually
+     * exclusive with other ImageReference properties. The Shared Image Gallery
+     * Image must have replicas in the same region and must be in the same
+     * subscription as the Azure Batch account. If the image version is not
+     * specified in the imageId, the latest version will be used. For information
+     * about the firewall settings for the Batch Compute Node agent to communicate
+     * with the Batch service see
      * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
      *
      * @param {string}
@@ -19437,10 +19561,11 @@ export interface JobSchedule {
      * "TemporaryDisk" must be specified.
      *
      * @param {number}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * The maximum number of Tasks that can run concurrently on a single Compute
-     * Node in the Pool. The default value is 1. The maximum value is the smaller
-     * of 4 times the number of cores of the vmSize of the Pool or 256.
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSlotsPerNode]
+     * The number of task slots that can be used to run concurrent tasks on a
+     * single compute node in the pool. The default value is 1. The maximum value
+     * is the smaller of 4 times the number of cores of the vmSize of the pool or
+     * 256.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -19554,7 +19679,8 @@ export interface JobSchedule {
      * A list of inbound NAT Pools that can be used to address specific ports on an
      * individual Compute Node externally. The maximum number of inbound NAT Pools
      * per Batch Pool is 5. If the maximum number of inbound NAT Pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration]
@@ -19572,9 +19698,9 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
@@ -20195,6 +20321,11 @@ export interface Task {
      * service does not retry the Task after the first attempt. If the maximum
      * retry count is -1, the Batch service retries the Task without limit.
      *
+     * @param {number} [task.requiredSlots] The number of scheduling slots that the
+     * Task required to run. The default is 1. A Task can only be scheduled to run
+     * on a compute node if the node has enough free scheduling slots available.
+     * For multi-instance Tasks, this must be 1.
+     *
      * @param {object} [task.userIdentity] The user identity under which the Task
      * runs. If omitted, the Task runs as a non-administrative user unique to the
      * Task.
@@ -20490,6 +20621,11 @@ export interface Task {
      * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
      * service does not retry the Task after the first attempt. If the maximum
      * retry count is -1, the Batch service retries the Task without limit.
+     *
+     * @param {number} [task.requiredSlots] The number of scheduling slots that the
+     * Task required to run. The default is 1. A Task can only be scheduled to run
+     * on a compute node if the node has enough free scheduling slots available.
+     * For multi-instance Tasks, this must be 1.
      *
      * @param {object} [task.userIdentity] The user identity under which the Task
      * runs. If omitted, the Task runs as a non-administrative user unique to the
