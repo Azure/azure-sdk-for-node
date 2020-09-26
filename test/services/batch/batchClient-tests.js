@@ -998,8 +998,9 @@ describe('Batch Service', function () {
       client.job.getTaskCounts(jobId, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        should.exist(result.active);
-        should.exist(result.completed);
+        should.exist(result.taskCounts);
+        should.exist(result.taskCounts.active);
+        should.exist(result.taskCounts.completed);
         done();
       });
     });
