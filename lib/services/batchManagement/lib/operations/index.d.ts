@@ -4113,7 +4113,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -4130,16 +4131,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.
@@ -4565,7 +4566,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -4582,16 +4584,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.
@@ -5038,7 +5040,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -5055,16 +5058,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.
@@ -5488,7 +5491,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -5505,16 +5509,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.
@@ -6240,7 +6244,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -6257,16 +6262,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.
@@ -6692,7 +6697,8 @@ export interface PoolOperations {
      * of inbound NAT pools that can be used to address specific ports on an
      * individual compute node externally. The maximum number of inbound NAT pools
      * per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded
-     * the request fails with HTTP status code 400.
+     * the request fails with HTTP status code 400. This cannot be specified if the
+     * IPAddressProvisioningType is NoPublicIPAddresses.
      *
      * @param {object}
      * [parameters.networkConfiguration.publicIPAddressConfiguration] The Public
@@ -6709,16 +6715,16 @@ export interface PoolOperations {
      * [parameters.networkConfiguration.publicIPAddressConfiguration.ipAddressIds]
      * The list of public IPs which the Batch service will use when provisioning
      * Compute Nodes. The number of IPs specified here limits the maximum size of
-     * the Pool - 50 dedicated nodes or 20 low-priority nodes can be allocated for
-     * each public IP. For example, a pool needing 150 dedicated VMs would need at
-     * least 3 public IPs specified. Each element of this collection is of the
+     * the Pool - 100 dedicated nodes or 100 low-priority nodes can be allocated
+     * for each public IP. For example, a pool needing 250 dedicated VMs would need
+     * at least 3 public IPs specified. Each element of this collection is of the
      * form:
      * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
      *
-     * @param {number} [parameters.maxTasksPerNode] The maximum number of tasks
-     * that can run concurrently on a single compute node in the pool. The default
-     * value is 1. The maximum value is the smaller of 4 times the number of cores
-     * of the vmSize of the pool or 256.
+     * @param {number} [parameters.taskSlotsPerNode] The number of task slots that
+     * can be used to run concurrent tasks on a single compute node in the pool.
+     * The default value is 1. The maximum value is the smaller of 4 times the
+     * number of cores of the vmSize of the pool or 256.
      *
      * @param {object} [parameters.taskSchedulingPolicy] How tasks are distributed
      * across compute nodes in a pool. If not specified, the default is spread.

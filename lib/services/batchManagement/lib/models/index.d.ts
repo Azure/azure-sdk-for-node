@@ -73,7 +73,7 @@ export interface KeyVaultReference {
 
 /**
  * The identity of the Batch account, if configured. This is only used when the user specifies
- * 'Azure.KeyVault' as their Batch account encryption configuration.
+ * 'Microsoft.KeyVault' as their Batch account encryption configuration.
  */
 export interface BatchAccountIdentity {
   /**
@@ -692,7 +692,7 @@ export interface DataDisk {
   /**
    * @summary The logical unit number.
    * @description The lun is used to uniquely identify each data disk. If attaching multiple disks,
-   * each should have a distinct lun.
+   * each should have a distinct lun. The value must be between 0 and 63, inclusive.
   */
   lun: number;
   /**
@@ -1056,7 +1056,8 @@ export interface PoolEndpointConfiguration {
    * @summary A list of inbound NAT pools that can be used to address specific ports on an
    * individual compute node externally.
    * @description The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
-   * number of inbound NAT pools is exceeded the request fails with HTTP status code 400.
+   * number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This
+   * cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
   */
   inboundNatPools: InboundNatPool[];
 }
@@ -1074,9 +1075,9 @@ export interface PublicIPAddressConfiguration {
   /**
    * @summary The list of public IPs which the Batch service will use when provisioning Compute
    * Nodes.
-   * @description The number of IPs specified here limits the maximum size of the Pool - 50
-   * dedicated nodes or 20 low-priority nodes can be allocated for each public IP. For example, a
-   * pool needing 150 dedicated VMs would need at least 3 public IPs specified. Each element of
+   * @description The number of IPs specified here limits the maximum size of the Pool - 100
+   * dedicated nodes or 100 low-priority nodes can be allocated for each public IP. For example, a
+   * pool needing 250 dedicated VMs would need at least 3 public IPs specified. Each element of
    * this collection is of the form:
    * /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
   */
@@ -1787,12 +1788,12 @@ export interface Pool extends ProxyResource {
   */
   networkConfiguration?: NetworkConfiguration;
   /**
-   * @summary The maximum number of tasks that can run concurrently on a single compute node in the
-   * pool.
+   * @summary The number of task slots that can be used to run concurrent tasks on a single compute
+   * node in the pool.
    * @description The default value is 1. The maximum value is the smaller of 4 times the number of
    * cores of the vmSize of the pool or 256.
   */
-  maxTasksPerNode?: number;
+  taskSlotsPerNode?: number;
   /**
    * @summary How tasks are distributed across compute nodes in a pool.
    * @description If not specified, the default is spread.
