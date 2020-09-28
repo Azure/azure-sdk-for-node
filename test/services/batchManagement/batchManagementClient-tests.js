@@ -114,8 +114,8 @@ describe('Batch Management', function () {
         should.exist(result);
         result.location.should.equal(location);
         result.poolQuota.should.equal(100);
-        result.dedicatedCoreQuota.should.equal(0);
-        result.lowPriorityCoreQuota.should.equal(0);
+        result.dedicatedCoreQuota.should.equal(700);
+        result.lowPriorityCoreQuota.should.equal(500);
         response.statusCode.should.equal(200);
         done();
       });
