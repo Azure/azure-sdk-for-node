@@ -84,7 +84,7 @@
     "should": "^8.3.1",
     "sinon": "^2.1.0",
     "tslib": "^1.9.3",
-    "typescript": "^3.1.6",
+    "typescript": "^3.5.1",
     "xmlbuilder": "15.1.1",
     "yargs": "3.29.0"
   },
