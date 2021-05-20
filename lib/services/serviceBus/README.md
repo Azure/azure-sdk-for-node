@@ -1,7 +1,11 @@
-# Microsoft Azure SDK for Node.js - Gallery
+# Microsoft Azure SDK for Node.js - Service Bus & Notification Hubs
 
-This project provides a Node.js package for accessing the Azure ServiceBus service.
+This project provides a Node.js package `azure-sb` for accessing the below two Azure services:
 
+- Azure Service Bus
+- Azure Notification Hubs
+
+> Please note, a newer package [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) for Azure Service Bus is available as of May 2019. The `azure-sb` package will continue to receive critical bug fixes for features around accessing Azure Notification Hubs, but we strongly encourage you to upgrade to the new package for your Service Bus needs.
 
 ## How to Install
 
