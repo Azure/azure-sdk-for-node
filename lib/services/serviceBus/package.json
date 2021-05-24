@@ -27,7 +27,7 @@
   "dependencies": {
     "azure-common": "^0.9.19",
     "mpns": "2.1.3",
-    "underscore": "^1.8.3",
+    "underscore": "^1.13.1",
     "wns": "~0.5.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
