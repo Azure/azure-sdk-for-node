@@ -8,7 +8,7 @@ jobs:
   - job: 'Build'
 
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-20.04'
 
     steps:
       - task: NodeTool@0
@@ -55,7 +55,7 @@ jobs:
       - 'Build'
 
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-20.04'
 
     steps:
       - task: NodeTool@0
@@ -92,19 +92,19 @@ jobs:
       matrix:
         Linux_Node6:
           OSName: 'Linux'
-          OSVmImage: 'ubuntu-16.04'
+          OSVmImage: 'ubuntu-20.04'
           NodeVersion: '6.x'
         Linux_Node8:
           OSName: 'Linux'
-          OSVmImage: 'ubuntu-16.04'
+          OSVmImage: 'ubuntu-20.04'
           NodeVersion: '8.x'
         Linux_Node10:
           OSName: 'Linux'
-          OSVmImage: 'ubuntu-16.04'
+          OSVmImage: 'ubuntu-20.04'
           NodeVersion: '10.x'
         Linux_Node11:
           OSName: 'Linux'
-          OSVmImage: 'ubuntu-16.04'
+          OSVmImage: 'ubuntu-20.04'
           NodeVersion: '11.x'
         macOS_Node6:
           OSName: 'macOS'
