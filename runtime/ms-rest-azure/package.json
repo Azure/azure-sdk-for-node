@@ -25,7 +25,7 @@
   "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "adal-node": "^0.1.28",
+    "adal-node": "^0.2.2",
     "async": "2.6.0",
     "ms-rest": "^2.3.2",
     "uuid": "^3.2.1",

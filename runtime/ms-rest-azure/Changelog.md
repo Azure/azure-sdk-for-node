@@ -1,4 +1,5 @@
-### 3.0.1 (Unreleased)
+### 3.0.1 (11/10/2021)
+- Change the dependencies of adal-node from 0.1.28 to 0.2.2. for issue [issue #5215](https://github.com/Azure/azure-sdk-for-node/issues/5212)  
 - Remove unused dependency on `moment`. For issue [issue #5157](https://github.com/Azure/azure-sdk-for-node/issues/5157)
 
 ### 3.0.0 (07/11/2019)
