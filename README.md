@@ -1,6 +1,6 @@
 # Announcing the new Azure SDK for JavaScript
 
-We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) in a new GitHub repo located here: https://github.com/azure/azure-sdk-for-js.
+We are excited to announce that we are building a new [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) in a new GitHub repo located here: https://github.com/azure/azure-sdk-for-js.  
 These packages ship with TypeScript type definitions and have both Node.js and Browser support.
 
 Below are key points regarding deprecation of the packages in this repo and migration to the new packages
