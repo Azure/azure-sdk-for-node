@@ -1,4 +1,5 @@
 trigger:
+- master
 
 variables:
   NodeVersion: '10.x'
