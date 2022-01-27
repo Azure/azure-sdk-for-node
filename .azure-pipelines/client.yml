@@ -187,7 +187,7 @@ jobs:
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-credscan.CredScan@2
         inputs:
           toolMajorVersion: 'V2'
-      - task: PostAnalysis@1
+      - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-postanalysis.PostAnalysis@1
         inputs:
           AllTools: false
           APIScan: false
