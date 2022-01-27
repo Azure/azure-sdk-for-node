@@ -184,7 +184,7 @@ jobs:
     pool:
       vmImage: "windows-2019"
     steps:
-      - task:  CredScan@2  
+      - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-credscan.CredScan@2
         inputs:
           toolMajorVersion: 'V2'
       - task: PostAnalysis@1
