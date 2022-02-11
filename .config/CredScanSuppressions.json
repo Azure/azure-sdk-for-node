@@ -3,7 +3,7 @@
     "tool": "Credential Scanner",
     "suppressions": [
         {
-            "folder": [
+            "file": [
                 "test\\recordings"
             ],
             "_justification": "This is the secret place holder used by my team"
