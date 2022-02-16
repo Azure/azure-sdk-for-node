@@ -4,11 +4,7 @@
     "suppressions": [
         {
             "file": [
-                "examples\\ARM\\compute\\vm-sample.js",
                 "lib\\services\\datafactoryManagement\\lib\\models\\index.d.ts",
-                "lib\\services\\graphManagement\\README.md",
-                "lib\\services\\mysqlManagement\\README.md",
-                "lib\\services\\postgresqlManagement\\README.md",
                 "test\\recordings\\blobservice-tests.nock.js",
                 "runtime\\ms-rest-azure\\index.d.ts",
                 "runtime\\ms-rest-azure\\lib\\login.js",
@@ -62,6 +58,18 @@
                 "test\\services\\sql\\sqlmanagementservice-tests.js",
                 "test\\services\\sql\\sqlservice-tests.js"
             ],
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "Pa$$w0rd",
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "WinterisComing!",
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "F00Bar!!",
             "_justification": "This is the secret place holder used by test"
         }
     ]
