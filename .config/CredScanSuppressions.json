@@ -1,0 +1,76 @@
+
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+        {
+            "file": [
+                "lib\\services\\datafactoryManagement\\lib\\models\\index.d.ts",
+                "test\\recordings\\blobservice-tests.nock.js",
+                "runtime\\ms-rest-azure\\index.d.ts",
+                "runtime\\ms-rest-azure\\lib\\login.js",
+                "runtime\\ms-rest-azure\\lib\\credentials\\msiAppServiceTokenCredentials.js",
+                "test\\recordings\\mpnsservice-tests.nock.js",
+                "test\\recordings\\scmservice-tests.nock.js",
+                "test\\recordings\\serviceBusManagement-tests.nock.js",
+                "runtime\\ms-rest-azure\\test\\msiAppServiceTokenCredentialTests.js",
+                "runtime\\ms-rest-azure\\test\\data\\auth-customEnv.json",
+                "runtime\\ms-rest-azure\\test\\data\\auth-usProd.json",
+                "test\\recordings\\serviceManagement-tests.nock.js",
+                "test\\azure-tests.js",
+                "test\\common\\hmacsha256sign-tests.js",
+                "test\\recordings\\wnsservice-tests.nock.js",
+                "test\\common\\storageservicesettings-tests.js",
+                "test\\data\\certificate.pem",
+                "test\\recordings\\batchmanagementservice-tests\\Batch_Management_operations_should_get_account_keys_successfully.nock.js",
+                "test\\recordings\\batchmanagementservice-tests\\Batch_Management_operations_should_regenerate_keys_successfully.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_should_get_all_the_iothub_keys_successfully.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_should_get_a_specific_iothub_key_successfully.nock.js",
+                "test\\recordings\\storagemanagementservice-tests\\Storage_Management_storage_accounts_should_list_all_the_storage_account_keys.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_should_update_the_iothub_successfully.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_retrieve_connection_string_for_external_routing_eventhub_EH_1.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_retrieve_connection_string_for_external_routing_eventhub_EH_2.nock.js",
+                "test\\recordings\\storagemanagementservice-tests\\Storage_Management_storage_accounts_should_regenerate_storage_account_keys.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_retrieve_connection_string_for_external_routing_queue_-_Queue1.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_retrieve_connection_string_for_external_routing_topic_-_Topic1.nock.js",
+                "test\\recordings\\datalakeAnalyticsManagement-tests\\Data_Lake_Analytics_Clients_Account_Job_and_Catalog_Data_Lake_Analytics_Account_adding_and_removing_blob_storage_accounts_to_the_account_should_work.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_should_create_the_iothub_successfully.nock.js",
+                "test\\services\\batch\\batchClient-tests.js",
+                "test\\services\\batchManagement\\batchManagementClient-tests.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_should_get_all_the_iothub_keys_successfully.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_should_get_a_specific_iothub_key_successfully.nock.js",
+                "test\\recordings\\iothub-tests\\IoTHub_IoTHub_Lifecycle_Test_Suite_should_update_the_iothub_successfully.nock.js",
+                "test\\recordings\\notificationhubsservice-Hub-tests\\Notification_Hubs_Management_NotificationHub_Tests_CRUD.nock.js",
+                "test\\recordings\\notificationhubsservice-NS-tests\\Notification_Hubs_Management_Namespace_Tests_CRUD.nock.js",
+                "test\\recordings\\powerbiembeddedmanagementclient-tests\\PowerBI_Embedded_Management_Client_workspace_collections_get_access_keys_for_workspace_collection.nock.js",
+                "test\\recordings\\powerbiembeddedmanagementclient-tests\\PowerBI_Embedded_Management_Client_workspace_collections_regenerate_access_keys_for_the_workspace_collection.nock.js",
+                "test\\recordings\\servermanagement-tests\\ServerManagement_Creates_a_node_for_this_PC..nock.js",
+                "test\\recordings\\servermanagement-tests\\ServerManagement_Creates_a_session_and_makes_a_powershell_call..nock.js",
+                "test\\services\\table\\tableservice-tests.js",
+                "test\\services\\table\\internal\\sharedkeylitetable-tests.js",
+                "test\\services\\blob\\blobservice-tests.js",
+                "test\\services\\blob\\internal\\sharedaccesssignature-tests.js",
+                "test\\services\\blob\\internal\\sharedkey-tests.js",
+                "test\\services\\keyVault\\keyVault-certificate-tests.js",
+                "test\\services\\mysqlManagement\\mySQLManagementClient-tests.js",
+                "test\\services\\postgresqlManagement\\postgreSQLManagementClient-tests.js",
+                "test\\services\\queue\\queueservice-tests.js",
+                "test\\services\\serviceBus\\servicebusservice-tests.js",
+                "test\\services\\sql\\sqlmanagementservice-tests.js",
+                "test\\services\\sql\\sqlservice-tests.js"
+            ],
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "Pa$$w0rd",
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "WinterisComing!",
+            "_justification": "This is the secret place holder used by test"
+        },
+        {
+            "placeholder": "F00Bar!!",
+            "_justification": "This is the secret place holder used by test"
+        }
+    ]
+}
