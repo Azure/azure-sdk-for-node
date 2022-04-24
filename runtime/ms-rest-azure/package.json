@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "adal-node": "^0.2.2",
-    "async": "2.6.4",
+    "async": "3.2.3",
     "ms-rest": "^2.3.2",
     "uuid": "^3.2.1",
     "request": "^2.88.0"
@@ -37,7 +37,7 @@
     "@types/should": "^8.1.30",
     "@types/uuid": "^3.4.3",
     "jshint": "^2.9.5",
-    "mocha": "^5.2.0",
+    "mocha": "^9.2.2",
     "nock": "^9.3.2",
     "should": "5.2.0",
     "sinon": "^2.3.8",
