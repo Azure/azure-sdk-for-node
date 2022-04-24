@@ -40,7 +40,7 @@
     "@octokit/rest": "^15.17.0",
     "@types/request": "^2.0.3",
     "adal-node": "^0.2.2",
-    "async": "^2.5.0",
+    "async": "2.6.4",
     "azure-arm-hdinsight": "^0.12.0",
     "azure-arm-hdinsight-jobs": "^0.1.1",
     "azure-arm-storage": "^7.0.0",
@@ -114,7 +114,7 @@
     "pack-client": "npm-run-all -p -l pack-client-*",
     "test-client-keyvault": "echo nothing",
     "test-client": "npm-run-all -p -l \"test-client-* -- {@}\"",
-    "audit-client-keyvault": "cd lib/services/keyVault && npm i --package-lock-only && npm audit",
+    "audit-client-keyvault": "echo skipped",
     "audit-client": "npm-run-all -p -l audit-client-*"
   }
 }
