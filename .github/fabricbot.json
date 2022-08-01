@@ -1,0 +1,1722 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "taskType": "scheduledAndTrigger",
+      "capabilityId": "IssueRouting",
+      "subCapability": "@Mention",
+      "version": "1.0",
+      "config": {
+        "labelsAndMentions": [
+          {
+            "labels": [
+              "Service Attention",
+              "AAD"
+            ],
+            "mentionees": [
+              "adamedx"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "AKS"
+            ],
+            "mentionees": [
+              "Azure/aks-pm"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Alerts Management"
+            ],
+            "mentionees": [
+              "liadtal",
+              "yairgil"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Templates"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Tags"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Core"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Managed Applications"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Service Catalog"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - RBAC"
+            ],
+            "mentionees": [
+              "armleads-azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Advisor"
+            ],
+            "mentionees": [
+              "mojayara",
+              "Prasanna-Padmanabhan"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Analysis Services"
+            ],
+            "mentionees": [
+              "athipp",
+              "taiwu",
+              "minghan"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "API Management"
+            ],
+            "mentionees": [
+              "miaojiang"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Application Insights"
+            ],
+            "mentionees": [
+              "azmonapplicationinsights"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "App Services"
+            ],
+            "mentionees": [
+              "antcp",
+              "AzureAppServiceCLI"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "App Configuration"
+            ],
+            "mentionees": [
+              "shenmuxiaosen",
+              "avanigupta"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARO"
+            ],
+            "mentionees": [
+              "mjudeikis",
+              "jim-minter",
+              "julienstroheker",
+              "amanohar"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Attestation"
+            ],
+            "mentionees": [
+              "anilba06"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Authorization"
+            ],
+            "mentionees": [
+              "darshanhs90",
+              "AshishGargMicrosoft"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Automation"
+            ],
+            "mentionees": [
+              "zjalexander"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "AVS"
+            ],
+            "mentionees": [
+              "divka78",
+              "amitchat",
+              "aishu"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Azure Stack"
+            ],
+            "mentionees": [
+              "sijuman",
+              "sarathys",
+              "bganapa",
+              "rakku-ms"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Batch"
+            ],
+            "mentionees": [
+              "mksuni",
+              "bgklein",
+              "mscurrell",
+              "dpwatrous",
+              "gingi",
+              "paterasMSFT",
+              "cRui861"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "BatchAI"
+            ],
+            "mentionees": [
+              "matthchr"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Billing"
+            ],
+            "mentionees": [
+              "cabbpt"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Blueprint"
+            ],
+            "mentionees": [
+              "alex-frankel",
+              "filizt"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Bot Service"
+            ],
+            "mentionees": [
+              "sgellock"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cloud Shell"
+            ],
+            "mentionees": [
+              "maertendMSFT"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Text Analytics"
+            ],
+            "mentionees": [
+              "assafi"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Form Recognizer"
+            ],
+            "mentionees": [
+              "ctstone",
+              "anrothMSFT"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Anomaly Detector"
+            ],
+            "mentionees": [
+              "yingqunpku",
+              "bowgong"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Custom Vision"
+            ],
+            "mentionees": [
+              "areddish",
+              "tburns10"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Computer Vision"
+            ],
+            "mentionees": [
+              "ryogok",
+              "TFR258",
+              "tburns10"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Face"
+            ],
+            "mentionees": [
+              "JinyuID",
+              "dipidoo",
+              "SteveMSFT"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - QnA Maker"
+            ],
+            "mentionees": [
+              "bingisbestest",
+              "nerajput1607"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Translator"
+            ],
+            "mentionees": [
+              "swmachan"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Speech"
+            ],
+            "mentionees": [
+              "robch",
+              "oscholz"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - LUIS"
+            ],
+            "mentionees": [
+              "cahann",
+              "kayousef"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Content Moderator"
+            ],
+            "mentionees": [
+              "swiftarrow11"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Personalizer"
+            ],
+            "mentionees": [
+              "dwaijam"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Immersive Reader"
+            ],
+            "mentionees": [
+              "metanMSFT"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Ink Recognizer"
+            ],
+            "mentionees": [
+              "olduroja"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Bing"
+            ],
+            "mentionees": [
+              "jaggerbodas-ms",
+              "arwong"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Mgmt"
+            ],
+            "mentionees": [
+              "yangyuan"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Commerce"
+            ],
+            "mentionees": [
+              "ms-premp",
+              "qiaozha"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "avirishuv",
+              "vaibhav-agar",
+              "amjads1"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - Extensions"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "amjads1"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - Images"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "vaibhav-agar"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - Managed Disks"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "vaibhav-agar"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - RDFE"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "avirishuv"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - VM"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "avirishuv"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Compute - VMSS"
+            ],
+            "mentionees": [
+              "Drewm3",
+              "avirishuv"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption"
+            ],
+            "mentionees": [
+              "ms-premp"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Connected Kubernetes"
+            ],
+            "mentionees": [
+              "akashkeshari"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Container Instances"
+            ],
+            "mentionees": [
+              "macolso"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Container Registry"
+            ],
+            "mentionees": [
+              "toddysm",
+              "northtyphoon"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Container Service"
+            ],
+            "mentionees": [
+              "qike-ms",
+              "jwilder",
+              "thomas1206",
+              "seanmck"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cosmos"
+            ],
+            "mentionees": [
+              "kushagraThapar",
+              "simorenoh"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cost Management"
+            ],
+            "mentionees": [
+              "ms-premp",
+              "ramaganesan-rg"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Customer Insights"
+            ],
+            "mentionees": [
+              "shefymk"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Custom Providers"
+            ],
+            "mentionees": [
+              "manoharp",
+              "MSEvanhi"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "CycleCloud"
+            ],
+            "mentionees": [
+              "adriankjohnson"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Bricks"
+            ],
+            "mentionees": [
+              "yagupta"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "DataBox"
+            ],
+            "mentionees": [
+              "tmvishwajit",
+              "matdickson",
+              "manuaery",
+              "madhurinms"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "DataBox Edge"
+            ],
+            "mentionees": [
+              "a-t-mason",
+              "ganzee",
+              "manuaery"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Catalog"
+            ],
+            "mentionees": [
+              "ingave"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Factory"
+            ],
+            "mentionees": [
+              "shawnxzq",
+              "lmy269",
+              "Jingshu923"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake"
+            ],
+            "mentionees": [
+              "sumantmehtams"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Storage Gen1"
+            ],
+            "mentionees": [
+              "sumantmehtams"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Storage Gen2"
+            ],
+            "mentionees": [
+              "sumantmehtams"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Analytics"
+            ],
+            "mentionees": [
+              "idear1203"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Store"
+            ],
+            "mentionees": [
+              "sumantmehtams"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Migration"
+            ],
+            "mentionees": [
+              "radjaram",
+              "kavitham10"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Share"
+            ],
+            "mentionees": [
+              "raedJarrar",
+              "jifems"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "DevOps"
+            ],
+            "mentionees": [
+              "narula0781",
+              "ashishonce",
+              "romil07"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Dev Spaces"
+            ],
+            "mentionees": [
+              "yuzorMa",
+              "johnsta",
+              "greenie-msft"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Devtestlab"
+            ],
+            "mentionees": [
+              "Tanmayeekamath"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Device Provisioning Service"
+            ],
+            "mentionees": [
+              "nberdy"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Digital Twins"
+            ],
+            "mentionees": [
+              "sourabhguha",
+              "inesk-vt"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Event Grid"
+            ],
+            "mentionees": [
+              "jfggdl"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Event Hubs"
+            ],
+            "mentionees": [
+              "jfggdl"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Functions"
+            ],
+            "mentionees": [
+              "ahmedelnably",
+              "fabiocav"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Graph.Microsoft"
+            ],
+            "mentionees": [
+              "dkershaw10",
+              "baywet"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Guest Configuration"
+            ],
+            "mentionees": [
+              "mgreenegit",
+              "vivlingaiah"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "HDInsight"
+            ],
+            "mentionees": [
+              "aim-for-better",
+              "idear1203",
+              "deshriva"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "HPC Cache"
+            ],
+            "mentionees": [
+              "romahamu",
+              "omzevall"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Import Export"
+            ],
+            "mentionees": [
+              "madhurinms"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotCentral"
+            ],
+            "mentionees": [
+              "iluican",
+              "jlian"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotDPS"
+            ],
+            "mentionees": [
+              "iluican",
+              "jlian"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotHub"
+            ],
+            "mentionees": [
+              "rkmanda",
+              "chieftn"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "KeyVault"
+            ],
+            "mentionees": [
+              "RandalliLama",
+              "schaabs",
+              "jlichwa"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Kubernetes Configuration"
+            ],
+            "mentionees": [
+              "NarayanThiru"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Azure Data Explorer"
+            ],
+            "mentionees": [
+              "ilayrn",
+              "orhasban",
+              "zoharHenMicrosoft",
+              "sagivf",
+              "Aviv-Yaniv"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Lab Services"
+            ],
+            "mentionees": [
+              "Tanmayeekamath"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Logic App"
+            ],
+            "mentionees": [
+              "Azure/azure-logicapps-team"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "LOUIS"
+            ],
+            "mentionees": [
+              "minamnmik"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Managed Identity"
+            ],
+            "mentionees": [
+              "varunkch"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Machine Learning"
+            ],
+            "mentionees": [
+              "azureml-github"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Machine Learning Compute"
+            ],
+            "mentionees": [
+              "azureml-github"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Machine Learning Experimentation"
+            ],
+            "mentionees": [
+              "aashishb"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Managed Services"
+            ],
+            "mentionees": [
+              "Lighthouse-Azure"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "MariaDB"
+            ],
+            "mentionees": [
+              "ambhatna",
+              "savjani"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Marketplace Ordering"
+            ],
+            "mentionees": [
+              "prbansa"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Media Services"
+            ],
+            "mentionees": [
+              "akucer"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Migrate"
+            ],
+            "mentionees": [
+              "shijojoy"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Mobile Engagement"
+            ],
+            "mentionees": [
+              "kpiteira"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor"
+            ],
+            "mentionees": [
+              "SameergMS",
+              "dadunl"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Autoscale"
+            ],
+            "mentionees": [
+              "AzMonEssential"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - ActivityLogs"
+            ],
+            "mentionees": [
+              "AzMonEssential"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Metrics"
+            ],
+            "mentionees": [
+              "AzMonEssential"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Diagnostic Settings"
+            ],
+            "mentionees": [
+              "AzMonEssential"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Alerts"
+            ],
+            "mentionees": [
+              "AzmonAlerts"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - ActionGroups"
+            ],
+            "mentionees": [
+              "AzmonActionG"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - LogAnalytics"
+            ],
+            "mentionees": [
+              "AzmonLogA"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - ApplicationInsights"
+            ],
+            "mentionees": [
+              "azmonapplicationinsights"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "MySQL"
+            ],
+            "mentionees": [
+              "ambhatna",
+              "savjani"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network"
+            ],
+            "mentionees": [
+              "aznetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Application Gateway"
+            ],
+            "mentionees": [
+              "appgwsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - CDN"
+            ],
+            "mentionees": [
+              "1varunch1",
+              "lsmith130",
+              "cdnfdsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - DDOS Protection"
+            ],
+            "mentionees": [
+              "ddossuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - ExpressRoute"
+            ],
+            "mentionees": [
+              "mialdrid",
+              "exrsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Firewall"
+            ],
+            "mentionees": [
+              "aznetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Front Door"
+            ],
+            "mentionees": [
+              "cdnfdsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual Network Gateways"
+            ],
+            "mentionees": [
+              "aznetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Load Balancer"
+            ],
+            "mentionees": [
+              "slbsupportgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual Network NAT"
+            ],
+            "mentionees": [
+              "vnetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Network Watcher"
+            ],
+            "mentionees": [
+              "aznetsuppgithub",
+              "netwatchsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - DNS"
+            ],
+            "mentionees": [
+              "dnssuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - SDN"
+            ],
+            "mentionees": [
+              "aznetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Traffic Manager"
+            ],
+            "mentionees": [
+              "tmsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - VPN Gateway"
+            ],
+            "mentionees": [
+              "vpngwsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Notification Hub"
+            ],
+            "mentionees": [
+              "tjsomasundaram"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Operational Insights"
+            ],
+            "mentionees": [
+              "AzmonLogA"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Policy"
+            ],
+            "mentionees": [
+              "aperezcloud",
+              "kenieva"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Policy Insights"
+            ],
+            "mentionees": [
+              "kenieva"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "PostgreSQL"
+            ],
+            "mentionees": [
+              "sunilagarwal",
+              "lfittl-msft",
+              "sr-msft",
+              "niklarin"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Recovery Services Backup"
+            ],
+            "mentionees": [
+              "pvrk",
+              "adityabalaji-msft"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Recovery Services Site-Recovery"
+            ],
+            "mentionees": [
+              "Sharmistha-Rai"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Redis Cache"
+            ],
+            "mentionees": [
+              "yegu-ms"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Relay"
+            ],
+            "mentionees": [
+              "jfggdl"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Reservations"
+            ],
+            "mentionees": [
+              "Rkapso"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Resource Authorization"
+            ],
+            "mentionees": [
+              "darshanhs90",
+              "AshishGargMicrosoft"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Resource Graph"
+            ],
+            "mentionees": [
+              "chiragg4u"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Resource Health"
+            ],
+            "mentionees": [
+              "stephbaron"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Scheduler"
+            ],
+            "mentionees": [
+              "derek1ee"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Search"
+            ],
+            "mentionees": [
+              "brjohnstmsft",
+              "bleroy",
+              "tjacobhi",
+              "markheff",
+              "miwelsh"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Security"
+            ],
+            "mentionees": [
+              "chlahav"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Service Bus"
+            ],
+            "mentionees": [
+              "jfggdl",
+              "axisc"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Service Fabric"
+            ],
+            "mentionees": [
+              "QingChenmsft",
+              "vaishnavk",
+              "juhacket"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SignalR"
+            ],
+            "mentionees": [
+              "sffamily",
+              "chenkennt"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - VM"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - Backup & Restore"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - Data Security"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - Elastic Jobs"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - Managed Instance"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SQL - Replication & Failover"
+            ],
+            "mentionees": [
+              "azureSQLGitHub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Storage"
+            ],
+            "mentionees": [
+              "xgithubtriage"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Storsimple"
+            ],
+            "mentionees": [
+              "anoobbacker",
+              "ganzee",
+              "manuaery",
+              "patelkunal"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Stream Analytics"
+            ],
+            "mentionees": [
+              "atpham256"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Subscription"
+            ],
+            "mentionees": [
+              "anuragdalmia",
+              "shilpigautam",
+              "ramaganesan-rg"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Support"
+            ],
+            "mentionees": [
+              "shahbj79",
+              "mit2nil",
+              "aygoya",
+              "ganganarayanan"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Synapse"
+            ],
+            "mentionees": [
+              "wonner",
+              "zesluo"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Tables"
+            ],
+            "mentionees": [
+              "klaaslanghout"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "TimeseriesInsights"
+            ],
+            "mentionees": [
+              "Shipra1Mishra"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "vFXT"
+            ],
+            "mentionees": [
+              "zhusijia26"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Web Apps"
+            ],
+            "mentionees": [
+              "AzureAppServiceCLI",
+              "antcp"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual Network"
+            ],
+            "mentionees": [
+              "vnetsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual WAN"
+            ],
+            "mentionees": [
+              "vwansuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Network Virtual Appliance"
+            ],
+            "mentionees": [
+              "nvasuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Bastion"
+            ],
+            "mentionees": [
+              "bastionsuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Azure.Spring - Cosmos"
+            ],
+            "mentionees": [
+              "kushagraThapar"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Private Link"
+            ],
+            "mentionees": [
+              "privlinksuppgithub"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Azure Arc enabled servers"
+            ],
+            "mentionees": [
+              "rpsqrd",
+              "edyoung"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SecurityInsights"
+            ],
+            "mentionees": [
+              "amirkeren"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IoT/CLI"
+            ],
+            "mentionees": [
+              "Azure/azure-iot-cli-triage"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Communication"
+            ],
+            "mentionees": [
+              "acsdevx-msft"
+            ]
+          }
+        ],
+        "replyTemplate": "Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.",
+        "taskName": "Triage issues to the service team"
+      },
+      "id": "HQJ38CpWw"
+    }
+  ],
+  "userGroups": []
+}
