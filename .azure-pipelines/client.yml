@@ -98,10 +98,6 @@ jobs:
           OSName: 'Linux'
           OSVmImage: 'ubuntu-20.04'
           NodeVersion: '10.x'
-        Linux_Node11:
-          OSName: 'Linux'
-          OSVmImage: 'ubuntu-20.04'
-          NodeVersion: '11.x'
         macOS_Node8:
           OSName: 'macOS'
           OSVmImage: 'macOS-10.15'
@@ -110,10 +106,6 @@ jobs:
           OSName: 'macOS'
           OSVmImage: 'macOS-10.15'
           NodeVersion: '10.x'
-        macOS_Node11:
-          OSName: 'macOS'
-          OSVmImage: 'macOS-10.15'
-          NodeVersion: '11.x'
 
     pool:
       vmImage: '$(OSVmImage)'
