@@ -4,6 +4,7 @@
     "suppressions": [
         {
             "file": [
+                "Documentation\\Authentication.md",
                 "lib\\services\\datafactoryManagement\\lib\\models\\index.d.ts",
                 "test\\recordings\\blobservice-tests.nock.js",
                 "runtime\\ms-rest-azure\\index.d.ts",
