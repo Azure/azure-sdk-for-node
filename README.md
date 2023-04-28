@@ -5,13 +5,13 @@ These packages ship with TypeScript type definitions and have both Node.js and B
 
 Below are key points regarding deprecation of the packages in this repo and migration to the new packages
 
-- All of the management plane SDKs (`azure-arm-*`) and most of the data plane SDKs (`azure-*`), along with the rollup package `azure` in this repository, have been deprecated as of **July, 2019**. They have been replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) packages.
+- All of the management plane SDKs (`azure-arm-*`) and all of the data plane SDKs (`azure-*`), along with the rollup package `azure` in this repository, have been deprecated as of **March 2023**. They have been replaced by the [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js) packages.
 - All of the management plane SDKs for the V1 Azure API (Azure Service Management) `azure-asm-*` will continue to be maintained from the Azure SDK for Node.js repository. We expect customers using these packages to move to Azure Resource Manager API packages at their earliest convenience.
 - To migrate your code from **Azure SDK for Node.js** to the new **Azure SDK for JavaScript**, first identify the counterparts in the new SDK and then read our [Migration from Node.js packages (azure-sdk-for-node) to JavaScript packages (azure-sdk-for-js)](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Migration.md) article.
 
 ## Azure SDK for Node.js
 
-> NOTE: This repo is being deprecated. All future JavaScript SDKs are moving to [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js). Please see the note above for more information.
+> NOTE: This repo is deprecated. All future JavaScript SDKs have moved to [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js). Please see the note above for more information.
 
 This project provides Node.js packages that makes it easy to consume and manage Microsoft Azure Services.
 
