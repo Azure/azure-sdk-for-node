@@ -5,7 +5,7 @@ This project provides a Node.js package `azure-sb` for accessing the below two A
 - Azure Service Bus
 - Azure Notification Hubs
 
-> Please note, a newer package [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) for Azure Service Bus is available as of May 2019. The `azure-sb` package will continue to receive critical bug fixes for features around accessing Azure Notification Hubs, but we strongly encourage you to upgrade to the new package for your Service Bus needs.
+> Please note, a newer package [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) for Azure Service Bus is available as of May 2019 and [@azure/notification-hubs] for Azure Notification Hubs as of March 2023. We strongly encourage you to upgrade to the new package for your Service Bus and Notification Hubs needs.
 
 ## How to Install
 
